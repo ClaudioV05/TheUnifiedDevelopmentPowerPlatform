@@ -23,7 +23,7 @@ builder.Services.AddSwaggerGen(options =>
         },
         License = new OpenApiLicense
         {
-            Name = "Informações sobre a licença.",
+            Name = "Information about the license.",
             Url = new Uri("https://claudiomildo.net/license"),
         }
     });
@@ -50,9 +50,8 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     // Code for Development here.
-
     app.UseSwagger();
-    app.UseSwaggerUI(s => s.SwaggerEndpoint("/swagger/v1/swagger.json", "Gerador de classes MVC"));
+    app.UseSwaggerUI(s => s.SwaggerEndpoint("/swagger/v1/swagger.json", "Generator of Class C#"));
 }
 else if (app.Environment.IsStaging())
 {
