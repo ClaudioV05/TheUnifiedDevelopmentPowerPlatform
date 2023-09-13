@@ -13,6 +13,7 @@ namespace AppSolution.Presentation.Api.Controllers
             _logger = logger;
         }
 
+        [Produces("application/json" , "application/xml")]
         [HttpGet]
         public List<string> Get()
         {

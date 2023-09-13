@@ -41,7 +41,10 @@ builder.Services.AddSwaggerGen(options =>
     }
 });
 
-builder.Services.AddControllers();
+builder.Services.AddControllers(options =>
+{
+    options.RespectBrowserAcceptHeader = true;
+});
 
 var app = builder.Build();
 
