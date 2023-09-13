@@ -9,16 +9,16 @@ const string termsOfService = "TermsOfService";
 
 const string contact = "Contact";
 const string contactName = "Name";
-const string contactEmail = "Email";
 const string contactUrl = "Url";
+const string contactEmail = "Email";
 
 const string license = "License";
 const string licenseName = "Name";
 const string licenseUrl = "Url";
 
 const string endPoint = "EndPoint";
-const string endPointUrl = "Url";
 const string endPointName = "Name";
+const string endPointUrl = "Url";
 #endregion
 
 var builder = WebApplication.CreateBuilder(args);
@@ -29,26 +29,26 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddSwaggerGen(options =>
 {
-    options.SwaggerDoc(SwaggerConfigurationSection(builder, version), new OpenApiInfo
+    options.SwaggerDoc(SwaggerConfigSection(builder, version), new OpenApiInfo
     {
-        Version = SwaggerConfigurationSection(builder, version),
-        Title = SwaggerConfigurationSection(builder, title),
-        Description = SwaggerConfigurationSection(builder, description),
-        TermsOfService = new Uri(SwaggerConfigurationSection(builder, termsOfService)),
+        Version = SwaggerConfigSection(builder, version),
+        Title = SwaggerConfigSection(builder, title),
+        Description = SwaggerConfigSection(builder, description),
+        TermsOfService = new Uri(SwaggerConfigSection(builder, termsOfService)),
         Contact = new OpenApiContact
         {
-            Name = SwaggerConfigurationSubSection(builder, contact, contactName),
-            Email = SwaggerConfigurationSubSection(builder, contact, contactEmail),
-            Url = new Uri(SwaggerConfigurationSubSection(builder, contact, contactUrl)),
+            Name = SwaggerConfigSubSection(builder, contact, contactName),
+            Email = SwaggerConfigSubSection(builder, contact, contactEmail),
+            Url = new Uri(SwaggerConfigSubSection(builder, contact, contactUrl)),
         },
         License = new OpenApiLicense
         {
-            Name = SwaggerConfigurationSubSection(builder, license, licenseName),
-            Url = new Uri(SwaggerConfigurationSubSection(builder, license, licenseUrl)),
+            Name = SwaggerConfigSubSection(builder, license, licenseName),
+            Url = new Uri(SwaggerConfigSubSection(builder, license, licenseUrl)),
         }
     });
 
-    var xmlFilename = Path.Combine(AppContext.BaseDirectory, $"{Assembly.GetExecutingAssembly().GetName().Name}.xml");
+    var xmlFilename = SwaggerConfigPathXmlFilename();
 
     if (File.Exists(xmlFilename))
     {
@@ -74,7 +74,7 @@ if (app.Environment.IsDevelopment())
 {
     // Code for Development here.
     app.UseSwagger();
-    app.UseSwaggerUI(s => s.SwaggerEndpoint(SwaggerConfigurationSubSection(builder, endPoint, endPointUrl), SwaggerConfigurationSubSection(builder, endPoint, endPointName)));
+    app.UseSwaggerUI(s => s.SwaggerEndpoint(SwaggerConfigSubSection(builder, endPoint, endPointUrl), SwaggerConfigSubSection(builder, endPoint, endPointName)));
 }
 else if (app.Environment.IsStaging())
 {
@@ -94,7 +94,9 @@ app.MapControllers();
 app.Run();
 
 #region Methods
-static string SwaggerConfigurationSection(WebApplicationBuilder builder, string section) => string.IsNullOrEmpty(section) ? string.Empty : builder.Configuration[$"SwaggerConfiguration:{section}"];
+static string SwaggerConfigSection(WebApplicationBuilder builder, string section) => string.IsNullOrEmpty(section) ? string.Empty : builder.Configuration[$"SwaggerConfiguration:{section}"];
 
-static string SwaggerConfigurationSubSection(WebApplicationBuilder builder, string section, string subSection) => string.IsNullOrEmpty(section) ? string.Empty : builder.Configuration[$"SwaggerConfiguration:{section}:{subSection}"];
+static string SwaggerConfigSubSection(WebApplicationBuilder builder, string section, string subSection) => string.IsNullOrEmpty(section) ? string.Empty : builder.Configuration[$"SwaggerConfiguration:{section}:{subSection}"];
+
+static string SwaggerConfigPathXmlFilename() => Path.Combine(AppContext.BaseDirectory, $"{Assembly.GetExecutingAssembly().GetName().Name}.xml");
 #endregion
