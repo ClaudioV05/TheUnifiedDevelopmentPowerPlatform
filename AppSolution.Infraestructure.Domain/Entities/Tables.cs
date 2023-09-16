@@ -1,5 +1,8 @@
-﻿namespace AppSolution.Infraestructure.Domain.Entities
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace AppSolution.Infraestructure.Domain.Entities
 {
+    [ComplexType]
     public class Tables
     {
 
