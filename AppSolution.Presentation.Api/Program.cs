@@ -48,7 +48,7 @@ builder.Services.AddSwaggerGen(options =>
         }
     });
 
-    var xmlFilename = SwaggerConfigPathXmlFilename();
+    var xmlFilename = SwaggerConfigPathXmlFileName();
 
     if (File.Exists(xmlFilename))
     {
@@ -98,5 +98,5 @@ static string SwaggerConfigSection(WebApplicationBuilder builder, string section
 
 static string SwaggerConfigSubSection(WebApplicationBuilder builder, string section, string subSection) => string.IsNullOrEmpty(section) ? string.Empty : builder.Configuration[$"SwaggerConfiguration:{section}:{subSection}"];
 
-static string SwaggerConfigPathXmlFilename() => Path.Combine(AppContext.BaseDirectory, $"{Assembly.GetExecutingAssembly().GetName().Name}.xml");
+static string SwaggerConfigPathXmlFileName() => Path.Combine(AppContext.BaseDirectory, $"{Assembly.GetExecutingAssembly().GetName().Name}.xml");
 #endregion
