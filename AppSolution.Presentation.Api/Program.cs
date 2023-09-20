@@ -2,23 +2,23 @@ using Microsoft.OpenApi.Models;
 using System.Reflection;
 
 #region Swagger variables
-const string version = "Version";
-const string title = "Title";
-const string description = "Description";
-const string termsOfService = "TermsOfService";
+const string VERSION = "Version";
+const string TITLE = "Title";
+const string DESCRIPTION = "Description";
+const string TERMS_OF_SERVICE = "TermsOfService";
 
-const string contact = "Contact";
-const string contactName = "Name";
-const string contactUrl = "Url";
-const string contactEmail = "Email";
+const string CONTACT = "Contact";
+const string CONTACT_NAME = "Name";
+const string CONTACT_URL = "Url";
+const string CONTACT_EMAIL = "Email";
 
-const string license = "License";
-const string licenseName = "Name";
-const string licenseUrl = "Url";
+const string LICENSE = "License";
+const string LICENSE_NAME = "Name";
+const string LICENSE_URL = "Url";
 
-const string endPoint = "EndPoint";
-const string endPointName = "Name";
-const string endPointUrl = "Url";
+const string ENDPOINT = "EndPoint";
+const string ENDPOINT_NAME = "Name";
+const string ENDPOINT_URL = "Url";
 #endregion
 
 var builder = WebApplication.CreateBuilder(args);
@@ -29,22 +29,22 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddSwaggerGen(options =>
 {
-    options.SwaggerDoc(SwaggerConfigSection(builder, version), new OpenApiInfo
+    options.SwaggerDoc(SwaggerConfigSection(builder, VERSION), new OpenApiInfo
     {
-        Version = SwaggerConfigSection(builder, version),
-        Title = SwaggerConfigSection(builder, title),
-        Description = SwaggerConfigSection(builder, description),
-        TermsOfService = new Uri(SwaggerConfigSection(builder, termsOfService)),
+        Version = SwaggerConfigSection(builder, VERSION),
+        Title = SwaggerConfigSection(builder, TITLE),
+        Description = SwaggerConfigSection(builder, DESCRIPTION),
+        TermsOfService = new Uri(SwaggerConfigSection(builder, TERMS_OF_SERVICE)),
         Contact = new OpenApiContact
         {
-            Name = SwaggerConfigSubSection(builder, contact, contactName),
-            Email = SwaggerConfigSubSection(builder, contact, contactEmail),
-            Url = new Uri(SwaggerConfigSubSection(builder, contact, contactUrl)),
+            Name = SwaggerConfigSubSection(builder, CONTACT, CONTACT_NAME),
+            Email = SwaggerConfigSubSection(builder, CONTACT, CONTACT_EMAIL),
+            Url = new Uri(SwaggerConfigSubSection(builder, CONTACT, CONTACT_URL)),
         },
         License = new OpenApiLicense
         {
-            Name = SwaggerConfigSubSection(builder, license, licenseName),
-            Url = new Uri(SwaggerConfigSubSection(builder, license, licenseUrl)),
+            Name = SwaggerConfigSubSection(builder, LICENSE, LICENSE_NAME),
+            Url = new Uri(SwaggerConfigSubSection(builder, LICENSE, LICENSE_URL)),
         }
     });
 
@@ -74,7 +74,7 @@ if (app.Environment.IsDevelopment())
 {
     // Code for Development here.
     app.UseSwagger();
-    app.UseSwaggerUI(s => s.SwaggerEndpoint(SwaggerConfigSubSection(builder, endPoint, endPointUrl), SwaggerConfigSubSection(builder, endPoint, endPointName)));
+    app.UseSwaggerUI(s => s.SwaggerEndpoint(SwaggerConfigSubSection(builder, ENDPOINT, ENDPOINT_URL), SwaggerConfigSubSection(builder, ENDPOINT, ENDPOINT_NAME)));
 }
 else if (app.Environment.IsStaging())
 {
