@@ -27,9 +27,9 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddSwaggerGen(options =>
+builder.Services.AddSwaggerGen(configuration =>
 {
-    options.SwaggerDoc(SwaggerConfigSection(builder, VERSION), new OpenApiInfo
+    configuration.SwaggerDoc(SwaggerConfigSection(builder, VERSION), new OpenApiInfo
     {
         Version = SwaggerConfigSection(builder, VERSION),
         Title = SwaggerConfigSection(builder, TITLE),
@@ -52,19 +52,21 @@ builder.Services.AddSwaggerGen(options =>
 
     if (File.Exists(xmlFilename))
     {
-        options.IncludeXmlComments(xmlFilename);
+        configuration.IncludeXmlComments(xmlFilename);
     }
     else
     {
         File.Create(xmlFilename).Dispose();
-        options.IncludeXmlComments(xmlFilename);
+        configuration.IncludeXmlComments(xmlFilename);
     }
 });
 
-builder.Services.AddControllers(options =>
+builder.Services.AddControllers(configuration =>
 {
-    options.RespectBrowserAcceptHeader = true;
+    configuration.RespectBrowserAcceptHeader = true;
 });
+
+builder.Services.AddCors();
 
 var app = builder.Build();
 
@@ -74,7 +76,9 @@ if (app.Environment.IsDevelopment())
 {
     // Code for Development here.
     app.UseSwagger();
-    app.UseSwaggerUI(s => s.SwaggerEndpoint(SwaggerConfigSubSection(builder, ENDPOINT, ENDPOINT_URL), SwaggerConfigSubSection(builder, ENDPOINT, ENDPOINT_NAME)));
+    app.UseSwaggerUI(configuration => configuration.SwaggerEndpoint(SwaggerConfigSubSection(builder, ENDPOINT, ENDPOINT_URL), SwaggerConfigSubSection(builder, ENDPOINT, ENDPOINT_NAME)));
+
+    app.UseDeveloperExceptionPage();
 }
 else if (app.Environment.IsStaging())
 {
@@ -83,7 +87,12 @@ else if (app.Environment.IsStaging())
 else if (app.Environment.IsProduction())
 {
     // Code for Production here.
+
+    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+    app.UseHsts();
 }
+
+app.UseCors(configuration => configuration.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 
 app.UseHttpsRedirection();
 
