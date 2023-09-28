@@ -4,16 +4,15 @@ namespace AppSolution.Presentation.Api.Controllers
 {
     [ApiController]
     [Route("[controller]")]
+    [Consumes("application/json")]
     public class WeatherForecastController : ControllerBase
     {
-        private readonly ILogger<WeatherForecastController> _logger;
-
-        public WeatherForecastController(ILogger<WeatherForecastController> logger)
+        public WeatherForecastController()
         {
-            _logger = logger;
+
         }
 
-        [Produces("application/json" , "application/xml")]
+        [Produces("application/json", "application/xml")]
         [HttpGet]
         public List<string> Get()
         {

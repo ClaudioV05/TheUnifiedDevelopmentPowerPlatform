@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
 
@@ -67,6 +68,8 @@ builder.Services.AddControllers(configuration =>
 });
 
 builder.Services.AddCors();
+
+builder.Services.AddMvc().AddMvcOptions(o => o.OutputFormatters.Add(new XmlDataContractSerializerOutputFormatter()));
 
 var app = builder.Build();
 
