@@ -28,9 +28,9 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddSwaggerGen(configuration =>
+builder.Services.AddSwaggerGen(conf =>
 {
-    configuration.SwaggerDoc(SwaggerConfigSection(builder, VERSION), new OpenApiInfo
+    conf.SwaggerDoc(SwaggerConfigSection(builder, VERSION), new OpenApiInfo
     {
         Version = SwaggerConfigSection(builder, VERSION),
         Title = SwaggerConfigSection(builder, TITLE),
@@ -53,23 +53,20 @@ builder.Services.AddSwaggerGen(configuration =>
 
     if (File.Exists(xmlFilename))
     {
-        configuration.IncludeXmlComments(xmlFilename);
+        conf.IncludeXmlComments(xmlFilename);
     }
     else
     {
         File.Create(xmlFilename).Dispose();
-        configuration.IncludeXmlComments(xmlFilename);
+        conf.IncludeXmlComments(xmlFilename);
     }
 });
 
-builder.Services.AddControllers(configuration =>
-{
-    configuration.RespectBrowserAcceptHeader = true;
-});
+builder.Services.AddControllers(conf => conf.RespectBrowserAcceptHeader = true);
 
 builder.Services.AddCors();
 
-builder.Services.AddMvc().AddMvcOptions(o => o.OutputFormatters.Add(new XmlDataContractSerializerOutputFormatter()));
+builder.Services.AddMvc().AddMvcOptions(conf => conf.OutputFormatters.Add(new XmlDataContractSerializerOutputFormatter()));
 
 var app = builder.Build();
 
@@ -79,7 +76,7 @@ if (app.Environment.IsDevelopment())
 {
     // Code for Development here.
     app.UseSwagger();
-    app.UseSwaggerUI(configuration => configuration.SwaggerEndpoint(SwaggerConfigSubSection(builder, ENDPOINT, ENDPOINT_URL), SwaggerConfigSubSection(builder, ENDPOINT, ENDPOINT_NAME)));
+    app.UseSwaggerUI(conf => conf.SwaggerEndpoint(SwaggerConfigSubSection(builder, ENDPOINT, ENDPOINT_URL), SwaggerConfigSubSection(builder, ENDPOINT, ENDPOINT_NAME)));
 
     app.UseDeveloperExceptionPage();
 }
@@ -95,7 +92,7 @@ else if (app.Environment.IsProduction())
     app.UseHsts();
 }
 
-app.UseCors(configuration => configuration.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+app.UseCors(conf => conf.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 
 app.UseHttpsRedirection();
 
