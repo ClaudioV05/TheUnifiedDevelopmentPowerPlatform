@@ -3,35 +3,26 @@
 namespace AppSolution.Infraestructure.Domain.Entities
 {
     /// <summary>
-    /// Entitie Databases.
+    /// Entitie Forms.
     /// </summary>
     [ComplexType]
-    public class Databases
+    public class Forms
     {
         /// <summary>
-        /// Enum type for entitie Databases.
+        /// Enum type for entitie Forms.
         /// </summary>
         public enum Types : ushort
         {
             NotDefined = 0,
-            SqlServer = 1,
-            MySql = 2,
-            Firebird = 3
+            DotnetAspNetMvc = 1,
+            DotnetWindowsForm = 2,
+            DelphiWindowsDefault = 3,
+            DelphiWindowsMdi = 4
         }
 
         /// <summary>
         /// Id of Types.
         /// </summary>
         public Types Type { get; set; } = 0;
-
-        /// <summary>
-        /// Id of fields.
-        /// </summary>
-        public int Id { get; set; }
-
-        /// <summary>
-        /// Name of fields.
-        /// </summary>
-        public string? Name { get; set; }
     }
 }
