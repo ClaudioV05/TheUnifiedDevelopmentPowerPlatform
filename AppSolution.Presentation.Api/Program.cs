@@ -70,7 +70,17 @@ builder.Services.AddCors();
 
 builder.Services.AddMvc().AddMvcOptions(conf => conf.OutputFormatters.Add(new XmlDataContractSerializerOutputFormatter()));
 
+#region Dependency Injection.
+#region Services.
 builder.Services.AddScoped<IGenerateTablesName, GenerateTablesName>();
+builder.Services.AddScoped<IFuncStrings, FuncStrings>();
+builder.Services.AddScoped<ICrypto, Crypto>();
+#endregion Services.
+
+#region Repositories.
+// Code from Repositories here.
+#endregion Repositories.
+#endregion Dependency Injection.
 
 var app = builder.Build();
 
