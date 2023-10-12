@@ -1,4 +1,6 @@
+using AppSolution.Presentation.Api.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace AppSolution.Presentation.Api.Controllers
 {
@@ -20,9 +22,27 @@ namespace AppSolution.Presentation.Api.Controllers
         [Route("GenerateTablesName")]
         [Produces("application/json")]
         [ApiExplorerSettings(IgnoreApi = false)]
-        public List<string> GenerateTablesName()
+        public IEnumerable<string> GenerateTablesName([BindRequired] Metadata metadata)
         {
-            return new List<string>() { "Jesus" };
+            var tables = new List<string>();
+
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    // Call Services.
+                }
+                else
+                {
+                    tables = null;
+                }
+            }
+            catch (Exception ex)
+            {
+                tables?.Add(ex.Message);
+            }
+
+            return tables;
         }
 
         /// <summary>
@@ -35,6 +55,10 @@ namespace AppSolution.Presentation.Api.Controllers
         [ApiExplorerSettings(IgnoreApi = true)]
         public List<string> GenerateFieldsName()
         {
+            /*
+             * Here return 2 list of objects in filters.
+             * One contain the name of table and other contain fieldsname.
+             */
             return new List<string>() { "Jesus" };
         }
     }
