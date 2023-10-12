@@ -94,6 +94,26 @@ else if (app.Environment.IsProduction())
 
 app.UseCors(conf => conf.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 
+app.Use(async (context, next) =>
+{
+    context.Response.OnStarting((state) =>
+    {
+        if (context.Response.Headers.Count > 0 && context.Response.Headers.ContainsKey("Content-Type"))
+        {
+            var contentType = context.Response.Headers["Content-Type"].ToString();
+
+            if (contentType.StartsWith("application/json"))
+            {
+                context.Response.Headers.Remove("Content-Type");
+                context.Response.Headers.Append("Content-Type", "application/json");
+            }
+        }
+
+        return Task.FromResult(0);
+    }, null);
+    await next.Invoke();
+});
+
 app.UseHttpsRedirection();
 
 app.UseAuthorization();

@@ -18,7 +18,7 @@ namespace AppSolution.Presentation.Api.Controllers
         /// Generate tables name of Metadata.
         /// </summary>
         /// <returns></returns>
-        [HttpGet]
+        [HttpPost]
         [Route("GenerateTablesName")]
         [Produces("application/json")]
         [ApiExplorerSettings(IgnoreApi = false)]
@@ -49,7 +49,7 @@ namespace AppSolution.Presentation.Api.Controllers
         ///  Generate fields name of Metadata.
         /// </summary>
         /// <returns></returns>
-        [HttpGet]
+        [HttpPost]
         [Route("GenerateFieldsName")]
         [Produces("application/json")]
         [ApiExplorerSettings(IgnoreApi = true)]
