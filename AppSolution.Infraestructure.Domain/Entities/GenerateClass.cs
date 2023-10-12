@@ -6,6 +6,11 @@ namespace AppSolution.Infraestructure.Domain.Entities
     public class GenerateClass
     {
         /// <summary>
+        /// Script of Metadata.
+        /// </summary>
+        public string? Metadata { get; set; }
+
+        /// <summary>
         /// Databases.
         /// </summary>
         public Databases? Databases { get; set; }
@@ -13,7 +18,7 @@ namespace AppSolution.Infraestructure.Domain.Entities
         /// <summary>
         /// DevelopmentEnvironment.
         /// </summary>
-        public DevelopmentEnvironment? DevelopmentEnvironment { get; set; }
+        public DevEnvironment? DevEnvironment { get; set; }
 
         /// <summary>
         /// Fields.
@@ -35,7 +40,7 @@ namespace AppSolution.Infraestructure.Domain.Entities
             try
             {
                 Databases = new Databases();
-                DevelopmentEnvironment = new DevelopmentEnvironment();
+                DevEnvironment = new DevEnvironment();
                 Fields = new Fields();
                 Forms = new Forms();
                 Tables = new Tables();

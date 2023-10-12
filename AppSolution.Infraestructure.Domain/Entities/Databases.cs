@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using AppSolution.Infraestructure.Domain.Enums;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace AppSolution.Infraestructure.Domain.Entities
 {
@@ -9,20 +10,9 @@ namespace AppSolution.Infraestructure.Domain.Entities
     public class Databases
     {
         /// <summary>
-        /// Enum type for entitie Databases.
-        /// </summary>
-        public enum Types : ushort
-        {
-            NotDefined = 0,
-            SqlServer = 1,
-            MySql = 2,
-            Firebird = 3
-        }
-
-        /// <summary>
         /// Id of Types.
         /// </summary>
-        public Types Type { get; set; } = 0;
+        public DatabasesType Type { get; set; } = 0;
 
         /// <summary>
         /// Id of fields.

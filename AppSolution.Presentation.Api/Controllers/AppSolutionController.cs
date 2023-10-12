@@ -1,3 +1,6 @@
+using AppSolution.Infraestructure.Application.Interfaces;
+using AppSolution.Infraestructure.Domain.Entities;
+using AppSolution.Infraestructure.Domain.Enums;
 using AppSolution.Presentation.Api.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
@@ -9,9 +12,11 @@ namespace AppSolution.Presentation.Api.Controllers
     [Consumes("application/json")]
     public class AppSolutionController : ControllerBase
     {
-        public AppSolutionController()
-        {
+        private readonly IGenerateTablesName _generateTablesName;
 
+        public AppSolutionController(IGenerateTablesName generateTablesName)
+        {
+            _generateTablesName = generateTablesName;
         }
 
         /// <summary>
@@ -24,13 +29,18 @@ namespace AppSolution.Presentation.Api.Controllers
         [ApiExplorerSettings(IgnoreApi = false)]
         public IEnumerable<string> GenerateTablesName([BindRequired] Metadata metadata)
         {
-            var tables = new List<string>();
-
+            IEnumerable<string> tables = null;
+            var generateClass = new GenerateClass();
             try
             {
                 if (ModelState.IsValid)
                 {
-                    // Call Services.
+                    generateClass.Metadata = metadata.ScriptMetadata;
+                    generateClass.Databases.Type = (DatabasesType)metadata.IdDatabases;
+                    generateClass.Forms.Type = (FormTypes)metadata.IdForms;
+                    generateClass.DevEnvironment.Type = (DevEnvironmentTypes)metadata.IdDevelopmentEnvironment;
+
+                    tables = _generateTablesName.TablesName(generateClass);
                 }
                 else
                 {
@@ -39,7 +49,7 @@ namespace AppSolution.Presentation.Api.Controllers
             }
             catch (Exception ex)
             {
-                tables?.Add(ex.Message);
+                tables?.Append(ex.Message);
             }
 
             return tables;

@@ -4,14 +4,14 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace AppSolution.Infraestructure.Domain.Entities
 {
     /// <summary>
-    /// Entitie Forms.
+    /// Entitie DevelopmentEnvironment.
     /// </summary>
     [ComplexType]
-    public class Forms
+    public class DevEnvironment
     {
         /// <summary>
         /// Id of Types.
         /// </summary>
-        public FormTypes Type { get; set; } = 0;
+        public DevEnvironmentTypes Type { get; set; } = 0;
     }
 }

@@ -1,3 +1,5 @@
+using AppSolution.Infraestructure.Application.Interfaces;
+using AppSolution.Infraestructure.Application.Services;
 using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
@@ -67,6 +69,8 @@ builder.Services.AddControllers(conf => conf.RespectBrowserAcceptHeader = true);
 builder.Services.AddCors();
 
 builder.Services.AddMvc().AddMvcOptions(conf => conf.OutputFormatters.Add(new XmlDataContractSerializerOutputFormatter()));
+
+builder.Services.AddScoped<IGenerateTablesName, GenerateTablesName>();
 
 var app = builder.Build();
 
