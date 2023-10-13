@@ -7,7 +7,7 @@ namespace AppSolution.Infraestructure.Application.Services
     {
         const int CREATE_TABLE_POSITION = 14;
         const int CREATE_TABLE_START_POSITION = 0;
-        const string WITH_SPACE = " ";
+        const string WITH_SPACE_POSITION = " ";
         const string CREATE_TABLE_WITH_SPACE = "create table ";
         private readonly IFuncStrings _funcStrings;
         private readonly ICrypto _crypto;
@@ -18,12 +18,24 @@ namespace AppSolution.Infraestructure.Application.Services
             _crypto = crypto;
         }
 
-        public IEnumerable<string> TablesName(GenerateClass generateClass)
+        public IEnumerable<string> TablesName(GenerateClass? generateClass)
         {
+            string metadata = string.Empty;
             IEnumerable<string> tables = null;
             try
             {
-                tables = ReturnTablesName(generateClass.Metadata);
+                metadata = _crypto.DecodeBase64(generateClass?.Metadata);
+
+                metadata = metadata.ToLowerInvariant();
+
+                if (string.IsNullOrEmpty(metadata))
+                {
+                    tables?.Append(string.Empty);
+                }
+                else
+                {
+                    tables = ReturnTablesName(metadata);
+                }
             }
             catch (Exception)
             {
@@ -33,7 +45,7 @@ namespace AppSolution.Infraestructure.Application.Services
             return tables;
         }
 
-        public IEnumerable<string> ReturnTablesName(string? metadata)
+        private IEnumerable<string> ReturnTablesName(string? metadata)
         {
             var counter = 0;
             var lineCreateTable = string.Empty;
@@ -50,7 +62,7 @@ namespace AppSolution.Infraestructure.Application.Services
 
                     if (counter >= 20)
                     {
-                        RetornaNomeDaTabela(lineCreateTable, ref tableList);
+                        ReturnTablesName(lineCreateTable, ref tableList);
                         counter = 0;
                         lineCreateTable = string.Empty;
                     }
@@ -65,7 +77,7 @@ namespace AppSolution.Infraestructure.Application.Services
             return tableList;
         }
 
-        private void RetornaNomeDaTabela(string metadata, ref List<string> tableList)
+        private void ReturnTablesName(string? metadata, ref List<string>? tableList)
         {
             if (!string.IsNullOrEmpty(metadata) && metadata.IndexOf(CREATE_TABLE_WITH_SPACE) != -1)
             {
@@ -74,19 +86,23 @@ namespace AppSolution.Infraestructure.Application.Services
                     metadata = _funcStrings.RemoveSpecialCaracter(metadata);
 
                     #region Find first position of create table.
-                    var specifiedPosition = 0;
-                    specifiedPosition = metadata.IndexOf(CREATE_TABLE_WITH_SPACE);
+                    var positionExactOfCreateTable = 0;
+                    positionExactOfCreateTable = metadata.IndexOf(CREATE_TABLE_WITH_SPACE);
 
-                    if (specifiedPosition >= 0)
-                        metadata = metadata.Substring(specifiedPosition + CREATE_TABLE_POSITION);
+                    for (int i = 0; i < metadata?.Length; i++)
+                    {
+                        var aux =+ metadata[i];
+                    }
+                    
+
+                    metadata = metadata.Substring(positionExactOfCreateTable + CREATE_TABLE_POSITION);
                     #endregion Find first position of create table.
 
                     #region Find final position after create table.
-                    specifiedPosition = 0;
-                    specifiedPosition = metadata.IndexOf(WITH_SPACE);
+                    positionExactOfCreateTable = 0;
+                    positionExactOfCreateTable = metadata.IndexOf(WITH_SPACE_POSITION);
 
-                    if (specifiedPosition >= 0)
-                        metadata = metadata.Substring(CREATE_TABLE_START_POSITION, specifiedPosition);
+                    metadata = metadata.Substring(CREATE_TABLE_START_POSITION, positionExactOfCreateTable);
                     #endregion Find final position after create table.
 
                     metadata = _funcStrings.RemoveAllWhiteSpace(metadata);
@@ -98,7 +114,7 @@ namespace AppSolution.Infraestructure.Application.Services
                     metadata = string.Empty;
                 }
 
-                tableList?.Add(!string.IsNullOrEmpty(metadata) ? metadata : string.Empty);
+                tableList?.Add(metadata ?? string.Empty);
             }
         }
     }

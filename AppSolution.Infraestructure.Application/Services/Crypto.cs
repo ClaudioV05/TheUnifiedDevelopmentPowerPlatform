@@ -59,5 +59,19 @@ namespace AppSolution.Infraestructure.Application.Services
 
             return Encoding.UTF8.GetString(memoryStream.ToArray());
         }
+
+        public string DecodeBase64(string value)
+        {
+            try
+            {
+                var valueBytes = Convert.FromBase64String(value);
+                return Encoding.UTF8.GetString(valueBytes);
+            }
+            catch (Exception)
+            {
+                return string.Empty;
+            }
+
+        }
     }
 }
