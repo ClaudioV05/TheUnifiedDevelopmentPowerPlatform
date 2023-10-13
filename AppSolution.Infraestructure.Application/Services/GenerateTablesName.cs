@@ -5,17 +5,17 @@ namespace AppSolution.Infraestructure.Application.Services
 {
     public class GenerateTablesName : IGenerateTablesName
     {
-        const int CREATE_TABLE_POSITION = 14;
-        const int CREATE_TABLE_START_POSITION = 0;
-        const string WITH_SPACE_POSITION = " ";
-        const string CREATE_TABLE_WITH_SPACE = "create table ";
-        private readonly IFuncStrings _funcStrings;
         private readonly ICrypto _crypto;
+        private readonly IFuncStrings _funcStrings;
+        private const int CREATE_TABLE_POSITION = 13;
+        private const int CREATE_TABLE_DEFAULT_POSITION = 5;
+        private const string WITH_SPACE_POSITION = " ";
+        private const string CREATE_TABLE_WITH_SPACE = "create table ";
 
-        public GenerateTablesName(IFuncStrings funcStrings, ICrypto crypto)
+        public GenerateTablesName(ICrypto crypto, IFuncStrings funcStrings)
         {
-            _funcStrings = funcStrings;
             _crypto = crypto;
+            _funcStrings = funcStrings;
         }
 
         public IEnumerable<string> TablesName(GenerateClass? generateClass)
@@ -47,75 +47,63 @@ namespace AppSolution.Infraestructure.Application.Services
 
         private IEnumerable<string> ReturnTablesName(string? metadata)
         {
-            var counter = 0;
+            var count = 0;
             var lineCreateTable = string.Empty;
-            var tableList = new List<string>();
+            var tables = new List<string>();
 
-            if (!string.IsNullOrEmpty(metadata))
+            for (int i = 0; i < metadata?.Length; i++)
             {
-                for (int i = 0; i < metadata?.Length; i++)
+                lineCreateTable += metadata[i];
+
+                if (lineCreateTable.Contains(CREATE_TABLE_WITH_SPACE))
                 {
-                    lineCreateTable += metadata[i];
+                    count++;
 
-                    if (!string.IsNullOrEmpty(lineCreateTable) && lineCreateTable.Contains(CREATE_TABLE_WITH_SPACE))
-                        counter++;
-
-                    if (counter >= 20)
+                    if (count > CREATE_TABLE_DEFAULT_POSITION && lineCreateTable.EndsWith(WITH_SPACE_POSITION))
                     {
-                        ReturnTablesName(lineCreateTable, ref tableList);
-                        counter = 0;
+                        ReturnTableName(lineCreateTable, ref tables);
+                        count = 0;
                         lineCreateTable = string.Empty;
                     }
                 }
-                tableList = tableList?.Distinct().ToList();
-            }
-            else
-            {
-                tableList?.Append(string.Empty);
             }
 
-            return tableList;
+            tables = tables?.Distinct().ToList();
+
+            return tables ?? new List<string>();
         }
 
-        private void ReturnTablesName(string? metadata, ref List<string>? tableList)
+        private void ReturnTableName(string? metadata, ref List<string>? tableList)
         {
-            if (!string.IsNullOrEmpty(metadata) && metadata.IndexOf(CREATE_TABLE_WITH_SPACE) != -1)
+            int count = 0;
+            int indexCreateTable = 0;
+            string table = string.Empty;
+            try
             {
-                try
+                metadata = _funcStrings.RemoveSpecialCaracter(metadata);
+                indexCreateTable = metadata.IndexOf(CREATE_TABLE_WITH_SPACE);
+
+                for (int i = (indexCreateTable + CREATE_TABLE_POSITION); i < metadata?.Length; i++)
                 {
-                    metadata = _funcStrings.RemoveSpecialCaracter(metadata);
+                    count++;
+                    table += metadata[i];
 
-                    #region Find first position of create table.
-                    var positionExactOfCreateTable = 0;
-                    positionExactOfCreateTable = metadata.IndexOf(CREATE_TABLE_WITH_SPACE);
-
-                    for (int i = 0; i < metadata?.Length; i++)
+                    if (count > CREATE_TABLE_DEFAULT_POSITION && table.EndsWith(WITH_SPACE_POSITION))
                     {
-                        var aux =+ metadata[i];
+                        break;
                     }
-                    
-
-                    metadata = metadata.Substring(positionExactOfCreateTable + CREATE_TABLE_POSITION);
-                    #endregion Find first position of create table.
-
-                    #region Find final position after create table.
-                    positionExactOfCreateTable = 0;
-                    positionExactOfCreateTable = metadata.IndexOf(WITH_SPACE_POSITION);
-
-                    metadata = metadata.Substring(CREATE_TABLE_START_POSITION, positionExactOfCreateTable);
-                    #endregion Find final position after create table.
-
-                    metadata = _funcStrings.RemoveAllWhiteSpace(metadata);
-
-                    metadata = metadata.ToUpper();
-                }
-                catch (Exception)
-                {
-                    metadata = string.Empty;
                 }
 
-                tableList?.Add(metadata ?? string.Empty);
+                table = _funcStrings.RemoveSpecialCaracter(table);
+                table = _funcStrings.RemoveAllWhiteSpace(table);
+                table = table.ToUpperInvariant();
             }
+            catch (Exception)
+            {
+                table = string.Empty;
+            }
+
+            tableList?.Add(table);
         }
     }
 }
