@@ -2,6 +2,7 @@ using AppSolution.Infraestructure.Application.Interfaces;
 using AppSolution.Infraestructure.Application.Services;
 using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.OpenApi.Models;
+using System;
 using System.Reflection;
 
 #region Swagger variables
@@ -70,8 +71,10 @@ builder.Services.AddCors();
 
 builder.Services.AddMvc().AddMvcOptions(conf => conf.OutputFormatters.Add(new XmlDataContractSerializerOutputFormatter()));
 
-#region Dependency Injection.
-#region Services.
+//builder.Services.AddDbContext<ApiContext>(opt => opt.UseInMemoryDatabase(
+
+ #region Dependency Injection.
+ #region Services.
 builder.Services.AddScoped<IGenerateTablesName, GenerateTablesName>();
 builder.Services.AddScoped<IFuncStrings, FuncStrings>();
 builder.Services.AddScoped<ICrypto, Crypto>();

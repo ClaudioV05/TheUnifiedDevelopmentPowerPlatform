@@ -4,10 +4,10 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace AppSolution.Infraestructure.Domain.Entities
 {
     /// <summary>
-    /// Entitie DevelopmentEnvironment.
+    /// Entity DevelopmentEnvironment.
     /// </summary>
     [ComplexType]
-    public class DevEnvironment
+    public class DevEnvironment : BaseEntity
     {
         /// <summary>
         /// Id of Types.

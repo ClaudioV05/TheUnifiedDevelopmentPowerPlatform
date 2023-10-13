@@ -3,19 +3,14 @@
 namespace AppSolution.Infraestructure.Domain.Entities
 {
     /// <summary>
-    /// Entitie Tables.
+    /// Entity Tables.
     /// </summary>
     [ComplexType]
-    public class Tables
+    public class Tables : BaseEntity
     {
-        /// <summary>
-        /// Id of fields.
-        /// </summary>
-        public int Id { get; set; }
-
         /// <summary>
         /// Name of fields.
         /// </summary>
-        public string? Name { get; set; }
+        public List<string>? Name { get; set; }
     }
 }

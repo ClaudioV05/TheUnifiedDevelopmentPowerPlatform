@@ -18,10 +18,10 @@ namespace AppSolution.Infraestructure.Application.Services
             _funcStrings = funcStrings;
         }
 
-        public IEnumerable<string> TablesName(GenerateClass? generateClass)
+        public List<string> TablesName(GenerateClass? generateClass)
         {
             string metadata = string.Empty;
-            IEnumerable<string> tables = null;
+            List<string> tables = null;
             try
             {
                 metadata = _crypto.DecodeBase64(generateClass?.Metadata);
@@ -45,7 +45,7 @@ namespace AppSolution.Infraestructure.Application.Services
             return tables;
         }
 
-        private IEnumerable<string> ReturnTablesName(string? metadata)
+        private List<string> ReturnTablesName(string? metadata)
         {
             var count = 0;
             var lineCreateTable = string.Empty;

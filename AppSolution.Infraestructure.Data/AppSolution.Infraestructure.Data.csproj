@@ -7,7 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="Context\" />
     <Folder Include="Repositorys\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AppSolution.Infraestructure.Domain\AppSolution.Infraestructure.Domain.csproj" />
   </ItemGroup>
 
 </Project>

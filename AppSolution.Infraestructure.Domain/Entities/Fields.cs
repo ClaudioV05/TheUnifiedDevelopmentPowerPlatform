@@ -3,7 +3,7 @@
 namespace AppSolution.Infraestructure.Domain.Entities
 {
     /// <summary>
-    /// Entitie Fields.
+    /// Entity Fields.
     /// </summary>
     [ComplexType]
     public class Fields
@@ -16,6 +16,6 @@ namespace AppSolution.Infraestructure.Domain.Entities
         /// <summary>
         /// Name of fields.
         /// </summary>
-        public string? Name { get; set; }
+        public List<string>? Name { get; set; }
     }
 }

@@ -27,10 +27,11 @@ namespace AppSolution.Presentation.Api.Controllers
         [Route("GenerateTablesName")]
         [Produces("application/json")]
         [ApiExplorerSettings(IgnoreApi = false)]
-        public IEnumerable<string> GenerateTablesName([BindRequired] Metadata metadata)
+        public List<string> GenerateTablesName([BindRequired] Metadata metadata)
         {
-            IEnumerable<string> tables = null;
+            List<string> returnTables = null;
             var generateClass = new GenerateClass();
+            var tables = new Tables();
             try
             {
                 if (ModelState.IsValid)
@@ -40,19 +41,23 @@ namespace AppSolution.Presentation.Api.Controllers
                     generateClass.Forms.Type = (FormTypes)metadata.IdForms;
                     generateClass.DevEnvironment.Type = (DevEnvironmentTypes)metadata.IdDevelopmentEnvironment;
 
-                    tables = _generateTablesName.TablesName(generateClass);
+                    returnTables = _generateTablesName.TablesName(generateClass);
+                    
+                    tables?.Name.Append(returnTables.ToString());
+
+                    // persist metadata with entitie framework.
                 }
                 else
                 {
-                    tables = null;
+                    returnTables = null;
                 }
             }
             catch (Exception ex)
             {
-                tables?.Append(ex.Message);
+                returnTables?.Append(ex.Message);
             }
 
-            return tables;
+            return returnTables;
         }
 
         /// <summary>

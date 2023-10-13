@@ -4,10 +4,10 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace AppSolution.Infraestructure.Domain.Entities
 {
     /// <summary>
-    /// Entitie Forms.
+    /// Entity Forms.
     /// </summary>
     [ComplexType]
-    public class Forms
+    public class Forms : BaseEntity
     {
         /// <summary>
         /// Id of Types.

@@ -1,49 +1,59 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.Runtime.Serialization;
 
 namespace AppSolution.Infraestructure.Domain.Entities
 {
+    /// <summary>
+    /// Entity GenerateClass.
+    /// </summary>
     [ComplexType]
     public class GenerateClass
     {
         /// <summary>
         /// Script of Metadata.
         /// </summary>
+        [DataMember]
         public string? Metadata { get; set; }
+        
+        /// <summary>
+        /// Forms.
+        /// </summary>
+        [DataMember]
+        public Forms? Forms { get; set; }
 
         /// <summary>
         /// Databases.
         /// </summary>
+        [DataMember]
         public Databases? Databases { get; set; }
 
         /// <summary>
         /// DevelopmentEnvironment.
         /// </summary>
+        [DataMember]
         public DevEnvironment? DevEnvironment { get; set; }
 
         /// <summary>
         /// Fields.
         /// </summary>
-        public Fields? Fields { get; set; }
-
-        /// <summary>
-        /// Forms.
-        /// </summary>
-        public Forms? Forms { get; set; }
+        [DataMember]
+        public ICollection<Fields>? Fields { get; set; }
 
         /// <summary>
         /// Tables.
         /// </summary>
-        public Tables? Tables { get; set; }
+        [DataMember]
+        public ICollection<Tables>? Tables { get; set; }
 
         public GenerateClass()
         {
             try
             {
-                Databases = new Databases();
-                DevEnvironment = new DevEnvironment();
-                Fields = new Fields();
-                Forms = new Forms();
-                Tables = new Tables();
+                Forms Forms = new Forms();
+                Databases Databases = new Databases();
+                DevEnvironment DevEnvironment = new DevEnvironment();
+                List<Fields>? Fields = null;
+                List<Tables>? Tables = null;
             }
             catch (Exception)
             {
