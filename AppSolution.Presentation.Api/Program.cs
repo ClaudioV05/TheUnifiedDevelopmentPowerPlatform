@@ -75,9 +75,11 @@ builder.Services.AddMvc().AddMvcOptions(conf => conf.OutputFormatters.Add(new Xm
 
  #region Dependency Injection.
  #region Services.
-builder.Services.AddScoped<IGenerateTablesName, GenerateTablesName>();
-builder.Services.AddScoped<IFuncStrings, FuncStrings>();
-builder.Services.AddScoped<ICrypto, Crypto>();
+builder.Services.AddScoped<IServicesGenerateTablesName, ServicesGenerateTablesName>();
+builder.Services.AddScoped<IServicesFuncStrings, ServicesFuncStrings>();
+builder.Services.AddScoped<IServicesCrypto, ServicesCrypto>();
+builder.Services.AddScoped<IServicesDirectory, ServicesDirectory>();
+builder.Services.AddScoped<IServicesFile, ServicesFile>();
 #endregion Services.
 
 #region Repositories.
@@ -111,6 +113,12 @@ else if (app.Environment.IsProduction())
 
 app.UseCors(conf => conf.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 
+app.UseHttpsRedirection();
+
+app.UseAuthorization();
+
+app.MapControllers();
+
 app.Use(async (context, next) =>
 {
     context.Response.OnStarting((state) =>
@@ -130,12 +138,6 @@ app.Use(async (context, next) =>
     }, null);
     await next.Invoke();
 });
-
-app.UseHttpsRedirection();
-
-app.UseAuthorization();
-
-app.MapControllers();
 
 app.Run();
 

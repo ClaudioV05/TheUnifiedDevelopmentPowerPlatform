@@ -3,29 +3,28 @@ using AppSolution.Infraestructure.Domain.Entities;
 
 namespace AppSolution.Infraestructure.Application.Services
 {
-    public class GenerateTablesName : IGenerateTablesName
+    public class ServicesGenerateTablesName : IServicesGenerateTablesName
     {
-        private readonly ICrypto _crypto;
-        private readonly IFuncStrings _funcStrings;
+        private readonly IServicesCrypto _crypto;
+        private readonly IServicesFuncStrings _funcStrings;
         private const int CREATE_TABLE_POSITION = 13;
         private const int CREATE_TABLE_DEFAULT_POSITION = 5;
         private const string WITH_SPACE_POSITION = " ";
         private const string CREATE_TABLE_WITH_SPACE = "create table ";
 
-        public GenerateTablesName(ICrypto crypto, IFuncStrings funcStrings)
+        public ServicesGenerateTablesName(IServicesCrypto crypto, IServicesFuncStrings funcStrings)
         {
             _crypto = crypto;
             _funcStrings = funcStrings;
         }
 
-        public List<string> TablesName(GenerateClass? generateClass)
+        public List<string> returnListTables(GenerateClass? generateClass)
         {
             string metadata = string.Empty;
             List<string> tables = null;
             try
             {
                 metadata = _crypto.DecodeBase64(generateClass?.Metadata);
-
                 metadata = metadata.ToLowerInvariant();
 
                 if (string.IsNullOrEmpty(metadata))
@@ -34,7 +33,7 @@ namespace AppSolution.Infraestructure.Application.Services
                 }
                 else
                 {
-                    tables = ReturnTablesName(metadata);
+                    tables = ReturnAllTablesName(metadata);
                 }
             }
             catch (Exception)
@@ -45,7 +44,7 @@ namespace AppSolution.Infraestructure.Application.Services
             return tables;
         }
 
-        private List<string> ReturnTablesName(string? metadata)
+        private List<string> ReturnAllTablesName(string? metadata)
         {
             var count = 0;
             var lineCreateTable = string.Empty;
@@ -61,7 +60,7 @@ namespace AppSolution.Infraestructure.Application.Services
 
                     if (count > CREATE_TABLE_DEFAULT_POSITION && lineCreateTable.EndsWith(WITH_SPACE_POSITION))
                     {
-                        ReturnTableName(lineCreateTable, ref tables);
+                        GenerateTableList(lineCreateTable, ref tables);
                         count = 0;
                         lineCreateTable = string.Empty;
                     }
@@ -73,7 +72,7 @@ namespace AppSolution.Infraestructure.Application.Services
             return tables ?? new List<string>();
         }
 
-        private void ReturnTableName(string? metadata, ref List<string>? tableList)
+        private void GenerateTableList(string? metadata, ref List<string>? tableList)
         {
             int count = 0;
             int indexCreateTable = 0;

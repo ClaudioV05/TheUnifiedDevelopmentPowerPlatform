@@ -1,6 +1,6 @@
 ﻿namespace AppSolution.Infraestructure.Application.Interfaces
 {
-    public interface IFuncStrings
+    public interface IServicesFuncStrings
     {
         string RemoveSpecialCaracter(string text);
         string RemoveAllWhiteSpace(string text);

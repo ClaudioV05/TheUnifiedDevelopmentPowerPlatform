@@ -1,5 +1,4 @@
-﻿using AppSolution.Infraestructure.Domain.Enums;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
 namespace AppSolution.Infraestructure.Domain.Entities
 {
@@ -10,8 +9,20 @@ namespace AppSolution.Infraestructure.Domain.Entities
     public class Forms : BaseEntity
     {
         /// <summary>
+        /// Enum type for entitie Forms.
+        /// </summary>
+        public enum EnumForm : ushort
+        {
+            NotDefined = 0,
+            DotnetAspNetMvc = 1,
+            DotnetWindowsForm = 2,
+            DelphiWindowsDefault = 3,
+            DelphiWindowsMdi = 4
+        }
+
+        /// <summary>
         /// Id of Types.
         /// </summary>
-        public FormTypes Type { get; set; } = 0;
+        public EnumForm Type { get; set; } = 0;
     }
 }

@@ -3,7 +3,7 @@ using System.Text;
 
 namespace AppSolution.Infraestructure.Application.Services
 {
-    public class FuncStrings : IFuncStrings
+    public class ServicesFuncStrings : IServicesFuncStrings
     {
         public string RemoveSpecialCaracter(string text)
         {

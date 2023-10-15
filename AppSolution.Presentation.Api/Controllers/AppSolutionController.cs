@@ -1,6 +1,5 @@
 using AppSolution.Infraestructure.Application.Interfaces;
 using AppSolution.Infraestructure.Domain.Entities;
-using AppSolution.Infraestructure.Domain.Enums;
 using AppSolution.Presentation.Api.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
@@ -12,10 +11,12 @@ namespace AppSolution.Presentation.Api.Controllers
     [Consumes("application/json")]
     public class AppSolutionController : ControllerBase
     {
-        private readonly IGenerateTablesName _generateTablesName;
+        private readonly IServicesDirectory _servicesDirectory;
+        private readonly IServicesGenerateTablesName _generateTablesName;
 
-        public AppSolutionController(IGenerateTablesName generateTablesName)
+        public AppSolutionController(IServicesDirectory servicesDirectory, IServicesGenerateTablesName generateTablesName)
         {
+            _servicesDirectory = servicesDirectory;
             _generateTablesName = generateTablesName;
         }
 
@@ -24,10 +25,10 @@ namespace AppSolution.Presentation.Api.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpPost]
-        [Route("GenerateTablesName")]
+        [Route("GenerateAllTablesName")]
         [Produces("application/json")]
         [ApiExplorerSettings(IgnoreApi = false)]
-        public List<string> GenerateTablesName([BindRequired] Metadata metadata)
+        public List<string> GenerateAllTablesName([BindRequired] Metadata metadata)
         {
             List<string> returnTables = null;
             var generateClass = new GenerateClass();
@@ -37,15 +38,13 @@ namespace AppSolution.Presentation.Api.Controllers
                 if (ModelState.IsValid)
                 {
                     generateClass.Metadata = metadata.ScriptMetadata;
-                    generateClass.Databases.Type = (DatabasesType)metadata.IdDatabases;
-                    generateClass.Forms.Type = (FormTypes)metadata.IdForms;
-                    generateClass.DevEnvironment.Type = (DevEnvironmentTypes)metadata.IdDevelopmentEnvironment;
 
-                    returnTables = _generateTablesName.TablesName(generateClass);
-                    
-                    tables?.Name.Append(returnTables.ToString());
+                    returnTables = _generateTablesName.returnListTables(generateClass);
 
-                    // persist metadata with entitie framework.
+                    if (returnTables != null && returnTables?.Count > 0)
+                    {
+                        _servicesDirectory.CreateDefaultDirectory();
+                    }
                 }
                 else
                 {
@@ -54,7 +53,7 @@ namespace AppSolution.Presentation.Api.Controllers
             }
             catch (Exception ex)
             {
-                returnTables?.Append(ex.Message);
+                returnTables?.Add(ex.Message);
             }
 
             return returnTables;

@@ -1,5 +1,4 @@
-﻿using AppSolution.Infraestructure.Domain.Enums;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
 namespace AppSolution.Infraestructure.Domain.Entities
 {
@@ -10,8 +9,18 @@ namespace AppSolution.Infraestructure.Domain.Entities
     public class DevEnvironment : BaseEntity
     {
         /// <summary>
+        /// Enum type for entitie DevelopmentEnvironment.
+        /// </summary>
+        public enum EnumDevEnvironment : ushort
+        {
+            NotDefined = 0,
+            DelphiXe10 = 1,
+            VisualStudio = 2
+        }
+
+        /// <summary>
         /// Id of Types.
         /// </summary>
-        public DevEnvironmentTypes Type { get; set; } = 0;
+        public EnumDevEnvironment Type { get; set; } = 0;
     }
 }

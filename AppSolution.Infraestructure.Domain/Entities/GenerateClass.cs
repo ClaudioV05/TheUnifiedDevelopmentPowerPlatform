@@ -7,7 +7,7 @@ namespace AppSolution.Infraestructure.Domain.Entities
     /// Entity GenerateClass.
     /// </summary>
     [ComplexType]
-    public class GenerateClass
+    public sealed class GenerateClass
     {
         /// <summary>
         /// Script of Metadata.
@@ -49,9 +49,9 @@ namespace AppSolution.Infraestructure.Domain.Entities
         {
             try
             {
-                Forms Forms = new Forms();
-                Databases Databases = new Databases();
-                DevEnvironment DevEnvironment = new DevEnvironment();
+                var Forms = new Forms();
+                var Databases = new Databases();
+                var DevEnvironment = new DevEnvironment();
                 List<Fields>? Fields = null;
                 List<Tables>? Tables = null;
             }
