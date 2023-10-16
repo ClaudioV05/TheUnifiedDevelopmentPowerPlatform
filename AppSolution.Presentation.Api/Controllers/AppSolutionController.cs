@@ -1,5 +1,6 @@
 using AppSolution.Infraestructure.Application.Interfaces;
 using AppSolution.Infraestructure.Domain.Entities;
+using AppSolution.Presentation.Api.Filters;
 using AppSolution.Presentation.Api.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
@@ -27,9 +28,12 @@ namespace AppSolution.Presentation.Api.Controllers
         [HttpPost]
         [Route("GenerateAllTablesName")]
         [Produces("application/json")]
+        [ServiceFilter(typeof(AppSolutionFilter))]
         [ApiExplorerSettings(IgnoreApi = false)]
-        public List<string> GenerateAllTablesName([BindRequired] Metadata metadata)
+        public ActionResult<List<string>> GenerateAllTablesName([BindRequired] Metadata metadata)
         {
+
+            throw new Exception("Erro teste");
             List<string> returnTables = null;
             var generateClass = new GenerateClass();
             var tables = new Tables();

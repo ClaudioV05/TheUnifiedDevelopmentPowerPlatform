@@ -1,8 +1,9 @@
 using AppSolution.Infraestructure.Application.Interfaces;
 using AppSolution.Infraestructure.Application.Services;
+using AppSolution.Presentation.Api.Extensions;
+using AppSolution.Presentation.Api.Filters;
 using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.OpenApi.Models;
-using System;
 using System.Reflection;
 
 #region Swagger variables
@@ -71,7 +72,7 @@ builder.Services.AddCors();
 
 builder.Services.AddMvc().AddMvcOptions(conf => conf.OutputFormatters.Add(new XmlDataContractSerializerOutputFormatter()));
 
-//builder.Services.AddDbContext<ApiContext>(opt => opt.UseInMemoryDatabase(
+builder.Services.AddScoped<AppSolutionFilter>();
 
  #region Dependency Injection.
  #region Services.
@@ -112,6 +113,8 @@ else if (app.Environment.IsProduction())
 }
 
 app.UseCors(conf => conf.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+
+app.ConfigureExceptionHandler();
 
 app.UseHttpsRedirection();
 
