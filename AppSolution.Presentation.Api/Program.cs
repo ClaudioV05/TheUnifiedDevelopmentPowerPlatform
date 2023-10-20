@@ -76,11 +76,15 @@ builder.Services.AddScoped<AppSolutionFilter>();
 
  #region Dependency Injection.
  #region Services.
-builder.Services.AddScoped<IServicesMetadata, ServicesMetadata>();
-builder.Services.AddScoped<IServicesFuncStrings, ServicesFuncStrings>();
+builder.Services.AddScoped<IServicesAppSettings, ServicesAppSettings>();
 builder.Services.AddScoped<IServicesCrypto, ServicesCrypto>();
 builder.Services.AddScoped<IServicesDirectory, ServicesDirectory>();
+builder.Services.AddScoped<IServicesEmail, ServicesEmail>();
 builder.Services.AddScoped<IServicesFile, ServicesFile>();
+builder.Services.AddScoped<IServicesFuncStrings, ServicesFuncStrings>();
+builder.Services.AddScoped<IServicesLog, ServicesLog>();
+builder.Services.AddScoped<IServicesMetadata, ServicesMetadata>();
+builder.Services.AddScoped<IServicesZipFile, ServicesZipFile>();
 #endregion Services.
 
 #region Repositories.

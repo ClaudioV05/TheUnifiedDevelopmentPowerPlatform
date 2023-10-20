@@ -13,6 +13,6 @@
         /// </summary>
         /// <param name="path"></param>
         /// <returns></returns>
-        IEnumerable<string> LinesRead(string path);
+        IEnumerable<string>? LinesRead(string path);
     }
 }

@@ -9,9 +9,16 @@ namespace AppSolution.Infraestructure.Application.Services
             File.WriteAllLines(path, informations);
         }
 
-        public IEnumerable<string> LinesRead(string path)
+        public IEnumerable<string>? LinesRead(string path)
         {
-            return File.ReadLines(path);
+            IEnumerable<string>? returnList = null;
+
+            if (File.Exists(path)) 
+            { 
+                returnList = File.ReadAllLines(path);
+            }
+
+            return returnList;
         }
     }
 }
