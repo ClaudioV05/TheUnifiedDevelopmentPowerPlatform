@@ -4,16 +4,16 @@ using System.Runtime.Serialization;
 namespace AppSolution.Infraestructure.Domain.Entities
 {
     /// <summary>
-    /// Entity GenerateClass.
+    /// Entity Metadata.
     /// </summary>
     [ComplexType]
-    public sealed class GenerateClass
+    public sealed class Metadata
     {
         /// <summary>
         /// Script of Metadata.
         /// </summary>
         [DataMember]
-        public string? Metadata { get; set; }
+        public string? ScriptMetadata { get; set; }
         
         /// <summary>
         /// Forms.
@@ -45,7 +45,7 @@ namespace AppSolution.Infraestructure.Domain.Entities
         [DataMember]
         public ICollection<Tables>? Tables { get; set; }
 
-        public GenerateClass()
+        public Metadata()
         {
             try
             {

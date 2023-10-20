@@ -16,6 +16,7 @@ namespace AppSolution.Presentation.Api.Extensions
                     context.Response.ContentType = "application/json";
 
                     var contextFeature = context.Features.Get<IExceptionHandlerFeature>();
+
                     if (contextFeature != null)
                     {
                         await context.Response.WriteAsync(new ErrorDetails()

@@ -4,6 +4,7 @@ using AppSolution.Presentation.Api.Filters;
 using AppSolution.Presentation.Api.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Metadata = AppSolution.Infraestructure.Domain.Entities.Metadata;
 
 namespace AppSolution.Presentation.Api.Controllers
 {
@@ -13,9 +14,9 @@ namespace AppSolution.Presentation.Api.Controllers
     public class AppSolutionController : ControllerBase
     {
         private readonly IServicesDirectory _servicesDirectory;
-        private readonly IServicesGenerateTablesName _generateTablesName;
+        private readonly IServicesMetadata _generateTablesName;
 
-        public AppSolutionController(IServicesDirectory servicesDirectory, IServicesGenerateTablesName generateTablesName)
+        public AppSolutionController(IServicesDirectory servicesDirectory, IServicesMetadata generateTablesName)
         {
             _servicesDirectory = servicesDirectory;
             _generateTablesName = generateTablesName;
@@ -32,27 +33,17 @@ namespace AppSolution.Presentation.Api.Controllers
         [ApiExplorerSettings(IgnoreApi = false)]
         public ActionResult<List<string>> GenerateAllTablesName([BindRequired] Metadata metadata)
         {
-
-            throw new Exception("Erro teste");
-            List<string> returnTables = null;
-            var generateClass = new GenerateClass();
-            var tables = new Tables();
+            List<string> returnTables = new List<string>();
             try
             {
                 if (ModelState.IsValid)
                 {
-                    generateClass.Metadata = metadata.ScriptMetadata;
-
-                    returnTables = _generateTablesName.returnListTables(generateClass);
+                    returnTables = _generateTablesName.returnListTables(metadata);
 
                     if (returnTables != null && returnTables?.Count > 0)
                     {
                         _servicesDirectory.CreateDefaultDirectory();
                     }
-                }
-                else
-                {
-                    returnTables = null;
                 }
             }
             catch (Exception ex)

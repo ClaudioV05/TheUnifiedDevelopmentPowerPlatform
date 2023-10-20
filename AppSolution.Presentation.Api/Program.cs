@@ -76,7 +76,7 @@ builder.Services.AddScoped<AppSolutionFilter>();
 
  #region Dependency Injection.
  #region Services.
-builder.Services.AddScoped<IServicesGenerateTablesName, ServicesGenerateTablesName>();
+builder.Services.AddScoped<IServicesMetadata, ServicesMetadata>();
 builder.Services.AddScoped<IServicesFuncStrings, ServicesFuncStrings>();
 builder.Services.AddScoped<IServicesCrypto, ServicesCrypto>();
 builder.Services.AddScoped<IServicesDirectory, ServicesDirectory>();

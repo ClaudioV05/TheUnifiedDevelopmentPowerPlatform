@@ -3,7 +3,7 @@ using AppSolution.Infraestructure.Domain.Entities;
 
 namespace AppSolution.Infraestructure.Application.Services
 {
-    public class ServicesGenerateTablesName : IServicesGenerateTablesName
+    public class ServicesMetadata : IServicesMetadata
     {
         private readonly IServicesCrypto _crypto;
         private readonly IServicesFuncStrings _funcStrings;
@@ -12,28 +12,28 @@ namespace AppSolution.Infraestructure.Application.Services
         private const string WITH_SPACE_POSITION = " ";
         private const string CREATE_TABLE_WITH_SPACE = "create table ";
 
-        public ServicesGenerateTablesName(IServicesCrypto crypto, IServicesFuncStrings funcStrings)
+        public ServicesMetadata(IServicesCrypto crypto, IServicesFuncStrings funcStrings)
         {
             _crypto = crypto;
             _funcStrings = funcStrings;
         }
 
-        public List<string> returnListTables(GenerateClass? generateClass)
+        public List<string> returnListTables(Metadata? metadata)
         {
-            string metadata = string.Empty;
+            string scriptMetadata = string.Empty;
             List<string> tables = null;
             try
             {
-                metadata = _crypto.DecodeBase64(generateClass?.Metadata);
-                metadata = metadata.ToLowerInvariant();
+                scriptMetadata = _crypto.DecodeBase64(metadata?.ScriptMetadata);
+                scriptMetadata = scriptMetadata.ToLowerInvariant();
 
-                if (string.IsNullOrEmpty(metadata))
+                if (string.IsNullOrEmpty(scriptMetadata))
                 {
                     tables?.Append(string.Empty);
                 }
                 else
                 {
-                    tables = ReturnAllTablesName(metadata);
+                    tables = ReturnAllTablesName(scriptMetadata);
                 }
             }
             catch (Exception)

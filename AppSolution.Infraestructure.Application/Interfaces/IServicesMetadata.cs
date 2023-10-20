@@ -2,8 +2,8 @@
 
 namespace AppSolution.Infraestructure.Application.Interfaces
 {
-    public interface IServicesGenerateTablesName
+    public interface IServicesMetadata
     {
-        List<string> returnListTables(GenerateClass? generateClass);
+        List<string> returnListTables(Metadata? metadata);
     }
 }
