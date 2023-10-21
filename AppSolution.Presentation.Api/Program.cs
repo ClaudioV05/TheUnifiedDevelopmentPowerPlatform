@@ -72,19 +72,19 @@ builder.Services.AddCors();
 
 builder.Services.AddMvc().AddMvcOptions(conf => conf.OutputFormatters.Add(new XmlDataContractSerializerOutputFormatter()));
 
-builder.Services.AddScoped<AppSolutionFilter>();
+builder.Services.AddScoped<AppSolutionActionFilter>();
 
  #region Dependency Injection.
  #region Services.
-builder.Services.AddScoped<IServicesAppSettings, ServicesAppSettings>();
-builder.Services.AddScoped<IServicesCrypto, ServicesCrypto>();
-builder.Services.AddScoped<IServicesDirectory, ServicesDirectory>();
-builder.Services.AddScoped<IServicesEmail, ServicesEmail>();
-builder.Services.AddScoped<IServicesFile, ServicesFile>();
-builder.Services.AddScoped<IServicesFuncStrings, ServicesFuncStrings>();
-builder.Services.AddScoped<IServicesLog, ServicesLog>();
-builder.Services.AddScoped<IServicesMetadata, ServicesMetadata>();
-builder.Services.AddScoped<IServicesZipFile, ServicesZipFile>();
+builder.Services.AddScoped<IServiceAppSettings, ServiceAppSettings>();
+builder.Services.AddScoped<IServiceCrypto, ServiceCrypto>();
+builder.Services.AddScoped<IServiceDirectory, ServiceDirectory>();
+builder.Services.AddScoped<IServiceEmail, ServiceEmail>();
+builder.Services.AddScoped<IServiceFile, ServiceFile>();
+builder.Services.AddScoped<IServiceFuncStrings, ServiceFuncStrings>();
+builder.Services.AddScoped<IServiceLog, ServiceLog>();
+builder.Services.AddScoped<IServiceMetadata, ServiceMetadata>();
+builder.Services.AddScoped<IServiceZipFile, ServiceZipFile>();
 #endregion Services.
 
 #region Repositories.

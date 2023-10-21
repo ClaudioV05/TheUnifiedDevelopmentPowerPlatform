@@ -2,7 +2,7 @@
 
 namespace AppSolution.Infraestructure.Application.Services
 {
-    public class ServicesZipFile : IServicesZipFile
+    public class ServiceZipFile : IServiceZipFile
     {
 
     }

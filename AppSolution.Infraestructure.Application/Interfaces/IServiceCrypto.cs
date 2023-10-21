@@ -1,6 +1,6 @@
 ﻿namespace AppSolution.Infraestructure.Application.Interfaces
 {
-    public interface IServicesCrypto
+    public interface IServiceCrypto
     {
         string Encrypt(string value);
         string Decrypt(string value);

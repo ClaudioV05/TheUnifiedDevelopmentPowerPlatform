@@ -2,7 +2,7 @@
 
 namespace AppSolution.Infraestructure.Application.Services
 {
-    public class ServicesEmail : IServicesEmail
+    public class ServiceLog : IServiceLog
     {
 
     }

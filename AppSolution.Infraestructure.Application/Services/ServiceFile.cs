@@ -2,7 +2,7 @@
 
 namespace AppSolution.Infraestructure.Application.Services
 {
-    public class ServicesFile : IServicesFile
+    public class ServiceFile : IServiceFile
     {
         public void LinesGenerate(IEnumerable<string> informations, string path)
         {

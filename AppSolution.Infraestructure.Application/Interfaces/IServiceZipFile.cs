@@ -1,6 +1,6 @@
 ﻿namespace AppSolution.Infraestructure.Application.Interfaces
 {
-    public interface IServicesZipFile
+    public interface IServiceZipFile
     {
 
     }

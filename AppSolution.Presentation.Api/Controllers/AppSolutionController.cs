@@ -13,14 +13,14 @@ namespace AppSolution.Presentation.Api.Controllers
     [Consumes("application/json")]
     public class AppSolutionController : ControllerBase
     {
-        private readonly IServicesDirectory _servicesDirectory;
-        private readonly IServicesMetadata _servicesMetadata;
+        private readonly IServiceDirectory _serviceDirectory;
+        private readonly IServiceMetadata _serviceMetadata;
 
-        public AppSolutionController(IServicesDirectory servicesDirectory,
-                                     IServicesMetadata servicesMetadata)
+        public AppSolutionController(IServiceDirectory serviceDirectory,
+                                     IServiceMetadata serviceMetadata)
         {
-            _servicesDirectory = servicesDirectory;
-            _servicesMetadata = servicesMetadata;
+            _serviceDirectory = serviceDirectory;
+            _serviceMetadata = serviceMetadata;
         }
 
         /// <summary>
@@ -30,7 +30,7 @@ namespace AppSolution.Presentation.Api.Controllers
         [HttpPost]
         [Route("MetadataAllTablesName")]
         [Produces("application/json")]
-        [ServiceFilter(typeof(AppSolutionFilter))]
+        [ServiceFilter(typeof(AppSolutionActionFilter))]
         [ApiExplorerSettings(IgnoreApi = false)]
         public ActionResult<List<string>> MetadataAllTablesName([BindRequired] Metadata metadata)
         {
@@ -39,11 +39,11 @@ namespace AppSolution.Presentation.Api.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    returnTables = _servicesMetadata.MetadataAllTablesName(metadata);
+                    returnTables = _serviceMetadata.MetadataAllTablesName(metadata);
 
-                    if (returnTables != null && returnTables.Count > 0)
+                    if (returnTables is not null && returnTables.Count > 0)
                     {
-                        _servicesDirectory.CreateDefaultDirectory();
+                        _serviceDirectory.CreateDefaultDirectory();
                     }
                 }
             }
@@ -63,13 +63,11 @@ namespace AppSolution.Presentation.Api.Controllers
         [Route("MetadataAllFieldsName")]
         [Produces("application/json")]
         [ApiExplorerSettings(IgnoreApi = false)]
-        public List<string> MetadataAllFieldsName()
+        public ActionResult<List<string>> MetadataAllFieldsName([BindRequired] Metadata metadata)
         {
-            
-            /*
-             * Here return 2 list of objects in filters.
-             * One contain the name of table and other contain fieldsname.
-             */
+            // Here enter with field name only. Load the property [Fields].
+            // Return the table name and your fields.
+
             return new List<string>() { "Jesus" };
         }
     }

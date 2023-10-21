@@ -3,14 +3,14 @@ using System.Reflection;
 
 namespace AppSolution.Infraestructure.Application.Services
 {
-    public class ServicesDirectory : IServicesDirectory
+    public class ServiceDirectory : IServiceDirectory
     {
         private const string NAME_DIRECTORY_CONFIG = "\\config";
         private const string NAME_DIRECTORY_APP = "\\app";
         private const string NAME_DIRECTORY_BIN = "bin";
         private const string NAME_DIRECTORY_DEBUG = "debug";
 
-        public ServicesDirectory()
+        public ServiceDirectory()
         {
 
         }

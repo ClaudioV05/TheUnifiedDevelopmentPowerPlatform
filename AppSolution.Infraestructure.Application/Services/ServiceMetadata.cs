@@ -3,20 +3,20 @@ using AppSolution.Infraestructure.Domain.Entities;
 
 namespace AppSolution.Infraestructure.Application.Services
 {
-    public class ServicesMetadata : IServicesMetadata
+    public class ServiceMetadata : IServiceMetadata
     {
-        private readonly IServicesCrypto _servicesCrypto;
-        private readonly IServicesFuncStrings _servicesFuncStrings;
+        private readonly IServiceCrypto _serviceCrypto;
+        private readonly IServiceFuncStrings _serviceFuncStrings;
         private const int CREATE_TABLE_POSITION = 13;
         private const int CREATE_TABLE_DEFAULT_POSITION = 5;
         private const string WITH_SPACE_POSITION = " ";
         private const string CREATE_TABLE_WITH_SPACE = "create table ";
 
-        public ServicesMetadata(IServicesCrypto servicesCrypto,
-                                IServicesFuncStrings servicesFuncStrings)
+        public ServiceMetadata(IServiceCrypto serviceCrypto,
+                                IServiceFuncStrings serviceFuncStrings)
         {
-            _servicesCrypto = servicesCrypto;
-            _servicesFuncStrings = servicesFuncStrings;
+            _serviceCrypto = serviceCrypto;
+            _serviceFuncStrings = serviceFuncStrings;
         }
 
         public List<string> MetadataAllTablesName(Metadata? metadata)
@@ -25,7 +25,7 @@ namespace AppSolution.Infraestructure.Application.Services
             List<string> tables = null;
             try
             {
-                scriptMetadata = _servicesCrypto.DecodeBase64(metadata?.ScriptMetadata);
+                scriptMetadata = _serviceCrypto.DecodeBase64(metadata?.ScriptMetadata);
                 scriptMetadata = scriptMetadata.ToLowerInvariant();
 
                 if (string.IsNullOrEmpty(scriptMetadata))
@@ -45,6 +45,12 @@ namespace AppSolution.Infraestructure.Application.Services
             return tables;
         }
 
+        public List<string> MetadataTableAndAllFields(Metadata? metadata)
+        {
+            throw new NotImplementedException();
+        }
+
+        #region Private Methods.
         private List<string> ReturnMetadataAllTablesName(string? metadata)
         {
             var count = 0;
@@ -80,7 +86,7 @@ namespace AppSolution.Infraestructure.Application.Services
             string table = string.Empty;
             try
             {
-                metadata = _servicesFuncStrings.RemoveSpecialCaracter(metadata);
+                metadata = _serviceFuncStrings.RemoveSpecialCaracter(metadata);
                 indexCreateTable = metadata.IndexOf(CREATE_TABLE_WITH_SPACE);
 
                 for (int i = (indexCreateTable + CREATE_TABLE_POSITION); i < metadata?.Length; i++)
@@ -94,8 +100,8 @@ namespace AppSolution.Infraestructure.Application.Services
                     }
                 }
 
-                table = _servicesFuncStrings.RemoveSpecialCaracter(table);
-                table = _servicesFuncStrings.RemoveAllWhiteSpace(table);
+                table = _serviceFuncStrings.RemoveSpecialCaracter(table);
+                table = _serviceFuncStrings.RemoveAllWhiteSpace(table);
                 table = table.ToUpperInvariant();
             }
             catch (Exception)
@@ -105,5 +111,6 @@ namespace AppSolution.Infraestructure.Application.Services
 
             tableList?.Add(table);
         }
+        #endregion Private Methods.
     }
 }

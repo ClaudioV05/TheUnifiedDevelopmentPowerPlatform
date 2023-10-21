@@ -2,7 +2,7 @@
 
 namespace AppSolution.Infraestructure.Application.Services
 {
-    public class ServicesLog : IServicesLog
+    public class ServiceAppSettings : IServiceAppSettings
     {
 
     }

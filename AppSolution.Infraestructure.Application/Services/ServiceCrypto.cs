@@ -4,7 +4,7 @@ using System.Text;
 
 namespace AppSolution.Infraestructure.Application.Services
 {
-    public class ServicesCrypto : IServicesCrypto
+    public class ServiceCrypto : IServiceCrypto
     {
         private readonly string _keyCrypto = "3b4750253d5b274b6346545f3c2b323f6b436c596e6d3c6e5d23552d4a";
 
