@@ -72,10 +72,14 @@ builder.Services.AddCors();
 
 builder.Services.AddMvc().AddMvcOptions(conf => conf.OutputFormatters.Add(new XmlDataContractSerializerOutputFormatter()));
 
-builder.Services.AddScoped<AppSolutionActionFilter>();
+#region Action Filters.
+builder.Services.AddScoped<AppSolutionControllerFilter>();
+builder.Services.AddScoped<LogRegisterFilter>();
+builder.Services.AddScoped<ValidateEntityFilter>();
+#endregion Action Filters.
 
- #region Dependency Injection.
- #region Services.
+#region Dependency Injection.
+#region Services.
 builder.Services.AddScoped<IServiceAppSettings, ServiceAppSettings>();
 builder.Services.AddScoped<IServiceCrypto, ServiceCrypto>();
 builder.Services.AddScoped<IServiceDirectory, ServiceDirectory>();

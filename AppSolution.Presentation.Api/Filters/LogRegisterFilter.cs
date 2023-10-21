@@ -1,23 +1,20 @@
-﻿using AppSolution.Infraestructure.Domain.Entities;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Filters;
-using System.Reflection.Metadata;
+﻿using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace AppSolution.Presentation.Api.Filters
 {
-    public class AppSolutionActionFilter : IActionFilter
+    public class LogRegisterFilter : IActionFilter
     {
-        private readonly ILogger<AppSolutionActionFilter> _logger;
+        private readonly ILogger<LogRegisterFilter> _logger;
 
-        public AppSolutionActionFilter(ILogger<AppSolutionActionFilter> logger)
+        public LogRegisterFilter(ILogger<LogRegisterFilter> logger)
         {
             _logger = logger;
         }
 
         public void OnActionExecuting(ActionExecutingContext context)
         {
-            // Do something before the action executes.
-            _logger.LogInformation("### Executando -> OnActionExecuted");
+            // our code before action executes.
+            _logger.LogInformation("### -> OnActionExecuted");
             _logger.LogInformation("###################################################");
             _logger.LogInformation($"{DateTime.Now.ToLongTimeString()}");
             _logger.LogInformation("###################################################");
@@ -25,8 +22,8 @@ namespace AppSolution.Presentation.Api.Filters
 
         public void OnActionExecuted(ActionExecutedContext context)
         {
-            // Do something before the action executes.
-            _logger.LogInformation("### Executando -> OnActionExecuting");
+            // our code after action executes.
+            _logger.LogInformation("### -> OnActionExecuting");
             _logger.LogInformation("###################################################");
             _logger.LogInformation($"{DateTime.Now.ToLongTimeString()}");
             _logger.LogInformation($"ModelState : {context.ModelState.IsValid}");

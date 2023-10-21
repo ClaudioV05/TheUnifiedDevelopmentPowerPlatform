@@ -11,6 +11,7 @@ namespace AppSolution.Presentation.Api.Controllers
     [ApiController]
     [Route("[Controller]")]
     [Consumes("application/json")]
+    [ServiceFilter(typeof(AppSolutionControllerFilter), Order = 1)]
     public class AppSolutionController : ControllerBase
     {
         private readonly IServiceDirectory _serviceDirectory;
@@ -28,10 +29,11 @@ namespace AppSolution.Presentation.Api.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpPost]
-        [Route("MetadataAllTablesName")]
         [Produces("application/json")]
-        [ServiceFilter(typeof(AppSolutionActionFilter))]
+        [Route("MetadataAllTablesName")]
         [ApiExplorerSettings(IgnoreApi = false)]
+        [ServiceFilter(typeof(LogRegisterFilter), Order = 2)]
+        [ServiceFilter(typeof(ValidateEntityFilter), Order = 3)]
         public ActionResult<List<string>> MetadataAllTablesName([BindRequired] Metadata metadata)
         {
             List<string> returnTables = new List<string>();
@@ -60,9 +62,11 @@ namespace AppSolution.Presentation.Api.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpPost]
-        [Route("MetadataAllFieldsName")]
         [Produces("application/json")]
+        [Route("MetadataAllFieldsName")]
         [ApiExplorerSettings(IgnoreApi = false)]
+        [ServiceFilter(typeof(LogRegisterFilter), Order = 2)]
+        [ServiceFilter(typeof(ValidateEntityFilter), Order = 3)]
         public ActionResult<List<string>> MetadataAllFieldsName([BindRequired] Metadata metadata)
         {
             // Here enter with field name only. Load the property [Fields].
