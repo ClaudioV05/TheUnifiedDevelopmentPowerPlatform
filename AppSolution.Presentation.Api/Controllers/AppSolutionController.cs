@@ -14,12 +14,13 @@ namespace AppSolution.Presentation.Api.Controllers
     public class AppSolutionController : ControllerBase
     {
         private readonly IServicesDirectory _servicesDirectory;
-        private readonly IServicesMetadata _generateTablesName;
+        private readonly IServicesMetadata _servicesMetadata;
 
-        public AppSolutionController(IServicesDirectory servicesDirectory, IServicesMetadata generateTablesName)
+        public AppSolutionController(IServicesDirectory servicesDirectory,
+                                     IServicesMetadata servicesMetadata)
         {
             _servicesDirectory = servicesDirectory;
-            _generateTablesName = generateTablesName;
+            _servicesMetadata = servicesMetadata;
         }
 
         /// <summary>
@@ -27,20 +28,20 @@ namespace AppSolution.Presentation.Api.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpPost]
-        [Route("GenerateAllTablesName")]
+        [Route("MetadataAllTablesName")]
         [Produces("application/json")]
         [ServiceFilter(typeof(AppSolutionFilter))]
         [ApiExplorerSettings(IgnoreApi = false)]
-        public ActionResult<List<string>> GenerateAllTablesName([BindRequired] Metadata metadata)
+        public ActionResult<List<string>> MetadataAllTablesName([BindRequired] Metadata metadata)
         {
             List<string> returnTables = new List<string>();
             try
             {
                 if (ModelState.IsValid)
                 {
-                    returnTables = _generateTablesName.returnListTables(metadata);
+                    returnTables = _servicesMetadata.MetadataAllTablesName(metadata);
 
-                    if (returnTables != null && returnTables?.Count > 0)
+                    if (returnTables != null && returnTables.Count > 0)
                     {
                         _servicesDirectory.CreateDefaultDirectory();
                     }
@@ -48,10 +49,10 @@ namespace AppSolution.Presentation.Api.Controllers
             }
             catch (Exception ex)
             {
-                returnTables?.Add(ex.Message);
+                returnTables?.Append(ex.Message);
             }
 
-            return returnTables;
+            return returnTables ?? new List<string>();
         }
 
         /// <summary>
@@ -59,11 +60,12 @@ namespace AppSolution.Presentation.Api.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpPost]
-        [Route("GenerateFieldsName")]
+        [Route("MetadataAllFieldsName")]
         [Produces("application/json")]
-        [ApiExplorerSettings(IgnoreApi = true)]
-        public List<string> GenerateFieldsName()
+        [ApiExplorerSettings(IgnoreApi = false)]
+        public List<string> MetadataAllFieldsName()
         {
+            
             /*
              * Here return 2 list of objects in filters.
              * One contain the name of table and other contain fieldsname.

@@ -5,26 +5,27 @@ namespace AppSolution.Infraestructure.Application.Services
 {
     public class ServicesMetadata : IServicesMetadata
     {
-        private readonly IServicesCrypto _crypto;
-        private readonly IServicesFuncStrings _funcStrings;
+        private readonly IServicesCrypto _servicesCrypto;
+        private readonly IServicesFuncStrings _servicesFuncStrings;
         private const int CREATE_TABLE_POSITION = 13;
         private const int CREATE_TABLE_DEFAULT_POSITION = 5;
         private const string WITH_SPACE_POSITION = " ";
         private const string CREATE_TABLE_WITH_SPACE = "create table ";
 
-        public ServicesMetadata(IServicesCrypto crypto, IServicesFuncStrings funcStrings)
+        public ServicesMetadata(IServicesCrypto servicesCrypto,
+                                IServicesFuncStrings servicesFuncStrings)
         {
-            _crypto = crypto;
-            _funcStrings = funcStrings;
+            _servicesCrypto = servicesCrypto;
+            _servicesFuncStrings = servicesFuncStrings;
         }
 
-        public List<string> returnListTables(Metadata? metadata)
+        public List<string> MetadataAllTablesName(Metadata? metadata)
         {
             string scriptMetadata = string.Empty;
             List<string> tables = null;
             try
             {
-                scriptMetadata = _crypto.DecodeBase64(metadata?.ScriptMetadata);
+                scriptMetadata = _servicesCrypto.DecodeBase64(metadata?.ScriptMetadata);
                 scriptMetadata = scriptMetadata.ToLowerInvariant();
 
                 if (string.IsNullOrEmpty(scriptMetadata))
@@ -33,7 +34,7 @@ namespace AppSolution.Infraestructure.Application.Services
                 }
                 else
                 {
-                    tables = ReturnAllTablesName(scriptMetadata);
+                    tables = ReturnMetadataAllTablesName(scriptMetadata);
                 }
             }
             catch (Exception)
@@ -44,7 +45,7 @@ namespace AppSolution.Infraestructure.Application.Services
             return tables;
         }
 
-        private List<string> ReturnAllTablesName(string? metadata)
+        private List<string> ReturnMetadataAllTablesName(string? metadata)
         {
             var count = 0;
             var lineCreateTable = string.Empty;
@@ -60,7 +61,7 @@ namespace AppSolution.Infraestructure.Application.Services
 
                     if (count > CREATE_TABLE_DEFAULT_POSITION && lineCreateTable.EndsWith(WITH_SPACE_POSITION))
                     {
-                        GenerateTableList(lineCreateTable, ref tables);
+                        FindTableList(lineCreateTable, ref tables);
                         count = 0;
                         lineCreateTable = string.Empty;
                     }
@@ -72,14 +73,14 @@ namespace AppSolution.Infraestructure.Application.Services
             return tables ?? new List<string>();
         }
 
-        private void GenerateTableList(string? metadata, ref List<string>? tableList)
+        private void FindTableList(string? metadata, ref List<string>? tableList)
         {
             int count = 0;
             int indexCreateTable = 0;
             string table = string.Empty;
             try
             {
-                metadata = _funcStrings.RemoveSpecialCaracter(metadata);
+                metadata = _servicesFuncStrings.RemoveSpecialCaracter(metadata);
                 indexCreateTable = metadata.IndexOf(CREATE_TABLE_WITH_SPACE);
 
                 for (int i = (indexCreateTable + CREATE_TABLE_POSITION); i < metadata?.Length; i++)
@@ -93,8 +94,8 @@ namespace AppSolution.Infraestructure.Application.Services
                     }
                 }
 
-                table = _funcStrings.RemoveSpecialCaracter(table);
-                table = _funcStrings.RemoveAllWhiteSpace(table);
+                table = _servicesFuncStrings.RemoveSpecialCaracter(table);
+                table = _servicesFuncStrings.RemoveAllWhiteSpace(table);
                 table = table.ToUpperInvariant();
             }
             catch (Exception)

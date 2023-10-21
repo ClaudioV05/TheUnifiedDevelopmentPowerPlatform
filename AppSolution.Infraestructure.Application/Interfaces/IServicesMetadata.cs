@@ -4,6 +4,6 @@ namespace AppSolution.Infraestructure.Application.Interfaces
 {
     public interface IServicesMetadata
     {
-        List<string> returnListTables(Metadata? metadata);
+        List<string> MetadataAllTablesName(Metadata? metadata);
     }
 }
