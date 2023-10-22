@@ -1,7 +1,5 @@
 using AppSolution.Infraestructure.Application.Interfaces;
-using AppSolution.Infraestructure.Domain.Entities;
 using AppSolution.Presentation.Api.Filters;
-using AppSolution.Presentation.Api.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Metadata = AppSolution.Infraestructure.Domain.Entities.Metadata;
@@ -30,10 +28,10 @@ namespace AppSolution.Presentation.Api.Controllers
         /// <returns></returns>
         [HttpPost]
         [Produces("application/json")]
-        [Route("MetadataAllTablesName")]
+        [Route("/MetadataAllTablesName")]
         [ApiExplorerSettings(IgnoreApi = false)]
         [ServiceFilter(typeof(LogRegisterFilter), Order = 2)]
-        [ServiceFilter(typeof(ValidateEntityFilter), Order = 3)]
+        [ServiceFilter(typeof(ValidateEntityFilter<Metadata>), Order = 3)]
         public ActionResult<List<string>> MetadataAllTablesName([BindRequired] Metadata metadata)
         {
             List<string> returnTables = new List<string>();
@@ -63,10 +61,10 @@ namespace AppSolution.Presentation.Api.Controllers
         /// <returns></returns>
         [HttpPost]
         [Produces("application/json")]
-        [Route("MetadataAllFieldsName")]
+        [Route("/MetadataAllFieldsName")]
         [ApiExplorerSettings(IgnoreApi = false)]
         [ServiceFilter(typeof(LogRegisterFilter), Order = 2)]
-        [ServiceFilter(typeof(ValidateEntityFilter), Order = 3)]
+        [ServiceFilter(typeof(ValidateEntityFilter<Metadata>), Order = 3)]
         public ActionResult<List<string>> MetadataAllFieldsName([BindRequired] Metadata metadata)
         {
             // Here enter with field name only. Load the property [Fields].

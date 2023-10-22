@@ -6,7 +6,7 @@ namespace AppSolution.Infraestructure.Domain.Entities
     /// Entity DevelopmentEnvironment.
     /// </summary>
     [ComplexType]
-    public class DevEnvironment : BaseEntity
+    public class DevEnvironment
     {
         /// <summary>
         /// Enum type for entitie DevelopmentEnvironment.

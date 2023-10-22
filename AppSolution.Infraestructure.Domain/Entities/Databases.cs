@@ -6,7 +6,7 @@ namespace AppSolution.Infraestructure.Domain.Entities
     /// Entity Databases.
     /// </summary>
     [ComplexType]
-    public class Databases : BaseEntity
+    public class Databases
     {
         /// <summary>
         /// Enum type for entitie Databases.

@@ -7,8 +7,10 @@ namespace AppSolution.Infraestructure.Domain.Entities
     /// Entity Metadata.
     /// </summary>
     [ComplexType]
-    public sealed class Metadata
+    public sealed class Metadata : IEntity
     {
+        public Guid Id { get; set; }
+
         /// <summary>
         /// Script of Metadata.
         /// </summary>

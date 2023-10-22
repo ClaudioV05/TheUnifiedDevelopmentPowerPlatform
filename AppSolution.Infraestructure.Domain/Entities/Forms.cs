@@ -6,7 +6,7 @@ namespace AppSolution.Infraestructure.Domain.Entities
     /// Entity Forms.
     /// </summary>
     [ComplexType]
-    public class Forms : BaseEntity
+    public class Forms
     {
         /// <summary>
         /// Enum type for entitie Forms.

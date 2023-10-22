@@ -3,11 +3,10 @@
 namespace AppSolution.Infraestructure.Domain.Entities
 {
     /// <summary>
-    /// Entity BaseEntity.
+    /// Interface IEntity.
     /// </summary>
-    [ComplexType]
-    public abstract class BaseEntity
+    public interface IEntity
     {
-        public virtual Guid Id { get; set; }
+        Guid Id { get; set; }
     }
 }

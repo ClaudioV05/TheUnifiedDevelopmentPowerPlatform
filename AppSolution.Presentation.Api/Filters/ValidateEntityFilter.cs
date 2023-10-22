@@ -1,15 +1,21 @@
-﻿using Microsoft.AspNetCore.Mvc.Filters;
+﻿using AppSolution.Infraestructure.Domain.Entities;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace AppSolution.Presentation.Api.Filters
 {
-    public class ValidateEntityFilter : IActionFilter
+    public class ValidateEntityFilter<T> : IActionFilter where T : class, IEntity
     {
         public void OnActionExecuting(ActionExecutingContext context)
         {
-            var aux = string.Empty;
-            if (context.ActionArguments.ContainsKey("ScriptMetadata"))
+            if (context.ActionArguments.ContainsKey("metadata"))
             {
-                aux = (string)context.ActionArguments["ScriptMetadata"];
+                var aux = (string)context.ActionArguments["ScriptMetadata"];
+            }
+            else
+            {
+                context.Result = new BadRequestObjectResult("Bad ScriptMetadata parameter");
+                return;
             }
         }
 

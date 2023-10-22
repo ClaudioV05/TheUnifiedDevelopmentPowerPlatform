@@ -6,7 +6,7 @@ namespace AppSolution.Infraestructure.Domain.Entities
     /// Entity Tables.
     /// </summary>
     [ComplexType]
-    public class Tables : BaseEntity
+    public class Tables
     {
         /// <summary>
         /// Name of fields.

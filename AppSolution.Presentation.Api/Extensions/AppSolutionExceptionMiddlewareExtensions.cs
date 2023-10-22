@@ -22,8 +22,8 @@ namespace AppSolution.Presentation.Api.Extensions
                         await context.Response.WriteAsync(new ErrorDetails()
                         {
                             StatusCode = context.Response.StatusCode,
-                            Message = contextFeature.Error.Message,
-                            Trace = contextFeature.Error.StackTrace
+                            Message = contextFeature.Error.Message
+                            //Trace = contextFeature.Error.StackTrace --- Here create log
                         }.ToString());
                     }
                 });

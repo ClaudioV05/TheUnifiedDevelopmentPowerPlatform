@@ -1,5 +1,6 @@
 using AppSolution.Infraestructure.Application.Interfaces;
 using AppSolution.Infraestructure.Application.Services;
+using AppSolution.Infraestructure.Domain.Entities;
 using AppSolution.Presentation.Api.Extensions;
 using AppSolution.Presentation.Api.Filters;
 using Microsoft.AspNetCore.Mvc.Formatters;
@@ -75,7 +76,7 @@ builder.Services.AddMvc().AddMvcOptions(conf => conf.OutputFormatters.Add(new Xm
 #region Action Filters.
 builder.Services.AddScoped<AppSolutionControllerFilter>();
 builder.Services.AddScoped<LogRegisterFilter>();
-builder.Services.AddScoped<ValidateEntityFilter>();
+builder.Services.AddScoped<ValidateEntityFilter<Metadata>>();
 #endregion Action Filters.
 
 #region Dependency Injection.
