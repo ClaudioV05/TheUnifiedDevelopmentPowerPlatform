@@ -31,21 +31,13 @@ namespace AppSolution.Presentation.Api.Controllers
         [Route("/MetadataAllTablesName")]
         [ApiExplorerSettings(IgnoreApi = false)]
         [ServiceFilter(typeof(LogRegisterFilter), Order = 2)]
-        [ServiceFilter(typeof(ValidateEntityFilter<Metadata>), Order = 3)]
+        [ServiceFilter(typeof(ValidateEntityMetadataTablesFilter<Metadata>), Order = 3)]
         public ActionResult<List<string>> MetadataAllTablesName([BindRequired] Metadata metadata)
         {
             List<string> returnTables = new List<string>();
             try
             {
-                if (ModelState.IsValid)
-                {
-                    returnTables = _serviceMetadata.MetadataAllTablesName(metadata);
-
-                    if (returnTables is not null && returnTables.Count > 0)
-                    {
-                        _serviceDirectory.CreateDefaultDirectory();
-                    }
-                }
+                returnTables = _serviceMetadata.MetadataAllTablesName(metadata);
             }
             catch (Exception ex)
             {
@@ -64,7 +56,7 @@ namespace AppSolution.Presentation.Api.Controllers
         [Route("/MetadataAllFieldsName")]
         [ApiExplorerSettings(IgnoreApi = false)]
         [ServiceFilter(typeof(LogRegisterFilter), Order = 2)]
-        [ServiceFilter(typeof(ValidateEntityFilter<Metadata>), Order = 3)]
+        [ServiceFilter(typeof(ValidateEntityMetadataFieldsFilter<Metadata>), Order = 3)]
         public ActionResult<List<string>> MetadataAllFieldsName([BindRequired] Metadata metadata)
         {
             // Here enter with field name only. Load the property [Fields].

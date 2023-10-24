@@ -1,5 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.Text.Json;
+﻿using System.Text.Json;
 
 namespace AppSolution.Presentation.Api.Models
 {
@@ -7,7 +6,8 @@ namespace AppSolution.Presentation.Api.Models
     {
         public int StatusCode { get; set; }
         public string? Message { get; set; }
-        public string? Trace { get; set; }
+        public string? StackTrace { get; set; }
+        public string? Source { get; set; }
 
         public override string ToString()
         {

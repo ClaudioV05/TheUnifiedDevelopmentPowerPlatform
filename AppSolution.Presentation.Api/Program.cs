@@ -76,7 +76,8 @@ builder.Services.AddMvc().AddMvcOptions(conf => conf.OutputFormatters.Add(new Xm
 #region Action Filters.
 builder.Services.AddScoped<AppSolutionControllerFilter>();
 builder.Services.AddScoped<LogRegisterFilter>();
-builder.Services.AddScoped<ValidateEntityFilter<Metadata>>();
+builder.Services.AddScoped<ValidateEntityMetadataFieldsFilter<Metadata>>();
+builder.Services.AddScoped<ValidateEntityMetadataTablesFilter<Metadata>>();
 #endregion Action Filters.
 
 #region Dependency Injection.
@@ -87,8 +88,11 @@ builder.Services.AddScoped<IServiceDirectory, ServiceDirectory>();
 builder.Services.AddScoped<IServiceEmail, ServiceEmail>();
 builder.Services.AddScoped<IServiceFile, ServiceFile>();
 builder.Services.AddScoped<IServiceFuncStrings, ServiceFuncStrings>();
+builder.Services.AddScoped<IServiceJson, ServiceJson>();
 builder.Services.AddScoped<IServiceLog, ServiceLog>();
 builder.Services.AddScoped<IServiceMetadata, ServiceMetadata>();
+builder.Services.AddScoped<IServiceMetadataFields, ServiceMetadataFields>();
+builder.Services.AddScoped<IServiceMetadataTables, ServiceMetadataTables>();
 builder.Services.AddScoped<IServiceZipFile, ServiceZipFile>();
 #endregion Services.
 

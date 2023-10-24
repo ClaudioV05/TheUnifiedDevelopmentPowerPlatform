@@ -23,7 +23,12 @@ namespace AppSolution.Presentation.Api.Extensions
                         {
                             StatusCode = context.Response.StatusCode,
                             Message = contextFeature.Error.Message
-                            //Trace = contextFeature.Error.StackTrace --- Here create log
+                            /*
+                             * This two fields take in file of log.
+                             * 
+                            Source = contextFeature.Error.Source,
+                            StackTrace = contextFeature.Error.StackTrace,
+                            */
                         }.ToString());
                     }
                 });

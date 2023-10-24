@@ -13,7 +13,7 @@ namespace AppSolution.Infraestructure.Application.Services
         private const string CREATE_TABLE_WITH_SPACE = "create table ";
 
         public ServiceMetadata(IServiceCrypto serviceCrypto,
-                                IServiceFuncStrings serviceFuncStrings)
+                               IServiceFuncStrings serviceFuncStrings)
         {
             _serviceCrypto = serviceCrypto;
             _serviceFuncStrings = serviceFuncStrings;
