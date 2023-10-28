@@ -3,75 +3,37 @@ using AppSolution.Infraestructure.Application.Services;
 using AppSolution.Infraestructure.Domain.Entities;
 using AppSolution.Presentation.Api.Extensions;
 using AppSolution.Presentation.Api.Filters;
+using AppSolution.Presentation.Api.Swagger;
 using Microsoft.AspNetCore.Mvc.Formatters;
-using Microsoft.OpenApi.Models;
 using System.Reflection;
-
-#region Swagger variables
-const string VERSION = "Version";
-const string TITLE = "Title";
-const string DESCRIPTION = "Description";
-const string TERMS_OF_SERVICE = "TermsOfService";
-
-const string CONTACT = "Contact";
-const string CONTACT_NAME = "Name";
-const string CONTACT_URL = "Url";
-const string CONTACT_EMAIL = "Email";
-
-const string LICENSE = "License";
-const string LICENSE_NAME = "Name";
-const string LICENSE_URL = "Url";
-
-const string ENDPOINT = "EndPoint";
-const string ENDPOINT_NAME = "Name";
-const string ENDPOINT_URL = "Url";
-#endregion
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
-builder.Services.AddSwaggerGen();
-
-builder.Services.AddSwaggerGen(conf =>
+builder.Services.AddSwaggerGen(options =>
 {
-    conf.SwaggerDoc(SwaggerConfigSection(builder, VERSION), new OpenApiInfo
-    {
-        Version = SwaggerConfigSection(builder, VERSION),
-        Title = SwaggerConfigSection(builder, TITLE),
-        Description = SwaggerConfigSection(builder, DESCRIPTION),
-        TermsOfService = new Uri(SwaggerConfigSection(builder, TERMS_OF_SERVICE)),
-        Contact = new OpenApiContact
-        {
-            Name = SwaggerConfigSubSection(builder, CONTACT, CONTACT_NAME),
-            Email = SwaggerConfigSubSection(builder, CONTACT, CONTACT_EMAIL),
-            Url = new Uri(SwaggerConfigSubSection(builder, CONTACT, CONTACT_URL)),
-        },
-        License = new OpenApiLicense
-        {
-            Name = SwaggerConfigSubSection(builder, LICENSE, LICENSE_NAME),
-            Url = new Uri(SwaggerConfigSubSection(builder, LICENSE, LICENSE_URL)),
-        }
-    });
+    options.DocumentFilter<DocumentationAttribute>();
+    options.OperationFilter<DocumentationHeaderAttribute>();
 
-    var xmlFilename = SwaggerConfigPathXmlFileName();
+    var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+    var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
 
-    if (File.Exists(xmlFilename))
+    if (File.Exists(xmlPath))
     {
-        conf.IncludeXmlComments(xmlFilename);
+        options.IncludeXmlComments(xmlPath);
     }
     else
     {
-        File.Create(xmlFilename).Dispose();
-        conf.IncludeXmlComments(xmlFilename);
+        File.Create(xmlPath).Dispose();
+        options.IncludeXmlComments(xmlPath);
     }
 });
 
-builder.Services.AddControllers(conf => conf.RespectBrowserAcceptHeader = true);
+builder.Services.AddControllers(options => options.RespectBrowserAcceptHeader = true);
 
 builder.Services.AddCors();
 
-builder.Services.AddMvc().AddMvcOptions(conf => conf.OutputFormatters.Add(new XmlDataContractSerializerOutputFormatter()));
+builder.Services.AddMvc().AddMvcOptions(options => options.OutputFormatters.Add(new XmlDataContractSerializerOutputFormatter()));
 
 #region Action Filters.
 builder.Services.AddScoped<AppSolutionControllerFilter>();
@@ -86,6 +48,7 @@ builder.Services.AddScoped<IServiceAppSettings, ServiceAppSettings>();
 builder.Services.AddScoped<IServiceCrypto, ServiceCrypto>();
 builder.Services.AddScoped<IServiceDirectory, ServiceDirectory>();
 builder.Services.AddScoped<IServiceEmail, ServiceEmail>();
+builder.Services.AddScoped<IServiceEnvironment, ServiceEnvironment>();
 builder.Services.AddScoped<IServiceFile, ServiceFile>();
 builder.Services.AddScoped<IServiceFuncStrings, ServiceFuncStrings>();
 builder.Services.AddScoped<IServiceJson, ServiceJson>();
@@ -93,6 +56,7 @@ builder.Services.AddScoped<IServiceLog, ServiceLog>();
 builder.Services.AddScoped<IServiceMetadata, ServiceMetadata>();
 builder.Services.AddScoped<IServiceMetadataFields, ServiceMetadataFields>();
 builder.Services.AddScoped<IServiceMetadataTables, ServiceMetadataTables>();
+builder.Services.AddScoped<IServiceValidation, ServiceValidation>();
 builder.Services.AddScoped<IServiceZipFile, ServiceZipFile>();
 #endregion Services.
 
@@ -109,7 +73,11 @@ if (app.Environment.IsDevelopment())
 {
     // Code for Development here.
     app.UseSwagger();
-    app.UseSwaggerUI(conf => conf.SwaggerEndpoint(SwaggerConfigSubSection(builder, ENDPOINT, ENDPOINT_URL), SwaggerConfigSubSection(builder, ENDPOINT, ENDPOINT_NAME)));
+    app.UseSwaggerUI(options =>
+    {
+        options.SwaggerEndpoint("/swagger/v1/swagger.json", "Generator of Class C#");
+        options.InjectStylesheet("/swagger-ui/custom.css");
+    });
 
     app.UseDeveloperExceptionPage();
 }
@@ -125,7 +93,7 @@ else if (app.Environment.IsProduction())
     app.UseHsts();
 }
 
-app.UseCors(conf => conf.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+app.UseCors(options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 
 app.ConfigureExceptionHandler();
 
@@ -156,11 +124,3 @@ app.Use(async (context, next) =>
 });
 
 app.Run();
-
-#region Methods
-static string SwaggerConfigSection(WebApplicationBuilder builder, string section) => string.IsNullOrEmpty(section) ? string.Empty : builder.Configuration[$"SwaggerConfiguration:{section}"];
-
-static string SwaggerConfigSubSection(WebApplicationBuilder builder, string section, string subSection) => string.IsNullOrEmpty(section) ? string.Empty : builder.Configuration[$"SwaggerConfiguration:{section}:{subSection}"];
-
-static string SwaggerConfigPathXmlFileName() => Path.Combine(AppContext.BaseDirectory, $"{Assembly.GetExecutingAssembly().GetName().Name}.xml");
-#endregion

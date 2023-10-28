@@ -37,7 +37,7 @@ namespace AppSolution.Infraestructure.Application.Services
             }
         }
 
-        public string CodifyToBase64(string data)
+        public string EncondeToBase64(string data)
         {
             try
             {

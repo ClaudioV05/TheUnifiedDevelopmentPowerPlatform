@@ -2,6 +2,7 @@ using AppSolution.Infraestructure.Application.Interfaces;
 using AppSolution.Presentation.Api.Filters;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
+using System.Net.Mime;
 using Metadata = AppSolution.Infraestructure.Domain.Entities.Metadata;
 
 namespace AppSolution.Presentation.Api.Controllers
@@ -9,16 +10,14 @@ namespace AppSolution.Presentation.Api.Controllers
     [ApiController]
     [Route("[Controller]")]
     [Consumes("application/json")]
+    [Produces(MediaTypeNames.Application.Json)]
     [ServiceFilter(typeof(AppSolutionControllerFilter), Order = 1)]
     public class AppSolutionController : ControllerBase
     {
-        private readonly IServiceDirectory _serviceDirectory;
         private readonly IServiceMetadata _serviceMetadata;
 
-        public AppSolutionController(IServiceDirectory serviceDirectory,
-                                     IServiceMetadata serviceMetadata)
+        public AppSolutionController(IServiceMetadata serviceMetadata)
         {
-            _serviceDirectory = serviceDirectory;
             _serviceMetadata = serviceMetadata;
         }
 
@@ -32,19 +31,11 @@ namespace AppSolution.Presentation.Api.Controllers
         [ApiExplorerSettings(IgnoreApi = false)]
         [ServiceFilter(typeof(LogRegisterFilter), Order = 2)]
         [ServiceFilter(typeof(ValidateEntityMetadataTablesFilter<Metadata>), Order = 3)]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public ActionResult<List<string>> MetadataAllTablesName([BindRequired] Metadata metadata)
         {
-            List<string> returnTables = new List<string>();
-            try
-            {
-                returnTables = _serviceMetadata.MetadataAllTablesName(metadata);
-            }
-            catch (Exception ex)
-            {
-                returnTables?.Append(ex.Message);
-            }
-
-            return returnTables ?? new List<string>();
+            return _serviceMetadata.MetadataAllTablesName(metadata);
         }
 
         /// <summary>
@@ -54,9 +45,11 @@ namespace AppSolution.Presentation.Api.Controllers
         [HttpPost]
         [Produces("application/json")]
         [Route("/MetadataAllFieldsName")]
-        [ApiExplorerSettings(IgnoreApi = false)]
+        [ApiExplorerSettings(IgnoreApi = true)]
         [ServiceFilter(typeof(LogRegisterFilter), Order = 2)]
         [ServiceFilter(typeof(ValidateEntityMetadataFieldsFilter<Metadata>), Order = 3)]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public ActionResult<List<string>> MetadataAllFieldsName([BindRequired] Metadata metadata)
         {
             // Here enter with field name only. Load the property [Fields].

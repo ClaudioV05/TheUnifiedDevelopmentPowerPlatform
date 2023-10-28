@@ -4,7 +4,7 @@
     {
         string RemoveSpecialCaracter(string text);
         string RemoveAllWhiteSpace(string text);
-        string CodifyToBase64(string data);
+        string EncondeToBase64(string data);
         string DecodeToBase64(string data);
     }
 }

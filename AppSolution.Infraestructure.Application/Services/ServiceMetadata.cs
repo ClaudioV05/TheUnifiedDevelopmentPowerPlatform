@@ -5,17 +5,31 @@ namespace AppSolution.Infraestructure.Application.Services
 {
     public class ServiceMetadata : IServiceMetadata
     {
+
+        struct MyStruct
+        {
+            public MyStruct()
+            {
+            }
+
+            public int MyProperty { get; set; } = 10;
+        }
+
         private readonly IServiceCrypto _serviceCrypto;
+        private readonly IServiceValidation _serviceValidation;
         private readonly IServiceFuncStrings _serviceFuncStrings;
+
         private const int CREATE_TABLE_POSITION = 13;
         private const int CREATE_TABLE_DEFAULT_POSITION = 5;
         private const string WITH_SPACE_POSITION = " ";
         private const string CREATE_TABLE_WITH_SPACE = "create table ";
 
         public ServiceMetadata(IServiceCrypto serviceCrypto,
+                               IServiceValidation serviceValidation,
                                IServiceFuncStrings serviceFuncStrings)
         {
             _serviceCrypto = serviceCrypto;
+            _serviceValidation = serviceValidation;
             _serviceFuncStrings = serviceFuncStrings;
         }
 
@@ -25,6 +39,9 @@ namespace AppSolution.Infraestructure.Application.Services
             List<string> tables = null;
             try
             {
+                if (!_serviceValidation.ValidateBase64((metadata?.ScriptMetadata)))
+                    throw new Exception("create class with log for it");
+
                 scriptMetadata = _serviceCrypto.DecodeBase64(metadata?.ScriptMetadata);
                 scriptMetadata = scriptMetadata.ToLowerInvariant();
 
