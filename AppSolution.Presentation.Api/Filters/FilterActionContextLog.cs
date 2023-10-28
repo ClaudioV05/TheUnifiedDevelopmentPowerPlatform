@@ -2,27 +2,24 @@
 
 namespace AppSolution.Presentation.Api.Filters
 {
-    public class LogRegisterFilter : IActionFilter
+    public class FilterActionContextLog : IAsyncActionFilter
     {
-        private readonly ILogger<LogRegisterFilter> _logger;
+        private readonly ILogger<FilterActionContextLog> _logger;
 
-        public LogRegisterFilter(ILogger<LogRegisterFilter> logger)
+        public FilterActionContextLog(ILogger<FilterActionContextLog> logger)
         {
             _logger = logger;
         }
 
-        public void OnActionExecuting(ActionExecutingContext context)
+        public async Task OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next)
         {
-            // our code before action executes.
             _logger.LogInformation("### -> OnActionExecuted");
             _logger.LogInformation("###################################################");
             _logger.LogInformation($"{DateTime.Now.ToLongTimeString()}");
             _logger.LogInformation("###################################################");
-        }
 
-        public void OnActionExecuted(ActionExecutedContext context)
-        {
-            // our code after action executes.
+            await next();
+
             _logger.LogInformation("### -> OnActionExecuting");
             _logger.LogInformation("###################################################");
             _logger.LogInformation($"{DateTime.Now.ToLongTimeString()}");

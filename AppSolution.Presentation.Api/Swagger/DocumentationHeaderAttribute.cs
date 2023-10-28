@@ -16,7 +16,7 @@ namespace AppSolution.Presentation.Api.Swagger
             {
                 Name = "scriptMetadata",
                 In = ParameterLocation.Header,
-                Required = true,
+                Required = false,
                 Schema = new OpenApiSchema
                 {
                     Type = "String"
@@ -27,7 +27,7 @@ namespace AppSolution.Presentation.Api.Swagger
             {
                 Name = "IdDevelopmentEnvironment",
                 In = ParameterLocation.Header,
-                Required = true,
+                Required = false,
                 Schema = new OpenApiSchema
                 {
                     Type = "int"
@@ -38,7 +38,7 @@ namespace AppSolution.Presentation.Api.Swagger
             {
                 Name = "IdDatabases",
                 In = ParameterLocation.Header,
-                Required = true,
+                Required = false,
                 Schema = new OpenApiSchema
                 {
                     Type = "int"
@@ -49,7 +49,7 @@ namespace AppSolution.Presentation.Api.Swagger
             {
                 Name = "IdForms",
                 In = ParameterLocation.Header,
-                Required = true,
+                Required = false,
                 Schema = new OpenApiSchema
                 {
                     Type = "int"

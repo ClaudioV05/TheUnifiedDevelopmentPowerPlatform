@@ -36,10 +36,10 @@ builder.Services.AddCors();
 builder.Services.AddMvc().AddMvcOptions(options => options.OutputFormatters.Add(new XmlDataContractSerializerOutputFormatter()));
 
 #region Action Filters.
-builder.Services.AddScoped<AppSolutionControllerFilter>();
-builder.Services.AddScoped<LogRegisterFilter>();
-builder.Services.AddScoped<ValidateEntityMetadataFieldsFilter<Metadata>>();
-builder.Services.AddScoped<ValidateEntityMetadataTablesFilter<Metadata>>();
+builder.Services.AddScoped<FilterActionContextController>();
+builder.Services.AddScoped<FilterActionContextLog>();
+builder.Services.AddScoped<FilterActionContextFields<Metadata>>();
+builder.Services.AddScoped<FilterActionContextTables<Metadata>>();
 #endregion Action Filters.
 
 #region Dependency Injection.

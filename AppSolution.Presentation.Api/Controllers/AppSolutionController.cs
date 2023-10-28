@@ -11,7 +11,7 @@ namespace AppSolution.Presentation.Api.Controllers
     [Route("[Controller]")]
     [Consumes("application/json")]
     [Produces(MediaTypeNames.Application.Json)]
-    [ServiceFilter(typeof(AppSolutionControllerFilter), Order = 1)]
+    [ServiceFilter(typeof(FilterActionContextController), Order = 1)]
     public class AppSolutionController : ControllerBase
     {
         private readonly IServiceMetadata _serviceMetadata;
@@ -29,8 +29,8 @@ namespace AppSolution.Presentation.Api.Controllers
         [Produces("application/json")]
         [Route("/MetadataAllTablesName")]
         [ApiExplorerSettings(IgnoreApi = false)]
-        [ServiceFilter(typeof(LogRegisterFilter), Order = 2)]
-        [ServiceFilter(typeof(ValidateEntityMetadataTablesFilter<Metadata>), Order = 3)]
+        [ServiceFilter(typeof(FilterActionContextLog), Order = 2)]
+        [ServiceFilter(typeof(FilterActionContextTables<Metadata>), Order = 3)]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public ActionResult<List<string>> MetadataAllTablesName([BindRequired] Metadata metadata)
@@ -46,8 +46,8 @@ namespace AppSolution.Presentation.Api.Controllers
         [Produces("application/json")]
         [Route("/MetadataAllFieldsName")]
         [ApiExplorerSettings(IgnoreApi = true)]
-        [ServiceFilter(typeof(LogRegisterFilter), Order = 2)]
-        [ServiceFilter(typeof(ValidateEntityMetadataFieldsFilter<Metadata>), Order = 3)]
+        [ServiceFilter(typeof(FilterActionContextLog), Order = 2)]
+        [ServiceFilter(typeof(FilterActionContextFields<Metadata>), Order = 3)]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public ActionResult<List<string>> MetadataAllFieldsName([BindRequired] Metadata metadata)
