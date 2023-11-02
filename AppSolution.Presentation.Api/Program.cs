@@ -4,6 +4,7 @@ using AppSolution.Infraestructure.Domain.Entities;
 using AppSolution.Presentation.Api.Extensions;
 using AppSolution.Presentation.Api.Filters;
 using AppSolution.Presentation.Api.Swagger;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Formatters;
 using System.Reflection;
 
@@ -107,6 +108,8 @@ app.Use(async (context, next) =>
 {
     context.Response.OnStarting((state) =>
     {
+        context.Response.Headers.Add("x-appsolution", "AppSolution");
+
         if (context.Response.Headers.Count > 0 && context.Response.Headers.ContainsKey("Content-Type"))
         {
             var contentType = context.Response.Headers["Content-Type"].ToString();
@@ -119,8 +122,10 @@ app.Use(async (context, next) =>
         }
 
         return Task.FromResult(0);
-    }, null);
+    },context);
+
     await next.Invoke();
+
 });
 
 app.Run();
