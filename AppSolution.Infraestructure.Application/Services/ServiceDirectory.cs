@@ -1,14 +1,14 @@
-﻿using AppSolution.Infraestructure.Application.Interfaces;
+﻿using AppSolution.Application.Interfaces;
 using System.Reflection;
 
-namespace AppSolution.Infraestructure.Application.Services
+namespace AppSolution.Application.Services
 {
     public class ServiceDirectory : IServiceDirectory
     {
-        private const string NAME_DIRECTORY_CONFIG = "\\config";
-        private const string NAME_DIRECTORY_APP = "\\app";
         private const string NAME_DIRECTORY_BIN = "bin";
+        private const string NAME_DIRECTORY_APP = "\\app";
         private const string NAME_DIRECTORY_DEBUG = "debug";
+        private const string NAME_DIRECTORY_CONFIG = "\\config";
 
         public ServiceDirectory()
         {
@@ -54,10 +54,10 @@ namespace AppSolution.Infraestructure.Application.Services
             Directory.CreateDirectory($"{path}{NAME_DIRECTORY_APP}");
         }
 
-        private string GetRootPath()
+        private string? GetRootPath()
         {
             string? rootPath = string.IsNullOrEmpty(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)) ? string.Empty : Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            return rootPath.ToLowerInvariant();
+            return rootPath?.ToLowerInvariant();
         }
 
         public void CreateConfigDirectory(string? path)

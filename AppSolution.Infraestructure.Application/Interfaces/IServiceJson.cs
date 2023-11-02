@@ -1,4 +1,4 @@
-﻿namespace AppSolution.Infraestructure.Application.Interfaces
+﻿namespace AppSolution.Application.Interfaces
 {
     public interface IServiceJson
     {

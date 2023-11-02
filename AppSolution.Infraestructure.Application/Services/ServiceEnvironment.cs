@@ -1,7 +1,7 @@
-﻿using AppSolution.Infraestructure.Application.Interfaces;
+﻿using AppSolution.Application.Interfaces;
 using System.Security;
 
-namespace AppSolution.Infraestructure.Application.Services
+namespace AppSolution.Application.Services
 {
     public class ServiceEnvironment : IServiceEnvironment
     {

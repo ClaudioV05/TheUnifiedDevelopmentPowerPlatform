@@ -1,9 +1,11 @@
-using AppSolution.Infraestructure.Application.Interfaces;
+using AppSolution.Application.Interfaces;
+using AppSolution.Infraestructure.Domain.Entities;
 using AppSolution.Presentation.Api.Filters;
+using AppSolution.Presentation.Api.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using System.Net.Mime;
-using Metadata = AppSolution.Infraestructure.Domain.Entities.Metadata;
+using Mddata = AppSolution.Infraestructure.Domain.Entities.Metadata;
 
 namespace AppSolution.Presentation.Api.Controllers
 {
@@ -33,9 +35,14 @@ namespace AppSolution.Presentation.Api.Controllers
         [ServiceFilter(typeof(FilterActionContextTables<Metadata>), Order = 3)]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public ActionResult<List<string>> MetadataAllTablesName([BindRequired] Metadata metadata)
+        public ActionResult<List<string>> MetadataAllTablesName([BindRequired] AppMetadata metadata)
         {
-            return _serviceMetadata.MetadataAllTablesName(metadata);
+            Mddata objMddata = new Mddata()
+            {
+                ScriptMetadata = metadata.ScriptMetadata,
+            };
+
+            return _serviceMetadata.MetadataAllTablesName(metadata: objMddata);
         }
 
         /// <summary>

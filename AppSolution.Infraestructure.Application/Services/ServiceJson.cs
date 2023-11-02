@@ -1,7 +1,7 @@
-﻿using AppSolution.Infraestructure.Application.Interfaces;
+﻿using AppSolution.Application.Interfaces;
 using System.Text.Json;
 
-namespace AppSolution.Infraestructure.Application.Services
+namespace AppSolution.Application.Services
 {
     public class ServiceJson : IServiceJson
     {

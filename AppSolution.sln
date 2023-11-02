@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34018.315
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppSolution.Presentation.Api", "AppSolution.Presentation.Api\AppSolution.Presentation.Api.csproj", "{CAAD82BD-7E78-4F1C-AFD7-B0C631AE78C7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppSolution.Presentation.Api", "AppSolution.Presentation.Api\AppSolution.Presentation.Api.csproj", "{CAAD82BD-7E78-4F1C-AFD7-B0C631AE78C7}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1-Presentation", "1-Presentation", "{79C5DCC2-2541-4CF6-8C01-7CE51F2ED6B6}"
 EndProject
@@ -17,13 +17,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CrossCutting", "CrossCuttin
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{E68F11A9-C51E-4E6A-AC38-A73DFA2107A9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppSolution.Infraestructure.CrossCutting", "AppSolution.Infraestructure.CrossCutting\AppSolution.Infraestructure.CrossCutting.csproj", "{E2F95956-C745-43ED-98D0-46EC76255A19}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppSolution.Infraestructure.CrossCutting", "AppSolution.Infraestructure.CrossCutting\AppSolution.Infraestructure.CrossCutting.csproj", "{E2F95956-C745-43ED-98D0-46EC76255A19}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppSolution.Infraestructure.Data", "AppSolution.Infraestructure.Data\AppSolution.Infraestructure.Data.csproj", "{3B3060D7-1DDA-40B6-B084-B4A282C661BF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppSolution.Infraestructure.Data", "AppSolution.Infraestructure.Data\AppSolution.Infraestructure.Data.csproj", "{3B3060D7-1DDA-40B6-B084-B4A282C661BF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppSolution.Infraestructure.Domain", "AppSolution.Infraestructure.Domain\AppSolution.Infraestructure.Domain.csproj", "{65D5C1D0-3519-4320-B301-1E8951C490F3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppSolution.Infraestructure.Domain", "AppSolution.Infraestructure.Domain\AppSolution.Infraestructure.Domain.csproj", "{65D5C1D0-3519-4320-B301-1E8951C490F3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppSolution.Infraestructure.Application", "AppSolution.Infraestructure.Application\AppSolution.Infraestructure.Application.csproj", "{21402D45-0CCE-4A8A-BF5B-154C19302A2C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppSolution.Application", "AppSolution.Infraestructure.Application\AppSolution.Application.csproj", "{21402D45-0CCE-4A8A-BF5B-154C19302A2C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

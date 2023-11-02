@@ -2,7 +2,7 @@
 
 namespace AppSolution.Presentation.Api.Models
 {
-    public class ModelMetadata
+    public class AppMetadata
     {
         /// <summary>
         /// Script of Metadata.

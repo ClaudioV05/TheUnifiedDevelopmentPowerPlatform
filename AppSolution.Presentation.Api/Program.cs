@@ -1,5 +1,5 @@
-using AppSolution.Infraestructure.Application.Interfaces;
-using AppSolution.Infraestructure.Application.Services;
+using AppSolution.Application.Interfaces;
+using AppSolution.Application.Services;
 using AppSolution.Infraestructure.Domain.Entities;
 using AppSolution.Presentation.Api.Extensions;
 using AppSolution.Presentation.Api.Filters;

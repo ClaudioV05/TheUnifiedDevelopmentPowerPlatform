@@ -1,6 +1,6 @@
-﻿using AppSolution.Infraestructure.Application.Interfaces;
+﻿using AppSolution.Application.Interfaces;
 
-namespace AppSolution.Infraestructure.Application.Services
+namespace AppSolution.Application.Services
 {
     public class ServiceAppSettings : IServiceAppSettings
     {

@@ -1,8 +1,8 @@
-﻿using AppSolution.Infraestructure.Application.Interfaces;
+﻿using AppSolution.Application.Interfaces;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace AppSolution.Infraestructure.Application.Services
+namespace AppSolution.Application.Services
 {
     public class ServiceCrypto : IServiceCrypto
     {
