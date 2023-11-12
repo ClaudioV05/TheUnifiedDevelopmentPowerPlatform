@@ -5,15 +5,36 @@ using AppSolution.Presentation.Api.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using System.Net.Mime;
+using System.Numerics;
 using Mddata = AppSolution.Infraestructure.Domain.Entities.Metadata;
 
 namespace AppSolution.Presentation.Api.Controllers
 {
+    public record DirectionRouter
+    {
+        public const string RouteController = "[Controller]";
+        public const string RouteMetadataAllTablesName = "/MetadataAllTablesName";
+        public const string RouteMetadataAllFieldsName = "/MetadataAllFieldsName";
+    }
+
+    public record OrderFilterExecutation
+    {
+        public const int First = 1;
+        public const int Second = 2;
+        public const int Third = 3;
+    }
+
+    public record MethodVisible
+    {
+        public const bool Visible = true;
+        public const bool NotVisible = false;
+    }
+
     [ApiController]
-    [Route("[Controller]")]
+    [Route(DirectionRouter.RouteController)]
     [Consumes(MediaTypeNames.Application.Json)]
     [Produces(MediaTypeNames.Application.Json)]
-    [ServiceFilter(typeof(FilterActionContextController), Order = 1)]
+    [ServiceFilter(typeof(FilterActionContextController), Order = OrderFilterExecutation.First)]
     public class AppSolutionController : ControllerBase
     {
         private readonly IServiceMetadata _serviceMetadata;
@@ -29,10 +50,10 @@ namespace AppSolution.Presentation.Api.Controllers
         /// <returns></returns>
         [HttpPost]
         [Produces(MediaTypeNames.Application.Json)]
-        [Route("/MetadataAllTablesName")]
-        [ApiExplorerSettings(IgnoreApi = false)]
-        [ServiceFilter(typeof(FilterActionContextLog), Order = 2)]
-        [ServiceFilter(typeof(FilterActionContextTables<Metadata>), Order = 3)]
+        [Route(DirectionRouter.RouteMetadataAllTablesName)]
+        [ApiExplorerSettings(IgnoreApi = MethodVisible.Visible)]
+        [ServiceFilter(typeof(FilterActionContextLog), Order = OrderFilterExecutation.Second)]
+        [ServiceFilter(typeof(FilterActionContextTables<Metadata>), Order = OrderFilterExecutation.Third)]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public ActionResult<List<string>> MetadataAllTablesName([BindRequired] AppMetadata metadata)
@@ -51,10 +72,10 @@ namespace AppSolution.Presentation.Api.Controllers
         /// <returns></returns>
         [HttpPost]
         [Produces(MediaTypeNames.Application.Json)]
-        [Route("/MetadataAllFieldsName")]
-        [ApiExplorerSettings(IgnoreApi = true)]
-        [ServiceFilter(typeof(FilterActionContextLog), Order = 2)]
-        [ServiceFilter(typeof(FilterActionContextFields<Metadata>), Order = 3)]
+        [Route(DirectionRouter.RouteMetadataAllFieldsName)]
+        [ApiExplorerSettings(IgnoreApi = MethodVisible.Visible)]
+        [ServiceFilter(typeof(FilterActionContextLog), Order = OrderFilterExecutation.Second)]
+        [ServiceFilter(typeof(FilterActionContextFields<Metadata>), Order = OrderFilterExecutation.Third)]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public ActionResult<List<string>> MetadataAllFieldsName([BindRequired] Metadata metadata)
