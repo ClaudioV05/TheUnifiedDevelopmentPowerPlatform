@@ -11,7 +11,7 @@ namespace AppSolution.Presentation.Api.Controllers
 {
     [ApiController]
     [Route("[Controller]")]
-    [Consumes("application/json")]
+    [Consumes(MediaTypeNames.Application.Json)]
     [Produces(MediaTypeNames.Application.Json)]
     [ServiceFilter(typeof(FilterActionContextController), Order = 1)]
     public class AppSolutionController : ControllerBase
@@ -28,7 +28,7 @@ namespace AppSolution.Presentation.Api.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpPost]
-        [Produces("application/json")]
+        [Produces(MediaTypeNames.Application.Json)]
         [Route("/MetadataAllTablesName")]
         [ApiExplorerSettings(IgnoreApi = false)]
         [ServiceFilter(typeof(FilterActionContextLog), Order = 2)]
@@ -50,7 +50,7 @@ namespace AppSolution.Presentation.Api.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpPost]
-        [Produces("application/json")]
+        [Produces(MediaTypeNames.Application.Json)]
         [Route("/MetadataAllFieldsName")]
         [ApiExplorerSettings(IgnoreApi = true)]
         [ServiceFilter(typeof(FilterActionContextLog), Order = 2)]
