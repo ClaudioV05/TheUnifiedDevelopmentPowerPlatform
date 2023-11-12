@@ -9,6 +9,9 @@ using Mddata = AppSolution.Infraestructure.Domain.Entities.Metadata;
 
 namespace AppSolution.Presentation.Api.Controllers
 {
+    /// <summary>
+    /// Direction Router.
+    /// </summary>
     public record DirectionRouter
     {
         public const string RouteController = "[Controller]";
@@ -16,6 +19,9 @@ namespace AppSolution.Presentation.Api.Controllers
         public const string RouteMetadataAllFieldsName = "/MetadataAllFieldsName";
     }
 
+    /// <summary>
+    /// Order Filter Executation.
+    /// </summary>
     public record OrderFilterExecutation
     {
         public const int First = 1;
@@ -23,6 +29,9 @@ namespace AppSolution.Presentation.Api.Controllers
         public const int Third = 3;
     }
 
+    /// <summary>
+    /// Method Visible in API.
+    /// </summary>
     public record MethodVisibleInApi
     {
         public const bool Yes = false;
@@ -46,6 +55,7 @@ namespace AppSolution.Presentation.Api.Controllers
         /// <summary>
         /// Generate tables name of Metadata.
         /// </summary>
+        /// <param name="metadata"></param>
         /// <returns></returns>
         [HttpPost]
         [Produces(MediaTypeNames.Application.Json)]
@@ -68,6 +78,7 @@ namespace AppSolution.Presentation.Api.Controllers
         /// <summary>
         ///  Generate fields name of Metadata.
         /// </summary>
+        /// <param name="metadata"></param>
         /// <returns></returns>
         [HttpPost]
         [Produces(MediaTypeNames.Application.Json)]
