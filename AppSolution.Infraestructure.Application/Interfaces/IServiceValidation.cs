@@ -2,6 +2,6 @@
 {
     public interface IServiceValidation
     {
-        bool ValidateBase64(string text);
+        bool ValidateBase64(string? text);
     }
 }

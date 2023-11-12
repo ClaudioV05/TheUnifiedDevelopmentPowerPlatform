@@ -4,7 +4,6 @@ using AppSolution.Infraestructure.Domain.Entities;
 using AppSolution.Presentation.Api.Extensions;
 using AppSolution.Presentation.Api.Filters;
 using AppSolution.Presentation.Api.Swagger;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Formatters;
 using System.Reflection;
 

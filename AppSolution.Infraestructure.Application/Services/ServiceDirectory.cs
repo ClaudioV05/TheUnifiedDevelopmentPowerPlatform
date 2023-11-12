@@ -31,7 +31,7 @@ namespace AppSolution.Application.Services
                     posRootDirectory = rootDirectory.IndexOf(NAME_DIRECTORY_BIN);
                 }
 
-                string? path = rootDirectory.Substring(0, posRootDirectory - 1).ToLowerInvariant();
+                string? path = rootDirectory?.Substring(0, posRootDirectory - 1).ToLowerInvariant();
 
                 if (!string.IsNullOrEmpty(path))
                 {

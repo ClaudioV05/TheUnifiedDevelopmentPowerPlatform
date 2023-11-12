@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-
-namespace AppSolution.Infraestructure.Domain.Entities
+﻿namespace AppSolution.Infraestructure.Domain.Interfaces
 {
     /// <summary>
     /// Interface IEntity.

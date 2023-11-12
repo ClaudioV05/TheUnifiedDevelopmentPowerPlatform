@@ -1,30 +1,31 @@
-﻿using Microsoft.AspNetCore.Mvc.Filters;
+﻿using AppSolution.Application.Interfaces;
+using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace AppSolution.Presentation.Api.Filters
 {
     public class FilterActionContextLog : IAsyncActionFilter
     {
-        private readonly ILogger<FilterActionContextLog> _logger;
+        private readonly IServiceLog _serviceLog;
 
-        public FilterActionContextLog(ILogger<FilterActionContextLog> logger)
+        public FilterActionContextLog(IServiceLog serviceLog)
         {
-            _logger = logger;
+            _serviceLog = serviceLog;
         }
 
         public async Task OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next)
         {
-            _logger.LogInformation("### -> OnActionExecuted");
-            _logger.LogInformation("###################################################");
-            _logger.LogInformation($"{DateTime.Now.ToLongTimeString()}");
-            _logger.LogInformation("###################################################");
+            _serviceLog.LogInformation("### -> OnActionExecuted");
+            _serviceLog.LogInformation("###################################################");
+            _serviceLog.LogInformation($"{DateTime.Now.ToLongTimeString()}");
+            _serviceLog.LogInformation("###################################################");
 
             await next();
 
-            _logger.LogInformation("### -> OnActionExecuting");
-            _logger.LogInformation("###################################################");
-            _logger.LogInformation($"{DateTime.Now.ToLongTimeString()}");
-            _logger.LogInformation($"ModelState : {context.ModelState.IsValid}");
-            _logger.LogInformation("###################################################");
+            _serviceLog.LogInformation("### -> OnActionExecuting");
+            _serviceLog.LogInformation("###################################################");
+            _serviceLog.LogInformation($"{DateTime.Now.ToLongTimeString()}");
+            _serviceLog.LogInformation($"ModelState : {context.ModelState.IsValid}");
+            _serviceLog.LogInformation("###################################################");
         }
     }
 }

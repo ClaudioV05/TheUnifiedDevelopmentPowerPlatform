@@ -4,7 +4,7 @@ namespace AppSolution.Application.Services
 {
     public class ServiceValidation : IServiceValidation
     {
-        public bool ValidateBase64(string text)
+        public bool ValidateBase64(string? text)
         {
             // Credit: oybek https://stackoverflow.com/users/794764/oybek
 

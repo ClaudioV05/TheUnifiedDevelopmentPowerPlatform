@@ -1,4 +1,4 @@
-﻿using AppSolution.Infraestructure.Domain.Entities;
+﻿using AppSolution.Infraestructure.Domain.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 

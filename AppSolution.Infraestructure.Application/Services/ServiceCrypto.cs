@@ -60,7 +60,7 @@ namespace AppSolution.Application.Services
             return Encoding.UTF8.GetString(memoryStream.ToArray());
         }
 
-        public string DecodeBase64(string value)
+        public string DecodeBase64(string? value)
         {
             try
             {

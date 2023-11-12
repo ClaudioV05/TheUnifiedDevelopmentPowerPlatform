@@ -36,10 +36,10 @@ namespace AppSolution.Application.Services
         public List<string> MetadataAllTablesName(Metadata? metadata)
         {
             string scriptMetadata = string.Empty;
-            List<string> tables = null;
+            List<string> tables = new List<string>();
             try
             {
-                if (!_serviceValidation.ValidateBase64((metadata?.ScriptMetadata)))
+                if (!_serviceValidation.ValidateBase64(metadata?.ScriptMetadata))
                     throw new Exception("create class with log for it");
 
                 scriptMetadata = _serviceCrypto.DecodeBase64(metadata?.ScriptMetadata);
@@ -59,7 +59,7 @@ namespace AppSolution.Application.Services
                 tables?.Append(string.Empty);
             }
 
-            return tables;
+            return tables ?? new List<string>();
         }
 
         public List<string> MetadataTableAndAllFields(Metadata? metadata)
