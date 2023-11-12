@@ -5,7 +5,6 @@ using AppSolution.Presentation.Api.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using System.Net.Mime;
-using System.Numerics;
 using Mddata = AppSolution.Infraestructure.Domain.Entities.Metadata;
 
 namespace AppSolution.Presentation.Api.Controllers
@@ -24,10 +23,10 @@ namespace AppSolution.Presentation.Api.Controllers
         public const int Third = 3;
     }
 
-    public record MethodVisible
+    public record MethodVisibleInApi
     {
-        public const bool Visible = true;
-        public const bool NotVisible = false;
+        public const bool Yes = false;
+        public const bool Not = true;
     }
 
     [ApiController]
@@ -51,7 +50,7 @@ namespace AppSolution.Presentation.Api.Controllers
         [HttpPost]
         [Produces(MediaTypeNames.Application.Json)]
         [Route(DirectionRouter.RouteMetadataAllTablesName)]
-        [ApiExplorerSettings(IgnoreApi = MethodVisible.Visible)]
+        [ApiExplorerSettings(IgnoreApi = MethodVisibleInApi.Yes)]
         [ServiceFilter(typeof(FilterActionContextLog), Order = OrderFilterExecutation.Second)]
         [ServiceFilter(typeof(FilterActionContextTables<Metadata>), Order = OrderFilterExecutation.Third)]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -73,7 +72,7 @@ namespace AppSolution.Presentation.Api.Controllers
         [HttpPost]
         [Produces(MediaTypeNames.Application.Json)]
         [Route(DirectionRouter.RouteMetadataAllFieldsName)]
-        [ApiExplorerSettings(IgnoreApi = MethodVisible.Visible)]
+        [ApiExplorerSettings(IgnoreApi = MethodVisibleInApi.Not)]
         [ServiceFilter(typeof(FilterActionContextLog), Order = OrderFilterExecutation.Second)]
         [ServiceFilter(typeof(FilterActionContextFields<Metadata>), Order = OrderFilterExecutation.Third)]
         [ProducesResponseType(StatusCodes.Status200OK)]
