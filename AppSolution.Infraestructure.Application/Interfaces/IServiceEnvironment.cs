@@ -5,5 +5,6 @@
         string? GetEnvVariable(string variable);
         string? GetEnvOSVersion();
         List<string> GetEnvListVariables();
+        bool PlatformIsWindows();
     }
 }

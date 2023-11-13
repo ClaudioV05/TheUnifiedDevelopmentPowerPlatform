@@ -55,5 +55,7 @@ namespace AppSolution.Application.Services
 
             return envListVariables;
         }
+
+        public bool PlatformIsWindows() => OperatingSystem.IsWindows();
     }
 }
