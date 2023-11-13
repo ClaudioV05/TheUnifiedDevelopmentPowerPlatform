@@ -5,22 +5,6 @@ namespace AppSolution.Application.Services
 {
     public class ServiceEnvironment : IServiceEnvironment
     {
-        public string? GetEnvOSVersion()
-        {
-            string? value = string.Empty;
-            try
-            {
-                value = Environment.OSVersion.ToString();
-            }
-            catch (SecurityException)
-            {
-                // After this use Class of Exception.
-                value = "Você não tem permissão para realizar esta operação.\nExecute o programa como Administrador";
-            }
-
-            return value;
-        }
-
         public string? GetEnvVariable(string variable)
         {
             string? value = string.Empty;
