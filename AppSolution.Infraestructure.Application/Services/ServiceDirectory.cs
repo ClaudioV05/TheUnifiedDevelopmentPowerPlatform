@@ -1,5 +1,6 @@
 ﻿using AppSolution.Application.Interfaces;
 using System.Reflection;
+using System.Text.RegularExpressions;
 
 namespace AppSolution.Application.Services
 {
@@ -44,6 +45,15 @@ namespace AppSolution.Application.Services
             }
         }
 
+        private string? GetRootPath()
+        {
+            string? exePath = string.IsNullOrEmpty(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)) ? string.Empty : Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            Regex appRegexMatcher = new Regex(@"(?<!fil)[A-Za-z]:\\+[\S\s]*?(?=\\+bin)");
+            exePath = exePath?.ToLowerInvariant();
+            return appRegexMatcher.Match(exePath ?? string.Empty).Value;
+        }
+
+        #region App Directory.
         public void CreateAppDirectory(string? path)
         {
             if (Directory.Exists($"{path}{NAME_DIRECTORY_APP}"))
@@ -54,15 +64,14 @@ namespace AppSolution.Application.Services
             Directory.CreateDirectory($"{path}{NAME_DIRECTORY_APP}");
         }
 
-        private string? GetRootPath()
-        {
-            string? rootPath = string.IsNullOrEmpty(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)) ? string.Empty : Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            return rootPath?.ToLowerInvariant();
-        }
-
-        public void CreateConfigDirectory(string? path)
+        public void SaveAppDirectory(string? path)
         {
             throw new NotImplementedException();
         }
+        #endregion App Directory.
+
+        #region Config Directory.
+
+        #endregion Config Directory.
     }
 }

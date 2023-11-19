@@ -5,21 +5,7 @@ namespace AppSolution.Application.Services
 {
     public class ServiceEnvironment : IServiceEnvironment
     {
-        public string? GetEnvVariable(string variable)
-        {
-            string? value = string.Empty;
-            try
-            {
-                value = Environment.GetEnvironmentVariable(variable);
-            }
-            catch (SecurityException)
-            {
-                // After this use Class of Exception.
-                value = "Você não tem permissão para realizar esta operação.\nExecute o programa como Administrador";
-            }
-
-            return value;
-        }
+        public string? GetEnvVariable(string variable) => Environment.GetEnvironmentVariable(variable);
 
         public List<string> GetEnvListVariables()
         {
@@ -28,7 +14,7 @@ namespace AppSolution.Application.Services
             {
                 foreach (string s2 in Environment.GetEnvironmentVariables().Keys)
                 {
-                    envListVariables.Add(Environment.GetEnvironmentVariable(s2)?.ToString());
+                    envListVariables.Add(Environment.GetEnvironmentVariable(s2)?.ToString() ?? string.Empty);
                 }
             }
             catch (SecurityException)
