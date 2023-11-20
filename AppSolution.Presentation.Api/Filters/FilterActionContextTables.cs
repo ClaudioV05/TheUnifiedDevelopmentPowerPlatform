@@ -1,5 +1,6 @@
 ﻿using AppSolution.Application.Interfaces;
 using AppSolution.Infraestructure.Domain.Interfaces;
+using AppSolution.Presentation.Api.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 
@@ -16,29 +17,47 @@ namespace AppSolution.Presentation.Api.Filters
 
         public async Task OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next)
         {
+            string message = string.Empty;
+            string messageValidation = string.Empty;
+
             if (!context.ModelState.IsValid)
             {
-                context.Result = new BadRequestObjectResult("É obrigatório informar o JSON para gerar o app.");
+                messageValidation = "É obrigatório informar o JSON para gerar o app.";
+            }
+            else if (!_serviceValidation.ScriptMetadataIsOk(context, ref message))
+            {
+                messageValidation = message;
+            }
+            else if (!_serviceValidation.DevelopmentEnvironmentIsOk(context, ref message))
+            {
+                messageValidation = message;
+            }
+            else if (!_serviceValidation.DatabasesIsOk(context, ref message))
+            {
+                messageValidation = message;
+            }
+            else if (!_serviceValidation.DatabasesEngineIsOk(context, ref message))
+            {
+                messageValidation = message;
+            }
+            else if (!_serviceValidation.FormIsOk(context, ref message))
+            {
+                messageValidation = message;
             }
 
-            if (!_serviceValidation.ScriptMetadataIsOk(context))
+            if (string.IsNullOrEmpty(messageValidation))
             {
-                context.Result = new BadRequestObjectResult("É obrigatório informar o Metada para gerar o app.");
+                // make code here.
             }
-
-            if (!_serviceValidation.DevelopmentEnvironmentIsOk(context))
+            else if (!string.IsNullOrEmpty(messageValidation))
             {
-                context.Result = new BadRequestObjectResult("É obrigatório informar o Development Environment para gerar o app.");
-            }
+                context.Result = new BadRequestObjectResult(new ErrorDetails()
+                { 
+                    Message = messageValidation,
+                    StatusCode = 1
+                });
 
-            if (!_serviceValidation.DatabasesIsOk(context))
-            {
-                context.Result = new BadRequestObjectResult("É obrigatório informar o Databases para gerar o app.");
-            }
-
-            if (!_serviceValidation.FormIsOk(context))
-            {
-                context.Result = new BadRequestObjectResult("É obrigatório informar o Forms para gerar o app.");
+                return;
             }
 
             await next();

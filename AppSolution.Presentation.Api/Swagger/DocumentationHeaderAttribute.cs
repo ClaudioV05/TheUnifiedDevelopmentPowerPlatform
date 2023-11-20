@@ -47,6 +47,17 @@ namespace AppSolution.Presentation.Api.Swagger
 
             operation.Parameters.Add(new OpenApiParameter
             {
+                Name = "IdDatabasesEngine",
+                In = ParameterLocation.Header,
+                Required = false,
+                Schema = new OpenApiSchema
+                {
+                    Type = "int"
+                }
+            });
+
+            operation.Parameters.Add(new OpenApiParameter
+            {
                 Name = "IdForms",
                 In = ParameterLocation.Header,
                 Required = false,

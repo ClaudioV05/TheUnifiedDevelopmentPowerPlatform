@@ -23,6 +23,12 @@ namespace AppSolution.Presentation.Api.Models
         public int IdDatabases { get; set; }
 
         /// <summary>
+        /// Identify of databases engine.
+        /// </summary>
+        [Required]
+        public int IdDatabasesEngine { get; set; }
+
+        /// <summary>
         /// Identify of forms.
         /// </summary>
         [Required]
