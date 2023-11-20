@@ -8,9 +8,6 @@ namespace AppSolution.Application.Services
         private record FilterActionTables
         {
             public const string METADATA = "metadata";
-            public const string DEVELOPMENTENVIRONMENT = "idDevelopmentEnvironment";
-            public const string DATABASES = "idDatabases";
-            public const string FORMS = "idForms";
         }
 
         public bool ScriptMetadataIsOk(dynamic context)
@@ -23,22 +20,22 @@ namespace AppSolution.Application.Services
         public bool DevelopmentEnvironmentIsOk(dynamic context)
         {
             dynamic? obj = null;
-            context.ActionArguments.TryGetValue(FilterActionTables.DEVELOPMENTENVIRONMENT, out obj);
-            return !string.IsNullOrEmpty(obj?.ScriptMetadata);
+            context.ActionArguments.TryGetValue(FilterActionTables.METADATA, out obj);
+            return obj?.IdDevelopmentEnvironment >= 0 ? true : false;
         }
 
         public bool DatabasesIsOk(dynamic context)
         {
             dynamic? obj = null;
-            context.ActionArguments.TryGetValue(FilterActionTables.DATABASES, out obj);
-            return !string.IsNullOrEmpty(obj?.ScriptMetadata);
+            context.ActionArguments.TryGetValue(FilterActionTables.METADATA, out obj);
+            return obj?.IdDatabases >= 0 ? true : false;
         }
 
         public bool FormIsOk(dynamic context)
         {
             dynamic? obj = null;
-            context.ActionArguments.TryGetValue(FilterActionTables.FORMS, out obj);
-            return !string.IsNullOrEmpty(obj?.ScriptMetadata);
+            context.ActionArguments.TryGetValue(FilterActionTables.METADATA, out obj);
+            return obj?.IdForms >= 0 ? true : false;
         }
         #endregion Validation for FilterActionContextTables.
 
