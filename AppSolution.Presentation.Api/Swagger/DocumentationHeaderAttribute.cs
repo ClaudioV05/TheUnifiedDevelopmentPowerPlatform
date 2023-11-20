@@ -14,7 +14,7 @@ namespace AppSolution.Presentation.Api.Swagger
 
             operation.Parameters.Add(new OpenApiParameter
             {
-                Name = "scriptMetadata",
+                Name = "ScriptMetadata",
                 In = ParameterLocation.Header,
                 Required = false,
                 Schema = new OpenApiSchema

@@ -1,28 +1,59 @@
 ﻿using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
+using System.Net.Cache;
 
 namespace AppSolution.Presentation.Api.Swagger
 {
     public class DocumentationAttribute : IDocumentFilter
     {
+        /// <summary>
+        /// Documentation about Information of API.
+        /// </summary>
+        private record DocumentationInfo
+        {
+            public const string VERSION = "v1";
+            public const string TITLE = "AppSolution";
+            public const string DESCRIPTION = "Generator of Class C#";
+            public const string TERMSOFSERVICE = "https://claudiomildo.net/terms";
+        }
+
+        /// <summary>
+        /// Documentation about Contact of API.
+        /// </summary>
+        private record DocumentationContact
+        {
+            public const string NAME = "Claudio Ventura";
+            public const string EMAIL = "claudiomildo@hotmail.com";
+            public const string URL = "https://www.claudiomildo.net";
+        }
+
+        /// <summary>
+        /// Documentation about License of API.
+        /// </summary>
+        private record DocumentatioLicense
+        {
+            public const string NAME = "Information about the license.";
+            public const string URL = "https://claudiomildo.net/license";
+        }
+
         public void Apply(OpenApiDocument swaggerDoc, DocumentFilterContext context)
         {
             swaggerDoc.Info = new OpenApiInfo
             {
-                Version = "v1",
-                Title = "AppSolution",
-                Description = "Generator of Class C#",
-                TermsOfService = new Uri("https://claudiomildo.net/terms"),
+                Version = DocumentationInfo.VERSION,
+                Title = DocumentationInfo.TITLE,
+                Description = DocumentationInfo.DESCRIPTION,
+                TermsOfService = new Uri(DocumentationInfo.TERMSOFSERVICE),
                 Contact = new OpenApiContact
                 {
-                    Name = "Claudio Ventura",
-                    Email = "claudiomildo@hotmail.com",
-                    Url = new Uri("https://www.claudiomildo.net"),
+                    Name = DocumentationContact.NAME,
+                    Email = DocumentationContact.EMAIL,
+                    Url = new Uri(DocumentationContact.URL)
                 },
                 License = new OpenApiLicense
                 {
-                    Name = "Information about the license.",
-                    Url = new Uri("https://claudiomildo.net/license"),
+                    Name = DocumentatioLicense.NAME,
+                    Url = new Uri(DocumentatioLicense.URL)
                 }
             };
         }
