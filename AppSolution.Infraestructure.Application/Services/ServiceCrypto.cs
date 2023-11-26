@@ -64,7 +64,7 @@ namespace AppSolution.Application.Services
         {
             try
             {
-                var valueBytes = Convert.FromBase64String(value);
+                var valueBytes = Convert.FromBase64String(value ?? string.Empty);
                 return Encoding.UTF8.GetString(valueBytes);
             }
             catch (Exception)

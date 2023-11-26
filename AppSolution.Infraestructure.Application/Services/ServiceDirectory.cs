@@ -6,72 +6,161 @@ namespace AppSolution.Application.Services
 {
     public class ServiceDirectory : IServiceDirectory
     {
-        private const string NAME_DIRECTORY_BIN = "bin";
-        private const string NAME_DIRECTORY_APP = "\\app";
-        private const string NAME_DIRECTORY_DEBUG = "debug";
-        private const string NAME_DIRECTORY_CONFIG = "\\config";
-
-        public ServiceDirectory()
+        /// <summary>
+        /// Names of Directory for App Solution.
+        /// </summary>
+        private record StandardDirectory
         {
+            public const string DIR_APP = "\\App";
+            public const string DIR_CONFIG = "\\Config";
 
+            public const string DIR_PRESENTATION = "\\1-Presentation";
+            public const string DIR_APPLICATION = "\\2-Application";
+            public const string DIR_DOMAIN = "\\3-Domain";
+            public const string DIR_INFRASTRUCTURE = "\\4-Infrastructure";
         }
 
-        public void CreateDefaultDirectory()
+        #region App.
+        public bool CreateAppDirectory()
         {
+            bool createDir = false;
             try
             {
-                int posRootDirectory = 0;
-                string? rootDirectory = GetRootPath();
+                string? rootDirectory = GetRootDirectory();
 
-                if (!string.IsNullOrEmpty(rootDirectory) && rootDirectory.Contains(NAME_DIRECTORY_DEBUG))
+                if (!string.IsNullOrEmpty(rootDirectory))
                 {
-                    posRootDirectory = rootDirectory.IndexOf(NAME_DIRECTORY_DEBUG);
-                }
-                else if (!string.IsNullOrEmpty(rootDirectory) && rootDirectory.Contains(NAME_DIRECTORY_BIN))
-                {
-                    posRootDirectory = rootDirectory.IndexOf(NAME_DIRECTORY_BIN);
-                }
+                    if (Directory.Exists($"{rootDirectory}{StandardDirectory.DIR_APP}"))
+                    {
+                        Directory.Delete($"{rootDirectory}{StandardDirectory.DIR_APP}", true);
+                    }
 
-                string? path = rootDirectory?.Substring(0, posRootDirectory - 1).ToLowerInvariant();
-
-                if (!string.IsNullOrEmpty(path))
-                {
-                    CreateAppDirectory(path);
+                    Directory.CreateDirectory($"{rootDirectory}{StandardDirectory.DIR_APP}");
+                    createDir = true;
                 }
             }
-            catch (Exception)
+            catch (IOException)
             {
 
             }
+
+            return createDir;
         }
 
-        private string? GetRootPath()
+        public string? ReadAppDirectory()
         {
-            string? exePath = string.IsNullOrEmpty(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)) ? string.Empty : Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            string? dir = string.Empty;
+            try
+            {
+                string? rootDirectory = GetRootDirectory();
+                dir = $"{rootDirectory}{StandardDirectory.DIR_APP}";
+            }
+            catch (IOException)
+            {
+
+            }
+
+            return dir;
+        }
+        #endregion App.
+
+        #region Config.
+        public bool CreateConfigDirectory()
+        {
+            bool createDir = false;
+            try
+            {
+                string? rootDirectory = GetRootDirectory();
+
+                if (!string.IsNullOrEmpty(rootDirectory))
+                {
+                    if (Directory.Exists($"{rootDirectory}{StandardDirectory.DIR_APP}{StandardDirectory.DIR_CONFIG}"))
+                    {
+                        Directory.Delete($"{rootDirectory}{StandardDirectory.DIR_APP}{StandardDirectory.DIR_CONFIG}", true);
+                    }
+
+                    Directory.CreateDirectory($"{rootDirectory}{StandardDirectory.DIR_APP}{StandardDirectory.DIR_CONFIG}");
+                    createDir = true;
+                }
+            }
+            catch (IOException)
+            {
+
+            }
+
+            return createDir;
+        }
+
+        public string? ReadConfigDirectory()
+        {
+            string? dir = string.Empty;
+            try
+            {
+                string? rootDirectory = GetRootDirectory();
+                dir = $"{rootDirectory}{StandardDirectory.DIR_APP}{StandardDirectory.DIR_CONFIG}";
+            }
+            catch (IOException)
+            {
+
+            }
+
+            return dir;
+        }
+        #endregion Config.
+
+        #region Presentation.
+        public bool CreatePresentationDirectory()
+        {
+            bool createDir = false;
+            try
+            {
+                string? rootDirectory = GetRootDirectory();
+
+                if (!string.IsNullOrEmpty(rootDirectory))
+                {
+                    if (Directory.Exists($"{rootDirectory}{StandardDirectory.DIR_APP}{StandardDirectory.DIR_PRESENTATION}"))
+                    {
+                        Directory.Delete($"{rootDirectory}{StandardDirectory.DIR_APP}{StandardDirectory.DIR_PRESENTATION}", true);
+                    }
+
+                    Directory.CreateDirectory($"{rootDirectory}{StandardDirectory.DIR_APP} {StandardDirectory.DIR_PRESENTATION}");
+                    createDir = true;
+                }
+            }
+            catch (IOException)
+            {
+
+            }
+
+            return createDir;
+        }
+
+        public string? ReadPresentationDirectory()
+        {
+            string? dir = string.Empty;
+            try
+            {
+                string? rootDirectory = GetRootDirectory();
+                dir = $"{rootDirectory}{StandardDirectory.DIR_APP} {StandardDirectory.DIR_PRESENTATION}";
+            }
+            catch (IOException)
+            {
+
+            }
+
+            return dir;
+        }
+        #endregion Presentation.
+
+        private string? GetRootDirectory()
+        {
+            /*
+            string? exerootDirectory = string.IsNullOrEmpty(rootDirectory.GetDirectoryName(Assembly.GetExecutingAssembly().Location)) ? string.Empty : rootDirectory.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             Regex appRegexMatcher = new Regex(@"(?<!fil)[A-Za-z]:\\+[\S\s]*?(?=\\+bin)");
-            exePath = exePath?.ToLowerInvariant();
-            return appRegexMatcher.Match(exePath ?? string.Empty).Value;
+            exerootDirectory = exerootDirectory?.ToLowerInvariant();
+            return appRegexMatcher.Match(exerootDirectory ?? string.Empty).Value;
+            */
+            return null;
         }
-
-        #region App Directory.
-        public void CreateAppDirectory(string? path)
-        {
-            if (Directory.Exists($"{path}{NAME_DIRECTORY_APP}"))
-            {
-                Directory.Delete($"{path}{NAME_DIRECTORY_APP}", true);
-            }
-
-            Directory.CreateDirectory($"{path}{NAME_DIRECTORY_APP}");
-        }
-
-        public void SaveAppDirectory(string? path)
-        {
-            throw new NotImplementedException();
-        }
-        #endregion App Directory.
-
-        #region Config Directory.
-
-        #endregion Config Directory.
     }
 }

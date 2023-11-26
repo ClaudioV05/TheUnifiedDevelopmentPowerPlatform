@@ -4,18 +4,18 @@ namespace AppSolution.Application.Services
 {
     public class ServiceFile : IServiceFile
     {
-        public void LinesGenerate(IEnumerable<string> informations, string path)
+        public void LinesGenerate(IEnumerable<string> informations, string rootDirectory)
         {
-            File.WriteAllLines(path, informations);
+            File.WriteAllLines(rootDirectory, informations);
         }
 
-        public IEnumerable<string>? LinesRead(string path)
+        public IEnumerable<string>? LinesRead(string rootDirectory)
         {
             IEnumerable<string>? returnList = null;
 
-            if (File.Exists(path)) 
+            if (File.Exists(rootDirectory)) 
             { 
-                returnList = File.ReadAllLines(path);
+                returnList = File.ReadAllLines(rootDirectory);
             }
 
             return returnList;

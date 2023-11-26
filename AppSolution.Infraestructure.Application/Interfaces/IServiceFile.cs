@@ -6,13 +6,13 @@
         /// Create all lines and save in file.
         /// </summary>
         /// <param name="information"></param>
-        void LinesGenerate(IEnumerable<string> informations, string path);
+        void LinesGenerate(IEnumerable<string> informations, string rootDirectory);
 
         /// <summary>
         /// Reading lines from files and return in array of string.
         /// </summary>
-        /// <param name="path"></param>
+        /// <param name="rootDirectory"></param>
         /// <returns></returns>
-        IEnumerable<string>? LinesRead(string path);
+        IEnumerable<string>? LinesRead(string rootDirectory);
     }
 }

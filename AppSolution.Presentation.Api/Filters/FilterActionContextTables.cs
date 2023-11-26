@@ -8,10 +8,12 @@ namespace AppSolution.Presentation.Api.Filters
 {
     public class FilterActionContextTables<T> : IAsyncActionFilter where T : class, IEntity
     {
+        private readonly IServiceDirectory _serviceDirectory;
         private readonly IServiceValidation _serviceValidation;
 
-        public FilterActionContextTables(IServiceValidation serviceValidation)
+        public FilterActionContextTables(IServiceDirectory serviceDirectory, IServiceValidation serviceValidation)
         {
+            _serviceDirectory = serviceDirectory;
             _serviceValidation = serviceValidation;
         }
 
@@ -25,6 +27,10 @@ namespace AppSolution.Presentation.Api.Filters
                 messageValidation = "É obrigatório informar o JSON para gerar o app.";
             }
             else if (!_serviceValidation.ScriptMetadataIsOk(context, ref message))
+            {
+                messageValidation = message;
+            }
+            else if (!_serviceValidation.MetadataIsBase64Ok(context, ref message))
             {
                 messageValidation = message;
             }
@@ -45,14 +51,10 @@ namespace AppSolution.Presentation.Api.Filters
                 messageValidation = message;
             }
 
-            if (string.IsNullOrEmpty(messageValidation))
-            {
-                // make code here.
-            }
-            else if (!string.IsNullOrEmpty(messageValidation))
+            if (!string.IsNullOrEmpty(messageValidation))
             {
                 context.Result = new BadRequestObjectResult(new ErrorDetails()
-                { 
+                {
                     Message = messageValidation,
                     StatusCode = 1
                 });
@@ -61,6 +63,22 @@ namespace AppSolution.Presentation.Api.Filters
             }
 
             await next();
+
+            if (_serviceDirectory.CreateAppDirectory())
+            {
+                _serviceDirectory.CreateConfigDirectory();
+                var aux = _serviceDirectory.ReadAppDirectory();
+            }
+            else
+            {
+                context.Result = new BadRequestObjectResult(new ErrorDetails()
+                {
+                    Message = "Erro ao criar diretório principal do AppSolution.",
+                    StatusCode = 1
+                });
+
+                return;
+            }
         }
     }
 }

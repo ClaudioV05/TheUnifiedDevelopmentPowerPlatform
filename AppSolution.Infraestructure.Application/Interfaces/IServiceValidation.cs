@@ -17,6 +17,14 @@ namespace AppSolution.Application.Interfaces
         bool ScriptMetadataIsOk(dynamic context, ref string message);
 
         /// <summary>
+        /// Validateing whether string is Base64.
+        /// </summary>
+        /// <param name="context"></param>
+        /// <param name="message"></param>
+        /// <returns></returns>
+        bool MetadataIsBase64Ok(dynamic context, ref string message);
+
+        /// <summary>
         /// Does Validation for Development Environment.
         /// </summary>
         /// <param name="context"></param>
