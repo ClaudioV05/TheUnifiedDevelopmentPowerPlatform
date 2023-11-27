@@ -62,6 +62,40 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         }
         #endregion Validation for FilterActionContextTables.
 
+        #region Validation for Files.
+        public bool IsFileInUseGeneric(FileInfo file)
+        {
+            bool validfile = false;
+
+            try
+            {
+                using var stream = file.Open(FileMode.Open, FileAccess.Read, FileShare.None);
+            }
+            catch (IOException)
+            {
+                validfile = true;
+            }
+
+            return validfile;
+        }
+
+        public bool IsFileInUse(FileInfo file)
+        {
+            bool validfile = false;
+
+            try
+            {
+                using var stream = file.Open(FileMode.Open, FileAccess.Read, FileShare.None);
+            }
+            catch (IOException e) when ((e.HResult & 0x0000FFFF) == 32)
+            {
+                validfile = true;
+            }
+
+            return validfile;
+        }
+        #endregion Validation for Files.
+
         public bool ValidateBase64(string? text)
         {
             int indexBase64 = 0;

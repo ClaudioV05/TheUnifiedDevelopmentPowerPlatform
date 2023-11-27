@@ -2,8 +2,6 @@
 {
     public interface IServiceValidation
     {
-        bool ValidateBase64(string? text);
-
         #region Validation for FilterActionContextTables.
 
         /// <summary>
@@ -54,5 +52,29 @@
         /// <returns></returns>
         bool FormIsOk(dynamic context, ref string message);
         #endregion Validation for FilterActionContextTables.
+
+        #region Validation for Files.
+
+        /// <summary>
+        /// Method will check if the file is in use generic.
+        /// </summary>
+        /// <param name="file"></param>
+        /// <returns></returns>
+        bool IsFileInUseGeneric(FileInfo file);
+
+        /// <summary>
+        /// Method will check if the file is in use.
+        /// </summary>
+        /// <param name="file"></param>
+        /// <returns></returns>
+        bool IsFileInUse(FileInfo file);
+        #endregion Validation for Files.
+
+        /// <summary>
+        /// Method will check if Base64 is valid.
+        /// </summary>
+        /// <param name="text"></param>
+        /// <returns></returns>
+        bool ValidateBase64(string? text);
     }
 }
