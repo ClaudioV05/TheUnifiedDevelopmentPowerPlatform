@@ -5,8 +5,8 @@
     /// </summary>
     public abstract class DirectoryInfrastructure
     {
-        public const string INFRASTRUCTURE = "\\4-Infrastructure";
-        public const string CROSSCUTTING = "\\CrossCutting";
-        public const string DATA = "\\Data";
+        public const string INFRASTRUCTURE = @"\4-Infrastructure";
+        public const string CROSSCUTTING = @"\CrossCutting";
+        public const string DATA = @"\Data";
     }
 }

@@ -5,8 +5,8 @@
     /// </summary>
     public abstract class DirectoryApplication
     {
-        public const string APPLICATION = "\\2-Application";
-        public const string INTERFACES = "\\Interfaces";
-        public const string SERVICES = "\\Services";
+        public const string APPLICATION = @"\2-Application";
+        public const string INTERFACES = @"\Interfaces";
+        public const string SERVICES = @"\Services";
     }
 }

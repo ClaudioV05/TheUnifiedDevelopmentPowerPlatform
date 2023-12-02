@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using System.IO;
+using System.Reflection;
 using System.Text.RegularExpressions;
 using UnifiedDevelopmentPlatform.Application.Interfaces;
 using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Directory;
@@ -19,6 +20,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
 
         public bool CreateAllDirectoryOfSolution()
         {
+            /*
             try
             {
                 _directory = this.GetRootDirectoryOfSolution();
@@ -51,17 +53,20 @@ namespace UnifiedDevelopmentPlatform.Application.Services
                 this.DeleteAllDirectoryOfSolution(_directory);
                 return false;
             }
-
+            */
             return true;
         }
-
+        /*
         private bool DeleteAllDirectoryOfSolution(string? rootDirectory)
         {
             try
             {
                 if (!string.IsNullOrEmpty(rootDirectory))
                 {
-                    if (Directory.Exists($"{rootDirectory}{DirectoryStandard.APP}"))
+                    DirectoryInfo di = new DirectoryInfo(rootDirectory);
+                    DirectoryInfo[] Directories = di.GetDirectories("*", SearchOption.AllDirectories);
+
+                    if (Directory.Exists($"{rootDirectory}{DirectoryStandard.APP}") && Directories.Count() > 0)
                     {
                         Directory.Delete($"{rootDirectory}{DirectoryStandard.APP}", true);
                     }
@@ -92,7 +97,6 @@ namespace UnifiedDevelopmentPlatform.Application.Services
 
         private string? RemoverCaracteresInvalidosArquivo(string path)
         {
-
             if (!string.IsNullOrEmpty(path) && path.IndexOfAny(Path.GetInvalidFileNameChars()) >= 0)
             {
                 foreach (char c in Path.GetInvalidFileNameChars())
@@ -185,5 +189,6 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             CreateQueueDirectory(_queueDirectory);
         }
         #endregion Infrastructure Directorys.
+        */
     }
 }

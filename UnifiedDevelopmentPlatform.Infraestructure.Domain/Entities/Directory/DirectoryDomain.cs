@@ -5,8 +5,8 @@
     /// </summary>
     public abstract class DirectoryDomain
     {
-        public const string DOMAIN = "\\3-Domain";
-        public const string INTERFACES = "\\Interfaces";
-        public const string ENTITIES = "\\Entities";
+        public const string DOMAIN = @"\3-Domain";
+        public const string INTERFACES = @"\Interfaces";
+        public const string ENTITIES = @"\Entities";
     }
 }
