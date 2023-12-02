@@ -6,15 +6,16 @@ namespace UnifiedDevelopmentPlatform.Application.Services
 {
     public class ServiceCrypto : IServiceCrypto
     {
-        private readonly string _keyCrypto = "3b4750253d5b274b6346545f3c2b323f6b436c596e6d3c6e5d23552d4a";
+        //private readonly string _keyCrypto = "3b4750253d5b274b6346545f3c2b323f6b436c596e6d3c6e5d23552d4a";
 
         public string Encrypt(string value)
         {
+            /*
             byte[] input;
             byte[] key = { };
             byte[] newValue = { 12, 34, 56, 78, 90, 102, 114, 126 };
 
-            DESCryptoServiceProvider provider = new DESCryptoServiceProvider();
+            DESCryptoServiceProvider? provider = new DESCryptoServiceProvider();
             MemoryStream memoryStream = new MemoryStream();
             try
             {
@@ -29,12 +30,13 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             {
                 return string.Empty;
             }
-
-            return Convert.ToBase64String(memoryStream.ToArray());
+            */
+            return "";// Convert.ToBase64String(memoryStream.ToArray());
         }
 
         public string Decrypt(string value)
         {
+            /*
             byte[] input;
             byte[] key = { };
             byte[] newValue = { 12, 34, 56, 78, 90, 102, 114, 126 };
@@ -56,8 +58,8 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             {
                 return string.Empty;
             }
-
-            return Encoding.UTF8.GetString(memoryStream.ToArray());
+            */
+            return "";// Encoding.UTF8.GetString(memoryStream.ToArray());
         }
 
         public string DecodeBase64(string? value)

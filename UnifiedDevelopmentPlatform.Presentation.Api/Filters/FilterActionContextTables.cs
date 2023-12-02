@@ -64,16 +64,11 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Filters
 
             await next();
 
-            if (_serviceDirectory.CreateAppDirectory())
-            {
-                _serviceDirectory.CreateConfigDirectory();
-                var aux = _serviceDirectory.ReadAppDirectory();
-            }
-            else
+            if (!_serviceDirectory.CreateAllDirectoryOfSolution())
             {
                 context.Result = new BadRequestObjectResult(new ErrorDetails()
                 {
-                    Message = "Erro ao criar diretório principal do Unified Development Platform.",
+                    Message = "Erro ao criar diretório principal do Unified Development Platform - UDP.",
                     StatusCode = 1
                 });
 

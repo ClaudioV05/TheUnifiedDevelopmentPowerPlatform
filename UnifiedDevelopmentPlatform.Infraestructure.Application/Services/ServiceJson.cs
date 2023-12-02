@@ -5,6 +5,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
 {
     public class ServiceJson : IServiceJson
     {
+        /*
         public object DesSerializer(object obj, string json)
         {
             return JsonSerializer.Deserialize<object>(json);
@@ -15,5 +16,6 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             var options = new JsonSerializerOptions { WriteIndented = true };
             return JsonSerializer.Serialize(obj, options);
         }
+        */
     }
 }

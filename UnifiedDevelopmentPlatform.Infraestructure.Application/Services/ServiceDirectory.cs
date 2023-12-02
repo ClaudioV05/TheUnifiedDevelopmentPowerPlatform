@@ -1,164 +1,189 @@
-﻿using UnifiedDevelopmentPlatform.Application.Interfaces;
+﻿using System.Reflection;
+using System.Text.RegularExpressions;
+using UnifiedDevelopmentPlatform.Application.Interfaces;
+using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Directory;
 
 namespace UnifiedDevelopmentPlatform.Application.Services
 {
     public class ServiceDirectory : IServiceDirectory
     {
-        /// <summary>
-        /// Names of Directory for App Solution.
-        /// </summary>
-        private record StandardDirectory
-        {
-            public const string DIR_APP = "\\App";
-            public const string DIR_CONFIG = "\\Config";
+        #region Fields.
+        private string? _directory;
+        private readonly Queue<string> _queueDirectory;
+        #endregion Fields.
 
-            public const string DIR_PRESENTATION = "\\1-Presentation";
-            public const string DIR_APPLICATION = "\\2-Application";
-            public const string DIR_DOMAIN = "\\3-Domain";
-            public const string DIR_INFRASTRUCTURE = "\\4-Infrastructure";
+        public ServiceDirectory()
+        {
+            _queueDirectory = new Queue<string>();
         }
 
-        #region App.
-        public bool CreateAppDirectory()
+        public bool CreateAllDirectoryOfSolution()
         {
-            bool createDir = false;
             try
             {
-                string? rootDirectory = GetRootDirectory();
+                _directory = this.GetRootDirectoryOfSolution();
 
+                if (!string.IsNullOrEmpty(_directory))
+                {
+                    if (this.DeleteAllDirectoryOfSolution(_directory))
+                    {
+                        // 1° Create the Default Directorys.
+
+                        // 1.1 Create the Default App.
+                        this.CreateAppDirectory();
+
+                        // 1.2 Create the Default Config.
+                        this.CreateConfigDirectory();
+
+                        // 2° Create the Presentation Directorys.
+                        this.CreatePresentation();
+                        // 3° Create the Application Directorys.
+                        this.CreateApplication();
+                        // 4° Create the Domain Directorys.
+                        this.CreateDomainDirectory();
+                        // 5° Create the Infrastructure Directorys.
+                        this.CreateInfrastructure();
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                this.DeleteAllDirectoryOfSolution(_directory);
+                return false;
+            }
+
+            return true;
+        }
+
+        private bool DeleteAllDirectoryOfSolution(string? rootDirectory)
+        {
+            try
+            {
                 if (!string.IsNullOrEmpty(rootDirectory))
                 {
-                    if (Directory.Exists($"{rootDirectory}{StandardDirectory.DIR_APP}"))
+                    if (Directory.Exists($"{rootDirectory}{DirectoryStandard.APP}"))
                     {
-                        Directory.Delete($"{rootDirectory}{StandardDirectory.DIR_APP}", true);
+                        Directory.Delete($"{rootDirectory}{DirectoryStandard.APP}", true);
                     }
+                }
+            }
+            catch (IOException)
+            {
+                return false;
+            }
 
-                    Directory.CreateDirectory($"{rootDirectory}{StandardDirectory.DIR_APP}");
-                    createDir = true;
+            return true;
+        }
+
+        private string? GetRootDirectoryOfSolution()
+        {
+            try
+            {
+                string? exerootDirectory = Assembly.GetExecutingAssembly().Location;
+                Regex appRegexMatcher = new Regex(@"(?<!fil)[A-Za-z]:\\+[\S\s]*?(?=\\+bin)");
+                exerootDirectory = exerootDirectory?.ToLowerInvariant();
+                return appRegexMatcher.Match(exerootDirectory ?? string.Empty).Value;
+            }
+            catch (IOException)
+            {
+                return string.Empty;
+            }
+        }
+
+        private string? RemoverCaracteresInvalidosArquivo(string path)
+        {
+
+            if (!string.IsNullOrEmpty(path) && path.IndexOfAny(Path.GetInvalidFileNameChars()) >= 0)
+            {
+                foreach (char c in Path.GetInvalidFileNameChars())
+                {
+                    path = path.Replace(c.ToString(), string.Empty);
+                }
+            }
+
+            return path;
+        }
+
+        private void CreateQueueDirectory(Queue<string> queueDirectory)
+        {
+            try
+            {
+                if (queueDirectory != null && queueDirectory.Count > 0)
+                {
+                    foreach (var dir in _queueDirectory)
+                    {
+                        Directory.CreateDirectory(RemoverCaracteresInvalidosArquivo(dir) ?? string.Empty);
+                    }
                 }
             }
             catch (IOException)
             {
 
             }
-
-            return createDir;
         }
 
-        public string? ReadAppDirectory()
+        #region Standard Directorys.
+        private void CreateAppDirectory()
         {
-            string? dir = string.Empty;
-            try
-            {
-                string? rootDirectory = GetRootDirectory();
-                dir = $"{rootDirectory}{StandardDirectory.DIR_APP}";
-            }
-            catch (IOException)
-            {
-
-            }
-
-            return dir;
+            _queueDirectory.Clear();
+            _queueDirectory.Enqueue($"{_directory}{DirectoryStandard.APP}");
+            CreateQueueDirectory(_queueDirectory);
         }
-        #endregion App.
 
-        #region Config.
-        public bool CreateConfigDirectory()
+        private void CreateConfigDirectory()
         {
-            bool createDir = false;
-            try
-            {
-                string? rootDirectory = GetRootDirectory();
-
-                if (!string.IsNullOrEmpty(rootDirectory))
-                {
-                    if (Directory.Exists($"{rootDirectory}{StandardDirectory.DIR_APP}{StandardDirectory.DIR_CONFIG}"))
-                    {
-                        Directory.Delete($"{rootDirectory}{StandardDirectory.DIR_APP}{StandardDirectory.DIR_CONFIG}", true);
-                    }
-
-                    Directory.CreateDirectory($"{rootDirectory}{StandardDirectory.DIR_APP}{StandardDirectory.DIR_CONFIG}");
-                    createDir = true;
-                }
-            }
-            catch (IOException)
-            {
-
-            }
-
-            return createDir;
+            _queueDirectory.Clear();
+            _queueDirectory.Enqueue($"{_directory}{DirectoryStandard.APP}{DirectoryStandard.CONFIG}");
+            CreateQueueDirectory(_queueDirectory);
         }
+        #endregion Standard Directorys.
 
-        public string? ReadConfigDirectory()
+        #region Presentation Directorys.
+        private void CreatePresentation()
         {
-            string? dir = string.Empty;
-            try
-            {
-                string? rootDirectory = GetRootDirectory();
-                dir = $"{rootDirectory}{StandardDirectory.DIR_APP}{StandardDirectory.DIR_CONFIG}";
-            }
-            catch (IOException)
-            {
-
-            }
-
-            return dir;
+            _queueDirectory.Clear();
+            _queueDirectory.Enqueue($"{_directory}{DirectoryStandard.APP}{DirectoryPresentation.PRESENTATION}");
+            _queueDirectory.Enqueue($"{_directory}{DirectoryStandard.APP}{DirectoryPresentation.PRESENTATION}{DirectoryPresentation.PROPERTIES}");
+            _queueDirectory.Enqueue($"{_directory}{DirectoryStandard.APP}{DirectoryPresentation.PRESENTATION}{DirectoryPresentation.CONTROLLERS}");
+            _queueDirectory.Enqueue($"{_directory}{DirectoryStandard.APP}{DirectoryPresentation.PRESENTATION}{DirectoryPresentation.EXTENSIONS}");
+            _queueDirectory.Enqueue($"{_directory}{DirectoryStandard.APP}{DirectoryPresentation.PRESENTATION}{DirectoryPresentation.FILTERS}");
+            _queueDirectory.Enqueue($"{_directory}{DirectoryStandard.APP}{DirectoryPresentation.PRESENTATION}{DirectoryPresentation.MODELS}");
+            _queueDirectory.Enqueue($"{_directory}{DirectoryStandard.APP}{DirectoryPresentation.PRESENTATION}{DirectoryPresentation.SWAGGER}");
+            CreateQueueDirectory(_queueDirectory);
         }
-        #endregion Config.
+        #endregion Presentation Directorys.
 
-        #region Presentation.
-        public bool CreatePresentationDirectory()
+        #region Application Directorys.
+        private void CreateApplication()
         {
-            bool createDir = false;
-            try
-            {
-                string? rootDirectory = GetRootDirectory();
-
-                if (!string.IsNullOrEmpty(rootDirectory))
-                {
-                    if (Directory.Exists($"{rootDirectory}{StandardDirectory.DIR_APP}{StandardDirectory.DIR_PRESENTATION}"))
-                    {
-                        Directory.Delete($"{rootDirectory}{StandardDirectory.DIR_APP}{StandardDirectory.DIR_PRESENTATION}", true);
-                    }
-
-                    Directory.CreateDirectory($"{rootDirectory}{StandardDirectory.DIR_APP} {StandardDirectory.DIR_PRESENTATION}");
-                    createDir = true;
-                }
-            }
-            catch (IOException)
-            {
-
-            }
-
-            return createDir;
+            _queueDirectory.Clear();
+            _queueDirectory.Enqueue($"{_directory}{DirectoryStandard.APP}{DirectoryApplication.APPLICATION}");
+            _queueDirectory.Enqueue($"{_directory}{DirectoryStandard.APP}{DirectoryApplication.APPLICATION}{DirectoryApplication.INTERFACES}");
+            _queueDirectory.Enqueue($"{_directory}{DirectoryStandard.APP}{DirectoryApplication.APPLICATION}{DirectoryApplication.SERVICES}");
+            CreateQueueDirectory(_queueDirectory);
         }
+        #endregion Application Directorys.
 
-        public string? ReadPresentationDirectory()
+        #region Domain Directorys.
+        private void CreateDomainDirectory()
         {
-            string? dir = string.Empty;
-            try
-            {
-                string? rootDirectory = GetRootDirectory();
-                dir = $"{rootDirectory}{StandardDirectory.DIR_APP} {StandardDirectory.DIR_PRESENTATION}";
-            }
-            catch (IOException)
-            {
-
-            }
-
-            return dir;
+            _queueDirectory.Clear();
+            _queueDirectory.Enqueue($"{_directory}{DirectoryStandard.APP}{DirectoryDomain.DOMAIN}");
+            _queueDirectory.Enqueue($"{_directory}{DirectoryStandard.APP}{DirectoryDomain.DOMAIN}{DirectoryDomain.INTERFACES}");
+            _queueDirectory.Enqueue($"{_directory}{DirectoryStandard.APP} {DirectoryDomain.DOMAIN} {DirectoryDomain.ENTITIES}");
+            CreateQueueDirectory(_queueDirectory);
         }
-        #endregion Presentation.
+        #endregion Domain Directorys.
 
-        private string? GetRootDirectory()
+        #region Infrastructure Directorys.
+        private void CreateInfrastructure()
         {
-            /*
-            string? exerootDirectory = string.IsNullOrEmpty(rootDirectory.GetDirectoryName(Assembly.GetExecutingAssembly().Location)) ? string.Empty : rootDirectory.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            Regex appRegexMatcher = new Regex(@"(?<!fil)[A-Za-z]:\\+[\S\s]*?(?=\\+bin)");
-            exerootDirectory = exerootDirectory?.ToLowerInvariant();
-            return appRegexMatcher.Match(exerootDirectory ?? string.Empty).Value;
-            */
-            return null;
+            _queueDirectory.Clear();
+            _queueDirectory.Enqueue($"{_directory}{DirectoryStandard.APP}{DirectoryInfrastructure.INFRASTRUCTURE}");
+            _queueDirectory.Enqueue($"{_directory}{DirectoryStandard.APP}{DirectoryInfrastructure.INFRASTRUCTURE}{DirectoryInfrastructure.CROSSCUTTING}");
+            _queueDirectory.Enqueue($"{_directory}{DirectoryStandard.APP}{DirectoryInfrastructure.INFRASTRUCTURE}{DirectoryInfrastructure.DATA}");
+            CreateQueueDirectory(_queueDirectory);
         }
+        #endregion Infrastructure Directorys.
     }
 }
