@@ -8,65 +8,68 @@ namespace UnifiedDevelopmentPlatform.Application.Services
 {
     public class ServiceDirectory : IServiceDirectory
     {
-        #region Fields.
         private string? _directory;
         private readonly Queue<string> _queueDirectory;
-        #endregion Fields.
+        private readonly IServiceFuncStrings _serviceFuncStrings;
+        private readonly IServiceSearchLinq _serviceSearchLinq;
+        private readonly IServiceExtensibleMarkupLanguage _serviceXml;
 
-        public ServiceDirectory()
+        public ServiceDirectory(IServiceFuncStrings serviceFuncStrings, IServiceExtensibleMarkupLanguage serviceXml, IServiceSearchLinq serviceSearchLinq)
         {
             _queueDirectory = new Queue<string>();
+            _serviceFuncStrings = serviceFuncStrings;
+            _serviceXml = serviceXml;
+            _serviceSearchLinq = serviceSearchLinq;
         }
 
-        public bool CreateAllDirectoryOfSolution()
+        public void CreateAllDirectoryOfSolution()
         {
-            /*
+            string[] directories = new string[] { DirectoryStandard.BACK, DirectoryStandard.FRONT };
+
             try
             {
                 _directory = this.GetRootDirectoryOfSolution();
 
-                if (!string.IsNullOrEmpty(_directory))
+                if (!_serviceFuncStrings.NullOrEmpty(_directory ?? string.Empty))
                 {
                     if (this.DeleteAllDirectoryOfSolution(_directory))
                     {
-                        // 1° Create the Default Directorys.
+                        this.CreatePathApp();
 
-                        // 1.1 Create the Default App.
-                        this.CreateAppDirectory();
+                        this.CreatePathBack();
 
-                        // 1.2 Create the Default Config.
-                        this.CreateConfigDirectory();
+                        this.CreatePathFront();
 
-                        // 2° Create the Presentation Directorys.
-                        this.CreatePresentation();
-                        // 3° Create the Application Directorys.
-                        this.CreateApplication();
-                        // 4° Create the Domain Directorys.
-                        this.CreateDomainDirectory();
-                        // 5° Create the Infrastructure Directorys.
-                        this.CreateInfrastructure();
+                        this.CreatePathConfig();
+
+                        this.CreatePathPresentation(directories);
+
+                        this.CreatePathApplication(directories);
+
+                        this.CreatePathDomain(directories);
+
+                        this.CreatePathInfrastructure(directories);
+
+                        this.CreateAllPath(_queueDirectory);
+
+                        this.FilterAndSavePaths(directories, _queueDirectory);
                     }
                 }
             }
-            catch (Exception)
+            catch (IOException)
             {
                 this.DeleteAllDirectoryOfSolution(_directory);
-                return false;
+                throw new IOException();
             }
-            */
-            return true;
         }
-        /*
+
         private bool DeleteAllDirectoryOfSolution(string? rootDirectory)
         {
             try
             {
-                if (!string.IsNullOrEmpty(rootDirectory))
+                if (!_serviceFuncStrings.NullOrEmpty(rootDirectory ?? string.Empty))
                 {
-                    DirectoryInfo di = new DirectoryInfo(rootDirectory);
-                    DirectoryInfo[] Directories = di.GetDirectories("*", SearchOption.AllDirectories);
-
-                    if (Directory.Exists($"{rootDirectory}{DirectoryStandard.APP}") && Directories.Count() > 0)
+                    if (Directory.Exists($"{rootDirectory}{DirectoryStandard.APP}"))
                     {
                         Directory.Delete($"{rootDirectory}{DirectoryStandard.APP}", true);
                     }
@@ -82,12 +85,20 @@ namespace UnifiedDevelopmentPlatform.Application.Services
 
         private string? GetRootDirectoryOfSolution()
         {
+            string? rootDirectoryOfSolution = string.Empty;
+
             try
             {
-                string? exerootDirectory = Assembly.GetExecutingAssembly().Location;
-                Regex appRegexMatcher = new Regex(@"(?<!fil)[A-Za-z]:\\+[\S\s]*?(?=\\+bin)");
-                exerootDirectory = exerootDirectory?.ToLowerInvariant();
-                return appRegexMatcher.Match(exerootDirectory ?? string.Empty).Value;
+                string? exeRootDirectory = Assembly.GetExecutingAssembly().Location;
+                Regex regex = new Regex(@"(?<!fil)[A-Za-z]:\\+[\S\s]*?(?=\\+unifieddevelopmentplatform.presentation.api)");
+                exeRootDirectory = _serviceFuncStrings.Lower(exeRootDirectory);
+
+                if (regex.IsMatch(exeRootDirectory ?? string.Empty))
+                {
+                    rootDirectoryOfSolution = regex.Match(exeRootDirectory ?? string.Empty).Value;
+                }
+
+                return rootDirectoryOfSolution;
             }
             catch (IOException)
             {
@@ -95,20 +106,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             }
         }
 
-        private string? RemoverCaracteresInvalidosArquivo(string path)
-        {
-            if (!string.IsNullOrEmpty(path) && path.IndexOfAny(Path.GetInvalidFileNameChars()) >= 0)
-            {
-                foreach (char c in Path.GetInvalidFileNameChars())
-                {
-                    path = path.Replace(c.ToString(), string.Empty);
-                }
-            }
-
-            return path;
-        }
-
-        private void CreateQueueDirectory(Queue<string> queueDirectory)
+        private void CreateAllPath(Queue<string> queueDirectory)
         {
             try
             {
@@ -116,7 +114,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
                 {
                     foreach (var dir in _queueDirectory)
                     {
-                        Directory.CreateDirectory(RemoverCaracteresInvalidosArquivo(dir) ?? string.Empty);
+                        Directory.CreateDirectory(dir ?? string.Empty);
                     }
                 }
             }
@@ -126,69 +124,121 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             }
         }
 
-        #region Standard Directorys.
-        private void CreateAppDirectory()
+        private void FilterAndSavePaths(string[] directory, Queue<string> queueDirectory)
         {
-            _queueDirectory.Clear();
+            bool executed = true;
+            List<string>? paths = null;
+            string directoryDefaultToSave = string.Empty;
+
+            try
+            {
+                for (int i = 0; i < directory.Length; i++)
+                {
+                    paths = _serviceSearchLinq.SelectAllPathFromDirectory(queueDirectory.ToList(), directory[i]);
+
+                    if (paths is null)
+                    {
+                        executed = false;
+                        break;
+                    }
+
+                    if (i == 0)
+                    {
+                        directoryDefaultToSave = _serviceSearchLinq.GetPathConfiguration(paths);
+
+                        if (_serviceFuncStrings.NullOrEmpty(directoryDefaultToSave))
+                        {
+                            executed = false;
+                            break;
+                        }
+
+                        _serviceXml.TreeDirectorySave(directoryDefaultToSave, paths);
+                    }
+                }
+
+                if (executed is false)
+                {
+                    throw new Exception();
+                }
+            }
+            catch (IOException)
+            {
+                throw new IOException();
+            }
+        }
+
+        #region Standard Path.
+        private void CreatePathApp()
+        {
             _queueDirectory.Enqueue($"{_directory}{DirectoryStandard.APP}");
-            CreateQueueDirectory(_queueDirectory);
         }
 
-        private void CreateConfigDirectory()
+        private void CreatePathConfig()
         {
-            _queueDirectory.Clear();
-            _queueDirectory.Enqueue($"{_directory}{DirectoryStandard.APP}{DirectoryStandard.CONFIG}");
-            CreateQueueDirectory(_queueDirectory);
+            _queueDirectory.Enqueue($"{_directory}{DirectoryStandard.APP}{DirectoryStandard.CONFIGURATION}");
         }
-        #endregion Standard Directorys.
 
-        #region Presentation Directorys.
-        private void CreatePresentation()
+        private void CreatePathBack()
         {
-            _queueDirectory.Clear();
-            _queueDirectory.Enqueue($"{_directory}{DirectoryStandard.APP}{DirectoryPresentation.PRESENTATION}");
-            _queueDirectory.Enqueue($"{_directory}{DirectoryStandard.APP}{DirectoryPresentation.PRESENTATION}{DirectoryPresentation.PROPERTIES}");
-            _queueDirectory.Enqueue($"{_directory}{DirectoryStandard.APP}{DirectoryPresentation.PRESENTATION}{DirectoryPresentation.CONTROLLERS}");
-            _queueDirectory.Enqueue($"{_directory}{DirectoryStandard.APP}{DirectoryPresentation.PRESENTATION}{DirectoryPresentation.EXTENSIONS}");
-            _queueDirectory.Enqueue($"{_directory}{DirectoryStandard.APP}{DirectoryPresentation.PRESENTATION}{DirectoryPresentation.FILTERS}");
-            _queueDirectory.Enqueue($"{_directory}{DirectoryStandard.APP}{DirectoryPresentation.PRESENTATION}{DirectoryPresentation.MODELS}");
-            _queueDirectory.Enqueue($"{_directory}{DirectoryStandard.APP}{DirectoryPresentation.PRESENTATION}{DirectoryPresentation.SWAGGER}");
-            CreateQueueDirectory(_queueDirectory);
+            _queueDirectory.Enqueue($"{_directory}{DirectoryStandard.APP}{DirectoryStandard.BACK}");
         }
-        #endregion Presentation Directorys.
 
-        #region Application Directorys.
-        private void CreateApplication()
+        private void CreatePathFront()
         {
-            _queueDirectory.Clear();
-            _queueDirectory.Enqueue($"{_directory}{DirectoryStandard.APP}{DirectoryApplication.APPLICATION}");
-            _queueDirectory.Enqueue($"{_directory}{DirectoryStandard.APP}{DirectoryApplication.APPLICATION}{DirectoryApplication.INTERFACES}");
-            _queueDirectory.Enqueue($"{_directory}{DirectoryStandard.APP}{DirectoryApplication.APPLICATION}{DirectoryApplication.SERVICES}");
-            CreateQueueDirectory(_queueDirectory);
+            _queueDirectory.Enqueue($"{_directory}{DirectoryStandard.APP}{DirectoryStandard.FRONT}");
         }
-        #endregion Application Directorys.
+        #endregion Standard Path.
 
-        #region Domain Directorys.
-        private void CreateDomainDirectory()
+        #region Presentation.
+        private void CreatePathPresentation(string[] backFront)
         {
-            _queueDirectory.Clear();
-            _queueDirectory.Enqueue($"{_directory}{DirectoryStandard.APP}{DirectoryDomain.DOMAIN}");
-            _queueDirectory.Enqueue($"{_directory}{DirectoryStandard.APP}{DirectoryDomain.DOMAIN}{DirectoryDomain.INTERFACES}");
-            _queueDirectory.Enqueue($"{_directory}{DirectoryStandard.APP} {DirectoryDomain.DOMAIN} {DirectoryDomain.ENTITIES}");
-            CreateQueueDirectory(_queueDirectory);
+            for (int i = 0; i < backFront.Length; i++)
+            {
+                _queueDirectory.Enqueue($"{_directory}{DirectoryStandard.APP}{backFront[i]}{DirectoryPresentation.PRESENTATION}");
+                _queueDirectory.Enqueue($"{_directory}{DirectoryStandard.APP}{backFront[i]}{DirectoryPresentation.PRESENTATION}{DirectoryPresentation.PROPERTIES}");
+                _queueDirectory.Enqueue($"{_directory}{DirectoryStandard.APP}{backFront[i]}{DirectoryPresentation.PRESENTATION}{DirectoryPresentation.CONTROLLERS}");
+                _queueDirectory.Enqueue($"{_directory}{DirectoryStandard.APP}{backFront[i]}{DirectoryPresentation.PRESENTATION}{DirectoryPresentation.EXTENSIONS}");
+                _queueDirectory.Enqueue($"{_directory}{DirectoryStandard.APP}{backFront[i]}{DirectoryPresentation.PRESENTATION}{DirectoryPresentation.FILTERS}");
+                _queueDirectory.Enqueue($"{_directory}{DirectoryStandard.APP}{backFront[i]}{DirectoryPresentation.PRESENTATION}{DirectoryPresentation.MODELS}");
+                _queueDirectory.Enqueue($"{_directory}{DirectoryStandard.APP}{backFront[i]}{DirectoryPresentation.PRESENTATION}{DirectoryPresentation.SWAGGER}");
+            }
         }
-        #endregion Domain Directorys.
+        #endregion Presentation.
 
-        #region Infrastructure Directorys.
-        private void CreateInfrastructure()
+        #region Application.
+        private void CreatePathApplication(string[] backFront)
         {
-            _queueDirectory.Clear();
-            _queueDirectory.Enqueue($"{_directory}{DirectoryStandard.APP}{DirectoryInfrastructure.INFRASTRUCTURE}");
-            _queueDirectory.Enqueue($"{_directory}{DirectoryStandard.APP}{DirectoryInfrastructure.INFRASTRUCTURE}{DirectoryInfrastructure.CROSSCUTTING}");
-            _queueDirectory.Enqueue($"{_directory}{DirectoryStandard.APP}{DirectoryInfrastructure.INFRASTRUCTURE}{DirectoryInfrastructure.DATA}");
-            CreateQueueDirectory(_queueDirectory);
+            for (int i = 0; i < backFront.Length; i++)
+            {
+                _queueDirectory.Enqueue($"{_directory}{DirectoryStandard.APP}{backFront[i]}{DirectoryApplication.APPLICATION}");
+                _queueDirectory.Enqueue($"{_directory}{DirectoryStandard.APP}{backFront[i]}{DirectoryApplication.APPLICATION}{DirectoryApplication.INTERFACES}");
+                _queueDirectory.Enqueue($"{_directory}{DirectoryStandard.APP}{backFront[i]}{DirectoryApplication.APPLICATION}{DirectoryApplication.SERVICES}");
+            }
         }
-        #endregion Infrastructure Directorys.
-        */
+        #endregion Application.
+
+        #region Domain.
+        private void CreatePathDomain(string[] backFront)
+        {
+            for (int i = 0; i < backFront.Length; i++)
+            {
+                _queueDirectory.Enqueue($"{_directory}{DirectoryStandard.APP}{backFront[i]}{DirectoryDomain.DOMAIN}");
+                _queueDirectory.Enqueue($"{_directory}{DirectoryStandard.APP}{backFront[i]}{DirectoryDomain.DOMAIN}{DirectoryDomain.INTERFACES}");
+                _queueDirectory.Enqueue($"{_directory}{DirectoryStandard.APP}{backFront[i]}{DirectoryDomain.DOMAIN}{DirectoryDomain.ENTITIES}");
+            }
+        }
+        #endregion Domain.
+
+        #region Infrastructure.
+        private void CreatePathInfrastructure(string[] backFront)
+        {
+            for (int i = 0; i < backFront.Length; i++)
+            {
+                _queueDirectory.Enqueue($"{_directory}{DirectoryStandard.APP}{backFront[i]}{DirectoryInfrastructure.INFRASTRUCTURE}");
+                _queueDirectory.Enqueue($"{_directory}{DirectoryStandard.APP}{backFront[i]}{DirectoryInfrastructure.INFRASTRUCTURE}{DirectoryInfrastructure.CROSSCUTTING}");
+                _queueDirectory.Enqueue($"{_directory}{DirectoryStandard.APP}{backFront[i]}{DirectoryInfrastructure.INFRASTRUCTURE}{DirectoryInfrastructure.DATA}");
+            }
+        }
+        #endregion Infrastructure.
     }
 }

@@ -51,13 +51,15 @@ builder.Services.AddScoped<IServiceEmail, ServiceEmail>();
 builder.Services.AddScoped<IServiceEnvironment, ServiceEnvironment>();
 builder.Services.AddScoped<IServiceFile, ServiceFile>();
 builder.Services.AddScoped<IServiceFuncStrings, ServiceFuncStrings>();
-builder.Services.AddScoped<IServiceJson, ServiceJson>();
+builder.Services.AddScoped<IServiceJavaScriptObjectNotation, ServiceJavaScriptObjectNotation>();
 builder.Services.AddScoped<IServiceLog, ServiceLog>();
 builder.Services.AddScoped<IServiceMetadata, ServiceMetadata>();
 builder.Services.AddScoped<IServiceMetadataFields, ServiceMetadataFields>();
 builder.Services.AddScoped<IServiceMetadataTables, ServiceMetadataTables>();
 builder.Services.AddScoped<IServiceValidation, ServiceValidation>();
 builder.Services.AddScoped<IServiceZipFile, ServiceZipFile>();
+builder.Services.AddScoped<IServiceExtensibleMarkupLanguage, ServiceExtensibleMarkupLanguage>();
+builder.Services.AddScoped<IServiceSearchLinq, ServiceSearchLinq>();
 #endregion Services.
 
 #region Repositories.

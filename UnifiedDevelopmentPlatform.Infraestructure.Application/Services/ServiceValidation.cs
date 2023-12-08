@@ -1,4 +1,5 @@
-﻿using UnifiedDevelopmentPlatform.Application.Interfaces;
+﻿using System.Text.Json;
+using UnifiedDevelopmentPlatform.Application.Interfaces;
 
 namespace UnifiedDevelopmentPlatform.Application.Services
 {
@@ -6,61 +7,95 @@ namespace UnifiedDevelopmentPlatform.Application.Services
     {
         // Characters that are used in base64 strings.
         private readonly Char[] Base64Chars = new[] { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '+', '/' };
+        private string messageDefault = "is necessary for generate the App.";
+        private readonly IServiceFuncStrings _serviceFuncStrings;
+        private readonly IServiceEnvironment _serviceEnvironment;
 
-        #region Validation for FilterActionContextTables.
         private record FilterActionTables
         {
             public const string METADATA = "metadata";
+        }
+
+        public ServiceValidation(IServiceFuncStrings serviceFuncStrings, IServiceEnvironment serviceEnvironment)
+        {
+            _serviceFuncStrings = serviceFuncStrings;
+            _serviceEnvironment = serviceEnvironment;
+        }
+
+        #region Validation for Filter Action Controller.
+
+        public bool PlatformWindowsIsOk(ref string message)
+        {
+            bool platformWindows = true;
+
+            if (!_serviceEnvironment.PlatformIsWindows())
+            {
+                platformWindows = false;
+                message = $"This version of (Unified Development Platform) don't run in cross cross platform. Only windows.";
+            }
+
+            return platformWindows;
+        }
+
+        #endregion Validation for Filter Action Controller.
+
+        #region Validation for Filters Actions Context Tables and Fields.
+
+        public bool ModelStateIsOk(dynamic context, ref string message)
+        {
+            message = !context.ModelState.IsValid ? $"The (JSON) {messageDefault}" : string.Empty;
+            return _serviceFuncStrings.NullOrEmpty(message);
         }
 
         public bool ScriptMetadataIsOk(dynamic context, ref string message)
         {
             dynamic? obj = null;
             context.ActionArguments.TryGetValue(FilterActionTables.METADATA, out obj);
-            message = !string.IsNullOrEmpty(obj?.ScriptMetadata) ? string.Empty : "É obrigatório informar o (Metadata) para gerar o app.";
-            return string.IsNullOrEmpty(message);
+            message = _serviceFuncStrings.NullOrEmpty(obj?.ScriptMetadata) ? $"The (METADATA) {messageDefault}" : string.Empty ;
+            return _serviceFuncStrings.NullOrEmpty(message);
         }
 
         public bool MetadataIsBase64Ok(dynamic context, ref string message)
         {
             dynamic? obj = null;
             context.ActionArguments.TryGetValue(FilterActionTables.METADATA, out obj);
-            message = this.ValidateBase64(obj?.ScriptMetadata) ? string.Empty : "É obrigatório informar o (Metadata) no formato base64.";
-            return string.IsNullOrEmpty(message);
+            message = !this.ValidateBase64(obj?.ScriptMetadata) ? $"The (METADATA) on format base64 {messageDefault}" : string.Empty;
+            return _serviceFuncStrings.NullOrEmpty(message);
         }
 
         public bool DevelopmentEnvironmentIsOk(dynamic context, ref string message)
         {
             dynamic? obj = null;
             context.ActionArguments.TryGetValue(FilterActionTables.METADATA, out obj);
-            message = obj?.IdDevelopmentEnvironment <= 0 ? "É obrigatório informar o (Development Environment) para gerar o app." : string.Empty;
-            return string.IsNullOrEmpty(message);
+            message = obj?.IdDevelopmentEnvironment <= 0 ? $"The (DEVELOPMENT ENVIRONMENT) {messageDefault}" : string.Empty;
+            return _serviceFuncStrings.NullOrEmpty(message);
         }
 
         public bool DatabasesIsOk(dynamic context, ref string message)
         {
             dynamic? obj = null;
             context.ActionArguments.TryGetValue(FilterActionTables.METADATA, out obj);
-            message = obj?.IdDatabases <= 0 ? "É obrigatório informar o (Databases) para gerar o app." : string.Empty;
-            return string.IsNullOrEmpty(message);
+            message = obj?.IdDatabases <= 0 ? $"The (DATABASES) {messageDefault}" : string.Empty;
+            return _serviceFuncStrings.NullOrEmpty(message);
         }
 
         public bool DatabasesEngineIsOk(dynamic context, ref string message)
         {
             dynamic? obj = null;
             context.ActionArguments.TryGetValue(FilterActionTables.METADATA, out obj);
-            message = obj?.IdDatabasesEngine <= 0 ? "É obrigatório informar o (Databases Engine) para gerar o app." : string.Empty;
-            return string.IsNullOrEmpty(message);
+            message = obj?.IdDatabasesEngine <= 0 ? $"The (DATABASES ENGINE) {messageDefault}" : string.Empty;
+            return _serviceFuncStrings.NullOrEmpty(message);
         }
 
         public bool FormIsOk(dynamic context, ref string message)
         {
             dynamic? obj = null;
             context.ActionArguments.TryGetValue(FilterActionTables.METADATA, out obj);
-            message = obj?.IdForms <= 0 ? "É obrigatório informar o (Forms) para gerar o app." : string.Empty;
-            return string.IsNullOrEmpty(message);
+            message = obj?.IdForms <= 0 ? $"The (FORMS) {messageDefault}" : string.Empty;
+            return _serviceFuncStrings.NullOrEmpty(message);
         }
-        #endregion Validation for FilterActionContextTables.
+
+        #endregion Validation for Filters Actions Context Tables and Fields.
 
         #region Validation for Files.
         public bool IsFileInUseGeneric(FileInfo file)
@@ -108,7 +143,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
                 // If it is not you can return false. Quite effective
                 // Further, if it meets the above criterias, then test for spaces.
                 // If it contains spaces, it is not base64.
-                if (string.IsNullOrEmpty(text) ||
+                if (_serviceFuncStrings.NullOrEmpty(text ?? string.Empty) ||
                 text.Length == 0 ||
                 text.Length % 4 != 0 ||
                 text.Contains(' ') ||

@@ -45,7 +45,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
                 scriptMetadata = _serviceCrypto.DecodeBase64(metadata?.ScriptMetadata);
                 scriptMetadata = scriptMetadata.ToLowerInvariant();
 
-                if (string.IsNullOrEmpty(scriptMetadata))
+                if (_serviceFuncStrings.NullOrEmpty(scriptMetadata))
                 {
                     tables?.Append(string.Empty);
                 }

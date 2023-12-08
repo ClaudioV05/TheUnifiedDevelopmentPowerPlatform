@@ -3,7 +3,7 @@ using System.Text.Json;
 
 namespace UnifiedDevelopmentPlatform.Application.Services
 {
-    public class ServiceJson : IServiceJson
+    public class ServiceJavaScriptObjectNotation : IServiceJavaScriptObjectNotation
     {
         /*
         public object DesSerializer(object obj, string json)

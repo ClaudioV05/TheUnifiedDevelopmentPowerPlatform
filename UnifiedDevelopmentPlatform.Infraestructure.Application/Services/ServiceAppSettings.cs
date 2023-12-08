@@ -8,11 +8,11 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         {
             try
             {
-               
+
             }
             catch (Exception)
             {
-                Console.WriteLine("Error writing app settings");
+                throw new Exception();
             }
         }
     }

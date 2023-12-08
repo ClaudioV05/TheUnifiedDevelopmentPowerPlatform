@@ -42,7 +42,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             try
             {
                 var bytes = Encoding.ASCII.GetBytes(data);
-                return Convert.ToBase64String(bytes);
+                return Convert.ToBase64String(bytes, Base64FormattingOptions.None);
             }
             catch (Exception)
             {
@@ -61,6 +61,90 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             {
                 return string.Empty;
             }
+        }
+
+        [Obsolete("Method with problem", true)]
+        public string RemoveSpecialCaracterFrompath(string path)
+        {
+            try
+            {
+                if (!this.NullOrEmpty(path) && path.IndexOfAny(Path.GetInvalidFileNameChars()) >= 0)
+                {
+                    foreach (char c in Path.GetInvalidFileNameChars())
+                    {
+                        path = path.Replace(c.ToString(), string.Empty);
+                    }
+                }
+
+                return path;
+            }
+            catch (Exception)
+            {
+                return string.Empty;
+            }
+        }
+
+        public string Upper(string text)
+        {
+            string value = string.Empty;
+
+            try
+            {
+                if (!this.NullOrEmpty(text))
+                {
+                    value = text.ToUpperInvariant();
+                }
+            }
+            catch (Exception)
+            {
+                return string.Empty;
+            }
+
+            return value;
+        }
+
+        public string Lower(string text)
+        {
+            string value = string.Empty;
+
+            try
+            {
+                if (!this.NullOrEmpty(text))
+                {
+                    value = text.ToLowerInvariant();
+                }
+            }
+            catch (Exception)
+            {
+                return string.Empty;
+            }
+
+            return value;
+        }
+
+        public bool NullOrEmpty(string text)
+        {
+            return string.IsNullOrEmpty(text);
+        }
+
+        public bool NullOrWhiteSpace(string text)
+        {
+            return string.IsNullOrWhiteSpace(text);
+        }
+
+        public string RemoveWhitespace(string text)
+        {
+            return text.Trim();
+        }
+
+        public bool StringStarts(string text, string value)
+        {
+            return text.StartsWith(value);
+        }
+
+        public bool StringEnds(string text, string value)
+        {
+            return text.EndsWith(value);
         }
     }
 }

@@ -6,6 +6,6 @@
         /// Create all directory of solution.
         /// </summary>
         /// <returns></returns>
-        bool CreateAllDirectoryOfSolution();
+        void CreateAllDirectoryOfSolution();
     }
 }

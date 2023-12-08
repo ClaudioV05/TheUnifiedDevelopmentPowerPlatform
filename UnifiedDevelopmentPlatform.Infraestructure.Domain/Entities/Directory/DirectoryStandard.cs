@@ -5,7 +5,9 @@
     /// </summary>
     public abstract class DirectoryStandard
     {
-        public const string APP = @"\App";
-        public const string CONFIG = @"\Config";
+        public const string APP = "\\App";
+        public const string BACK = "\\Back";
+        public const string FRONT = "\\Front";
+        public const string CONFIGURATION = "\\Configuration";
     }
 }

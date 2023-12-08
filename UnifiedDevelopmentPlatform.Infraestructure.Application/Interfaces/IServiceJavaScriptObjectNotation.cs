@@ -1,6 +1,6 @@
 ﻿namespace UnifiedDevelopmentPlatform.Application.Interfaces
 {
-    public interface IServiceJson
+    public interface IServiceJavaScriptObjectNotation
     {
         /*
         string Serializer(object obj);

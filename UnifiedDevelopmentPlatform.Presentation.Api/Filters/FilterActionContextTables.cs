@@ -1,8 +1,8 @@
-﻿using UnifiedDevelopmentPlatform.Application.Interfaces;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Filters;
+using UnifiedDevelopmentPlatform.Application.Interfaces;
 using UnifiedDevelopmentPlatform.Infraestructure.Domain.Interfaces;
 using UnifiedDevelopmentPlatform.Presentation.Api.Models;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace UnifiedDevelopmentPlatform.Presentation.Api.Filters
 {
@@ -20,60 +20,70 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Filters
         public async Task OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next)
         {
             string message = string.Empty;
-            string messageValidation = string.Empty;
 
-            if (!context.ModelState.IsValid)
+            if (!_serviceValidation.ModelStateIsOk(context, ref message))
             {
-                messageValidation = "É obrigatório informar o JSON para gerar o app.";
-            }
-            else if (!_serviceValidation.ScriptMetadataIsOk(context, ref message))
-            {
-                messageValidation = message;
-            }
-            else if (!_serviceValidation.MetadataIsBase64Ok(context, ref message))
-            {
-                messageValidation = message;
-            }
-            else if (!_serviceValidation.DevelopmentEnvironmentIsOk(context, ref message))
-            {
-                messageValidation = message;
-            }
-            else if (!_serviceValidation.DatabasesIsOk(context, ref message))
-            {
-                messageValidation = message;
-            }
-            else if (!_serviceValidation.DatabasesEngineIsOk(context, ref message))
-            {
-                messageValidation = message;
-            }
-            else if (!_serviceValidation.FormIsOk(context, ref message))
-            {
-                messageValidation = message;
+                HasMessage(context, message);
+                return;
             }
 
-            if (!string.IsNullOrEmpty(messageValidation))
+            if (!_serviceValidation.ScriptMetadataIsOk(context, ref message))
             {
-                context.Result = new BadRequestObjectResult(new ErrorDetails()
-                {
-                    Message = messageValidation,
-                    StatusCode = 1
-                });
-
+                HasMessage(context, message);
+                return;
+            }
+            
+            if (!_serviceValidation.MetadataIsBase64Ok(context, ref message))
+            {
+                HasMessage(context, message);
+                return;
+            }
+            
+            if (!_serviceValidation.DevelopmentEnvironmentIsOk(context, ref message))
+            {
+                HasMessage(context, message);
+                return;
+            }
+            
+            if (!_serviceValidation.DatabasesIsOk(context, ref message))
+            {
+                HasMessage(context, message);
+                return;
+            }
+            
+            if (!_serviceValidation.DatabasesEngineIsOk(context, ref message))
+            {
+                HasMessage(context, message);
+                return;
+            }
+            
+            if (!_serviceValidation.FormIsOk(context, ref message))
+            {
+                HasMessage(context, message);
                 return;
             }
 
             await next();
 
-            if (!_serviceDirectory.CreateAllDirectoryOfSolution())
+            try
             {
-                context.Result = new BadRequestObjectResult(new ErrorDetails()
-                {
-                    Message = "Erro ao criar diretório principal do Unified Development Platform - UDP.",
-                    StatusCode = 1
-                });
-
+                _serviceDirectory.CreateAllDirectoryOfSolution();
+            }
+            catch (Exception)
+            {
+                message = "Erro ao criar diretório principal do Unified Development Platform - UDP.";
+                HasMessage(context, message);
                 return;
             }
+        }
+
+        private static void HasMessage(ActionExecutingContext context, string message)
+        {
+            context.Result = new BadRequestObjectResult(new ErrorDetails()
+            {
+                StatusCode = 1,
+                Message = message
+            });
         }
     }
 }

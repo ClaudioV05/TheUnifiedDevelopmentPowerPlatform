@@ -1,26 +1,39 @@
-﻿using UnifiedDevelopmentPlatform.Application.Interfaces;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
+using UnifiedDevelopmentPlatform.Application.Interfaces;
+using UnifiedDevelopmentPlatform.Presentation.Api.Models;
 
 namespace UnifiedDevelopmentPlatform.Presentation.Api.Filters
 {
     public class FilterActionContextController : IAsyncActionFilter
     {
-        private IServiceEnvironment _serviceEnvironment;
+        private readonly IServiceValidation _serviceValidation;
 
-        public FilterActionContextController(IServiceEnvironment serviceEnvironment)
+        public FilterActionContextController(IServiceValidation serviceValidation)
         {
-            _serviceEnvironment = serviceEnvironment;
+            _serviceValidation = serviceValidation;
         }
 
         public async Task OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next)
         {
-            if (!_serviceEnvironment.PlatformIsWindows())
+            string message = string.Empty;
+
+            if (!_serviceValidation.PlatformWindowsIsOk(ref message))
             {
-                throw new Exception("This version of (Unified Development Platform) don't run in cross platform.");
+                HasMessage(context, message);
+                return;
             }
 
-
             await next();
+        }
+
+        private static void HasMessage(ActionExecutingContext context, string message)
+        {
+            context.Result = new BadRequestObjectResult(new ErrorDetails()
+            {
+                StatusCode = 1,
+                Message = message
+            });
         }
     }
 }
