@@ -1,7 +1,7 @@
 ﻿namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Controller
 {
     /// <summary>
-    /// Order controller filter executation.
+    /// Controller Order Executation Filter for UNIFIED DEVELOPMENT PLATFORM.
     /// </summary>
     public abstract class ControllerOrderExecutationFilter
     {

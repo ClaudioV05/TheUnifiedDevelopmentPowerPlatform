@@ -38,6 +38,15 @@
         string RemoveSpecialCaracterFrompath(string path);
 
         /// <summary>
+        /// Select section standard.
+        /// </summary>
+        /// <param name="text"></param>
+        /// <returns>Section name.</returns>
+        string SelectSectionStandard(string text);
+
+        #region For Treatment of Strings.
+
+        /// <summary>
         /// To Upper.
         /// </summary>
         /// <param name="text"></param>
@@ -77,7 +86,7 @@
         /// </summary>
         /// <param name="text"></param>
         /// <param name="value"></param>
-        ///// <returns>True or false.</returns>
+        /// <returns>True or false.</returns>
         bool StringStarts(string text, string value);
 
         /// <summary>
@@ -87,5 +96,7 @@
         /// <param name="value"></param>
         /// <returns>True or false.</returns>
         bool StringEnds(string text, string value);
+
+        #endregion For Treatment of Strings.
     }
 }

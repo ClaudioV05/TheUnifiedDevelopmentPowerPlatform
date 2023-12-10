@@ -43,6 +43,7 @@ builder.Services.AddScoped<FilterActionContextTables<Metadata>>();
 #endregion Action Filters.
 
 #region Dependency Injection.
+
 #region Services.
 builder.Services.AddScoped<IServiceAppSettings, ServiceAppSettings>();
 builder.Services.AddScoped<IServiceCrypto, ServiceCrypto>();
@@ -59,12 +60,13 @@ builder.Services.AddScoped<IServiceMetadataTables, ServiceMetadataTables>();
 builder.Services.AddScoped<IServiceValidation, ServiceValidation>();
 builder.Services.AddScoped<IServiceZipFile, ServiceZipFile>();
 builder.Services.AddScoped<IServiceExtensibleMarkupLanguage, ServiceExtensibleMarkupLanguage>();
-builder.Services.AddScoped<IServiceSearchLinq, ServiceSearchLinq>();
+builder.Services.AddScoped<IServiceLanguageIntegratedQuery, ServiceLanguageIntegratedQuery>();
 #endregion Services.
 
 #region Repositories.
 // Code from Repositories here.
 #endregion Repositories.
+
 #endregion Dependency Injection.
 
 var app = builder.Build();

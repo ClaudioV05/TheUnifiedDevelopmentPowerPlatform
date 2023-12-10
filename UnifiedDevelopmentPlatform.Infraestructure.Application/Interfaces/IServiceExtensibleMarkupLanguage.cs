@@ -3,11 +3,19 @@
     public interface IServiceExtensibleMarkupLanguage
     {
         /// <summary>
-        /// Create the tree directory save.
+        /// Tree xml save configuration file.
         /// </summary>
         /// <param name="path"></param>
         /// <param name="items"></param>
         /// <returns></returns>
-        bool TreeDirectorySave(string path, List<string> items);
+        void TreeXmlSaveConfigurationFile(string path, List<string> items);
+
+        /// <summary>
+        /// Tree xml save directory file.
+        /// </summary>
+        /// <param name="path"></param>
+        /// <param name="items"></param>
+        /// <returns></returns>
+        void TreeXmlSaveDirectoriesFile(string path, List<string> items);
     }
 }

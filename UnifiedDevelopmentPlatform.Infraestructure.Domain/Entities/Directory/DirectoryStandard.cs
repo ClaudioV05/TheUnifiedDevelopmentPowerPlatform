@@ -6,8 +6,8 @@
     public abstract class DirectoryStandard
     {
         public const string APP = "\\App";
-        public const string BACK = "\\Back";
-        public const string FRONT = "\\Front";
+        public const string BACK_END = "\\Backend";
+        public const string FRONT_END = "\\Frontend";
         public const string CONFIGURATION = "\\Configuration";
     }
 }

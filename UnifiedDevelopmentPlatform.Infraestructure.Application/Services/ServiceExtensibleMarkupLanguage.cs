@@ -1,5 +1,6 @@
 ﻿using System.Xml.Linq;
 using UnifiedDevelopmentPlatform.Application.Interfaces;
+using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.ExtensibleMarkupLanguage;
 
 namespace UnifiedDevelopmentPlatform.Application.Services
 {
@@ -7,23 +8,28 @@ namespace UnifiedDevelopmentPlatform.Application.Services
     {
         private const string UDP_DIRECTORY = "udp_directorys";
 
-        public bool TreeDirectorySave(string path, List<string> items)
+        public void TreeXmlSaveConfigurationFile(string path, List<string> items)
         {
-            try
+            XElement root = null;
+
+            foreach (string item in items)
             {
-                XElement root = new XElement(UDP_DIRECTORY);
+                root = new XElement(string.Empty);
 
-                root.Add(new XElement("Child", "child content"));
-
-                root.Save($"{path}\\Root.xml", SaveOptions.None);
-
-                //treeDirectorySaveToXml.Add(new XElement("PM", PossibleModules.Select(s => s.ToXml("M"))));
-                return true;
+                root.Add(new XElement("Teste", item));
             }
-            catch (Exception)
-            {
-                return false;
-            }
+
+            root.Save($"{path}\\{ExtensibleMarkupLanguage.FILENAME_CONFIGURATION}.xml", SaveOptions.None);
+        }
+
+        public void TreeXmlSaveDirectoriesFile(string path, List<string> items)
+        {
+            XElement root = new XElement(UDP_DIRECTORY);
+
+            root.Add(new XElement("Child", "child content"));
+            root.Save($"{path}\\Root.xml", SaveOptions.None);
+
+            //treeDirectorySaveToXml.Add(new XElement("PM", PossibleModules.Select(s => s.ToXml("M"))));
         }
     }
 }

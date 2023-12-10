@@ -1,7 +1,7 @@
 ﻿namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Controller
 {
     /// <summary>
-    /// Controller direction router.
+    /// Controller Router for UNIFIED DEVELOPMENT PLATFORM.
     /// </summary>
     public abstract class ControllerRouter
     {

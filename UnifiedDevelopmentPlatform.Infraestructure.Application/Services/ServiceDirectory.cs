@@ -1,5 +1,4 @@
-﻿using System.IO;
-using System.Reflection;
+﻿using System.Reflection;
 using System.Text.RegularExpressions;
 using UnifiedDevelopmentPlatform.Application.Interfaces;
 using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Directory;
@@ -11,20 +10,22 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         private string? _directory;
         private readonly Queue<string> _queueDirectory;
         private readonly IServiceFuncStrings _serviceFuncStrings;
-        private readonly IServiceSearchLinq _serviceSearchLinq;
-        private readonly IServiceExtensibleMarkupLanguage _serviceXml;
+        private readonly IServiceLanguageIntegratedQuery _serviceLanguageIntegratedQuery;
+        private readonly IServiceExtensibleMarkupLanguage _serviceExtensibleMarkupLanguage;
 
-        public ServiceDirectory(IServiceFuncStrings serviceFuncStrings, IServiceExtensibleMarkupLanguage serviceXml, IServiceSearchLinq serviceSearchLinq)
+        public ServiceDirectory(IServiceFuncStrings serviceFuncStrings,
+                                IServiceExtensibleMarkupLanguage serviceExtensibleMarkupLanguage,
+                                IServiceLanguageIntegratedQuery serviceLanguageIntegratedQuery)
         {
             _queueDirectory = new Queue<string>();
             _serviceFuncStrings = serviceFuncStrings;
-            _serviceXml = serviceXml;
-            _serviceSearchLinq = serviceSearchLinq;
+            _serviceExtensibleMarkupLanguage = serviceExtensibleMarkupLanguage;
+            _serviceLanguageIntegratedQuery = serviceLanguageIntegratedQuery;
         }
 
         public void CreateAllDirectoryOfSolution()
         {
-            string[] directories = new string[] { DirectoryStandard.BACK, DirectoryStandard.FRONT };
+            string[] directories = new string[] { DirectoryStandard.BACK_END, DirectoryStandard.FRONT_END };
 
             try
             {
@@ -52,7 +53,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
 
                         this.CreateAllPath(_queueDirectory);
 
-                        this.FilterAndSavePaths(directories, _queueDirectory);
+                        this.FilterAndSavePaths(_queueDirectory);
                     }
                 }
             }
@@ -124,42 +125,27 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             }
         }
 
-        private void FilterAndSavePaths(string[] directory, Queue<string> queueDirectory)
+        private void FilterAndSavePaths(Queue<string> queueDirectory)
         {
-            bool executed = true;
-            List<string>? paths = null;
             string directoryDefaultToSave = string.Empty;
 
             try
             {
-                for (int i = 0; i < directory.Length; i++)
-                {
-                    paths = _serviceSearchLinq.SelectAllPathFromDirectory(queueDirectory.ToList(), directory[i]);
+                List<string>? lstWithoutAppConfiguration = _serviceLanguageIntegratedQuery.UDPSelectRootPathWithoutAppConfiguration(queueDirectory.ToList());
 
-                    if (paths is null)
-                    {
-                        executed = false;
-                        break;
-                    }
+                List<string>? lstWithAppConfiguration = _serviceLanguageIntegratedQuery.UDPSelectRootPathWithAppConfiguration(queueDirectory.ToList());
+                List<string>? lstSectionAppAndConfiguration = _serviceLanguageIntegratedQuery.UDPSelectSectionStandard(lstWithAppConfiguration);
 
-                    if (i == 0)
-                    {
-                        directoryDefaultToSave = _serviceSearchLinq.GetPathConfiguration(paths);
+                List<string>? lstSectionFrontend = _serviceLanguageIntegratedQuery.UDPSelectSectionFrontend(lstWithoutAppConfiguration);
+                List<string>? lstSectionBackend = _serviceLanguageIntegratedQuery.UDPSelectSectionBackend(lstWithoutAppConfiguration);
 
-                        if (_serviceFuncStrings.NullOrEmpty(directoryDefaultToSave))
-                        {
-                            executed = false;
-                            break;
-                        }
-
-                        _serviceXml.TreeDirectorySave(directoryDefaultToSave, paths);
-                    }
-                }
-
-                if (executed is false)
+                if (lstWithoutAppConfiguration is null || lstWithAppConfiguration is null || lstSectionAppAndConfiguration is null || lstSectionFrontend is null || lstSectionBackend is null)
                 {
                     throw new Exception();
                 }
+
+                _serviceExtensibleMarkupLanguage.TreeXmlSaveConfigurationFile(lstWithAppConfiguration[1], lstWithAppConfiguration);
+                _serviceExtensibleMarkupLanguage.TreeXmlSaveDirectoriesFile(lstWithAppConfiguration[1], lstWithoutAppConfiguration);
             }
             catch (IOException)
             {
@@ -180,12 +166,12 @@ namespace UnifiedDevelopmentPlatform.Application.Services
 
         private void CreatePathBack()
         {
-            _queueDirectory.Enqueue($"{_directory}{DirectoryStandard.APP}{DirectoryStandard.BACK}");
+            _queueDirectory.Enqueue($"{_directory}{DirectoryStandard.APP}{DirectoryStandard.BACK_END}");
         }
 
         private void CreatePathFront()
         {
-            _queueDirectory.Enqueue($"{_directory}{DirectoryStandard.APP}{DirectoryStandard.FRONT}");
+            _queueDirectory.Enqueue($"{_directory}{DirectoryStandard.APP}{DirectoryStandard.FRONT_END}");
         }
         #endregion Standard Path.
 

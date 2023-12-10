@@ -1,5 +1,5 @@
-﻿using UnifiedDevelopmentPlatform.Application.Interfaces;
-using System.Text;
+﻿using System.Text;
+using UnifiedDevelopmentPlatform.Application.Interfaces;
 
 namespace UnifiedDevelopmentPlatform.Application.Services
 {
@@ -84,6 +84,21 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             }
         }
 
+        public string SelectSectionStandard(string text)
+        {
+            string section = string.Empty;
+            int posSection = text.LastIndexOf("\\") + 1;
+
+            if (posSection != -1)
+            {
+                section = text.Substring(posSection);
+            }
+
+            return section;
+        }
+
+        #region For Treatment of Strings.
+
         public string Upper(string text)
         {
             string value = string.Empty;
@@ -146,5 +161,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         {
             return text.EndsWith(value);
         }
+
+        #endregion For Treatment of Strings.
     }
 }
