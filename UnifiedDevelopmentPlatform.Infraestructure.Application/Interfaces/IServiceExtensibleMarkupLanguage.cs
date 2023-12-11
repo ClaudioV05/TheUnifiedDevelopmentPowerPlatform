@@ -3,7 +3,7 @@
     public interface IServiceExtensibleMarkupLanguage
     {
         /// <summary>
-        /// Tree xml save configuration file.
+        /// Save tree xml for configuration file with name 'App' and 'Configuration'.
         /// </summary>
         /// <param name="path"></param>
         /// <param name="items"></param>
@@ -11,7 +11,7 @@
         void UPDTreeXmlSaveConfigurationFile(string path, List<string> items);
 
         /// <summary>
-        /// Tree xml save directory file.
+        /// Save tree xml with all directories. For example: 1-Presentation, 2-Application, 3-Domain, 4-Infrastructure.
         /// </summary>
         /// <param name="path"></param>
         /// <param name="items"></param>

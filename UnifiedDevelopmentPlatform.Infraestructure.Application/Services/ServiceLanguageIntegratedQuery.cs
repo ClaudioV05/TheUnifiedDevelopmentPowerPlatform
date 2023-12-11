@@ -14,15 +14,15 @@ namespace UnifiedDevelopmentPlatform.Application.Services
 
         public string UDPSelectRootPathConfiguration(List<string> listItem)
         {
-            listItem = this.ListLowerToDefault(listItem);
-            listItem = this.ListOrderByForDefault(listItem);
+            listItem = this.UDPListLowerToDefault(listItem);
+            listItem = this.UDPListOrderByForDefault(listItem);
             return listItem.Where(element => element.Contains(_serviceFuncStrings.Lower(DirectoryStandard.CONFIGURATION.Replace("\\", string.Empty)))).FirstOrDefault() ?? string.Empty;
         }
 
         public string UDPSelectRootPathApp(List<string> listItem)
         {
-            listItem = this.ListLowerToDefault(listItem);
-            listItem = this.ListOrderByForDefault(listItem);
+            listItem = this.UDPListLowerToDefault(listItem);
+            listItem = this.UDPListOrderByForDefault(listItem);
             return listItem.Where(element => element.Contains(_serviceFuncStrings.Lower(DirectoryStandard.APP.Replace("\\", string.Empty)))).FirstOrDefault() ?? string.Empty;
         }
 
@@ -51,8 +51,8 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         {
             string[] directories = new string[2];
 
-            listItem = this.ListLowerToDefault(listItem);
-            listItem = this.ListOrderByForDefault(listItem);
+            listItem = this.UDPListLowerToDefault(listItem);
+            listItem = this.UDPListOrderByForDefault(listItem);
 
             directories[0] = SelectRootPathApp(listItem);
             directories[1] = SelectRootPathConfiguration(listItem);
@@ -62,19 +62,19 @@ namespace UnifiedDevelopmentPlatform.Application.Services
 
         public List<string>? UDPSelectRootPathWithoutAppConfiguration(List<string> listItem)
         {
-            listItem = this.ListLowerToDefault(listItem);
-            listItem = this.ListOrderByForDefault(listItem);
+            listItem = this.UDPListLowerToDefault(listItem);
+            listItem = this.UDPListOrderByForDefault(listItem);
             return listItem.Where(element => !element.Contains(_serviceFuncStrings.Lower(DirectoryStandard.APP.Replace("\\", string.Empty))) || !element.Contains(_serviceFuncStrings.Lower(DirectoryStandard.CONFIGURATION.Replace("\\", string.Empty)))).Skip(1).ToList();
         }
 
         #region Methods.
 
-        private List<string> ListOrderByForDefault(List<string> listItem)
+        private List<string> UDPListOrderByForDefault(List<string> listItem)
         {
             return listItem.OrderBy(element => element).ToList();
         }
 
-        private List<string> ListLowerToDefault(List<string> listItem)
+        private List<string> UDPListLowerToDefault(List<string> listItem)
         {
             return listItem.Select(element => _serviceFuncStrings.Lower(element)).ToList();
         }

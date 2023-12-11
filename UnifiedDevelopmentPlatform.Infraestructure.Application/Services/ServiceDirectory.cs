@@ -27,42 +27,48 @@ namespace UnifiedDevelopmentPlatform.Application.Services
 
             try
             {
-                _directory = this.GetRootDirectoryOfSolution();
+                _directory = this.UDPGetRootDirectoryExecutableOfSolution();
 
                 if (!_serviceFuncStrings.NullOrEmpty(_directory ?? string.Empty))
                 {
-                    if (this.DeleteAllDirectoryOfSolution(_directory))
+                    if (this.UDPDeleteAllRootDirectoryOfSolution(_directory))
                     {
-                        this.CreatePathApp();
+                        this.UDPCreateRootPathApp();
 
-                        this.CreatePathBack();
+                        this.CreateRootPathBackend();
 
-                        this.CreatePathFront();
+                        this.CreateRootPathFrontend();
 
-                        this.CreatePathConfig();
+                        this.UDPCreateRootPathConfiguration();
 
-                        this.CreatePathPresentation(directories);
+                        this.CreateRootPathPresentation(directories);
 
-                        this.CreatePathApplication(directories);
+                        this.CreateRootPathApplication(directories);
 
-                        this.CreatePathDomain(directories);
+                        this.CreateRootPathDomain(directories);
 
-                        this.CreatePathInfrastructure(directories);
+                        this.CreateRootPathInfrastructure(directories);
 
-                        this.CreateAllPath(_queueDirectory);
+                        this.UDPCreateAllRootPath(_queueDirectory);
 
-                        this.FilterAndSavePaths(_queueDirectory);
+                        this.UDPFilterAndSavePaths(_queueDirectory);
                     }
                 }
             }
             catch (IOException)
             {
-                this.DeleteAllDirectoryOfSolution(_directory);
+                this.UDPDeleteAllRootDirectoryOfSolution(_directory);
                 throw new IOException();
             }
         }
 
-        private bool DeleteAllDirectoryOfSolution(string? rootDirectory)
+        #region Private Methods.
+
+        /// <summary>
+        /// Delete all root directory of solution.
+        /// </summary>
+        /// <returns></returns>
+        private bool UDPDeleteAllRootDirectoryOfSolution(string? rootDirectory)
         {
             try
             {
@@ -82,7 +88,11 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             return true;
         }
 
-        private string? GetRootDirectoryOfSolution()
+        /// <summary>
+        /// Obtain the root directory executable of solution.
+        /// </summary>
+        /// <returns>The root directory executable of solution.</returns>
+        private string? UDPGetRootDirectoryExecutableOfSolution()
         {
             string? rootDirectoryOfSolution = string.Empty;
 
@@ -105,7 +115,11 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             }
         }
 
-        private void CreateAllPath(Queue<string> queueDirectory)
+        /// <summary>
+        /// Create all root path of solution.
+        /// </summary>
+        /// <returns></returns>
+        private void UDPCreateAllRootPath(Queue<string> queueDirectory)
         {
             try
             {
@@ -123,7 +137,11 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             }
         }
 
-        private void FilterAndSavePaths(Queue<string> queueDirectory)
+        /// <summary>
+        /// Filter and save all paths with name of directories.
+        /// </summary>
+        /// <returns></returns>
+        private void UDPFilterAndSavePaths(Queue<string> queueDirectory)
         {
             string directoryDefaultToSave = string.Empty;
 
@@ -152,77 +170,125 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         }
 
         #region Standard Path.
-        private void CreatePathApp()
+
+        /// <summary>
+        /// Create root path app of solution.
+        /// </summary>
+        /// <returns></returns>
+        private void UDPCreateRootPathApp()
         {
             _queueDirectory.Enqueue($"{_directory}{DirectoryStandard.APP}");
         }
 
-        private void CreatePathConfig()
+        /// <summary>
+        /// Create root path configuration of solution.
+        /// </summary>
+        /// <returns></returns>
+        private void UDPCreateRootPathConfiguration()
         {
             _queueDirectory.Enqueue($"{_directory}{DirectoryStandard.APP}{DirectoryStandard.CONFIGURATION}");
         }
 
-        private void CreatePathBack()
+        /// <summary>
+        /// Create root path back end of solution.
+        /// </summary>
+        /// <returns></returns>
+        private void CreateRootPathBackend()
         {
             _queueDirectory.Enqueue($"{_directory}{DirectoryStandard.APP}{DirectoryStandard.BACK_END}");
         }
 
-        private void CreatePathFront()
+        /// <summary>
+        /// Create root path front end of solution.
+        /// </summary>
+        /// <returns></returns>
+        private void CreateRootPathFrontend()
         {
             _queueDirectory.Enqueue($"{_directory}{DirectoryStandard.APP}{DirectoryStandard.FRONT_END}");
         }
+
         #endregion Standard Path.
 
         #region Presentation.
-        private void CreatePathPresentation(string[] backFront)
+
+        /// <summary>
+        /// Create root path presentation of solution.
+        /// </summary>
+        /// <param name="backendFrontend"></param>
+        /// <returns></returns>
+        private void CreateRootPathPresentation(string[] backendFrontend)
         {
-            for (int i = 0; i < backFront.Length; i++)
+            for (int i = 0; i < backendFrontend.Length; i++)
             {
-                _queueDirectory.Enqueue($"{_directory}{DirectoryStandard.APP}{backFront[i]}{DirectoryPresentation.PRESENTATION}");
-                _queueDirectory.Enqueue($"{_directory}{DirectoryStandard.APP}{backFront[i]}{DirectoryPresentation.PRESENTATION}{DirectoryPresentation.PROPERTIES}");
-                _queueDirectory.Enqueue($"{_directory}{DirectoryStandard.APP}{backFront[i]}{DirectoryPresentation.PRESENTATION}{DirectoryPresentation.CONTROLLERS}");
-                _queueDirectory.Enqueue($"{_directory}{DirectoryStandard.APP}{backFront[i]}{DirectoryPresentation.PRESENTATION}{DirectoryPresentation.EXTENSIONS}");
-                _queueDirectory.Enqueue($"{_directory}{DirectoryStandard.APP}{backFront[i]}{DirectoryPresentation.PRESENTATION}{DirectoryPresentation.FILTERS}");
-                _queueDirectory.Enqueue($"{_directory}{DirectoryStandard.APP}{backFront[i]}{DirectoryPresentation.PRESENTATION}{DirectoryPresentation.MODELS}");
-                _queueDirectory.Enqueue($"{_directory}{DirectoryStandard.APP}{backFront[i]}{DirectoryPresentation.PRESENTATION}{DirectoryPresentation.SWAGGER}");
+                _queueDirectory.Enqueue($"{_directory}{DirectoryStandard.APP}{backendFrontend[i]}{DirectoryPresentation.PRESENTATION}");
+                _queueDirectory.Enqueue($"{_directory}{DirectoryStandard.APP}{backendFrontend[i]}{DirectoryPresentation.PRESENTATION}{DirectoryPresentation.PROPERTIES}");
+                _queueDirectory.Enqueue($"{_directory}{DirectoryStandard.APP}{backendFrontend[i]}{DirectoryPresentation.PRESENTATION}{DirectoryPresentation.CONTROLLERS}");
+                _queueDirectory.Enqueue($"{_directory}{DirectoryStandard.APP}{backendFrontend[i]}{DirectoryPresentation.PRESENTATION}{DirectoryPresentation.EXTENSIONS}");
+                _queueDirectory.Enqueue($"{_directory}{DirectoryStandard.APP}{backendFrontend[i]}{DirectoryPresentation.PRESENTATION}{DirectoryPresentation.FILTERS}");
+                _queueDirectory.Enqueue($"{_directory}{DirectoryStandard.APP}{backendFrontend[i]}{DirectoryPresentation.PRESENTATION}{DirectoryPresentation.MODELS}");
+                _queueDirectory.Enqueue($"{_directory}{DirectoryStandard.APP}{backendFrontend[i]}{DirectoryPresentation.PRESENTATION}{DirectoryPresentation.SWAGGER}");
             }
         }
+
         #endregion Presentation.
 
         #region Application.
-        private void CreatePathApplication(string[] backFront)
+
+        /// <summary>
+        /// Create root path application of solution.
+        /// </summary>
+        /// <param name="backendFrontend"></param>
+        /// <returns></returns>
+        private void CreateRootPathApplication(string[] backendFrontend)
         {
-            for (int i = 0; i < backFront.Length; i++)
+            for (int i = 0; i < backendFrontend.Length; i++)
             {
-                _queueDirectory.Enqueue($"{_directory}{DirectoryStandard.APP}{backFront[i]}{DirectoryApplication.APPLICATION}");
-                _queueDirectory.Enqueue($"{_directory}{DirectoryStandard.APP}{backFront[i]}{DirectoryApplication.APPLICATION}{DirectoryApplication.INTERFACES}");
-                _queueDirectory.Enqueue($"{_directory}{DirectoryStandard.APP}{backFront[i]}{DirectoryApplication.APPLICATION}{DirectoryApplication.SERVICES}");
+                _queueDirectory.Enqueue($"{_directory}{DirectoryStandard.APP}{backendFrontend[i]}{DirectoryApplication.APPLICATION}");
+                _queueDirectory.Enqueue($"{_directory}{DirectoryStandard.APP}{backendFrontend[i]}{DirectoryApplication.APPLICATION}{DirectoryApplication.INTERFACES}");
+                _queueDirectory.Enqueue($"{_directory}{DirectoryStandard.APP}{backendFrontend[i]}{DirectoryApplication.APPLICATION}{DirectoryApplication.SERVICES}");
             }
         }
+
         #endregion Application.
 
         #region Domain.
-        private void CreatePathDomain(string[] backFront)
+
+        /// <summary>
+        /// Create root path domain of solution.
+        /// </summary>
+        /// <param name="backendFrontend"></param>
+        /// <returns></returns>
+        private void CreateRootPathDomain(string[] backendFrontend)
         {
-            for (int i = 0; i < backFront.Length; i++)
+            for (int i = 0; i < backendFrontend.Length; i++)
             {
-                _queueDirectory.Enqueue($"{_directory}{DirectoryStandard.APP}{backFront[i]}{DirectoryDomain.DOMAIN}");
-                _queueDirectory.Enqueue($"{_directory}{DirectoryStandard.APP}{backFront[i]}{DirectoryDomain.DOMAIN}{DirectoryDomain.INTERFACES}");
-                _queueDirectory.Enqueue($"{_directory}{DirectoryStandard.APP}{backFront[i]}{DirectoryDomain.DOMAIN}{DirectoryDomain.ENTITIES}");
+                _queueDirectory.Enqueue($"{_directory}{DirectoryStandard.APP}{backendFrontend[i]}{DirectoryDomain.DOMAIN}");
+                _queueDirectory.Enqueue($"{_directory}{DirectoryStandard.APP}{backendFrontend[i]}{DirectoryDomain.DOMAIN}{DirectoryDomain.INTERFACES}");
+                _queueDirectory.Enqueue($"{_directory}{DirectoryStandard.APP}{backendFrontend[i]}{DirectoryDomain.DOMAIN}{DirectoryDomain.ENTITIES}");
             }
         }
+
         #endregion Domain.
 
         #region Infrastructure.
-        private void CreatePathInfrastructure(string[] backFront)
+
+        /// <summary>
+        /// Create root path infrastructure of solution.
+        /// </summary>
+        /// <param name="backendFrontend"></param>
+        /// <returns></returns>
+        private void CreateRootPathInfrastructure(string[] backendFrontend)
         {
-            for (int i = 0; i < backFront.Length; i++)
+            for (int i = 0; i < backendFrontend.Length; i++)
             {
-                _queueDirectory.Enqueue($"{_directory}{DirectoryStandard.APP}{backFront[i]}{DirectoryInfrastructure.INFRASTRUCTURE}");
-                _queueDirectory.Enqueue($"{_directory}{DirectoryStandard.APP}{backFront[i]}{DirectoryInfrastructure.INFRASTRUCTURE}{DirectoryInfrastructure.CROSSCUTTING}");
-                _queueDirectory.Enqueue($"{_directory}{DirectoryStandard.APP}{backFront[i]}{DirectoryInfrastructure.INFRASTRUCTURE}{DirectoryInfrastructure.DATA}");
+                _queueDirectory.Enqueue($"{_directory}{DirectoryStandard.APP}{backendFrontend[i]}{DirectoryInfrastructure.INFRASTRUCTURE}");
+                _queueDirectory.Enqueue($"{_directory}{DirectoryStandard.APP}{backendFrontend[i]}{DirectoryInfrastructure.INFRASTRUCTURE}{DirectoryInfrastructure.CROSSCUTTING}");
+                _queueDirectory.Enqueue($"{_directory}{DirectoryStandard.APP}{backendFrontend[i]}{DirectoryInfrastructure.INFRASTRUCTURE}{DirectoryInfrastructure.DATA}");
             }
         }
+
         #endregion Infrastructure.
+
+        #endregion Private Methods.
     }
 }
