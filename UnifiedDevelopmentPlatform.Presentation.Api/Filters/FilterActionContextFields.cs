@@ -19,7 +19,7 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Filters
         {
             string message = string.Empty;
 
-            if (!_serviceValidation.ModelStateIsOk(context, ref message))
+            if (!_serviceValidation.UDPModelStateIsOk(context, ref message))
             {
                 HasMessage(context, message);
                 return;

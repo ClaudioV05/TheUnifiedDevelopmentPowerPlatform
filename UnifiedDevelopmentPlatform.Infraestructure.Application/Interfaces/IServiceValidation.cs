@@ -10,7 +10,7 @@
         /// <param name="context"></param>
         /// <param name="message"></param>
         /// <returns>True or false.</returns>
-        bool PlatformWindowsIsOk(ref string message);
+        bool UDPPlatformWindowsIsOk(ref string message);
 
         #endregion Validation for Filter Action Controller.
 
@@ -22,7 +22,7 @@
         /// <param name="context"></param>
         /// <param name="message"></param>
         /// <returns>True or false.</returns>
-        bool ModelStateIsOk(dynamic context, ref string message);
+        bool UDPModelStateIsOk(dynamic context, ref string message);
 
         /// <summary>
         /// Does Validation for Script Metadata.
@@ -30,7 +30,7 @@
         /// <param name="context"></param>
         /// <param name="message"></param>
         /// <returns>True or false.</returns>
-        bool ScriptMetadataIsOk(dynamic context, ref string message);
+        bool UDPScriptMetadataIsOk(dynamic context, ref string message);
 
         /// <summary>
         /// Validateing whether string is Base64.
@@ -38,7 +38,7 @@
         /// <param name="context"></param>
         /// <param name="message"></param>
         /// <returns>True or false.</returns>
-        bool MetadataIsBase64Ok(dynamic context, ref string message);
+        bool UDPMetadataIsBase64Ok(dynamic context, ref string message);
 
         /// <summary>
         /// Does Validation for Development Environment.
@@ -46,7 +46,7 @@
         /// <param name="context"></param>
         /// <param name="message"></param>
         /// <returns>True or false.</returns>
-        bool DevelopmentEnvironmentIsOk(dynamic context, ref string message);
+        bool UDPDevelopmentEnvironmentIsOk(dynamic context, ref string message);
 
         /// <summary>
         /// Does Validation for Databases.
@@ -54,7 +54,7 @@
         /// <param name="context"></param>
         /// <param name="message"></param>
         /// <returns>True or false.</returns>
-        bool DatabasesIsOk(dynamic context, ref string message);
+        bool UDPDatabasesIsOk(dynamic context, ref string message);
 
         /// <summary>
         /// Does Validation for Databases Engine.
@@ -62,7 +62,7 @@
         /// <param name="context"></param>
         /// <param name="message"></param>
         /// <returns>True or false.</returns>
-        bool DatabasesEngineIsOk(dynamic context, ref string message);
+        bool UDPDatabasesEngineIsOk(dynamic context, ref string message);
 
         /// <summary>
         /// Does Validation for Forms.
@@ -70,7 +70,7 @@
         /// <param name="context"></param>
         /// <param name="message"></param>
         /// <returns>True or false.</returns>
-        bool FormIsOk(dynamic context, ref string message);
+        bool UDPFormIsOk(dynamic context, ref string message);
 
         #endregion Validation for Filters Actions Context Tables and Fields.
 
@@ -96,6 +96,6 @@
         /// </summary>
         /// <param name="text"></param>
         /// <returns>True or false.</returns>
-        bool ValidateBase64(string? text);
+        bool UDPValidateBase64(string? text);
     }
 }

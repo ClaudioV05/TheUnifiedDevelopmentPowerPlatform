@@ -4,7 +4,7 @@ namespace UnifiedDevelopmentPlatform.Application.Interfaces
 {
     public interface IServiceMetadata
     {
-        List<string> MetadataAllTablesName(Metadata? metadata);
-        List<string> MetadataTableAndAllFields(Metadata? metadata);
+        List<string> UDPMetadataAllTablesName(Metadata? metadata);
+        List<string> UDPMetadataTableAndAllFields(Metadata? metadata);
     }
 }

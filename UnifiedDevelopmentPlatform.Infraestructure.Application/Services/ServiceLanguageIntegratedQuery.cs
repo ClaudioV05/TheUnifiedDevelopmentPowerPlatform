@@ -28,21 +28,21 @@ namespace UnifiedDevelopmentPlatform.Application.Services
 
         public List<string>? UDPSelectSectionStandard(List<string> listItem)
         {
-            return listItem.Select(element => _serviceFuncStrings.SelectSectionStandard(element))
+            return listItem.Select(element => _serviceFuncStrings.UDPSelectSectionStandard(element))
                            .Where(element => !_serviceFuncStrings.NullOrEmpty(element) && element.Length > 0)
                            .ToList();
         }
 
         public List<string>? UDPSelectSectionFrontend(List<string> listItem)
         {
-            return listItem.Select(element => _serviceFuncStrings.SelectSectionStandard(element))
+            return listItem.Select(element => _serviceFuncStrings.UDPSelectSectionStandard(element))
                            .Where(element => !_serviceFuncStrings.NullOrEmpty(element) && element.Length > 0)
                            .ToList();
         }
 
         public List<string>? UDPSelectSectionBackend(List<string> listItem)
         {
-            return listItem.Select(element => _serviceFuncStrings.SelectSectionStandard(element))
+            return listItem.Select(element => _serviceFuncStrings.UDPSelectSectionStandard(element))
                            .Where(element => !_serviceFuncStrings.NullOrEmpty(element) && element.Length > 0)
                            .ToList();
         }

@@ -8,7 +8,7 @@
         /// <param name="path"></param>
         /// <param name="items"></param>
         /// <returns></returns>
-        void TreeXmlSaveConfigurationFile(string path, List<string> items);
+        void UPDTreeXmlSaveConfigurationFile(string path, List<string> items);
 
         /// <summary>
         /// Tree xml save directory file.
@@ -16,6 +16,6 @@
         /// <param name="path"></param>
         /// <param name="items"></param>
         /// <returns></returns>
-        void TreeXmlSaveDirectoriesFile(string path, List<string> items);
+        void UPDTreeXmlSaveDirectoriesFile(string path, List<string> items);
     }
 }

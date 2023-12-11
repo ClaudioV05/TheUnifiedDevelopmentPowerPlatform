@@ -2,10 +2,10 @@
 {
     public interface IServiceEnvironment
     {
-        string? GetEnvVariable(string variable);
+        string? UPDGetEnvVariable(string variable);
 
-        List<string> GetEnvListVariables();
+        List<string> UPDGetEnvListVariables();
 
-        bool PlatformIsWindows();
+        bool UPDPlatformIsWindows();
     }
 }

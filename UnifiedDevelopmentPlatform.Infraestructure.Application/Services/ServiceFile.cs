@@ -4,12 +4,12 @@ namespace UnifiedDevelopmentPlatform.Application.Services
 {
     public class ServiceFile : IServiceFile
     {
-        public void LinesGenerate(IEnumerable<string> informations, string rootDirectory)
+        public void UDPLinesGenerate(IEnumerable<string> informations, string rootDirectory)
         {
             File.WriteAllLines(rootDirectory, informations);
         }
 
-        public IEnumerable<string>? LinesRead(string rootDirectory)
+        public IEnumerable<string>? UDPLinesRead(string rootDirectory)
         {
             IEnumerable<string>? returnList = null;
 

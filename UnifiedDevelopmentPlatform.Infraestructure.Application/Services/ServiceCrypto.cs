@@ -8,7 +8,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
     {
         //private readonly string _keyCrypto = "3b4750253d5b274b6346545f3c2b323f6b436c596e6d3c6e5d23552d4a";
 
-        public string Encrypt(string value)
+        public string UPDEncrypt(string value)
         {
             /*
             byte[] input;
@@ -34,7 +34,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             return "";// Convert.ToBase64String(memoryStream.ToArray());
         }
 
-        public string Decrypt(string value)
+        public string UPDDecrypt(string value)
         {
             /*
             byte[] input;
@@ -62,7 +62,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             return "";// Encoding.UTF8.GetString(memoryStream.ToArray());
         }
 
-        public string DecodeBase64(string? value)
+        public string UPDDecodeBase64(string? value)
         {
             try
             {

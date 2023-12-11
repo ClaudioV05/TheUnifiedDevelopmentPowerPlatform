@@ -24,11 +24,11 @@ namespace UnifiedDevelopmentPlatform.Application.Services
 
         #region Validation for Filter Action Controller.
 
-        public bool PlatformWindowsIsOk(ref string message)
+        public bool UDPPlatformWindowsIsOk(ref string message)
         {
             bool platformWindows = true;
 
-            if (!_serviceEnvironment.PlatformIsWindows())
+            if (!_serviceEnvironment.UPDPlatformIsWindows())
             {
                 platformWindows = false;
                 message = $"This version of (Unified Development Platform) don't run in cross cross platform. Only windows.";
@@ -41,13 +41,13 @@ namespace UnifiedDevelopmentPlatform.Application.Services
 
         #region Validation for Filters Actions Context Tables and Fields.
 
-        public bool ModelStateIsOk(dynamic context, ref string message)
+        public bool UDPModelStateIsOk(dynamic context, ref string message)
         {
             message = !context.ModelState.IsValid ? $"The (JSON) {messageDefault}" : string.Empty;
             return _serviceFuncStrings.NullOrEmpty(message);
         }
 
-        public bool ScriptMetadataIsOk(dynamic context, ref string message)
+        public bool UDPScriptMetadataIsOk(dynamic context, ref string message)
         {
             dynamic? obj = null;
             context.ActionArguments.TryGetValue(FilterActionTables.METADATA, out obj);
@@ -55,15 +55,15 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             return _serviceFuncStrings.NullOrEmpty(message);
         }
 
-        public bool MetadataIsBase64Ok(dynamic context, ref string message)
+        public bool UDPMetadataIsBase64Ok(dynamic context, ref string message)
         {
             dynamic? obj = null;
             context.ActionArguments.TryGetValue(FilterActionTables.METADATA, out obj);
-            message = !this.ValidateBase64(obj?.ScriptMetadata) ? $"The (METADATA) on format base64 {messageDefault}" : string.Empty;
+            message = !this.UDPValidateBase64(obj?.ScriptMetadata) ? $"The (METADATA) on format base64 {messageDefault}" : string.Empty;
             return _serviceFuncStrings.NullOrEmpty(message);
         }
 
-        public bool DevelopmentEnvironmentIsOk(dynamic context, ref string message)
+        public bool UDPDevelopmentEnvironmentIsOk(dynamic context, ref string message)
         {
             dynamic? obj = null;
             context.ActionArguments.TryGetValue(FilterActionTables.METADATA, out obj);
@@ -71,7 +71,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             return _serviceFuncStrings.NullOrEmpty(message);
         }
 
-        public bool DatabasesIsOk(dynamic context, ref string message)
+        public bool UDPDatabasesIsOk(dynamic context, ref string message)
         {
             dynamic? obj = null;
             context.ActionArguments.TryGetValue(FilterActionTables.METADATA, out obj);
@@ -79,7 +79,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             return _serviceFuncStrings.NullOrEmpty(message);
         }
 
-        public bool DatabasesEngineIsOk(dynamic context, ref string message)
+        public bool UDPDatabasesEngineIsOk(dynamic context, ref string message)
         {
             dynamic? obj = null;
             context.ActionArguments.TryGetValue(FilterActionTables.METADATA, out obj);
@@ -87,7 +87,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             return _serviceFuncStrings.NullOrEmpty(message);
         }
 
-        public bool FormIsOk(dynamic context, ref string message)
+        public bool UDPFormIsOk(dynamic context, ref string message)
         {
             dynamic? obj = null;
             context.ActionArguments.TryGetValue(FilterActionTables.METADATA, out obj);
@@ -131,7 +131,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         }
         #endregion Validation for Files.
 
-        public bool ValidateBase64(string? text)
+        public bool UDPValidateBase64(string? text)
         {
             int indexBase64 = 0;
             bool validBase64 = true;

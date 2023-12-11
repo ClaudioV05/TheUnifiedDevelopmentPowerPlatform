@@ -4,12 +4,12 @@ namespace UnifiedDevelopmentPlatform.Application.Interfaces
 {
     public interface IServiceLog
     {
-        void LogDebug(string message);
+        void UDPLogDebug(string message);
 
-        void LogError(string message);
+        void UDPLogError(string message);
 
-        void LogInformation(string message);
+        void UDPLogInformation(string message);
 
-        void LogWarning(string message);
+        void UDPLogWarning(string message);
     }
 }

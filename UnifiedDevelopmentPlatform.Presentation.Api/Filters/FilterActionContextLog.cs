@@ -14,18 +14,18 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Filters
 
         public async Task OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next)
         {
-            _serviceLog.LogInformation("### -> OnActionExecuted");
-            _serviceLog.LogInformation("###################################################");
-            _serviceLog.LogInformation($"{DateTime.Now.ToLongTimeString()}");
-            _serviceLog.LogInformation("###################################################");
+            _serviceLog.UDPLogInformation("### -> OnActionExecuted");
+            _serviceLog.UDPLogInformation("###################################################");
+            _serviceLog.UDPLogInformation($"{DateTime.Now.ToLongTimeString()}");
+            _serviceLog.UDPLogInformation("###################################################");
 
             await next();
 
-            _serviceLog.LogInformation("### -> OnActionExecuting");
-            _serviceLog.LogInformation("###################################################");
-            _serviceLog.LogInformation($"{DateTime.Now.ToLongTimeString()}");
-            _serviceLog.LogInformation($"ModelState : {context.ModelState.IsValid}");
-            _serviceLog.LogInformation("###################################################");
+            _serviceLog.UDPLogInformation("### -> OnActionExecuting");
+            _serviceLog.UDPLogInformation("###################################################");
+            _serviceLog.UDPLogInformation($"{DateTime.Now.ToLongTimeString()}");
+            _serviceLog.UDPLogInformation($"ModelState : {context.ModelState.IsValid}");
+            _serviceLog.UDPLogInformation("###################################################");
         }
     }
 }

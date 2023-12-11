@@ -7,42 +7,42 @@
         /// </summary>
         /// <param name="text"></param>
         /// <returns>The strings without special caracter.</returns>
-        string RemoveSpecialCaracter(string text);
+        string UDPRemoveSpecialCaracter(string text);
 
         /// <summary>
         /// Remove all white space.
         /// </summary>
         /// <param name="text"></param>
         /// <returns>The strings without white space.</returns>
-        string RemoveAllWhiteSpace(string text);
+        string UDPRemoveAllWhiteSpace(string text);
 
         /// <summary>
         /// Enconde to base64.
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
-        string EncondeToBase64(string data);
+        string UDPEncondeToBase64(string data);
 
         /// <summary>
         /// Decode to base64.
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
-        string DecodeToBase64(string data);
+        string UDPDecodeToBase64(string data);
 
         /// <summary>
         /// Remove special caracter from path.
         /// </summary>
         /// <param name="path"></param>
         /// <returns></returns>
-        string RemoveSpecialCaracterFrompath(string path);
+        string UDPRemoveSpecialCaracterFrompath(string path);
 
         /// <summary>
         /// Select section standard.
         /// </summary>
         /// <param name="text"></param>
         /// <returns>Section name.</returns>
-        string SelectSectionStandard(string text);
+        string UDPSelectSectionStandard(string text);
 
         #region For Treatment of Strings.
 

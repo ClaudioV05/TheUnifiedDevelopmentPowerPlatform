@@ -13,9 +13,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         private readonly IServiceLanguageIntegratedQuery _serviceLanguageIntegratedQuery;
         private readonly IServiceExtensibleMarkupLanguage _serviceExtensibleMarkupLanguage;
 
-        public ServiceDirectory(IServiceFuncStrings serviceFuncStrings,
-                                IServiceExtensibleMarkupLanguage serviceExtensibleMarkupLanguage,
-                                IServiceLanguageIntegratedQuery serviceLanguageIntegratedQuery)
+        public ServiceDirectory(IServiceFuncStrings serviceFuncStrings, IServiceExtensibleMarkupLanguage serviceExtensibleMarkupLanguage, IServiceLanguageIntegratedQuery serviceLanguageIntegratedQuery)
         {
             _queueDirectory = new Queue<string>();
             _serviceFuncStrings = serviceFuncStrings;
@@ -23,7 +21,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             _serviceLanguageIntegratedQuery = serviceLanguageIntegratedQuery;
         }
 
-        public void CreateAllDirectoryOfSolution()
+        public void UPDCreateAllDirectoryOfSolution()
         {
             string[] directories = new string[] { DirectoryStandard.BACK_END, DirectoryStandard.FRONT_END };
 
@@ -144,8 +142,8 @@ namespace UnifiedDevelopmentPlatform.Application.Services
                     throw new Exception();
                 }
 
-                _serviceExtensibleMarkupLanguage.TreeXmlSaveConfigurationFile(lstWithAppConfiguration[1], lstWithAppConfiguration);
-                _serviceExtensibleMarkupLanguage.TreeXmlSaveDirectoriesFile(lstWithAppConfiguration[1], lstWithoutAppConfiguration);
+                _serviceExtensibleMarkupLanguage.UPDTreeXmlSaveConfigurationFile(lstWithAppConfiguration[1], lstWithAppConfiguration);
+                _serviceExtensibleMarkupLanguage.UPDTreeXmlSaveDirectoriesFile(lstWithAppConfiguration[1], lstWithoutAppConfiguration);
             }
             catch (IOException)
             {

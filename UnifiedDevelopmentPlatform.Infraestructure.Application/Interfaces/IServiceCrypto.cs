@@ -2,8 +2,8 @@
 {
     public interface IServiceCrypto
     {
-        string Encrypt(string value);
-        string Decrypt(string value);
-        string DecodeBase64(string? value);
+        string UPDEncrypt(string value);
+        string UPDDecrypt(string value);
+        string UPDDecodeBase64(string? value);
     }
 }

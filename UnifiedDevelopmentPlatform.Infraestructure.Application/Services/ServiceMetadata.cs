@@ -33,16 +33,16 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             _serviceFuncStrings = serviceFuncStrings;
         }
 
-        public List<string> MetadataAllTablesName(Metadata? metadata)
+        public List<string> UDPMetadataAllTablesName(Metadata? metadata)
         {
             string scriptMetadata = string.Empty;
             List<string> tables = new List<string>();
             try
             {
-                if (!_serviceValidation.ValidateBase64(metadata?.ScriptMetadata))
+                if (!_serviceValidation.UDPValidateBase64(metadata?.ScriptMetadata))
                     throw new Exception("create class with log for it");
 
-                scriptMetadata = _serviceCrypto.DecodeBase64(metadata?.ScriptMetadata);
+                scriptMetadata = _serviceCrypto.UPDDecodeBase64(metadata?.ScriptMetadata);
                 scriptMetadata = scriptMetadata.ToLowerInvariant();
 
                 if (_serviceFuncStrings.NullOrEmpty(scriptMetadata))
@@ -62,7 +62,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             return tables ?? new List<string>();
         }
 
-        public List<string> MetadataTableAndAllFields(Metadata? metadata)
+        public List<string> UDPMetadataTableAndAllFields(Metadata? metadata)
         {
             throw new NotImplementedException();
         }
@@ -103,7 +103,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             string table = string.Empty;
             try
             {
-                metadata = _serviceFuncStrings.RemoveSpecialCaracter(metadata ?? string.Empty);
+                metadata = _serviceFuncStrings.UDPRemoveSpecialCaracter(metadata ?? string.Empty);
                 indexCreateTable = metadata.IndexOf(CREATE_TABLE_WITH_SPACE);
 
                 for (int i = (indexCreateTable + CREATE_TABLE_POSITION); i < metadata?.Length; i++)
@@ -117,8 +117,8 @@ namespace UnifiedDevelopmentPlatform.Application.Services
                     }
                 }
 
-                table = _serviceFuncStrings.RemoveSpecialCaracter(table);
-                table = _serviceFuncStrings.RemoveAllWhiteSpace(table);
+                table = _serviceFuncStrings.UDPRemoveSpecialCaracter(table);
+                table = _serviceFuncStrings.UDPRemoveAllWhiteSpace(table);
                 table = table.ToUpperInvariant();
             }
             catch (Exception)

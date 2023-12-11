@@ -45,7 +45,7 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Controllers
                 ScriptMetadata = metadata.ScriptMetadata,
             };
 
-            return Ok(_serviceMetadata.MetadataAllTablesName(metadata: objMddata));
+            return Ok(_serviceMetadata.UDPMetadataAllTablesName(metadata: objMddata));
         }
 
         /// <summary>

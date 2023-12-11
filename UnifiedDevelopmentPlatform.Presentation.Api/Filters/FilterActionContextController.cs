@@ -18,7 +18,7 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Filters
         {
             string message = string.Empty;
 
-            if (!_serviceValidation.PlatformWindowsIsOk(ref message))
+            if (!_serviceValidation.UDPPlatformWindowsIsOk(ref message))
             {
                 HasMessage(context, message);
                 return;

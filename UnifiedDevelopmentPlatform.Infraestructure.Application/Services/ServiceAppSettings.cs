@@ -4,7 +4,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
 {
     public class ServiceAppSettings : IServiceAppSettings
     {
-        public void AddAppSettings(string key, string value)
+        public void UPDAddAppSettings(string key, string value)
         {
             try
             {

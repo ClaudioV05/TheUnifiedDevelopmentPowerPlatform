@@ -5,7 +5,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
 {
     public class ServiceFuncStrings : IServiceFuncStrings
     {
-        public string RemoveSpecialCaracter(string text)
+        public string UDPRemoveSpecialCaracter(string text)
         {
             try
             {
@@ -25,7 +25,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             }
         }
 
-        public string RemoveAllWhiteSpace(string text)
+        public string UDPRemoveAllWhiteSpace(string text)
         {
             try
             {
@@ -37,7 +37,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             }
         }
 
-        public string EncondeToBase64(string data)
+        public string UDPEncondeToBase64(string data)
         {
             try
             {
@@ -50,7 +50,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             }
         }
 
-        public string DecodeToBase64(string data)
+        public string UDPDecodeToBase64(string data)
         {
             try
             {
@@ -64,7 +64,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         }
 
         [Obsolete("Method with problem", true)]
-        public string RemoveSpecialCaracterFrompath(string path)
+        public string UDPRemoveSpecialCaracterFrompath(string path)
         {
             try
             {
@@ -84,7 +84,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             }
         }
 
-        public string SelectSectionStandard(string text)
+        public string UDPSelectSectionStandard(string text)
         {
             string section = string.Empty;
             int posSection = text.LastIndexOf("\\") + 1;

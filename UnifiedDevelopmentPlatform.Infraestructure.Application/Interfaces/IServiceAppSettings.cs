@@ -2,6 +2,6 @@
 {
     public interface IServiceAppSettings
     {
-        void AddAppSettings(string key, string value);
+        void UPDAddAppSettings(string key, string value);
     }
 }

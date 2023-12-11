@@ -3,8 +3,8 @@
     public interface IServiceJavaScriptObjectNotation
     {
         /*
-        string Serializer(object obj);
-        object DesSerializer(object obj, string json);
+        string UDPSerializer(object obj);
+        object UDPDesSerializer(object obj, string json);
         */
     }
 }
