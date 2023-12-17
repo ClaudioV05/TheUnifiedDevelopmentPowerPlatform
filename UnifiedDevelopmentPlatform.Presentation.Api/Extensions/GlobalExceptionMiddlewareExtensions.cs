@@ -1,11 +1,14 @@
 ﻿using UnifiedDevelopmentPlatform.Presentation.Api.Models;
 using Microsoft.AspNetCore.Diagnostics;
 using System.Net;
+using System.Net.Mime;
+using Microsoft.AspNetCore.Http;
 
 namespace UnifiedDevelopmentPlatform.Presentation.Api.Extensions
 {
     public static class UnifiedDevelopmentPlatformExceptionMiddlewareExtensions
     {
+        private const string CONTENT_TYPE = "application/json";
         public static void ConfigureExceptionHandler(this IApplicationBuilder app)
         {
             app.UseExceptionHandler(appError =>
@@ -13,7 +16,7 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Extensions
                 appError.Run(async context =>
                 {
                     context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
-                    context.Response.ContentType = "application/json";
+                    context.Response.ContentType = CONTENT_TYPE;
 
                     var contextFeature = context.Features.Get<IExceptionHandlerFeature>();
 

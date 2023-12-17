@@ -144,8 +144,8 @@ namespace UnifiedDevelopmentPlatform.Application.Services
                 // Further, if it meets the above criterias, then test for spaces.
                 // If it contains spaces, it is not base64.
                 if (_serviceFuncStrings.NullOrEmpty(text ?? string.Empty) ||
-                text.Length == 0 ||
-                text.Length % 4 != 0 ||
+                text?.Length == 0 ||
+                text?.Length % 4 != 0 ||
                 text.Contains(' ') ||
                 text.Contains('\t') ||
                 text.Contains('\r') ||

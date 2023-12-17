@@ -84,7 +84,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             }
         }
 
-        public string UDPSelectSectionStandard(string text)
+        public string UDPSelectSection(string text)
         {
             string section = string.Empty;
             int posSection = text.LastIndexOf("\\") + 1;

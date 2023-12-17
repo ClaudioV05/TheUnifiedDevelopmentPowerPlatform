@@ -1,11 +1,12 @@
+using Microsoft.AspNetCore.Mvc.Formatters;
+using System.Reflection;
 using UnifiedDevelopmentPlatform.Application.Interfaces;
 using UnifiedDevelopmentPlatform.Application.Services;
 using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities;
+using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.OpenApi;
 using UnifiedDevelopmentPlatform.Presentation.Api.Extensions;
 using UnifiedDevelopmentPlatform.Presentation.Api.Filters;
 using UnifiedDevelopmentPlatform.Presentation.Api.Swagger;
-using Microsoft.AspNetCore.Mvc.Formatters;
-using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -36,10 +37,12 @@ builder.Services.AddCors();
 builder.Services.AddMvc().AddMvcOptions(options => options.OutputFormatters.Add(new XmlDataContractSerializerOutputFormatter()));
 
 #region Action Filters.
+
 builder.Services.AddScoped<FilterActionContextController>();
 builder.Services.AddScoped<FilterActionContextLog>();
 builder.Services.AddScoped<FilterActionContextFields<Metadata>>();
 builder.Services.AddScoped<FilterActionContextTables<Metadata>>();
+
 #endregion Action Filters.
 
 #region Dependency Injection.
@@ -50,17 +53,18 @@ builder.Services.AddScoped<IServiceCrypto, ServiceCrypto>();
 builder.Services.AddScoped<IServiceDirectory, ServiceDirectory>();
 builder.Services.AddScoped<IServiceEmail, ServiceEmail>();
 builder.Services.AddScoped<IServiceEnvironment, ServiceEnvironment>();
+builder.Services.AddScoped<IServiceExtensibleMarkupLanguage, ServiceExtensibleMarkupLanguage>();
 builder.Services.AddScoped<IServiceFile, ServiceFile>();
 builder.Services.AddScoped<IServiceFuncStrings, ServiceFuncStrings>();
 builder.Services.AddScoped<IServiceJavaScriptObjectNotation, ServiceJavaScriptObjectNotation>();
+builder.Services.AddScoped<IServiceLanguageIntegratedQuery, ServiceLanguageIntegratedQuery>();
 builder.Services.AddScoped<IServiceLog, ServiceLog>();
 builder.Services.AddScoped<IServiceMetadata, ServiceMetadata>();
 builder.Services.AddScoped<IServiceMetadataFields, ServiceMetadataFields>();
 builder.Services.AddScoped<IServiceMetadataTables, ServiceMetadataTables>();
 builder.Services.AddScoped<IServiceValidation, ServiceValidation>();
 builder.Services.AddScoped<IServiceZipFile, ServiceZipFile>();
-builder.Services.AddScoped<IServiceExtensibleMarkupLanguage, ServiceExtensibleMarkupLanguage>();
-builder.Services.AddScoped<IServiceLanguageIntegratedQuery, ServiceLanguageIntegratedQuery>();
+
 #endregion Services.
 
 #region Repositories.
@@ -79,8 +83,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI(options =>
     {
-        options.SwaggerEndpoint("/swagger/v1/swagger.json", "Generator of Class C#");
-        options.InjectStylesheet("/swagger-ui/custom.css");
+        options.SwaggerEndpoint(OpenApiConfiguration.ENDPOINT, OpenApiInformation.DESCRIPTION);
+        options.InjectStylesheet(OpenApiConfiguration.STYLE_SHEET);
     });
 
     app.UseDeveloperExceptionPage();

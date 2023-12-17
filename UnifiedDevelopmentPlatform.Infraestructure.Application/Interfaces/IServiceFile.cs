@@ -3,18 +3,32 @@
     public interface IServiceFile
     {
         /// <summary>
-        /// Create all lines and save in file.
+        /// Verify if file exist.
         /// </summary>
-        /// <param name="informations"></param>
         /// <param name="rootDirectory"></param>
-        /// <returns></returns>
-        void UDPLinesGenerate(IEnumerable<string> informations, string rootDirectory);
+        /// <returns>Return true otherwise false.</returns>
+        bool UDPFileExists(string rootDirectory);
 
         /// <summary>
-        /// Reading lines from files and return in array of string.
+        /// Read all text.
         /// </summary>
         /// <param name="rootDirectory"></param>
-        /// <returns></returns>
+        /// <returns>String with the data.</returns>
+        string UDPReadAllText(string rootDirectory);
+
+        /// <summary>
+        /// Reading lines from files.
+        /// </summary>
+        /// <param name="rootDirectory"></param>
+        /// <returns>Return in array of string.</returns>
         IEnumerable<string>? UDPLinesRead(string rootDirectory);
+
+        /// <summary>
+        /// Create all lines and save in file.
+        /// </summary>
+        /// <param name="rootDirectory"></param>
+        /// <param name="informations"></param>
+        /// <returns></returns>
+        void UDPLinesGenerate(string rootDirectory, IEnumerable<string> informations);
     }
 }

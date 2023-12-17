@@ -7,10 +7,12 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Filters
 {
     public class FilterActionContextController : IAsyncActionFilter
     {
+        private readonly IServiceDirectory _serviceDirectory;
         private readonly IServiceValidation _serviceValidation;
 
-        public FilterActionContextController(IServiceValidation serviceValidation)
+        public FilterActionContextController(IServiceDirectory serviceDirectory, IServiceValidation serviceValidation)
         {
+            _serviceDirectory = serviceDirectory;
             _serviceValidation = serviceValidation;
         }
 
@@ -18,10 +20,19 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Filters
         {
             string message = string.Empty;
 
-            if (!_serviceValidation.UDPPlatformWindowsIsOk(ref message))
+            try
             {
-                HasMessage(context, message);
-                return;
+                if (!_serviceValidation.UDPPlatformWindowsIsOk(ref message))
+                {
+                    HasMessage(context, message);
+                    return;
+                }
+
+                _serviceDirectory.UPDCreateDirectoryStandardOfSolution();
+            }
+            catch (Exception)
+            {
+                throw new Exception("Erro ao criar diretório principal do Unified Development Platform - UDP.");
             }
 
             await next();

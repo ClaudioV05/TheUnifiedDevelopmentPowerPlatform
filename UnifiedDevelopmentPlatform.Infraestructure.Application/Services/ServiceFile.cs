@@ -4,21 +4,24 @@ namespace UnifiedDevelopmentPlatform.Application.Services
 {
     public class ServiceFile : IServiceFile
     {
-        public void UDPLinesGenerate(IEnumerable<string> informations, string rootDirectory)
+        public bool UDPFileExists(string rootDirectory)
         {
-            File.WriteAllLines(rootDirectory, informations);
+            return File.Exists(rootDirectory);
+        }
+
+        public string UDPReadAllText(string rootDirectory)
+        {
+            return File.ReadAllText(rootDirectory);
         }
 
         public IEnumerable<string>? UDPLinesRead(string rootDirectory)
         {
-            IEnumerable<string>? returnList = null;
+            return File.ReadAllLines(rootDirectory);
+        }
 
-            if (File.Exists(rootDirectory)) 
-            { 
-                returnList = File.ReadAllLines(rootDirectory);
-            }
-
-            return returnList;
+        public void UDPLinesGenerate(string rootDirectory, IEnumerable<string> informations)
+        {
+            File.WriteAllLines(rootDirectory, informations);
         }
     }
 }

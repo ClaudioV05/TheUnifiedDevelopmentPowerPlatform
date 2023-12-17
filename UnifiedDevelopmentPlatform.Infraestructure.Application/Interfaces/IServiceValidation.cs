@@ -9,7 +9,7 @@
         /// </summary>
         /// <param name="context"></param>
         /// <param name="message"></param>
-        /// <returns>True or false.</returns>
+        /// <returns>Return true otherwise false.</returns>
         bool UDPPlatformWindowsIsOk(ref string message);
 
         #endregion Validation for Filter Action Controller.
@@ -21,7 +21,7 @@
         /// </summary>
         /// <param name="context"></param>
         /// <param name="message"></param>
-        /// <returns>True or false.</returns>
+        /// <returns>Return true otherwise false.</returns>
         bool UDPModelStateIsOk(dynamic context, ref string message);
 
         /// <summary>
@@ -29,7 +29,7 @@
         /// </summary>
         /// <param name="context"></param>
         /// <param name="message"></param>
-        /// <returns>True or false.</returns>
+        /// <returns>Return true otherwise false.</returns>
         bool UDPScriptMetadataIsOk(dynamic context, ref string message);
 
         /// <summary>
@@ -37,7 +37,7 @@
         /// </summary>
         /// <param name="context"></param>
         /// <param name="message"></param>
-        /// <returns>True or false.</returns>
+        /// <returns>Return true otherwise false.</returns>
         bool UDPMetadataIsBase64Ok(dynamic context, ref string message);
 
         /// <summary>
@@ -45,7 +45,7 @@
         /// </summary>
         /// <param name="context"></param>
         /// <param name="message"></param>
-        /// <returns>True or false.</returns>
+        /// <returns>Return true otherwise false.</returns>
         bool UDPDevelopmentEnvironmentIsOk(dynamic context, ref string message);
 
         /// <summary>
@@ -53,7 +53,7 @@
         /// </summary>
         /// <param name="context"></param>
         /// <param name="message"></param>
-        /// <returns>True or false.</returns>
+        /// <returns>Return true otherwise false.</returns>
         bool UDPDatabasesIsOk(dynamic context, ref string message);
 
         /// <summary>
@@ -61,7 +61,7 @@
         /// </summary>
         /// <param name="context"></param>
         /// <param name="message"></param>
-        /// <returns>True or false.</returns>
+        /// <returns>Return true otherwise false.</returns>
         bool UDPDatabasesEngineIsOk(dynamic context, ref string message);
 
         /// <summary>
@@ -69,7 +69,7 @@
         /// </summary>
         /// <param name="context"></param>
         /// <param name="message"></param>
-        /// <returns>True or false.</returns>
+        /// <returns>Return true otherwise false.</returns>
         bool UDPFormIsOk(dynamic context, ref string message);
 
         #endregion Validation for Filters Actions Context Tables and Fields.
@@ -80,14 +80,14 @@
         /// Method will check if the file is in use generic.
         /// </summary>
         /// <param name="file"></param>
-        /// <returns>True or false.</returns>
+        /// <returns>Return true otherwise false.</returns>
         bool IsFileInUseGeneric(FileInfo file);
 
         /// <summary>
         /// Method will check if the file is in use.
         /// </summary>
         /// <param name="file"></param>
-        /// <returns>True or false.</returns>
+        /// <returns>Return true otherwise false.</returns>
         bool IsFileInUse(FileInfo file);
         #endregion Validation for Files.
 
@@ -95,7 +95,7 @@
         /// Method will check if Base64 is valid.
         /// </summary>
         /// <param name="text"></param>
-        /// <returns>True or false.</returns>
+        /// <returns>Return true otherwise false.</returns>
         bool UDPValidateBase64(string? text);
     }
 }

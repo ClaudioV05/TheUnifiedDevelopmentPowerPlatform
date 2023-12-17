@@ -28,22 +28,27 @@ namespace UnifiedDevelopmentPlatform.Application.Services
 
         public List<string>? UDPSelectSectionStandard(List<string> listItem)
         {
-            return listItem.Select(element => _serviceFuncStrings.UDPSelectSectionStandard(element))
+            return listItem.Select(element => _serviceFuncStrings.UDPSelectSection(element))
                            .Where(element => !_serviceFuncStrings.NullOrEmpty(element) && element.Length > 0)
                            .ToList();
         }
 
         public List<string>? UDPSelectSectionFrontend(List<string> listItem)
         {
-            return listItem.Select(element => _serviceFuncStrings.UDPSelectSectionStandard(element))
-                           .Where(element => !_serviceFuncStrings.NullOrEmpty(element) && element.Length > 0)
+            return listItem.Select(element => _serviceFuncStrings.UDPSelectSection(element))
+                           .Where(element => !_serviceFuncStrings.NullOrEmpty(element) && element.Length > 0 && element.Contains(_serviceFuncStrings.Lower(DirectoryStandard.FRONT_END.Replace("\\", string.Empty))))
                            .ToList();
         }
 
         public List<string>? UDPSelectSectionBackend(List<string> listItem)
         {
-            return listItem.Select(element => _serviceFuncStrings.UDPSelectSectionStandard(element))
+            return listItem.Select(element => _serviceFuncStrings.UDPSelectSection(element))
                            .Where(element => !_serviceFuncStrings.NullOrEmpty(element) && element.Length > 0)
+                           .Where(element => element.Contains(_serviceFuncStrings.Lower(DirectoryStandard.BACK_END.Replace("\\", string.Empty))))
+                           .Where(element => element.Contains(_serviceFuncStrings.Lower(DirectoryPresentation.PRESENTATION.Replace("\\", string.Empty))))
+                           .Where(element => element.Contains(_serviceFuncStrings.Lower(DirectoryApplication.APPLICATION.Replace("\\", string.Empty))))
+                           .Where(element => element.Contains(_serviceFuncStrings.Lower(DirectoryDomain.DOMAIN.Replace("\\", string.Empty))))
+                           .Where(element => element.Contains(_serviceFuncStrings.Lower(DirectoryInfrastructure.INFRASTRUCTURE.Replace("\\", string.Empty))))
                            .ToList();
         }
 
@@ -54,8 +59,8 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             listItem = this.UDPListLowerToDefault(listItem);
             listItem = this.UDPListOrderByForDefault(listItem);
 
-            directories[0] = SelectRootPathApp(listItem);
-            directories[1] = SelectRootPathConfiguration(listItem);
+            directories[0] = UDPSelectRootPathApp(listItem);
+            directories[1] = UDPSelectRootPathConfiguration(listItem);
 
             return directories.ToList();
         }

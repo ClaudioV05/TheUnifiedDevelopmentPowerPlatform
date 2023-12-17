@@ -21,59 +21,64 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Filters
         {
             string message = string.Empty;
 
-            if (!_serviceValidation.UDPModelStateIsOk(context, ref message))
+            try
             {
-                HasMessage(context, message);
-                return;
-            }
+                if (!_serviceValidation.UDPModelStateIsOk(context, ref message))
+                {
+                    HasMessage(context, message);
+                    return;
+                }
 
-            if (!_serviceValidation.UDPScriptMetadataIsOk(context, ref message))
-            {
-                HasMessage(context, message);
-                return;
+                if (!_serviceValidation.UDPScriptMetadataIsOk(context, ref message))
+                {
+                    HasMessage(context, message);
+                    return;
+                }
+
+                if (!_serviceValidation.UDPMetadataIsBase64Ok(context, ref message))
+                {
+                    HasMessage(context, message);
+                    return;
+                }
+
+                if (!_serviceValidation.UDPDevelopmentEnvironmentIsOk(context, ref message))
+                {
+                    HasMessage(context, message);
+                    return;
+                }
+
+                if (!_serviceValidation.UDPDatabasesIsOk(context, ref message))
+                {
+                    HasMessage(context, message);
+                    return;
+                }
+
+                if (!_serviceValidation.UDPDatabasesEngineIsOk(context, ref message))
+                {
+                    HasMessage(context, message);
+                    return;
+                }
+
+                if (!_serviceValidation.UDPFormIsOk(context, ref message))
+                {
+                    HasMessage(context, message);
+                    return;
+                }
             }
-            
-            if (!_serviceValidation.UDPMetadataIsBase64Ok(context, ref message))
+            catch (Exception)
             {
-                HasMessage(context, message);
-                return;
-            }
-            
-            if (!_serviceValidation.UDPDevelopmentEnvironmentIsOk(context, ref message))
-            {
-                HasMessage(context, message);
-                return;
-            }
-            
-            if (!_serviceValidation.UDPDatabasesIsOk(context, ref message))
-            {
-                HasMessage(context, message);
-                return;
-            }
-            
-            if (!_serviceValidation.UDPDatabasesEngineIsOk(context, ref message))
-            {
-                HasMessage(context, message);
-                return;
-            }
-            
-            if (!_serviceValidation.UDPFormIsOk(context, ref message))
-            {
-                HasMessage(context, message);
-                return;
+                throw new Exception("Erro ao criar diretório principal do Unified Development Platform - UDP.");
             }
 
             await next();
 
             try
             {
-                _serviceDirectory.UPDCreateAllDirectoryOfSolution();
+                _serviceDirectory.UPDCreateDirectoryProjectOfSolution();
             }
             catch (Exception)
             {
-                message = "Erro ao criar diretório principal do Unified Development Platform - UDP.";
-                HasMessage(context, message);
-                return;
+                throw new Exception("Erro ao criar diretório principal do Unified Development Platform - UDP.");
             }
         }
 

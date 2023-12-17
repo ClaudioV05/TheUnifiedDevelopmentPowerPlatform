@@ -1,6 +1,7 @@
 ﻿using System.Reflection;
 using System.Text.RegularExpressions;
 using UnifiedDevelopmentPlatform.Application.Interfaces;
+using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.AppSetting;
 using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Directory;
 
 namespace UnifiedDevelopmentPlatform.Application.Services
@@ -10,49 +11,44 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         private string? _directory;
         private readonly Queue<string> _queueDirectory;
         private readonly IServiceFuncStrings _serviceFuncStrings;
+        private readonly IServiceAppSettings _serviceAppSettings;
         private readonly IServiceLanguageIntegratedQuery _serviceLanguageIntegratedQuery;
         private readonly IServiceExtensibleMarkupLanguage _serviceExtensibleMarkupLanguage;
 
-        public ServiceDirectory(IServiceFuncStrings serviceFuncStrings, IServiceExtensibleMarkupLanguage serviceExtensibleMarkupLanguage, IServiceLanguageIntegratedQuery serviceLanguageIntegratedQuery)
+        public ServiceDirectory(IServiceFuncStrings serviceFuncStrings, IServiceAppSettings serviceAppSettings, IServiceExtensibleMarkupLanguage serviceExtensibleMarkupLanguage, IServiceLanguageIntegratedQuery serviceLanguageIntegratedQuery)
         {
             _queueDirectory = new Queue<string>();
             _serviceFuncStrings = serviceFuncStrings;
+            _serviceAppSettings = serviceAppSettings;
             _serviceExtensibleMarkupLanguage = serviceExtensibleMarkupLanguage;
             _serviceLanguageIntegratedQuery = serviceLanguageIntegratedQuery;
         }
 
-        public void UPDCreateAllDirectoryOfSolution()
+        public void UPDCreateDirectoryProjectOfSolution()
         {
             string[] directories = new string[] { DirectoryStandard.BACK_END, DirectoryStandard.FRONT_END };
 
             try
             {
-                _directory = this.UDPGetRootDirectoryExecutableOfSolution();
+                _directory = "here get the appsettings the information.";
 
                 if (!_serviceFuncStrings.NullOrEmpty(_directory ?? string.Empty))
                 {
-                    if (this.UDPDeleteAllRootDirectoryOfSolution(_directory))
-                    {
-                        this.UDPCreateRootPathApp();
+                    this.CreateRootPathBackend();
 
-                        this.CreateRootPathBackend();
+                    this.CreateRootPathFrontend();
 
-                        this.CreateRootPathFrontend();
+                    this.CreateRootPathPresentation(directories);
 
-                        this.UDPCreateRootPathConfiguration();
+                    this.CreateRootPathApplication(directories);
 
-                        this.CreateRootPathPresentation(directories);
+                    this.CreateRootPathDomain(directories);
 
-                        this.CreateRootPathApplication(directories);
+                    this.CreateRootPathInfrastructure(directories);
 
-                        this.CreateRootPathDomain(directories);
+                    this.UDPCreateAllRootPath(_queueDirectory);
 
-                        this.CreateRootPathInfrastructure(directories);
-
-                        this.UDPCreateAllRootPath(_queueDirectory);
-
-                        this.UDPFilterAndSavePaths(_queueDirectory);
-                    }
+                    this.UDPFilterAndSavePaths(_queueDirectory);
                 }
             }
             catch (IOException)
@@ -60,6 +56,36 @@ namespace UnifiedDevelopmentPlatform.Application.Services
                 this.UDPDeleteAllRootDirectoryOfSolution(_directory);
                 throw new IOException();
             }
+        }
+
+        public void UPDCreateDirectoryStandardOfSolution()
+        {
+            try
+            {
+                _directory = this.UDPGetRootDirectoryExecutableOfSolution();
+
+                if (!_serviceFuncStrings.NullOrEmpty(_directory ?? string.Empty))
+                {
+                    this.UDPDeleteAllRootDirectoryOfSolution(_directory);
+
+                    this.UDPCreateRootPathApp();
+
+                    this.UDPCreateRootPathConfiguration();
+                }
+
+                _serviceAppSettings.UPDAddAppSettings(AppSetting.KEY_DIRECTORY, _directory);
+            }
+            catch (Exception)
+            {
+                this.UDPDeleteAllRootDirectoryOfSolution(_directory);
+                throw;
+            }
+
+        }
+
+        public string UDPLoadFilesDirectory(string pathOne, string pathTwo)
+        {
+            return Path.Combine(pathOne, pathTwo);
         }
 
         #region Private Methods.
@@ -152,10 +178,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
                 List<string>? lstWithAppConfiguration = _serviceLanguageIntegratedQuery.UDPSelectRootPathWithAppConfiguration(queueDirectory.ToList());
                 List<string>? lstSectionAppAndConfiguration = _serviceLanguageIntegratedQuery.UDPSelectSectionStandard(lstWithAppConfiguration);
 
-                List<string>? lstSectionFrontend = _serviceLanguageIntegratedQuery.UDPSelectSectionFrontend(lstWithoutAppConfiguration);
-                List<string>? lstSectionBackend = _serviceLanguageIntegratedQuery.UDPSelectSectionBackend(lstWithoutAppConfiguration);
-
-                if (lstWithoutAppConfiguration is null || lstWithAppConfiguration is null || lstSectionAppAndConfiguration is null || lstSectionFrontend is null || lstSectionBackend is null)
+                if (lstWithoutAppConfiguration is null || lstWithAppConfiguration is null || lstSectionAppAndConfiguration is null)
                 {
                     throw new Exception();
                 }

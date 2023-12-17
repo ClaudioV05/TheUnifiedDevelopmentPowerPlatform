@@ -1,58 +1,29 @@
 ﻿using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
+using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.OpenApi;
 
 namespace UnifiedDevelopmentPlatform.Presentation.Api.Swagger
 {
     public class DocumentationAttribute : IDocumentFilter
     {
-        /// <summary>
-        /// Documentation about Information of API.
-        /// </summary>
-        private record DocumentationInfo
-        {
-            public const string VERSION = "v1";
-            public const string TITLE = "UNIFIED DEVELOPMENT PLATFORM";
-            public const string DESCRIPTION = "Generator of Class C#";
-            public const string TERMSOFSERVICE = "https://claudiomildo.net/terms";
-        }
-
-        /// <summary>
-        /// Documentation about Contact of API.
-        /// </summary>
-        private record DocumentationContact
-        {
-            public const string NAME = "CLAUDIOMILDO VENTURA";
-            public const string EMAIL = "claudiomildo@hotmail.com";
-            public const string URL = "https://www.claudiomildo.net";
-        }
-
-        /// <summary>
-        /// Documentation about License of API.
-        /// </summary>
-        private record DocumentatioLicense
-        {
-            public const string NAME = "Information about the license.";
-            public const string URL = "https://claudiomildo.net/license";
-        }
-
         public void Apply(OpenApiDocument swaggerDoc, DocumentFilterContext context)
         {
-            swaggerDoc.Info = new OpenApiInfo
+            swaggerDoc.Info = new Microsoft.OpenApi.Models.OpenApiInfo
             {
-                Version = DocumentationInfo.VERSION,
-                Title = DocumentationInfo.TITLE,
-                Description = DocumentationInfo.DESCRIPTION,
-                TermsOfService = new Uri(DocumentationInfo.TERMSOFSERVICE),
-                Contact = new OpenApiContact
+                Version = Infraestructure.Domain.Entities.OpenApi.OpenApiInformation.VERSION,
+                Title = Infraestructure.Domain.Entities.OpenApi.OpenApiInformation.TITLE,
+                Description = Infraestructure.Domain.Entities.OpenApi.OpenApiInformation.DESCRIPTION,
+                TermsOfService = new Uri(Infraestructure.Domain.Entities.OpenApi.OpenApiInformation.TERMSOFSERVICE),
+                Contact = new Microsoft.OpenApi.Models.OpenApiContact
                 {
-                    Name = DocumentationContact.NAME,
-                    Email = DocumentationContact.EMAIL,
-                    Url = new Uri(DocumentationContact.URL)
+                    Name = Infraestructure.Domain.Entities.OpenApi.OpenApiContact.NAME,
+                    Email = Infraestructure.Domain.Entities.OpenApi.OpenApiContact.EMAIL,
+                    Url = new Uri(Infraestructure.Domain.Entities.OpenApi.OpenApiContact.URL)
                 },
-                License = new OpenApiLicense
+                License = new Microsoft.OpenApi.Models.OpenApiLicense
                 {
-                    Name = DocumentatioLicense.NAME,
-                    Url = new Uri(DocumentatioLicense.URL)
+                    Name = Infraestructure.Domain.Entities.OpenApi.OpenApiLicense.NAME,
+                    Url = new Uri(Infraestructure.Domain.Entities.OpenApi.OpenApiLicense.URL)
                 }
             };
         }

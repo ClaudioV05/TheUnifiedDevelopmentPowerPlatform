@@ -38,11 +38,11 @@
         string UDPRemoveSpecialCaracterFrompath(string path);
 
         /// <summary>
-        /// Select section standard.
+        /// Select section.
         /// </summary>
         /// <param name="text"></param>
         /// <returns>Section name.</returns>
-        string UDPSelectSectionStandard(string text);
+        string UDPSelectSection(string text);
 
         #region For Treatment of Strings.
 
@@ -64,14 +64,14 @@
         /// If string contains caracther null or empty.
         /// </summary>
         /// <param name="text"></param>
-        /// <returns>True or false.</returns>
+        /// <returns>Return true otherwise false.</returns>
         bool NullOrEmpty(string text);
 
         /// <summary>
         /// If string contains caracther null or with white space.
         /// </summary>
         /// <param name="text"></param>
-        /// <returns>True or false.</returns>
+        /// <returns>Return true otherwise false.</returns>
         bool NullOrWhiteSpace(string text);
 
         /// <summary>
@@ -86,7 +86,7 @@
         /// </summary>
         /// <param name="text"></param>
         /// <param name="value"></param>
-        /// <returns>True or false.</returns>
+        /// <returns>Return true otherwise false.</returns>
         bool StringStarts(string text, string value);
 
         /// <summary>
@@ -94,7 +94,7 @@
         /// </summary>
         /// <param name="text"></param>
         /// <param name="value"></param>
-        /// <returns>True or false.</returns>
+        /// <returns>Return true otherwise false.</returns>
         bool StringEnds(string text, string value);
 
         #endregion For Treatment of Strings.

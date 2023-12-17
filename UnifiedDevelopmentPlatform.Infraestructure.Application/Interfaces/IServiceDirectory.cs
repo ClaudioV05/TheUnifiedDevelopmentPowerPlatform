@@ -3,9 +3,23 @@
     public interface IServiceDirectory
     {
         /// <summary>
-        /// Create all directory of solution.
+        /// Create directory project of solution.
         /// </summary>
         /// <returns></returns>
-        void UPDCreateAllDirectoryOfSolution();
+        void UPDCreateDirectoryProjectOfSolution();
+
+        /// <summary>
+        /// Create directory standard of solution.
+        /// </summary>
+        /// <returns></returns>
+        void UPDCreateDirectoryStandardOfSolution();
+
+        /// <summary>
+        /// Load files in directory.
+        /// </summary>
+        /// <param name="pathOne"></param>
+        /// <param name="pathTwo"></param>
+        /// <returns></returns>
+        string UDPLoadFilesDirectory(string pathOne, string pathTwo);
     }
 }

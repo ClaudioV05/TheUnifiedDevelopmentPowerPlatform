@@ -10,7 +10,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
 
         public void UPDTreeXmlSaveConfigurationFile(string path, List<string> items)
         {
-            XElement root = null;
+            XElement? root = null;
 
             foreach (string item in items)
             {

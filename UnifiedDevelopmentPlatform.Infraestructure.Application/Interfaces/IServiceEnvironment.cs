@@ -18,7 +18,7 @@
         /// <summary>
         /// Valid if platform is Windows.
         /// </summary>
-        /// <returns>True or false.</returns>
+        /// <returns>Return true otherwise false.</returns>
         bool UPDPlatformIsWindows();
     }
 }

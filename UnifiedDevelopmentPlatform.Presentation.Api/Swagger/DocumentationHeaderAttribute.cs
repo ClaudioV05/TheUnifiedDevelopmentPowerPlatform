@@ -12,60 +12,11 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Swagger
                 operation.Parameters = new List<OpenApiParameter>();
             }
 
-            operation.Parameters.Add(new OpenApiParameter
-            {
-                Name = "ScriptMetadata",
-                In = ParameterLocation.Header,
-                Required = false,
-                Schema = new OpenApiSchema
-                {
-                    Type = "String"
-                }
-            });
-
-            operation.Parameters.Add(new OpenApiParameter
-            {
-                Name = "IdDevelopmentEnvironment",
-                In = ParameterLocation.Header,
-                Required = false,
-                Schema = new OpenApiSchema
-                {
-                    Type = "int"
-                }
-            });
-
-            operation.Parameters.Add(new OpenApiParameter
-            {
-                Name = "IdDatabases",
-                In = ParameterLocation.Header,
-                Required = false,
-                Schema = new OpenApiSchema
-                {
-                    Type = "int"
-                }
-            });
-
-            operation.Parameters.Add(new OpenApiParameter
-            {
-                Name = "IdDatabasesEngine",
-                In = ParameterLocation.Header,
-                Required = false,
-                Schema = new OpenApiSchema
-                {
-                    Type = "int"
-                }
-            });
-
-            operation.Parameters.Add(new OpenApiParameter
-            {
-                Name = "IdForms",
-                In = ParameterLocation.Header,
-                Required = false,
-                Schema = new OpenApiSchema
-                {
-                    Type = "int"
-                }
-            });
+            operation.Parameters.Add(new OpenApiParameter { In = ParameterLocation.Header, Required = false, Name = "ScriptMetadata", Schema = new OpenApiSchema { Type = "String" } });
+            operation.Parameters.Add(new OpenApiParameter { In = ParameterLocation.Header, Required = false, Name = "IdDevelopmentEnvironment", Schema = new OpenApiSchema { Type = "int" } });
+            operation.Parameters.Add(new OpenApiParameter { In = ParameterLocation.Header, Required = false, Name = "IdDatabases", Schema = new OpenApiSchema { Type = "int" } });
+            operation.Parameters.Add(new OpenApiParameter { In = ParameterLocation.Header, Required = false, Name = "IdDatabasesEngine", Schema = new OpenApiSchema { Type = "int" } });
+            operation.Parameters.Add(new OpenApiParameter { In = ParameterLocation.Header, Required = false, Name = "IdForms", Schema = new OpenApiSchema { Type = "int" } });
         }
     }
 }
