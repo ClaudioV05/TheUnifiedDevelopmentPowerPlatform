@@ -5,8 +5,9 @@
         /// <summary>
         /// Add information to appSettings file.
         /// </summary>
+        /// <param name="path"></param>
         /// <param name="key"></param>
         /// <param name="value"></param>
-        void UPDAddAppSettings(string key, string value);
+        void UPDAddAppSettings(string path, string key, string value);
     }
 }

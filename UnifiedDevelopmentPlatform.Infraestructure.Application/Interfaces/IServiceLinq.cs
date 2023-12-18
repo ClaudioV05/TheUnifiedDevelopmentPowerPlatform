@@ -1,6 +1,6 @@
 ﻿namespace UnifiedDevelopmentPlatform.Application.Interfaces
 {
-    public interface IServiceLanguageIntegratedQuery
+    public interface IServiceLinq
     {
         /// <summary>
         /// Select root path configuration.

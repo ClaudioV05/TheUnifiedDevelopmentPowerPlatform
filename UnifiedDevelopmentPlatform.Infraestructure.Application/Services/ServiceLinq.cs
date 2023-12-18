@@ -3,11 +3,11 @@ using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Directory;
 
 namespace UnifiedDevelopmentPlatform.Application.Services
 {
-    public class ServiceLanguageIntegratedQuery : IServiceLanguageIntegratedQuery
+    public class ServiceLinq : IServiceLinq
     {
         private readonly IServiceFuncStrings _serviceFuncStrings;
 
-        public ServiceLanguageIntegratedQuery(IServiceFuncStrings serviceFuncStrings)
+        public ServiceLinq(IServiceFuncStrings serviceFuncStrings)
         {
             _serviceFuncStrings = serviceFuncStrings;
         }

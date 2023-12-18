@@ -2,7 +2,7 @@
 {
     public abstract class AppSetting
     {
-        public const string FILE_NAME = "appSettings.json";
+        public const string FILE_NAME = "unifieddevelopmentplatform.json";
         public const string KEY_DIRECTORY = "rootdirectory";
     }
 }

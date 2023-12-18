@@ -1,50 +1,35 @@
-﻿using UnifiedDevelopmentPlatform.Application.Interfaces;
-using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.AppSetting;
+﻿using Newtonsoft.Json.Linq;
+using UnifiedDevelopmentPlatform.Application.Interfaces;
 
 namespace UnifiedDevelopmentPlatform.Application.Services
 {
     public class ServiceAppSettings : IServiceAppSettings
     {
         private readonly IServiceFile _serviceFile;
-        private readonly IServiceFuncStrings _serviceFuncStrings;
-        private readonly IServiceJavaScriptObjectNotation _serviceJavaScriptObjectNotation;
+        private readonly IServiceJson _serviceJson;
 
-        public ServiceAppSettings(IServiceFile serviceFile, IServiceFuncStrings serviceFuncStrings, IServiceJavaScriptObjectNotation serviceJavaScriptObjectNotation)
+        public ServiceAppSettings(IServiceFile serviceFile, IServiceJson serviceJson, IServiceJson serviceJavaScriptObjectNotation)
         {
             _serviceFile = serviceFile;
-            _serviceFuncStrings = serviceFuncStrings;
-            _serviceJavaScriptObjectNotation = serviceJavaScriptObjectNotation;
+            _serviceJson = serviceJson;
         }
 
-        public void UPDAddAppSettings(string key, string value)
+        public void UPDAddAppSettings(string path, string key, string value)
         {
             try
             {
-                var filePath = Path.Combine(AppContext.BaseDirectory, AppSetting.FILE_NAME);
+                JObject jsonReturn;
 
-                if (!_serviceFuncStrings.NullOrEmpty(filePath) || _serviceFile.UDPFileExists(filePath))
+                string json = _serviceFile.UDPReadAllText(path);
+
+                if (_serviceJson.ContainsKey(json, key))
                 {
-                    string json = _serviceFile.UDPReadAllText(filePath);
-                    dynamic jsonObj = _serviceJavaScriptObjectNotation.UDPDesSerializer(json);
-
-                    var sectionPath = key.Split(":")[0];
-                    /*
-                    if (!string.IsNullOrEmpty(sectionPath))
-                    {
-                        var keyPath = key.Split(":")[1];
-                        jsonObj[sectionPath][keyPath] = value;
-                    }
-                    else
-                    {
-                        jsonObj[sectionPath] = value; // if no sectionpath just set the value
-                    }
-                    */
-                    jsonObj["kdkjdkd0"]["dsfsdf"] = "unf";
-                    string output = Newtonsoft.Json.JsonConvert.SerializeObject(jsonObj, Newtonsoft.Json.Formatting.Indented);
-
-                    File.WriteAllText("", output);
+                    _serviceJson.RemoveAll(json, key);
                 }
 
+                jsonReturn = _serviceJson.AddValue(json, key, value);
+
+                File.WriteAllText(path, jsonReturn.ToString());
             }
             catch (Exception)
             {

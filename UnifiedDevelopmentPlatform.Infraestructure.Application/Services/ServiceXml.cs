@@ -1,10 +1,10 @@
 ﻿using System.Xml.Linq;
 using UnifiedDevelopmentPlatform.Application.Interfaces;
-using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.ExtensibleMarkupLanguage;
+using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Xml;
 
 namespace UnifiedDevelopmentPlatform.Application.Services
 {
-    public class ServiceExtensibleMarkupLanguage : IServiceExtensibleMarkupLanguage
+    public class ServiceXml : IServiceXml
     {
         private const string UDP_DIRECTORY = "udp_directorys";
 
@@ -19,7 +19,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
                 root.Add(new XElement("Teste", item));
             }
 
-            root.Save($"{path}\\{ExtensibleMarkupLanguage.FILENAME_CONFIGURATION}.xml", SaveOptions.None);
+            root.Save($"{path}\\{Xml.FILENAME_CONFIGURATION}.xml", SaveOptions.None);
         }
 
         public void UPDTreeXmlSaveDirectoriesFile(string path, List<string> items)

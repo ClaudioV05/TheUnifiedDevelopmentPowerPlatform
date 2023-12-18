@@ -1,12 +1,12 @@
 ﻿using System.Xml.Serialization;
 
-namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.ExtensibleMarkupLanguage
+namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Xml
 {
     /// <summary>
     /// Extensible Markup Language - XML for UNIFIED DEVELOPMENT PLATFORM.
     /// </summary>
     [XmlRoot("ExtensibleMarkupLanguage", Namespace = "http://www.claudiomildo.com", IsNullable = true)]
-    public static class ExtensibleMarkupLanguage
+    public static class Xml
     {
         [XmlElement(IsNullable = true)]
         public const string FILENAME_CONFIGURATION = "_config.configuration";

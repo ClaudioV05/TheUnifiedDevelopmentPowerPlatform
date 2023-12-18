@@ -3,21 +3,24 @@ using System.Text.RegularExpressions;
 using UnifiedDevelopmentPlatform.Application.Interfaces;
 using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.AppSetting;
 using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Directory;
+using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.File;
 
 namespace UnifiedDevelopmentPlatform.Application.Services
 {
     public class ServiceDirectory : IServiceDirectory
     {
         private string? _directory;
+        private readonly IServiceFile _serviceFile;
         private readonly Queue<string> _queueDirectory;
         private readonly IServiceFuncStrings _serviceFuncStrings;
         private readonly IServiceAppSettings _serviceAppSettings;
-        private readonly IServiceLanguageIntegratedQuery _serviceLanguageIntegratedQuery;
-        private readonly IServiceExtensibleMarkupLanguage _serviceExtensibleMarkupLanguage;
+        private readonly IServiceLinq _serviceLanguageIntegratedQuery;
+        private readonly IServiceXml _serviceExtensibleMarkupLanguage;
 
-        public ServiceDirectory(IServiceFuncStrings serviceFuncStrings, IServiceAppSettings serviceAppSettings, IServiceExtensibleMarkupLanguage serviceExtensibleMarkupLanguage, IServiceLanguageIntegratedQuery serviceLanguageIntegratedQuery)
+        public ServiceDirectory(IServiceFile serviceFile, IServiceFuncStrings serviceFuncStrings, IServiceAppSettings serviceAppSettings, IServiceXml serviceExtensibleMarkupLanguage, IServiceLinq serviceLanguageIntegratedQuery)
         {
             _queueDirectory = new Queue<string>();
+            _serviceFile = serviceFile;
             _serviceFuncStrings = serviceFuncStrings;
             _serviceAppSettings = serviceAppSettings;
             _serviceExtensibleMarkupLanguage = serviceExtensibleMarkupLanguage;
@@ -71,16 +74,21 @@ namespace UnifiedDevelopmentPlatform.Application.Services
                     this.UDPCreateRootPathApp();
 
                     this.UDPCreateRootPathConfiguration();
-                }
 
-                _serviceAppSettings.UPDAddAppSettings(AppSetting.KEY_DIRECTORY, _directory);
+                    this.UDPCreateAllRootPath(_queueDirectory);
+
+                    _serviceFile.UDPCreateAndSaveInitialFile($"{_directory}{DirectoryStandard.APP}{DirectoryStandard.CONFIGURATION}{FileConfiguration.UDP_APPSETTINGS}");
+
+                    var path = this.UDPLoadFilesDirectory(AppContext.BaseDirectory, AppSetting.FILE_NAME);
+
+                    _serviceAppSettings.UPDAddAppSettings(path, AppSetting.KEY_DIRECTORY, /* HERE TO PASS JSON*/);
+                }
             }
             catch (Exception)
             {
                 this.UDPDeleteAllRootDirectoryOfSolution(_directory);
                 throw;
             }
-
         }
 
         public string UDPLoadFilesDirectory(string pathOne, string pathTwo)

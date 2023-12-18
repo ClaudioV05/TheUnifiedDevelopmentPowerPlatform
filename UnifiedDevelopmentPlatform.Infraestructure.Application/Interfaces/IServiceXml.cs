@@ -1,6 +1,6 @@
 ﻿namespace UnifiedDevelopmentPlatform.Application.Interfaces
 {
-    public interface IServiceExtensibleMarkupLanguage
+    public interface IServiceXml
     {
         /// <summary>
         /// Save tree xml for configuration file with name 'App' and 'Configuration'.
