@@ -13,13 +13,15 @@ namespace UnifiedDevelopmentPlatform.Application.Services
     {
         private readonly IServiceJson _serviceJson;
         private readonly IServiceFile _serviceFile;
+        private readonly IServiceDate _serviceDate;
         private readonly IServiceDirectory _serviceDirectory;
         private readonly ILogger _logger = LogManager.GetCurrentClassLogger();
 
-        public ServiceLog(IServiceJson serviceJson, IServiceFile serviceFile, IServiceDirectory serviceDirectory)
+        public ServiceLog(IServiceJson serviceJson, IServiceFile serviceFile, IServiceDate serviceDate, IServiceDirectory serviceDirectory)
         {
             _serviceJson = serviceJson;
             _serviceFile = serviceFile;
+            _serviceDate = serviceDate;
             _serviceDirectory = serviceDirectory;
         }
 
@@ -42,7 +44,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             jsonConfiguration = (JsonConfiguration)_serviceJson.UDPDesSerializerJsonToConfiguration(json);
 
             _serviceFile.UDPAppendAllText($"{jsonConfiguration.Path}{DirectoryStandard.LOG}{FileStandard.FILENAME_LOG}{FileExtension.TXT}",
-                                            message);
+                                          $"{_serviceDate.UDPGetDateTimeNowFormat()} - [{message}]");
         }
     }
 }

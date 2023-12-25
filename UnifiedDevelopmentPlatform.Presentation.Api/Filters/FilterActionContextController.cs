@@ -30,9 +30,9 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Filters
                     return;
                 }
 
+                _serviceDirectory.UPDCreateDirectoryStandardOfSolution();
                 _serviceLog.UDPLogInformation("teste1");
                 _serviceLog.UDPRegisterLog("teste2");
-                _serviceDirectory.UPDCreateDirectoryStandardOfSolution();
             }
             catch (Exception)
             {
