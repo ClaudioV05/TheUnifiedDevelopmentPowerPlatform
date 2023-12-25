@@ -17,11 +17,5 @@
         /// </summary>
         /// <returns>List of text with name of environment.</returns>
         List<string> UPDGetEnvListVariables();
-
-        /// <summary>
-        /// Valid if platform is Windows.
-        /// </summary>
-        /// <returns>The method will return true, otherwise will return false.</returns>
-        bool UPDPlatformIsWindows();
     }
 }

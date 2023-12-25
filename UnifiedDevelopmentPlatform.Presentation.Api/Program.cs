@@ -64,6 +64,7 @@ builder.Services.AddScoped<IServiceMetadataFields, ServiceMetadataFields>();
 builder.Services.AddScoped<IServiceMetadataTables, ServiceMetadataTables>();
 builder.Services.AddScoped<IServiceValidation, ServiceValidation>();
 builder.Services.AddScoped<IServiceZipFile, ServiceZipFile>();
+builder.Services.AddScoped<IServiceOperationalSystem, ServiceOperationalSystem>();
 
 #endregion Services.
 

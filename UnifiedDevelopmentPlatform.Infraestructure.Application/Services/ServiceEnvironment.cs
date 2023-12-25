@@ -8,7 +8,10 @@ namespace UnifiedDevelopmentPlatform.Application.Services
     /// </summary>
     public class ServiceEnvironment : IServiceEnvironment
     {
-        public string? UPDGetEnvVariable(string variable) => Environment.GetEnvironmentVariable(variable);
+        public string? UPDGetEnvVariable(string variable)
+        {
+            return Environment.GetEnvironmentVariable(variable) ?? null;
+        }
 
         public List<string> UPDGetEnvListVariables()
         {
@@ -28,7 +31,5 @@ namespace UnifiedDevelopmentPlatform.Application.Services
 
             return envListVariables;
         }
-
-        public bool UPDPlatformIsWindows() => OperatingSystem.IsWindows();
     }
 }

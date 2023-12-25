@@ -12,17 +12,17 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         private readonly Char[] Base64Chars = new[] { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '+', '/' };
         private string messageDefault = "is necessary for generate the App.";
         private readonly IServiceFuncStrings _serviceFuncStrings;
-        private readonly IServiceEnvironment _serviceEnvironment;
+        private readonly IServiceOperationalSystem _serviceOperationalSystem;
 
         private record FilterActionTables
         {
             public const string METADATA = "metadata";
         }
 
-        public ServiceValidation(IServiceFuncStrings serviceFuncStrings, IServiceEnvironment serviceEnvironment)
+        public ServiceValidation(IServiceFuncStrings serviceFuncStrings, IServiceOperationalSystem serviceOperationalSystem)
         {
             _serviceFuncStrings = serviceFuncStrings;
-            _serviceEnvironment = serviceEnvironment;
+            _serviceOperationalSystem = serviceOperationalSystem;
         }
 
         #region Validation for Filter Action Controller.
@@ -31,7 +31,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         {
             bool platformWindows = true;
 
-            if (!_serviceEnvironment.UPDPlatformIsWindows())
+            if (!_serviceOperationalSystem.UPDOperationalSystemIsWindows())
             {
                 platformWindows = false;
                 message = $"This version of (Unified Development Platform) don't run in cross cross platform. Only windows.";
