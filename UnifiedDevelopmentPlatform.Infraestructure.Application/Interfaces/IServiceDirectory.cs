@@ -1,5 +1,8 @@
 ﻿namespace UnifiedDevelopmentPlatform.Application.Interfaces
 {
+    /// <summary>
+    /// Interface service for (Directory).
+    /// </summary>
     public interface IServiceDirectory
     {
         /// <summary>
@@ -15,11 +18,9 @@
         void UPDCreateDirectoryStandardOfSolution();
 
         /// <summary>
-        /// Load files in directory.
+        /// Get root path file in configuration.
         /// </summary>
-        /// <param name="pathOne"></param>
-        /// <param name="pathTwo"></param>
-        /// <returns></returns>
-        string UDPLoadFilesDirectory(string pathOne, string pathTwo);
+        /// <returns>Return the root path of configuration in Unified development platform.</returns>
+        string UDPGetRootPathFileInConfiguration(string fileName);
     }
 }

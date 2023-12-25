@@ -1,8 +1,10 @@
-﻿using Newtonsoft.Json.Linq;
-using UnifiedDevelopmentPlatform.Application.Interfaces;
+﻿using UnifiedDevelopmentPlatform.Application.Interfaces;
 
 namespace UnifiedDevelopmentPlatform.Application.Services
 {
+    /// <summary>
+    /// Service for (App Settings).
+    /// </summary>
     public class ServiceAppSettings : IServiceAppSettings
     {
         private readonly IServiceFile _serviceFile;
@@ -18,18 +20,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         {
             try
             {
-                JObject jsonReturn;
 
-                string json = _serviceFile.UDPReadAllText(path);
-
-                if (_serviceJson.ContainsKey(json, key))
-                {
-                    _serviceJson.RemoveAll(json, key);
-                }
-
-                jsonReturn = _serviceJson.AddValue(json, key, value);
-
-                File.WriteAllText(path, jsonReturn.ToString());
             }
             catch (Exception)
             {

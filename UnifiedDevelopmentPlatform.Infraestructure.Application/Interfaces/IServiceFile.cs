@@ -1,5 +1,8 @@
 ﻿namespace UnifiedDevelopmentPlatform.Application.Interfaces
 {
+    /// <summary>
+    /// Interface service for (File).
+    /// </summary>
     public interface IServiceFile
     {
         /// <summary>
@@ -20,8 +23,8 @@
         /// Reading lines from files.
         /// </summary>
         /// <param name="path"></param>
-        /// <returns>Return in array of string.</returns>
-        IEnumerable<string>? UDPLinesRead(string path);
+        /// <returns>Return in IEnumerable of string.</returns>
+        IEnumerable<string>? UDPReadAllLines(string path);
 
         /// <summary>
         /// Create all lines and save in file.
@@ -29,7 +32,7 @@
         /// <param name="path"></param>
         /// <param name="contents"></param>
         /// <returns></returns>
-        void UDPLinesGenerate(string path, IEnumerable<string> contents);
+        void UDPWriteAllText(string path, string contents);
 
         /// <summary>
         /// Create and save initial file.
@@ -37,5 +40,12 @@
         /// <param name="path"></param>
         /// <returns></returns>
         void UDPCreateAndSaveInitialFile(string path);
+
+        /// <summary>
+        /// Open and read all text.
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns>FileStream with the data.</returns>
+        FileStream UDPOpenRead(string path);
     }
 }

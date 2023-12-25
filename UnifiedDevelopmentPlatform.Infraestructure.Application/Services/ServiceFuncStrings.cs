@@ -3,6 +3,9 @@ using UnifiedDevelopmentPlatform.Application.Interfaces;
 
 namespace UnifiedDevelopmentPlatform.Application.Services
 {
+    /// <summary>
+    /// Service for (Functions String).
+    /// </summary>
     public class ServiceFuncStrings : IServiceFuncStrings
     {
         public string UDPRemoveSpecialCaracter(string text)

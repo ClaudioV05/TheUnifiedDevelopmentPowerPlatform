@@ -9,10 +9,13 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Xml
     public static class Xml
     {
         [XmlElement(IsNullable = true)]
-        public const string FILENAME_CONFIGURATION = "_config.configuration";
-        
+        public const string FILENAME_CONFIGURATION = "_path.configuration";
+
         [XmlElement(IsNullable = true)]
-        public const string FILENAME_DIRECTORY = "_config.directory";
+        public const string FILENAME_APP = "_path.app";
+
+        [XmlElement(IsNullable = true)]
+        public const string FILENAME_DIRECTORY = "_path.directory";
         
         [XmlElement(IsNullable = true)]
         public const string FILENAME_FRONT_END = "Frontend";

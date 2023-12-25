@@ -1,81 +1,36 @@
-﻿using Newtonsoft.Json.Linq;
-using System.Text.Json;
+﻿using System.Text.Json;
+using System.Text.Json.Serialization;
 using UnifiedDevelopmentPlatform.Application.Interfaces;
+using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Json;
 
 namespace UnifiedDevelopmentPlatform.Application.Services
 {
+    /// <summary>
+    /// Service for (JavaScript Object Notation - JSON).
+    /// </summary>
     public class ServiceJson : IServiceJson
     {
-        #region Using System.Text.Json.
-
-        public string UDPSerializerWithSystemTextJson(object obj)
+        private readonly JsonSerializerOptions _jsonOptions = new()
         {
-            return System.Text.Json.JsonSerializer.Serialize(obj, new JsonSerializerOptions { WriteIndented = true });
+            WriteIndented = true,
+            PropertyNameCaseInsensitive = true,
+            DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
+        };
+
+        public string UDPSerializerJson(object obj)
+        {
+            return System.Text.Json.JsonSerializer.Serialize(obj, _jsonOptions);
+
         }
 
-        public object UDPDesSerializerWithSystemTextJso(object obj, string json)
+        public object UDPDesSerializerJsonToApp(string json)
         {
-            return System.Text.Json.JsonSerializer.Deserialize<object>(json);
+            return System.Text.Json.JsonSerializer.Deserialize<JsonApp>(json, _jsonOptions);
         }
 
-        #endregion Using System.Text.Json.
-
-        #region Using Newtonsoft.Json.
-
-        public string UDPSerializerWithNewtonsoftJson(object obj)
+        public object UDPDesSerializerJsonToConfiguration(string json)
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(obj);
-        }
-
-        public object UDPDesSerializerWithNewtonsoftJson(string data)
-        {
-            return Newtonsoft.Json.JsonConvert.DeserializeObject(data);
-        }
-
-        #endregion Using Newtonsoft.Json.
-
-        public bool ContainsKey(string json, string propertyName)
-        {
-            var modifyJson = JObject.Parse(json);
-            return modifyJson.ContainsKey(propertyName);
-        }
-
-        public void RemoveAll(string json, string propertyName)
-        {
-            var modifyJson = JObject.Parse(json);
-            modifyJson.Remove(propertyName);
-        }
-
-        public JObject AddValue(string json, string propertyName, string value)
-        {
-            var modifyJson = JObject.Parse(json);
-            modifyJson.Add(propertyName, value);
-
-            return modifyJson;
-        }
-
-        public JObject AddValue(string json, string propertyName, object value)
-        {
-            var modifyJson = JObject.Parse(json);
-            modifyJson.Add(propertyName, JObject.FromObject(value));
-
-            return modifyJson;
-        }
-
-        public JObject InsertExistingValue(string json, string existingProperty, string newProperty, string value)
-        {
-            var modifyJson = JObject.Parse(json);
-            modifyJson[existingProperty][newProperty] = value;
-
-            return modifyJson;
-        }
-
-        public JObject InsertExistingValue(string json, string existingProperty, string newProperty, object value)
-        {
-            var modifyJson = JObject.Parse(json);
-            modifyJson[existingProperty][newProperty] = JObject.FromObject(value);
-
-            return modifyJson;
+            return System.Text.Json.JsonSerializer.Deserialize<JsonConfiguration>(json, _jsonOptions);
         }
     }
 }

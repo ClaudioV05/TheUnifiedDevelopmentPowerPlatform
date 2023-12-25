@@ -1,46 +1,53 @@
 ﻿using System.Reflection;
 using System.Text.RegularExpressions;
 using UnifiedDevelopmentPlatform.Application.Interfaces;
-using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.AppSetting;
 using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Directory;
 using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.File;
+using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Json;
+using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Xml;
 
 namespace UnifiedDevelopmentPlatform.Application.Services
 {
+    /// <summary>
+    /// Service for (Directory).
+    /// </summary>
     public class ServiceDirectory : IServiceDirectory
     {
         private string? _directory;
+        private readonly IServiceXml _serviceXml;
         private readonly IServiceFile _serviceFile;
+        private readonly IServiceJson _serviceJson;
+        private readonly IServiceLinq _serviceLinq;
         private readonly Queue<string> _queueDirectory;
         private readonly IServiceFuncStrings _serviceFuncStrings;
-        private readonly IServiceAppSettings _serviceAppSettings;
-        private readonly IServiceLinq _serviceLanguageIntegratedQuery;
-        private readonly IServiceXml _serviceExtensibleMarkupLanguage;
 
-        public ServiceDirectory(IServiceFile serviceFile, IServiceFuncStrings serviceFuncStrings, IServiceAppSettings serviceAppSettings, IServiceXml serviceExtensibleMarkupLanguage, IServiceLinq serviceLanguageIntegratedQuery)
+        public ServiceDirectory(IServiceXml serviceXml, IServiceFile serviceFile, IServiceJson serviceJson, IServiceLinq serviceLinq, IServiceFuncStrings serviceFuncStrings)
         {
-            _queueDirectory = new Queue<string>();
+            _serviceXml = serviceXml;
             _serviceFile = serviceFile;
+            _serviceJson = serviceJson;
+            _serviceLinq = serviceLinq;
+            _queueDirectory = new Queue<string>();
             _serviceFuncStrings = serviceFuncStrings;
-            _serviceAppSettings = serviceAppSettings;
-            _serviceExtensibleMarkupLanguage = serviceExtensibleMarkupLanguage;
-            _serviceLanguageIntegratedQuery = serviceLanguageIntegratedQuery;
         }
 
         public void UPDCreateDirectoryProjectOfSolution()
         {
+            JsonApp jsonApp;
+            string data = string.Empty;
+            string rootPathFilename = string.Empty;
             string[] directories = new string[] { DirectoryStandard.BACK_END, DirectoryStandard.FRONT_END };
 
             try
             {
-                _directory = "here get the appsettings the information.";
+                rootPathFilename = UDPGetRootPathFileInConfiguration(FileStandard.FILENAME_JSON_APP);
+                data = _serviceFile.UDPReadAllText(rootPathFilename);
+                jsonApp = (JsonApp)_serviceJson.UDPDesSerializerJsonToApp(data);
+
+                _directory = jsonApp.Path;
 
                 if (!_serviceFuncStrings.NullOrEmpty(_directory ?? string.Empty))
                 {
-                    this.CreateRootPathBackend();
-
-                    this.CreateRootPathFrontend();
-
                     this.CreateRootPathPresentation(directories);
 
                     this.CreateRootPathApplication(directories);
@@ -63,11 +70,18 @@ namespace UnifiedDevelopmentPlatform.Application.Services
 
         public void UPDCreateDirectoryStandardOfSolution()
         {
+            string path = string.Empty;
+            string json = string.Empty;
+
             try
             {
-                _directory = this.UDPGetRootDirectoryExecutableOfSolution();
+                _directory = this.UDPGetRootDirectory();
 
-                if (!_serviceFuncStrings.NullOrEmpty(_directory ?? string.Empty))
+                if (_serviceFuncStrings.NullOrEmpty(_directory ?? string.Empty))
+                {
+                    throw new Exception();
+                }
+                else
                 {
                     this.UDPDeleteAllRootDirectoryOfSolution(_directory);
 
@@ -77,11 +91,19 @@ namespace UnifiedDevelopmentPlatform.Application.Services
 
                     this.UDPCreateAllRootPath(_queueDirectory);
 
-                    _serviceFile.UDPCreateAndSaveInitialFile($"{_directory}{DirectoryStandard.APP}{DirectoryStandard.CONFIGURATION}{FileConfiguration.UDP_APPSETTINGS}");
+                    #region Configuration.
+                    path = $"{_directory}{DirectoryStandard.APP}{DirectoryStandard.CONFIGURATION}{FileConfiguration.FILENAME_JSON_CONFIGURATION}";
+                    _serviceFile.UDPCreateAndSaveInitialFile(path);
+                    json = _serviceJson.UDPSerializerJson(new JsonConfiguration { Path = $"{_directory}{DirectoryStandard.APP}{DirectoryStandard.CONFIGURATION}" });
+                    _serviceFile.UDPWriteAllText(path, json);
+                    #endregion Configuration.
 
-                    var path = this.UDPLoadFilesDirectory(AppContext.BaseDirectory, AppSetting.FILE_NAME);
-
-                    _serviceAppSettings.UPDAddAppSettings(path, AppSetting.KEY_DIRECTORY, /* HERE TO PASS JSON*/);
+                    #region App.
+                    path = $"{_directory}{DirectoryStandard.APP}{DirectoryStandard.CONFIGURATION}{FileStandard.FILENAME_JSON_APP}";
+                    _serviceFile.UDPCreateAndSaveInitialFile(path);
+                    json = _serviceJson.UDPSerializerJson(new JsonApp { Path = $"{_directory}{DirectoryStandard.APP}" });
+                    _serviceFile.UDPWriteAllText(path, json);
+                    #endregion App.
                 }
             }
             catch (Exception)
@@ -91,9 +113,33 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             }
         }
 
-        public string UDPLoadFilesDirectory(string pathOne, string pathTwo)
+        private string UDPGetRootDirectory()
         {
-            return Path.Combine(pathOne, pathTwo);
+            Regex? regex = null;
+            string? exeRootDirectory = string.Empty;
+            string? rootDirectoryOfSolution = string.Empty;
+
+            try
+            {
+                regex = new Regex(@"(?<!fil)[A-Za-z]:\\+[\S\s]*?(?=\\+unifieddevelopmentplatform.presentation.api)");
+                exeRootDirectory = _serviceFuncStrings.Lower(Assembly.GetExecutingAssembly().Location);
+
+                if (regex.IsMatch(exeRootDirectory ?? string.Empty))
+                {
+                    rootDirectoryOfSolution = regex.Match(exeRootDirectory ?? string.Empty).Value;
+                }
+
+                return rootDirectoryOfSolution;
+            }
+            catch (IOException)
+            {
+                return string.Empty;
+            }
+        }
+
+        public string UDPGetRootPathFileInConfiguration(string fileName)
+        {
+            return $"{this.UDPGetRootDirectory()}{DirectoryStandard.APP}{DirectoryStandard.CONFIGURATION}{fileName}";
         }
 
         #region Private Methods.
@@ -123,33 +169,6 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         }
 
         /// <summary>
-        /// Obtain the root directory executable of solution.
-        /// </summary>
-        /// <returns>The root directory executable of solution.</returns>
-        private string? UDPGetRootDirectoryExecutableOfSolution()
-        {
-            string? rootDirectoryOfSolution = string.Empty;
-
-            try
-            {
-                string? exeRootDirectory = Assembly.GetExecutingAssembly().Location;
-                Regex regex = new Regex(@"(?<!fil)[A-Za-z]:\\+[\S\s]*?(?=\\+unifieddevelopmentplatform.presentation.api)");
-                exeRootDirectory = _serviceFuncStrings.Lower(exeRootDirectory);
-
-                if (regex.IsMatch(exeRootDirectory ?? string.Empty))
-                {
-                    rootDirectoryOfSolution = regex.Match(exeRootDirectory ?? string.Empty).Value;
-                }
-
-                return rootDirectoryOfSolution;
-            }
-            catch (IOException)
-            {
-                return string.Empty;
-            }
-        }
-
-        /// <summary>
         /// Create all root path of solution.
         /// </summary>
         /// <returns></returns>
@@ -157,17 +176,24 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         {
             try
             {
-                if (queueDirectory != null && queueDirectory.Count > 0)
+                if (queueDirectory != null && queueDirectory.Any())
                 {
                     foreach (var dir in _queueDirectory)
                     {
-                        Directory.CreateDirectory(dir ?? string.Empty);
+                        if (_serviceFuncStrings.NullOrEmpty(dir))
+                        {
+                            throw new Exception();
+                        }
+                        else
+                        {
+                            Directory.CreateDirectory(dir ?? string.Empty);
+                        }
                     }
                 }
             }
             catch (IOException)
             {
-
+                throw new IOException();
             }
         }
 
@@ -177,22 +203,20 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         /// <returns></returns>
         private void UDPFilterAndSavePaths(Queue<string> queueDirectory)
         {
-            string directoryDefaultToSave = string.Empty;
-
             try
             {
-                List<string>? lstWithoutAppConfiguration = _serviceLanguageIntegratedQuery.UDPSelectRootPathWithoutAppConfiguration(queueDirectory.ToList());
-
-                List<string>? lstWithAppConfiguration = _serviceLanguageIntegratedQuery.UDPSelectRootPathWithAppConfiguration(queueDirectory.ToList());
-                List<string>? lstSectionAppAndConfiguration = _serviceLanguageIntegratedQuery.UDPSelectSectionStandard(lstWithAppConfiguration);
+                List<string>? lstWithoutAppConfiguration = _serviceLinq.UDPSelectRootPathWithoutAppConfiguration(queueDirectory.ToList());
+                List<string>? lstWithAppConfiguration = _serviceLinq.UDPSelectRootPathWithAppConfiguration(queueDirectory.ToList());
+                List<string>? lstSectionAppAndConfiguration = _serviceLinq.UDPSelectSectionStandard(lstWithAppConfiguration);
 
                 if (lstWithoutAppConfiguration is null || lstWithAppConfiguration is null || lstSectionAppAndConfiguration is null)
                 {
                     throw new Exception();
                 }
 
-                _serviceExtensibleMarkupLanguage.UPDTreeXmlSaveConfigurationFile(lstWithAppConfiguration[1], lstWithAppConfiguration);
-                _serviceExtensibleMarkupLanguage.UPDTreeXmlSaveDirectoriesFile(lstWithAppConfiguration[1], lstWithoutAppConfiguration);
+                _serviceXml.UPDTreeXmlSave($"{lstWithAppConfiguration[1]}\\{Xml.FILENAME_APP}.xml", lstSectionAppAndConfiguration[0], lstWithAppConfiguration[0]);
+                _serviceXml.UPDTreeXmlSave($"{lstWithAppConfiguration[1]}\\{Xml.FILENAME_CONFIGURATION}.xml", lstSectionAppAndConfiguration[1], lstWithAppConfiguration[1]);
+                _serviceXml.UPDTreeXmlSave($"{lstWithAppConfiguration[1]}\\{Xml.FILENAME_DIRECTORY}.xml", "directories", lstWithoutAppConfiguration);
             }
             catch (IOException)
             {

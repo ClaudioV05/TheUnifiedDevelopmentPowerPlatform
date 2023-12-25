@@ -1,5 +1,8 @@
 ﻿namespace UnifiedDevelopmentPlatform.Application.Interfaces
 {
+    /// <summary>
+    /// Interface service for (Validation).
+    /// </summary>
     public interface IServiceValidation
     {
         #region Validation for Filter Action Controller.

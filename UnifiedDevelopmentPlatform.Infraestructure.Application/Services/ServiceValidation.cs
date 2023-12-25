@@ -3,6 +3,9 @@ using UnifiedDevelopmentPlatform.Application.Interfaces;
 
 namespace UnifiedDevelopmentPlatform.Application.Services
 {
+    /// <summary>
+    /// Service for (Validation).
+    /// </summary>
     public class ServiceValidation : IServiceValidation
     {
         // Characters that are used in base64 strings.

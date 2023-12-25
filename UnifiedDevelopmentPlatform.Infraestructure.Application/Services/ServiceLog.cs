@@ -3,6 +3,9 @@ using NLog;
 
 namespace UnifiedDevelopmentPlatform.Application.Services
 {
+    /// <summary>
+    /// Service for (Log).
+    /// </summary>
     public class ServiceLog : IServiceLog
     {
         private ILogger _logger = LogManager.GetCurrentClassLogger();

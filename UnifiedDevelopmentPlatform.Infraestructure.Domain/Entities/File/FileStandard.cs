@@ -5,6 +5,6 @@
     /// </summary>
     public abstract class FileStandard
     {
-
+        public const string FILENAME_JSON_APP = "\\_app.json";
     }
 }

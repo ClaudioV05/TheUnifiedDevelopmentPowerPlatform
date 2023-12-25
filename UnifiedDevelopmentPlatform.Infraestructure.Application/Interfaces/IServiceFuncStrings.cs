@@ -1,5 +1,8 @@
 ﻿namespace UnifiedDevelopmentPlatform.Application.Interfaces
 {
+    /// <summary>
+    /// Interface service for (Functions String).
+    /// </summary>
     public interface IServiceFuncStrings
     {
         /// <summary>
