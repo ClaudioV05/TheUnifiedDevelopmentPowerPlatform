@@ -5,6 +5,7 @@
     /// </summary>
     public abstract class FileExtension
     {
+        public const string TXT = ".txt";
         public const string XML = ".xml";
         public const string JSON = ".json";
     }

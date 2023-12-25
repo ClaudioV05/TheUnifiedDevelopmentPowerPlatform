@@ -35,6 +35,52 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             _serviceFuncStrings = serviceFuncStrings;
         }
 
+        public void UPDCreateDirectoryStandardOfSolution()
+        {
+            string path = string.Empty;
+            string json = string.Empty;
+
+            try
+            {
+                _directory = this.UDPGetRootDirectory();
+
+                if (_serviceFuncStrings.NullOrEmpty(_directory ?? string.Empty))
+                {
+                    throw new Exception();
+                }
+                else
+                {
+                    this.UDPDeleteAllRootDirectoryOfSolution(_directory);
+                    this.UDPCreateRootPathApp();
+                    this.UDPCreateRootPathConfiguration();
+                    this.UDPCreateRootPathJson();
+                    this.UDPCreateRootPathXml();
+                    this.UDPCreateRootPathLog();
+
+                    this.UDPCreateAllRootPath(_queueDirectory);
+
+                    #region Configuration.
+                    path = $"{_directory}{DirectoryStandard.APP}{DirectoryStandard.CONFIGURATION}{DirectoryStandard.JSON}{FileStandard.FILENAME_CONFIGURATION}{FileExtension.JSON}";
+                    _serviceFile.UDPCreateAndSaveInitialFile(path);
+                    json = _serviceJson.UDPSerializerJson(new JsonConfiguration { Path = $"{_directory}{DirectoryStandard.APP}{DirectoryStandard.CONFIGURATION}" });
+                    _serviceFile.UDPWriteAllText(path, json);
+                    #endregion Configuration.
+
+                    #region App.
+                    path = $"{_directory}{DirectoryStandard.APP}{DirectoryStandard.CONFIGURATION}{DirectoryStandard.JSON}{FileStandard.FILENAME_APP}{FileExtension.JSON}";
+                    _serviceFile.UDPCreateAndSaveInitialFile(path);
+                    json = _serviceJson.UDPSerializerJson(new JsonApp { Path = $"{_directory}{DirectoryStandard.APP}" });
+                    _serviceFile.UDPWriteAllText(path, json);
+                    #endregion App.
+                }
+            }
+            catch (Exception)
+            {
+                this.UDPDeleteAllRootDirectoryOfSolution(_directory);
+                throw;
+            }
+        }
+
         public void UPDCreateDirectoryProjectOfSolution()
         {
             string json = string.Empty;
@@ -69,52 +115,6 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             {
                 this.UDPDeleteAllRootDirectoryOfSolution(_directory);
                 throw new IOException();
-            }
-        }
-
-        public void UPDCreateDirectoryStandardOfSolution()
-        {
-            string path = string.Empty;
-            string json = string.Empty;
-
-            try
-            {
-                _directory = this.UDPGetRootDirectory();
-
-                if (_serviceFuncStrings.NullOrEmpty(_directory ?? string.Empty))
-                {
-                    throw new Exception();
-                }
-                else
-                {
-                    this.UDPDeleteAllRootDirectoryOfSolution(_directory);
-                    this.UDPCreateRootPathApp();
-                    this.UDPCreateRootPathConfiguration();
-                    this.UDPCreateRootPathJson();
-                    this.UDPCreateRootPathXml();
-                    this.UDPCreateRootPathLog();
-
-                    this.UDPCreateAllRootPath(_queueDirectory);
-
-                    #region Configuration.
-                    path = $"{_directory}{DirectoryStandard.APP}{DirectoryStandard.CONFIGURATION}{DirectoryStandard.JSON}{FileConfiguration.FILENAME_CONFIGURATION}{FileExtension.JSON}";
-                    _serviceFile.UDPCreateAndSaveInitialFile(path);
-                    json = _serviceJson.UDPSerializerJson(new JsonConfiguration { Path = $"{_directory}{DirectoryStandard.APP}{DirectoryStandard.CONFIGURATION}" });
-                    _serviceFile.UDPWriteAllText(path, json);
-                    #endregion Configuration.
-
-                    #region App.
-                    path = $"{_directory}{DirectoryStandard.APP}{DirectoryStandard.CONFIGURATION}{DirectoryStandard.JSON}{FileStandard.FILENAME_APP}{FileExtension.JSON}";
-                    _serviceFile.UDPCreateAndSaveInitialFile(path);
-                    json = _serviceJson.UDPSerializerJson(new JsonApp { Path = $"{_directory}{DirectoryStandard.APP}" });
-                    _serviceFile.UDPWriteAllText(path, json);
-                    #endregion App.
-                }
-            }
-            catch (Exception)
-            {
-                this.UDPDeleteAllRootDirectoryOfSolution(_directory);
-                throw;
             }
         }
 
@@ -226,11 +226,11 @@ namespace UnifiedDevelopmentPlatform.Application.Services
                 json = _serviceFile.UDPReadAllText(path);
                 jsonApp = (JsonApp)_serviceJson.UDPDesSerializerJsonToApp(json);
 
-                path = UDPGetRootPathFileInConfiguration(FileConfiguration.FILENAME_CONFIGURATION);
+                path = UDPGetRootPathFileInConfiguration(FileStandard.FILENAME_CONFIGURATION);
                 json = _serviceFile.UDPReadAllText(path);
                 jsonConfiguration = (JsonConfiguration)_serviceJson.UDPDesSerializerJsonToConfiguration(json);
 
-                if (_serviceFuncStrings.NullOrEmpty(jsonApp.Path) || _serviceFuncStrings.NullOrEmpty(jsonConfiguration.Path))
+                if (_serviceFuncStrings.NullOrEmpty(jsonApp.Path ?? string.Empty) || _serviceFuncStrings.NullOrEmpty(jsonConfiguration.Path ?? string.Empty))
                 {
                     throw new Exception();
                 }

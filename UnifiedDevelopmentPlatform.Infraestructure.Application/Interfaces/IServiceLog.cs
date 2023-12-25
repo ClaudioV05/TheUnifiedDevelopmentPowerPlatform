@@ -28,5 +28,11 @@
         /// </summary>
         /// <param name="message"></param>
         void UDPLogWarning(string message);
+
+        /// <summary>
+        /// Register Log general for application.
+        /// </summary>
+        /// <param name="message"></param>
+        void UDPRegisterLog(string message);
     }
 }

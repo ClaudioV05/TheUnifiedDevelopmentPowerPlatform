@@ -7,11 +7,13 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Filters
 {
     public class FilterActionContextController : IAsyncActionFilter
     {
+        private readonly IServiceLog _serviceLog;
         private readonly IServiceDirectory _serviceDirectory;
         private readonly IServiceValidation _serviceValidation;
 
-        public FilterActionContextController(IServiceDirectory serviceDirectory, IServiceValidation serviceValidation)
+        public FilterActionContextController(IServiceLog serviceLog, IServiceDirectory serviceDirectory, IServiceValidation serviceValidation)
         {
+            _serviceLog = serviceLog;
             _serviceDirectory = serviceDirectory;
             _serviceValidation = serviceValidation;
         }
@@ -28,6 +30,8 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Filters
                     return;
                 }
 
+                _serviceLog.UDPLogInformation("teste1");
+                _serviceLog.UDPRegisterLog("teste2");
                 _serviceDirectory.UPDCreateDirectoryStandardOfSolution();
             }
             catch (Exception)

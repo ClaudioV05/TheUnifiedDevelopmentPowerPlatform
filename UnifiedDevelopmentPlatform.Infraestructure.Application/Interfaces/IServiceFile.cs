@@ -47,5 +47,13 @@
         /// <param name="path"></param>
         /// <returns>FileStream with the data.</returns>
         FileStream UDPOpenRead(string path);
+
+        /// <summary>
+        /// Append all text in existing file.
+        /// </summary>
+        /// <param name="pathWithFile"></param>
+        /// <param name="content"></param>
+        /// <returns></returns>
+        void UDPAppendAllText(string pathWithFile, string content);
     }
 }

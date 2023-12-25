@@ -33,6 +33,11 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             using (FileStream fs = File.Create(path)) { };
         }
 
+        public void UDPAppendAllText(string pathWithFile, string content)
+        {
+            File.AppendAllText(pathWithFile, content);
+        }
+
         public FileStream UDPOpenRead(string path)
         {
             using FileStream file = File.OpenRead(path);

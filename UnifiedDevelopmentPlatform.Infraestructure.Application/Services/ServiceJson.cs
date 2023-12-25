@@ -12,9 +12,9 @@ namespace UnifiedDevelopmentPlatform.Application.Services
     {
         private readonly JsonSerializerOptions _jsonOptions = new()
         {
-            WriteIndented = true,
-            PropertyNameCaseInsensitive = true,
-            DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
+            WriteIndented = true, // Write indented.
+            PropertyNameCaseInsensitive = true, // Property with name case insensitive.
+            DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull // To default ignore condition when writing null.
         };
 
         public string UDPSerializerJson(object obj)
@@ -25,12 +25,12 @@ namespace UnifiedDevelopmentPlatform.Application.Services
 
         public object UDPDesSerializerJsonToApp(string json)
         {
-            return System.Text.Json.JsonSerializer.Deserialize<JsonApp>(json, _jsonOptions);
+            return System.Text.Json.JsonSerializer.Deserialize<JsonApp>(json, _jsonOptions) ?? new JsonApp() { };
         }
 
         public object UDPDesSerializerJsonToConfiguration(string json)
         {
-            return System.Text.Json.JsonSerializer.Deserialize<JsonConfiguration>(json, _jsonOptions);
+            return System.Text.Json.JsonSerializer.Deserialize<JsonConfiguration>(json, _jsonOptions) ?? new JsonConfiguration() { };
         }
     }
 }
