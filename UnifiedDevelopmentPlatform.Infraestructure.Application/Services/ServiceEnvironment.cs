@@ -31,5 +31,10 @@ namespace UnifiedDevelopmentPlatform.Application.Services
 
             return envListVariables;
         }
+
+        public string UDPNewLine()
+        {
+            return Environment.NewLine;
+        }
     }
 }

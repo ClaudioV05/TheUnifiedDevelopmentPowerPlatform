@@ -1,4 +1,6 @@
-﻿namespace UnifiedDevelopmentPlatform.Application.Interfaces
+﻿using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Log;
+
+namespace UnifiedDevelopmentPlatform.Application.Interfaces
 {
     /// <summary>
     /// Interface service for (Log).
@@ -33,6 +35,13 @@
         /// Register Log general for application.
         /// </summary>
         /// <param name="message"></param>
-        void UDPRegisterLog(string message);
+        void UDPLogRegister(string? message);
+
+        /// <summary>
+        /// Log mensagem.
+        /// </summary>
+        /// <param name="logEnumMensagem"></param>
+        /// <returns>String with message of error.</returns>
+        string? UDPMensagem(LogEnumMensagem logEnumMensagem);
     }
 }

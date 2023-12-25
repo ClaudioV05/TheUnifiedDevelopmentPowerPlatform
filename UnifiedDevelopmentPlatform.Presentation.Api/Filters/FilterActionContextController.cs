@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using UnifiedDevelopmentPlatform.Application.Interfaces;
+using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Log;
 using UnifiedDevelopmentPlatform.Presentation.Api.Models;
 
 namespace UnifiedDevelopmentPlatform.Presentation.Api.Filters
@@ -31,12 +32,14 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Filters
                 }
 
                 _serviceDirectory.UPDCreateDirectoryStandardOfSolution();
-                _serviceLog.UDPLogInformation("teste1");
-                _serviceLog.UDPRegisterLog("teste2");
+
+                _serviceLog.UDPLogRegister(_serviceLog.UDPMensagem(LogEnumMensagem.Initial));
+                _serviceLog.UDPLogRegister(_serviceLog.UDPMensagem(LogEnumMensagem.PlatformIsWindows));
             }
             catch (Exception)
             {
-                throw new Exception("Erro ao criar diretório principal do Unified Development Platform - UDP.");
+                _serviceLog.UDPLogRegister(_serviceLog.UDPMensagem(LogEnumMensagem.ErrorFilterActionContextController));
+                throw new Exception(LogMensagem.ErrorFilterActionContextController);
             }
 
             await next();

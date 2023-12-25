@@ -17,5 +17,11 @@
         /// </summary>
         /// <returns>List of text with name of environment.</returns>
         List<string> UPDGetEnvListVariables();
+
+        /// <summary>
+        /// Build the new Line.
+        /// </summary>
+        /// <returns></returns>
+        string UDPNewLine();
     }
 }

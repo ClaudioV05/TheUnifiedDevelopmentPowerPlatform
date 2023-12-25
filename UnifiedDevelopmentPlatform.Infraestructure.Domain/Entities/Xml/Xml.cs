@@ -6,7 +6,7 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Xml
     /// Extensible Markup Language - XML for UNIFIED DEVELOPMENT PLATFORM.
     /// </summary>
     [XmlRoot("ExtensibleMarkupLanguage", Namespace = "http://www.claudiomildo.com", IsNullable = true)]
-    public static class Xml
+    public abstract class Xml
     {
         public const string ELEMENT_NAME = "path";
 

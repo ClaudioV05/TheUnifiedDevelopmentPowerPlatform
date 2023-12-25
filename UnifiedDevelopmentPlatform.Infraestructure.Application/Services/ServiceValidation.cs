@@ -1,5 +1,4 @@
-﻿using System.Text.Json;
-using UnifiedDevelopmentPlatform.Application.Interfaces;
+﻿using UnifiedDevelopmentPlatform.Application.Interfaces;
 
 namespace UnifiedDevelopmentPlatform.Application.Services
 {
