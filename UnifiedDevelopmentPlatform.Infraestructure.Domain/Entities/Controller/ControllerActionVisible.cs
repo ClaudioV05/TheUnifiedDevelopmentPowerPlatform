@@ -5,7 +5,7 @@
     /// </summary>
     public abstract class ControllerActionVisible
     {
-        public const bool Yes = false;
-        public const bool Not = true;
+        public const bool VISIBLE = false;
+        public const bool NOTVISIBLE = true;
     }
 }

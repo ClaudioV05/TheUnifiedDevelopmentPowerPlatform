@@ -5,6 +5,6 @@
     /// </summary>
     public abstract class FileConfiguration
     {
-        public const string UDP_APPSETTINGS = "\\_unifieddevelopmentplatform.json";
+        public const string FILENAME_JSON_CONFIGURATION = "\\_configuration.json";
     }
 }

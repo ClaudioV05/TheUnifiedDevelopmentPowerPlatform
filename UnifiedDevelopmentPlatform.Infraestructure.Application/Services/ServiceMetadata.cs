@@ -3,6 +3,9 @@ using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities;
 
 namespace UnifiedDevelopmentPlatform.Application.Services
 {
+    /// <summary>
+    /// Service for (Metadata).
+    /// </summary>
     public class ServiceMetadata : IServiceMetadata
     {
 

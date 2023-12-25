@@ -4,32 +4,35 @@ using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Xml;
 
 namespace UnifiedDevelopmentPlatform.Application.Services
 {
+    /// <summary>
+    /// Service for (Extensible Markup Language - XML).
+    /// </summary>
     public class ServiceXml : IServiceXml
     {
-        private const string UDP_DIRECTORY = "udp_directorys";
+        private readonly IServiceFuncStrings _serviceFuncStrings;
 
-        public void UPDTreeXmlSaveConfigurationFile(string path, List<string> items)
+        public ServiceXml(IServiceFuncStrings serviceFuncStrings)
         {
-            XElement? root = null;
-
-            foreach (string item in items)
-            {
-                root = new XElement(string.Empty);
-
-                root.Add(new XElement("Teste", item));
-            }
-
-            root.Save($"{path}\\{Xml.FILENAME_CONFIGURATION}.xml", SaveOptions.None);
+            _serviceFuncStrings = serviceFuncStrings;
         }
 
-        public void UPDTreeXmlSaveDirectoriesFile(string path, List<string> items)
+        public void UPDTreeXmlSave(string path, string nameSection, string item)
         {
-            XElement root = new XElement(UDP_DIRECTORY);
+            XElement? root = new XElement(nameSection);
+            root.Add(new XElement("root", item));
+            root.Save(path, SaveOptions.None);
+        }
 
-            root.Add(new XElement("Child", "child content"));
-            root.Save($"{path}\\Root.xml", SaveOptions.None);
+        public void UPDTreeXmlSave(string path, string nameSection, List<string> items)
+        {
+            XElement root = new XElement(nameSection);
 
-            //treeDirectorySaveToXml.Add(new XElement("PM", PossibleModules.Select(s => s.ToXml("M"))));
+            for (int i = 0; i < items.Count; i++)
+            {
+                root.Add(new XElement(_serviceFuncStrings.UDPSelectSection(items[i]), items[i]));
+            }
+
+            root.Save(path, SaveOptions.None);
         }
     }
 }
