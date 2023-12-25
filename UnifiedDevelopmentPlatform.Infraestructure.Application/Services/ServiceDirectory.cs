@@ -21,7 +21,11 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         private readonly Queue<string> _queueDirectory;
         private readonly IServiceFuncStrings _serviceFuncStrings;
 
-        public ServiceDirectory(IServiceXml serviceXml, IServiceFile serviceFile, IServiceJson serviceJson, IServiceLinq serviceLinq, IServiceFuncStrings serviceFuncStrings)
+        public ServiceDirectory(IServiceXml serviceXml,
+                                IServiceFile serviceFile,
+                                IServiceJson serviceJson,
+                                IServiceLinq serviceLinq,
+                                IServiceFuncStrings serviceFuncStrings)
         {
             _serviceXml = serviceXml;
             _serviceFile = serviceFile;
@@ -33,16 +37,16 @@ namespace UnifiedDevelopmentPlatform.Application.Services
 
         public void UPDCreateDirectoryProjectOfSolution()
         {
+            string json = string.Empty;
+            string path = string.Empty;
             JsonApp jsonApp;
-            string data = string.Empty;
-            string rootPathFilename = string.Empty;
             string[] directories = new string[] { DirectoryStandard.BACK_END, DirectoryStandard.FRONT_END };
 
             try
             {
-                rootPathFilename = UDPGetRootPathFileInConfiguration(FileStandard.FILENAME_JSON_APP);
-                data = _serviceFile.UDPReadAllText(rootPathFilename);
-                jsonApp = (JsonApp)_serviceJson.UDPDesSerializerJsonToApp(data);
+                path = UDPGetRootPathFileInConfiguration(FileStandard.FILENAME_JSON_APP);
+                json = _serviceFile.UDPReadAllText(path);
+                jsonApp = (JsonApp)_serviceJson.UDPDesSerializerJsonToApp(json);
 
                 _directory = jsonApp.Path;
 
@@ -203,20 +207,47 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         /// <returns></returns>
         private void UDPFilterAndSavePaths(Queue<string> queueDirectory)
         {
+            string json = string.Empty;
+            string path = string.Empty;
+            JsonApp jsonApp;
+            JsonConfiguration jsonConfiguration;
+
+            List<string>? lstWithAppConfiguration = new List<string>();
+
             try
             {
-                List<string>? lstWithoutAppConfiguration = _serviceLinq.UDPSelectRootPathWithoutAppConfiguration(queueDirectory.ToList());
-                List<string>? lstWithAppConfiguration = _serviceLinq.UDPSelectRootPathWithAppConfiguration(queueDirectory.ToList());
-                List<string>? lstSectionAppAndConfiguration = _serviceLinq.UDPSelectSectionStandard(lstWithAppConfiguration);
+                path = UDPGetRootPathFileInConfiguration(FileStandard.FILENAME_JSON_APP);
+                json = _serviceFile.UDPReadAllText(path);
+                jsonApp = (JsonApp)_serviceJson.UDPDesSerializerJsonToApp(json);
 
-                if (lstWithoutAppConfiguration is null || lstWithAppConfiguration is null || lstSectionAppAndConfiguration is null)
+                path = UDPGetRootPathFileInConfiguration(FileConfiguration.FILENAME_JSON_CONFIGURATION);
+                json = _serviceFile.UDPReadAllText(path);
+                jsonConfiguration = (JsonConfiguration)_serviceJson.UDPDesSerializerJsonToConfiguration(json);
+
+                if (_serviceFuncStrings.NullOrEmpty(jsonApp.Path) || _serviceFuncStrings.NullOrEmpty(jsonConfiguration.Path))
                 {
                     throw new Exception();
                 }
+                else
+                {
+                    lstWithAppConfiguration.Add(jsonApp.Path);
+                    lstWithAppConfiguration.Add(jsonConfiguration.Path);
 
-                _serviceXml.UPDTreeXmlSave($"{lstWithAppConfiguration[1]}\\{Xml.FILENAME_APP}.xml", lstSectionAppAndConfiguration[0], lstWithAppConfiguration[0]);
-                _serviceXml.UPDTreeXmlSave($"{lstWithAppConfiguration[1]}\\{Xml.FILENAME_CONFIGURATION}.xml", lstSectionAppAndConfiguration[1], lstWithAppConfiguration[1]);
-                _serviceXml.UPDTreeXmlSave($"{lstWithAppConfiguration[1]}\\{Xml.FILENAME_DIRECTORY}.xml", "directories", lstWithoutAppConfiguration);
+                    List<string>? lstWithoutAppConfiguration = _serviceLinq.UDPSelectRootPathWithoutAppConfiguration(queueDirectory.ToList());
+                    List<string>? lstSectionAppAndConfiguration = _serviceLinq.UDPSelectSectionStandard(lstWithAppConfiguration);
+
+                    if (lstWithoutAppConfiguration is null || lstWithAppConfiguration is null || lstSectionAppAndConfiguration is null)
+                    {
+                        throw new Exception();
+                    }
+                    else
+                    {
+                        _serviceXml.UPDTreeXmlSave($"{lstWithAppConfiguration[1]}\\{Xml.FILENAME_APP}{Xml.EXTENSION}", lstSectionAppAndConfiguration[0], lstWithAppConfiguration[0]);
+                        _serviceXml.UPDTreeXmlSave($"{lstWithAppConfiguration[1]}\\{Xml.FILENAME_CONFIGURATION}{Xml.EXTENSION}", lstSectionAppAndConfiguration[1], lstWithAppConfiguration[1]);
+
+                        _serviceXml.UPDTreeXmlSave($"{lstWithAppConfiguration[1]}\\{Xml.FILENAME_DIRECTORY}{Xml.EXTENSION}", Xml.SECTION_DIRECTORIES_NAME, lstWithoutAppConfiguration);
+                    }
+                }
             }
             catch (IOException)
             {

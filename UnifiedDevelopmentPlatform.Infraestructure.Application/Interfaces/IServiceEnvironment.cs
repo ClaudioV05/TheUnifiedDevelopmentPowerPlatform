@@ -21,7 +21,7 @@
         /// <summary>
         /// Valid if platform is Windows.
         /// </summary>
-        /// <returns>Return true otherwise false.</returns>
+        /// <returns>The method will return true, otherwise will return false.</returns>
         bool UPDPlatformIsWindows();
     }
 }

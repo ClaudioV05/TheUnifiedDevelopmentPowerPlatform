@@ -8,6 +8,12 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Xml
     [XmlRoot("ExtensibleMarkupLanguage", Namespace = "http://www.claudiomildo.com", IsNullable = true)]
     public static class Xml
     {
+        public const string ELEMENT_NAME = "path";
+
+        public const string SECTION_DIRECTORIES_NAME = "directories";
+ 
+        public const string EXTENSION = ".xml";
+
         [XmlElement(IsNullable = true)]
         public const string FILENAME_CONFIGURATION = "_path.configuration";
 

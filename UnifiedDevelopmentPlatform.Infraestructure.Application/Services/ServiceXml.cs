@@ -19,7 +19,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         public void UPDTreeXmlSave(string path, string nameSection, string item)
         {
             XElement? root = new XElement(nameSection);
-            root.Add(new XElement("root", item));
+            root.Add(new XElement(Xml.ELEMENT_NAME, item));
             root.Save(path, SaveOptions.None);
         }
 
@@ -29,7 +29,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
 
             for (int i = 0; i < items.Count; i++)
             {
-                root.Add(new XElement(_serviceFuncStrings.UDPSelectSection(items[i]), items[i]));
+                root.Add(new XElement($"{Xml.ELEMENT_NAME}: {_serviceFuncStrings.UDPSelectSection(items[i])}", items[i]));
             }
 
             root.Save(path, SaveOptions.None);
