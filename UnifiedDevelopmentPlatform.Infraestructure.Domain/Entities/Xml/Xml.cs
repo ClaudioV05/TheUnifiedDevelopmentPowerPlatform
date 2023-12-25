@@ -11,17 +11,15 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Xml
         public const string ELEMENT_NAME = "path";
 
         public const string SECTION_DIRECTORIES_NAME = "directories";
- 
-        public const string EXTENSION = ".xml";
 
         [XmlElement(IsNullable = true)]
-        public const string FILENAME_CONFIGURATION = "_path.configuration";
+        public const string FILENAME_CONFIGURATION = "\\configuration";
 
         [XmlElement(IsNullable = true)]
-        public const string FILENAME_APP = "_path.app";
+        public const string FILENAME_APP = "\\app";
 
         [XmlElement(IsNullable = true)]
-        public const string FILENAME_DIRECTORY = "_path.directory";
+        public const string FILENAME_DIRECTORY = "\\directory";
         
         [XmlElement(IsNullable = true)]
         public const string FILENAME_FRONT_END = "Frontend";

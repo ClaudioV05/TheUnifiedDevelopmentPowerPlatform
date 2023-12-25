@@ -5,6 +5,6 @@
     /// </summary>
     public abstract class FileConfiguration
     {
-        public const string FILENAME_JSON_CONFIGURATION = "\\_configuration.json";
+        public const string FILENAME_CONFIGURATION = "\\_configuration";
     }
 }

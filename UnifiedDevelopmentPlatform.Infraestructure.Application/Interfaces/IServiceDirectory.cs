@@ -18,9 +18,15 @@
         void UPDCreateDirectoryStandardOfSolution();
 
         /// <summary>
-        /// Get root path file in configuration.
+        /// Get root path file in Configuration.
         /// </summary>
         /// <returns>Return the root path of configuration in Unified development platform.</returns>
         string UDPGetRootPathFileInConfiguration(string fileName);
+
+        /// <summary>
+        /// Get root path file in App.
+        /// </summary>
+        /// <returns>Return the root path of configuration in Unified development platform.</returns>
+        string UDPGetRootPathFileInApp(string fileName);
     }
 }

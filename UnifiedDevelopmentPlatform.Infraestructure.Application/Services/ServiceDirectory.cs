@@ -44,7 +44,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
 
             try
             {
-                path = UDPGetRootPathFileInConfiguration(FileStandard.FILENAME_JSON_APP);
+                path = UDPGetRootPathFileInConfiguration($"{FileStandard.FILENAME_APP}{FileExtension.JSON}");
                 json = _serviceFile.UDPReadAllText(path);
                 jsonApp = (JsonApp)_serviceJson.UDPDesSerializerJsonToApp(json);
 
@@ -52,16 +52,16 @@ namespace UnifiedDevelopmentPlatform.Application.Services
 
                 if (!_serviceFuncStrings.NullOrEmpty(_directory ?? string.Empty))
                 {
+                    if (_queueDirectory.Any())
+                    {
+                        _queueDirectory.Clear();
+                    }
+
                     this.CreateRootPathPresentation(directories);
-
                     this.CreateRootPathApplication(directories);
-
                     this.CreateRootPathDomain(directories);
-
                     this.CreateRootPathInfrastructure(directories);
-
                     this.UDPCreateAllRootPath(_queueDirectory);
-
                     this.UDPFilterAndSavePaths(_queueDirectory);
                 }
             }
@@ -88,22 +88,23 @@ namespace UnifiedDevelopmentPlatform.Application.Services
                 else
                 {
                     this.UDPDeleteAllRootDirectoryOfSolution(_directory);
-
                     this.UDPCreateRootPathApp();
-
                     this.UDPCreateRootPathConfiguration();
+                    this.UDPCreateRootPathJson();
+                    this.UDPCreateRootPathXml();
+                    this.UDPCreateRootPathLog();
 
                     this.UDPCreateAllRootPath(_queueDirectory);
 
                     #region Configuration.
-                    path = $"{_directory}{DirectoryStandard.APP}{DirectoryStandard.CONFIGURATION}{FileConfiguration.FILENAME_JSON_CONFIGURATION}";
+                    path = $"{_directory}{DirectoryStandard.APP}{DirectoryStandard.CONFIGURATION}{DirectoryStandard.JSON}{FileConfiguration.FILENAME_CONFIGURATION}{FileExtension.JSON}";
                     _serviceFile.UDPCreateAndSaveInitialFile(path);
                     json = _serviceJson.UDPSerializerJson(new JsonConfiguration { Path = $"{_directory}{DirectoryStandard.APP}{DirectoryStandard.CONFIGURATION}" });
                     _serviceFile.UDPWriteAllText(path, json);
                     #endregion Configuration.
 
                     #region App.
-                    path = $"{_directory}{DirectoryStandard.APP}{DirectoryStandard.CONFIGURATION}{FileStandard.FILENAME_JSON_APP}";
+                    path = $"{_directory}{DirectoryStandard.APP}{DirectoryStandard.CONFIGURATION}{DirectoryStandard.JSON}{FileStandard.FILENAME_APP}{FileExtension.JSON}";
                     _serviceFile.UDPCreateAndSaveInitialFile(path);
                     json = _serviceJson.UDPSerializerJson(new JsonApp { Path = $"{_directory}{DirectoryStandard.APP}" });
                     _serviceFile.UDPWriteAllText(path, json);
@@ -143,7 +144,12 @@ namespace UnifiedDevelopmentPlatform.Application.Services
 
         public string UDPGetRootPathFileInConfiguration(string fileName)
         {
-            return $"{this.UDPGetRootDirectory()}{DirectoryStandard.APP}{DirectoryStandard.CONFIGURATION}{fileName}";
+            return $"{this.UDPGetRootDirectory()}{DirectoryStandard.APP}{DirectoryStandard.CONFIGURATION}{DirectoryStandard.JSON}{fileName}";
+        }
+
+        public string UDPGetRootPathFileInApp(string fileName)
+        {
+            return $"{this.UDPGetRootDirectory()}{DirectoryStandard.APP}{DirectoryStandard.APP}{DirectoryStandard.JSON}{fileName}";
         }
 
         #region Private Methods.
@@ -216,11 +222,11 @@ namespace UnifiedDevelopmentPlatform.Application.Services
 
             try
             {
-                path = UDPGetRootPathFileInConfiguration(FileStandard.FILENAME_JSON_APP);
+                path = UDPGetRootPathFileInConfiguration(FileStandard.FILENAME_APP);
                 json = _serviceFile.UDPReadAllText(path);
                 jsonApp = (JsonApp)_serviceJson.UDPDesSerializerJsonToApp(json);
 
-                path = UDPGetRootPathFileInConfiguration(FileConfiguration.FILENAME_JSON_CONFIGURATION);
+                path = UDPGetRootPathFileInConfiguration(FileConfiguration.FILENAME_CONFIGURATION);
                 json = _serviceFile.UDPReadAllText(path);
                 jsonConfiguration = (JsonConfiguration)_serviceJson.UDPDesSerializerJsonToConfiguration(json);
 
@@ -242,10 +248,10 @@ namespace UnifiedDevelopmentPlatform.Application.Services
                     }
                     else
                     {
-                        _serviceXml.UPDTreeXmlSave($"{lstWithAppConfiguration[1]}\\{Xml.FILENAME_APP}{Xml.EXTENSION}", lstSectionAppAndConfiguration[0], lstWithAppConfiguration[0]);
-                        _serviceXml.UPDTreeXmlSave($"{lstWithAppConfiguration[1]}\\{Xml.FILENAME_CONFIGURATION}{Xml.EXTENSION}", lstSectionAppAndConfiguration[1], lstWithAppConfiguration[1]);
+                        _serviceXml.UPDTreeXmlSave($"{lstWithAppConfiguration[1]}{DirectoryStandard.XML}{Xml.FILENAME_APP}{FileExtension.XML}", lstSectionAppAndConfiguration[0], lstWithAppConfiguration[0]);
+                        _serviceXml.UPDTreeXmlSave($"{lstWithAppConfiguration[1]}{DirectoryStandard.XML}{Xml.FILENAME_CONFIGURATION}{FileExtension.XML}", lstSectionAppAndConfiguration[1], lstWithAppConfiguration[1]);
 
-                        _serviceXml.UPDTreeXmlSave($"{lstWithAppConfiguration[1]}\\{Xml.FILENAME_DIRECTORY}{Xml.EXTENSION}", Xml.SECTION_DIRECTORIES_NAME, lstWithoutAppConfiguration);
+                        _serviceXml.UPDTreeXmlSave($"{lstWithAppConfiguration[1]}{DirectoryStandard.XML}{Xml.FILENAME_DIRECTORY}{FileExtension.XML}", Xml.SECTION_DIRECTORIES_NAME, lstWithoutAppConfiguration);
                     }
                 }
             }
@@ -258,7 +264,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         #region Standard Path.
 
         /// <summary>
-        /// Create root path app of solution.
+        /// Create root path App of solution.
         /// </summary>
         /// <returns></returns>
         private void UDPCreateRootPathApp()
@@ -267,7 +273,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         }
 
         /// <summary>
-        /// Create root path configuration of solution.
+        /// Create root path Configuration of solution.
         /// </summary>
         /// <returns></returns>
         private void UDPCreateRootPathConfiguration()
@@ -276,21 +282,26 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         }
 
         /// <summary>
-        /// Create root path back end of solution.
+        /// Create root path JSON of solution.
         /// </summary>
         /// <returns></returns>
-        private void CreateRootPathBackend()
+        private void UDPCreateRootPathJson()
         {
-            _queueDirectory.Enqueue($"{_directory}{DirectoryStandard.APP}{DirectoryStandard.BACK_END}");
+            _queueDirectory.Enqueue($"{_directory}{DirectoryStandard.APP}{DirectoryStandard.CONFIGURATION}{DirectoryStandard.JSON}");
         }
 
         /// <summary>
-        /// Create root path front end of solution.
+        /// Create root path XML of solution.
         /// </summary>
         /// <returns></returns>
-        private void CreateRootPathFrontend()
+        private void UDPCreateRootPathXml()
         {
-            _queueDirectory.Enqueue($"{_directory}{DirectoryStandard.APP}{DirectoryStandard.FRONT_END}");
+            _queueDirectory.Enqueue($"{_directory}{DirectoryStandard.APP}{DirectoryStandard.CONFIGURATION}{DirectoryStandard.XML}");
+        }
+
+        private void UDPCreateRootPathLog()
+        {
+            _queueDirectory.Enqueue($"{_directory}{DirectoryStandard.APP}{DirectoryStandard.CONFIGURATION}{DirectoryStandard.LOG}");
         }
 
         #endregion Standard Path.
@@ -306,13 +317,13 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         {
             for (int i = 0; i < backendFrontend.Length; i++)
             {
-                _queueDirectory.Enqueue($"{_directory}{DirectoryStandard.APP}{backendFrontend[i]}{DirectoryPresentation.PRESENTATION}");
-                _queueDirectory.Enqueue($"{_directory}{DirectoryStandard.APP}{backendFrontend[i]}{DirectoryPresentation.PRESENTATION}{DirectoryPresentation.PROPERTIES}");
-                _queueDirectory.Enqueue($"{_directory}{DirectoryStandard.APP}{backendFrontend[i]}{DirectoryPresentation.PRESENTATION}{DirectoryPresentation.CONTROLLERS}");
-                _queueDirectory.Enqueue($"{_directory}{DirectoryStandard.APP}{backendFrontend[i]}{DirectoryPresentation.PRESENTATION}{DirectoryPresentation.EXTENSIONS}");
-                _queueDirectory.Enqueue($"{_directory}{DirectoryStandard.APP}{backendFrontend[i]}{DirectoryPresentation.PRESENTATION}{DirectoryPresentation.FILTERS}");
-                _queueDirectory.Enqueue($"{_directory}{DirectoryStandard.APP}{backendFrontend[i]}{DirectoryPresentation.PRESENTATION}{DirectoryPresentation.MODELS}");
-                _queueDirectory.Enqueue($"{_directory}{DirectoryStandard.APP}{backendFrontend[i]}{DirectoryPresentation.PRESENTATION}{DirectoryPresentation.SWAGGER}");
+                _queueDirectory.Enqueue($"{_directory}{backendFrontend[i]}{DirectoryPresentation.PRESENTATION}");
+                _queueDirectory.Enqueue($"{_directory}{backendFrontend[i]}{DirectoryPresentation.PRESENTATION}{DirectoryPresentation.PROPERTIES}");
+                _queueDirectory.Enqueue($"{_directory}{backendFrontend[i]}{DirectoryPresentation.PRESENTATION}{DirectoryPresentation.CONTROLLERS}");
+                _queueDirectory.Enqueue($"{_directory}{backendFrontend[i]}{DirectoryPresentation.PRESENTATION}{DirectoryPresentation.EXTENSIONS}");
+                _queueDirectory.Enqueue($"{_directory}{backendFrontend[i]}{DirectoryPresentation.PRESENTATION}{DirectoryPresentation.FILTERS}");
+                _queueDirectory.Enqueue($"{_directory}{backendFrontend[i]}{DirectoryPresentation.PRESENTATION}{DirectoryPresentation.MODELS}");
+                _queueDirectory.Enqueue($"{_directory}{backendFrontend[i]}{DirectoryPresentation.PRESENTATION}{DirectoryPresentation.SWAGGER}");
             }
         }
 
@@ -329,9 +340,9 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         {
             for (int i = 0; i < backendFrontend.Length; i++)
             {
-                _queueDirectory.Enqueue($"{_directory}{DirectoryStandard.APP}{backendFrontend[i]}{DirectoryApplication.APPLICATION}");
-                _queueDirectory.Enqueue($"{_directory}{DirectoryStandard.APP}{backendFrontend[i]}{DirectoryApplication.APPLICATION}{DirectoryApplication.INTERFACES}");
-                _queueDirectory.Enqueue($"{_directory}{DirectoryStandard.APP}{backendFrontend[i]}{DirectoryApplication.APPLICATION}{DirectoryApplication.SERVICES}");
+                _queueDirectory.Enqueue($"{_directory}{backendFrontend[i]}{DirectoryApplication.APPLICATION}");
+                _queueDirectory.Enqueue($"{_directory}{backendFrontend[i]}{DirectoryApplication.APPLICATION}{DirectoryApplication.INTERFACES}");
+                _queueDirectory.Enqueue($"{_directory}{backendFrontend[i]}{DirectoryApplication.APPLICATION}{DirectoryApplication.SERVICES}");
             }
         }
 
@@ -348,9 +359,9 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         {
             for (int i = 0; i < backendFrontend.Length; i++)
             {
-                _queueDirectory.Enqueue($"{_directory}{DirectoryStandard.APP}{backendFrontend[i]}{DirectoryDomain.DOMAIN}");
-                _queueDirectory.Enqueue($"{_directory}{DirectoryStandard.APP}{backendFrontend[i]}{DirectoryDomain.DOMAIN}{DirectoryDomain.INTERFACES}");
-                _queueDirectory.Enqueue($"{_directory}{DirectoryStandard.APP}{backendFrontend[i]}{DirectoryDomain.DOMAIN}{DirectoryDomain.ENTITIES}");
+                _queueDirectory.Enqueue($"{_directory}{backendFrontend[i]}{DirectoryDomain.DOMAIN}");
+                _queueDirectory.Enqueue($"{_directory}{backendFrontend[i]}{DirectoryDomain.DOMAIN}{DirectoryDomain.INTERFACES}");
+                _queueDirectory.Enqueue($"{_directory}{backendFrontend[i]}{DirectoryDomain.DOMAIN}{DirectoryDomain.ENTITIES}");
             }
         }
 
@@ -367,9 +378,9 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         {
             for (int i = 0; i < backendFrontend.Length; i++)
             {
-                _queueDirectory.Enqueue($"{_directory}{DirectoryStandard.APP}{backendFrontend[i]}{DirectoryInfrastructure.INFRASTRUCTURE}");
-                _queueDirectory.Enqueue($"{_directory}{DirectoryStandard.APP}{backendFrontend[i]}{DirectoryInfrastructure.INFRASTRUCTURE}{DirectoryInfrastructure.CROSSCUTTING}");
-                _queueDirectory.Enqueue($"{_directory}{DirectoryStandard.APP}{backendFrontend[i]}{DirectoryInfrastructure.INFRASTRUCTURE}{DirectoryInfrastructure.DATA}");
+                _queueDirectory.Enqueue($"{_directory}{backendFrontend[i]}{DirectoryInfrastructure.INFRASTRUCTURE}");
+                _queueDirectory.Enqueue($"{_directory}{backendFrontend[i]}{DirectoryInfrastructure.INFRASTRUCTURE}{DirectoryInfrastructure.CROSSCUTTING}");
+                _queueDirectory.Enqueue($"{_directory}{backendFrontend[i]}{DirectoryInfrastructure.INFRASTRUCTURE}{DirectoryInfrastructure.DATA}");
             }
         }
 
