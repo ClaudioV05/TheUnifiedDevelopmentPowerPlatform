@@ -11,6 +11,11 @@
         public string Empty { get; }
 
         /// <summary>
+        /// Base 64 chars.
+        /// </summary>
+        public char[] Base64Chars { get; }
+
+        /// <summary>
         /// Remove special caracter.
         /// </summary>
         /// <param name="text"></param>
@@ -59,35 +64,35 @@
         /// </summary>
         /// <param name="text"></param>
         /// <returns>String to upper.</returns>
-        string Upper(string text);
+        string UDPUpper(string text);
 
         /// <summary>
         /// To Lower.
         /// </summary>
         /// <param name="text"></param>
         /// <returns>String to lower.</returns>
-        string Lower(string text);
+        string UDPLower(string text);
 
         /// <summary>
         /// If string contains caracther null or empty.
         /// </summary>
         /// <param name="text"></param>
         /// <returns>The method will return true, otherwise will return false.</returns>
-        bool NullOrEmpty(string text);
+        bool UDPNullOrEmpty(string text);
 
         /// <summary>
         /// If string contains caracther null or with white space.
         /// </summary>
         /// <param name="text"></param>
         /// <returns>The method will return true, otherwise will return false.</returns>
-        bool NullOrWhiteSpace(string text);
+        bool UDPNullOrWhiteSpace(string text);
 
         /// <summary>
         /// Removes white space from both sides of a string.
         /// </summary>
         /// <param name="text"></param>
         /// <returns></returns>
-        string RemoveWhitespace(string text);
+        string UDPRemoveWhitespace(string text);
 
         /// <summary>
         /// If string starts with the value specified.
@@ -95,7 +100,7 @@
         /// <param name="text"></param>
         /// <param name="value"></param>
         /// <returns>The method will return true, otherwise will return false.</returns>
-        bool StringStarts(string text, string value);
+        bool UDPStringStarts(string text, string value);
 
         /// <summary>
         /// If string ends with the value specified.
@@ -103,7 +108,16 @@
         /// <param name="text"></param>
         /// <param name="value"></param>
         /// <returns>The method will return true, otherwise will return false.</returns>
-        bool StringEnds(string text, string value);
+        bool UDPStringEnds(string text, string value);
+
+        /// <summary>
+        /// To replace.
+        /// </summary>
+        /// <param name="text"></param>
+        /// <param name="oldValue"></param>
+        /// <param name="newValue"></param>
+        /// <returns></returns>
+        string UDPReplace(string text, string oldValue, string newValue);
 
         #endregion For Treatment of Strings.
     }

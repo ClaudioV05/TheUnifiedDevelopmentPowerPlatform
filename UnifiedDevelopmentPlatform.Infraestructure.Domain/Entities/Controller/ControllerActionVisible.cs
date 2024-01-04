@@ -11,11 +11,11 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Controller
         /// <summary>
         /// Controller action visible.
         /// </summary>
-        public const bool Visible = false;
+        public const bool Visible = true;
 
         /// <summary>
         /// Controller action not visible.
         /// </summary>
-        public const bool NotVisible = true;
+        public const bool NotVisible = false;
     }
 }

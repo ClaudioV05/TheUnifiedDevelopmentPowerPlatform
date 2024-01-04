@@ -8,7 +8,9 @@ namespace UnifiedDevelopmentPlatform.Application.Services
     /// </summary>
     public class ServiceFuncStrings : IServiceFuncStrings
     {
-        public string Empty { get; set; } = string.Empty;
+        public string Empty { get; } = string.Empty;
+
+        public char[] Base64Chars { get; } = new[] { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '+', '/' };
 
         public string UDPRemoveSpecialCaracter(string text)
         {
@@ -73,7 +75,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         {
             try
             {
-                if (!this.NullOrEmpty(path) && path.IndexOfAny(Path.GetInvalidFileNameChars()) >= 0)
+                if (!this.UDPNullOrEmpty(path) && path.IndexOfAny(Path.GetInvalidFileNameChars()) >= 0)
                 {
                     foreach (char c in Path.GetInvalidFileNameChars())
                     {
@@ -104,13 +106,13 @@ namespace UnifiedDevelopmentPlatform.Application.Services
 
         #region For Treatment of Strings.
 
-        public string Upper(string text)
+        public string UDPUpper(string text)
         {
             string value = string.Empty;
 
             try
             {
-                if (!this.NullOrEmpty(text))
+                if (!this.UDPNullOrEmpty(text))
                 {
                     value = text.ToUpperInvariant();
                 }
@@ -123,13 +125,13 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             return value;
         }
 
-        public string Lower(string text)
+        public string UDPLower(string text)
         {
             string value = string.Empty;
 
             try
             {
-                if (!this.NullOrEmpty(text))
+                if (!this.UDPNullOrEmpty(text))
                 {
                     value = text.ToLowerInvariant();
                 }
@@ -142,29 +144,34 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             return value;
         }
 
-        public bool NullOrEmpty(string text)
+        public bool UDPNullOrEmpty(string text)
         {
             return string.IsNullOrEmpty(text);
         }
 
-        public bool NullOrWhiteSpace(string text)
+        public bool UDPNullOrWhiteSpace(string text)
         {
             return string.IsNullOrWhiteSpace(text);
         }
 
-        public string RemoveWhitespace(string text)
+        public string UDPRemoveWhitespace(string text)
         {
             return text.Trim();
         }
 
-        public bool StringStarts(string text, string value)
+        public bool UDPStringStarts(string text, string value)
         {
             return text.StartsWith(value);
         }
 
-        public bool StringEnds(string text, string value)
+        public bool UDPStringEnds(string text, string value)
         {
             return text.EndsWith(value);
+        }
+
+        public string UDPReplace(string text, string oldValue, string newValue)
+        {
+            return text.Replace(oldValue, newValue);
         }
 
         #endregion For Treatment of Strings.

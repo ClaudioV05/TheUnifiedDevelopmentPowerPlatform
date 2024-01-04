@@ -7,6 +7,7 @@ using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Message;
 
 namespace UnifiedDevelopmentPlatform.Application.Services
 {
+
     /// <summary>
     /// Service for (Log).
     /// </summary>
@@ -49,13 +50,13 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             json = _serviceFile.UDPReadAllText(path);
             jsonConfiguration = (JsonConfiguration)_serviceJson.UDPDesSerializerJsonToConfiguration(json);
 
-            if (!_serviceFuncStrings.StringStarts(message, MessageDescription.Initial))
+            if (!_serviceFuncStrings.UDPStringStarts(message, MessageDescription.Initial))
             {
                 caracter = _serviceEnvironment.UDPNewLine();
             }
 
             _serviceFile.UDPAppendAllText($"{jsonConfiguration.Path}{DirectoryStandard.Log}{FileStandard.Log}{FileExtension.Txt}",
-                                          $"{caracter}{_serviceDate.UDPGetDateTimeNowFormat()} > [{_serviceFuncStrings.Upper(message)}]");
+                                          $"{caracter}{_serviceDate.UDPGetDateTimeNowFormat()} > [{_serviceFuncStrings.UDPUpper(message)}]");
         }
 
         public string UDPMensagem(MessageEnumerated logEnumMensagem)

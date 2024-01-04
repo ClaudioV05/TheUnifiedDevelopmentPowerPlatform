@@ -44,7 +44,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             {
                 _directory = this.UDPGetRootDirectory();
 
-                if (_serviceFuncStrings.NullOrEmpty(_directory ?? string.Empty))
+                if (_serviceFuncStrings.UDPNullOrEmpty(_directory ?? string.Empty))
                 {
                     throw new Exception();
                 }
@@ -96,7 +96,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
 
                 _directory = jsonApp.Path;
 
-                if (!_serviceFuncStrings.NullOrEmpty(_directory ?? string.Empty))
+                if (!_serviceFuncStrings.UDPNullOrEmpty(_directory ?? string.Empty))
                 {
                     if (_queueDirectory.Any())
                     {
@@ -127,7 +127,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             try
             {
                 regex = new Regex(@"(?<!fil)[A-Za-z]:\\+[\S\s]*?(?=\\+unifieddevelopmentplatform.presentation.api)");
-                exeRootDirectory = _serviceFuncStrings.Lower(Assembly.GetExecutingAssembly().Location);
+                exeRootDirectory = _serviceFuncStrings.UDPLower(Assembly.GetExecutingAssembly().Location);
 
                 if (regex.IsMatch(exeRootDirectory ?? string.Empty))
                 {
@@ -162,7 +162,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         {
             try
             {
-                if (!_serviceFuncStrings.NullOrEmpty(rootDirectory ?? string.Empty))
+                if (!_serviceFuncStrings.UDPNullOrEmpty(rootDirectory ?? string.Empty))
                 {
                     if (Directory.Exists($"{rootDirectory}{DirectoryStandard.App}"))
                     {
@@ -190,7 +190,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
                 {
                     foreach (var dir in _queueDirectory)
                     {
-                        if (_serviceFuncStrings.NullOrEmpty(dir))
+                        if (_serviceFuncStrings.UDPNullOrEmpty(dir))
                         {
                             throw new Exception();
                         }
@@ -230,7 +230,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
                 json = _serviceFile.UDPReadAllText(path);
                 jsonConfiguration = (JsonConfiguration)_serviceJson.UDPDesSerializerJsonToConfiguration(json);
 
-                if (_serviceFuncStrings.NullOrEmpty(jsonApp.Path ?? string.Empty) || _serviceFuncStrings.NullOrEmpty(jsonConfiguration.Path ?? string.Empty))
+                if (_serviceFuncStrings.UDPNullOrEmpty(jsonApp.Path ?? string.Empty) || _serviceFuncStrings.UDPNullOrEmpty(jsonConfiguration.Path ?? string.Empty))
                 {
                     throw new Exception();
                 }

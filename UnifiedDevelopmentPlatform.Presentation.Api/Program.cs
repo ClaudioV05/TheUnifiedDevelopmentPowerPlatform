@@ -1,8 +1,10 @@
 using Microsoft.AspNetCore.Mvc.Formatters;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using System.Reflection;
 using UnifiedDevelopmentPlatform.Application.Interfaces;
 using UnifiedDevelopmentPlatform.Application.Services;
 using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities;
+using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.File;
 using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.OpenApi;
 using UnifiedDevelopmentPlatform.Presentation.Api.Extensions;
 using UnifiedDevelopmentPlatform.Presentation.Api.Filters;
@@ -16,7 +18,7 @@ builder.Services.AddSwaggerGen(options =>
     options.DocumentFilter<DocumentationAttribute>();
     options.OperationFilter<DocumentationHeaderAttribute>();
 
-    var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+    var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}{FileExtension.Xml}";
     var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
 
     if (File.Exists(xmlPath))
@@ -30,7 +32,11 @@ builder.Services.AddSwaggerGen(options =>
     }
 });
 
-builder.Services.AddControllers(options => options.RespectBrowserAcceptHeader = true);
+builder.Services.AddControllers(options =>
+{
+    options.RespectBrowserAcceptHeader = true;
+    options.Conventions.Add(new HideControllerConvention());
+});
 
 builder.Services.AddCors();
 
@@ -48,24 +54,24 @@ builder.Services.AddScoped<FilterActionContextTables<Metadata>>();
 #region Dependency Injection.
 
 #region Services.
-builder.Services.AddScoped<IServiceAppSettings, ServiceAppSettings>();
-builder.Services.AddScoped<IServiceCrypto, ServiceCrypto>();
-builder.Services.AddScoped<IServiceDirectory, ServiceDirectory>();
-builder.Services.AddScoped<IServiceEmail, ServiceEmail>();
-builder.Services.AddScoped<IServiceEnvironment, ServiceEnvironment>();
-builder.Services.AddScoped<IServiceXml, ServiceXml>();
-builder.Services.AddScoped<IServiceFile, ServiceFile>();
-builder.Services.AddScoped<IServiceFuncStrings, ServiceFuncStrings>();
-builder.Services.AddScoped<IServiceJson, ServiceJson>();
-builder.Services.AddScoped<IServiceLinq, ServiceLinq>();
-builder.Services.AddScoped<IServiceLog, ServiceLog>();
-builder.Services.AddScoped<IServiceMetadata, ServiceMetadata>();
-builder.Services.AddScoped<IServiceMetadataFields, ServiceMetadataFields>();
-builder.Services.AddScoped<IServiceMetadataTables, ServiceMetadataTables>();
-builder.Services.AddScoped<IServiceValidation, ServiceValidation>();
-builder.Services.AddScoped<IServiceZipFile, ServiceZipFile>();
-builder.Services.AddScoped<IServiceOperationalSystem, ServiceOperationalSystem>();
-builder.Services.AddScoped<IServiceDate, ServiceDate>();
+builder.Services.TryAddScoped<IServiceAppSettings, ServiceAppSettings>();
+builder.Services.TryAddScoped<IServiceCrypto, ServiceCrypto>();
+builder.Services.TryAddScoped<IServiceDirectory, ServiceDirectory>();
+builder.Services.TryAddScoped<IServiceMail, ServiceMail>();
+builder.Services.TryAddScoped<IServiceEnvironment, ServiceEnvironment>();
+builder.Services.TryAddScoped<IServiceXml, ServiceXml>();
+builder.Services.TryAddScoped<IServiceFile, ServiceFile>();
+builder.Services.TryAddScoped<IServiceFuncStrings, ServiceFuncStrings>();
+builder.Services.TryAddScoped<IServiceJson, ServiceJson>();
+builder.Services.TryAddScoped<IServiceLinq, ServiceLinq>();
+builder.Services.TryAddScoped<IServiceLog, ServiceLog>();
+builder.Services.TryAddScoped<IServiceMetadata, ServiceMetadata>();
+builder.Services.TryAddScoped<IServiceMetadataFields, ServiceMetadataFields>();
+builder.Services.TryAddScoped<IServiceMetadataTables, ServiceMetadataTables>();
+builder.Services.TryAddScoped<IServiceValidation, ServiceValidation>();
+builder.Services.TryAddScoped<IServiceZipFile, ServiceZipFile>();
+builder.Services.TryAddScoped<IServiceOperationalSystem, ServiceOperationalSystem>();
+builder.Services.TryAddScoped<IServiceDate, ServiceDate>();
 
 #endregion Services.
 
@@ -131,7 +137,7 @@ app.Use(async (context, next) =>
         }
 
         return Task.FromResult(0);
-    },context);
+    }, context);
 
     await next.Invoke();
 

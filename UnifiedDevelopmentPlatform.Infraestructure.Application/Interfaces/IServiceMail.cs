@@ -3,7 +3,7 @@
     /// <summary>
     /// Interface service for (E-mail).
     /// </summary>
-    public interface IServiceEmail
+    public interface IServiceMail
     {
 
     }

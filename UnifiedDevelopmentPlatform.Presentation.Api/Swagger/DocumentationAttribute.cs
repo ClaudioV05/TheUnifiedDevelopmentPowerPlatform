@@ -8,12 +8,12 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Swagger
     {
         public void Apply(OpenApiDocument swaggerDoc, DocumentFilterContext context)
         {
-            swaggerDoc.Info = new Microsoft.OpenApi.Models.OpenApiInfo
+            swaggerDoc.Info = new OpenApiInfo
             {
-                Version = Infraestructure.Domain.Entities.OpenApi.OpenApiInformation.Version,
-                Title = Infraestructure.Domain.Entities.OpenApi.OpenApiInformation.Title,
-                Description = Infraestructure.Domain.Entities.OpenApi.OpenApiInformation.Description,
-                TermsOfService = new Uri(Infraestructure.Domain.Entities.OpenApi.OpenApiInformation.TermsOfService),
+                Version = OpenApiInformation.Version,
+                Title = OpenApiInformation.Title,
+                Description = OpenApiInformation.Description,
+                TermsOfService = new Uri(OpenApiInformation.TermsOfService),
                 Contact = new Microsoft.OpenApi.Models.OpenApiContact
                 {
                     Name = Infraestructure.Domain.Entities.OpenApi.OpenApiContact.Name,
