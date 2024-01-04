@@ -1,4 +1,5 @@
 ﻿using UnifiedDevelopmentPlatform.Application.Interfaces;
+using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Message;
 
 namespace UnifiedDevelopmentPlatform.Application.Services
 {
@@ -9,7 +10,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
     {
         // Characters that are used in base64 strings.
         private readonly Char[] Base64Chars = new[] { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '+', '/' };
-        private string messageDefault = "is necessary for generate the App.";
+        private readonly IServiceLog _serviceLog;
         private readonly IServiceFuncStrings _serviceFuncStrings;
         private readonly IServiceOperationalSystem _serviceOperationalSystem;
 
@@ -18,8 +19,9 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             public const string METADATA = "metadata";
         }
 
-        public ServiceValidation(IServiceFuncStrings serviceFuncStrings, IServiceOperationalSystem serviceOperationalSystem)
+        public ServiceValidation(IServiceLog serviceLog, IServiceFuncStrings serviceFuncStrings, IServiceOperationalSystem serviceOperationalSystem)
         {
+            _serviceLog = serviceLog;
             _serviceFuncStrings = serviceFuncStrings;
             _serviceOperationalSystem = serviceOperationalSystem;
         }
@@ -28,15 +30,8 @@ namespace UnifiedDevelopmentPlatform.Application.Services
 
         public bool UDPPlatformWindowsIsOk(ref string message)
         {
-            bool platformWindows = true;
-
-            if (!_serviceOperationalSystem.UPDOperationalSystemIsWindows())
-            {
-                platformWindows = false;
-                message = $"This version of (Unified Development Platform) don't run in cross cross platform. Only windows.";
-            }
-
-            return platformWindows;
+            message = !_serviceOperationalSystem.UPDOperationalSystemIsWindows() ? _serviceLog.UDPMensagem(MessageEnumerated.PlatformIsWindowsErro) : string.Empty;
+            return _serviceFuncStrings.NullOrEmpty(message);
         }
 
         #endregion Validation for Filter Action Controller.
@@ -45,7 +40,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
 
         public bool UDPModelStateIsOk(dynamic context, ref string message)
         {
-            message = !context.ModelState.IsValid ? $"The (JSON) {messageDefault}" : string.Empty;
+            message = !context.ModelState.IsValid ? _serviceLog.UDPMensagem(MessageEnumerated.MessageUdpModelStateIsOk) : _serviceFuncStrings.Empty;
             return _serviceFuncStrings.NullOrEmpty(message);
         }
 
@@ -53,7 +48,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         {
             dynamic? obj = null;
             context.ActionArguments.TryGetValue(FilterActionTables.METADATA, out obj);
-            message = _serviceFuncStrings.NullOrEmpty(obj?.ScriptMetadata) ? $"The (METADATA) {messageDefault}" : string.Empty ;
+            message = _serviceFuncStrings.NullOrEmpty(obj?.ScriptMetadata) ? _serviceLog.UDPMensagem(MessageEnumerated.MessageUdpScriptMetadataIsOk) : _serviceFuncStrings.Empty;
             return _serviceFuncStrings.NullOrEmpty(message);
         }
 
@@ -61,7 +56,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         {
             dynamic? obj = null;
             context.ActionArguments.TryGetValue(FilterActionTables.METADATA, out obj);
-            message = !this.UDPValidateBase64(obj?.ScriptMetadata) ? $"The (METADATA) on format base64 {messageDefault}" : string.Empty;
+            message = !this.UDPValidateBase64(obj?.ScriptMetadata) ? _serviceLog.UDPMensagem(MessageEnumerated.MessageUdpMetadataIsBase64Ok) : _serviceFuncStrings.Empty;
             return _serviceFuncStrings.NullOrEmpty(message);
         }
 
@@ -69,7 +64,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         {
             dynamic? obj = null;
             context.ActionArguments.TryGetValue(FilterActionTables.METADATA, out obj);
-            message = obj?.IdDevelopmentEnvironment <= 0 ? $"The (DEVELOPMENT ENVIRONMENT) {messageDefault}" : string.Empty;
+            message = obj?.IdDevelopmentEnvironment <= 0 ? _serviceLog.UDPMensagem(MessageEnumerated.MessageUdpDevelopmentEnvironmentIsOk) : _serviceFuncStrings.Empty;
             return _serviceFuncStrings.NullOrEmpty(message);
         }
 
@@ -77,7 +72,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         {
             dynamic? obj = null;
             context.ActionArguments.TryGetValue(FilterActionTables.METADATA, out obj);
-            message = obj?.IdDatabases <= 0 ? $"The (DATABASES) {messageDefault}" : string.Empty;
+            message = obj?.IdDatabases <= 0 ? _serviceLog.UDPMensagem(MessageEnumerated.MessageUdpDatabasesIsOk) : _serviceFuncStrings.Empty;
             return _serviceFuncStrings.NullOrEmpty(message);
         }
 
@@ -85,7 +80,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         {
             dynamic? obj = null;
             context.ActionArguments.TryGetValue(FilterActionTables.METADATA, out obj);
-            message = obj?.IdDatabasesEngine <= 0 ? $"The (DATABASES ENGINE) {messageDefault}" : string.Empty;
+            message = obj?.IdDatabasesEngine <= 0 ? _serviceLog.UDPMensagem(MessageEnumerated.MessageUdpDatabasesEngineIsOk) : _serviceFuncStrings.Empty;
             return _serviceFuncStrings.NullOrEmpty(message);
         }
 
@@ -93,7 +88,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         {
             dynamic? obj = null;
             context.ActionArguments.TryGetValue(FilterActionTables.METADATA, out obj);
-            message = obj?.IdForms <= 0 ? $"The (FORMS) {messageDefault}" : string.Empty;
+            message = obj?.IdForms <= 0 ? _serviceLog.UDPMensagem(MessageEnumerated.MessageDefaultToServiceValidation) : _serviceFuncStrings.Empty;
             return _serviceFuncStrings.NullOrEmpty(message);
         }
 

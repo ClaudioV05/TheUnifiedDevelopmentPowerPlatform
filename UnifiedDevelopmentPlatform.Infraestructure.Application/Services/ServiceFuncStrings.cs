@@ -8,6 +8,8 @@ namespace UnifiedDevelopmentPlatform.Application.Services
     /// </summary>
     public class ServiceFuncStrings : IServiceFuncStrings
     {
+        public string Empty { get; set; } = string.Empty;
+
         public string UDPRemoveSpecialCaracter(string text)
         {
             try

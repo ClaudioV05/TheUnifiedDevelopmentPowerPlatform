@@ -3,9 +3,16 @@
     /// <summary>
     /// Controller Action Visible for UNIFIED DEVELOPMENT PLATFORM.
     /// </summary>
-    public abstract class ControllerActionVisible
+    public static class ControllerActionVisible
     {
-        public const bool VISIBLE = false;
-        public const bool NOTVISIBLE = true;
+        /// <summary>
+        /// Controller action visible.
+        /// </summary>
+        public const bool Visible = false;
+
+        /// <summary>
+        /// Controller action not visible.
+        /// </summary>
+        public const bool NotVisible = true;
     }
 }

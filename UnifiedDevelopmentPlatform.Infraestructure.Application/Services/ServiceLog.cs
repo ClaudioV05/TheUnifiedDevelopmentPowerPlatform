@@ -3,7 +3,7 @@ using UnifiedDevelopmentPlatform.Application.Interfaces;
 using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Directory;
 using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.File;
 using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Json;
-using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Log;
+using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Message;
 
 namespace UnifiedDevelopmentPlatform.Application.Services
 {
@@ -49,22 +49,31 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             json = _serviceFile.UDPReadAllText(path);
             jsonConfiguration = (JsonConfiguration)_serviceJson.UDPDesSerializerJsonToConfiguration(json);
 
-            if (!_serviceFuncStrings.StringStarts(message, LogMensagem.Initial))
+            if (!_serviceFuncStrings.StringStarts(message, MessageDescription.Initial))
             {
                 caracter = _serviceEnvironment.UDPNewLine();
             }
 
             _serviceFile.UDPAppendAllText($"{jsonConfiguration.Path}{DirectoryStandard.LOG}{FileStandard.FILENAME_LOG}{FileExtension.TXT}",
-                                          $"{caracter}{_serviceDate.UDPGetDateTimeNowFormat()} - [{_serviceFuncStrings.Upper(message)}]");
+                                          $"{caracter}{_serviceDate.UDPGetDateTimeNowFormat()} > [{_serviceFuncStrings.Upper(message)}]");
         }
 
-        public string? UDPMensagem(LogEnumMensagem logEnumMensagem)
+        public string UDPMensagem(MessageEnumerated logEnumMensagem)
         {
             return logEnumMensagem switch
             {
-                LogEnumMensagem.Initial => LogMensagem.Initial,
-                LogEnumMensagem.PlatformIsWindows => LogMensagem.PlatformIsWindows,
-                _ => LogMensagem.NoMessage
+                MessageEnumerated.Initial => MessageDescription.Initial,
+                MessageEnumerated.PlatformIsWindowsOk => MessageDescription.PlatformIsWindowsOk,
+                MessageEnumerated.PlatformIsWindowsErro => MessageDescription.PlatformIsWindowsErro,
+                MessageEnumerated.ErrorFilterActionContextController => MessageDescription.ErrorFilterActionContextController,
+                MessageEnumerated.MessageDefaultToServiceValidation => MessageDescription.MessageDefaultToServiceValidation,
+                MessageEnumerated.MessageUdpModelStateIsOk => MessageDescription.MessageUdpModelStateIsOk,
+                MessageEnumerated.MessageUdpScriptMetadataIsOk => MessageDescription.MessageUdpScriptMetadataIsOk,
+                MessageEnumerated.MessageUdpMetadataIsBase64Ok => MessageDescription.MessageUdpMetadataIsBase64Ok,
+                MessageEnumerated.MessageUdpDevelopmentEnvironmentIsOk => MessageDescription.MessageUdpDevelopmentEnvironmentIsOk,
+                MessageEnumerated.MessageUdpDatabasesIsOk => MessageDescription.MessageUdpDatabasesIsOk,
+                MessageEnumerated.MessageUdpDatabasesEngineIsOk => MessageDescription.MessageUdpDatabasesEngineIsOk,
+                _ => MessageDescription.NoMessage
             };
         }
     }

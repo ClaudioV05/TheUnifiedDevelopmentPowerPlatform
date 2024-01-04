@@ -10,7 +10,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
     {
         public string UDPGetDateTimeNowFormat()
         {
-            return DateTime.Now.ToString(DatetimeFormat.FORMAT_11);
+            return DateTime.Now.ToString(DatetimeFormat.Format_11);
         }
     }
 }

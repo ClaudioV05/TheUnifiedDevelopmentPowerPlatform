@@ -1,4 +1,4 @@
-﻿using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Log;
+﻿using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Message;
 
 namespace UnifiedDevelopmentPlatform.Application.Interfaces
 {
@@ -42,6 +42,6 @@ namespace UnifiedDevelopmentPlatform.Application.Interfaces
         /// </summary>
         /// <param name="logEnumMensagem"></param>
         /// <returns>String with message of error.</returns>
-        string? UDPMensagem(LogEnumMensagem logEnumMensagem);
+        string UDPMensagem(MessageEnumerated logEnumMensagem);
     }
 }

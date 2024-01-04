@@ -6,6 +6,11 @@
     public interface IServiceFuncStrings
     {
         /// <summary>
+        /// string.Empty.
+        /// </summary>
+        public string Empty { get; }
+
+        /// <summary>
         /// Remove special caracter.
         /// </summary>
         /// <param name="text"></param>
