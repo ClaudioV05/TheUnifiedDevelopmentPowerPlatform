@@ -1,11 +1,21 @@
-﻿namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.OpenApi
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.OpenApi
 {
+    [ComplexType]
     /// <summary>
     /// Documentation about the licenses of API.
     /// </summary>
-    public abstract class OpenApiLicense
+    public static class OpenApiLicense
     {
-        public const string NAME = "Information about the license.";
-        public const string URL = "https://claudiomildo.net/license";
+        /// <summary>
+        /// Name.
+        /// </summary>
+        public static string Name { get; } = "Information about the license.";
+
+        /// <summary>
+        /// Url.
+        /// </summary>
+        public static string Url { get; } = "https://claudiomildo.net/license";
     }
 }

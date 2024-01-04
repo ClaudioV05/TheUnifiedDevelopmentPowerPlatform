@@ -1,7 +1,10 @@
-﻿namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Datetime
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Datetime
 {
+    [ComplexType]
     /// <summary>
-    /// DatetimeFormat
+    /// Datetime Format.
     /// </summary>
     public static class DatetimeFormat
     {

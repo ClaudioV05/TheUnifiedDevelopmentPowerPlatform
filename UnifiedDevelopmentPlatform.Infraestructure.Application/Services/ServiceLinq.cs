@@ -19,14 +19,14 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         {
             listItem = this.UDPListLowerToDefault(listItem);
             listItem = this.UDPListOrderByForDefault(listItem);
-            return listItem.Where(element => element.Contains(_serviceFuncStrings.Lower(DirectoryStandard.CONFIGURATION.Replace("\\", string.Empty)))).FirstOrDefault() ?? string.Empty;
+            return listItem.Where(element => element.Contains(_serviceFuncStrings.Lower(DirectoryStandard.Configuration.Replace("\\", string.Empty)))).FirstOrDefault() ?? string.Empty;
         }
 
         public string UDPSelectRootPathApp(List<string> listItem)
         {
             listItem = this.UDPListLowerToDefault(listItem);
             listItem = this.UDPListOrderByForDefault(listItem);
-            return listItem.Where(element => element.Contains(_serviceFuncStrings.Lower(DirectoryStandard.APP.Replace("\\", string.Empty)))).FirstOrDefault() ?? string.Empty;
+            return listItem.Where(element => element.Contains(_serviceFuncStrings.Lower(DirectoryStandard.App.Replace("\\", string.Empty)))).FirstOrDefault() ?? string.Empty;
         }
 
         public List<string>? UDPSelectSectionStandard(List<string> listItem)
@@ -39,7 +39,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         public List<string>? UDPSelectSectionFrontend(List<string> listItem)
         {
             return listItem.Select(element => _serviceFuncStrings.UDPSelectSection(element))
-                           .Where(element => !_serviceFuncStrings.NullOrEmpty(element) && element.Length > 0 && element.Contains(_serviceFuncStrings.Lower(DirectoryStandard.FRONT_END.Replace("\\", string.Empty))))
+                           .Where(element => !_serviceFuncStrings.NullOrEmpty(element) && element.Length > 0 && element.Contains(_serviceFuncStrings.Lower(DirectoryStandard.Frontend.Replace("\\", string.Empty))))
                            .ToList();
         }
 
@@ -47,11 +47,11 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         {
             return listItem.Select(element => _serviceFuncStrings.UDPSelectSection(element))
                            .Where(element => !_serviceFuncStrings.NullOrEmpty(element) && element.Length > 0)
-                           .Where(element => element.Contains(_serviceFuncStrings.Lower(DirectoryStandard.BACK_END.Replace("\\", string.Empty))))
-                           .Where(element => element.Contains(_serviceFuncStrings.Lower(DirectoryPresentation.PRESENTATION.Replace("\\", string.Empty))))
-                           .Where(element => element.Contains(_serviceFuncStrings.Lower(DirectoryApplication.APPLICATION.Replace("\\", string.Empty))))
-                           .Where(element => element.Contains(_serviceFuncStrings.Lower(DirectoryDomain.DOMAIN.Replace("\\", string.Empty))))
-                           .Where(element => element.Contains(_serviceFuncStrings.Lower(DirectoryInfrastructure.INFRASTRUCTURE.Replace("\\", string.Empty))))
+                           .Where(element => element.Contains(_serviceFuncStrings.Lower(DirectoryStandard.Backend.Replace("\\", string.Empty))))
+                           .Where(element => element.Contains(_serviceFuncStrings.Lower(DirectoryPresentation.Presentation.Replace("\\", string.Empty))))
+                           .Where(element => element.Contains(_serviceFuncStrings.Lower(DirectoryApplication.Application.Replace("\\", string.Empty))))
+                           .Where(element => element.Contains(_serviceFuncStrings.Lower(DirectoryDomain.Domain.Replace("\\", string.Empty))))
+                           .Where(element => element.Contains(_serviceFuncStrings.Lower(DirectoryInfrastructure.Infrastructure.Replace("\\", string.Empty))))
                            .ToList();
         }
 
@@ -72,7 +72,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         {
             listItem = this.UDPListLowerToDefault(listItem);
             listItem = this.UDPListOrderByForDefault(listItem);
-            return listItem.Where(element => !element.Contains(_serviceFuncStrings.Lower(DirectoryStandard.APP.Replace("\\", string.Empty))) || !element.Contains(_serviceFuncStrings.Lower(DirectoryStandard.CONFIGURATION.Replace("\\", string.Empty)))).Skip(1).ToList();
+            return listItem.Where(element => !element.Contains(_serviceFuncStrings.Lower(DirectoryStandard.App.Replace("\\", string.Empty))) || !element.Contains(_serviceFuncStrings.Lower(DirectoryStandard.Configuration.Replace("\\", string.Empty)))).Skip(1).ToList();
         }
 
         #region Methods.

@@ -1,5 +1,8 @@
-﻿namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Controller
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Controller
 {
+    [ComplexType]
     /// <summary>
     /// Controller Router for UNIFIED DEVELOPMENT PLATFORM.
     /// </summary>

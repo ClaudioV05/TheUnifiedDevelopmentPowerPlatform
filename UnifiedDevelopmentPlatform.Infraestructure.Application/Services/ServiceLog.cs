@@ -45,7 +45,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             string caracter = string.Empty;
             JsonConfiguration jsonConfiguration;
 
-            path = _serviceDirectory.UDPGetRootPathFileInConfiguration($"{FileStandard.FILENAME_CONFIGURATION}{FileExtension.JSON}");
+            path = _serviceDirectory.UDPGetRootPathFileInConfiguration($"{FileStandard.Configuration}{FileExtension.Json}");
             json = _serviceFile.UDPReadAllText(path);
             jsonConfiguration = (JsonConfiguration)_serviceJson.UDPDesSerializerJsonToConfiguration(json);
 
@@ -54,7 +54,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
                 caracter = _serviceEnvironment.UDPNewLine();
             }
 
-            _serviceFile.UDPAppendAllText($"{jsonConfiguration.Path}{DirectoryStandard.LOG}{FileStandard.FILENAME_LOG}{FileExtension.TXT}",
+            _serviceFile.UDPAppendAllText($"{jsonConfiguration.Path}{DirectoryStandard.Log}{FileStandard.Log}{FileExtension.Txt}",
                                           $"{caracter}{_serviceDate.UDPGetDateTimeNowFormat()} > [{_serviceFuncStrings.Upper(message)}]");
         }
 

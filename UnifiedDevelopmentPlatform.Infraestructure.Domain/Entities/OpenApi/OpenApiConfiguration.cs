@@ -1,11 +1,21 @@
-﻿namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.OpenApi
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.OpenApi
 {
+    [ComplexType]
     /// <summary>
     /// Configuration about the OpenApi.
     /// </summary>
-    public abstract class OpenApiConfiguration
+    public static class OpenApiConfiguration
     {
-        public const string ENDPOINT = "/swagger/v1/swagger.json";
-        public const string STYLE_SHEET = "/swagger-ui/custom.css";
+        /// <summary>
+        /// Endpoint.
+        /// </summary>
+        public static string Endpoint { get; } = "/swagger/v1/swagger.json";
+
+        /// <summary>
+        /// Style Sheet.
+        /// </summary>
+        public static string StyleSheet { get; } = "/swagger-ui/custom.css";
     }
 }

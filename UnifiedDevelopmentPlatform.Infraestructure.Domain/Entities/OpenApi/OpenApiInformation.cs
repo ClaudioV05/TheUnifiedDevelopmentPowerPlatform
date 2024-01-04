@@ -1,13 +1,31 @@
-﻿namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.OpenApi
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.OpenApi
 {
+    [ComplexType]
     /// <summary>
     /// Documentation about the informations of API.
     /// </summary>
-    public abstract class OpenApiInformation
+    public static class OpenApiInformation
     {
-        public const string VERSION = "v1";
-        public const string TITLE = "UNIFIED DEVELOPMENT PLATFORM";
-        public const string DESCRIPTION = "Generator of Class C#";
-        public const string TERMSOFSERVICE = "https://claudiomildo.net/terms";
+        /// <summary>
+        /// Version.
+        /// </summary>
+        public static string Version { get; } = "v1";
+
+        /// <summary>
+        /// Title.
+        /// </summary>
+        public static string Title { get; } = "UNIFIED DEVELOPMENT PLATFORM";
+
+        /// <summary>
+        /// Description.
+        /// </summary>
+        public static string Description { get; } = "Generator of Class C#";
+
+        /// <summary>
+        /// Terms of service.
+        /// </summary>
+        public static string TermsOfService { get; } = "https://claudiomildo.net/terms";
     }
 }

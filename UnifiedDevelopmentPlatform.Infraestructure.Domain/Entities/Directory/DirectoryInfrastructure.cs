@@ -1,12 +1,26 @@
-﻿namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Directory
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Directory
 {
+    [ComplexType]
     /// <summary>
     /// Infrastructure is the directory for UNIFIED DEVELOPMENT PLATFORM.
     /// </summary>
-    public abstract class DirectoryInfrastructure
+    public static class DirectoryInfrastructure
     {
-        public const string INFRASTRUCTURE = "\\4-Infrastructure";
-        public const string CROSSCUTTING = "\\CrossCutting";
-        public const string DATA = "\\Data";
+        /// <summary>
+        /// Infrastructure.
+        /// </summary>
+        public static string Infrastructure { get; } = "\\4-Infrastructure";
+
+        /// <summary>
+        /// Cross Cutting.
+        /// </summary>
+        public static string CrossCutting { get; } = "\\CrossCutting";
+
+        /// <summary>
+        /// Data.
+        /// </summary>
+        public static string Data { get; } = "\\Data";
     }
 }

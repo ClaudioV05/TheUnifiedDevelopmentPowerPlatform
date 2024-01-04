@@ -85,8 +85,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI(options =>
     {
-        options.SwaggerEndpoint(OpenApiConfiguration.ENDPOINT, OpenApiInformation.DESCRIPTION);
-        options.InjectStylesheet(OpenApiConfiguration.STYLE_SHEET);
+        options.SwaggerEndpoint(OpenApiConfiguration.Endpoint, OpenApiInformation.Description);
+        options.InjectStylesheet(OpenApiConfiguration.StyleSheet);
     });
 
     app.UseDeveloperExceptionPage();

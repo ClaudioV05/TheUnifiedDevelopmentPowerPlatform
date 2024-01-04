@@ -1,12 +1,26 @@
-﻿namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Directory
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Directory
 {
+    [ComplexType]
     /// <summary>
     /// Domain is the directory for UNIFIED DEVELOPMENT PLATFORM.
     /// </summary>
-    public abstract class DirectoryDomain
+    public static class DirectoryDomain
     {
-        public const string DOMAIN = "\\3-Domain";
-        public const string INTERFACES = "\\Interfaces";
-        public const string ENTITIES = "\\Entities";
+        /// <summary>
+        /// Domain.
+        /// </summary>
+        public static string Domain { get; } = "\\3-Domain";
+
+        /// <summary>
+        /// Interfaces.
+        /// </summary>
+        public static string Interfaces { get; } = "\\Interfaces";
+
+        /// <summary>
+        /// Entities.
+        /// </summary>
+        public static string Entities { get; } = "\\Entities";
     }
 }

@@ -10,20 +10,20 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Swagger
         {
             swaggerDoc.Info = new Microsoft.OpenApi.Models.OpenApiInfo
             {
-                Version = Infraestructure.Domain.Entities.OpenApi.OpenApiInformation.VERSION,
-                Title = Infraestructure.Domain.Entities.OpenApi.OpenApiInformation.TITLE,
-                Description = Infraestructure.Domain.Entities.OpenApi.OpenApiInformation.DESCRIPTION,
-                TermsOfService = new Uri(Infraestructure.Domain.Entities.OpenApi.OpenApiInformation.TERMSOFSERVICE),
+                Version = Infraestructure.Domain.Entities.OpenApi.OpenApiInformation.Version,
+                Title = Infraestructure.Domain.Entities.OpenApi.OpenApiInformation.Title,
+                Description = Infraestructure.Domain.Entities.OpenApi.OpenApiInformation.Description,
+                TermsOfService = new Uri(Infraestructure.Domain.Entities.OpenApi.OpenApiInformation.TermsOfService),
                 Contact = new Microsoft.OpenApi.Models.OpenApiContact
                 {
-                    Name = Infraestructure.Domain.Entities.OpenApi.OpenApiContact.NAME,
-                    Email = Infraestructure.Domain.Entities.OpenApi.OpenApiContact.EMAIL,
-                    Url = new Uri(Infraestructure.Domain.Entities.OpenApi.OpenApiContact.URL)
+                    Name = Infraestructure.Domain.Entities.OpenApi.OpenApiContact.Name,
+                    Email = Infraestructure.Domain.Entities.OpenApi.OpenApiContact.Email,
+                    Url = new Uri(Infraestructure.Domain.Entities.OpenApi.OpenApiContact.Url)
                 },
                 License = new Microsoft.OpenApi.Models.OpenApiLicense
                 {
-                    Name = Infraestructure.Domain.Entities.OpenApi.OpenApiLicense.NAME,
-                    Url = new Uri(Infraestructure.Domain.Entities.OpenApi.OpenApiLicense.URL)
+                    Name = Infraestructure.Domain.Entities.OpenApi.OpenApiLicense.Name,
+                    Url = new Uri(Infraestructure.Domain.Entities.OpenApi.OpenApiLicense.Url)
                 }
             };
         }

@@ -2,7 +2,6 @@
 
 namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities
 {
-
     /// <summary>
     /// Entity Databases.
     /// </summary>

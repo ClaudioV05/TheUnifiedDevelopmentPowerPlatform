@@ -1,23 +1,41 @@
-﻿namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.File
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.File
 {
+    [ComplexType]
     /// <summary>
     /// File with extension for the application.
     /// </summary>
-    public abstract class FileExtension
+    public static class FileExtension
     {
         /// <summary>
         /// Text document file.
         /// </summary>
-        public const string TXT = ".txt";
+        public static string Txt { get; } = ".txt";
 
         /// <summary>
         /// Extensible markup language file.
         /// </summary>
-        public const string XML = ".xml";
+        public static string Xml { get; } = ".xml";
 
         /// <summary>
         /// JavaScript object notation file.
         /// </summary>
-        public const string JSON = ".json";
+        public static string Json { get; } = ".json";
+
+        /// <summary>
+        /// C Sharp file.
+        /// </summary>
+        public static string Cs { get; } = ".cs";
+
+        /// <summary>
+        /// C Sharp Project file.
+        /// </summary>
+        public static string CSharpProj { get; } = ".csproj";
+
+        /// <summary>
+        /// Sln file.
+        /// </summary>
+        public static string Sln { get; } = ".sln";
     }
 }

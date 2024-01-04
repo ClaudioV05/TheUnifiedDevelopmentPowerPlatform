@@ -1,5 +1,8 @@
-﻿namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Message
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Message
 {
+    [ComplexType]
     /// <summary>
     /// Description of Mensagem.
     /// </summary>

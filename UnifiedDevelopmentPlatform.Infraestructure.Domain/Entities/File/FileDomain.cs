@@ -1,9 +1,12 @@
-﻿namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.File
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.File
 {
+    [ComplexType]
     /// <summary>
     /// File for the domain.
     /// </summary>
-    public abstract class FileDomain
+    public static class FileDomain
     {
 
     }
