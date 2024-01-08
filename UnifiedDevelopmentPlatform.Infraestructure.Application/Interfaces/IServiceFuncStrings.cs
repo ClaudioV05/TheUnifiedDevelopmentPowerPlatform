@@ -119,6 +119,20 @@
         /// <returns></returns>
         string UDPReplace(string text, string oldValue, string newValue);
 
+        /// <summary>
+        /// To Camel Case.
+        /// </summary>
+        /// <param name="text"></param>
+        /// <returns></returns>
+        string UDPToCamelCase(string text);
+
+        /// <summary>
+        /// To Pascal Case.
+        /// </summary>
+        /// <param name="text"></param>
+        /// <returns></returns>
+        string UDPToPascalCase(string text);
+
         #endregion For Treatment of Strings.
     }
 }

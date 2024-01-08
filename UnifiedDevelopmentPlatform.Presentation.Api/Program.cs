@@ -12,9 +12,13 @@ using UnifiedDevelopmentPlatform.Presentation.Api.Swagger;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+// Method registers endpoint explorers to the DI container.
+builder.Services.AddEndpointsApiExplorer();
+
+#region Swagger.
 builder.Services.AddSwaggerGen(options =>
 {
+    options.SchemaFilter<IgnoreFilter>();
     options.DocumentFilter<DocumentationAttribute>();
     options.OperationFilter<DocumentationHeaderAttribute>();
 
@@ -31,6 +35,7 @@ builder.Services.AddSwaggerGen(options =>
         options.IncludeXmlComments(xmlPath);
     }
 });
+#endregion Swagger.
 
 builder.Services.AddControllers(options =>
 {
@@ -88,12 +93,15 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     // Code for Development here.
+
+    #region Swagger.
     app.UseSwagger();
     app.UseSwaggerUI(options =>
     {
         options.SwaggerEndpoint(OpenApiConfiguration.Endpoint, OpenApiInformation.Description);
         options.InjectStylesheet(OpenApiConfiguration.StyleSheet);
     });
+    #endregion Swagger.
 
     app.UseDeveloperExceptionPage();
 }

@@ -1,4 +1,5 @@
 ﻿using System.Text;
+using System.Text.RegularExpressions;
 using UnifiedDevelopmentPlatform.Application.Interfaces;
 
 namespace UnifiedDevelopmentPlatform.Application.Services
@@ -174,6 +175,27 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             return text.Replace(oldValue, newValue);
         }
 
+        public string UDPToCamelCase(string text)
+        {
+            if (string.IsNullOrEmpty(text) || char.IsLower(text[0]))
+            {
+                return text;
+            }
+
+            var chars = text.ToCharArray();
+            chars[0] = char.ToLowerInvariant(text[0]);
+
+            return new(chars);
+        }
+
+        public string UDPToPascalCase(string text)
+        {
+            return Regex.Replace(text, @"([^\p{Pc}]+)[\p{Pc}]*", new MatchEvaluator(mtch =>
+                             {
+                                 var word = mtch.Groups[1].Value.ToLower();
+                                 return $"{Char.ToUpper(word[0])}{word.Substring(1)}";
+                             }));
+        }
         #endregion For Treatment of Strings.
     }
 }
