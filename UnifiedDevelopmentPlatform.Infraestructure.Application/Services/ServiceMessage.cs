@@ -3,14 +3,14 @@
 namespace UnifiedDevelopmentPlatform.Application.Services
 {
     /// <summary>
-    /// Service for Mail.
+    /// Service for Message.
     /// </summary>
-    public class ServiceMail : IServiceMail
+    public class ServiceMessage : IServiceMessage
     {
         /// <summary>
-        /// The constructor of Service Mail.
+        /// The constructor of Service Message.
         /// </summary>
-        public ServiceMail()
+        public ServiceMessage()
         {
 
         }

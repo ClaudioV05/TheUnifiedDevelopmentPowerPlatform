@@ -5,12 +5,15 @@ using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Xml;
 namespace UnifiedDevelopmentPlatform.Application.Services
 {
     /// <summary>
-    /// Service for (Extensible Markup Language - XML).
+    /// Service for Extensible Markup Language - XML.
     /// </summary>
     public class ServiceXml : IServiceXml
     {
         private readonly IServiceFuncStrings _serviceFuncStrings;
 
+        /// <summary>
+        /// The constructor of Service Extensible Markup Language - XML.
+        /// </summary>
         public ServiceXml(IServiceFuncStrings serviceFuncStrings)
         {
             _serviceFuncStrings = serviceFuncStrings;

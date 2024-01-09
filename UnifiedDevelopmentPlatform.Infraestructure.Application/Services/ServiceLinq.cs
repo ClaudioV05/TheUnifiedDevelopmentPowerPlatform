@@ -4,12 +4,15 @@ using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Directory;
 namespace UnifiedDevelopmentPlatform.Application.Services
 {
     /// <summary>
-    /// Service for (LINQ Language Integrated Query).
+    /// Service for Language Integrated Query - LINQ.
     /// </summary>
     public class ServiceLinq : IServiceLinq
     {
         private readonly IServiceFuncStrings _serviceFuncStrings;
 
+        /// <summary>
+        /// The constructor of Service Language Integrated Query - LINQ.
+        /// </summary>
         public ServiceLinq(IServiceFuncStrings serviceFuncStrings)
         {
             _serviceFuncStrings = serviceFuncStrings;

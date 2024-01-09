@@ -1,7 +1,7 @@
 ﻿namespace UnifiedDevelopmentPlatform.Application.Interfaces
 {
     /// <summary>
-    /// Interface service for (Extensible Markup Language - XML).
+    /// Interface service for Extensible Markup Language - XML.
     /// </summary>
     public interface IServiceXml
     {

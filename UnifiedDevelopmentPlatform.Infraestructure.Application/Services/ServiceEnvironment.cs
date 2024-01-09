@@ -4,10 +4,18 @@ using System.Security;
 namespace UnifiedDevelopmentPlatform.Application.Services
 {
     /// <summary>
-    /// Service for (Environment).
+    /// Service for Environment.
     /// </summary>
     public class ServiceEnvironment : IServiceEnvironment
     {
+        /// <summary>
+        /// The constructor of Service Environment.
+        /// </summary>
+        public ServiceEnvironment()
+        {
+
+        }
+
         public string? UPDGetEnvVariable(string variable)
         {
             return Environment.GetEnvironmentVariable(variable) ?? null;

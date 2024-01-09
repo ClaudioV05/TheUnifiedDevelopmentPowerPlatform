@@ -1,7 +1,7 @@
 ﻿namespace UnifiedDevelopmentPlatform.Application.Interfaces
 {
     /// <summary>
-    /// Interface service for (LINQ Language Integrated Query).
+    /// Interface service for LINQ Language Integrated Query.
     /// </summary>
     public interface IServiceLinq
     {

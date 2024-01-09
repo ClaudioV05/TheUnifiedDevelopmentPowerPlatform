@@ -4,10 +4,18 @@ using UnifiedDevelopmentPlatform.Application.Interfaces;
 namespace UnifiedDevelopmentPlatform.Application.Services
 {
     /// <summary>
-    /// Service for (File).
+    /// Service for File.
     /// </summary>
     public class ServiceFile : IServiceFile
     {
+        /// <summary>
+        /// The constructor of Service File.
+        /// </summary>
+        public ServiceFile()
+        {
+
+        }
+
         public bool UDPFileExists(string? path)
         {
             return File.Exists(path);
@@ -42,6 +50,18 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         {
             using FileStream file = File.OpenRead(path);
             return file;
+        }
+
+        public string UDPGetFileName(string? path) 
+        {
+            try
+            {
+                return Path.GetFileName(path);
+            }
+            catch (Exception)
+            {
+                return string.Empty;
+            }
         }
     }
 }

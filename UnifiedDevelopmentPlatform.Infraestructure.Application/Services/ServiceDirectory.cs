@@ -4,6 +4,7 @@ using UnifiedDevelopmentPlatform.Application.Interfaces;
 using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Directory;
 using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.File;
 using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Json;
+using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Message;
 using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Xml;
 
 namespace UnifiedDevelopmentPlatform.Application.Services
@@ -15,19 +16,17 @@ namespace UnifiedDevelopmentPlatform.Application.Services
     {
         private string? _directory;
         private readonly IServiceXml _serviceXml;
+        //private readonly IServiceLog _serviceLog;
         private readonly IServiceFile _serviceFile;
         private readonly IServiceJson _serviceJson;
         private readonly IServiceLinq _serviceLinq;
         private readonly Queue<string> _queueDirectory;
         private readonly IServiceFuncStrings _serviceFuncStrings;
 
-        public ServiceDirectory(IServiceXml serviceXml,
-                                IServiceFile serviceFile,
-                                IServiceJson serviceJson,
-                                IServiceLinq serviceLinq,
-                                IServiceFuncStrings serviceFuncStrings)
+        public ServiceDirectory(IServiceXml serviceXml, /*IServiceLog serviceLog,*/ IServiceFile serviceFile, IServiceJson serviceJson, IServiceLinq serviceLinq, IServiceFuncStrings serviceFuncStrings)
         {
             _serviceXml = serviceXml;
+            //_serviceLog = serviceLog;
             _serviceFile = serviceFile;
             _serviceJson = serviceJson;
             _serviceLinq = serviceLinq;
@@ -35,17 +34,20 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             _serviceFuncStrings = serviceFuncStrings;
         }
 
-        public void UPDCreateDirectoryStandardOfSolution()
+        public void UPDBuildDirectoryStandardOfSolution()
         {
             string path = string.Empty;
             string json = string.Empty;
 
             try
             {
+                //_serviceLog.UDPLogReport(_serviceLog.UDPMensagem(MessageEnumerated.BuildDirectoryStandardOfSolution));
+
                 _directory = this.UDPGetRootDirectory();
 
                 if (_serviceFuncStrings.UDPNullOrEmpty(_directory ?? string.Empty))
                 {
+                    //_serviceLog.UDPLogReport(_serviceLog.UDPMensagem(MessageEnumerated.DirectoryRootIsEmpty));
                     throw new Exception();
                 }
                 else
@@ -218,7 +220,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             JsonApp jsonApp;
             JsonConfiguration jsonConfiguration;
 
-            List<string>? lstWithAppConfiguration = new List<string>();
+            /*List<string>? lstWithAppConfiguration = new List<string>();
 
             try
             {
@@ -258,7 +260,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             catch (IOException)
             {
                 throw new IOException();
-            }
+            }*/
         }
 
         #region Standard Path.

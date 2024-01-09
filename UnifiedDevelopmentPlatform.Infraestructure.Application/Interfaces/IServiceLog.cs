@@ -35,13 +35,13 @@ namespace UnifiedDevelopmentPlatform.Application.Interfaces
         /// Register Log general for application.
         /// </summary>
         /// <param name="message"></param>
-        void UDPLogRegister(string? message);
+        void UDPLogReport(string? message);
 
         /// <summary>
         /// Log mensagem.
         /// </summary>
-        /// <param name="logEnumMensagem"></param>
+        /// <param name="messageEnumerated"></param>
         /// <returns>String with message of error.</returns>
-        string UDPMensagem(MessageEnumerated logEnumMensagem);
+        string UDPMensagem(MessageEnumerated messageEnumerated);
     }
 }

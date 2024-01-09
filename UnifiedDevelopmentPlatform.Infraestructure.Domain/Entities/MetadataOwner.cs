@@ -8,7 +8,7 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities
     /// Entity Metadata.
     /// </summary>
     [ComplexType]
-    public sealed class Metadata : IEntity
+    public sealed class MetadataOwner : IEntity
     {
         public Guid Id { get; set; }
 
@@ -48,7 +48,7 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities
         [DataMember]
         public ICollection<Tables>? Tables { get; set; }
 
-        public Metadata()
+        public MetadataOwner()
         {
             try
             {

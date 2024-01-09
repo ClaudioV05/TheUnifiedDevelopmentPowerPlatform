@@ -5,11 +5,21 @@ using UnifiedDevelopmentPlatform.Application.Interfaces;
 namespace UnifiedDevelopmentPlatform.Application.Services
 {
     /// <summary>
-    /// Service for (Functions String).
+    /// Service for Functions of String.
     /// </summary>
     public class ServiceFuncStrings : IServiceFuncStrings
     {
+        /// <summary>
+        /// The constructor of Service Functions of Strings.
+        /// </summary>
+        public ServiceFuncStrings()
+        {
+
+        }
+
         public string Empty { get; } = string.Empty;
+
+        public string WhiteSpace { get; } = " ";
 
         public char[] Base64Chars { get; } = new[] { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '+', '/' };
 

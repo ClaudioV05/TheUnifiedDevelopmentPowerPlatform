@@ -1,4 +1,5 @@
 ﻿using NLog;
+using System.Diagnostics;
 using UnifiedDevelopmentPlatform.Application.Interfaces;
 using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Directory;
 using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.File;
@@ -7,9 +8,8 @@ using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Message;
 
 namespace UnifiedDevelopmentPlatform.Application.Services
 {
-
     /// <summary>
-    /// Service for (Log).
+    /// Service for Log.
     /// </summary>
     public class ServiceLog : IServiceLog
     {
@@ -21,6 +21,9 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         private readonly IServiceFuncStrings _serviceFuncStrings;
         private readonly ILogger _logger = LogManager.GetCurrentClassLogger();
 
+        /// <summary>
+        /// The constructor of Service Log.
+        /// </summary>
         public ServiceLog(IServiceJson serviceJson, IServiceFile serviceFile, IServiceDate serviceDate, IServiceDirectory serviceDirectory, IServiceEnvironment serviceEnvironment, IServiceFuncStrings serviceFuncStrings)
         {
             _serviceJson = serviceJson;
@@ -39,7 +42,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
 
         public void UDPLogWarning(string message) => _logger.Warn(message);
 
-        public void UDPLogRegister(string? message)
+        public void UDPLogReport(string? message)
         {
             string json = string.Empty;
             string path = string.Empty;
@@ -55,18 +58,22 @@ namespace UnifiedDevelopmentPlatform.Application.Services
                 caracter = _serviceEnvironment.UDPNewLine();
             }
 
+            StackFrame stackFrame = new StackFrame(1, true);
+
             _serviceFile.UDPAppendAllText($"{jsonConfiguration.Path}{DirectoryStandard.Log}{FileStandard.Log}{FileExtension.Txt}",
-                                          $"{caracter}{_serviceDate.UDPGetDateTimeNowFormat()} > [{_serviceFuncStrings.UDPUpper(message)}]");
+                                          $"{caracter}{_serviceDate.UDPGetDateTimeNowFormat()} > File [{_serviceFile.UDPGetFileName(stackFrame.GetFileName())}] Line Number [{stackFrame.GetFileLineNumber()}] [{_serviceFuncStrings.UDPUpper(message)}]");
         }
 
-        public string UDPMensagem(MessageEnumerated logEnumMensagem)
+        public string UDPMensagem(MessageEnumerated messageEnumerated)
         {
-            return logEnumMensagem switch
+            return messageEnumerated switch
             {
                 MessageEnumerated.Initial => MessageDescription.Initial,
                 MessageEnumerated.PlatformIsWindowsOk => MessageDescription.PlatformIsWindowsOk,
                 MessageEnumerated.PlatformIsWindowsErro => MessageDescription.PlatformIsWindowsErro,
                 MessageEnumerated.ErrorFilterActionContextController => MessageDescription.ErrorFilterActionContextController,
+                MessageEnumerated.ErrorFilterActionContextTables => MessageDescription.ErrorFilterActionContextTables,
+                MessageEnumerated.ErrorFilterActionContextFields => MessageDescription.ErrorFilterActionContextFields,
                 MessageEnumerated.MessageDefaultToServiceValidation => MessageDescription.MessageDefaultToServiceValidation,
                 MessageEnumerated.MessageUdpModelStateIsOk => MessageDescription.MessageUdpModelStateIsOk,
                 MessageEnumerated.MessageUdpScriptMetadataIsOk => MessageDescription.MessageUdpScriptMetadataIsOk,
@@ -74,6 +81,8 @@ namespace UnifiedDevelopmentPlatform.Application.Services
                 MessageEnumerated.MessageUdpDevelopmentEnvironmentIsOk => MessageDescription.MessageUdpDevelopmentEnvironmentIsOk,
                 MessageEnumerated.MessageUdpDatabasesIsOk => MessageDescription.MessageUdpDatabasesIsOk,
                 MessageEnumerated.MessageUdpDatabasesEngineIsOk => MessageDescription.MessageUdpDatabasesEngineIsOk,
+                MessageEnumerated.BuildDirectoryStandardOfSolution => MessageDescription.BuildDirectoryStandardOfSolution,
+                MessageEnumerated.DirectoryRootIsEmpty => MessageDescription.DirectoryRootIsEmpty,
                 _ => MessageDescription.NoMessage
             };
         }

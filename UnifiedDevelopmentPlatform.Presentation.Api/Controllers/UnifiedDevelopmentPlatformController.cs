@@ -18,11 +18,11 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Controllers
     [EnableCors()]
     public class UnifiedDevelopmentPlatformController : ControllerBase
     {
-        private readonly IServiceMetadata _serviceMetadata;
+        private readonly IServiceMetadataTables _serviceMetadataTables;
 
-        public UnifiedDevelopmentPlatformController(IServiceMetadata serviceMetadata)
+        public UnifiedDevelopmentPlatformController(IServiceMetadataTables serviceMetadataTables)
         {
-            _serviceMetadata = serviceMetadata;
+            _serviceMetadataTables = serviceMetadataTables;
         }
 
         /// <summary>
@@ -34,17 +34,17 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Controllers
         [Produces(MediaTypeNames.Application.Json)]
         [Route(ControllerRouter.RouteMetadataAllTablesName)]
         [ServiceFilter(typeof(FilterActionContextLog), Order = ControllerOrderExecutationFilter.Second)]
-        [ServiceFilter(typeof(FilterActionContextTables<Metadata>), Order = ControllerOrderExecutationFilter.Third)]
+        [ServiceFilter(typeof(FilterActionContextTables<MetadataOwner>), Order = ControllerOrderExecutationFilter.Third)]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public ActionResult<List<string>> MetadataAllTablesName([BindRequired] AppMetadata metadata)
         {
-            Metadata objMddata = new Metadata()
+            MetadataOwner objMddata = new MetadataOwner()
             {
                 ScriptMetadata = metadata.ScriptMetadata,
             };
 
-            return Ok(_serviceMetadata.UDPMetadataAllTablesName(metadata: objMddata));
+            return Ok(_serviceMetadataTables.UDPMetadataAllTablesName(metadata: objMddata));
         }
 
         /// <summary>
@@ -56,16 +56,16 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Controllers
         [Produces(MediaTypeNames.Application.Json)]
         [Route(ControllerRouter.RouteMetadataAllFieldsName)]
         [ServiceFilter(typeof(FilterActionContextLog), Order = ControllerOrderExecutationFilter.Second)]
-        [ServiceFilter(typeof(FilterActionContextFields<Metadata>), Order = ControllerOrderExecutationFilter.Third)]
+        [ServiceFilter(typeof(FilterActionContextFields<MetadataOwner>), Order = ControllerOrderExecutationFilter.Third)]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [DisableCors]
-        public ActionResult<List<string>> MetadataAllFieldsName([BindRequired] Metadata metadata)
+        public ActionResult<List<string>> MetadataAllFieldsName([BindRequired] MetadataOwner metadata)
         {
             // Here enter with field name only. Load the property [Fields].
             // Return the table name and your fields.
 
-            return new List<string>() { "Jesus" };
+            return Ok(new List<string>() { "Jesus" });
         }
     }
 }

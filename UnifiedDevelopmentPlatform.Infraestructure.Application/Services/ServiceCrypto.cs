@@ -4,11 +4,19 @@ using UnifiedDevelopmentPlatform.Application.Interfaces;
 namespace UnifiedDevelopmentPlatform.Application.Services
 {
     /// <summary>
-    /// Service for (Crypto).
+    /// Service for Crypto.
     /// </summary>
     public class ServiceCrypto : IServiceCrypto
     {
         //private readonly string _keyCrypto = "3b4750253d5b274b6346545f3c2b323f6b436c596e6d3c6e5d23552d4a";
+
+        /// <summary>
+        /// The constructor of Service Crypto.
+        /// </summary>
+        public ServiceCrypto()
+        {
+
+        }
 
         public string UPDEncrypt(string value)
         {

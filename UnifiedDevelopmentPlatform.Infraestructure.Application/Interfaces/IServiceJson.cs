@@ -1,7 +1,7 @@
 ﻿namespace UnifiedDevelopmentPlatform.Application.Interfaces
 {
     /// <summary>
-    /// Interface service for (JavaScript Object Notation - JSON).
+    /// Interface service for JavaScript Object Notation - JSON.
     /// </summary>
     public interface IServiceJson
     {

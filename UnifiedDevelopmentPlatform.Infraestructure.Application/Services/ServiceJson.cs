@@ -6,7 +6,7 @@ using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Json;
 namespace UnifiedDevelopmentPlatform.Application.Services
 {
     /// <summary>
-    /// Service for (JavaScript Object Notation - JSON).
+    /// Service for JavaScript Object Notation - JSON.
     /// </summary>
     public class ServiceJson : IServiceJson
     {
@@ -16,6 +16,14 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             PropertyNameCaseInsensitive = true, // Property with name case insensitive.
             DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull // To default ignore condition when writing null.
         };
+
+        /// <summary>
+        /// The constructor of Service for JavaScript Object Notation - JSON.
+        /// </summary>
+        public ServiceJson()
+        {
+
+        }
 
         public string UDPSerializerJson(object obj)
         {

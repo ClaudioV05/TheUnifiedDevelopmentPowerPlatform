@@ -1,7 +1,7 @@
 ﻿namespace UnifiedDevelopmentPlatform.Application.Interfaces
 {
     /// <summary>
-    /// Interface service for (Directory).
+    /// Interface service for Directory.
     /// </summary>
     public interface IServiceDirectory
     {
@@ -12,10 +12,10 @@
         void UPDCreateDirectoryProjectOfSolution();
 
         /// <summary>
-        /// Create directory standard of solution.
+        /// Build directory standard of solution.
         /// </summary>
         /// <returns></returns>
-        void UPDCreateDirectoryStandardOfSolution();
+        void UPDBuildDirectoryStandardOfSolution();
 
         /// <summary>
         /// Get root path file in Configuration.

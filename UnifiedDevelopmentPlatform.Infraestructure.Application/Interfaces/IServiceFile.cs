@@ -1,7 +1,7 @@
 ﻿namespace UnifiedDevelopmentPlatform.Application.Interfaces
 {
     /// <summary>
-    /// Interface service for (File).
+    /// Interface service for File.
     /// </summary>
     public interface IServiceFile
     {
@@ -55,5 +55,12 @@
         /// <param name="content"></param>
         /// <returns></returns>
         void UDPAppendAllText(string pathWithFile, string content);
+
+        /// <summary>
+        /// Get the file name.
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
+        string UDPGetFileName(string? path);
     }
 }

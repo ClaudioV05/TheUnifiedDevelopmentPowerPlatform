@@ -1,7 +1,7 @@
 ﻿namespace UnifiedDevelopmentPlatform.Application.Interfaces
 {
     /// <summary>
-    /// Interface service for (Crypto).
+    /// Interface service for Crypto.
     /// </summary>
     public interface IServiceCrypto
     {

@@ -28,10 +28,24 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Message
         /// </summary>
         public static string PlatformIsWindowsErro { get; set; } = "THIS VERSION OF (UNIFIED DEVELOPMENT PLATFORM) DON'T RUN IN CROSS CROSS PLATFORM. ONLY WINDOWS.";
 
+        #region Filter action.
+
         /// <summary>
         /// Error filter action context controller.
         /// </summary>
-        public static string ErrorFilterActionContextController { get; set; } = "ERROR OCORRED OF THE CREATION THE UNIFIED DEVELOPMENT PLATFORM - UDP.";
+        public static string ErrorFilterActionContextController { get; set; } = "ERROR OCORRED OF THE CREATION THE";
+
+        /// <summary>
+        /// Error filter action context tables.
+        /// </summary>
+        public static string ErrorFilterActionContextTables { get; set; } = "ERROR OCORRED IN THE VALIDATION OF TABLES.";
+
+        /// <summary>
+        /// Error filter action context fields.
+        /// </summary>
+        public static string ErrorFilterActionContextFields { get; set; } = "ERROR OCORRED IN THE VALIDATION OF FIELDS.";
+
+        #region The validation of filter action.
 
         /// <summary>
         /// Message default to service validation.
@@ -72,5 +86,29 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Message
         /// Message to the forms is ok.
         /// </summary>
         public static string MessageUdpFormIsOk { get; set; } = $"THE (FORMS) {MessageDescription.MessageDefaultToServiceValidation}";
+
+        #endregion The validation of filter action.
+
+        #endregion Filter action.
+
+        #region Service directory.
+
+        /// <summary>
+        /// Message default to service validation.
+        /// </summary>
+        public static string ErrorCreateAllDirectory { get; set; } = "ERRO TO CREATE DIRECTORY DEFAULT OF UNIFIED DEVELOPMENT PLATFORM - UDP.";
+
+        /// <summary>
+        /// Build of all directory standard of solution.
+        /// </summary>
+        public static string BuildDirectoryStandardOfSolution { get; set; } = "STARTING OF THE CREATION THE INITIAL OF THE DIRECTORY STANDARD.";
+
+        /// <summary>
+        /// Directory root is empty.
+        /// </summary>
+        public static string DirectoryRootIsEmpty { get; set; } = "DIRECTORY ROOT IS EMPTY IN SERVICE DIRECTORY.";
+
+        #endregion Service directory.
+
     }
 }

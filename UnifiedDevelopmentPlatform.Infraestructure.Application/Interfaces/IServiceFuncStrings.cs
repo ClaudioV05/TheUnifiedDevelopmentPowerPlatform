@@ -1,7 +1,7 @@
 ﻿namespace UnifiedDevelopmentPlatform.Application.Interfaces
 {
     /// <summary>
-    /// Interface service for (Functions String).
+    /// Interface service for Functions String.
     /// </summary>
     public interface IServiceFuncStrings
     {
@@ -9,6 +9,11 @@
         /// string.Empty.
         /// </summary>
         public string Empty { get; }
+
+        /// <summary>
+        /// string with white space.
+        /// </summary>
+        public string WhiteSpace { get; }
 
         /// <summary>
         /// Base 64 chars.

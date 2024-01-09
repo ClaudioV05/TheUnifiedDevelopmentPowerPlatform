@@ -1,17 +1,19 @@
-﻿using UnifiedDevelopmentPlatform.Infraestructure.Domain.Interfaces;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
-using UnifiedDevelopmentPlatform.Presentation.Api.Models;
 using UnifiedDevelopmentPlatform.Application.Interfaces;
+using UnifiedDevelopmentPlatform.Infraestructure.Domain.Interfaces;
+using UnifiedDevelopmentPlatform.Presentation.Api.Models;
 
 namespace UnifiedDevelopmentPlatform.Presentation.Api.Filters
 {
     public class FilterActionContextFields<T> : IAsyncActionFilter where T : class, IEntity
     {
+        private readonly IServiceLog _serviceLog;
         private readonly IServiceValidation _serviceValidation;
 
-        public FilterActionContextFields(IServiceValidation serviceValidation)
+        public FilterActionContextFields(IServiceLog serviceLog, IServiceValidation serviceValidation)
         {
+            _serviceLog = serviceLog;
             _serviceValidation = serviceValidation;
         }
 
@@ -21,6 +23,7 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Filters
 
             if (!_serviceValidation.UDPModelStateIsOk(context, ref message))
             {
+                _serviceLog.UDPLogReport(message);
                 HasMessage(context, message);
                 return;
             }

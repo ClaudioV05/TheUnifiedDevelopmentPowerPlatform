@@ -29,20 +29,20 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Filters
             {
                 if (!_serviceValidation.UDPPlatformWindowsIsOk(ref message))
                 {
-                    _serviceLog.UDPLogRegister(message);
+                    _serviceLog.UDPLogReport(message);
                     HasMessage(context, message);
                     return;
                 }
 
-                _serviceDirectory.UPDCreateDirectoryStandardOfSolution();
+                _serviceDirectory.UPDBuildDirectoryStandardOfSolution();
 
-                _serviceLog.UDPLogRegister(_serviceLog.UDPMensagem(MessageEnumerated.Initial));
-                _serviceLog.UDPLogRegister(_serviceLog.UDPMensagem(MessageEnumerated.PlatformIsWindowsOk));
+                _serviceLog.UDPLogReport(_serviceLog.UDPMensagem(MessageEnumerated.Initial));
+                _serviceLog.UDPLogReport(_serviceLog.UDPMensagem(MessageEnumerated.PlatformIsWindowsOk));
             }
             catch (Exception)
             {
-                _serviceLog.UDPLogRegister(_serviceLog.UDPMensagem(MessageEnumerated.ErrorFilterActionContextController));
-                throw new Exception(MessageDescription.ErrorFilterActionContextController);
+                _serviceLog.UDPLogReport(_serviceLog.UDPMensagem(MessageEnumerated.ErrorFilterActionContextController));
+                throw new Exception(_serviceFuncStrings.UDPUpper(MessageDescription.ErrorFilterActionContextController));
             }
 
             await next();
