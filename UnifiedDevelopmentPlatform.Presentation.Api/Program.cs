@@ -75,7 +75,6 @@ builder.Services.TryAddScoped<IServiceMetadata, ServiceMetadata>();
 builder.Services.TryAddScoped<IServiceMetadataFields, ServiceMetadataFields>();
 builder.Services.TryAddScoped<IServiceMetadataTables, ServiceMetadataTables>();
 builder.Services.TryAddScoped<IServiceOperationalSystem, ServiceOperationalSystem>();
-builder.Services.TryAddScoped<IServiceStackFrame, ServiceStackFrame>();
 builder.Services.TryAddScoped<IServiceValidation, ServiceValidation>();
 builder.Services.TryAddScoped<IServiceXml, ServiceXml>();
 builder.Services.TryAddScoped<IServiceZipFile, ServiceZipFile>();

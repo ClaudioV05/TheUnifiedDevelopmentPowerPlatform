@@ -10,13 +10,15 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Filters
     public class FilterActionContextTables<T> : IAsyncActionFilter where T : class, IEntity
     {
         private readonly IServiceLog _serviceLog;
+        private readonly IServiceMessage _serviceMessage;
         private readonly IServiceDirectory _serviceDirectory;
         private readonly IServiceValidation _serviceValidation;
         private readonly IServiceFuncStrings _serviceFuncStrings;
 
-        public FilterActionContextTables(IServiceLog serviceLog, IServiceDirectory serviceDirectory, IServiceValidation serviceValidation, IServiceFuncStrings serviceFuncStrings)
+        public FilterActionContextTables(IServiceLog serviceLog, IServiceMessage serviceMessage, IServiceDirectory serviceDirectory, IServiceValidation serviceValidation, IServiceFuncStrings serviceFuncStrings)
         {
             _serviceLog = serviceLog;
+            _serviceMessage = serviceMessage;
             _serviceDirectory = serviceDirectory;
             _serviceValidation = serviceValidation;
             _serviceFuncStrings = serviceFuncStrings;
@@ -79,7 +81,7 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Filters
             }
             catch (Exception)
             {
-                _serviceLog.UDPLogReport(_serviceLog.UDPMensagem(MessageEnumerated.ErrorFilterActionContextTables));
+                _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageEnumerated.ErrorFilterActionContextTables));
                 throw new Exception(_serviceFuncStrings.UDPUpper(MessageDescription.ErrorFilterActionContextTables));
             }
 
@@ -91,7 +93,7 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Filters
             }
             catch (Exception)
             {
-                _serviceLog.UDPLogReport(_serviceLog.UDPMensagem(MessageEnumerated.ErrorCreateAllDirectory));
+                _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageEnumerated.ErrorCreateAllDirectory));
                 throw new Exception(_serviceFuncStrings.UDPUpper(MessageDescription.ErrorCreateAllDirectory));
             }
         }

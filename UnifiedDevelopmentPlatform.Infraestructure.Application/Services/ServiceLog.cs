@@ -63,28 +63,5 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             _serviceFile.UDPAppendAllText($"{jsonConfiguration.Path}{DirectoryStandard.Log}{FileStandard.Log}{FileExtension.Txt}",
                                           $"{caracter}{_serviceDate.UDPGetDateTimeNowFormat()} > File [{_serviceFile.UDPGetFileName(stackFrame.GetFileName())}] Line Number [{stackFrame.GetFileLineNumber()}] [{_serviceFuncStrings.UDPUpper(message)}]");
         }
-
-        public string UDPMensagem(MessageEnumerated messageEnumerated)
-        {
-            return messageEnumerated switch
-            {
-                MessageEnumerated.Initial => MessageDescription.Initial,
-                MessageEnumerated.PlatformIsWindowsOk => MessageDescription.PlatformIsWindowsOk,
-                MessageEnumerated.PlatformIsWindowsErro => MessageDescription.PlatformIsWindowsErro,
-                MessageEnumerated.ErrorFilterActionContextController => MessageDescription.ErrorFilterActionContextController,
-                MessageEnumerated.ErrorFilterActionContextTables => MessageDescription.ErrorFilterActionContextTables,
-                MessageEnumerated.ErrorFilterActionContextFields => MessageDescription.ErrorFilterActionContextFields,
-                MessageEnumerated.MessageDefaultToServiceValidation => MessageDescription.MessageDefaultToServiceValidation,
-                MessageEnumerated.MessageUdpModelStateIsOk => MessageDescription.MessageUdpModelStateIsOk,
-                MessageEnumerated.MessageUdpScriptMetadataIsOk => MessageDescription.MessageUdpScriptMetadataIsOk,
-                MessageEnumerated.MessageUdpMetadataIsBase64Ok => MessageDescription.MessageUdpMetadataIsBase64Ok,
-                MessageEnumerated.MessageUdpDevelopmentEnvironmentIsOk => MessageDescription.MessageUdpDevelopmentEnvironmentIsOk,
-                MessageEnumerated.MessageUdpDatabasesIsOk => MessageDescription.MessageUdpDatabasesIsOk,
-                MessageEnumerated.MessageUdpDatabasesEngineIsOk => MessageDescription.MessageUdpDatabasesEngineIsOk,
-                MessageEnumerated.BuildDirectoryStandardOfSolution => MessageDescription.BuildDirectoryStandardOfSolution,
-                MessageEnumerated.DirectoryRootIsEmpty => MessageDescription.DirectoryRootIsEmpty,
-                _ => MessageDescription.NoMessage
-            };
-        }
     }
 }

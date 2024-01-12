@@ -36,12 +36,5 @@ namespace UnifiedDevelopmentPlatform.Application.Interfaces
         /// </summary>
         /// <param name="message"></param>
         void UDPLogReport(string? message);
-
-        /// <summary>
-        /// Log mensagem.
-        /// </summary>
-        /// <param name="messageEnumerated"></param>
-        /// <returns>String with message of error.</returns>
-        string UDPMensagem(MessageEnumerated messageEnumerated);
     }
 }

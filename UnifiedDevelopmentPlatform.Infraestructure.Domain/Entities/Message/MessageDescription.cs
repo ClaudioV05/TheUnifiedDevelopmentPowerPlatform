@@ -110,5 +110,11 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Message
 
         #endregion Service directory.
 
+        #region ServiceMetadataTables.
+        /// <summary>
+        /// Invalid Base 64.
+        /// </summary>
+        public static string InvalidBase64 { get; set; } = "THIS BASE 64 ISA INVALID TO GENERATED THE TABLES NAME.";
+        #endregion ServiceMetadataTables.
     }
 }

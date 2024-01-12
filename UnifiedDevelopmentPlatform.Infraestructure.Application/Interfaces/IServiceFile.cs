@@ -35,11 +35,18 @@
         void UDPWriteAllText(string path, string contents);
 
         /// <summary>
-        /// Create and save initial file.
+        /// Create and save initial file with class File.
         /// </summary>
         /// <param name="path"></param>
         /// <returns></returns>
-        void UDPCreateAndSaveInitialFile(string path);
+        void UDPCreateAndSaveFile(string path);
+
+        /// <summary>
+        /// Create and save file whit Class StreamWrite.
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
+        void UDPCreateAndSaveFileWithStreamWrite(string path);
 
         /// <summary>
         /// Open and read all text.

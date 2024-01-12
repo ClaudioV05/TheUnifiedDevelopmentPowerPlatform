@@ -10,6 +10,9 @@ using UnifiedDevelopmentPlatform.Presentation.Api.Models;
 
 namespace UnifiedDevelopmentPlatform.Presentation.Api.Controllers
 {
+    /// <summary>
+    /// Unified Development Platform - Controller.
+    /// </summary>
     [ApiController]
     [Route(ControllerRouter.RouteController)]
     [Consumes(MediaTypeNames.Application.Json)]
@@ -20,16 +23,20 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Controllers
     {
         private readonly IServiceMetadataTables _serviceMetadataTables;
 
+        /// <summary>
+        /// Constructor Unified Development Platform Controller.
+        /// </summary>
+        /// <param name="serviceMetadataTables"></param>
         public UnifiedDevelopmentPlatformController(IServiceMetadataTables serviceMetadataTables)
         {
             _serviceMetadataTables = serviceMetadataTables;
         }
 
         /// <summary>
-        /// Generate tables name of Metadata.
+        /// Generate all tables name of Metadata.
         /// </summary>
         /// <param name="metadata"></param>
-        /// <returns></returns>
+        /// <returns>List of string with names of tables</returns>
         [HttpPost]
         [Produces(MediaTypeNames.Application.Json)]
         [Route(ControllerRouter.RouteMetadataAllTablesName)]
@@ -48,10 +55,10 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Controllers
         }
 
         /// <summary>
-        ///  Generate fields name of Metadata.
+        /// Generate all fields name of Metadata.
         /// </summary>
         /// <param name="metadata"></param>
-        /// <returns></returns>
+        /// <returns>List of string with fields names of tables</returns>
         [HttpPost]
         [Produces(MediaTypeNames.Application.Json)]
         [Route(ControllerRouter.RouteMetadataAllFieldsName)]

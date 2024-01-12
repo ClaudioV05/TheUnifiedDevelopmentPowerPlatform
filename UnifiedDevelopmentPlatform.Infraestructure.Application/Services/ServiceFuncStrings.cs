@@ -185,6 +185,11 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             return text.Replace(oldValue, newValue);
         }
 
+        public string UDPRemoveAnyWhiteSpace(string text)
+        {
+            return String.Concat(text.Where(c => !Char.IsWhiteSpace(c)));
+        }
+
         public string UDPToCamelCase(string text)
         {
             if (string.IsNullOrEmpty(text) || char.IsLower(text[0]))

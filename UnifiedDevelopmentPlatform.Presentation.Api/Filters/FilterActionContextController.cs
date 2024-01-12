@@ -9,13 +9,15 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Filters
     public class FilterActionContextController : IAsyncActionFilter
     {
         private readonly IServiceLog _serviceLog;
+        private readonly IServiceMessage _serviceMessage;
         private readonly IServiceDirectory _serviceDirectory;
         private readonly IServiceValidation _serviceValidation;
         private readonly IServiceFuncStrings _serviceFuncStrings;
 
-        public FilterActionContextController(IServiceLog serviceLog, IServiceDirectory serviceDirectory, IServiceValidation serviceValidation, IServiceFuncStrings serviceFuncStrings)
+        public FilterActionContextController(IServiceLog serviceLog, IServiceMessage serviceMessage, IServiceDirectory serviceDirectory, IServiceValidation serviceValidation, IServiceFuncStrings serviceFuncStrings)
         {
             _serviceLog = serviceLog;
+            _serviceMessage = serviceMessage;
             _serviceDirectory = serviceDirectory;
             _serviceValidation = serviceValidation;
             _serviceFuncStrings = serviceFuncStrings;
@@ -36,12 +38,12 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Filters
 
                 _serviceDirectory.UPDBuildDirectoryStandardOfSolution();
 
-                _serviceLog.UDPLogReport(_serviceLog.UDPMensagem(MessageEnumerated.Initial));
-                _serviceLog.UDPLogReport(_serviceLog.UDPMensagem(MessageEnumerated.PlatformIsWindowsOk));
+                _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageEnumerated.Initial));
+                _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageEnumerated.PlatformIsWindowsOk));
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                _serviceLog.UDPLogReport(_serviceLog.UDPMensagem(MessageEnumerated.ErrorFilterActionContextController));
+                _serviceLog.UDPLogReport($"{_serviceMessage.UDPMensagem(MessageEnumerated.ErrorFilterActionContextController)} {ex.Message}");
                 throw new Exception(_serviceFuncStrings.UDPUpper(MessageDescription.ErrorFilterActionContextController));
             }
 

@@ -1,4 +1,5 @@
-﻿using UnifiedDevelopmentPlatform.Application.Interfaces;
+﻿using System.Globalization;
+using UnifiedDevelopmentPlatform.Application.Interfaces;
 using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Datetime;
 
 namespace UnifiedDevelopmentPlatform.Application.Services
@@ -18,7 +19,20 @@ namespace UnifiedDevelopmentPlatform.Application.Services
 
         public string UDPGetDateTimeNowFormat()
         {
-            return DateTime.Now.ToString(DatetimeFormat.Format_11);
+            return DateTime.Now.ToString(DatetimeFormat.Format_13);
+        }
+
+        /// <summary>
+        /// Configure the culture information.
+        /// </summary>
+        /// <returns></returns>
+        private CultureInfo? ConfigureCultureInfo()
+        {
+            var culture = new CultureInfo("pt-BR");
+            CultureInfo.DefaultThreadCurrentCulture = culture;
+            CultureInfo.DefaultThreadCurrentUICulture = culture;
+
+            return culture;
         }
     }
 }

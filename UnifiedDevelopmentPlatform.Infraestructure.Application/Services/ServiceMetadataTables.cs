@@ -1,5 +1,6 @@
 ﻿using UnifiedDevelopmentPlatform.Application.Interfaces;
 using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities;
+using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Message;
 using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Sql;
 
 namespace UnifiedDevelopmentPlatform.Application.Services
@@ -9,16 +10,20 @@ namespace UnifiedDevelopmentPlatform.Application.Services
     /// </summary>
     public class ServiceMetadataTables : IServiceMetadataTables
     {
+        private readonly IServiceLog _serviceLog;
         private readonly IServiceCrypto _serviceCrypto;
+        private readonly IServiceMessage _serviceMessage;
         private readonly IServiceValidation _serviceValidation;
         private readonly IServiceFuncStrings _serviceFuncStrings;
 
         /// <summary>
         /// The constructor of Service Metadata Tables.
         /// </summary>
-        public ServiceMetadataTables(IServiceCrypto serviceCrypto, IServiceValidation serviceValidation, IServiceFuncStrings serviceFuncStrings)
+        public ServiceMetadataTables(IServiceLog serviceLog, IServiceCrypto serviceCrypto, IServiceMessage serviceMessage, IServiceValidation serviceValidation, IServiceFuncStrings serviceFuncStrings)
         {
+            _serviceLog = serviceLog;
             _serviceCrypto = serviceCrypto;
+            _serviceMessage = serviceMessage;
             _serviceValidation = serviceValidation;
             _serviceFuncStrings = serviceFuncStrings;
         }
@@ -31,7 +36,8 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             {
                 if (!_serviceValidation.UDPValidateBase64(metadata?.ScriptMetadata))
                 {
-                    throw new Exception("create class with log for it");
+                    _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageEnumerated.InvalidBase64));
+                    throw new Exception();
                 }
 
                 scriptMetadata = _serviceCrypto.UPDDecodeBase64(metadata?.ScriptMetadata);

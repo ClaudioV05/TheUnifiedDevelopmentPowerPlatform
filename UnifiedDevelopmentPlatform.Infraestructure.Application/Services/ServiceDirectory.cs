@@ -63,14 +63,14 @@ namespace UnifiedDevelopmentPlatform.Application.Services
 
                     #region Configuration.
                     path = $"{_directory}{DirectoryStandard.App}{DirectoryStandard.Configuration}{DirectoryStandard.Json}{FileStandard.Configuration}{FileExtension.Json}";
-                    _serviceFile.UDPCreateAndSaveInitialFile(path);
+                    _serviceFile.UDPCreateAndSaveFile(path);
                     json = _serviceJson.UDPSerializerJson(new JsonConfiguration { Path = $"{_directory}{DirectoryStandard.App}{DirectoryStandard.Configuration}" });
                     _serviceFile.UDPWriteAllText(path, json);
                     #endregion Configuration.
 
                     #region App.
                     path = $"{_directory}{DirectoryStandard.App}{DirectoryStandard.Configuration}{DirectoryStandard.Json}{FileStandard.App}{FileExtension.Json}";
-                    _serviceFile.UDPCreateAndSaveInitialFile(path);
+                    _serviceFile.UDPCreateAndSaveFile(path);
                     json = _serviceJson.UDPSerializerJson(new JsonApp { Path = $"{_directory}{DirectoryStandard.App}" });
                     _serviceFile.UDPWriteAllText(path, json);
                     #endregion App.

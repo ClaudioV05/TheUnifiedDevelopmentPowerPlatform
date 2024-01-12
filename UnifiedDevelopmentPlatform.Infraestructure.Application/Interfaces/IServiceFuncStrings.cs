@@ -123,6 +123,13 @@
         /// <param name="newValue"></param>
         /// <returns></returns>
         string UDPReplace(string text, string oldValue, string newValue);
+        
+        /// <summary>
+        /// Remove any whitespace in string.
+        /// </summary>
+        /// <param name="text"></param>
+        /// <returns></returns>
+        string UDPRemoveAnyWhiteSpace(string text);
 
         /// <summary>
         /// To Camel Case.

@@ -31,5 +31,8 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Message
         [Description("Build of all directory standard of solution")] BuildDirectoryStandardOfSolution = 16,
         [Description("Directory root is empty")] DirectoryRootIsEmpty = 17,
         #endregion Service directory.
+        #region Service metadataTables.
+        [Description("Error to create all directory")] InvalidBase64 = 18,
+        #endregion Service metadataTables.
     }
 }
