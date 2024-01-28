@@ -18,13 +18,13 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         private readonly IServiceDate _serviceDate;
         private readonly IServiceDirectory _serviceDirectory;
         private readonly IServiceEnvironment _serviceEnvironment;
-        private readonly IServiceFuncStrings _serviceFuncStrings;
+        private readonly IServiceFuncString _serviceFuncStrings;
         private readonly ILogger _logger = LogManager.GetCurrentClassLogger();
 
         /// <summary>
         /// The constructor of Service Log.
         /// </summary>
-        public ServiceLog(IServiceJson serviceJson, IServiceFile serviceFile, IServiceDate serviceDate, IServiceDirectory serviceDirectory, IServiceEnvironment serviceEnvironment, IServiceFuncStrings serviceFuncStrings)
+        public ServiceLog(IServiceJson serviceJson, IServiceFile serviceFile, IServiceDate serviceDate, IServiceDirectory serviceDirectory, IServiceEnvironment serviceEnvironment, IServiceFuncString serviceFuncStrings)
         {
             _serviceJson = serviceJson;
             _serviceFile = serviceFile;

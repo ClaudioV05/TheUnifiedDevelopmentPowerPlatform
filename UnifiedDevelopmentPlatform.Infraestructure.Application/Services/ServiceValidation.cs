@@ -9,13 +9,13 @@ namespace UnifiedDevelopmentPlatform.Application.Services
     /// </summary>
     public class ServiceValidation : IServiceValidation
     {
-        private readonly IServiceFuncStrings _serviceFuncStrings;
+        private readonly IServiceFuncString _serviceFuncStrings;
         private readonly IServiceOperationalSystem _serviceOperationalSystem;
 
         /// <summary>
         /// The constructor of Service Validation.
         /// </summary>
-        public ServiceValidation(IServiceFuncStrings serviceFuncStrings, IServiceOperationalSystem serviceOperationalSystem)
+        public ServiceValidation(IServiceFuncString serviceFuncStrings, IServiceOperationalSystem serviceOperationalSystem)
         {
             _serviceFuncStrings = serviceFuncStrings;
             _serviceOperationalSystem = serviceOperationalSystem;

@@ -21,9 +21,9 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         private readonly IServiceJson _serviceJson;
         private readonly IServiceLinq _serviceLinq;
         private readonly Queue<string> _queueDirectory;
-        private readonly IServiceFuncStrings _serviceFuncStrings;
+        private readonly IServiceFuncString _serviceFuncStrings;
 
-        public ServiceDirectory(IServiceXml serviceXml, /*IServiceLog serviceLog,*/ IServiceFile serviceFile, IServiceJson serviceJson, IServiceLinq serviceLinq, IServiceFuncStrings serviceFuncStrings)
+        public ServiceDirectory(IServiceXml serviceXml, /*IServiceLog serviceLog,*/ IServiceFile serviceFile, IServiceJson serviceJson, IServiceLinq serviceLinq, IServiceFuncString serviceFuncStrings)
         {
             _serviceXml = serviceXml;
             //_serviceLog = serviceLog;

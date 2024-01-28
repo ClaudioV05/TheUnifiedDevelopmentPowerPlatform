@@ -9,12 +9,12 @@ namespace UnifiedDevelopmentPlatform.Application.Services
     /// </summary>
     public class ServiceXml : IServiceXml
     {
-        private readonly IServiceFuncStrings _serviceFuncStrings;
+        private readonly IServiceFuncString _serviceFuncStrings;
 
         /// <summary>
         /// The constructor of Service Extensible Markup Language - XML.
         /// </summary>
-        public ServiceXml(IServiceFuncStrings serviceFuncStrings)
+        public ServiceXml(IServiceFuncString serviceFuncStrings)
         {
             _serviceFuncStrings = serviceFuncStrings;
         }

@@ -6,12 +6,12 @@ namespace UnifiedDevelopmentPlatform.Application.Services
     /// <summary>
     /// Service Metadata Fields.
     /// </summary>
-    public class ServiceMetadataFields : IServiceMetadataFields
+    public class ServiceMetadataField : IServiceMetadataField
     {
         /// <summary>
         /// The constructor of Service Metadata Fields.
         /// </summary>
-        public ServiceMetadataFields()
+        public ServiceMetadataField()
         {
 
         }

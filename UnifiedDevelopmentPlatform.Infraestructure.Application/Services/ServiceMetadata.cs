@@ -8,13 +8,13 @@ namespace UnifiedDevelopmentPlatform.Application.Services
     /// </summary>
     public class ServiceMetadata : IServiceMetadata
     {
-        private readonly IServiceMetadataTables _serviceMetadataTables;
+        private readonly IServiceMetadataTable _serviceMetadataTables;
 
         /// <summary>
         /// The constructor of Service Metadata.
         /// </summary>
         /// <param name="serviceMetadataTables"></param>
-        public ServiceMetadata(IServiceMetadataTables serviceMetadataTables)
+        public ServiceMetadata(IServiceMetadataTable serviceMetadataTables)
         {
             _serviceMetadataTables = serviceMetadataTables;
         }

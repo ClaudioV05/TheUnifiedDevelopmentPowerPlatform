@@ -8,14 +8,14 @@ namespace UnifiedDevelopmentPlatform.Application.Services
     /// <summary>
     /// Service Metadata Tables.
     /// </summary>
-    public class ServiceMetadataTables : IServiceMetadataTables
+    public class ServiceMetadataTable : IServiceMetadataTable
     {
         private readonly IServiceLog _serviceLog;
         private readonly IServiceLinq _serviceLinq;
         private readonly IServiceCrypto _serviceCrypto;
         private readonly IServiceMessage _serviceMessage;
         private readonly IServiceValidation _serviceValidation;
-        private readonly IServiceFuncStrings _serviceFuncStrings;
+        private readonly IServiceFuncString _serviceFuncStrings;
 
         /// <summary>
         /// The constructor of Service Metadata Tables.
@@ -26,7 +26,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         /// <param name="serviceMessage"></param>
         /// <param name="serviceValidation"></param>
         /// <param name="serviceFuncStrings"></param>
-        public ServiceMetadataTables(IServiceLog serviceLog, IServiceLinq serviceLinq, IServiceCrypto serviceCrypto, IServiceMessage serviceMessage, IServiceValidation serviceValidation, IServiceFuncStrings serviceFuncStrings)
+        public ServiceMetadataTable(IServiceLog serviceLog, IServiceLinq serviceLinq, IServiceCrypto serviceCrypto, IServiceMessage serviceMessage, IServiceValidation serviceValidation, IServiceFuncString serviceFuncStrings)
         {
             _serviceLog = serviceLog;
             _serviceLinq = serviceLinq;

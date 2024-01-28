@@ -3,7 +3,7 @@
     /// <summary>
     /// Interface service Functions String.
     /// </summary>
-    public interface IServiceFuncStrings
+    public interface IServiceFuncString
     {
         /// <summary>
         /// string.Empty.

@@ -13,9 +13,9 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Filters
         private readonly IServiceMessage _serviceMessage;
         private readonly IServiceDirectory _serviceDirectory;
         private readonly IServiceValidation _serviceValidation;
-        private readonly IServiceFuncStrings _serviceFuncStrings;
+        private readonly IServiceFuncString _serviceFuncStrings;
 
-        public FilterActionContextTables(IServiceLog serviceLog, IServiceMessage serviceMessage, IServiceDirectory serviceDirectory, IServiceValidation serviceValidation, IServiceFuncStrings serviceFuncStrings)
+        public FilterActionContextTables(IServiceLog serviceLog, IServiceMessage serviceMessage, IServiceDirectory serviceDirectory, IServiceValidation serviceValidation, IServiceFuncString serviceFuncStrings)
         {
             _serviceLog = serviceLog;
             _serviceMessage = serviceMessage;

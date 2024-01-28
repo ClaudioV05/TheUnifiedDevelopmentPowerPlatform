@@ -5,7 +5,7 @@ namespace UnifiedDevelopmentPlatform.Application.Interfaces
     /// <summary>
     /// Interface service Metadata Fields.
     /// </summary>
-    public interface IServiceMetadataFields
+    public interface IServiceMetadataField
     {
         /// <summary>
         /// Return all tables name and all fields.

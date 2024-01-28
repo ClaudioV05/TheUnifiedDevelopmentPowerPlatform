@@ -7,12 +7,12 @@ namespace UnifiedDevelopmentPlatform.Application.Services
     /// <summary>
     /// Service Functions of String.
     /// </summary>
-    public class ServiceFuncStrings : IServiceFuncStrings
+    public class ServiceFuncString : IServiceFuncString
     {
         /// <summary>
         /// The constructor of Service Functions of Strings.
         /// </summary>
-        public ServiceFuncStrings()
+        public ServiceFuncString()
         {
 
         }
