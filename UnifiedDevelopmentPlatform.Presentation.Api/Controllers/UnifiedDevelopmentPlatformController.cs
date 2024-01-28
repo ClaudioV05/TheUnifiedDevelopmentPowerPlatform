@@ -16,8 +16,8 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Controllers
     [ApiController]
     [Route(ControllerRouter.RouteController)]
     [Consumes(MediaTypeNames.Application.Json)]
-    [Produces(MediaTypeNames.Application.Json)]
-    [ServiceFilter(typeof(FilterActionContextController), Order = ControllerOrderExecutationFilter.First)]
+    [Produces(MediaTypeNames.Application.Json, MediaTypeNames.Application.Xml)]
+    [ServiceFilter(typeof(FilterActionContextController), IsReusable = false, Order = ControllerOrderExecutationFilter.First)]
     [EnableCors()]
     public class UnifiedDevelopmentPlatformController : ControllerBase
     {
@@ -53,9 +53,9 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Controllers
         [HttpPost]
         [Produces(MediaTypeNames.Application.Json, MediaTypeNames.Application.Xml)]
         [Route(ControllerRouter.RouteMetadataAllTablesName)]
-        [ServiceFilter(typeof(FilterActionContextLog), Order = ControllerOrderExecutationFilter.Second)]
-        [ServiceFilter(typeof(FilterActionContextTables<MetadataOwner>), Order = ControllerOrderExecutationFilter.Third)]
-        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ServiceFilter(typeof(FilterActionContextLog), IsReusable = false, Order = ControllerOrderExecutationFilter.Second)]
+        [ServiceFilter(typeof(FilterActionContextTables<MetadataOwner>), IsReusable = false, Order = ControllerOrderExecutationFilter.Third)]
+        [ProducesResponseType(typeof(List<string>), StatusCodes.Status200OK, MediaTypeNames.Application.Xml, MediaTypeNames.Application.Json)]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
@@ -91,9 +91,9 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Controllers
         [HttpPost]
         [Produces(MediaTypeNames.Application.Json, MediaTypeNames.Application.Xml)]
         [Route(ControllerRouter.RouteMetadataAllFieldsName)]
-        [ServiceFilter(typeof(FilterActionContextLog), Order = ControllerOrderExecutationFilter.Second)]
-        [ServiceFilter(typeof(FilterActionContextFields<MetadataOwner>), Order = ControllerOrderExecutationFilter.Third)]
-        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ServiceFilter(typeof(FilterActionContextLog), IsReusable = false, Order = ControllerOrderExecutationFilter.Second)]
+        [ServiceFilter(typeof(FilterActionContextFields<MetadataOwner>), IsReusable = false, Order = ControllerOrderExecutationFilter.Third)]
+        [ProducesResponseType(typeof(List<string>), StatusCodes.Status200OK, MediaTypeNames.Application.Xml, MediaTypeNames.Application.Json)]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
@@ -112,5 +112,7 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Controllers
             _serviceMetadata.UDPReceiveAndSaveAllTableAndFieldsOfSchemaDatabase(metadata: new MetadataOwner() { DatabaseSchema = metadata.DatabaseSchema });
             return Ok();
         }
+
+        
     }
 }
