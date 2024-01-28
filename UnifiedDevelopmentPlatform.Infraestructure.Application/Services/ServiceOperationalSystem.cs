@@ -3,7 +3,7 @@
 namespace UnifiedDevelopmentPlatform.Application.Services
 {
     /// <summary>
-    /// Service for The Operational System.
+    /// Service The Operational System.
     /// </summary>
     public class ServiceOperationalSystem : IServiceOperationalSystem
     {

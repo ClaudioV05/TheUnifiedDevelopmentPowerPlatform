@@ -3,7 +3,7 @@
 namespace UnifiedDevelopmentPlatform.Application.Services
 {
     /// <summary>
-    /// Service for App Settings.
+    /// Service App Settings.
     /// </summary>
     public class ServiceAppSettings : IServiceAppSettings
     {

@@ -3,7 +3,7 @@
 namespace UnifiedDevelopmentPlatform.Application.Services
 {
     /// <summary>
-    /// Service for Mail.
+    /// Service Mail.
     /// </summary>
     public class ServiceMail : IServiceMail
     {

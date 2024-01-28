@@ -1,7 +1,7 @@
 ﻿namespace UnifiedDevelopmentPlatform.Application.Interfaces
 {
     /// <summary>
-    /// Interface service for Validation.
+    /// Interface service Validation.
     /// </summary>
     public interface IServiceValidation
     {
@@ -28,12 +28,12 @@
         bool UDPModelStateIsOk(dynamic context, ref string message);
 
         /// <summary>
-        /// Does Validation for Script Metadata.
+        /// Does Validation for Database Schema.
         /// </summary>
         /// <param name="context"></param>
         /// <param name="message"></param>
         /// <returns>Return true otherwise false.</returns>
-        bool UDPScriptMetadataIsOk(dynamic context, ref string message);
+        bool UDPDatabaseSchemaIsOk(dynamic context, ref string message);
 
         /// <summary>
         /// Validateing whether string is Base64.

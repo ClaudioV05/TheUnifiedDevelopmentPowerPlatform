@@ -1,7 +1,7 @@
 ﻿namespace UnifiedDevelopmentPlatform.Application.Interfaces
 {
     /// <summary>
-    /// Interface service for The Operational System.
+    /// Interface service The Operational System.
     /// </summary>
     public interface IServiceOperationalSystem
     {

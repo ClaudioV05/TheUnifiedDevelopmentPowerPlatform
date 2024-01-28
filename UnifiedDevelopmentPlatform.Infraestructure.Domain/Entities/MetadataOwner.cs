@@ -13,10 +13,10 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities
         public Guid Id { get; set; }
 
         /// <summary>
-        /// Script of Metadata.
+        /// Database schema.
         /// </summary>
         [DataMember]
-        public string? ScriptMetadata { get; set; }
+        public string? DatabaseSchema { get; set; }
         
         /// <summary>
         /// Forms.

@@ -4,7 +4,7 @@ using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Message;
 namespace UnifiedDevelopmentPlatform.Application.Services
 {
     /// <summary>
-    /// Service for Message.
+    /// Service Message.
     /// </summary>
     public class ServiceMessage : IServiceMessage
     {
@@ -16,26 +16,26 @@ namespace UnifiedDevelopmentPlatform.Application.Services
 
         }
 
-        public string UDPMensagem(MessageEnumerated messageEnumerated)
+        public string UDPMensagem(MessageType messageEnumerated)
         {
             return messageEnumerated switch
             {
-                MessageEnumerated.Initial => MessageDescription.Initial,
-                MessageEnumerated.PlatformIsWindowsOk => MessageDescription.PlatformIsWindowsOk,
-                MessageEnumerated.PlatformIsWindowsErro => MessageDescription.PlatformIsWindowsErro,
-                MessageEnumerated.ErrorFilterActionContextController => MessageDescription.ErrorFilterActionContextController,
-                MessageEnumerated.ErrorFilterActionContextTables => MessageDescription.ErrorFilterActionContextTables,
-                MessageEnumerated.ErrorFilterActionContextFields => MessageDescription.ErrorFilterActionContextFields,
-                MessageEnumerated.MessageDefaultToServiceValidation => MessageDescription.MessageDefaultToServiceValidation,
-                MessageEnumerated.MessageUdpModelStateIsOk => MessageDescription.MessageUdpModelStateIsOk,
-                MessageEnumerated.MessageUdpScriptMetadataIsOk => MessageDescription.MessageUdpScriptMetadataIsOk,
-                MessageEnumerated.MessageUdpMetadataIsBase64Ok => MessageDescription.MessageUdpMetadataIsBase64Ok,
-                MessageEnumerated.MessageUdpDevelopmentEnvironmentIsOk => MessageDescription.MessageUdpDevelopmentEnvironmentIsOk,
-                MessageEnumerated.MessageUdpDatabasesIsOk => MessageDescription.MessageUdpDatabasesIsOk,
-                MessageEnumerated.MessageUdpDatabasesEngineIsOk => MessageDescription.MessageUdpDatabasesEngineIsOk,
-                MessageEnumerated.BuildDirectoryStandardOfSolution => MessageDescription.BuildDirectoryStandardOfSolution,
-                MessageEnumerated.DirectoryRootIsEmpty => MessageDescription.DirectoryRootIsEmpty,
-                MessageEnumerated.InvalidBase64 => MessageDescription.InvalidBase64,
+                MessageType.Initial => MessageDescription.Initial,
+                MessageType.PlatformIsWindowsOk => MessageDescription.PlatformIsWindowsOk,
+                MessageType.PlatformIsWindowsErro => MessageDescription.PlatformIsWindowsErro,
+                MessageType.ErrorFilterActionContextController => MessageDescription.ErrorFilterActionContextController,
+                MessageType.ErrorFilterActionContextTables => MessageDescription.ErrorFilterActionContextTables,
+                MessageType.ErrorFilterActionContextFields => MessageDescription.ErrorFilterActionContextFields,
+                MessageType.MessageDefaultToServiceValidation => MessageDescription.MessageDefaultToServiceValidation,
+                MessageType.MessageUdpModelStateIsOk => MessageDescription.MessageUdpModelStateIsOk,
+                MessageType.MessageUdpScriptMetadataIsOk => MessageDescription.MessageUdpScriptMetadataIsOk,
+                MessageType.MessageUdpMetadataIsBase64Ok => MessageDescription.MessageUdpMetadataIsBase64Ok,
+                MessageType.MessageUdpDevelopmentEnvironmentIsOk => MessageDescription.MessageUdpDevelopmentEnvironmentIsOk,
+                MessageType.MessageUdpDatabasesIsOk => MessageDescription.MessageUdpDatabasesIsOk,
+                MessageType.MessageUdpDatabasesEngineIsOk => MessageDescription.MessageUdpDatabasesEngineIsOk,
+                MessageType.BuildDirectoryStandardOfSolution => MessageDescription.BuildDirectoryStandardOfSolution,
+                MessageType.DirectoryRootIsEmpty => MessageDescription.DirectoryRootIsEmpty,
+                MessageType.InvalidBase64 => MessageDescription.InvalidBase64,
                 _ => MessageDescription.NoMessage
             };
         }

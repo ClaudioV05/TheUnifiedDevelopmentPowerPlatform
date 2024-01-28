@@ -5,7 +5,7 @@ using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Message;
 namespace UnifiedDevelopmentPlatform.Application.Services
 {
     /// <summary>
-    /// Service for Validation.
+    /// Service Validation.
     /// </summary>
     public class ServiceValidation : IServiceValidation
     {
@@ -39,10 +39,10 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             return _serviceFuncStrings.UDPNullOrEmpty(message);
         }
 
-        public bool UDPScriptMetadataIsOk(dynamic context, ref string message)
+        public bool UDPDatabaseSchemaIsOk(dynamic context, ref string message)
         {
             dynamic? obj = null;
-            context.ActionArguments.TryGetValue(ControllerFilterActionName.Metadata, out obj);
+            context.ActionArguments.TryGetValue(ControllerFilterActionName.DatabaseSchema, out obj);
             message = _serviceFuncStrings.UDPNullOrEmpty(obj?.ScriptMetadata) ? MessageDescription.MessageUdpScriptMetadataIsOk : _serviceFuncStrings.Empty;
             return _serviceFuncStrings.UDPNullOrEmpty(message);
         }
@@ -50,7 +50,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         public bool UDPMetadataIsBase64Ok(dynamic context, ref string message)
         {
             dynamic? obj = null;
-            context.ActionArguments.TryGetValue(ControllerFilterActionName.Metadata, out obj);
+            context.ActionArguments.TryGetValue(ControllerFilterActionName.DatabaseSchema, out obj);
             message = !this.UDPValidateBase64(obj?.ScriptMetadata) ? MessageDescription.MessageUdpMetadataIsBase64Ok : _serviceFuncStrings.Empty;
             return _serviceFuncStrings.UDPNullOrEmpty(message);
         }
@@ -58,7 +58,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         public bool UDPDevelopmentEnvironmentIsOk(dynamic context, ref string message)
         {
             dynamic? obj = null;
-            context.ActionArguments.TryGetValue(ControllerFilterActionName.Metadata, out obj);
+            context.ActionArguments.TryGetValue(ControllerFilterActionName.DatabaseSchema, out obj);
             message = obj?.IdDevelopmentEnvironment <= 0 ? MessageDescription.MessageUdpDevelopmentEnvironmentIsOk : _serviceFuncStrings.Empty;
             return _serviceFuncStrings.UDPNullOrEmpty(message);
         }
@@ -66,7 +66,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         public bool UDPDatabasesIsOk(dynamic context, ref string message)
         {
             dynamic? obj = null;
-            context.ActionArguments.TryGetValue(ControllerFilterActionName.Metadata, out obj);
+            context.ActionArguments.TryGetValue(ControllerFilterActionName.DatabaseSchema, out obj);
             message = obj?.IdDatabases <= 0 ? MessageDescription.MessageUdpDatabasesIsOk : _serviceFuncStrings.Empty;
             return _serviceFuncStrings.UDPNullOrEmpty(message);
         }
@@ -74,7 +74,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         public bool UDPDatabasesEngineIsOk(dynamic context, ref string message)
         {
             dynamic? obj = null;
-            context.ActionArguments.TryGetValue(ControllerFilterActionName.Metadata, out obj);
+            context.ActionArguments.TryGetValue(ControllerFilterActionName.DatabaseSchema, out obj);
             message = obj?.IdDatabasesEngine <= 0 ? MessageDescription.MessageUdpDatabasesEngineIsOk : _serviceFuncStrings.Empty;
             return _serviceFuncStrings.UDPNullOrEmpty(message);
         }
@@ -82,7 +82,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         public bool UDPFormIsOk(dynamic context, ref string message)
         {
             dynamic? obj = null;
-            context.ActionArguments.TryGetValue(ControllerFilterActionName.Metadata, out obj);
+            context.ActionArguments.TryGetValue(ControllerFilterActionName.DatabaseSchema, out obj);
             message = obj?.IdForms <= 0 ? MessageDescription.MessageDefaultToServiceValidation : _serviceFuncStrings.Empty;
             return _serviceFuncStrings.UDPNullOrEmpty(message);
         }

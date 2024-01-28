@@ -38,12 +38,12 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Filters
 
                 _serviceDirectory.UPDBuildDirectoryStandardOfSolution();
 
-                _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageEnumerated.Initial));
-                _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageEnumerated.PlatformIsWindowsOk));
+                _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.Initial));
+                _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.PlatformIsWindowsOk));
             }
             catch (Exception ex)
             {
-                _serviceLog.UDPLogReport($"{_serviceMessage.UDPMensagem(MessageEnumerated.ErrorFilterActionContextController)} {ex.Message}");
+                _serviceLog.UDPLogReport($"{_serviceMessage.UDPMensagem(MessageType.ErrorFilterActionContextController)} {ex.Message}");
                 throw new Exception(_serviceFuncStrings.UDPUpper(MessageDescription.ErrorFilterActionContextController));
             }
 
@@ -52,11 +52,7 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Filters
 
         private static void HasMessage(ActionExecutingContext context, string message)
         {
-            context.Result = new BadRequestObjectResult(new ErrorDetails()
-            {
-                StatusCode = 1,
-                Message = message
-            });
+            context.Result = new BadRequestObjectResult(new ErrorDetails() { StatusCode = 1, Message = message });
         }
     }
 }

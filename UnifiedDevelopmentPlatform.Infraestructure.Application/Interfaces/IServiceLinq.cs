@@ -1,7 +1,7 @@
 ﻿namespace UnifiedDevelopmentPlatform.Application.Interfaces
 {
     /// <summary>
-    /// Interface service for LINQ Language Integrated Query.
+    /// Interface service LINQ Language Integrated Query.
     /// </summary>
     public interface IServiceLinq
     {
@@ -53,5 +53,12 @@
         /// <param name="listItem"></param>
         /// <returns>All paths without App and configuration.</returns>
         List<string>? UDPSelectRootPathWithoutAppConfiguration(List<string> listItem);
+
+        /// <summary>
+        /// Distinct.
+        /// </summary>
+        /// <param name="listItem"></param>
+        /// <returns>Returns distinct elements from a sequence.</returns>
+        List<string>? UDPDistinct(List<string> listItem);
     }
 }

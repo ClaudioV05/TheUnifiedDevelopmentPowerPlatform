@@ -1,14 +1,13 @@
-﻿using UnifiedDevelopmentPlatform.Presentation.Api.Models;
-using Microsoft.AspNetCore.Diagnostics;
+﻿using Microsoft.AspNetCore.Diagnostics;
 using System.Net;
-using System.Net.Mime;
-using Microsoft.AspNetCore.Http;
+using UnifiedDevelopmentPlatform.Presentation.Api.Models;
 
 namespace UnifiedDevelopmentPlatform.Presentation.Api.Extensions
 {
     public static class UnifiedDevelopmentPlatformExceptionMiddlewareExtensions
     {
         private const string CONTENT_TYPE = "application/json";
+
         public static void ConfigureExceptionHandler(this IApplicationBuilder app)
         {
             app.UseExceptionHandler(appError =>
@@ -20,7 +19,7 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Extensions
 
                     var contextFeature = context.Features.Get<IExceptionHandlerFeature>();
 
-                    if (contextFeature != null)
+                    if (contextFeature is not null)
                     {
                         await context.Response.WriteAsync(new ErrorDetails()
                         {

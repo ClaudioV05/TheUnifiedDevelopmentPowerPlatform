@@ -9,8 +9,8 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Controller
     public static class ControllerFilterActionName
     {
         /// <summary>
-        /// Metadata.
+        /// Database schema.
         /// </summary>
-        public const string Metadata = "metadata";
+        public const string DatabaseSchema = "databaseSchema";
     }
 }

@@ -4,7 +4,7 @@ using System.Security;
 namespace UnifiedDevelopmentPlatform.Application.Services
 {
     /// <summary>
-    /// Service for Environment.
+    /// Service Environment.
     /// </summary>
     public class ServiceEnvironment : IServiceEnvironment
     {

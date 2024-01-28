@@ -4,7 +4,7 @@ using UnifiedDevelopmentPlatform.Application.Interfaces;
 namespace UnifiedDevelopmentPlatform.Application.Services
 {
     /// <summary>
-    /// Service for File.
+    /// Service File.
     /// </summary>
     public class ServiceFile : IServiceFile
     {

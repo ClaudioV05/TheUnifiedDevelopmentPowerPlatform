@@ -10,7 +10,7 @@ using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Xml;
 namespace UnifiedDevelopmentPlatform.Application.Services
 {
     /// <summary>
-    /// Service for (Directory).
+    /// Service Directory.
     /// </summary>
     public class ServiceDirectory : IServiceDirectory
     {

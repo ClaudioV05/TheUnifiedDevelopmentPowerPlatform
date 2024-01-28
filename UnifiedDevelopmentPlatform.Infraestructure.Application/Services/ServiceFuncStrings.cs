@@ -5,7 +5,7 @@ using UnifiedDevelopmentPlatform.Application.Interfaces;
 namespace UnifiedDevelopmentPlatform.Application.Services
 {
     /// <summary>
-    /// Service for Functions of String.
+    /// Service Functions of String.
     /// </summary>
     public class ServiceFuncStrings : IServiceFuncStrings
     {

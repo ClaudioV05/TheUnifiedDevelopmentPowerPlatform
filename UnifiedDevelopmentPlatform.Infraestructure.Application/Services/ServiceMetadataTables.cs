@@ -6,11 +6,12 @@ using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Sql;
 namespace UnifiedDevelopmentPlatform.Application.Services
 {
     /// <summary>
-    /// Service for Metadata Tables.
+    /// Service Metadata Tables.
     /// </summary>
     public class ServiceMetadataTables : IServiceMetadataTables
     {
         private readonly IServiceLog _serviceLog;
+        private readonly IServiceLinq _serviceLinq;
         private readonly IServiceCrypto _serviceCrypto;
         private readonly IServiceMessage _serviceMessage;
         private readonly IServiceValidation _serviceValidation;
@@ -19,9 +20,16 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         /// <summary>
         /// The constructor of Service Metadata Tables.
         /// </summary>
-        public ServiceMetadataTables(IServiceLog serviceLog, IServiceCrypto serviceCrypto, IServiceMessage serviceMessage, IServiceValidation serviceValidation, IServiceFuncStrings serviceFuncStrings)
+        /// <param name="serviceLog"></param>
+        /// <param name="serviceLinq"></param>
+        /// <param name="serviceCrypto"></param>
+        /// <param name="serviceMessage"></param>
+        /// <param name="serviceValidation"></param>
+        /// <param name="serviceFuncStrings"></param>
+        public ServiceMetadataTables(IServiceLog serviceLog, IServiceLinq serviceLinq, IServiceCrypto serviceCrypto, IServiceMessage serviceMessage, IServiceValidation serviceValidation, IServiceFuncStrings serviceFuncStrings)
         {
             _serviceLog = serviceLog;
+            _serviceLinq = serviceLinq;
             _serviceCrypto = serviceCrypto;
             _serviceMessage = serviceMessage;
             _serviceValidation = serviceValidation;
@@ -36,7 +44,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             {
                 if (!_serviceValidation.UDPValidateBase64(metadata?.ScriptMetadata))
                 {
-                    _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageEnumerated.InvalidBase64));
+                    _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.InvalidBase64));
                     throw new Exception();
                 }
 
@@ -63,9 +71,9 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         #region Private Methods.
         private List<string> ReturnMetadataAllTablesName(string? metadata)
         {
-            var count = 0;
-            var lineCreateTable = _serviceFuncStrings.Empty;
-            var tables = new List<string>();
+            long count = 0;
+            string lineCreateTable = _serviceFuncStrings.Empty;
+            List<string> tables = new List<string>();
 
             for (int i = 0; i < metadata?.Length; i++)
             {
@@ -84,7 +92,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
                 }
             }
 
-            tables = tables?.Distinct().ToList();
+            tables = _serviceLinq.UDPDistinct(tables);
 
             return tables ?? new List<string>();
         }

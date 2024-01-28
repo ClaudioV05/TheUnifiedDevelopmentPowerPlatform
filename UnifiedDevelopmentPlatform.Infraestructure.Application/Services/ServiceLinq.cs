@@ -4,7 +4,7 @@ using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Directory;
 namespace UnifiedDevelopmentPlatform.Application.Services
 {
     /// <summary>
-    /// Service for Language Integrated Query - LINQ.
+    /// Service Language Integrated Query - LINQ.
     /// </summary>
     public class ServiceLinq : IServiceLinq
     {
@@ -76,6 +76,11 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             listItem = this.UDPListLowerToDefault(listItem);
             listItem = this.UDPListOrderByForDefault(listItem);
             return listItem.Where(element => !element.Contains(_serviceFuncStrings.UDPLower(DirectoryStandard.App.Replace("\\", string.Empty))) || !element.Contains(_serviceFuncStrings.UDPLower(DirectoryStandard.Configuration.Replace("\\", string.Empty)))).Skip(1).ToList();
+        }
+
+        public List<string>? UDPDistinct(List<string> listItem)
+        {
+            return listItem.GroupBy(element => element).Select(d => d.First()).ToList();
         }
 
         #region Methods.

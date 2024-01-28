@@ -1,7 +1,7 @@
 ﻿namespace UnifiedDevelopmentPlatform.Application.Interfaces
 {
     /// <summary>
-    /// Interface service for Environment.
+    /// Interface service Environment.
     /// </summary>
     public interface IServiceEnvironment
     {

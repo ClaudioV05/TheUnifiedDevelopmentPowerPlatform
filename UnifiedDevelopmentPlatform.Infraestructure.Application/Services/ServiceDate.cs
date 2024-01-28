@@ -5,7 +5,7 @@ using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Datetime;
 namespace UnifiedDevelopmentPlatform.Application.Services
 {
     /// <summary>
-    /// Service for Date.
+    /// Service Date.
     /// </summary>
     public class ServiceDate : IServiceDate
     {

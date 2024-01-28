@@ -4,7 +4,7 @@ using UnifiedDevelopmentPlatform.Application.Interfaces;
 namespace UnifiedDevelopmentPlatform.Application.Services
 {
     /// <summary>
-    /// Service for Crypto.
+    /// Service Crypto.
     /// </summary>
     public class ServiceCrypto : IServiceCrypto
     {

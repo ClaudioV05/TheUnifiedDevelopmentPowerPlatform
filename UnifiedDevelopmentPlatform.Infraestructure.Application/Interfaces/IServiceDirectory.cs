@@ -1,7 +1,7 @@
 ﻿namespace UnifiedDevelopmentPlatform.Application.Interfaces
 {
     /// <summary>
-    /// Interface service for Directory.
+    /// Interface service Directory.
     /// </summary>
     public interface IServiceDirectory
     {

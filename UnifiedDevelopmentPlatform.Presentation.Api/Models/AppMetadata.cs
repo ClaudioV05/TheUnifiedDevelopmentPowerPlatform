@@ -5,10 +5,10 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Models
     public class AppMetadata
     {
         /// <summary>
-        /// Script of Metadata.
+        /// Database schema.
         /// </summary>
         [Required]
-        public string? ScriptMetadata { get; set; }
+        public string? DatabaseSchema { get; set; }
 
         /// <summary>
         /// Identify of development Environment.

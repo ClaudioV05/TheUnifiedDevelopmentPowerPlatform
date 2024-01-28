@@ -5,7 +5,7 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Message
     /// <summary>
     /// Enumerated of Mensagem.
     /// </summary>
-    public enum MessageEnumerated : int
+    public enum MessageType : int
     {
         [Description("No has message")] NoMessage = 0,
         [Description("Initial")] Initial = 1,

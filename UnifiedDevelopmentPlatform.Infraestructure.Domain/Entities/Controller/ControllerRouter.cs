@@ -9,17 +9,17 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Controller
     public static class ControllerRouter
     {
         /// <summary>
-        /// RouteController.
+        /// Route controller.
         /// </summary>
         public const string RouteController = "[Controller]";
 
         /// <summary>
-        /// RouteMetadataAllTablesName.
+        /// Route metadata all tables name.
         /// </summary>
         public const string RouteMetadataAllTablesName = "/MetadataAllTablesName";
 
         /// <summary>
-        /// RouteMetadataAllFieldsName.
+        /// Route metadata all fields name.
         /// </summary>
         public const string RouteMetadataAllFieldsName = "/MetadataAllFieldsName";
     }

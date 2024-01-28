@@ -37,7 +37,7 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Filters
                     return;
                 }
 
-                if (!_serviceValidation.UDPScriptMetadataIsOk(context, ref message))
+                if (!_serviceValidation.UDPDatabaseSchemaIsOk(context, ref message))
                 {
                     _serviceLog.UDPLogReport(message);
                     HasMessage(context, message);
@@ -81,7 +81,7 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Filters
             }
             catch (Exception)
             {
-                _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageEnumerated.ErrorFilterActionContextTables));
+                _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.ErrorFilterActionContextTables));
                 throw new Exception(_serviceFuncStrings.UDPUpper(MessageDescription.ErrorFilterActionContextTables));
             }
 
@@ -93,18 +93,14 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Filters
             }
             catch (Exception)
             {
-                _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageEnumerated.ErrorCreateAllDirectory));
+                _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.ErrorCreateAllDirectory));
                 throw new Exception(_serviceFuncStrings.UDPUpper(MessageDescription.ErrorCreateAllDirectory));
             }
         }
 
         private static void HasMessage(ActionExecutingContext context, string message)
         {
-            context.Result = new BadRequestObjectResult(new ErrorDetails()
-            {
-                StatusCode = 1,
-                Message = message
-            });
+            context.Result = new BadRequestObjectResult(new ErrorDetails() { StatusCode = 1, Message = message });
         }
     }
 }

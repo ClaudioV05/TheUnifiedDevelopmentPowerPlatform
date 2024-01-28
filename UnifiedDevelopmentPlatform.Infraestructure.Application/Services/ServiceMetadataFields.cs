@@ -4,7 +4,7 @@ using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities;
 namespace UnifiedDevelopmentPlatform.Application.Services
 {
     /// <summary>
-    /// Service for Metadata Fields.
+    /// Service Metadata Fields.
     /// </summary>
     public class ServiceMetadataFields : IServiceMetadataFields
     {

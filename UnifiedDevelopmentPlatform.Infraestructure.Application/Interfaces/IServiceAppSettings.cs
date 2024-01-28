@@ -1,7 +1,7 @@
 ﻿namespace UnifiedDevelopmentPlatform.Application.Interfaces
 {
     /// <summary>
-    /// Interface service for App Settings.
+    /// Interface service App Settings.
     /// </summary>
     public interface IServiceAppSettings
     {
