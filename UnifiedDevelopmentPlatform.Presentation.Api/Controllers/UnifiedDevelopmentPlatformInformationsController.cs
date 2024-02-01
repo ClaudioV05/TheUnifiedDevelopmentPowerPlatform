@@ -11,35 +11,31 @@ using UnifiedDevelopmentPlatform.Presentation.Api.Models;
 namespace UnifiedDevelopmentPlatform.Presentation.Api.Controllers
 {
     /// <summary>
-    /// Unified Development Platform - Controller.
+    /// Unified Development Platform Informatios - Controller.
     /// </summary>
     [ApiController]
-    [Route(ControllerRouterUnifiedDevelopmentPlatform.RouterController)]
+    [Route(ControllerRouterUnifiedDevelopmentPlatformInformations.RouterController)]
     [Consumes(MediaTypeNames.Application.Json)]
     [Produces(MediaTypeNames.Application.Json, MediaTypeNames.Application.Xml)]
-    [ServiceFilter(typeof(FilterActionContextController), IsReusable = false, Order = ControllerOrderExecutationFilter.First)]
+    //[ServiceFilter(typeof(FilterActionContextController), IsReusable = false, Order = ControllerOrderExecutationFilter.First)]
     [EnableCors()]
-    public class UnifiedDevelopmentPlatformController : ControllerBase
+    public class UnifiedDevelopmentPlatformInformationsController : ControllerBase
     {
         private readonly IServiceMetadata _serviceMetadata;
 
         /// <summary>
-        /// Constructor Unified Development Platform Controller.
+        /// Constructor Unified Development Platform Informations Controller.
         /// </summary>
         /// <param name="serviceMetadata"></param>
-        public UnifiedDevelopmentPlatformController(IServiceMetadata serviceMetadata)
+        public UnifiedDevelopmentPlatformInformationsController(IServiceMetadata serviceMetadata)
         {
             _serviceMetadata = serviceMetadata;
         }
 
         /// <summary>
-        /// Receive and save all table of schema database.
+        /// List of databases.
         /// </summary>
-        /// <param name="metadata"></param>
-        /// <returns>List of string with names of tables</returns>
-        /// 200 Status Codes: This is the best kind of HTTP status code to receive. A 200-level response means that everything is working exactly as it should.
-        /// <response code="200">Everything is OK.</response>
-        /// <response code="201">Created.</response>
+        /// <returns>List of databases with ids and names.</returns>
         /// 400 Status Codes: At the 400 level, HTTP status codes start to become problematic. These are error codes specifying that there’s a fault with your browser and/or request.
         /// <response code="400">Bad Request.</response>
         /// <response code="401">Unauthorized or Authorization Required.</response>
@@ -50,11 +46,11 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Controllers
         /// <response code="502">Bad Gateway.</response>
         /// <response code="503">The server is unavailable to handle this request right now.</response>
         /// <response code="504">The server, acting as a gateway, timed out waiting for another server to respond.</response>
-        [HttpPost]
+        [HttpGet]
         [Produces(MediaTypeNames.Application.Json, MediaTypeNames.Application.Xml)]
-        [Route(ControllerRouterUnifiedDevelopmentPlatform.RouterMetadataAllTablesName)]
-        [ServiceFilter(typeof(FilterActionContextLog), IsReusable = false, Order = ControllerOrderExecutationFilter.Second)]
-        [ServiceFilter(typeof(FilterActionContextTables<MetadataOwner>), IsReusable = false, Order = ControllerOrderExecutationFilter.Third)]
+        [Route(ControllerRouterUnifiedDevelopmentPlatformInformations.RouterDatabases)]
+        //[ServiceFilter(typeof(FilterActionContextLog), IsReusable = false, Order = ControllerOrderExecutationFilter.Second)]
+        //[ServiceFilter(typeof(FilterActionContextTables<MetadataOwner>), IsReusable = false, Order = ControllerOrderExecutationFilter.Third)]
         [ProducesResponseType(typeof(List<string>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -65,20 +61,15 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Controllers
         [ProducesResponseType(StatusCodes.Status502BadGateway)]
         [ProducesResponseType(StatusCodes.Status503ServiceUnavailable)]
         [ProducesResponseType(StatusCodes.Status504GatewayTimeout)]
-        [DisableCors]
-        public ActionResult<List<string>> MetadataAllTablesName([BindRequired] AppMetadata metadata)
+        public ActionResult<List<Databases>> Databases()
         {
-            return Ok(_serviceMetadata.UDPReceiveAndSaveAllTableOfSchemaDatabase(metadata: new MetadataOwner() { DatabaseSchema = metadata.DatabaseSchema }));
+            return Ok(_serviceMetadata.DatabasesList());
         }
 
         /// <summary>
-        /// Receive and save all table and fields of schema database.
+        /// List of forms.
         /// </summary>
-        /// <param name="metadata"></param>
-        /// <returns>List of string with fields names of tables</returns>
-        /// 200 Status Codes: This is the best kind of HTTP status code to receive. A 200-level response means that everything is working exactly as it should.
-        /// <response code="200">Everything is OK.</response>
-        /// <response code="201">Created.</response>
+        /// <returns>List of forms with ids and names.</returns>
         /// 400 Status Codes: At the 400 level, HTTP status codes start to become problematic. These are error codes specifying that there’s a fault with your browser and/or request.
         /// <response code="400">Bad Request.</response>
         /// <response code="401">Unauthorized or Authorization Required.</response>
@@ -89,11 +80,11 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Controllers
         /// <response code="502">Bad Gateway.</response>
         /// <response code="503">The server is unavailable to handle this request right now.</response>
         /// <response code="504">The server, acting as a gateway, timed out waiting for another server to respond.</response>
-        [HttpPost]
+        [HttpGet]
         [Produces(MediaTypeNames.Application.Json, MediaTypeNames.Application.Xml)]
-        [Route(ControllerRouterUnifiedDevelopmentPlatform.RouterMetadataAllFieldsName)]
-        [ServiceFilter(typeof(FilterActionContextLog), IsReusable = false, Order = ControllerOrderExecutationFilter.Second)]
-        [ServiceFilter(typeof(FilterActionContextFields<MetadataOwner>), IsReusable = false, Order = ControllerOrderExecutationFilter.Third)]
+        [Route(ControllerRouterUnifiedDevelopmentPlatformInformations.RouterForms)]
+        //[ServiceFilter(typeof(FilterActionContextLog), IsReusable = false, Order = ControllerOrderExecutationFilter.Second)]
+        //[ServiceFilter(typeof(FilterActionContextTables<MetadataOwner>), IsReusable = false, Order = ControllerOrderExecutationFilter.Third)]
         [ProducesResponseType(typeof(List<string>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -104,14 +95,9 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Controllers
         [ProducesResponseType(StatusCodes.Status502BadGateway)]
         [ProducesResponseType(StatusCodes.Status503ServiceUnavailable)]
         [ProducesResponseType(StatusCodes.Status504GatewayTimeout)]
-        [DisableCors]
-        public ActionResult<List<string>> MetadataAllFieldsName([BindRequired] MetadataOwner metadata)
+        public ActionResult<List<Databases>> Forms()
         {
-            // Here enter with field name only. Load the property [Fields].
-            // Return the table name and your fields.
-
-            _serviceMetadata.UDPReceiveAndSaveAllTableAndFieldsOfSchemaDatabase(metadata: new MetadataOwner() { DatabaseSchema = metadata.DatabaseSchema });
-            return Ok();
+            return Ok(_serviceMetadata.FormsList());
         }
     }
 }

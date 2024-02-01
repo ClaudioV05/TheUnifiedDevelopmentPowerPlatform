@@ -1,4 +1,5 @@
-﻿using System.Text.Json;
+﻿using System.Text.Encodings.Web;
+using System.Text.Json;
 using System.Text.Json.Serialization;
 using UnifiedDevelopmentPlatform.Application.Interfaces;
 using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Json;
@@ -10,11 +11,19 @@ namespace UnifiedDevelopmentPlatform.Application.Services
     /// </summary>
     public class ServiceJson : IServiceJson
     {
-        private readonly JsonSerializerOptions _jsonOptions = new()
+        private readonly JsonSerializerOptions _jsonOptions = new JsonSerializerOptions(JsonSerializerDefaults.Web)
         {
-            WriteIndented = true, // Write indented.
-            PropertyNameCaseInsensitive = true, // Property with name case insensitive.
-            DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull // To default ignore condition when writing null.
+            AllowTrailingCommas = false,
+            MaxDepth = 64,
+            Encoder = JavaScriptEncoder.Default,
+            WriteIndented = true,
+            IncludeFields = false,
+            IgnoreReadOnlyFields = false,
+            IgnoreReadOnlyProperties = false,
+            PropertyNameCaseInsensitive = true,
+            PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+            DictionaryKeyPolicy = JsonNamingPolicy.CamelCase,
+            DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
         };
 
         /// <summary>

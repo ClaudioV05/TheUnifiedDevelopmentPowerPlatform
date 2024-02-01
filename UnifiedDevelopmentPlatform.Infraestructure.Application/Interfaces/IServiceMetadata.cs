@@ -18,5 +18,17 @@ namespace UnifiedDevelopmentPlatform.Application.Interfaces
         /// </summary>
         /// <returns></returns>
         void UDPReceiveAndSaveAllTableAndFieldsOfSchemaDatabase(MetadataOwner? metadata);
+
+        /// <summary>
+        /// Return the list with all of databases.
+        /// </summary>
+        /// <returns></returns>
+        List<Databases> DatabasesList();
+
+        /// <summary>
+        /// Return the list with all of forms.
+        /// </summary>
+        /// <returns></returns>
+        List<Forms> FormsList();
     }
 }

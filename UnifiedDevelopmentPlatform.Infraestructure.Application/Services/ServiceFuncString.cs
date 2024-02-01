@@ -19,7 +19,9 @@ namespace UnifiedDevelopmentPlatform.Application.Services
 
         public string Empty { get; } = string.Empty;
 
-        public string WhiteSpace { get; } = " ";
+        public string StringWhiteSpace { get; } = " ";
+
+        public char CharWhiteSpace { get; } = ' ';
 
         public char[] Base64Chars { get; } = new[] { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '+', '/' };
 
@@ -34,12 +36,12 @@ namespace UnifiedDevelopmentPlatform.Application.Services
                     "`", "^", "~", "\r", "\n"
                 };
 
-                specialCaracter.ForEach(t => text = text.Replace(t, " "));
+                specialCaracter.ForEach(t => text = text.Replace(t, this.StringWhiteSpace));
                 return text;
             }
             catch (Exception)
             {
-                return string.Empty;
+                return this.Empty;
             }
         }
 
@@ -51,7 +53,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             }
             catch (Exception)
             {
-                return string.Empty;
+                return this.Empty;
             }
         }
 
@@ -64,7 +66,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             }
             catch (Exception)
             {
-                return string.Empty;
+                return this.Empty;
             }
         }
 
@@ -77,7 +79,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             }
             catch (Exception)
             {
-                return string.Empty;
+                return this.Empty;
             }
         }
 
@@ -104,7 +106,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
 
         public string UDPSelectSection(string text)
         {
-            string section = string.Empty;
+            string section = this.Empty;
             int posSection = text.LastIndexOf("\\") + 1;
 
             if (posSection != -1)
@@ -115,11 +117,33 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             return section;
         }
 
+        public string UDPOnlyLetter(string text)
+        {
+            string onlyLetter = this.Empty;
+
+            try
+            {
+                foreach (char c in text)
+                {
+                    if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z') || c.Equals(' '))
+                    {
+                        onlyLetter += c;
+                    }
+                }
+
+                return onlyLetter;
+            }
+            catch (Exception)
+            {
+                return this.Empty;
+            }
+        }
+
         #region For Treatment of Strings.
 
         public string UDPUpper(string text)
         {
-            string value = string.Empty;
+            string value = this.Empty;
 
             try
             {
@@ -127,18 +151,18 @@ namespace UnifiedDevelopmentPlatform.Application.Services
                 {
                     value = text.ToUpperInvariant();
                 }
+
+                return value;
             }
             catch (Exception)
             {
-                return string.Empty;
+                return this.Empty;
             }
-
-            return value;
         }
 
         public string UDPLower(string text)
         {
-            string value = string.Empty;
+            string value = this.Empty;
 
             try
             {
@@ -146,13 +170,13 @@ namespace UnifiedDevelopmentPlatform.Application.Services
                 {
                     value = text.ToLowerInvariant();
                 }
+
+                return value;
             }
             catch (Exception)
             {
-                return string.Empty;
+                return this.Empty;
             }
-
-            return value;
         }
 
         public bool UDPNullOrEmpty(string text)
@@ -192,7 +216,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
 
         public string UDPToCamelCase(string text)
         {
-            if (string.IsNullOrEmpty(text) || char.IsLower(text[0]))
+            if (this.UDPNullOrEmpty(text) || char.IsLower(text[0]))
             {
                 return text;
             }
@@ -207,7 +231,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         {
             return Regex.Replace(text, @"([^\p{Pc}]+)[\p{Pc}]*", new MatchEvaluator(mtch =>
                              {
-                                 var word = mtch.Groups[1].Value.ToLower();
+                                 var word = this.UDPLower(mtch.Groups[1].Value);
                                  return $"{Char.ToUpper(word[0])}{word.Substring(1)}";
                              }));
         }

@@ -16,9 +16,9 @@ namespace UnifiedDevelopmentPlatform.Application.Services
 
         }
 
-        public string UDPMensagem(MessageType messageEnumerated)
+        public string UDPMensagem(MessageType messageType)
         {
-            return messageEnumerated switch
+            return messageType switch
             {
                 MessageType.Initial => MessageDescription.Initial,
                 MessageType.PlatformIsWindowsOk => MessageDescription.PlatformIsWindowsOk,

@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations.Schema;
+using static UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Forms;
 
 namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities
 {
@@ -13,20 +15,26 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities
         /// </summary>
         public enum EnumDatabases : ushort
         {
+            [Description("Not Defined")]
             NotDefined = 0,
+            [Description("SqlServer")]
             SqlServer = 1,
+            [Description("MySql")]
             MySql = 2,
-            Firebird = 3
+            [Description("Firebird")]
+            Firebird = 3,
+            [Description("Oracle")]
+            Oracle = 4
         }
 
         /// <summary>
-        /// Name of fields.
+        /// Id Enumeration.
         /// </summary>
-        public string? Name { get; set; }
+        public EnumDatabases IdEnumeration { get; set; } = 0;
 
         /// <summary>
-        /// Id of Types.
+        /// Name of enumeration.
         /// </summary>
-        public EnumDatabases Type { get; set; } = 0;
+        public string? NameEnumeration { get; set; }
     }
 }

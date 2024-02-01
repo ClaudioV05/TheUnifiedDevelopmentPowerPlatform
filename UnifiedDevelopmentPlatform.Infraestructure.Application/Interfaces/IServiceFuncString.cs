@@ -13,7 +13,12 @@
         /// <summary>
         /// string with white space.
         /// </summary>
-        public string WhiteSpace { get; }
+        public string StringWhiteSpace { get; }
+
+        /// <summary>
+        /// char with white space.
+        /// </summary>
+        public char CharWhiteSpace { get; }
 
         /// <summary>
         /// Base 64 chars.

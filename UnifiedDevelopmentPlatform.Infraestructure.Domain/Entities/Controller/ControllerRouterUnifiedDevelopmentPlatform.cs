@@ -6,21 +6,21 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Controller
     /// <summary>
     /// Controller Router for UNIFIED DEVELOPMENT PLATFORM.
     /// </summary>
-    public static class ControllerRouter
+    public static class ControllerRouterUnifiedDevelopmentPlatform
     {
         /// <summary>
         /// Route controller.
         /// </summary>
-        public const string RouteController = "[Controller]";
+        public const string RouterController = "[Controller]";
 
         /// <summary>
         /// Route metadata all tables name.
         /// </summary>
-        public const string RouteMetadataAllTablesName = "/MetadataAllTablesName";
+        public const string RouterMetadataAllTablesName = "/MetadataAllTablesName";
 
         /// <summary>
         /// Route metadata all fields name.
         /// </summary>
-        public const string RouteMetadataAllFieldsName = "/MetadataAllFieldsName";
+        public const string RouterMetadataAllFieldsName = "/MetadataAllFieldsName";
     }
 }

@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.Extensions.DependencyInjection.Extensions;
+using Microsoft.Extensions.Options;
 using System.Reflection;
 using UnifiedDevelopmentPlatform.Application.Interfaces;
 using UnifiedDevelopmentPlatform.Application.Services;
@@ -43,7 +44,16 @@ builder.Services.AddControllers(options =>
     options.Conventions.Add(new HideControllerConvention());
 });
 
-builder.Services.AddCors();
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(policy =>
+    {
+        policy.WithOrigins("http://localhost:5173")
+              .AllowAnyMethod()
+              .AllowAnyHeader()
+              .AllowCredentials();
+    });
+});
 
 builder.Services.AddMvc().AddMvcOptions(options => options.OutputFormatters.Add(new XmlDataContractSerializerOutputFormatter()));
 
@@ -62,12 +72,12 @@ builder.Services.TryAddScoped<FilterActionContextTables<MetadataOwner>>();
 builder.Services.TryAddScoped<IServiceAppSettings, ServiceAppSettings>();
 builder.Services.TryAddScoped<IServiceCrypto, ServiceCrypto>();
 builder.Services.TryAddScoped<IServiceDatabase, ServiceDatabase>();
-builder.Services.TryAddScoped<IServiceDatabaseEngine, ServiceDatabaseEngine>();
 builder.Services.TryAddScoped<IServiceDate, ServiceDate>();
 builder.Services.TryAddScoped<IServiceDirectory, ServiceDirectory>();
 builder.Services.TryAddScoped<IServiceEnvironment, ServiceEnvironment>();
+builder.Services.TryAddScoped<IServiceEnumerated, ServiceEnumerated>();
 builder.Services.TryAddScoped<IServiceFile, ServiceFile>();
-builder.Services.TryAddScoped<IServiceForm, ServiceForms>();
+builder.Services.TryAddScoped<IServiceForm, ServiceForm>();
 builder.Services.TryAddScoped<IServiceFuncString, ServiceFuncString>();
 builder.Services.TryAddScoped<IServiceJson, ServiceJson>();
 builder.Services.TryAddScoped<IServiceLinq, ServiceLinq>();

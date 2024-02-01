@@ -38,17 +38,18 @@ namespace UnifiedDevelopmentPlatform.Application.Services
 
         public List<string> UDPMetadataAllTablesName(MetadataOwner? metadata)
         {
-            string scriptMetadata = _serviceFuncStrings.Empty;
             List<string> tables = new List<string>();
+            string scriptMetadata = _serviceFuncStrings.Empty;
+
             try
             {
-                if (!_serviceValidation.UDPValidateBase64(metadata?.ScriptMetadata))
+                if (!_serviceValidation.UDPValidateBase64(metadata?.DatabaseSchema))
                 {
                     _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.InvalidBase64));
                     throw new Exception();
                 }
 
-                scriptMetadata = _serviceCrypto.UPDDecodeBase64(metadata?.ScriptMetadata);
+                scriptMetadata = _serviceCrypto.UPDDecodeBase64(metadata?.DatabaseSchema);
                 scriptMetadata = _serviceFuncStrings.UDPLower(scriptMetadata);
 
                 if (_serviceFuncStrings.UDPNullOrEmpty(scriptMetadata))
@@ -83,7 +84,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
                 {
                     count++;
 
-                    if (count > SqlConfiguration.CreateTableDefaultPosition && lineCreateTable.EndsWith(_serviceFuncStrings.WhiteSpace))
+                    if (count > SqlConfiguration.CreateTableDefaultPosition && lineCreateTable.EndsWith(_serviceFuncStrings.StringWhiteSpace))
                     {
                         FindTableList(lineCreateTable, ref tables);
                         count = 0;
@@ -113,7 +114,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
                     count++;
                     table += metadata[i];
 
-                    if (count > SqlConfiguration.CreateTableDefaultPosition && table.EndsWith(_serviceFuncStrings.WhiteSpace))
+                    if (count > SqlConfiguration.CreateTableDefaultPosition && table.EndsWith(_serviceFuncStrings.StringWhiteSpace))
                     {
                         break;
                     }
