@@ -1,6 +1,5 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations.Schema;
-using static UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Databases;
 
 namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities
 {
@@ -13,7 +12,7 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities
         /// <summary>
         /// Enum type for entitie Forms.
         /// </summary>
-        public enum EnumForm : ushort
+        public enum EnumForm : int
         {
             [Description("Not Defined")]
             NotDefined = 0,

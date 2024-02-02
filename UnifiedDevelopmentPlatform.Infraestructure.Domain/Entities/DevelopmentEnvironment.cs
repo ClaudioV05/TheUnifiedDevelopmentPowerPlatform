@@ -4,32 +4,28 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities
 {
     /// <summary>
-    /// Entity Databases.
+    /// Entity Development Environment.
     /// </summary>
     [ComplexType]
-    public class Databases
+    public class DevelopmentEnvironment
     {
         /// <summary>
-        /// Enum type for entitie Databases.
+        /// Enum type for entitie DevelopmentEnvironment.
         /// </summary>
-        public enum EnumDatabases : int
+        public enum EnumDevelopmentEnvironment : int
         {
             [Description("Not Defined")]
             NotDefined = 0,
-            [Description("SqlServer")]
-            SqlServer = 1,
-            [Description("MySql")]
-            MySql = 2,
-            [Description("Firebird")]
-            Firebird = 3,
-            [Description("Oracle")]
-            Oracle = 4
+            [Description("DelphiXe10")]
+            DelphiXe10 = 1,
+            [Description("VisualStudio")]
+            VisualStudio = 2
         }
 
         /// <summary>
         /// Id Enumeration.
         /// </summary>
-        public EnumDatabases IdEnumeration { get; set; } = 0;
+        public EnumDevelopmentEnvironment IdEnumeration { get; set; } = 0;
 
         /// <summary>
         /// Name of enumeration.

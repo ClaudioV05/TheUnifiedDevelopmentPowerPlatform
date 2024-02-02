@@ -34,7 +34,7 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities
         /// DevelopmentEnvironment.
         /// </summary>
         [DataMember]
-        public DevEnvironment? DevEnvironment { get; set; }
+        public DevelopmentEnvironment? DevEnvironment { get; set; }
 
         /// <summary>
         /// Fields.
@@ -54,7 +54,7 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities
             {
                 var Forms = new Forms();
                 var Databases = new Databases();
-                var DevEnvironment = new DevEnvironment();
+                var DevEnvironment = new DevelopmentEnvironment();
                 //List<Fields>? Fields = null;
                 //List<Tables>? Tables = null;
             }

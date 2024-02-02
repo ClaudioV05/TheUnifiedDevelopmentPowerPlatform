@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities
 {
@@ -11,22 +12,26 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities
         /// <summary>
         /// Enum type for entitie Databases Engine.
         /// </summary>
-        public enum EnumDatabasesEngine : ushort
+        public enum EnumDatabasesEngine : int
         {
+            [Description("Not Defined")]
             NotDefined = 0,
+            [Description("EntityFrameworkCore")]
             EntityFrameworkCore = 1,
+            [Description("Dapper")]
             Dapper = 2,
+            [Description("SqlClient")]
             SqlClient = 3
         }
 
         /// <summary>
-        /// Name of fields.
+        /// Id Enumeration.
         /// </summary>
-        public string? Name { get; set; }
+        public EnumDatabasesEngine IdEnumeration { get; set; } = 0;
 
         /// <summary>
-        /// Id of Types.
+        /// Name of enumeration.
         /// </summary>
-        public EnumDatabasesEngine Type { get; set; } = 0;
+        public string? NameEnumeration { get; set; }
     }
 }
