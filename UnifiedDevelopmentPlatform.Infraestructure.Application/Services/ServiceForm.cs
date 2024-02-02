@@ -17,7 +17,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
 
         }
 
-        public List<Forms> FormsList()
+        public List<Forms> UDPObtainTheListOfForms()
         {
             List<Forms> listItems = new List<Forms>();
 

@@ -9,7 +9,6 @@ namespace UnifiedDevelopmentPlatform.Application.Services
     /// </summary>
     public class ServiceDatabase : IServiceDatabase
     {
-
         /// <summary>
         /// The constructor of Service database.
         /// </summary>
@@ -18,7 +17,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
 
         }
 
-        public List<Databases> DatabasesList()
+        public List<Databases> UDPObtainTheListOfDatabases()
         {
             List<Databases> listItems = new List<Databases>();
 

@@ -8,9 +8,9 @@ namespace UnifiedDevelopmentPlatform.Application.Interfaces
     public interface IServiceDatabase
     {
         /// <summary>
-        /// Return the list with all of databases.
+        /// Return the full list of all databases.
         /// </summary>
-        /// <returns></returns>
-        List<Databases> DatabasesList();
+        /// <returns>List of databases</returns>
+        List<Databases> UDPObtainTheListOfDatabases();
     }
 }

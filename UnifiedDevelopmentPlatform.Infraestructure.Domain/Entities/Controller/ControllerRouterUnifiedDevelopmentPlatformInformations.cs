@@ -22,5 +22,15 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Controller
         /// Route forms.
         /// </summary>
         public const string RouterForms = "/Forms";
+
+        /// <summary>
+        /// Route development enviroment.
+        /// </summary>
+        public const string RouterDevelopmentEnviroment = "/DevelopmentEnviroment";
+
+        /// <summary>
+        /// Route databases engine.
+        /// </summary>
+        public const string RouterDatabasesEngine = "/DatabasesEngine";
     }
 }
