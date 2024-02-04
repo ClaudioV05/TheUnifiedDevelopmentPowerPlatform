@@ -50,7 +50,7 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Controllers
         [Route(ControllerRouterUnifiedDevelopmentPlatformInformations.RouterDatabases)]
         //[ServiceFilter(typeof(FilterActionContextLog), IsReusable = false, Order = ControllerOrderExecutationFilter.Second)]
         //[ServiceFilter(typeof(FilterActionContextTables<MetadataOwner>), IsReusable = false, Order = ControllerOrderExecutationFilter.Third)]
-        [ProducesResponseType(typeof(List<Databases>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(IEnumerable<Databases>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
@@ -59,7 +59,7 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Controllers
         [ProducesResponseType(StatusCodes.Status502BadGateway)]
         [ProducesResponseType(StatusCodes.Status503ServiceUnavailable)]
         [ProducesResponseType(StatusCodes.Status504GatewayTimeout)]
-        public ActionResult<List<Databases>> Databases()
+        public ActionResult<IEnumerable<Databases>> Databases()
         {
             return Ok(_serviceMetadata.UDPObtainTheListOfDatabases());
         }
@@ -85,7 +85,7 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Controllers
         [Route(ControllerRouterUnifiedDevelopmentPlatformInformations.RouterForms)]
         //[ServiceFilter(typeof(FilterActionContextLog), IsReusable = false, Order = ControllerOrderExecutationFilter.Second)]
         //[ServiceFilter(typeof(FilterActionContextTables<MetadataOwner>), IsReusable = false, Order = ControllerOrderExecutationFilter.Third)]
-        [ProducesResponseType(typeof(List<Forms>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(IEnumerable<Forms>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
@@ -94,7 +94,7 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Controllers
         [ProducesResponseType(StatusCodes.Status502BadGateway)]
         [ProducesResponseType(StatusCodes.Status503ServiceUnavailable)]
         [ProducesResponseType(StatusCodes.Status504GatewayTimeout)]
-        public ActionResult<List<Forms>> Forms()
+        public ActionResult<IEnumerable<Forms>> Forms()
         {
             return Ok(_serviceMetadata.UDPObtainTheListOfForms());
         }
@@ -120,7 +120,7 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Controllers
         [Route(ControllerRouterUnifiedDevelopmentPlatformInformations.RouterDevelopmentEnviroment)]
         //[ServiceFilter(typeof(FilterActionContextLog), IsReusable = false, Order = ControllerOrderExecutationFilter.Second)]
         //[ServiceFilter(typeof(FilterActionContextTables<MetadataOwner>), IsReusable = false, Order = ControllerOrderExecutationFilter.Third)]
-        [ProducesResponseType(typeof(List<DevelopmentEnvironment>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(IEnumerable<DevelopmentEnvironment>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
@@ -129,7 +129,7 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Controllers
         [ProducesResponseType(StatusCodes.Status502BadGateway)]
         [ProducesResponseType(StatusCodes.Status503ServiceUnavailable)]
         [ProducesResponseType(StatusCodes.Status504GatewayTimeout)]
-        public ActionResult<List<DevelopmentEnvironment>> DevelopmentEnvironment()
+        public ActionResult<IEnumerable<DevelopmentEnvironment>> DevelopmentEnvironment()
         {
             return Ok(_serviceMetadata.UDPObtainTheListOfDevelopmentEnviroment());
         }
@@ -155,7 +155,7 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Controllers
         [Route(ControllerRouterUnifiedDevelopmentPlatformInformations.RouterDatabasesEngine)]
         //[ServiceFilter(typeof(FilterActionContextLog), IsReusable = false, Order = ControllerOrderExecutationFilter.Second)]
         //[ServiceFilter(typeof(FilterActionContextTables<MetadataOwner>), IsReusable = false, Order = ControllerOrderExecutationFilter.Third)]
-        [ProducesResponseType(typeof(List<DatabasesEngine>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(IEnumerable<DatabasesEngine>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
@@ -164,7 +164,7 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Controllers
         [ProducesResponseType(StatusCodes.Status502BadGateway)]
         [ProducesResponseType(StatusCodes.Status503ServiceUnavailable)]
         [ProducesResponseType(StatusCodes.Status504GatewayTimeout)]
-        public ActionResult<List<DatabasesEngine>> DatabasesEngine()
+        public ActionResult<IEnumerable<DatabasesEngine>> DatabasesEngine()
         {
             return Ok(_serviceMetadata.UDPObtainTheListOfDatabasesEngine());
         }

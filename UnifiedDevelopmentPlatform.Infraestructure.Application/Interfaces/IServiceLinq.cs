@@ -1,4 +1,6 @@
-﻿namespace UnifiedDevelopmentPlatform.Application.Interfaces
+﻿using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities;
+
+namespace UnifiedDevelopmentPlatform.Application.Interfaces
 {
     /// <summary>
     /// Interface service LINQ Language Integrated Query.
@@ -60,5 +62,12 @@
         /// <param name="listItem"></param>
         /// <returns>Returns distinct elements from a sequence.</returns>
         List<string>? UDPDistinct(List<string> listItem);
+
+        /// <summary>
+        /// Order by.
+        /// </summary>
+        /// <param name="listItem"></param>
+        /// <returns>Returns order by list from a sequence.</returns>
+        List<Databases> UDPOrderBy(List<Databases> listItem);
     }
 }

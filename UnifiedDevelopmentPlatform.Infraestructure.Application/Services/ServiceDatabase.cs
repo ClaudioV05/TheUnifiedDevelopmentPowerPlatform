@@ -9,12 +9,14 @@ namespace UnifiedDevelopmentPlatform.Application.Services
     /// </summary>
     public class ServiceDatabase : IServiceDatabase
     {
+        private readonly IServiceLinq _serviceLinq;
+
         /// <summary>
         /// The constructor of Service database.
         /// </summary>
-        public ServiceDatabase()
+        public ServiceDatabase(IServiceLinq serviceLinq)
         {
-
+            _serviceLinq = serviceLinq;
         }
 
         public List<Databases> UDPObtainTheListOfDatabases()
@@ -30,7 +32,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
                         listItems.Add(new Databases() { IdEnumeration = (EnumDatabases)i, NameEnumeration = Enum.GetName(typeof(EnumDatabases), i) });
                     }
 
-                    listItems = listItems.OrderBy(item => item.IdEnumeration).ToList();
+                    listItems = _serviceLinq.UDPOrderBy(listItems);
                 }
             }
             catch (OverflowException) { }

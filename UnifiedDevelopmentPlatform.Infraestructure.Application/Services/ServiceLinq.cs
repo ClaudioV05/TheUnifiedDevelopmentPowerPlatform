@@ -1,4 +1,5 @@
 ﻿using UnifiedDevelopmentPlatform.Application.Interfaces;
+using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities;
 using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Directory;
 
 namespace UnifiedDevelopmentPlatform.Application.Services
@@ -81,6 +82,11 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         public List<string>? UDPDistinct(List<string> listItem)
         {
             return listItem.GroupBy(element => element).Select(d => d.First()).ToList();
+        }
+
+        public List<Databases> UDPOrderBy(List<Databases> listItem)
+        {
+            return listItem.OrderBy(item => item.IdEnumeration).ToList();
         }
 
         #region Methods.

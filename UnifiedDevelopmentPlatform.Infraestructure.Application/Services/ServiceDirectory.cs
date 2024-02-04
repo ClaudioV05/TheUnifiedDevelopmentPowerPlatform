@@ -123,24 +123,24 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         private string UDPGetRootDirectory()
         {
             Regex? regex = null;
-            string? exeRootDirectory = string.Empty;
-            string? rootDirectoryOfSolution = string.Empty;
+            string? exeRootDirectory = _serviceFuncStrings.Empty;
+            string? rootDirectoryOfSolution = _serviceFuncStrings.Empty;
 
             try
             {
                 regex = new Regex(@"(?<!fil)[A-Za-z]:\\+[\S\s]*?(?=\\+unifieddevelopmentplatform.presentation.api)");
                 exeRootDirectory = _serviceFuncStrings.UDPLower(Assembly.GetExecutingAssembly().Location);
 
-                if (regex.IsMatch(exeRootDirectory ?? string.Empty))
+                if (regex.IsMatch(exeRootDirectory ?? _serviceFuncStrings.Empty;))
                 {
-                    rootDirectoryOfSolution = regex.Match(exeRootDirectory ?? string.Empty).Value;
+                    rootDirectoryOfSolution = regex.Match(exeRootDirectory ?? _serviceFuncStrings.Empty).Value;
                 }
 
                 return rootDirectoryOfSolution;
             }
             catch (IOException)
             {
-                return string.Empty;
+                return _serviceFuncStrings.Empty;
             }
         }
 

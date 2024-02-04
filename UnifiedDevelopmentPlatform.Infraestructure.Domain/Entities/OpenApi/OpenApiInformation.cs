@@ -21,7 +21,7 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.OpenApi
         /// <summary>
         /// Description.
         /// </summary>
-        public static string Description { get; } = "Generator of Class C#";
+        public static string Description { get; } = "Generator of Class to C#";
 
         /// <summary>
         /// Terms of service.
