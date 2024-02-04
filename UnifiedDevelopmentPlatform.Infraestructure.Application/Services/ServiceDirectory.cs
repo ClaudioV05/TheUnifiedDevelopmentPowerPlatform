@@ -2,10 +2,7 @@
 using System.Text.RegularExpressions;
 using UnifiedDevelopmentPlatform.Application.Interfaces;
 using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Directory;
-using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.File;
 using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Json;
-using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Message;
-using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Xml;
 
 namespace UnifiedDevelopmentPlatform.Application.Services
 {
@@ -16,11 +13,11 @@ namespace UnifiedDevelopmentPlatform.Application.Services
     {
         private string? _directory;
         private readonly IServiceXml _serviceXml;
-        //private readonly IServiceLog _serviceLog;
         private readonly IServiceFile _serviceFile;
         private readonly IServiceJson _serviceJson;
         private readonly IServiceLinq _serviceLinq;
         private readonly Queue<string> _queueDirectory;
+        private readonly List<string> _listDirectory;
         private readonly IServiceFuncString _serviceFuncStrings;
 
         public ServiceDirectory(IServiceXml serviceXml, /*IServiceLog serviceLog,*/ IServiceFile serviceFile, IServiceJson serviceJson, IServiceLinq serviceLinq, IServiceFuncString serviceFuncStrings)
@@ -31,54 +28,27 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             _serviceJson = serviceJson;
             _serviceLinq = serviceLinq;
             _queueDirectory = new Queue<string>();
+            _listDirectory = new List<string>();
             _serviceFuncStrings = serviceFuncStrings;
         }
 
         public void UPDBuildDirectoryStandardOfSolution()
         {
-            string path = string.Empty;
-            string json = string.Empty;
-
             try
             {
-                //_serviceLog.UDPLogReport(_serviceLog.UDPMensagem(MessageEnumerated.BuildDirectoryStandardOfSolution));
+                this.LoadDirectoryRootPath(this.UDPGetRootDirectory());
+                //this.UDPDeleteAllRootDirectoryOfSolution(_directory);
 
-                _directory = this.UDPGetRootDirectory();
-
-                if (_serviceFuncStrings.UDPNullOrEmpty(_directory ?? string.Empty))
-                {
-                    //_serviceLog.UDPLogReport(_serviceLog.UDPMensagem(MessageEnumerated.DirectoryRootIsEmpty));
-                    throw new Exception();
-                }
-                else
-                {
-                    this.UDPDeleteAllRootDirectoryOfSolution(_directory);
-                    this.UDPCreateRootPathApp();
-                    this.UDPCreateRootPathConfiguration();
-                    this.UDPCreateRootPathJson();
-                    this.UDPCreateRootPathXml();
-                    this.UDPCreateRootPathLog();
-
-                    this.UDPCreateAllRootPath(_queueDirectory);
-
-                    #region Configuration.
-                    path = $"{_directory}{DirectoryStandard.App}{DirectoryStandard.Configuration}{DirectoryStandard.Json}{FileStandard.Configuration}{FileExtension.Json}";
-                    _serviceFile.UDPCreateAndSaveFile(path);
-                    json = _serviceJson.UDPSerializerJson(new JsonConfiguration { Path = $"{_directory}{DirectoryStandard.App}{DirectoryStandard.Configuration}" });
-                    _serviceFile.UDPWriteAllText(path, json);
-                    #endregion Configuration.
-
-                    #region App.
-                    path = $"{_directory}{DirectoryStandard.App}{DirectoryStandard.Configuration}{DirectoryStandard.Json}{FileStandard.App}{FileExtension.Json}";
-                    _serviceFile.UDPCreateAndSaveFile(path);
-                    json = _serviceJson.UDPSerializerJson(new JsonApp { Path = $"{_directory}{DirectoryStandard.App}" });
-                    _serviceFile.UDPWriteAllText(path, json);
-                    #endregion App.
-                }
+                this.UDPLoadDirectory(DirectoryRoot.DirectoryRootApp);
+                this.UDPLoadDirectory(DirectoryRoot.DirectoryRootConfiguration);
+                this.UDPLoadDirectory(DirectoryRoot.DirectoryRootJson);
+                this.UDPLoadDirectory(DirectoryRoot.DirectoryRootLog);
+                this.UDPLoadDirectory(DirectoryRoot.DirectoryRootXml);
+                this.UDPCreateDirectory();
             }
             catch (Exception)
             {
-                this.UDPDeleteAllRootDirectoryOfSolution(_directory);
+                //this.UDPDeleteAllRootDirectoryOfSolution(_directory);
                 throw;
             }
         }
@@ -92,11 +62,6 @@ namespace UnifiedDevelopmentPlatform.Application.Services
 
             try
             {
-                path = UDPGetRootPathFileInConfiguration($"{FileStandard.App}{FileExtension.Json}");
-                json = _serviceFile.UDPReadAllText(path);
-                jsonApp = (JsonApp)_serviceJson.UDPDesSerializerJsonToApp(json);
-
-                _directory = jsonApp.Path;
 
                 if (!_serviceFuncStrings.UDPNullOrEmpty(_directory ?? string.Empty))
                 {
@@ -110,7 +75,6 @@ namespace UnifiedDevelopmentPlatform.Application.Services
                     this.CreateRootPathDomain(directories);
                     this.CreateRootPathInfrastructure(directories);
                     this.UDPCreateAllRootPath(_queueDirectory);
-                    this.UDPFilterAndSavePaths(_queueDirectory);
                 }
             }
             catch (IOException)
@@ -131,7 +95,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
                 regex = new Regex(@"(?<!fil)[A-Za-z]:\\+[\S\s]*?(?=\\+unifieddevelopmentplatform.presentation.api)");
                 exeRootDirectory = _serviceFuncStrings.UDPLower(Assembly.GetExecutingAssembly().Location);
 
-                if (regex.IsMatch(exeRootDirectory ?? _serviceFuncStrings.Empty;))
+                if (regex.IsMatch(exeRootDirectory ?? _serviceFuncStrings.Empty))
                 {
                     rootDirectoryOfSolution = regex.Match(exeRootDirectory ?? _serviceFuncStrings.Empty).Value;
                 }
@@ -144,18 +108,44 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             }
         }
 
-        public string UDPGetRootPathFileInConfiguration(string fileName)
+        private void LoadDirectoryRootPath(string rootPath)
         {
-            return $"{this.UDPGetRootDirectory()}{DirectoryStandard.App}{DirectoryStandard.Configuration}{DirectoryStandard.Json}{fileName}";
+            DirectoryRoot.DirectoryRootPath = rootPath;
         }
 
-        public string UDPGetRootPathFileInApp(string fileName)
+        private void UDPLoadDirectory(string rootPath)
         {
-            return $"{this.UDPGetRootDirectory()}{DirectoryStandard.App}{DirectoryStandard.App}{DirectoryStandard.Json}{fileName}";
+            _listDirectory.Add(rootPath);
+        }
+
+        private void UDPCreateDirectory()
+        {
+            try
+            {
+                if (_listDirectory != null && _listDirectory.Any())
+                {
+                    _listDirectory.ForEach(directory =>
+                    {
+                        if (_serviceFuncStrings.UDPNullOrEmpty(directory))
+                        {
+                            throw new Exception();
+                        }
+                        else
+                        {
+                            Directory.CreateDirectory(directory);
+                        }
+                    });
+                }
+            }
+            catch (IOException)
+            {
+                throw new IOException();
+            }
         }
 
         #region Private Methods.
 
+        [Obsolete("Remove this method", false)]
         /// <summary>
         /// Delete all root directory of solution.
         /// </summary>
@@ -180,6 +170,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             return true;
         }
 
+        [Obsolete("Remove this method", false)]
         /// <summary>
         /// Create all root path of solution.
         /// </summary>
@@ -208,105 +199,6 @@ namespace UnifiedDevelopmentPlatform.Application.Services
                 throw new IOException();
             }
         }
-
-        /// <summary>
-        /// Filter and save all paths with name of directories.
-        /// </summary>
-        /// <returns></returns>
-        private void UDPFilterAndSavePaths(Queue<string> queueDirectory)
-        {
-            string json = string.Empty;
-            string path = string.Empty;
-            JsonApp jsonApp;
-            JsonConfiguration jsonConfiguration;
-
-            /*List<string>? lstWithAppConfiguration = new List<string>();
-
-            try
-            {
-                path = UDPGetRootPathFileInConfiguration(FileStandard.App);
-                json = _serviceFile.UDPReadAllText(path);
-                jsonApp = (JsonApp)_serviceJson.UDPDesSerializerJsonToApp(json);
-
-                path = UDPGetRootPathFileInConfiguration(FileStandard.Configuration);
-                json = _serviceFile.UDPReadAllText(path);
-                jsonConfiguration = (JsonConfiguration)_serviceJson.UDPDesSerializerJsonToConfiguration(json);
-
-                if (_serviceFuncStrings.UDPNullOrEmpty(jsonApp.Path ?? string.Empty) || _serviceFuncStrings.UDPNullOrEmpty(jsonConfiguration.Path ?? string.Empty))
-                {
-                    throw new Exception();
-                }
-                else
-                {
-                    lstWithAppConfiguration.Add(jsonApp.Path);
-                    lstWithAppConfiguration.Add(jsonConfiguration.Path);
-
-                    List<string>? lstWithoutAppConfiguration = _serviceLinq.UDPSelectRootPathWithoutAppConfiguration(queueDirectory.ToList());
-                    List<string>? lstSectionAppAndConfiguration = _serviceLinq.UDPSelectSectionStandard(lstWithAppConfiguration);
-
-                    if (lstWithoutAppConfiguration is null || lstWithAppConfiguration is null || lstSectionAppAndConfiguration is null)
-                    {
-                        throw new Exception();
-                    }
-                    else
-                    {
-                        _serviceXml.UPDTreeXmlSave($"{lstWithAppConfiguration[1]}{DirectoryStandard.Xml}{Xml.FilenameApp}{FileExtension.Xml}", lstSectionAppAndConfiguration[0], lstWithAppConfiguration[0]);
-                        _serviceXml.UPDTreeXmlSave($"{lstWithAppConfiguration[1]}{DirectoryStandard.Xml}{Xml.FilenameConfiguration}{FileExtension.Xml}", lstSectionAppAndConfiguration[1], lstWithAppConfiguration[1]);
-
-                        _serviceXml.UPDTreeXmlSave($"{lstWithAppConfiguration[1]}{DirectoryStandard.Xml}{Xml.FilenameDirectory}{FileExtension.Xml}", Xml.SectionDirectoriesName, lstWithoutAppConfiguration);
-                    }
-                }
-            }
-            catch (IOException)
-            {
-                throw new IOException();
-            }*/
-        }
-
-        #region Standard Path.
-
-        /// <summary>
-        /// Create root path App of solution.
-        /// </summary>
-        /// <returns></returns>
-        private void UDPCreateRootPathApp()
-        {
-            _queueDirectory.Enqueue($"{_directory}{DirectoryStandard.App}");
-        }
-
-        /// <summary>
-        /// Create root path Configuration of solution.
-        /// </summary>
-        /// <returns></returns>
-        private void UDPCreateRootPathConfiguration()
-        {
-            _queueDirectory.Enqueue($"{_directory}{DirectoryStandard.App}{DirectoryStandard.Configuration}");
-        }
-
-        /// <summary>
-        /// Create root path JSON of solution.
-        /// </summary>
-        /// <returns></returns>
-        private void UDPCreateRootPathJson()
-        {
-            _queueDirectory.Enqueue($"{_directory}{DirectoryStandard.App}{DirectoryStandard.Configuration}{DirectoryStandard.Json}");
-        }
-
-        /// <summary>
-        /// Create root path XML of solution.
-        /// </summary>
-        /// <returns></returns>
-        private void UDPCreateRootPathXml()
-        {
-            _queueDirectory.Enqueue($"{_directory}{DirectoryStandard.App}{DirectoryStandard.Configuration}{DirectoryStandard.Xml}");
-        }
-
-        private void UDPCreateRootPathLog()
-        {
-            _queueDirectory.Enqueue($"{_directory}{DirectoryStandard.App}{DirectoryStandard.Configuration}{DirectoryStandard.Log}");
-        }
-
-        #endregion Standard Path.
 
         #region Presentation.
 

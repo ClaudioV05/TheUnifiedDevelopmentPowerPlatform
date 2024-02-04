@@ -38,18 +38,20 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Directory
         /// <summary>
         /// Directory root json.
         /// </summary>
-        public static string DirectoryRootJson { get; } = $"{DirectoryStandard.App}{DirectoryStandard.Configuration}{DirectoryStandard.Json}";
-
-        /// <summary>
-        /// Directory root xml.
-        /// </summary>
-        public static string DirectoryRootXml { get; } = $"{DirectoryStandard.App}{DirectoryStandard.Configuration}{DirectoryStandard.Xml}";
+        public static string DirectoryRootJson { get; } = $"{DirectoryRootPath}{DirectoryStandard.App}{DirectoryStandard.Configuration}{DirectoryStandard.Json}";
 
         /// <summary>
         /// Directory root log.
         /// </summary>
-        public static string DirectoryRootLog { get; } = $"{DirectoryStandard.App}{DirectoryStandard.Configuration}{DirectoryStandard.Log}";
+        public static string DirectoryRootLog { get; } = $"{DirectoryRootPath}{DirectoryStandard.App}{DirectoryStandard.Configuration}{DirectoryStandard.Log}";
 
+
+        /// <summary>
+        /// Directory root xml.
+        /// </summary>
+        public static string DirectoryRootXml { get; } = $"{DirectoryRootPath}{DirectoryStandard.App}{DirectoryStandard.Configuration}{DirectoryStandard.Xml}";
+
+      
         #endregion Standard Path.
 
         #region Presentation.
