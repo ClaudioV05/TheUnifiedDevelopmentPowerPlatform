@@ -90,6 +90,11 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Directory
         public static string BackendPresentationSwagger { get; } = $"{DirectoryRootPath}{Backend}{DirectoryPresentation.Presentation}{DirectoryPresentation.Swagger}";
 
         /// <summary>
+        /// Directory root frontend presentation.
+        /// </summary>
+        public static string FrontendPresentation { get; } = $"{DirectoryRootPath}{Frontend}{DirectoryPresentation.Presentation}";
+
+        /// <summary>
         /// Directory root frontend presentation properties.
         /// </summary>
         public static string FrontendPresentationProperties { get; } = $"{DirectoryRootPath}{Frontend}{DirectoryPresentation.Presentation}{DirectoryPresentation.Properties}";
@@ -122,6 +127,37 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Directory
         #endregion Presentation.
 
         #region Application.
+
+        /// <summary>
+        /// Directory root backend application.
+        /// </summary>
+        public static string BackendApplication { get; } = $"{DirectoryRootPath}{Backend}{DirectoryApplication.Application}";
+
+        /// <summary>
+        /// Directory root backend application properties.
+        /// </summary>
+        public static string BackendApplicationInterfaces { get; } = $"{DirectoryRootPath}{Backend}{DirectoryApplication.Application}{DirectoryApplication.Interfaces}";
+
+        /// <summary>
+        /// Directory root backend application services.
+        /// </summary>
+        public static string BackendApplicationServices { get; } = $"{DirectoryRootPath}{Backend}{DirectoryApplication.Application}{DirectoryApplication.Services}";
+
+        /// <summary>
+        /// Directory root frontend application.
+        /// </summary>
+        public static string FrontendApplication { get; } = $"{DirectoryRootPath}{Frontend}{DirectoryApplication.Application}";
+
+        /// <summary>
+        /// Directory root frontend application properties.
+        /// </summary>
+        public static string FrontendApplicationInterfaces { get; } = $"{DirectoryRootPath}{Frontend}{DirectoryApplication.Application}{DirectoryApplication.Interfaces}";
+
+        /// <summary>
+        /// Directory root frontend application services.
+        /// </summary>
+        public static string FrontendApplicationServices { get; } = $"{DirectoryRootPath}{Frontend}{DirectoryApplication.Application}{DirectoryApplication.Services}";
+
         #endregion Application.
 
         #region Domain.
