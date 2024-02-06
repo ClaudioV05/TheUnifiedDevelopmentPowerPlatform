@@ -1,4 +1,6 @@
-﻿namespace UnifiedDevelopmentPlatform.Application.Interfaces
+﻿using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Directory;
+
+namespace UnifiedDevelopmentPlatform.Application.Interfaces
 {
     /// <summary>
     /// Interface service Directory.
@@ -16,5 +18,12 @@
         /// </summary>
         /// <returns></returns>
         void UPDBuildDirectoryStandardOfSolution();
+
+        /// <summary>
+        /// Obtain directory root.
+        /// </summary>
+        /// <param name="directoryRootType"></param>
+        /// <returns></returns>
+        string UDPObtainDirectoryRoot(DirectoryRootType directoryRootType);
     }
 }
