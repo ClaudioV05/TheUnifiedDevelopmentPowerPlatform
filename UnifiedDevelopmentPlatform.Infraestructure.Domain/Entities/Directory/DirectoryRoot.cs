@@ -195,6 +195,37 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Directory
         #endregion Domain.
 
         #region Infrastructure.
+
+        /// <summary>
+        /// Directory root backend infrastructure.
+        /// </summary>
+        public static string BackendInfrastructure { get; } = $"{DirectoryRootPath}{Backend}{DirectoryInfrastructure.Infrastructure}";
+
+        /// <summary>
+        /// Directory root backend infrastructure cross cutting.
+        /// </summary>
+        public static string BackendInfrastructureCrossCutting { get; } = $"{DirectoryRootPath}{Backend}{DirectoryInfrastructure.Infrastructure}{DirectoryInfrastructure.CrossCutting}";
+
+        /// <summary>
+        /// Directory root backend infrastructure data.
+        /// </summary>
+        public static string BackendInfrastructureData { get; } = $"{DirectoryRootPath}{Backend}{DirectoryInfrastructure.Infrastructure}{DirectoryInfrastructure.Data}";
+
+        /// <summary>
+        /// Directory root Frontend infrastructure.
+        /// </summary>
+        public static string FrontendInfrastructure { get; } = $"{DirectoryRootPath}{Frontend}{DirectoryInfrastructure.Infrastructure}";
+
+        /// <summary>
+        /// Directory root Frontend infrastructure cross cutting.
+        /// </summary>
+        public static string FrontendInfrastructureCrossCutting { get; } = $"{DirectoryRootPath}{Frontend}{DirectoryInfrastructure.Infrastructure}{DirectoryInfrastructure.CrossCutting}";
+
+        /// <summary>
+        /// Directory root Frontend infrastructure data.
+        /// </summary>
+        public static string FrontendInfrastructureData { get; } = $"{DirectoryRootPath}{Frontend}{DirectoryInfrastructure.Infrastructure}{DirectoryInfrastructure.Data}";
+
         #endregion Infrastructure.
     }
 }
