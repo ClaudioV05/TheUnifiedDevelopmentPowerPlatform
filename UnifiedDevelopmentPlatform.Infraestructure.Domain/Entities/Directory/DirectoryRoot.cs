@@ -161,6 +161,37 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Directory
         #endregion Application.
 
         #region Domain.
+
+        /// <summary>
+        /// Directory root backend domain.
+        /// </summary>
+        public static string BackendDomain { get; } = $"{DirectoryRootPath}{Backend}{DirectoryDomain.Domain}";
+
+        /// <summary>
+        /// Directory root backend domain properties.
+        /// </summary>
+        public static string BackendDomainInterfaces { get; } = $"{DirectoryRootPath}{Backend}{DirectoryDomain.Domain}{DirectoryDomain.Interfaces}";
+
+        /// <summary>
+        /// Directory root backend domain entities.
+        /// </summary>
+        public static string BackendDomainEntities { get; } = $"{DirectoryRootPath}{Backend}{DirectoryDomain.Domain}{DirectoryDomain.Entities}";
+
+        /// <summary>
+        /// Directory root Frontend domain.
+        /// </summary>
+        public static string FrontendDomain { get; } = $"{DirectoryRootPath}{Frontend}{DirectoryDomain.Domain}";
+
+        /// <summary>
+        /// Directory root Frontend domain properties.
+        /// </summary>
+        public static string FrontendDomainInterfaces { get; } = $"{DirectoryRootPath}{Frontend}{DirectoryDomain.Domain}{DirectoryDomain.Interfaces}";
+
+        /// <summary>
+        /// Directory root Frontend domain entities.
+        /// </summary>
+        public static string FrontendDomainEntities { get; } = $"{DirectoryRootPath}{Frontend}{DirectoryDomain.Domain}{DirectoryDomain.Entities}";
+
         #endregion Domain.
 
         #region Infrastructure.
