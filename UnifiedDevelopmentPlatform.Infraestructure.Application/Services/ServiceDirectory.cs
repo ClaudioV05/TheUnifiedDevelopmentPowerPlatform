@@ -39,11 +39,11 @@ namespace UnifiedDevelopmentPlatform.Application.Services
                 this.LoadDirectoryRootPath(this.UDPGetRootDirectory());
                 //this.UDPDeleteAllRootDirectoryOfSolution(_directory);
 
-                this.UDPLoadDirectory(DirectoryRoot.DirectoryRootApp);
-                this.UDPLoadDirectory(DirectoryRoot.DirectoryRootConfiguration);
-                this.UDPLoadDirectory(DirectoryRoot.DirectoryRootJson);
-                this.UDPLoadDirectory(DirectoryRoot.DirectoryRootLog);
-                this.UDPLoadDirectory(DirectoryRoot.DirectoryRootXml);
+                this.UDPLoadDirectory(DirectoryRoot.App);
+                this.UDPLoadDirectory(DirectoryRoot.Configuration);
+                this.UDPLoadDirectory(DirectoryRoot.Json);
+                this.UDPLoadDirectory(DirectoryRoot.Log);
+                this.UDPLoadDirectory(DirectoryRoot.Xml);
                 this.UDPCreateDirectory();
             }
             catch (Exception)
@@ -55,27 +55,18 @@ namespace UnifiedDevelopmentPlatform.Application.Services
 
         public void UPDCreateDirectoryProjectOfSolution()
         {
-            string json = string.Empty;
-            string path = string.Empty;
-            JsonApp jsonApp;
             string[] directories = new string[] { DirectoryStandard.Backend, DirectoryStandard.Frontend };
 
             try
             {
+                this.LoadDirectoryRootPath(this.UDPGetRootDirectory());
 
-                if (!_serviceFuncStrings.UDPNullOrEmpty(_directory ?? string.Empty))
-                {
-                    if (_queueDirectory.Any())
-                    {
-                        _queueDirectory.Clear();
-                    }
+                this.CreateRootPathPresentation(directories);
+                this.CreateRootPathApplication(directories);
+                this.CreateRootPathDomain(directories);
+                this.CreateRootPathInfrastructure(directories);
+                this.UDPCreateAllRootPath(_queueDirectory);
 
-                    this.CreateRootPathPresentation(directories);
-                    this.CreateRootPathApplication(directories);
-                    this.CreateRootPathDomain(directories);
-                    this.CreateRootPathInfrastructure(directories);
-                    this.UDPCreateAllRootPath(_queueDirectory);
-                }
             }
             catch (IOException)
             {
@@ -124,7 +115,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             {
                 if (_listDirectory != null && _listDirectory.Any())
                 {
-                    _listDirectory.ForEach(directory =>
+                    Parallel.ForEach(_listDirectory, directory =>
                     {
                         if (_serviceFuncStrings.UDPNullOrEmpty(directory))
                         {

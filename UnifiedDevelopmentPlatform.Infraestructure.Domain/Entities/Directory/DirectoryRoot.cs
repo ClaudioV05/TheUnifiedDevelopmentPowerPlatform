@@ -18,43 +18,107 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Directory
         /// <summary>
         /// Directory root app.
         /// </summary>
-        public static string DirectoryRootApp { get; } = $"{DirectoryRootPath}{DirectoryStandard.App}";
+        public static string App { get; } = $"{DirectoryRootPath}{DirectoryStandard.App}";
 
         /// <summary>
         /// Directory root backend.
         /// </summary>
-        public static string DirectoryRootBackend { get; } = DirectoryStandard.Backend;
+        public static string Backend { get; } = DirectoryStandard.Backend;
 
         /// <summary>
         /// Directory root frontend.
         /// </summary>
-        public static string DirectoryRootFrontend { get; } = DirectoryStandard.Frontend;
+        public static string Frontend { get; } = DirectoryStandard.Frontend;
 
         /// <summary>
         /// Directory root configuration.
         /// </summary>
-        public static string DirectoryRootConfiguration { get; } = $"{DirectoryRootPath}{DirectoryStandard.App}{DirectoryStandard.Configuration}";
+        public static string Configuration { get; } = $"{DirectoryRootPath}{DirectoryStandard.App}{DirectoryStandard.Configuration}";
 
         /// <summary>
         /// Directory root json.
         /// </summary>
-        public static string DirectoryRootJson { get; } = $"{DirectoryRootPath}{DirectoryStandard.App}{DirectoryStandard.Configuration}{DirectoryStandard.Json}";
+        public static string Json { get; } = $"{DirectoryRootPath}{DirectoryStandard.App}{DirectoryStandard.Configuration}{DirectoryStandard.Json}";
 
         /// <summary>
         /// Directory root log.
         /// </summary>
-        public static string DirectoryRootLog { get; } = $"{DirectoryRootPath}{DirectoryStandard.App}{DirectoryStandard.Configuration}{DirectoryStandard.Log}";
-
+        public static string Log { get; } = $"{DirectoryRootPath}{DirectoryStandard.App}{DirectoryStandard.Configuration}{DirectoryStandard.Log}";
 
         /// <summary>
         /// Directory root xml.
         /// </summary>
-        public static string DirectoryRootXml { get; } = $"{DirectoryRootPath}{DirectoryStandard.App}{DirectoryStandard.Configuration}{DirectoryStandard.Xml}";
+        public static string Xml { get; } = $"{DirectoryRootPath}{DirectoryStandard.App}{DirectoryStandard.Configuration}{DirectoryStandard.Xml}";
 
-      
         #endregion Standard Path.
 
         #region Presentation.
+
+        /// <summary>
+        /// Directory root backend presentation.
+        /// </summary>
+        public static string BackendPresentation { get; } = $"{DirectoryRootPath}{Backend}{DirectoryPresentation.Presentation}";
+
+        /// <summary>
+        /// Directory root backend presentation properties.
+        /// </summary>
+        public static string BackendPresentationProperties { get; } = $"{DirectoryRootPath}{Backend}{DirectoryPresentation.Presentation}{DirectoryPresentation.Properties}";
+
+        /// <summary>
+        /// Directory root backend presentation controllers.
+        /// </summary>
+        public static string BackendPresentationControllers { get; } = $"{DirectoryRootPath}{Backend}{DirectoryPresentation.Presentation}{DirectoryPresentation.Controllers}";
+
+        /// <summary>
+        /// Directory root backend presentation extensions.
+        /// </summary>
+        public static string BackendPresentationExtensions { get; } = $"{DirectoryRootPath}{Backend}{DirectoryPresentation.Presentation}{DirectoryPresentation.Extensions}";
+
+        /// <summary>
+        /// Directory root backend presentation filters.
+        /// </summary>
+        public static string BackendPresentationFilters { get; } = $"{DirectoryRootPath}{Backend}{DirectoryPresentation.Presentation}{DirectoryPresentation.Filters}";
+
+        /// <summary>
+        /// Directory root backend presentation models.
+        /// </summary>
+        public static string BackendPresentationModels { get; } = $"{DirectoryRootPath}{Backend}{DirectoryPresentation.Presentation}{DirectoryPresentation.Models}";
+
+        /// <summary>
+        /// Directory root backend presentation swagger.
+        /// </summary>
+        public static string BackendPresentationSwagger { get; } = $"{DirectoryRootPath}{Backend}{DirectoryPresentation.Presentation}{DirectoryPresentation.Swagger}";
+
+        /// <summary>
+        /// Directory root frontend presentation properties.
+        /// </summary>
+        public static string FrontendPresentationProperties { get; } = $"{DirectoryRootPath}{Frontend}{DirectoryPresentation.Presentation}{DirectoryPresentation.Properties}";
+
+        /// <summary>
+        /// Directory root frontend presentation controllers.
+        /// </summary>
+        public static string FrontendPresentationControllers { get; } = $"{DirectoryRootPath}{Frontend}{DirectoryPresentation.Presentation}{DirectoryPresentation.Controllers}";
+
+        /// <summary>
+        /// Directory root frontend presentation extensions.
+        /// </summary>
+        public static string FrontendPresentationExtensions { get; } = $"{DirectoryRootPath}{Frontend}{DirectoryPresentation.Presentation}{DirectoryPresentation.Extensions}";
+
+        /// <summary>
+        /// Directory root frontend presentation filters.
+        /// </summary>
+        public static string FrontendPresentationFilters { get; } = $"{DirectoryRootPath}{Frontend}{DirectoryPresentation.Presentation}{DirectoryPresentation.Filters}";
+
+        /// <summary>
+        /// Directory root frontend presentation models.
+        /// </summary>
+        public static string FrontendPresentationModels { get; } = $"{DirectoryRootPath}{Frontend}{DirectoryPresentation.Presentation}{DirectoryPresentation.Models}";
+
+        /// <summary>
+        /// Directory root frontend presentation swagger.
+        /// </summary>
+        public static string FrontendPresentationSwagger { get; } = $"{DirectoryRootPath}{Frontend}{DirectoryPresentation.Presentation}{DirectoryPresentation.Swagger}";
+
         #endregion Presentation.
 
         #region Application.
