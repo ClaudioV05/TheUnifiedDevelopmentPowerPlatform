@@ -10,23 +10,15 @@ namespace UnifiedDevelopmentPlatform.Application.Services
     /// </summary>
     public class ServiceDirectory : IServiceDirectory
     {
-        private string? _directory;
-        private readonly IServiceXml _serviceXml;
-        private readonly IServiceFile _serviceFile;
-        private readonly IServiceJson _serviceJson;
-        private readonly IServiceLinq _serviceLinq;
-        private readonly Queue<string> _queueDirectory;
         private readonly List<string> _listDirectory;
         private readonly IServiceFuncString _serviceFuncStrings;
 
-        public ServiceDirectory(IServiceXml serviceXml, /*IServiceLog serviceLog,*/ IServiceFile serviceFile, IServiceJson serviceJson, IServiceLinq serviceLinq, IServiceFuncString serviceFuncStrings)
+        /// <summary>
+        /// Constructor of service directory.
+        /// </summary>
+        /// <param name="serviceFuncStrings"></param>
+        public ServiceDirectory(IServiceFuncString serviceFuncStrings)
         {
-            _serviceXml = serviceXml;
-            //_serviceLog = serviceLog;
-            _serviceFile = serviceFile;
-            _serviceJson = serviceJson;
-            _serviceLinq = serviceLinq;
-            _queueDirectory = new Queue<string>();
             _listDirectory = new List<string>();
             _serviceFuncStrings = serviceFuncStrings;
         }
@@ -89,16 +81,17 @@ namespace UnifiedDevelopmentPlatform.Application.Services
                 {
                     for (int i = 0; i < Enum.GetValues(typeof(DirectoryRootType)).Length; i++)
                     {
-                        if ((DirectoryRootType)i == DirectoryRootType.App || 
-                            (DirectoryRootType)i == DirectoryRootType.Configuration || 
+                        if ((DirectoryRootType)i == DirectoryRootType.App ||
+                            (DirectoryRootType)i == DirectoryRootType.Configuration ||
                             (DirectoryRootType)i == DirectoryRootType.Json ||
                             (DirectoryRootType)i == DirectoryRootType.Log ||
                             (DirectoryRootType)i == DirectoryRootType.Xml)
                         {
-                            this.UDPLoadDirectory(this.UDPObtainDirectoryRoot(DirectoryRootType)i);
+                            this.UDPLoadDirectory(this.UDPObtainDirectoryRoot((DirectoryRootType)i));
                         }
                     }
                 }
+
                 this.UDPCreateDirectory();
             }
             catch (Exception)
@@ -124,10 +117,12 @@ namespace UnifiedDevelopmentPlatform.Application.Services
                             (DirectoryRootType)i != DirectoryRootType.Log ||
                             (DirectoryRootType)i != DirectoryRootType.Xml)
                         {
-                            this.UDPLoadDirectory(this.UDPObtainDirectoryRoot(DirectoryRootType)i);
+                            this.UDPLoadDirectory(this.UDPObtainDirectoryRoot((DirectoryRootType)i));
                         }
                     }
                 }
+
+                this.UDPCreateDirectory();
             }
             catch (IOException)
             {
@@ -194,6 +189,5 @@ namespace UnifiedDevelopmentPlatform.Application.Services
                 throw new IOException();
             }
         }
-
     }
 }
