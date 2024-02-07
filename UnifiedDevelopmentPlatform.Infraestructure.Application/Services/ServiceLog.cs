@@ -49,7 +49,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             string caracter = string.Empty;
             JsonConfiguration jsonConfiguration;
 
-            path = _serviceDirectory.UDPGetRootPathFileInConfiguration($"{FileStandard.Configuration}{FileExtension.Json}");
+           /* path = _serviceDirectory.UDPGetRootPathFileInConfiguration($"{FileStandard.Configuration}{FileExtension.Json}");
             json = _serviceFile.UDPReadAllText(path);
             jsonConfiguration = (JsonConfiguration)_serviceJson.UDPDesSerializerJsonToConfiguration(json);
 
@@ -62,6 +62,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
 
             _serviceFile.UDPAppendAllText($"{jsonConfiguration.Path}{DirectoryStandard.Log}{FileStandard.Log}{FileExtension.Txt}",
                                           $"{caracter}{_serviceDate.UDPGetDateTimeNowFormat()} > File [{_serviceFile.UDPGetFileName(stackFrame.GetFileName())}] Line Number [{stackFrame.GetFileLineNumber()}] [{_serviceFuncStrings.UDPUpper(message)}]");
+           */
         }
     }
 }

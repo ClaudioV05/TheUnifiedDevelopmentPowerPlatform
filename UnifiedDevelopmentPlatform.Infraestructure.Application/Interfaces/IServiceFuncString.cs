@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace UnifiedDevelopmentPlatform.Application.Interfaces
+﻿namespace UnifiedDevelopmentPlatform.Application.Interfaces
 {
     /// <summary>
     /// Interface service Functions String.

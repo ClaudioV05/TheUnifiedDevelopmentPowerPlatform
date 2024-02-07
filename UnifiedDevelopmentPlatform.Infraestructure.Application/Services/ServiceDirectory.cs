@@ -74,20 +74,15 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         {
             try
             {
-                this.UDPLoadDirectoryRootPath(this.UDPGetRootDirectory());
-                //this.UDPDeleteAllRootDirectoryOfSolution(_directory);
+                DirectoryRoot.DirectoryRootPath = this.UDPGetRootDirectory();
 
                 if (Enum.GetValues(typeof(DirectoryRootType)) != null && Enum.GetValues(typeof(DirectoryRootType)).Length > 0)
                 {
                     for (int i = 0; i < Enum.GetValues(typeof(DirectoryRootType)).Length; i++)
                     {
-                        if ((DirectoryRootType)i == DirectoryRootType.App ||
-                            (DirectoryRootType)i == DirectoryRootType.Configuration ||
-                            (DirectoryRootType)i == DirectoryRootType.Json ||
-                            (DirectoryRootType)i == DirectoryRootType.Log ||
-                            (DirectoryRootType)i == DirectoryRootType.Xml)
+                        if ((DirectoryRootType)i == DirectoryRootType.App || (DirectoryRootType)i == DirectoryRootType.Configuration || (DirectoryRootType)i == DirectoryRootType.Json || (DirectoryRootType)i == DirectoryRootType.Log || (DirectoryRootType)i == DirectoryRootType.Xml)
                         {
-                            this.UDPLoadDirectory(this.UDPObtainDirectoryRoot((DirectoryRootType)i));
+                            this.UDPLoadDirectory($"{DirectoryRoot.DirectoryRootPath}{this.UDPObtainDirectoryRoot((DirectoryRootType)i)}");
                         }
                     }
                 }
@@ -105,19 +100,15 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         {
             try
             {
-                this.UDPLoadDirectoryRootPath(this.UDPGetRootDirectory());
+                DirectoryRoot.DirectoryRootPath = this.UDPGetRootDirectory();
 
                 if (Enum.GetValues(typeof(DirectoryRootType)) != null && Enum.GetValues(typeof(DirectoryRootType)).Length > 0)
                 {
                     for (int i = 0; i < Enum.GetValues(typeof(DirectoryRootType)).Length; i++)
                     {
-                        if ((DirectoryRootType)i != DirectoryRootType.App ||
-                            (DirectoryRootType)i != DirectoryRootType.Configuration ||
-                            (DirectoryRootType)i != DirectoryRootType.Json ||
-                            (DirectoryRootType)i != DirectoryRootType.Log ||
-                            (DirectoryRootType)i != DirectoryRootType.Xml)
+                        if ((DirectoryRootType)i != DirectoryRootType.App || (DirectoryRootType)i != DirectoryRootType.Configuration || (DirectoryRootType)i != DirectoryRootType.Json || (DirectoryRootType)i != DirectoryRootType.Log || (DirectoryRootType)i != DirectoryRootType.Xml)
                         {
-                            this.UDPLoadDirectory(this.UDPObtainDirectoryRoot((DirectoryRootType)i));
+                            this.UDPLoadDirectory($"{DirectoryRoot.DirectoryRootPath}{this.UDPObtainDirectoryRoot((DirectoryRootType)i)}");
                         }
                     }
                 }
@@ -155,11 +146,6 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             }
         }
 
-        private void UDPLoadDirectoryRootPath(string rootPath)
-        {
-            DirectoryRoot.DirectoryRootPath = rootPath;
-        }
-
         private void UDPLoadDirectory(string rootPath)
         {
             _listDirectory.Add(rootPath);
@@ -171,17 +157,13 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             {
                 if (_listDirectory != null && _listDirectory.Any())
                 {
-                    Parallel.ForEach(_listDirectory, directory =>
+                    for (int i = 0; i < _listDirectory.Count; i++)
                     {
-                        if (_serviceFuncStrings.UDPNullOrEmpty(directory))
+                        if (!_serviceFuncStrings.UDPNullOrEmpty(_listDirectory[i]))
                         {
-                            throw new Exception();
+                            Directory.CreateDirectory(_listDirectory[i]);
                         }
-                        else
-                        {
-                            Directory.CreateDirectory(directory);
-                        }
-                    });
+                    }
                 }
             }
             catch (IOException)
