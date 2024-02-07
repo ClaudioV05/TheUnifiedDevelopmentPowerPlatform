@@ -1,4 +1,6 @@
-﻿namespace UnifiedDevelopmentPlatform.Application.Interfaces
+﻿using System.Collections.Generic;
+
+namespace UnifiedDevelopmentPlatform.Application.Interfaces
 {
     /// <summary>
     /// Interface service Functions String.
@@ -82,6 +84,13 @@
         /// <param name="text"></param>
         /// <returns>String to lower.</returns>
         string UDPLower(string text);
+
+        /// <summary>
+        /// Lower in list.
+        /// </summary>
+        /// <param name="text"></param>
+        /// <returns></returns>
+        IEnumerable<string> UDPLowerInList(string text);
 
         /// <summary>
         /// If string contains caracther null or empty.
