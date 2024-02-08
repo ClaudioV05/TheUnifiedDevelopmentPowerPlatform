@@ -76,6 +76,8 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             {
                 DirectoryRoot.DirectoryRootPath = this.UDPGetRootDirectory();
 
+                this.UDPDeleteAllRootDirectory($"{DirectoryRoot.DirectoryRootPath}{DirectoryRoot.App}");
+
                 if (Enum.GetValues(typeof(DirectoryRootType)) != null && Enum.GetValues(typeof(DirectoryRootType)).Length > 0)
                 {
                     for (int i = 0; i < Enum.GetValues(typeof(DirectoryRootType)).Length; i++)
@@ -91,7 +93,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             }
             catch (Exception)
             {
-                //this.UDPDeleteAllRootDirectoryOfSolution(_directory);
+                this.UDPDeleteAllRootDirectory($"{DirectoryRoot.DirectoryRootPath}{DirectoryRoot.App}");
                 throw;
             }
         }
@@ -117,7 +119,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             }
             catch (IOException)
             {
-                //this.UDPDeleteAllRootDirectoryOfSolution(_directory);
+                this.UDPDeleteAllRootDirectory($"{DirectoryRoot.DirectoryRootPath}{DirectoryRoot.App}");
                 throw new IOException();
             }
         }
@@ -170,6 +172,22 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             {
                 throw new IOException();
             }
+        }
+
+        private bool UDPDeleteAllRootDirectory(string rootPath)
+        {
+            try
+            {
+                if (Directory.Exists(rootPath))
+                {
+                    Directory.Delete(rootPath, true);
+                }
+            }
+            catch (IOException)
+            {
+                return false;
+            }
+            return true;
         }
     }
 }

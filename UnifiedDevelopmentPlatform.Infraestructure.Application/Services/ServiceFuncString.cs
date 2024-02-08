@@ -181,7 +181,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
 
         public IEnumerable<string> UDPLowerInList(string text)
         {
-            foreach (var item in text.Split(' ', StringSplitOptions.None))
+            foreach (var item in text.Split(this.CharWhiteSpace, StringSplitOptions.None))
             {
                 yield return this.UDPLower(item);
             }
