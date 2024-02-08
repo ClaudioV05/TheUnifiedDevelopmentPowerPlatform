@@ -10,9 +10,6 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         /// <summary>
         /// The constructor of Service Mail.
         /// </summary>
-        public ServiceMail()
-        {
-
-        }
+        public ServiceMail() { }
     }
 }

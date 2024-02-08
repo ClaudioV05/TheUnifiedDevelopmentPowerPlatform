@@ -29,10 +29,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         /// <summary>
         /// The constructor of Service for JavaScript Object Notation - JSON.
         /// </summary>
-        public ServiceJson()
-        {
-
-        }
+        public ServiceJson() { }
 
         public string UDPSerializerJson(object obj)
         {

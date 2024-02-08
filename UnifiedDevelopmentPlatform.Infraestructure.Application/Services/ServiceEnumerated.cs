@@ -12,10 +12,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         /// <summary>
         /// The constructor of Service Enumerated.
         /// </summary>
-        public ServiceEnumerated()
-        {
-
-        }
+        public ServiceEnumerated() { }
 
         public string GetEnumDescription(Enum value)
         {

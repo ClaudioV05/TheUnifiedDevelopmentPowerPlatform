@@ -18,10 +18,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         /// <summary>
         /// The constructor of Service File.
         /// </summary>
-        public ServiceFile()
-        {
-
-        }
+        public ServiceFile() { }
 
         public bool UDPFileExists(string? path)
         {

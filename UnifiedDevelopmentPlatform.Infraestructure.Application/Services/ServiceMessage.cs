@@ -11,10 +11,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         /// <summary>
         /// The constructor of Service Message.
         /// </summary>
-        public ServiceMessage()
-        {
-
-        }
+        public ServiceMessage() { }
 
         public string UDPMensagem(MessageType messageType)
         {

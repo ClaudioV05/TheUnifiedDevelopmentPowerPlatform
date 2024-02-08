@@ -12,10 +12,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         /// <summary>
         /// The constructor of Service Date.
         /// </summary>
-        public ServiceDate()
-        {
-
-        }
+        public ServiceDate() { }
 
         public string UDPGetDateTimeNowFormat()
         {

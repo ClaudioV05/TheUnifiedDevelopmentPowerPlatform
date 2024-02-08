@@ -12,10 +12,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         /// <summary>
         /// The constructor of service form.
         /// </summary>
-        public ServiceForm()
-        {
-
-        }
+        public ServiceForm() { }
 
         public List<Forms> UDPObtainTheListOfForms()
         {

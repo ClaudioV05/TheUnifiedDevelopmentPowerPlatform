@@ -10,9 +10,6 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         /// <summary>
         /// The constructor of Service Zip File.
         /// </summary>
-        public ServiceZipFile()
-        {
-
-        }
+        public ServiceZipFile() { }
     }
 }

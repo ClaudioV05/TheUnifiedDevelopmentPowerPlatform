@@ -12,10 +12,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         /// <summary>
         /// The constructor of Service Functions of Strings.
         /// </summary>
-        public ServiceFuncString()
-        {
-
-        }
+        public ServiceFuncString() { }
 
         public string Empty { get; } = string.Empty;
 

@@ -11,10 +11,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         /// <summary>
         /// The constructor of Service Environment.
         /// </summary>
-        public ServiceEnvironment()
-        {
-
-        }
+        public ServiceEnvironment() { }
 
         public string? UPDGetEnvVariable(string variable)
         {
