@@ -12,5 +12,10 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Controller
         /// Database schema.
         /// </summary>
         public const string DatabaseSchema = "databaseSchema";
+
+        /// <summary>
+        /// Metadata.
+        /// </summary>
+        public const string Metadata = "metadata";
     }
 }
