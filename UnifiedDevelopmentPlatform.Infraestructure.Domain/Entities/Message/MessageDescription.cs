@@ -87,6 +87,11 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Message
         /// </summary>
         public static string MessageUdpFormIsOk => $"THE (FORMS) {MessageDescription.MessageDefaultToServiceValidation}";
 
+        /// <summary>
+        /// Message to the architecture is ok.
+        /// </summary>
+        public static string MessageUdpArchitectureIsOk => $"THE (ARCHITECTURE) {MessageDescription.MessageDefaultToServiceValidation}";
+
         #endregion The validation of filter action.
 
         #endregion Filter action.

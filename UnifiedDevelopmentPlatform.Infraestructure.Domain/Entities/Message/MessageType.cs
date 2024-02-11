@@ -56,23 +56,26 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Message
         [Description("Message to the forms is ok")] 
         MessageUdpFormIsOk = 14,
 
+        [Description("Message to the architecture is ok")]
+        MessageUdpArchitectureIsOk = 15,
+
         #endregion The validation of filter action.
 
         #region Service directory.
         [Description("Error to create all directory")] 
-        ErrorCreateAllDirectory = 15,
+        ErrorCreateAllDirectory = 16,
 
         [Description("Build of all directory standard of solution")] 
-        BuildDirectoryStandardOfSolution = 16,
+        BuildDirectoryStandardOfSolution = 17,
 
         [Description("Directory root is empty")] 
-        DirectoryRootIsEmpty = 17,
+        DirectoryRootIsEmpty = 18,
 
         #endregion Service directory.
 
         #region Service metadataTables.
         [Description("Error to create all directory")] 
-        InvalidBase64 = 18,
+        InvalidBase64 = 19,
         #endregion Service metadataTables.
     }
 }

@@ -33,6 +33,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
                 MessageType.BuildDirectoryStandardOfSolution => MessageDescription.BuildDirectoryStandardOfSolution,
                 MessageType.DirectoryRootIsEmpty => MessageDescription.DirectoryRootIsEmpty,
                 MessageType.InvalidBase64 => MessageDescription.InvalidBase64,
+                MessageType.MessageUdpArchitectureIsOk => MessageDescription.MessageUdpArchitectureIsOk,
                 _ => MessageDescription.NoMessage
             };
         }

@@ -11,6 +11,12 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Models
         public string? DatabaseSchema { get; set; }
 
         /// <summary>
+        /// Architecture.
+        /// </summary>
+        [Required]
+        public int Architecture { get; set; }
+
+        /// <summary>
         /// Identify of development Environment.
         /// </summary>
         [Required]
