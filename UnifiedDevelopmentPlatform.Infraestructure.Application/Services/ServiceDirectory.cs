@@ -108,7 +108,12 @@ namespace UnifiedDevelopmentPlatform.Application.Services
                 {
                     for (int i = 0; i < Enum.GetValues(typeof(DirectoryRootType)).Length; i++)
                     {
-                        if ((DirectoryRootType)i != DirectoryRootType.App || (DirectoryRootType)i != DirectoryRootType.Configuration || (DirectoryRootType)i != DirectoryRootType.Backend || (DirectoryRootType)i != DirectoryRootType.Frontend || (DirectoryRootType)i != DirectoryRootType.Json || (DirectoryRootType)i != DirectoryRootType.Log || (DirectoryRootType)i != DirectoryRootType.Xml)
+                        if ((DirectoryRootType)i == DirectoryRootType.Backend || (DirectoryRootType)i == DirectoryRootType.Frontend)
+                        {
+                            continue;
+                        }
+
+                        if ((DirectoryRootType)i != DirectoryRootType.App || (DirectoryRootType)i != DirectoryRootType.Configuration || (DirectoryRootType)i != DirectoryRootType.Json || (DirectoryRootType)i != DirectoryRootType.Log || (DirectoryRootType)i != DirectoryRootType.Xml)
                         {
                             this.UDPLoadDirectory($"{DirectoryRoot.DirectoryRootPath}{this.UDPObtainDirectoryRoot((DirectoryRootType)i)}");
                         }
@@ -187,6 +192,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             {
                 return false;
             }
+
             return true;
         }
     }
