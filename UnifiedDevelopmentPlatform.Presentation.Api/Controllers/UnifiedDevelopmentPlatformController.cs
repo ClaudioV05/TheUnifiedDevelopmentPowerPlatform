@@ -105,7 +105,7 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Controllers
         [ProducesResponseType(StatusCodes.Status503ServiceUnavailable)]
         [ProducesResponseType(StatusCodes.Status504GatewayTimeout)]
         [DisableCors]
-        public ActionResult<List<string>> MetadataAllFieldsName([BindRequired] MetadataOwner metadata)
+        public ActionResult<List<string>> MetadataAllFieldsName([BindRequired] AppMetadata metadata)
         {
             // Here enter with field name only. Load the property [Fields].
             // Return the table name and your fields.

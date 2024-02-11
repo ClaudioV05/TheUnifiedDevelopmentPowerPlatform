@@ -78,6 +78,13 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Filters
                     HasMessage(context, message);
                     return;
                 }
+
+                if (!_serviceValidation.UDPArchitectureOk(context, ref message))
+                {
+                    _serviceLog.UDPLogReport(message);
+                    HasMessage(context, message);
+                    return;
+                }
             }
             catch (Exception)
             {

@@ -92,6 +92,14 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             return _serviceFuncStrings.UDPNullOrEmpty(message);
         }
 
+        public bool UDPArchitectureOk(dynamic context, ref string message)
+        {
+            dynamic? obj = null;
+            context.ActionArguments.TryGetValue(ControllerFilterActionName.Metadata, out obj);
+            message = obj?.Architecture <= 0 ? _serviceMessage.UDPMensagem(MessageType.MessageUdpArchitectureIsOk) : _serviceFuncStrings.Empty;
+            return _serviceFuncStrings.UDPNullOrEmpty(message);
+        }
+
         #endregion Validation for Filters Actions Context Tables and Fields.
 
         #region Validation for Files.
