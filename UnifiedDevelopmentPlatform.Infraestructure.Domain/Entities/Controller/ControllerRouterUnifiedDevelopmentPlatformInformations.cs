@@ -32,5 +32,10 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Controller
         /// Route databases engine.
         /// </summary>
         public const string RouterDatabasesEngine = "/DatabasesEngine";
+
+        /// <summary>
+        /// Route informations.
+        /// </summary>
+        public const string RouterInformations = "/Informations";
     }
 }

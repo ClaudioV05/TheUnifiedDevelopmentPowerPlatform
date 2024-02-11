@@ -8,16 +8,16 @@
         /// <summary>
         /// Create table position.
         /// </summary>
-        public static int CreateTablePosition { get; set; } = 13;
+        public static int CreateTablePosition => 13;
 
         /// <summary>
         /// Create table default position.
         /// </summary>
-        public static int CreateTableDefaultPosition { get; set; } = 5;
+        public static int CreateTableDefaultPosition => 5;
 
         /// <summary>
         /// Create table with space.
         /// </summary>
-        public static string CreateTableWithSpace { get; set; } = "create table ";
+        public static string CreateTableWithSpace => "create table ";
     }
 }

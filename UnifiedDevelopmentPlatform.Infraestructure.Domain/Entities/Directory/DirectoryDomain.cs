@@ -11,16 +11,16 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Directory
         /// <summary>
         /// Domain.
         /// </summary>
-        public static string Domain { get; } = "\\3-Domain";
+        public static string Domain => "\\3-Domain";
 
         /// <summary>
         /// Interfaces.
         /// </summary>
-        public static string Interfaces { get; } = "\\Interfaces";
+        public static string Interfaces => "\\Interfaces";
 
         /// <summary>
         /// Entities.
         /// </summary>
-        public static string Entities { get; } = "\\Entities";
+        public static string Entities => "\\Entities";
     }
 }

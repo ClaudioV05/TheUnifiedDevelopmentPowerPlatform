@@ -34,17 +34,6 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         public string UDPSerializerJson(object obj)
         {
             return System.Text.Json.JsonSerializer.Serialize(obj, _jsonOptions);
-
-        }
-
-        public object UDPDesSerializerJsonToApp(string json)
-        {
-            return System.Text.Json.JsonSerializer.Deserialize<JsonApp>(json, _jsonOptions) ?? new JsonApp() { };
-        }
-
-        public object UDPDesSerializerJsonToConfiguration(string json)
-        {
-            return System.Text.Json.JsonSerializer.Deserialize<JsonConfiguration>(json, _jsonOptions) ?? new JsonConfiguration() { };
         }
     }
 }

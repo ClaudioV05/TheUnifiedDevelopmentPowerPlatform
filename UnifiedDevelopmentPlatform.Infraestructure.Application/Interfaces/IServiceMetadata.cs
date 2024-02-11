@@ -42,5 +42,11 @@ namespace UnifiedDevelopmentPlatform.Application.Interfaces
         /// </summary>
         /// <returns>List of databases engine</returns>
         List<DatabasesEngine> UDPObtainTheListOfDatabasesEngine();
+
+        /// <summary>
+        /// Return the information about Unified development platform.
+        /// </summary>
+        /// <returns>Information about Unified development platform.</returns>
+        string UDPObtainInformationUnifiedDevelopmentPlatform();
     }
 }

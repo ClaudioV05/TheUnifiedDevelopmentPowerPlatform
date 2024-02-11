@@ -11,21 +11,21 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.OpenApi
         /// <summary>
         /// Version.
         /// </summary>
-        public static string Version { get; } = "v1";
+        public static string Version => "v1";
 
         /// <summary>
         /// Title.
         /// </summary>
-        public static string Title { get; } = "UNIFIED DEVELOPMENT PLATFORM";
+        public static string Title => "UNIFIED DEVELOPMENT PLATFORM";
 
         /// <summary>
         /// Description.
         /// </summary>
-        public static string Description { get; } = "Generator of Class to C#";
+        public static string Description => "Generator of Class to C#";
 
         /// <summary>
         /// Terms of service.
         /// </summary>
-        public static string TermsOfService { get; } = "https://claudiomildo.net/terms";
+        public static string TermsOfService => "https://claudiomildo.net/terms";
     }
 }

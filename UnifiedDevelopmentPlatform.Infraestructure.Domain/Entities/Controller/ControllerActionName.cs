@@ -11,11 +11,11 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Controller
         /// <summary>
         /// MetadataAllTablesName.
         /// </summary>
-        public static string MetadataAllTablesName = "MetadataAllTablesName";
+        public static string MetadataAllTablesName => "MetadataAllTablesName";
 
         /// <summary>
         /// MetadataAllFieldsName.
         /// </summary>
-        public static string MetadataAllFieldsName = "MetadataAllFieldsName";
+        public static string MetadataAllFieldsName => "MetadataAllFieldsName";
     }
 }

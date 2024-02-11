@@ -1,5 +1,6 @@
 ﻿using UnifiedDevelopmentPlatform.Application.Interfaces;
 using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities;
+using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.UnifiedDevelopmentPlatformInformation;
 
 namespace UnifiedDevelopmentPlatform.Application.Services
 {
@@ -9,6 +10,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
     public class ServiceMetadata : IServiceMetadata
     {
         private readonly IServiceForm _serviceForm;
+        private readonly IServiceJson _serviceJson;
         private readonly IServiceDatabase _serviceDatabase;
         private readonly IServiceDatabaseEngine _serviceDatabaseEngine;
         private readonly IServiceMetadataTable _serviceMetadataTables;
@@ -18,12 +20,15 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         /// The constructor of Service Metadata.
         /// </summary>
         /// <param name="serviceForm"></param>
+        /// <param name="serviceJson"></param>
         /// <param name="serviceDatabase"></param>
+        /// <param name="serviceDatabaseEngine"></param>
         /// <param name="serviceMetadataTables"></param>
         /// <param name="serviceDevelopmentEnvironment"></param>
-        public ServiceMetadata(IServiceForm serviceForm, IServiceDatabase serviceDatabase, IServiceDatabaseEngine serviceDatabaseEngine, IServiceMetadataTable serviceMetadataTables, IServiceDevelopmentEnvironment serviceDevelopmentEnvironment)
+        public ServiceMetadata(IServiceForm serviceForm, IServiceJson serviceJson, IServiceDatabase serviceDatabase, IServiceDatabaseEngine serviceDatabaseEngine, IServiceMetadataTable serviceMetadataTables, IServiceDevelopmentEnvironment serviceDevelopmentEnvironment)
         {
             _serviceForm = serviceForm;
+            _serviceJson = serviceJson;
             _serviceDatabase = serviceDatabase;
             _serviceDatabaseEngine = serviceDatabaseEngine;
             _serviceMetadataTables = serviceMetadataTables;
@@ -58,6 +63,13 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         public List<DatabasesEngine> UDPObtainTheListOfDatabasesEngine()
         {
             return _serviceDatabaseEngine.UDPObtainTheListOfDatabasesEngine();
+        }
+
+        public string UDPObtainInformationUnifiedDevelopmentPlatform()
+        {
+            var aux = new UnifiedDevelopmentPlatformInformation();
+
+           return _serviceJson.UDPSerializerJson(aux);
         }
     }
 }

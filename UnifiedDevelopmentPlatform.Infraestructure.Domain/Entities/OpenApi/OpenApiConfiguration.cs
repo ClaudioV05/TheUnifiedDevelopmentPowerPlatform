@@ -11,11 +11,11 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.OpenApi
         /// <summary>
         /// Endpoint.
         /// </summary>
-        public static string Endpoint { get; } = "/swagger/v1/swagger.json";
+        public static string Endpoint => "/swagger/v1/swagger.json";
 
         /// <summary>
         /// Style Sheet.
         /// </summary>
-        public static string StyleSheet { get; } = "/swagger-ui/custom.css";
+        public static string StyleSheet => "/swagger-ui/custom.css";
     }
 }
