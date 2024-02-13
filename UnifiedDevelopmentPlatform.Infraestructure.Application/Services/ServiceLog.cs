@@ -50,11 +50,10 @@ namespace UnifiedDevelopmentPlatform.Application.Services
 
         public void UDPLogReport(string? message)
         {
-            string json = string.Empty;
-            string path = string.Empty;
+            string directoryConfiguration = string.Empty;
             string caracter = string.Empty;
 
-            path = _serviceDirectory.UDPObtainDirectory(DirectoryRootType.Configuration);
+            directoryConfiguration = _serviceDirectory.UDPObtainDirectory(DirectoryRootType.Configuration);
 
             if (!_serviceFuncStrings.UDPStringStarts(message, MessageDescription.Initial))
             {
@@ -63,7 +62,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
 
             StackFrame stackFrame = new StackFrame(1, true);
 
-            _serviceFile.UDPAppendAllText($"{path}{DirectoryStandard.Log}{FileStandard.Log}{FileExtension.Txt}",
+            _serviceFile.UDPAppendAllText($"{directoryConfiguration}{DirectoryStandard.Log}{FileStandard.Log}{FileExtension.Txt}",
                                           $"{caracter}{_serviceDate.UDPGetDateTimeNowFormat()} > File [{_serviceFile.UDPGetFileName(stackFrame.GetFileName())}] Line Number [{stackFrame.GetFileLineNumber()}] [{_serviceFuncStrings.UDPUpper(message)}]");
         }
     }
