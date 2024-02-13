@@ -58,10 +58,10 @@
         /// <summary>
         /// Append all text in existing file.
         /// </summary>
-        /// <param name="pathWithFile"></param>
+        /// <param name="path"></param>
         /// <param name="content"></param>
         /// <returns></returns>
-        void UDPAppendAllText(string pathWithFile, string content);
+        void UDPAppendAllText(string path, string content);
 
         /// <summary>
         /// Get the file name.

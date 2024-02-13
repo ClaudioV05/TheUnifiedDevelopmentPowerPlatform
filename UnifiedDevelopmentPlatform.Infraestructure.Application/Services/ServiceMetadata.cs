@@ -40,12 +40,19 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             _serviceDevelopmentEnvironment = serviceDevelopmentEnvironment;
         }
 
-        public List<string> UDPReceiveAndSaveAllTableOfSchemaDatabase(MetadataOwner? metadata)
+        public List<string> UDPReceiveAndSaveAllTableOfSchemaDatabase(MetadataOwner metadata)
         {
-            return _serviceMetadataTables.UDPMetadataAllTablesName(metadata);
+            List<string> result = _serviceMetadataTables.UDPListWithTablesNameOfMetadata(metadata);
+
+            if (result != null && result.Any())
+            {
+                _serviceMetadataTables.UDPSaveDatabaseSchemaFromMetadata(metadata);
+            }
+
+            return result;
         }
 
-        public void UDPReceiveAndSaveAllTableAndFieldsOfSchemaDatabase(MetadataOwner? metadata)
+        public void UDPReceiveAndSaveAllTableAndFieldsOfSchemaDatabase(MetadataOwner metadata)
         {
             throw new NotImplementedException();
         }
