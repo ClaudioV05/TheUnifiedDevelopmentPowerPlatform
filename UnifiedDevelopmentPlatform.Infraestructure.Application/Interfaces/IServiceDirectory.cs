@@ -24,6 +24,6 @@ namespace UnifiedDevelopmentPlatform.Application.Interfaces
         /// </summary>
         /// <param name="directoryRootType"></param>
         /// <returns></returns>
-        string UDPObtainDirectoryRoot(DirectoryRootType directoryRootType);
+        string UDPObtainDirectory(DirectoryRootType directoryRootType);
     }
 }
