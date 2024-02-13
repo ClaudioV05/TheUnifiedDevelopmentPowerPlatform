@@ -17,7 +17,9 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities
             [Description("Not Defined")]
             NotDefined = 0,
             [Description("Domain Driven Design")]
-            DomainDrivenDesign = 1
+            DDD = 1,
+            [Description("Command Query Responsibility Segregation")]
+            CQRS = 2
         }
 
         /// <summary>

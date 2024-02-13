@@ -7,7 +7,7 @@ using UnifiedDevelopmentPlatform.Presentation.Api.Models;
 
 namespace UnifiedDevelopmentPlatform.Presentation.Api.Filters
 {
-    public class FilterActionContextTables<T> : IAsyncActionFilter where T : class, IEntity
+    internal sealed class FilterActionContextTables<T> : IAsyncActionFilter where T : class, IEntity
     {
         private readonly IServiceLog _serviceLog;
         private readonly IServiceMessage _serviceMessage;

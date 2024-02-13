@@ -1,4 +1,5 @@
 ﻿using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities;
+using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.UnifiedDevelopmentPlatformInformation;
 
 namespace UnifiedDevelopmentPlatform.Application.Interfaces
 {
@@ -44,9 +45,15 @@ namespace UnifiedDevelopmentPlatform.Application.Interfaces
         List<DatabasesEngine> UDPObtainTheListOfDatabasesEngine();
 
         /// <summary>
+        /// Return the full list of all architectures.
+        /// </summary>
+        /// <returns>List of architecture</returns>
+        List<Architectures> UDPObtainTheListOfArchitectures();
+
+        /// <summary>
         /// Return the information about Unified development platform.
         /// </summary>
         /// <returns>Information about Unified development platform.</returns>
-        string UDPObtainInformationUnifiedDevelopmentPlatform();
+        UnifiedDevelopmentPlatformInformation UDPObtainInformationUnifiedDevelopmentPlatform();
     }
 }

@@ -10,6 +10,8 @@ using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.OpenApi;
 using UnifiedDevelopmentPlatform.Presentation.Api.Extensions;
 using UnifiedDevelopmentPlatform.Presentation.Api.Filters;
 using UnifiedDevelopmentPlatform.Presentation.Api.Swagger;
+using static UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.DatabasesEngine;
+using static UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.DevelopmentEnvironment;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -59,10 +61,10 @@ builder.Services.AddMvc().AddMvcOptions(options => options.OutputFormatters.Add(
 
 #region Action Filters.
 
-builder.Services.TryAddScoped<FilterActionContextController>();
-builder.Services.TryAddScoped<FilterActionContextLog>();
-builder.Services.TryAddScoped<FilterActionContextFields<MetadataOwner>>();
-builder.Services.TryAddScoped<FilterActionContextTables<MetadataOwner>>();
+builder.Services.TryAddTransient<FilterActionContextController>();
+builder.Services.TryAddTransient<FilterActionContextLog>();
+builder.Services.TryAddTransient<FilterActionContextFields<MetadataOwner>>();
+builder.Services.TryAddTransient<FilterActionContextTables<MetadataOwner>>();
 
 #endregion Action Filters.
 
@@ -70,6 +72,7 @@ builder.Services.TryAddScoped<FilterActionContextTables<MetadataOwner>>();
 
 #region Services.
 builder.Services.TryAddScoped<IServiceAppSettings, ServiceAppSettings>();
+builder.Services.TryAddScoped<IServiceArchitecture, ServiceArchitecture>();
 builder.Services.TryAddScoped<IServiceCrypto, ServiceCrypto>();
 builder.Services.TryAddScoped<IServiceDatabase, ServiceDatabase>();
 builder.Services.TryAddScoped<IServiceDatabaseEngine, ServiceDatabaseEngine>();
@@ -77,7 +80,8 @@ builder.Services.TryAddScoped<IServiceDate, ServiceDate>();
 builder.Services.TryAddScoped<IServiceDevelopmentEnvironment, ServiceDevelopmentEnvironment>();
 builder.Services.TryAddScoped<IServiceDirectory, ServiceDirectory>();
 builder.Services.TryAddScoped<IServiceEnvironment, ServiceEnvironment>();
-builder.Services.TryAddScoped<IServiceEnumerated, ServiceEnumerated>();
+builder.Services.TryAddScoped<IServiceEnumerated<EnumDevelopmentEnvironment, DevelopmentEnvironment>, ServiceEnumerated<EnumDevelopmentEnvironment, DevelopmentEnvironment>>();
+builder.Services.TryAddScoped<IServiceEnumerated<EnumDatabasesEngine, DatabasesEngine>, ServiceEnumerated<EnumDatabasesEngine, DatabasesEngine>>();
 builder.Services.TryAddScoped<IServiceFile, ServiceFile>();
 builder.Services.TryAddScoped<IServiceForm, ServiceForm>();
 builder.Services.TryAddScoped<IServiceFuncString, ServiceFuncString>();

@@ -6,32 +6,32 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.UnifiedDeve
     /// <summary>
     /// Unified development platform information.
     /// </summary>
-    public record UnifiedDevelopmentPlatformInformation
+    public class UnifiedDevelopmentPlatformInformation
     {
         /// <summary>
         /// Title.
         /// </summary>
-        public static string Title => "UNIFIED DEVELOPMENT PLATFORM";
+        public string Title => "UNIFIED DEVELOPMENT PLATFORM";
 
         /// <summary>
         /// Name.
         /// </summary>
-        public static string Name => "UnifiedDevelopmentPlatformInformation";
+        public string Name => "UnifiedDevelopmentPlatformInformation";
 
         /// <summary>
         /// Abreviation.
         /// </summary>
-        public static string Abreviation => "UDP";
+        public string Abreviation => "UDP";
 
         /// <summary>
         /// Version.
         /// </summary>
-        public static string Version => "v1";
+        public string Version => "v1";
 
         /// <summary>
         /// Information.
         /// </summary>
-        public static string Information => "This program generates 'MVC' standard class files for the 'Delphi', 'Lazarus' and '.NET' Development Ide, from a text file containing the metadata of one or more tables.\n" +
+        public string Information => "This program generates 'MVC' standard class files for the 'Delphi', 'Lazarus' and '.NET' Development Ide, from a text file containing the metadata of one or more tables.\n" +
                    "It is based on GeraClasseDelphi version 6.0. The difference is that it generates the files according to the 'MVC' project pattern,\n" +
                    "generating the Dao, Model, Controller and View files in corresponding folders.Views, Normal and Mdi style forms are created.\n\n" +
 
