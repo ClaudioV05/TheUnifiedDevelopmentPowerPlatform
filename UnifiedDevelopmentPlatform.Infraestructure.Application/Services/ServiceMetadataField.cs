@@ -11,10 +11,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         /// <summary>
         /// The constructor of Service Metadata Fields.
         /// </summary>
-        public ServiceMetadataField()
-        {
-
-        }
+        public ServiceMetadataField() { }
 
         public List<string> UDPMetadataTableAndAllFields(MetadataOwner? metadata)
         {

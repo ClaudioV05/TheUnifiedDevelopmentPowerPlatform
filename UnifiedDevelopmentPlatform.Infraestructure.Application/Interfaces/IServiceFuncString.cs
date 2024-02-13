@@ -84,6 +84,13 @@
         string UDPLower(string text);
 
         /// <summary>
+        /// Lower in list.
+        /// </summary>
+        /// <param name="text"></param>
+        /// <returns></returns>
+        IEnumerable<string> UDPLowerInList(string text);
+
+        /// <summary>
         /// If string contains caracther null or empty.
         /// </summary>
         /// <param name="text"></param>

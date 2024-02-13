@@ -11,11 +11,11 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.OpenApi
         /// <summary>
         /// Name.
         /// </summary>
-        public static string Name { get; } = "Information about the license.";
+        public static string Name => "Information about the license.";
 
         /// <summary>
         /// Url.
         /// </summary>
-        public static string Url { get; } = "https://claudiomildo.net/license";
+        public static string Url => "https://claudiomildo.net/license";
     }
 }

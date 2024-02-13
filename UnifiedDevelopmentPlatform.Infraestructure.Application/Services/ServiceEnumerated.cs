@@ -1,46 +1,36 @@
-﻿using System.ComponentModel;
-using System.Reflection;
-using UnifiedDevelopmentPlatform.Application.Interfaces;
+﻿using UnifiedDevelopmentPlatform.Application.Interfaces;
 
 namespace UnifiedDevelopmentPlatform.Application.Services
 {
     /// <summary>
     /// Service Enumerated.
     /// </summary>
-    public class ServiceEnumerated : IServiceEnumerated
+    public class ServiceEnumerated<T, U> : IServiceEnumerated<T, U> where T : struct where U : class, new()
     {
         /// <summary>
         /// The constructor of Service Enumerated.
         /// </summary>
-        public ServiceEnumerated()
+        public ServiceEnumerated() { }
+
+        public List<U> UDPObtainListItem(T UdpEnumerated, U obj)
         {
+            List<U> listItems = new List<U>();
 
-        }
+            obj.GetType().GetProperties();
 
-        public string GetEnumDescription(Enum value)
-        {
-            FieldInfo fi = value.GetType().GetField(value.ToString());
-
-            DescriptionAttribute[] attributes = fi.GetCustomAttributes(typeof(DescriptionAttribute), false) as DescriptionAttribute[];
-
-            if (attributes != null && attributes.Any())
-            {
-                return attributes.First().Description;
-            }
-
-            return value.ToString();
-        }
-
-        public List<Enum> ListOfEnumerated(Enum MyEnum)
-        {
             try
             {
-                return Enum.GetNames(typeof(Enum)).Cast<Enum>().ToList();
+                if (Enum.GetValues(typeof(T)) != null && Enum.GetValues(typeof(T)).Length > 0)
+                {
+                    for (int i = 0; i < Enum.GetValues(typeof(T)).Length; i++)
+                    {
+                        //listItems.Add(new U() { properties[0].Name = NameEnumeration = Enum.GetName(typeof(T), i) });
+                    }
+                }
             }
-            catch (InvalidCastException)
-            {
-                return new List<Enum>();
-            }
+            catch (OverflowException) { }
+
+            return listItems;
         }
     }
 }

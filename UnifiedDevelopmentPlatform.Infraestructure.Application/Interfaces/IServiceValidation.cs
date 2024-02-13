@@ -75,6 +75,14 @@
         /// <returns>Return true otherwise false.</returns>
         bool UDPFormIsOk(dynamic context, ref string message);
 
+        /// <summary>
+        /// Does Validation for architecture.
+        /// </summary>
+        /// <param name="context"></param>
+        /// <param name="message"></param>
+        /// <returns>Return true otherwise false.</returns>
+        bool UDPArchitectureOk(dynamic context, ref string message);
+
         #endregion Validation for Filters Actions Context Tables and Fields.
 
         #region Validation for Files.

@@ -12,10 +12,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         /// <summary>
         /// The constructor of Service database engine.
         /// </summary>
-        public ServiceDatabaseEngine()
-        {
-
-        }
+        public ServiceDatabaseEngine() { }
 
         public List<DatabasesEngine> UDPObtainTheListOfDatabasesEngine()
         {

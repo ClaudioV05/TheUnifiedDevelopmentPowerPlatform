@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace UnifiedDevelopmentPlatform.Presentation.Api.Filters
 {
-    public class FilterActionContextLog : IAsyncActionFilter
+    internal sealed class FilterActionContextLog : IAsyncActionFilter
     {
         private readonly IServiceLog _serviceLog;
 

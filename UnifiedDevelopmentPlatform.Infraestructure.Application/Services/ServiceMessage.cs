@@ -11,10 +11,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         /// <summary>
         /// The constructor of Service Message.
         /// </summary>
-        public ServiceMessage()
-        {
-
-        }
+        public ServiceMessage() { }
 
         public string UDPMensagem(MessageType messageType)
         {
@@ -36,6 +33,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
                 MessageType.BuildDirectoryStandardOfSolution => MessageDescription.BuildDirectoryStandardOfSolution,
                 MessageType.DirectoryRootIsEmpty => MessageDescription.DirectoryRootIsEmpty,
                 MessageType.InvalidBase64 => MessageDescription.InvalidBase64,
+                MessageType.MessageUdpArchitectureIsOk => MessageDescription.MessageUdpArchitectureIsOk,
                 _ => MessageDescription.NoMessage
             };
         }

@@ -1,5 +1,6 @@
 ﻿using UnifiedDevelopmentPlatform.Application.Interfaces;
 using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities;
+using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.UnifiedDevelopmentPlatformInformation;
 
 namespace UnifiedDevelopmentPlatform.Application.Services
 {
@@ -10,8 +11,9 @@ namespace UnifiedDevelopmentPlatform.Application.Services
     {
         private readonly IServiceForm _serviceForm;
         private readonly IServiceDatabase _serviceDatabase;
-        private readonly IServiceDatabaseEngine _serviceDatabaseEngine;
+        private readonly IServiceArchitecture _serviceArchitecture;
         private readonly IServiceMetadataTable _serviceMetadataTables;
+        private readonly IServiceDatabaseEngine _serviceDatabaseEngine;
         private readonly IServiceDevelopmentEnvironment _serviceDevelopmentEnvironment;
 
         /// <summary>
@@ -19,11 +21,19 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         /// </summary>
         /// <param name="serviceForm"></param>
         /// <param name="serviceDatabase"></param>
+        /// <param name="serviceArchitecture"></param>
         /// <param name="serviceMetadataTables"></param>
+        /// <param name="serviceDatabaseEngine"></param>
         /// <param name="serviceDevelopmentEnvironment"></param>
-        public ServiceMetadata(IServiceForm serviceForm, IServiceDatabase serviceDatabase, IServiceDatabaseEngine serviceDatabaseEngine, IServiceMetadataTable serviceMetadataTables, IServiceDevelopmentEnvironment serviceDevelopmentEnvironment)
+        public ServiceMetadata(IServiceForm serviceForm,
+                               IServiceDatabase serviceDatabase,
+                               IServiceArchitecture serviceArchitecture,
+                               IServiceMetadataTable serviceMetadataTables,
+                               IServiceDatabaseEngine serviceDatabaseEngine,
+                               IServiceDevelopmentEnvironment serviceDevelopmentEnvironment)
         {
             _serviceForm = serviceForm;
+            _serviceArchitecture = serviceArchitecture;
             _serviceDatabase = serviceDatabase;
             _serviceDatabaseEngine = serviceDatabaseEngine;
             _serviceMetadataTables = serviceMetadataTables;
@@ -58,6 +68,16 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         public List<DatabasesEngine> UDPObtainTheListOfDatabasesEngine()
         {
             return _serviceDatabaseEngine.UDPObtainTheListOfDatabasesEngine();
+        }
+
+        public List<Architectures> UDPObtainTheListOfArchitectures()
+        {
+            return _serviceArchitecture.UDPObtainTheListOfArchitectures();
+        }
+
+        public UnifiedDevelopmentPlatformInformation UDPObtainInformationUnifiedDevelopmentPlatform()
+        {
+            return new UnifiedDevelopmentPlatformInformation() { };
         }
     }
 }

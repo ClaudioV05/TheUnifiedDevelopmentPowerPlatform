@@ -13,10 +13,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         /// <summary>
         /// The constructor of Service Crypto.
         /// </summary>
-        public ServiceCrypto()
-        {
-
-        }
+        public ServiceCrypto() { }
 
         public string UPDEncrypt(string value)
         {

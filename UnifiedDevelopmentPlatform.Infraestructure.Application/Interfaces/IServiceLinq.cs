@@ -1,4 +1,5 @@
 ﻿using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities;
+using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Directory;
 
 namespace UnifiedDevelopmentPlatform.Application.Interfaces
 {

@@ -12,10 +12,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         /// <summary>
         /// The constructor of Service development environment.
         /// </summary>
-        public ServiceDevelopmentEnvironment()
-        {
-
-        }
+        public ServiceDevelopmentEnvironment() { }
 
         public List<DevelopmentEnvironment> UDPObtainTheListOfDevelopmentEnviroment()
         {

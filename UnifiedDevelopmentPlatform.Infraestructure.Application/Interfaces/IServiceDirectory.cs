@@ -1,4 +1,6 @@
-﻿namespace UnifiedDevelopmentPlatform.Application.Interfaces
+﻿using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Directory;
+
+namespace UnifiedDevelopmentPlatform.Application.Interfaces
 {
     /// <summary>
     /// Interface service Directory.
@@ -18,15 +20,10 @@
         void UPDBuildDirectoryStandardOfSolution();
 
         /// <summary>
-        /// Get root path file in Configuration.
+        /// Obtain directory root.
         /// </summary>
-        /// <returns>Return the root path of configuration in Unified development platform.</returns>
-        string UDPGetRootPathFileInConfiguration(string fileName);
-
-        /// <summary>
-        /// Get root path file in App.
-        /// </summary>
-        /// <returns>Return the root path of configuration in Unified development platform.</returns>
-        string UDPGetRootPathFileInApp(string fileName);
+        /// <param name="directoryRootType"></param>
+        /// <returns></returns>
+        string UDPObtainDirectory(DirectoryRootType directoryRootType);
     }
 }

@@ -10,10 +10,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         /// <summary>
         /// The constructor of Service App Settings.
         /// </summary>
-        public ServiceAppSettings()
-        {
-
-        }
+        public ServiceAppSettings() { }
 
         public void UPDAddAppSettings(string path, string key, string value)
         {

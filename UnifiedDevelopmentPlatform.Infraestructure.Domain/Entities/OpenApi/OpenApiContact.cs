@@ -11,16 +11,16 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.OpenApi
         /// <summary>
         /// Name.
         /// </summary>
-        public static string Name { get; } = "CLAUDIOMILDO VENTURA";
+        public static string Name => "CLAUDIOMILDO VENTURA";
 
         /// <summary>
         /// Email.
         /// </summary>
-        public static string Email { get; } = "claudiomildo@hotmail.com";
+        public static string Email => "claudiomildo@hotmail.com";
 
         /// <summary>
         /// Url.
         /// </summary>
-        public static string Url { get; } = "https://www.claudiomildo.net";
+        public static string Url => "https://www.claudiomildo.net";
     }
 }

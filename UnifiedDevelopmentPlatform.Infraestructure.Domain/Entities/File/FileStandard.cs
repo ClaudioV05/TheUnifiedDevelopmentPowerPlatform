@@ -11,16 +11,16 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.File
         /// <summary>
         /// App.
         /// </summary>
-        public static string App { get; } = "\\_app";
+        public static string App => "\\_app";
 
         /// <summary>
         /// Configuration.
         /// </summary>
-        public static string Configuration { get; } = "\\_configuration";
+        public static string Configuration => "\\_configuration";
 
         /// <summary>
         /// Log.
         /// </summary>
-        public static string Log { get; } = "\\_log";
+        public static string Log => "\\_log";
     }
 }

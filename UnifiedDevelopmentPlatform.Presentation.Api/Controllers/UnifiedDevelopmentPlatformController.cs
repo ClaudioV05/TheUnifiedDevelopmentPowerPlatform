@@ -55,7 +55,7 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Controllers
         [Route(ControllerRouterUnifiedDevelopmentPlatform.RouterMetadataAllTablesName)]
         [ServiceFilter(typeof(FilterActionContextLog), IsReusable = false, Order = ControllerOrderExecutationFilter.Second)]
         [ServiceFilter(typeof(FilterActionContextTables<MetadataOwner>), IsReusable = false, Order = ControllerOrderExecutationFilter.Third)]
-        [ProducesResponseType(typeof(List<string>), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<string>))]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
@@ -94,7 +94,7 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Controllers
         [Route(ControllerRouterUnifiedDevelopmentPlatform.RouterMetadataAllFieldsName)]
         [ServiceFilter(typeof(FilterActionContextLog), IsReusable = false, Order = ControllerOrderExecutationFilter.Second)]
         [ServiceFilter(typeof(FilterActionContextFields<MetadataOwner>), IsReusable = false, Order = ControllerOrderExecutationFilter.Third)]
-        [ProducesResponseType(typeof(List<string>), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<string>))]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
@@ -105,7 +105,7 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Controllers
         [ProducesResponseType(StatusCodes.Status503ServiceUnavailable)]
         [ProducesResponseType(StatusCodes.Status504GatewayTimeout)]
         [DisableCors]
-        public ActionResult<List<string>> MetadataAllFieldsName([BindRequired] MetadataOwner metadata)
+        public ActionResult<List<string>> MetadataAllFieldsName([BindRequired] AppMetadata metadata)
         {
             // Here enter with field name only. Load the property [Fields].
             // Return the table name and your fields.

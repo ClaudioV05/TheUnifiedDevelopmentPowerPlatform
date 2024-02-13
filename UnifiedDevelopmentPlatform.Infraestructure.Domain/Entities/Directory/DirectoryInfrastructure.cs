@@ -11,16 +11,16 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Directory
         /// <summary>
         /// Infrastructure.
         /// </summary>
-        public static string Infrastructure { get; } = "\\4-Infrastructure";
+        public static string Infrastructure => "\\4-Infrastructure";
 
         /// <summary>
         /// Cross Cutting.
         /// </summary>
-        public static string CrossCutting { get; } = "\\CrossCutting";
+        public static string CrossCutting => "\\CrossCutting";
 
         /// <summary>
         /// Data.
         /// </summary>
-        public static string Data { get; } = "\\Data";
+        public static string Data => "\\Data";
     }
 }

@@ -6,7 +6,7 @@ using UnifiedDevelopmentPlatform.Presentation.Api.Models;
 
 namespace UnifiedDevelopmentPlatform.Presentation.Api.Filters
 {
-    public class FilterActionContextController : IAsyncActionFilter
+    internal sealed class FilterActionContextController : IAsyncActionFilter
     {
         private readonly IServiceLog _serviceLog;
         private readonly IServiceMessage _serviceMessage;

@@ -7,7 +7,7 @@ using UnifiedDevelopmentPlatform.Presentation.Api.Models;
 
 namespace UnifiedDevelopmentPlatform.Presentation.Api.Filters
 {
-    public class FilterActionContextTables<T> : IAsyncActionFilter where T : class, IEntity
+    internal sealed class FilterActionContextTables<T> : IAsyncActionFilter where T : class, IEntity
     {
         private readonly IServiceLog _serviceLog;
         private readonly IServiceMessage _serviceMessage;
@@ -73,6 +73,13 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Filters
                 }
 
                 if (!_serviceValidation.UDPFormIsOk(context, ref message))
+                {
+                    _serviceLog.UDPLogReport(message);
+                    HasMessage(context, message);
+                    return;
+                }
+
+                if (!_serviceValidation.UDPArchitectureOk(context, ref message))
                 {
                     _serviceLog.UDPLogReport(message);
                     HasMessage(context, message);

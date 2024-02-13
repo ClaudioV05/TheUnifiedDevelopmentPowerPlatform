@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
+using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities;
 
 namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Controller
 {
@@ -32,5 +33,15 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Controller
         /// Route databases engine.
         /// </summary>
         public const string RouterDatabasesEngine = "/DatabasesEngine";
+
+        /// <summary>
+        /// Route architectures.
+        /// </summary>
+        public const string RouterArchitectures = "/Architectures";
+
+        /// <summary>
+        /// Route informations.
+        /// </summary>
+        public const string RouterInformations = "/Informations";
     }
 }

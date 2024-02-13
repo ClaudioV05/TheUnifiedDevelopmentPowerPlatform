@@ -6,7 +6,7 @@ using UnifiedDevelopmentPlatform.Presentation.Api.Models;
 
 namespace UnifiedDevelopmentPlatform.Presentation.Api.Filters
 {
-    public class FilterActionContextFields<T> : IAsyncActionFilter where T : class, IEntity
+    internal sealed class FilterActionContextFields<T> : IAsyncActionFilter where T : class, IEntity
     {
         private readonly IServiceLog _serviceLog;
         private readonly IServiceValidation _serviceValidation;

@@ -9,14 +9,19 @@ namespace UnifiedDevelopmentPlatform.Application.Services
     /// </summary>
     public class ServiceValidation : IServiceValidation
     {
+        private readonly IServiceMessage _serviceMessage;
         private readonly IServiceFuncString _serviceFuncStrings;
         private readonly IServiceOperationalSystem _serviceOperationalSystem;
 
         /// <summary>
         /// The constructor of Service Validation.
         /// </summary>
-        public ServiceValidation(IServiceFuncString serviceFuncStrings, IServiceOperationalSystem serviceOperationalSystem)
+        /// <param name="serviceMessage"></param>
+        /// <param name="serviceFuncStrings"></param>
+        /// <param name="serviceOperationalSystem"></param>
+        public ServiceValidation(IServiceMessage serviceMessage, IServiceFuncString serviceFuncStrings, IServiceOperationalSystem serviceOperationalSystem)
         {
+            _serviceMessage = serviceMessage;
             _serviceFuncStrings = serviceFuncStrings;
             _serviceOperationalSystem = serviceOperationalSystem;
         }
@@ -25,7 +30,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
 
         public bool UDPPlatformWindowsIsOk(ref string message)
         {
-            message = !_serviceOperationalSystem.UPDOperationalSystemIsWindows() ? MessageDescription.PlatformIsWindowsErro : string.Empty;
+            message = !_serviceOperationalSystem.UPDOperationalSystemIsWindows() ? _serviceMessage.UDPMensagem(MessageType.PlatformIsWindowsErro) : string.Empty;
             return _serviceFuncStrings.UDPNullOrEmpty(message);
         }
 
@@ -35,55 +40,63 @@ namespace UnifiedDevelopmentPlatform.Application.Services
 
         public bool UDPModelStateIsOk(dynamic context, ref string message)
         {
-            message = !context.ModelState.IsValid ? MessageDescription.MessageUdpModelStateIsOk : _serviceFuncStrings.Empty;
+            message = !context.ModelState.IsValid ? _serviceMessage.UDPMensagem(MessageType.MessageUdpModelStateIsOk) : _serviceFuncStrings.Empty;
             return _serviceFuncStrings.UDPNullOrEmpty(message);
         }
 
         public bool UDPDatabaseSchemaIsOk(dynamic context, ref string message)
         {
             dynamic? obj = null;
-            context.ActionArguments.TryGetValue(ControllerFilterActionName.DatabaseSchema, out obj);
-            message = _serviceFuncStrings.UDPNullOrEmpty(obj?.ScriptMetadata) ? MessageDescription.MessageUdpScriptMetadataIsOk : _serviceFuncStrings.Empty;
+            context.ActionArguments.TryGetValue(ControllerFilterActionName.Metadata, out obj);
+            message = _serviceFuncStrings.UDPNullOrEmpty(obj?.DatabaseSchema) ? _serviceMessage.UDPMensagem(MessageType.MessageUdpScriptMetadataIsOk) : _serviceFuncStrings.Empty;
             return _serviceFuncStrings.UDPNullOrEmpty(message);
         }
 
         public bool UDPMetadataIsBase64Ok(dynamic context, ref string message)
         {
             dynamic? obj = null;
-            context.ActionArguments.TryGetValue(ControllerFilterActionName.DatabaseSchema, out obj);
-            message = !this.UDPValidateBase64(obj?.ScriptMetadata) ? MessageDescription.MessageUdpMetadataIsBase64Ok : _serviceFuncStrings.Empty;
+            context.ActionArguments.TryGetValue(ControllerFilterActionName.Metadata, out obj);
+            message = !this.UDPValidateBase64(obj?.DatabaseSchema) ? _serviceMessage.UDPMensagem(MessageType.MessageUdpMetadataIsBase64Ok) : _serviceFuncStrings.Empty;
             return _serviceFuncStrings.UDPNullOrEmpty(message);
         }
 
         public bool UDPDevelopmentEnvironmentIsOk(dynamic context, ref string message)
         {
             dynamic? obj = null;
-            context.ActionArguments.TryGetValue(ControllerFilterActionName.DatabaseSchema, out obj);
-            message = obj?.IdDevelopmentEnvironment <= 0 ? MessageDescription.MessageUdpDevelopmentEnvironmentIsOk : _serviceFuncStrings.Empty;
+            context.ActionArguments.TryGetValue(ControllerFilterActionName.Metadata, out obj);
+            message = obj?.IdDevelopmentEnvironment <= 0 ? _serviceMessage.UDPMensagem(MessageType.MessageUdpDevelopmentEnvironmentIsOk) : _serviceFuncStrings.Empty;
             return _serviceFuncStrings.UDPNullOrEmpty(message);
         }
 
         public bool UDPDatabasesIsOk(dynamic context, ref string message)
         {
             dynamic? obj = null;
-            context.ActionArguments.TryGetValue(ControllerFilterActionName.DatabaseSchema, out obj);
-            message = obj?.IdDatabases <= 0 ? MessageDescription.MessageUdpDatabasesIsOk : _serviceFuncStrings.Empty;
+            context.ActionArguments.TryGetValue(ControllerFilterActionName.Metadata, out obj);
+            message = obj?.IdDatabases <= 0 ? _serviceMessage.UDPMensagem(MessageType.MessageUdpDatabasesIsOk) : _serviceFuncStrings.Empty;
             return _serviceFuncStrings.UDPNullOrEmpty(message);
         }
 
         public bool UDPDatabasesEngineIsOk(dynamic context, ref string message)
         {
             dynamic? obj = null;
-            context.ActionArguments.TryGetValue(ControllerFilterActionName.DatabaseSchema, out obj);
-            message = obj?.IdDatabasesEngine <= 0 ? MessageDescription.MessageUdpDatabasesEngineIsOk : _serviceFuncStrings.Empty;
+            context.ActionArguments.TryGetValue(ControllerFilterActionName.Metadata, out obj);
+            message = obj?.IdDatabasesEngine <= 0 ? _serviceMessage.UDPMensagem(MessageType.MessageUdpDatabasesEngineIsOk) : _serviceFuncStrings.Empty;
             return _serviceFuncStrings.UDPNullOrEmpty(message);
         }
 
         public bool UDPFormIsOk(dynamic context, ref string message)
         {
             dynamic? obj = null;
-            context.ActionArguments.TryGetValue(ControllerFilterActionName.DatabaseSchema, out obj);
-            message = obj?.IdForms <= 0 ? MessageDescription.MessageDefaultToServiceValidation : _serviceFuncStrings.Empty;
+            context.ActionArguments.TryGetValue(ControllerFilterActionName.Metadata, out obj);
+            message = obj?.IdForms <= 0 ? _serviceMessage.UDPMensagem(MessageType.MessageDefaultToServiceValidation) : _serviceFuncStrings.Empty;
+            return _serviceFuncStrings.UDPNullOrEmpty(message);
+        }
+
+        public bool UDPArchitectureOk(dynamic context, ref string message)
+        {
+            dynamic? obj = null;
+            context.ActionArguments.TryGetValue(ControllerFilterActionName.Metadata, out obj);
+            message = obj?.Architecture <= 0 ? _serviceMessage.UDPMensagem(MessageType.MessageUdpArchitectureIsOk) : _serviceFuncStrings.Empty;
             return _serviceFuncStrings.UDPNullOrEmpty(message);
         }
 
@@ -135,7 +148,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
                 // If it is not you can return false. Quite effective
                 // Further, if it meets the above criterias, then test for spaces.
                 // If it contains spaces, it is not base64.
-                if (_serviceFuncStrings.UDPNullOrEmpty(text ?? string.Empty) ||
+                if (_serviceFuncStrings.UDPNullOrEmpty(text ?? _serviceFuncStrings.Empty) ||
                 text?.Length == 0 ||
                 text?.Length % 4 != 0 ||
                 text.Contains(' ') ||

@@ -11,36 +11,36 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Directory
         /// <summary>
         /// App.
         /// </summary>
-        public static string App { get; } = "\\App";
+        public static string App => "\\App";
 
         /// <summary>
         /// Backend.
         /// </summary>
-        public static string Backend { get; } = "\\Backend";
+        public static string Backend => "\\Backend";
 
         /// <summary>
         /// Frontend.
         /// </summary>
-        public static string Frontend { get; } = "\\Frontend";
+        public static string Frontend => "\\Frontend";
 
         /// <summary>
         /// Configuration.
         /// </summary>
-        public static string Configuration { get; } = "\\_Configuration";
+        public static string Configuration => "\\_Configuration";
 
         /// <summary>
         /// Json.
         /// </summary>
-        public static string Json { get; } = "\\Json";
+        public static string Json => "\\Json";
 
         /// <summary>
         /// Xml.
         /// </summary>
-        public static string Xml { get; } = "\\Xml";
+        public static string Xml => "\\Xml";
 
         /// <summary>
         /// Log.
         /// </summary>
-        public static string Log { get; } = "\\Log";
+        public static string Log => "\\Log";
     }
 }

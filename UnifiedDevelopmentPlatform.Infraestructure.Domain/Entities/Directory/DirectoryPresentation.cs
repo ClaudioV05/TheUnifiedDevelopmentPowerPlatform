@@ -11,36 +11,36 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Directory
         /// <summary>
         /// Presentation.
         /// </summary>
-        public static string Presentation { get; } = "\\1-Presentation";
+        public static string Presentation => "\\1-Presentation";
 
         /// <summary>
         /// Properties.
         /// </summary>
-        public static string Properties { get; } = "\\Properties";
+        public static string Properties => "\\Properties";
 
         /// <summary>
         /// Controllers.
         /// </summary>
-        public static string Controllers { get; } = "\\Controllers";
+        public static string Controllers => "\\Controllers";
 
         /// <summary>
         /// Extensions.
         /// </summary>
-        public static string Extensions { get; } = "\\Extensions";
+        public static string Extensions => "\\Extensions";
 
         /// <summary>
         /// Filters.
         /// </summary>
-        public static string Filters { get; } = "\\Filters";
+        public static string Filters => "\\Filters";
 
         /// <summary>
         /// Models.
         /// </summary>
-        public static string Models { get; } = "\\Models";
+        public static string Models => "\\Models";
 
         /// <summary>
         /// Swagger.
         /// </summary>
-        public static string Swagger { get; } = "\\Swagger";
+        public static string Swagger => "\\Swagger";
     }
 }

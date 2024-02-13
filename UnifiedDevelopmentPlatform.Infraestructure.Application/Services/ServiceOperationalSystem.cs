@@ -10,10 +10,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         /// <summary>
         /// The constructor of Service Operational System.
         /// </summary>
-        public ServiceOperationalSystem()
-        {
-
-        }
+        public ServiceOperationalSystem() { }
 
         public bool UPDOperationalSystemIsWindows()
         {
