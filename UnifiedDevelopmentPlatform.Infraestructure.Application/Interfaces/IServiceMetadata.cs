@@ -12,13 +12,13 @@ namespace UnifiedDevelopmentPlatform.Application.Interfaces
         /// Receive and save all tables of schema database.
         /// </summary>
         /// <returns>Ther list with the name of table</returns>
-        List<string> UDPReceiveAndSaveAllTableOfSchemaDatabase(MetadataOwner? metadata);
+        List<string> UDPReceiveAndSaveAllTableOfSchemaDatabase(MetadataOwner metadata);
 
         /// <summary>
         /// Receive and save all table and fields of schema database.
         /// </summary>
         /// <returns></returns>
-        void UDPReceiveAndSaveAllTableAndFieldsOfSchemaDatabase(MetadataOwner? metadata);
+        void UDPReceiveAndSaveAllTableAndFieldsOfSchemaDatabase(MetadataOwner metadata);
 
         /// <summary>
         /// Return the full list of all databases.
