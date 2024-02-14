@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations.Schema;
+using UnifiedDevelopmentPlatform.Infraestructure.Domain.Interfaces;
 
 namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities
 {
@@ -7,7 +8,7 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities
     /// Entity Development Environment.
     /// </summary>
     [ComplexType]
-    public class DevelopmentEnvironment
+    public class DevelopmentEnvironment : IEntity
     {
         /// <summary>
         /// Enum type for entitie DevelopmentEnvironment.
@@ -21,6 +22,10 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities
             [Description("VisualStudio")]
             VisualStudio = 2
         }
+
+        public long Id { get; set; }
+
+        public string Name { get; set; }
 
         /// <summary>
         /// Id Enumeration.

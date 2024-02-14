@@ -10,7 +10,9 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities
     [ComplexType]
     public sealed class MetadataOwner : IEntity
     {
-        public Guid Id { get; set; }
+        public long Id { get; set; }
+
+        public string Name { get; set; }
 
         /// <summary>
         /// Database schema.

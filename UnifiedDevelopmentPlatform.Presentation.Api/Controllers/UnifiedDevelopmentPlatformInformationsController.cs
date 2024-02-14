@@ -5,24 +5,25 @@ using UnifiedDevelopmentPlatform.Application.Interfaces;
 using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities;
 using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Controller;
 using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.UnifiedDevelopmentPlatformInformation;
+using UnifiedDevelopmentPlatform.Presentation.Api.Filters;
 
 namespace UnifiedDevelopmentPlatform.Presentation.Api.Controllers
 {
     /// <summary>
-    /// Unified Development Platform Informatios - Controller.
+    /// Controller unified development platform informatios.
     /// </summary>
     [ApiController]
     [Route(ControllerRouterUnifiedDevelopmentPlatformInformations.RouterController)]
     [Consumes(MediaTypeNames.Application.Json)]
     [Produces(MediaTypeNames.Application.Json, MediaTypeNames.Application.Xml)]
-    //[ServiceFilter(typeof(FilterActionContextController), IsReusable = false, Order = ControllerOrderExecutationFilter.First)]
+    [ServiceFilter(typeof(FilterActionContextControllerInformation), IsReusable = false, Order = ControllerOrderExecutationFilter.First)]
     [EnableCors()]
     public class UnifiedDevelopmentPlatformInformationsController : ControllerBase
     {
         private readonly IServiceMetadata _serviceMetadata;
 
         /// <summary>
-        /// Constructor Unified Development Platform Informations Controller.
+        /// Constructor of controller unified development platform informatios.
         /// </summary>
         /// <param name="serviceMetadata"></param>
         public UnifiedDevelopmentPlatformInformationsController(IServiceMetadata serviceMetadata)

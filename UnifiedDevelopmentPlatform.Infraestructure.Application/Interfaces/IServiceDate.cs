@@ -10,5 +10,11 @@
         /// </summary>
         /// <returns></returns>
         string UDPGetDateTimeNowFormat();
+
+        /// <summary>
+        /// Date time to long time.
+        /// </summary>
+        /// <returns></returns>
+        string UDPGetDateTimeToLongTime();
     }
 }

@@ -137,7 +137,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         /// </summary>
         /// <param name="metadata"></param>
         /// <param name="tableList"></param>
-        private void UtilsFindTableIntoList(string? metadata, ref List<string>? tableList)
+        private void UtilsFindTableIntoList(string metadata, ref List<string> tableList)
         {
             int count = 0;
             int indexCreateTable = 0;
@@ -145,7 +145,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
 
             try
             {
-                metadata = _serviceFuncString.UDPRemoveSpecialCaracter(metadata ?? string.Empty);
+                metadata = _serviceFuncString.UDPRemoveSpecialCaracter(metadata);
                 indexCreateTable = metadata.IndexOf(SqlConfiguration.CreateTableWithSpace);
 
                 for (int i = (indexCreateTable + SqlConfiguration.CreateTablePosition); i < metadata?.Length; i++)

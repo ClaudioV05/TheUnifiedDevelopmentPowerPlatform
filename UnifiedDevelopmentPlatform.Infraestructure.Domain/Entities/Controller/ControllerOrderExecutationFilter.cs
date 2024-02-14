@@ -4,7 +4,7 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Controller
 {
     [ComplexType]
     /// <summary>
-    /// Controller Order Executation Filter for UNIFIED DEVELOPMENT PLATFORM.
+    /// Controller order executation filter for UNIFIED DEVELOPMENT PLATFORM.
     /// </summary>
     public static class ControllerOrderExecutationFilter
     {

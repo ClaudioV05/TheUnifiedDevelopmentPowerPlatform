@@ -6,16 +6,8 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities
     /// Entity Fields.
     /// </summary>
     [ComplexType]
-    public class Fields
+    public class Fields : Tables
     {
-        /// <summary>
-        /// Id of fields.
-        /// </summary>
-        public int Id { get; set; }
 
-        /// <summary>
-        /// Name of fields.
-        /// </summary>
-        public List<string>? Name { get; set; }
     }
 }
