@@ -5,6 +5,14 @@
     /// </summary>
     public interface IEntity
     {
-        Guid Id { get; set; }
+        /// <summary>
+        /// IEntity identifier.
+        /// </summary>
+        long Id { get; set; }
+
+        /// <summary>
+        /// IEntity name.
+        /// </summary>
+        string Name { get; set; }
     }
 }

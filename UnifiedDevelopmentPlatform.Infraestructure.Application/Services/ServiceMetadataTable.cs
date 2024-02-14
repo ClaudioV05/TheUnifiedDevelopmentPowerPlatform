@@ -19,7 +19,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         private readonly IServiceMessage _serviceMessage;
         private readonly IServiceDirectory _serviceDirectory;
         private readonly IServiceValidation _serviceValidation;
-        private readonly IServiceFuncString _serviceFuncStrings;
+        private readonly IServiceFuncString _serviceFuncString;
 
         /// <summary>
         /// The constructor of Service Metadata Tables.
@@ -31,7 +31,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         /// <param name="serviceMessage"></param>
         /// <param name="serviceDirectory"></param>
         /// <param name="serviceValidation"></param>
-        /// <param name="serviceFuncStrings"></param>
+        /// <param name="serviceFuncString"></param>
         public ServiceMetadataTable(IServiceLog serviceLog,
                                     IServiceFile serviceFile,
                                     IServiceLinq serviceLinq, 
@@ -39,7 +39,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
                                     IServiceMessage serviceMessage,
                                     IServiceDirectory serviceDirectory,
                                     IServiceValidation serviceValidation, 
-                                    IServiceFuncString serviceFuncStrings)
+                                    IServiceFuncString serviceFuncString)
         {
             _serviceLog = serviceLog;
             _serviceFile = serviceFile;
@@ -48,13 +48,13 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             _serviceMessage = serviceMessage;
             _serviceDirectory = serviceDirectory;
             _serviceValidation = serviceValidation;
-            _serviceFuncStrings = serviceFuncStrings;
+            _serviceFuncString = serviceFuncString;
         }
 
         public List<string> UDPListWithTablesNameOfMetadata(MetadataOwner metadata)
         {
             List<string> listWithTablesName = new List<string>();
-            string scriptMetadata = _serviceFuncStrings.Empty;
+            string scriptMetadata = _serviceFuncString.Empty;
 
             try
             {
@@ -66,9 +66,9 @@ namespace UnifiedDevelopmentPlatform.Application.Services
                 {
                     scriptMetadata = _serviceCrypto.UPDDecodeBase64(metadata?.DatabaseSchema);
 
-                    if (!_serviceFuncStrings.UDPNullOrEmpty(scriptMetadata))
+                    if (!_serviceFuncString.UDPNullOrEmpty(scriptMetadata))
                     {
-                        scriptMetadata = _serviceFuncStrings.UDPLower(scriptMetadata);
+                        scriptMetadata = _serviceFuncString.UDPLower(scriptMetadata);
                         listWithTablesName = UtilsReturnMetadataAllTablesName(scriptMetadata);
                     }
                 }
@@ -83,18 +83,17 @@ namespace UnifiedDevelopmentPlatform.Application.Services
 
         public void UDPSaveDatabaseSchemaFromMetadata(MetadataOwner metadata)
         {
-            string scriptMetadata = _serviceFuncStrings.Empty;
-            string directoryConfiguration = _serviceFuncStrings.Empty;
+            string scriptMetadata = _serviceFuncString.Empty;
+            string directoryConfiguration = _serviceFuncString.Empty;
 
             scriptMetadata = _serviceCrypto.UPDDecodeBase64(metadata?.DatabaseSchema);
 
-            if (!_serviceFuncStrings.UDPNullOrEmpty(scriptMetadata))
+            if (!_serviceFuncString.UDPNullOrEmpty(scriptMetadata))
             {
-                scriptMetadata = _serviceFuncStrings.UDPLower(scriptMetadata);
+                scriptMetadata = _serviceFuncString.UDPLower(scriptMetadata);
                 directoryConfiguration = _serviceDirectory.UDPObtainDirectory(DirectoryRootType.Configuration);
-
+                scriptMetadata = _serviceCrypto.UPDEncrypt(scriptMetadata);
                 _serviceFile.UDPAppendAllText($"{directoryConfiguration}{DirectoryStandard.Log}{FileStandard.DatabaseSchema}{FileExtension.Txt}", scriptMetadata);
-
             }
         }
 
@@ -108,7 +107,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         private List<string> UtilsReturnMetadataAllTablesName(string? metadata)
         {
             long count = 0;
-            string lineCreateTable = _serviceFuncStrings.Empty;
+            string lineCreateTable = _serviceFuncString.Empty;
             List<string> tables = new List<string>();
 
             for (int i = 0; i < metadata?.Length; i++)
@@ -119,7 +118,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
                 {
                     count++;
 
-                    if (count > SqlConfiguration.CreateTableDefaultPosition && lineCreateTable.EndsWith(_serviceFuncStrings.StringWhiteSpace))
+                    if (count > SqlConfiguration.CreateTableDefaultPosition && lineCreateTable.EndsWith(_serviceFuncString.StringWhiteSpace))
                     {
                         UtilsFindTableIntoList(lineCreateTable, ref tables);
                         count = 0;
@@ -138,15 +137,15 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         /// </summary>
         /// <param name="metadata"></param>
         /// <param name="tableList"></param>
-        private void UtilsFindTableIntoList(string? metadata, ref List<string>? tableList)
+        private void UtilsFindTableIntoList(string metadata, ref List<string> tableList)
         {
             int count = 0;
             int indexCreateTable = 0;
-            string table = _serviceFuncStrings.Empty;
+            string table = _serviceFuncString.Empty;
 
             try
             {
-                metadata = _serviceFuncStrings.UDPRemoveSpecialCaracter(metadata ?? string.Empty);
+                metadata = _serviceFuncString.UDPRemoveSpecialCaracter(metadata);
                 indexCreateTable = metadata.IndexOf(SqlConfiguration.CreateTableWithSpace);
 
                 for (int i = (indexCreateTable + SqlConfiguration.CreateTablePosition); i < metadata?.Length; i++)
@@ -154,19 +153,19 @@ namespace UnifiedDevelopmentPlatform.Application.Services
                     count++;
                     table += metadata[i];
 
-                    if (count > SqlConfiguration.CreateTableDefaultPosition && table.EndsWith(_serviceFuncStrings.StringWhiteSpace))
+                    if (count > SqlConfiguration.CreateTableDefaultPosition && table.EndsWith(_serviceFuncString.StringWhiteSpace))
                     {
                         break;
                     }
                 }
 
-                table = _serviceFuncStrings.UDPRemoveSpecialCaracter(table);
-                table = _serviceFuncStrings.UDPRemoveAllWhiteSpace(table);
-                table = _serviceFuncStrings.UDPUpper(table);
+                table = _serviceFuncString.UDPRemoveSpecialCaracter(table);
+                table = _serviceFuncString.UDPRemoveAllWhiteSpace(table);
+                table = _serviceFuncString.UDPUpper(table);
             }
             catch (Exception)
             {
-                table = _serviceFuncStrings.Empty;
+                table = _serviceFuncString.Empty;
             }
 
             tableList?.Add(table);

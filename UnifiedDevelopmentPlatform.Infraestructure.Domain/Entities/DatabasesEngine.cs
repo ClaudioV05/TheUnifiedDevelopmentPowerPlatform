@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations.Schema;
+using UnifiedDevelopmentPlatform.Infraestructure.Domain.Interfaces;
 
 namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities
 {
@@ -7,7 +8,7 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities
     /// Entity Databases Engine.
     /// </summary>
     [ComplexType]
-    public class DatabasesEngine
+    public class DatabasesEngine : IEntity
     {
         /// <summary>
         /// Enum type for entitie Databases Engine.
@@ -23,6 +24,10 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities
             [Description("SqlClient")]
             SqlClient = 3
         }
+
+        public long Id { get; set; }
+
+        public string Name { get; set; }
 
         /// <summary>
         /// Id Enumeration.

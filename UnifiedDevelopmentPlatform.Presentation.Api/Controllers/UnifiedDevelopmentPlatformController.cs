@@ -11,7 +11,7 @@ using UnifiedDevelopmentPlatform.Presentation.Api.Models;
 namespace UnifiedDevelopmentPlatform.Presentation.Api.Controllers
 {
     /// <summary>
-    /// Unified Development Platform - Controller.
+    /// Controller unified development platform.
     /// </summary>
     [ApiController]
     [Route(ControllerRouterUnifiedDevelopmentPlatform.RouterController)]
@@ -24,7 +24,7 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Controllers
         private readonly IServiceMetadata _serviceMetadata;
 
         /// <summary>
-        /// Constructor Unified Development Platform Controller.
+        /// Constructor of controller unified development platform.
         /// </summary>
         /// <param name="serviceMetadata"></param>
         public UnifiedDevelopmentPlatformController(IServiceMetadata serviceMetadata)

@@ -1,5 +1,7 @@
-﻿using System.Text;
+﻿using System.Security.Cryptography;
+using System.Text;
 using UnifiedDevelopmentPlatform.Application.Interfaces;
+using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Cryptography;
 
 namespace UnifiedDevelopmentPlatform.Application.Services
 {
@@ -8,79 +10,75 @@ namespace UnifiedDevelopmentPlatform.Application.Services
     /// </summary>
     public class ServiceCrypto : IServiceCrypto
     {
-        //private readonly string _keyCrypto = "3b4750253d5b274b6346545f3c2b323f6b436c596e6d3c6e5d23552d4a";
+        private readonly IServiceFuncString _serviceFuncStrings;
 
         /// <summary>
         /// The constructor of Service Crypto.
         /// </summary>
-        public ServiceCrypto() { }
+        /// <param name="serviceFuncString"></param>
+        public ServiceCrypto(IServiceFuncString serviceFuncString)
+        {
+            _serviceFuncStrings = serviceFuncString;
+        }
 
         public string UPDEncrypt(string value)
         {
-            /*
             byte[] input;
             byte[] key = { };
-            byte[] newValue = { 12, 34, 56, 78, 90, 102, 114, 126 };
-
-            DESCryptoServiceProvider? provider = new DESCryptoServiceProvider();
             MemoryStream memoryStream = new MemoryStream();
+            DESCryptoServiceProvider provider = new DESCryptoServiceProvider();
+
             try
             {
                 input = Encoding.UTF8.GetBytes(value);
-                key = Encoding.UTF8.GetBytes(_keyCrypto.Substring(0, 8));
+                key = Encoding.UTF8.GetBytes(CryptographyConfiguration.CryptographyKey.Substring(0, 8));
 
-                var cryptoStream = new CryptoStream(memoryStream, provider.CreateEncryptor(key, newValue), CryptoStreamMode.Write);
+                CryptoStream cryptoStream = new CryptoStream(memoryStream, provider.CreateEncryptor(key, CryptographyConfiguration.CryptographyByteArray), CryptoStreamMode.Write);
                 cryptoStream.Write(input, 0, input.Length);
                 cryptoStream.FlushFinalBlock();
+                return Convert.ToBase64String(memoryStream.ToArray());
             }
-            catch (Exception)
+            catch (CryptographicException)
             {
-                return string.Empty;
+                return _serviceFuncStrings.Empty;
             }
-            */
-            return "";// Convert.ToBase64String(memoryStream.ToArray());
         }
 
         public string UPDDecrypt(string value)
         {
-            /*
             byte[] input;
             byte[] key = { };
-            byte[] newValue = { 12, 34, 56, 78, 90, 102, 114, 126 };
-
-            DESCryptoServiceProvider provider = new DESCryptoServiceProvider();
             MemoryStream memoryStream = new MemoryStream();
+            DESCryptoServiceProvider provider = new DESCryptoServiceProvider();
+
             try
             {
                 input = new byte[value.Length];
-                input = Convert.FromBase64String(value.Replace(" ", "+"));
-
-                key = Encoding.UTF8.GetBytes(_keyCrypto.Substring(0, 8));
-
-                var cryptoStream = new CryptoStream(memoryStream, provider.CreateDecryptor(key, newValue), CryptoStreamMode.Write);
+                input = Convert.FromBase64String(value.Replace(_serviceFuncStrings.StringWhiteSpace, "+"));
+                key = Encoding.UTF8.GetBytes(CryptographyConfiguration.CryptographyKey.Substring(0, 8));
+               
+                CryptoStream cryptoStream = new CryptoStream(memoryStream, provider.CreateDecryptor(key, CryptographyConfiguration.CryptographyByteArray), CryptoStreamMode.Write);
                 cryptoStream.Write(input, 0, input.Length);
                 cryptoStream.FlushFinalBlock();
+                return Encoding.UTF8.GetString(memoryStream.ToArray());
             }
-            catch (Exception)
+            catch (CryptographicException)
             {
-                return string.Empty;
+                return _serviceFuncStrings.Empty;
             }
-            */
-            return "";// Encoding.UTF8.GetString(memoryStream.ToArray());
         }
 
         public string UPDDecodeBase64(string? value)
         {
             try
             {
-                var valueBytes = Convert.FromBase64String(value ?? string.Empty);
+                var valueBytes = Convert.FromBase64String(value ?? _serviceFuncStrings.Empty);
                 return Encoding.UTF8.GetString(valueBytes);
             }
             catch (Exception)
             {
-                return string.Empty;
+                return _serviceFuncStrings.Empty;
             }
-
         }
     }
 }

@@ -11,7 +11,13 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Filters
         private readonly IServiceLog _serviceLog;
         private readonly IServiceValidation _serviceValidation;
 
-        public FilterActionContextFields(IServiceLog serviceLog, IServiceValidation serviceValidation)
+        /// <summary>
+        /// Filter action context fields.
+        /// </summary>
+        /// <param name="serviceLog"></param>
+        /// <param name="serviceValidation"></param>
+        public FilterActionContextFields(IServiceLog serviceLog,
+                                         IServiceValidation serviceValidation)
         {
             _serviceLog = serviceLog;
             _serviceValidation = serviceValidation;

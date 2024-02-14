@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations.Schema;
+using UnifiedDevelopmentPlatform.Infraestructure.Domain.Interfaces;
 
 namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities
 {
@@ -7,7 +8,7 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities
     /// Entity Databases.
     /// </summary>
     [ComplexType]
-    public class Databases
+    public class Databases : IEntity
     {
         /// <summary>
         /// Enum type for entitie Databases.
@@ -25,6 +26,10 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities
             [Description("Oracle")]
             Oracle = 4
         }
+
+        public long Id { get; set; }
+
+        public string Name { get; set; }
 
         /// <summary>
         /// Id Enumeration.

@@ -19,17 +19,9 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             return DateTime.Now.ToString(DatetimeFormat.Format_13);
         }
 
-        /// <summary>
-        /// Configure the culture information.
-        /// </summary>
-        /// <returns></returns>
-        private CultureInfo? ConfigureCultureInfo()
+        public string UDPGetDateTimeToLongTime()
         {
-            var culture = new CultureInfo("pt-BR");
-            CultureInfo.DefaultThreadCurrentCulture = culture;
-            CultureInfo.DefaultThreadCurrentUICulture = culture;
-
-            return culture;
+            return DateTime.Now.ToLongTimeString();
         }
     }
 }
