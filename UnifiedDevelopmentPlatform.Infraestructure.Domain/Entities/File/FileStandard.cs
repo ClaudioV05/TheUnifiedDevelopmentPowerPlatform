@@ -22,5 +22,10 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.File
         /// Log.
         /// </summary>
         public static string Log => "\\_log";
+
+        /// <summary>
+        /// Database schema.
+        /// </summary>
+        public static string DatabaseSchema => "\\_databaseschema";
     }
 }

@@ -50,9 +50,9 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             using (StreamWriter streamWriter = File.CreateText(path)) { };
         }
 
-        public void UDPAppendAllText(string pathWithFile, string content)
+        public void UDPAppendAllText(string path, string content)
         {
-            File.AppendAllText(pathWithFile, content);
+            File.AppendAllText(path, content);
         }
 
         public FileStream UDPOpenRead(string path)

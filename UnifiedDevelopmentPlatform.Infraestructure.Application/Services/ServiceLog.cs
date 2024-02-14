@@ -50,11 +50,11 @@ namespace UnifiedDevelopmentPlatform.Application.Services
 
         public void UDPLogReport(string? message)
         {
-            string json = string.Empty;
-            string path = string.Empty;
-            string caracter = string.Empty;
+            string caracter = _serviceFuncStrings.Empty;
+            string informations = _serviceFuncStrings.Empty;
+            string directoryConfiguration = _serviceFuncStrings.Empty;
 
-            path = _serviceDirectory.UDPObtainDirectory(DirectoryRootType.Configuration);
+            directoryConfiguration = _serviceDirectory.UDPObtainDirectory(DirectoryRootType.Configuration);
 
             if (!_serviceFuncStrings.UDPStringStarts(message, MessageDescription.Initial))
             {
@@ -62,9 +62,8 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             }
 
             StackFrame stackFrame = new StackFrame(1, true);
-
-            _serviceFile.UDPAppendAllText($"{path}{DirectoryStandard.Log}{FileStandard.Log}{FileExtension.Txt}",
-                                          $"{caracter}{_serviceDate.UDPGetDateTimeNowFormat()} > File [{_serviceFile.UDPGetFileName(stackFrame.GetFileName())}] Line Number [{stackFrame.GetFileLineNumber()}] [{_serviceFuncStrings.UDPUpper(message)}]");
+            informations = $"{caracter}{_serviceDate.UDPGetDateTimeNowFormat()} >> File [{_serviceFile.UDPGetFileName(stackFrame.GetFileName())}] Line Number [{stackFrame.GetFileLineNumber()}] [{_serviceFuncStrings.UDPUpper(message)}]";
+            _serviceFile.UDPAppendAllText($"{directoryConfiguration}{DirectoryStandard.Log}{FileStandard.Log}{FileExtension.Txt}", informations);
         }
     }
 }
