@@ -8,9 +8,9 @@ namespace UnifiedDevelopmentPlatform.Application.Interfaces
     public interface IServiceDatabaseEngine
     {
         /// <summary>
-        /// Return the full list of all databases engine.
+        /// Select parameters the kinds of databases engine.
         /// </summary>
-        /// <returns>List of databases engine</returns>
-        List<DatabasesEngine> UDPObtainTheListOfDatabasesEngine();
+        /// <returns>Return the complete list of databases engine.</returns>
+        List<DatabasesEngine> UDPSelectParametersTheKindsOfDatabasesEngine();
     }
 }

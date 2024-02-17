@@ -11,36 +11,36 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Directory
         /// <summary>
         /// App.
         /// </summary>
-        public static string App => "\\App";
+        public static string App => string.Format("{0}App", Path.DirectorySeparatorChar);
 
         /// <summary>
         /// Backend.
         /// </summary>
-        public static string Backend => "\\Backend";
+        public static string Backend => string.Format("{0}Backend", Path.DirectorySeparatorChar);
 
         /// <summary>
         /// Frontend.
         /// </summary>
-        public static string Frontend => "\\Frontend";
+        public static string Frontend => string.Format("{0}Frontend", Path.DirectorySeparatorChar);
 
         /// <summary>
         /// Configuration.
         /// </summary>
-        public static string Configuration => "\\_Configuration";
+        public static string Configuration => string.Format("{0}_Configuration", Path.DirectorySeparatorChar);
 
         /// <summary>
         /// Json.
         /// </summary>
-        public static string Json => "\\Json";
+        public static string Json => string.Format("{0}Json", Path.DirectorySeparatorChar);
 
         /// <summary>
         /// Xml.
         /// </summary>
-        public static string Xml => "\\Xml";
+        public static string Xml => string.Format("{0}Xml", Path.DirectorySeparatorChar);
 
         /// <summary>
         /// Log.
         /// </summary>
-        public static string Log => "\\Log";
+        public static string Log => string.Format("{0}Log", Path.DirectorySeparatorChar);
     }
 }

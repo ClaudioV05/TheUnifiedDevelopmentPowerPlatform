@@ -48,7 +48,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
 
         public void UDPLogWarning(string message) => _logger.Warn(message);
 
-        public void UDPLogReport(string? message)
+        public void UDPLogReport(string message)
         {
             string caracter = _serviceFuncStrings.Empty;
             string informations = _serviceFuncStrings.Empty;
@@ -62,7 +62,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             }
 
             StackFrame stackFrame = new StackFrame(1, true);
-            informations = $"{caracter}{_serviceDate.UDPGetDateTimeNowFormat()} >> File [{_serviceFile.UDPGetFileName(stackFrame.GetFileName())}] Line Number [{stackFrame.GetFileLineNumber()}] [{_serviceFuncStrings.UDPUpper(message)}]";
+            informations = $"{caracter}{_serviceDate.UDPGetDateTimeNowFormat()} -->> File [{_serviceFile.UDPGetFileName(stackFrame.GetFileName() ?? _serviceFuncStrings.Empty)}] Line Number [{stackFrame.GetFileLineNumber()}] [{_serviceFuncStrings.UDPUpper(message)}]";
             _serviceFile.UDPAppendAllText($"{directoryConfiguration}{DirectoryStandard.Log}{FileStandard.Log}{FileExtension.Txt}", informations);
         }
     }

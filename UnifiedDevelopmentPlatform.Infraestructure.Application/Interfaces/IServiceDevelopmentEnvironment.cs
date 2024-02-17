@@ -8,9 +8,9 @@ namespace UnifiedDevelopmentPlatform.Application.Interfaces
     public interface IServiceDevelopmentEnvironment
     {
         /// <summary>
-        /// Return the full list of all development environment.
+        /// Select parameters the kinds of development enviroment.
         /// </summary>
-        /// <returns>List of development environment</returns>
-        List<DevelopmentEnvironment> UDPObtainTheListOfDevelopmentEnviroment();
+        /// <returns>Return the complete list of development enviroment.</returns>
+        List<DevelopmentEnvironment> UDPSelectParametersTheKindsOfDevelopmentEnviroment();
     }
 }

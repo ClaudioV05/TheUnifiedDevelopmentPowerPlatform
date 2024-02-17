@@ -35,6 +35,6 @@ namespace UnifiedDevelopmentPlatform.Application.Interfaces
         /// Register Log general for application.
         /// </summary>
         /// <param name="message"></param>
-        void UDPLogReport(string? message);
+        void UDPLogReport(string message);
     }
 }

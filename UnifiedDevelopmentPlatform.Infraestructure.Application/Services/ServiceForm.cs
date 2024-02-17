@@ -14,7 +14,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         /// </summary>
         public ServiceForm() { }
 
-        public List<Forms> UDPObtainTheListOfForms()
+        public List<Forms> UDPSelectParametersTheKindsOfForms()
         {
             List<Forms> listItems = new List<Forms>();
 
@@ -26,8 +26,6 @@ namespace UnifiedDevelopmentPlatform.Application.Services
                     {
                         listItems.Add(new Forms() { IdEnumeration = (EnumForm)i, NameEnumeration = Enum.GetName(typeof(EnumForm), i) });
                     }
-
-                    listItems = listItems.OrderBy(item => item.IdEnumeration).ToList();
                 }
             }
             catch (OverflowException) { }

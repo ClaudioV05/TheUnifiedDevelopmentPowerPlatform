@@ -12,7 +12,7 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities
     {
         public long Id { get; set; }
 
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
         /// <summary>
         /// Database schema.
@@ -50,6 +50,10 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities
         [DataMember]
         public ICollection<Tables>? Tables { get; set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <exception cref="Exception"></exception>
         public MetadataOwner()
         {
             try

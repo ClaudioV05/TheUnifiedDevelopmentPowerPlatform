@@ -8,9 +8,9 @@ namespace UnifiedDevelopmentPlatform.Application.Interfaces
     public interface IServiceForm
     {
         /// <summary>
-        /// Return the full list of all forms.
+        /// Select parameters the kinds of forms.
         /// </summary>
-        /// <returns>List of forms</returns>
-        List<Forms> UDPObtainTheListOfForms();
+        /// <returns>Return the complete list of forms.</returns>
+        List<Forms> UDPSelectParametersTheKindsOfForms();
     }
 }
