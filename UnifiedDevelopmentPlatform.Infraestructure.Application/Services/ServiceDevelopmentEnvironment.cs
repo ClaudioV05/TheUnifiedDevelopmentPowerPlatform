@@ -14,7 +14,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         /// </summary>
         public ServiceDevelopmentEnvironment() { }
 
-        public List<DevelopmentEnvironment> UDPObtainTheListOfDevelopmentEnviroment()
+        public List<DevelopmentEnvironment> UDPSelectParametersTheKindsOfDevelopmentEnviroment()
         {
             List<DevelopmentEnvironment> listItems = new List<DevelopmentEnvironment>();
 
@@ -26,8 +26,6 @@ namespace UnifiedDevelopmentPlatform.Application.Services
                     {
                         listItems.Add(new DevelopmentEnvironment() { IdEnumeration = (EnumDevelopmentEnvironment)i, NameEnumeration = Enum.GetName(typeof(EnumDevelopmentEnvironment), i) });
                     }
-
-                    listItems = listItems.OrderBy(item => item.IdEnumeration).ToList();
                 }
             }
             catch (OverflowException) { }

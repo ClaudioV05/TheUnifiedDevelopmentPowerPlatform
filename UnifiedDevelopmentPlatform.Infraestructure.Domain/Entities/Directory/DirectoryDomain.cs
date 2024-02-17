@@ -11,16 +11,16 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Directory
         /// <summary>
         /// Domain.
         /// </summary>
-        public static string Domain => "\\3-Domain";
+        public static string Domain => string.Format("{0}3-Domain", Path.DirectorySeparatorChar);
 
         /// <summary>
         /// Interfaces.
         /// </summary>
-        public static string Interfaces => "\\Interfaces";
+        public static string Interfaces => string.Format("{0}Interfaces", Path.DirectorySeparatorChar);
 
         /// <summary>
         /// Entities.
         /// </summary>
-        public static string Entities => "\\Entities";
+        public static string Entities => string.Format("{0}Entities", Path.DirectorySeparatorChar);
     }
 }

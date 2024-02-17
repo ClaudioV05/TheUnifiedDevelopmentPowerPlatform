@@ -61,7 +61,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             return file;
         }
 
-        public string UDPGetFileName(string? path)
+        public string UDPGetFileName(string path)
         {
             try
             {

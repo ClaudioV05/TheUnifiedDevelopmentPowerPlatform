@@ -14,7 +14,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         /// </summary>
         public ServiceDatabaseEngine() { }
 
-        public List<DatabasesEngine> UDPObtainTheListOfDatabasesEngine()
+        public List<DatabasesEngine> UDPSelectParametersTheKindsOfDatabasesEngine()
         {
             List<DatabasesEngine> listItems = new List<DatabasesEngine>();
 
@@ -26,8 +26,6 @@ namespace UnifiedDevelopmentPlatform.Application.Services
                     {
                         listItems.Add(new DatabasesEngine() { IdEnumeration = (EnumDatabasesEngine)i, NameEnumeration = Enum.GetName(typeof(EnumDatabasesEngine), i) });
                     }
-
-                    listItems = listItems.OrderBy(item => item.IdEnumeration).ToList();
                 }
             }
             catch (OverflowException) { }

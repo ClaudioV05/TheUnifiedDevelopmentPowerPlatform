@@ -14,7 +14,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         /// </summary>
         public ServiceArchitecture() { }
 
-        public List<Architectures> UDPObtainTheListOfArchitectures()
+        public List<Architectures> UDPSelectParametersTheKindsOfArchitectures()
         {
             List<Architectures> listItems = new List<Architectures>();
 
@@ -26,8 +26,6 @@ namespace UnifiedDevelopmentPlatform.Application.Services
                     {
                         listItems.Add(new Architectures() { IdEnumeration = (EnumArchitecture)i, NameEnumeration = Enum.GetName(typeof(EnumArchitecture), i) });
                     }
-
-                    listItems = listItems.OrderBy(item => item.IdEnumeration).ToList();
                 }
             }
             catch (OverflowException) { }

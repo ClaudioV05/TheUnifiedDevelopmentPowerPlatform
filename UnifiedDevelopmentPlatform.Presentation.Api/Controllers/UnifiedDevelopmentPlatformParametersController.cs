@@ -10,7 +10,7 @@ using UnifiedDevelopmentPlatform.Presentation.Api.Filters;
 namespace UnifiedDevelopmentPlatform.Presentation.Api.Controllers
 {
     /// <summary>
-    /// Controller unified development platform informatios.
+    /// Controller unified development platform parameters.
     /// </summary>
     [ApiController]
     [Route(ControllerRouterUnifiedDevelopmentPlatformInformations.RouterController)]
@@ -18,21 +18,21 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Controllers
     [Produces(MediaTypeNames.Application.Json, MediaTypeNames.Application.Xml)]
     [ServiceFilter(typeof(FilterActionContextControllerInformation), IsReusable = false, Order = ControllerOrderExecutationFilter.First)]
     [EnableCors()]
-    public class UnifiedDevelopmentPlatformInformationsController : ControllerBase
+    public class UnifiedDevelopmentPlatformParametersController : ControllerBase
     {
         private readonly IServiceMetadata _serviceMetadata;
 
         /// <summary>
-        /// Constructor of controller unified development platform informatios.
+        /// Constructor of controller unified development platform parameters.
         /// </summary>
         /// <param name="serviceMetadata"></param>
-        public UnifiedDevelopmentPlatformInformationsController(IServiceMetadata serviceMetadata)
+        public UnifiedDevelopmentPlatformParametersController(IServiceMetadata serviceMetadata)
         {
             _serviceMetadata = serviceMetadata;
         }
 
         /// <summary>
-        /// Return the full list of all databases.
+        /// Return the complete list of databases.
         /// </summary>
         /// <returns>List of databases with ids and names.</returns>
         /// 200 Status Codes: This is the best kind of HTTP status code to receive. A 200-level response means that everything is working exactly as it should.
@@ -49,9 +49,7 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Controllers
         /// <response code="504">The server, acting as a gateway, timed out waiting for another server to respond.</response>
         [HttpGet]
         [Produces(MediaTypeNames.Application.Json, MediaTypeNames.Application.Xml)]
-        [Route(ControllerRouterUnifiedDevelopmentPlatformInformations.RouterDatabases)]
-        //[ServiceFilter(typeof(FilterActionContextLog), IsReusable = false, Order = ControllerOrderExecutationFilter.Second)]
-        //[ServiceFilter(typeof(FilterActionContextTables<MetadataOwner>), IsReusable = false, Order = ControllerOrderExecutationFilter.Third)]
+        [Route(ControllerRouterUnifiedDevelopmentPlatformInformations.RouterParametersOfDatabases)]
         [ProducesResponseType(typeof(IEnumerable<Databases>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
@@ -61,13 +59,13 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Controllers
         [ProducesResponseType(StatusCodes.Status502BadGateway)]
         [ProducesResponseType(StatusCodes.Status503ServiceUnavailable)]
         [ProducesResponseType(StatusCodes.Status504GatewayTimeout)]
-        public ActionResult<IEnumerable<Databases>> Databases()
+        public ActionResult<IEnumerable<Databases>> ParametersTheKindsOfDatabases()
         {
-            return Ok(_serviceMetadata.UDPObtainTheListOfDatabases());
+            return Ok(_serviceMetadata.UDPSelectParametersTheKindsOfDatabases());
         }
 
         /// <summary>
-        /// Return the full list of all forms.
+        /// Return the complete list of forms.
         /// </summary>
         /// <returns>List of forms with ids and names.</returns>
         /// 200 Status Codes: This is the best kind of HTTP status code to receive. A 200-level response means that everything is working exactly as it should.
@@ -84,9 +82,7 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Controllers
         /// <response code="504">The server, acting as a gateway, timed out waiting for another server to respond.</response>
         [HttpGet]
         [Produces(MediaTypeNames.Application.Json, MediaTypeNames.Application.Xml)]
-        [Route(ControllerRouterUnifiedDevelopmentPlatformInformations.RouterForms)]
-        //[ServiceFilter(typeof(FilterActionContextLog), IsReusable = false, Order = ControllerOrderExecutationFilter.Second)]
-        //[ServiceFilter(typeof(FilterActionContextTables<MetadataOwner>), IsReusable = false, Order = ControllerOrderExecutationFilter.Third)]
+        [Route(ControllerRouterUnifiedDevelopmentPlatformInformations.RouterParametersOfForms)]
         [ProducesResponseType(typeof(IEnumerable<Forms>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
@@ -96,13 +92,13 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Controllers
         [ProducesResponseType(StatusCodes.Status502BadGateway)]
         [ProducesResponseType(StatusCodes.Status503ServiceUnavailable)]
         [ProducesResponseType(StatusCodes.Status504GatewayTimeout)]
-        public ActionResult<IEnumerable<Forms>> Forms()
+        public ActionResult<IEnumerable<Forms>> ParametersTheKindsOfForms()
         {
-            return Ok(_serviceMetadata.UDPObtainTheListOfForms());
+            return Ok(_serviceMetadata.UDPSelectParametersTheKindsOfForms());
         }
 
         /// <summary>
-        /// Return the full list of all development environment.
+        /// Return the complete list of development environment.
         /// </summary>
         /// <returns>List of development environment with ids and names.</returns>
         /// 200 Status Codes: This is the best kind of HTTP status code to receive. A 200-level response means that everything is working exactly as it should.
@@ -119,9 +115,7 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Controllers
         /// <response code="504">The server, acting as a gateway, timed out waiting for another server to respond.</response>
         [HttpGet]
         [Produces(MediaTypeNames.Application.Json, MediaTypeNames.Application.Xml)]
-        [Route(ControllerRouterUnifiedDevelopmentPlatformInformations.RouterDevelopmentEnviroment)]
-        //[ServiceFilter(typeof(FilterActionContextLog), IsReusable = false, Order = ControllerOrderExecutationFilter.Second)]
-        //[ServiceFilter(typeof(FilterActionContextTables<MetadataOwner>), IsReusable = false, Order = ControllerOrderExecutationFilter.Third)]
+        [Route(ControllerRouterUnifiedDevelopmentPlatformInformations.RouterParametersOfDevelopmentEnviroment)]
         [ProducesResponseType(typeof(IEnumerable<DevelopmentEnvironment>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
@@ -131,13 +125,13 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Controllers
         [ProducesResponseType(StatusCodes.Status502BadGateway)]
         [ProducesResponseType(StatusCodes.Status503ServiceUnavailable)]
         [ProducesResponseType(StatusCodes.Status504GatewayTimeout)]
-        public ActionResult<IEnumerable<DevelopmentEnvironment>> DevelopmentEnvironment()
+        public ActionResult<IEnumerable<DevelopmentEnvironment>> ParametersTheKindsOfDevelopmentEnvironment()
         {
-            return Ok(_serviceMetadata.UDPObtainTheListOfDevelopmentEnviroment());
+            return Ok(_serviceMetadata.UDPSelectParametersTheKindsOfDevelopmentEnviroment());
         }
 
         /// <summary>
-        /// Return the full list of all databases engine.
+        /// Return the complete list of databases engine.
         /// </summary>
         /// <returns>List of databases engine with ids and names.</returns>
         /// 200 Status Codes: This is the best kind of HTTP status code to receive. A 200-level response means that everything is working exactly as it should.
@@ -154,9 +148,7 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Controllers
         /// <response code="504">The server, acting as a gateway, timed out waiting for another server to respond.</response>
         [HttpGet]
         [Produces(MediaTypeNames.Application.Json, MediaTypeNames.Application.Xml)]
-        [Route(ControllerRouterUnifiedDevelopmentPlatformInformations.RouterDatabasesEngine)]
-        //[ServiceFilter(typeof(FilterActionContextLog), IsReusable = false, Order = ControllerOrderExecutationFilter.Second)]
-        //[ServiceFilter(typeof(FilterActionContextTables<MetadataOwner>), IsReusable = false, Order = ControllerOrderExecutationFilter.Third)]
+        [Route(ControllerRouterUnifiedDevelopmentPlatformInformations.RouterParametersOfDatabasesEngine)]
         [ProducesResponseType(typeof(IEnumerable<DatabasesEngine>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
@@ -166,13 +158,13 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Controllers
         [ProducesResponseType(StatusCodes.Status502BadGateway)]
         [ProducesResponseType(StatusCodes.Status503ServiceUnavailable)]
         [ProducesResponseType(StatusCodes.Status504GatewayTimeout)]
-        public ActionResult<IEnumerable<DatabasesEngine>> DatabasesEngine()
+        public ActionResult<IEnumerable<DatabasesEngine>> ParametersTheKindsOfDatabasesEngine()
         {
-            return Ok(_serviceMetadata.UDPObtainTheListOfDatabasesEngine());
+            return Ok(_serviceMetadata.UDPSelectParametersTheKindsOfDatabasesEngine());
         }
 
         /// <summary>
-        /// Return the full list of all architectures.
+        /// Return the complete list of architectures.
         /// </summary>
         /// <returns>List of architectures with ids and names.</returns>
         /// 200 Status Codes: This is the best kind of HTTP status code to receive. A 200-level response means that everything is working exactly as it should.
@@ -189,9 +181,7 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Controllers
         /// <response code="504">The server, acting as a gateway, timed out waiting for another server to respond.</response>
         [HttpGet]
         [Produces(MediaTypeNames.Application.Json, MediaTypeNames.Application.Xml)]
-        [Route(ControllerRouterUnifiedDevelopmentPlatformInformations.RouterArchitectures)]
-        //[ServiceFilter(typeof(FilterActionContextLog), IsReusable = false, Order = ControllerOrderExecutationFilter.Second)]
-        //[ServiceFilter(typeof(FilterActionContextTables<MetadataOwner>), IsReusable = false, Order = ControllerOrderExecutationFilter.Third)]
+        [Route(ControllerRouterUnifiedDevelopmentPlatformInformations.RouterParametersOfArchitectures)]
         [ProducesResponseType(typeof(IEnumerable<Architectures>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
@@ -201,13 +191,13 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Controllers
         [ProducesResponseType(StatusCodes.Status502BadGateway)]
         [ProducesResponseType(StatusCodes.Status503ServiceUnavailable)]
         [ProducesResponseType(StatusCodes.Status504GatewayTimeout)]
-        public ActionResult<IEnumerable<Architectures>> Architectures()
+        public ActionResult<IEnumerable<Architectures>> ParametersTheKindsOfArchitectures()
         {
-            return Ok(_serviceMetadata.UDPObtainTheListOfArchitectures());
+            return Ok(_serviceMetadata.UDPSelectParametersTheKindsOfArchitectures());
         }
 
         /// <summary>
-        /// Return the information about Unified development platform.
+        /// Return the parameters about Unified development platform.
         /// </summary>
         /// <returns>Information about Unified development platform.</returns>
         /// 200 Status Codes: This is the best kind of HTTP status code to receive. A 200-level response means that everything is working exactly as it should.
@@ -224,9 +214,7 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Controllers
         /// <response code="504">The server, acting as a gateway, timed out waiting for another server to respond.</response>
         [HttpGet]
         [Produces(MediaTypeNames.Application.Json, MediaTypeNames.Application.Xml)]
-        [Route(ControllerRouterUnifiedDevelopmentPlatformInformations.RouterInformations)]
-        //[ServiceFilter(typeof(FilterActionContextLog), IsReusable = false, Order = ControllerOrderExecutationFilter.Second)]
-        //[ServiceFilter(typeof(FilterActionContextTables<MetadataOwner>), IsReusable = false, Order = ControllerOrderExecutationFilter.Third)]
+        [Route(ControllerRouterUnifiedDevelopmentPlatformInformations.RouterParametersOfInformation)]
         [ProducesResponseType(typeof(UnifiedDevelopmentPlatformInformation), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
@@ -238,7 +226,7 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Controllers
         [ProducesResponseType(StatusCodes.Status504GatewayTimeout)]
         public ActionResult<UnifiedDevelopmentPlatformInformation> Informations()
         {
-            return Ok(_serviceMetadata.UDPObtainInformationUnifiedDevelopmentPlatform());
+            return Ok(_serviceMetadata.UDPSelectParametersInformationUnifiedDevelopmentPlatform());
         }
     }
 }

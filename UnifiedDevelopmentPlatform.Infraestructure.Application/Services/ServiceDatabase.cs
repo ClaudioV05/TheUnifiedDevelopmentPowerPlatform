@@ -19,7 +19,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             _serviceLinq = serviceLinq;
         }
 
-        public List<Databases> UDPObtainTheListOfDatabases()
+        public List<Databases> UDPSelectParametersTheKindsOfDatabases()
         {
             List<Databases> listItems = new List<Databases>();
 
@@ -31,8 +31,6 @@ namespace UnifiedDevelopmentPlatform.Application.Services
                     {
                         listItems.Add(new Databases() { IdEnumeration = (EnumDatabases)i, NameEnumeration = Enum.GetName(typeof(EnumDatabases), i) });
                     }
-
-                    listItems = _serviceLinq.UDPOrderBy(listItems);
                 }
             }
             catch (OverflowException) { }

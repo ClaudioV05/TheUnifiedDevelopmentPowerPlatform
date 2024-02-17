@@ -21,39 +21,39 @@ namespace UnifiedDevelopmentPlatform.Application.Interfaces
         void UDPReceiveAndSaveAllTableAndFieldsOfSchemaDatabase(MetadataOwner metadata);
 
         /// <summary>
-        /// Return the full list of all databases.
+        /// Select parameters the kinds of databases.
         /// </summary>
-        /// <returns>List of databases</returns>
-        List<Databases> UDPObtainTheListOfDatabases();
+        /// <returns>Return the complete list of databases.</returns>
+        List<Databases> UDPSelectParametersTheKindsOfDatabases();
 
         /// <summary>
-        /// Return the full list of all forms.
+        /// Select parameters the kinds of forms.
         /// </summary>
-        /// <returns>List of forms</returns>
-        List<Forms> UDPObtainTheListOfForms();
+        /// <returns>Return the complete list of forms.</returns>
+        List<Forms> UDPSelectParametersTheKindsOfForms();
 
         /// <summary>
-        /// Return the full list of all development environment.
+        /// Select parameters the kinds of development enviroment.
         /// </summary>
-        /// <returns>List of development environment</returns>
-        List<DevelopmentEnvironment> UDPObtainTheListOfDevelopmentEnviroment();
+        /// <returns>Return the complete list of development enviroment.</returns>
+        List<DevelopmentEnvironment> UDPSelectParametersTheKindsOfDevelopmentEnviroment();
 
         /// <summary>
-        /// Return the full list of all databases engine.
+        /// Select parameters the kinds of databases engine.
         /// </summary>
-        /// <returns>List of databases engine</returns>
-        List<DatabasesEngine> UDPObtainTheListOfDatabasesEngine();
+        /// <returns>Return the complete list of databases engine.</returns>
+        List<DatabasesEngine> UDPSelectParametersTheKindsOfDatabasesEngine();
 
         /// <summary>
-        /// Return the full list of all architectures.
+        /// Select parameters the kinds of architectures.
         /// </summary>
-        /// <returns>List of architecture</returns>
-        List<Architectures> UDPObtainTheListOfArchitectures();
+        /// <returns>Return the complete list of architectures.</returns>
+        List<Architectures> UDPSelectParametersTheKindsOfArchitectures();
 
         /// <summary>
-        /// Return the information about Unified development platform.
+        /// Return the parameters about Unified development platform.
         /// </summary>
         /// <returns>Information about Unified development platform.</returns>
-        UnifiedDevelopmentPlatformInformation UDPObtainInformationUnifiedDevelopmentPlatform();
+        UnifiedDevelopmentPlatformInformation UDPSelectParametersInformationUnifiedDevelopmentPlatform();
     }
 }

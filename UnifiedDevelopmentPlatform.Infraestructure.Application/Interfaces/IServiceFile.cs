@@ -68,6 +68,6 @@
         /// </summary>
         /// <param name="path"></param>
         /// <returns></returns>
-        string UDPGetFileName(string? path);
+        string UDPGetFileName(string path);
     }
 }

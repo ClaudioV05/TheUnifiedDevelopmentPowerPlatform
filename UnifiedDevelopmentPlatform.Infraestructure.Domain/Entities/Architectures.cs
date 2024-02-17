@@ -25,7 +25,7 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities
 
         public long Id { get; set; }
 
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
         /// <summary>
         /// Id Enumeration.

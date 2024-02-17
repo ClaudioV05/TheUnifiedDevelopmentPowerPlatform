@@ -62,13 +62,6 @@ namespace UnifiedDevelopmentPlatform.Application.Interfaces
         /// </summary>
         /// <param name="listItem"></param>
         /// <returns>Returns distinct elements from a sequence.</returns>
-        List<string>? UDPDistinct(List<string> listItem);
-
-        /// <summary>
-        /// Order by.
-        /// </summary>
-        /// <param name="listItem"></param>
-        /// <returns>Returns order by list from a sequence.</returns>
-        List<Databases> UDPOrderBy(List<Databases> listItem);
+        List<string> UDPDistinct(List<string> listItem);
     }
 }

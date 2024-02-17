@@ -79,14 +79,9 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             return listItem.Where(element => !element.Contains(_serviceFuncStrings.UDPLower(DirectoryStandard.App.Replace("\\", string.Empty))) || !element.Contains(_serviceFuncStrings.UDPLower(DirectoryStandard.Configuration.Replace("\\", string.Empty)))).Skip(1).ToList();
         }
 
-        public List<string>? UDPDistinct(List<string> listItem)
+        public List<string> UDPDistinct(List<string> listItem)
         {
             return listItem.GroupBy(element => element).Select(d => d.First()).ToList();
-        }
-
-        public List<Databases> UDPOrderBy(List<Databases> listItem)
-        {
-            return listItem.OrderBy(item => item.IdEnumeration).ToList();
         }
 
         #region Methods.

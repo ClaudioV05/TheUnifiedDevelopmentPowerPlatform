@@ -74,6 +74,7 @@ builder.Services.TryAddTransient<FilterActionContextTables<MetadataOwner>>();
 builder.Services.TryAddScoped<IServiceAppSettings, ServiceAppSettings>();
 builder.Services.TryAddScoped<IServiceArchitecture, ServiceArchitecture>();
 builder.Services.TryAddScoped<IServiceCrypto, ServiceCrypto>();
+builder.Services.TryAddScoped<IServiceCsv, ServiceCsv>();
 builder.Services.TryAddScoped<IServiceDatabase, ServiceDatabase>();
 builder.Services.TryAddScoped<IServiceDatabaseEngine, ServiceDatabaseEngine>();
 builder.Services.TryAddScoped<IServiceDate, ServiceDate>();

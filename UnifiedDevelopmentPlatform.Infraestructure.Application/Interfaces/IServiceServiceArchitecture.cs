@@ -8,9 +8,9 @@ namespace UnifiedDevelopmentPlatform.Application.Interfaces
     public interface IServiceArchitecture
     {
         /// <summary>
-        /// Return the full list of all architectures.
+        /// Select parameters the kinds of architectures.
         /// </summary>
-        /// <returns>List of architectures</returns>
-        List<Architectures> UDPObtainTheListOfArchitectures();
+        /// <returns>Return the complete list of architectures.</returns>
+        List<Architectures> UDPSelectParametersTheKindsOfArchitectures();
     }
 }

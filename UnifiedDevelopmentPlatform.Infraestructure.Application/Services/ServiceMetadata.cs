@@ -49,7 +49,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
                 _serviceMetadataTables.UDPSaveDatabaseSchemaFromMetadata(metadata);
             }
 
-            return result;
+            return result ?? new List<string>();
         }
 
         public void UDPReceiveAndSaveAllTableAndFieldsOfSchemaDatabase(MetadataOwner metadata)
@@ -57,34 +57,16 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             throw new NotImplementedException();
         }
 
-        public List<Databases> UDPObtainTheListOfDatabases()
-        {
-            return _serviceDatabase.UDPObtainTheListOfDatabases();
-        }
+        public List<Databases> UDPSelectParametersTheKindsOfDatabases() => _serviceDatabase.UDPSelectParametersTheKindsOfDatabases();
 
-        public List<Forms> UDPObtainTheListOfForms()
-        {
-            return _serviceForm.UDPObtainTheListOfForms();
-        }
+        public List<Forms> UDPSelectParametersTheKindsOfForms() => _serviceForm.UDPSelectParametersTheKindsOfForms();
 
-        public List<DevelopmentEnvironment> UDPObtainTheListOfDevelopmentEnviroment()
-        {
-            return _serviceDevelopmentEnvironment.UDPObtainTheListOfDevelopmentEnviroment();
-        }
+        public List<DevelopmentEnvironment> UDPSelectParametersTheKindsOfDevelopmentEnviroment() => _serviceDevelopmentEnvironment.UDPSelectParametersTheKindsOfDevelopmentEnviroment();
 
-        public List<DatabasesEngine> UDPObtainTheListOfDatabasesEngine()
-        {
-            return _serviceDatabaseEngine.UDPObtainTheListOfDatabasesEngine();
-        }
+        public List<DatabasesEngine> UDPSelectParametersTheKindsOfDatabasesEngine() => _serviceDatabaseEngine.UDPSelectParametersTheKindsOfDatabasesEngine();
 
-        public List<Architectures> UDPObtainTheListOfArchitectures()
-        {
-            return _serviceArchitecture.UDPObtainTheListOfArchitectures();
-        }
+        public List<Architectures> UDPSelectParametersTheKindsOfArchitectures() => _serviceArchitecture.UDPSelectParametersTheKindsOfArchitectures();
 
-        public UnifiedDevelopmentPlatformInformation UDPObtainInformationUnifiedDevelopmentPlatform()
-        {
-            return new UnifiedDevelopmentPlatformInformation() { };
-        }
+        public UnifiedDevelopmentPlatformInformation UDPSelectParametersInformationUnifiedDevelopmentPlatform() => new UnifiedDevelopmentPlatformInformation() { };
     }
 }

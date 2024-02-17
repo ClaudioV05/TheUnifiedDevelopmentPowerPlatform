@@ -11,16 +11,16 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Directory
         /// <summary>
         /// Application.
         /// </summary>
-        public static string Application => "\\2-Application";
+        public static string Application => string.Format("{0}2-Application", Path.DirectorySeparatorChar);
 
         /// <summary>
         /// Interfaces.
         /// </summary>
-        public static string Interfaces => "\\Interfaces";
+        public static string Interfaces => string.Format("{0}Interfaces", Path.DirectorySeparatorChar);
 
         /// <summary>
         /// Services.
         /// </summary>
-        public static string Services => "\\Services";
+        public static string Services => string.Format("{0}Services", Path.DirectorySeparatorChar);
     }
 }
