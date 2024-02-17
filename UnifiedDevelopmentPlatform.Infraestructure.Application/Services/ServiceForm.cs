@@ -9,10 +9,16 @@ namespace UnifiedDevelopmentPlatform.Application.Services
     /// </summary>
     public class ServiceForm : IServiceForm
     {
+        private readonly IServiceEnumerated _serviceEnumerated;
+
         /// <summary>
         /// The constructor of service form.
         /// </summary>
-        public ServiceForm() { }
+        /// <param name="serviceEnumerated"></param>
+        public ServiceForm(IServiceEnumerated serviceEnumerated)
+        {
+            _serviceEnumerated = serviceEnumerated;
+        }
 
         public List<Forms> UDPSelectParametersTheKindsOfForms()
         {
@@ -20,11 +26,17 @@ namespace UnifiedDevelopmentPlatform.Application.Services
 
             try
             {
-                if (Enum.GetValues(typeof(EnumForm)) != null && Enum.GetValues(typeof(EnumForm)).Length > 0)
+                if (Enum.GetValues(typeof(EnumeratedForm)) != null && Enum.GetValues(typeof(EnumeratedForm)).Length > 0)
                 {
-                    for (int i = 0; i < Enum.GetValues(typeof(EnumForm)).Length; i++)
+                    for (int i = 0; i < Enum.GetValues(typeof(EnumeratedForm)).Length; i++)
                     {
-                        listItems.Add(new Forms() { IdEnumeration = (EnumForm)i, NameEnumeration = Enum.GetName(typeof(EnumForm), i) });
+                        listItems.Add(new Forms()
+                        {
+                            Id = (long)(EnumeratedForm)i,
+                            IdEnumeration = (EnumeratedForm)i,
+                            NameEnumeration = Enum.GetName(typeof(EnumeratedForm), i),
+                            Name = _serviceEnumerated.UDPGetEnumeratedDescription((EnumeratedForm)i)
+                        });
                     }
                 }
             }

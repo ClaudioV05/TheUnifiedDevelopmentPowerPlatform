@@ -58,7 +58,7 @@
         /// </summary>
         /// <param name="path"></param>
         /// <returns></returns>
-        string UDPRemoveSpecialCaracterFrompath(string path);
+        string UDPRemoveSpecialCaracterFromPath(string path);
 
         /// <summary>
         /// Select section.
@@ -66,6 +66,20 @@
         /// <param name="text"></param>
         /// <returns>Section name.</returns>
         string UDPSelectSection(string text);
+
+        /// <summary>
+        /// Verify if string contains only ascii letters.
+        /// </summary>
+        /// <param name="text"></param>
+        /// <returns>The method will return true, otherwise will return false.</returns>
+        bool UDPIsOnlyAsciiLetters(string text);
+
+        /// <summary>
+        /// Verify if string contains only ascii letters.
+        /// </summary>
+        /// <param name="text"></param>
+        /// <returns>The method will return true, otherwise will return false.</returns>
+        bool UDPIsOnlyAsciiLettersBySwitchCase(string text);
 
         #region For Treatment of Strings.
 

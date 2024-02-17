@@ -9,14 +9,15 @@ namespace UnifiedDevelopmentPlatform.Application.Services
     /// </summary>
     public class ServiceDatabase : IServiceDatabase
     {
-        private readonly IServiceLinq _serviceLinq;
+        private readonly IServiceEnumerated _serviceEnumerated;
 
         /// <summary>
         /// The constructor of Service database.
         /// </summary>
-        public ServiceDatabase(IServiceLinq serviceLinq)
+        /// <param name="serviceEnumerated"></param>
+        public ServiceDatabase(IServiceEnumerated serviceEnumerated)
         {
-            _serviceLinq = serviceLinq;
+            _serviceEnumerated = serviceEnumerated;
         }
 
         public List<Databases> UDPSelectParametersTheKindsOfDatabases()
@@ -25,11 +26,17 @@ namespace UnifiedDevelopmentPlatform.Application.Services
 
             try
             {
-                if (Enum.GetValues(typeof(EnumDatabases)) != null && Enum.GetValues(typeof(EnumDatabases)).Length > 0)
+                if (Enum.GetValues(typeof(EnumeratedDatabases)) != null && Enum.GetValues(typeof(EnumeratedDatabases)).Length > 0)
                 {
-                    for (int i = 0; i < Enum.GetValues(typeof(EnumDatabases)).Length; i++)
+                    for (int i = 0; i < Enum.GetValues(typeof(EnumeratedDatabases)).Length; i++)
                     {
-                        listItems.Add(new Databases() { IdEnumeration = (EnumDatabases)i, NameEnumeration = Enum.GetName(typeof(EnumDatabases), i) });
+                        listItems.Add(new Databases()
+                        {
+                            Id = (long)(EnumeratedDatabases)i,
+                            IdEnumeration = (EnumeratedDatabases)i,
+                            NameEnumeration = Enum.GetName(typeof(EnumeratedDatabases), i),
+                            Name = _serviceEnumerated.UDPGetEnumeratedDescription((EnumeratedDatabases)i)
+                        });
                     }
                 }
             }

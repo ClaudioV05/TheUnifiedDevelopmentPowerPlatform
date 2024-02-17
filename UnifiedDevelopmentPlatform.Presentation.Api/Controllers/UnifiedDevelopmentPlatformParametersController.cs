@@ -164,9 +164,9 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Controllers
         }
 
         /// <summary>
-        /// Return the complete list of architectures.
+        /// Return the complete list of architecture patterns.
         /// </summary>
-        /// <returns>List of architectures with ids and names.</returns>
+        /// <returns>List of architecture patterns with ids and names.</returns>
         /// 200 Status Codes: This is the best kind of HTTP status code to receive. A 200-level response means that everything is working exactly as it should.
         /// <response code="200">Everything is OK.</response>
         /// 400 Status Codes: At the 400 level, HTTP status codes start to become problematic. These are error codes specifying that there’s a fault with your browser and/or request.
@@ -181,8 +181,8 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Controllers
         /// <response code="504">The server, acting as a gateway, timed out waiting for another server to respond.</response>
         [HttpGet]
         [Produces(MediaTypeNames.Application.Json, MediaTypeNames.Application.Xml)]
-        [Route(ControllerRouterUnifiedDevelopmentPlatformInformations.RouterParametersOfArchitectures)]
-        [ProducesResponseType(typeof(IEnumerable<Architectures>), StatusCodes.Status200OK)]
+        [Route(ControllerRouterUnifiedDevelopmentPlatformInformations.RouterParametersOfArchitecturePatterns)]
+        [ProducesResponseType(typeof(IEnumerable<ArchitecturePatterns>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
@@ -191,9 +191,9 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Controllers
         [ProducesResponseType(StatusCodes.Status502BadGateway)]
         [ProducesResponseType(StatusCodes.Status503ServiceUnavailable)]
         [ProducesResponseType(StatusCodes.Status504GatewayTimeout)]
-        public ActionResult<IEnumerable<Architectures>> ParametersTheKindsOfArchitectures()
+        public ActionResult<IEnumerable<ArchitecturePatterns>> ParametersTheKindsOfArchitecturePatterns()
         {
-            return Ok(_serviceMetadata.UDPSelectParametersTheKindsOfArchitectures());
+            return Ok(_serviceMetadata.UDPSelectParametersTheKindsOfArchitecturePatterns());
         }
 
         /// <summary>

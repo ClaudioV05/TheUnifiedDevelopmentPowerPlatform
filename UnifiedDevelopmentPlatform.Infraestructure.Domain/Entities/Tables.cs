@@ -17,5 +17,10 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities
         /// Name of fields.
         /// </summary>
         public List<string>? Names { get; set; }
+
+        /// <summary>
+        /// Fields.
+        /// </summary>
+        public Fields? Fields { get; set; }
     }
 }

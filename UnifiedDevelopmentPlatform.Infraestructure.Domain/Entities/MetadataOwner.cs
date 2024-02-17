@@ -39,16 +39,10 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities
         public DevelopmentEnvironment? DevEnvironment { get; set; }
 
         /// <summary>
-        /// Fields.
-        /// </summary>
-        [DataMember]
-        public ICollection<Fields>? Fields { get; set; }
-
-        /// <summary>
         /// Tables.
         /// </summary>
         [DataMember]
-        public ICollection<Tables>? Tables { get; set; }
+        public List<Tables>? Tables { get; set; }
 
         /// <summary>
         /// 
@@ -61,8 +55,7 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities
                 var Forms = new Forms();
                 var Databases = new Databases();
                 var DevEnvironment = new DevelopmentEnvironment();
-                //List<Fields>? Fields = null;
-                //List<Tables>? Tables = null;
+                List<Tables>? Tables = null;
             }
             catch (Exception)
             {

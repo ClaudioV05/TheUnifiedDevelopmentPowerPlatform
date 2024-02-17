@@ -37,7 +37,7 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Controller
         /// <summary>
         /// Route architectures.
         /// </summary>
-        public const string RouterParametersOfArchitectures = "/ParametersOfArchitectures";
+        public const string RouterParametersOfArchitecturePatterns = "/ParametersOfArchitecturePatterns";
 
         /// <summary>
         /// Route informations.

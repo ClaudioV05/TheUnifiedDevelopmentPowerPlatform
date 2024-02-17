@@ -13,7 +13,7 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities
         /// <summary>
         /// Enum type for entitie DevelopmentEnvironment.
         /// </summary>
-        public enum EnumDevelopmentEnvironment : int
+        public enum EnumeratedDevelopmentEnvironment : int
         {
             [Description("Not Defined")]
             NotDefined = 0,
@@ -30,7 +30,7 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities
         /// <summary>
         /// Id Enumeration.
         /// </summary>
-        public EnumDevelopmentEnvironment IdEnumeration { get; set; } = 0;
+        public EnumeratedDevelopmentEnvironment IdEnumeration { get; set; } = 0;
 
         /// <summary>
         /// Name of enumeration.

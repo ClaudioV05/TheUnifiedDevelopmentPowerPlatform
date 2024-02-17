@@ -80,8 +80,8 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             }
         }
 
-        [Obsolete("Method with problem", true)]
-        public string UDPRemoveSpecialCaracterFrompath(string path)
+        [Obsolete("The method is with problem", true)]
+        public string UDPRemoveSpecialCaracterFromPath(string path)
         {
             try
             {
@@ -114,6 +114,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             return section;
         }
 
+        [Obsolete("The method is obsolete", true)]
         public string UDPOnlyLetter(string text)
         {
             string onlyLetter = this.Empty;
@@ -134,6 +135,27 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             {
                 return this.Empty;
             }
+        }
+
+        public bool UDPIsOnlyAsciiLetters(string text)
+        {
+            return text.All(char.IsAscii);
+        }
+
+        public bool UDPIsOnlyAsciiLettersBySwitchCase(string text)
+        {
+            foreach (var item in text)
+            {
+                switch (item)
+                {
+                    case >= 'A' and <= 'Z':
+                    case >= 'a' and <= 'z':
+                        continue;
+                    default:
+                        return false;
+                }
+            }
+            return true;
         }
 
         #region For Treatment of Strings.

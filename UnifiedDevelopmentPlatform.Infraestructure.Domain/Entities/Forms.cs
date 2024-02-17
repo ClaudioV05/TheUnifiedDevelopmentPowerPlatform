@@ -13,7 +13,7 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities
         /// <summary>
         /// Enum type for entitie Forms.
         /// </summary>
-        public enum EnumForm : int
+        public enum EnumeratedForm : int
         {
             [Description("Not Defined")]
             NotDefined = 0,
@@ -34,7 +34,7 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities
         /// <summary>
         /// Id Enumeration.
         /// </summary>
-        public EnumForm IdEnumeration { get; set; } = 0;
+        public EnumeratedForm IdEnumeration { get; set; } = 0;
 
         /// <summary>
         /// Name of enumeration.

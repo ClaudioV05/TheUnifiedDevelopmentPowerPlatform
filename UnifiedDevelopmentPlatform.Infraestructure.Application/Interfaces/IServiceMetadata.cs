@@ -45,10 +45,10 @@ namespace UnifiedDevelopmentPlatform.Application.Interfaces
         List<DatabasesEngine> UDPSelectParametersTheKindsOfDatabasesEngine();
 
         /// <summary>
-        /// Select parameters the kinds of architectures.
+        /// Select parameters the kinds of architecture patterns.
         /// </summary>
-        /// <returns>Return the complete list of architectures.</returns>
-        List<Architectures> UDPSelectParametersTheKindsOfArchitectures();
+        /// <returns>Return the complete list of architecture patterns.</returns>
+        List<ArchitecturePatterns> UDPSelectParametersTheKindsOfArchitecturePatterns();
 
         /// <summary>
         /// Return the parameters about Unified development platform.

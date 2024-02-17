@@ -13,7 +13,7 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities
         /// <summary>
         /// Enum type for entitie Databases Engine.
         /// </summary>
-        public enum EnumDatabasesEngine : int
+        public enum EnumeratedDatabasesEngine : int
         {
             [Description("Not Defined")]
             NotDefined = 0,
@@ -32,7 +32,7 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities
         /// <summary>
         /// Id Enumeration.
         /// </summary>
-        public EnumDatabasesEngine IdEnumeration { get; set; } = 0;
+        public EnumeratedDatabasesEngine IdEnumeration { get; set; } = 0;
 
         /// <summary>
         /// Name of enumeration.

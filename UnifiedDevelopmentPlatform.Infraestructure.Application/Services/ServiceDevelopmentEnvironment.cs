@@ -9,10 +9,16 @@ namespace UnifiedDevelopmentPlatform.Application.Services
     /// </summary>
     public class ServiceDevelopmentEnvironment : IServiceDevelopmentEnvironment
     {
+        private readonly IServiceEnumerated _serviceEnumerated;
+
         /// <summary>
         /// The constructor of Service development environment.
         /// </summary>
-        public ServiceDevelopmentEnvironment() { }
+        /// <param name="serviceEnumerated"></param>
+        public ServiceDevelopmentEnvironment(IServiceEnumerated serviceEnumerated)
+        {
+            _serviceEnumerated = serviceEnumerated;
+        }
 
         public List<DevelopmentEnvironment> UDPSelectParametersTheKindsOfDevelopmentEnviroment()
         {
@@ -20,11 +26,17 @@ namespace UnifiedDevelopmentPlatform.Application.Services
 
             try
             {
-                if (Enum.GetValues(typeof(EnumDevelopmentEnvironment)) != null && Enum.GetValues(typeof(EnumDevelopmentEnvironment)).Length > 0)
+                if (Enum.GetValues(typeof(EnumeratedDevelopmentEnvironment)) != null && Enum.GetValues(typeof(EnumeratedDevelopmentEnvironment)).Length > 0)
                 {
-                    for (int i = 0; i < Enum.GetValues(typeof(EnumDevelopmentEnvironment)).Length; i++)
+                    for (int i = 0; i < Enum.GetValues(typeof(EnumeratedDevelopmentEnvironment)).Length; i++)
                     {
-                        listItems.Add(new DevelopmentEnvironment() { IdEnumeration = (EnumDevelopmentEnvironment)i, NameEnumeration = Enum.GetName(typeof(EnumDevelopmentEnvironment), i) });
+                        listItems.Add(new DevelopmentEnvironment()
+                        { 
+                            Id = (long)(EnumeratedDevelopmentEnvironment)i,
+                            IdEnumeration = (EnumeratedDevelopmentEnvironment)i,
+                            NameEnumeration = Enum.GetName(typeof(EnumeratedDevelopmentEnvironment), i),
+                            Name = _serviceEnumerated.UDPGetEnumeratedDescription((EnumeratedDevelopmentEnvironment)i)
+                        });
                     }
                 }
             }

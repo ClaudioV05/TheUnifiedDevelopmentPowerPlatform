@@ -9,10 +9,16 @@ namespace UnifiedDevelopmentPlatform.Application.Services
     /// </summary>
     public class ServiceDatabaseEngine : IServiceDatabaseEngine
     {
+        private readonly IServiceEnumerated _serviceEnumerated;
+
         /// <summary>
         /// The constructor of Service database engine.
         /// </summary>
-        public ServiceDatabaseEngine() { }
+        /// <param name="serviceEnumerated"></param>
+        public ServiceDatabaseEngine(IServiceEnumerated serviceEnumerated)
+        {
+            _serviceEnumerated = serviceEnumerated;
+        }
 
         public List<DatabasesEngine> UDPSelectParametersTheKindsOfDatabasesEngine()
         {
@@ -20,11 +26,17 @@ namespace UnifiedDevelopmentPlatform.Application.Services
 
             try
             {
-                if (Enum.GetValues(typeof(EnumDatabasesEngine)) != null && Enum.GetValues(typeof(EnumDatabasesEngine)).Length > 0)
+                if (Enum.GetValues(typeof(EnumeratedDatabasesEngine)) != null && Enum.GetValues(typeof(EnumeratedDatabasesEngine)).Length > 0)
                 {
-                    for (int i = 0; i < Enum.GetValues(typeof(EnumDatabasesEngine)).Length; i++)
+                    for (int i = 0; i < Enum.GetValues(typeof(EnumeratedDatabasesEngine)).Length; i++)
                     {
-                        listItems.Add(new DatabasesEngine() { IdEnumeration = (EnumDatabasesEngine)i, NameEnumeration = Enum.GetName(typeof(EnumDatabasesEngine), i) });
+                        listItems.Add(new DatabasesEngine()
+                        {
+                            Id = (long)(EnumeratedDatabasesEngine)i,
+                            IdEnumeration = (EnumeratedDatabasesEngine)i,
+                            NameEnumeration = Enum.GetName(typeof(EnumeratedDatabasesEngine), i),
+                            Name = _serviceEnumerated.UDPGetEnumeratedDescription((EnumeratedDatabasesEngine)i)
+                        });
                     }
                 }
             }

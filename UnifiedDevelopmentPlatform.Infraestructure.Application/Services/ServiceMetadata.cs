@@ -11,7 +11,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
     {
         private readonly IServiceForm _serviceForm;
         private readonly IServiceDatabase _serviceDatabase;
-        private readonly IServiceArchitecture _serviceArchitecture;
+        private readonly IServiceArchitecturePatterns _serviceArchitecturePatterns;
         private readonly IServiceMetadataTable _serviceMetadataTables;
         private readonly IServiceDatabaseEngine _serviceDatabaseEngine;
         private readonly IServiceDevelopmentEnvironment _serviceDevelopmentEnvironment;
@@ -21,19 +21,19 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         /// </summary>
         /// <param name="serviceForm"></param>
         /// <param name="serviceDatabase"></param>
-        /// <param name="serviceArchitecture"></param>
         /// <param name="serviceMetadataTables"></param>
         /// <param name="serviceDatabaseEngine"></param>
+        /// <param name="serviceArchitecturePatterns"></param>
         /// <param name="serviceDevelopmentEnvironment"></param>
         public ServiceMetadata(IServiceForm serviceForm,
                                IServiceDatabase serviceDatabase,
-                               IServiceArchitecture serviceArchitecture,
+                               IServiceArchitecturePatterns serviceArchitecturePatterns,
                                IServiceMetadataTable serviceMetadataTables,
                                IServiceDatabaseEngine serviceDatabaseEngine,
                                IServiceDevelopmentEnvironment serviceDevelopmentEnvironment)
         {
             _serviceForm = serviceForm;
-            _serviceArchitecture = serviceArchitecture;
+            _serviceArchitecturePatterns = serviceArchitecturePatterns;
             _serviceDatabase = serviceDatabase;
             _serviceDatabaseEngine = serviceDatabaseEngine;
             _serviceMetadataTables = serviceMetadataTables;
@@ -65,7 +65,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
 
         public List<DatabasesEngine> UDPSelectParametersTheKindsOfDatabasesEngine() => _serviceDatabaseEngine.UDPSelectParametersTheKindsOfDatabasesEngine();
 
-        public List<Architectures> UDPSelectParametersTheKindsOfArchitectures() => _serviceArchitecture.UDPSelectParametersTheKindsOfArchitectures();
+        public List<ArchitecturePatterns> UDPSelectParametersTheKindsOfArchitecturePatterns() => _serviceArchitecturePatterns.UDPSelectParametersTheKindsOfArchitecturePatterns();
 
         public UnifiedDevelopmentPlatformInformation UDPSelectParametersInformationUnifiedDevelopmentPlatform() => new UnifiedDevelopmentPlatformInformation() { };
     }

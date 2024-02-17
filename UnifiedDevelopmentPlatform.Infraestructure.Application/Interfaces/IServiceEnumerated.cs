@@ -3,13 +3,13 @@
     /// <summary>
     /// Interface service enumerated.
     /// </summary>
-    public interface IServiceEnumerated<T, U> where T : struct where U : class, new()
+    public interface IServiceEnumerated
     {
         /// <summary>
-        /// 
+        /// Get the enumerated description.
         /// </summary>
-        /// <param name="MyEnum"></param>
-        /// <returns></returns>
-        List<U> UDPObtainListItem(T UdpEnumerated, U obj);
+        /// <param name="EnumeratedValue"></param>
+        /// <returns>The string with enumerated description.</returns>
+        string UDPGetEnumeratedDescription(Enum EnumeratedValue);
     }
 }

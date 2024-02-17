@@ -62,6 +62,7 @@ builder.Services.AddMvc().AddMvcOptions(options => options.OutputFormatters.Add(
 #region Action Filters.
 
 builder.Services.TryAddTransient<FilterActionContextController>();
+builder.Services.TryAddTransient<FilterActionContextControllerInformation>();
 builder.Services.TryAddTransient<FilterActionContextLog>();
 builder.Services.TryAddTransient<FilterActionContextFields<MetadataOwner>>();
 builder.Services.TryAddTransient<FilterActionContextTables<MetadataOwner>>();
@@ -72,7 +73,7 @@ builder.Services.TryAddTransient<FilterActionContextTables<MetadataOwner>>();
 
 #region Services.
 builder.Services.TryAddScoped<IServiceAppSettings, ServiceAppSettings>();
-builder.Services.TryAddScoped<IServiceArchitecture, ServiceArchitecture>();
+builder.Services.TryAddScoped<IServiceArchitecturePatterns, ServiceArchitecturePatterns>();
 builder.Services.TryAddScoped<IServiceCrypto, ServiceCrypto>();
 builder.Services.TryAddScoped<IServiceCsv, ServiceCsv>();
 builder.Services.TryAddScoped<IServiceDatabase, ServiceDatabase>();
@@ -81,8 +82,7 @@ builder.Services.TryAddScoped<IServiceDate, ServiceDate>();
 builder.Services.TryAddScoped<IServiceDevelopmentEnvironment, ServiceDevelopmentEnvironment>();
 builder.Services.TryAddScoped<IServiceDirectory, ServiceDirectory>();
 builder.Services.TryAddScoped<IServiceEnvironment, ServiceEnvironment>();
-builder.Services.TryAddScoped<IServiceEnumerated<EnumDevelopmentEnvironment, DevelopmentEnvironment>, ServiceEnumerated<EnumDevelopmentEnvironment, DevelopmentEnvironment>>();
-builder.Services.TryAddScoped<IServiceEnumerated<EnumDatabasesEngine, DatabasesEngine>, ServiceEnumerated<EnumDatabasesEngine, DatabasesEngine>>();
+builder.Services.TryAddScoped<IServiceEnumerated, ServiceEnumerated>();
 builder.Services.TryAddScoped<IServiceFile, ServiceFile>();
 builder.Services.TryAddScoped<IServiceForm, ServiceForm>();
 builder.Services.TryAddScoped<IServiceFuncString, ServiceFuncString>();

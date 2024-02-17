@@ -1,36 +1,24 @@
-﻿using UnifiedDevelopmentPlatform.Application.Interfaces;
+﻿using System.ComponentModel;
+using UnifiedDevelopmentPlatform.Application.Interfaces;
+using static UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Databases;
 
 namespace UnifiedDevelopmentPlatform.Application.Services
 {
     /// <summary>
     /// Service Enumerated.
     /// </summary>
-    public class ServiceEnumerated<T, U> : IServiceEnumerated<T, U> where T : struct where U : class, new()
+    public class ServiceEnumerated : IServiceEnumerated
     {
         /// <summary>
         /// The constructor of Service Enumerated.
         /// </summary>
         public ServiceEnumerated() { }
 
-        public List<U> UDPObtainListItem(T UdpEnumerated, U obj)
+        public string UDPGetEnumeratedDescription(Enum EnumeratedValue)
         {
-            List<U> listItems = new List<U>();
-
-            obj.GetType().GetProperties();
-
-            try
-            {
-                if (Enum.GetValues(typeof(T)) != null && Enum.GetValues(typeof(T)).Length > 0)
-                {
-                    for (int i = 0; i < Enum.GetValues(typeof(T)).Length; i++)
-                    {
-                        //listItems.Add(new U() { properties[0].Name = NameEnumeration = Enum.GetName(typeof(T), i) });
-                    }
-                }
-            }
-            catch (OverflowException) { }
-
-            return listItems;
+            var fieldInfo = EnumeratedValue.GetType().GetField(EnumeratedValue.ToString());
+            var descriptionAttributes = (DescriptionAttribute[])fieldInfo.GetCustomAttributes(typeof(DescriptionAttribute), false);
+            return descriptionAttributes.Length > 0 ? descriptionAttributes[0].Description : EnumeratedValue.ToString();
         }
     }
 }

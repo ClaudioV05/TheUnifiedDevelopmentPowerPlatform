@@ -8,12 +8,12 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities
     /// Entity Architectures.
     /// </summary>
     [ComplexType]
-    public class Architectures : IEntity
+    public class ArchitecturePatterns : IEntity
     {
         /// <summary>
-        /// Enum type for entitie Architecture.
+        /// Enum type for entitie architecture patterns.
         /// </summary>
-        public enum EnumArchitecture : int
+        public enum EnumeratedArchitecturePatterns : int
         {
             [Description("Not Defined")]
             NotDefined = 0,
@@ -30,7 +30,7 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities
         /// <summary>
         /// Id Enumeration.
         /// </summary>
-        public EnumArchitecture IdEnumeration { get; set; } = 0;
+        public EnumeratedArchitecturePatterns IdEnumeration { get; set; } = 0;
 
         /// <summary>
         /// Name of enumeration.

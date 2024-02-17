@@ -6,7 +6,7 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities
     /// Entity Fields.
     /// </summary>
     [ComplexType]
-    public class Fields : Tables
+    public class Fields
     {
 
     }
