@@ -15,8 +15,8 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         private readonly IServiceFile _serviceFile;
         private readonly IServiceDate _serviceDate;
         private readonly IServiceDirectory _serviceDirectory;
+        private readonly IServicePlataform _servicePlataform;
         private readonly IServiceFuncString _serviceFuncStrings;
-        private readonly IServiceEnvironment _serviceEnvironment;
         private readonly ILogger _logger = LogManager.GetCurrentClassLogger();
 
         /// <summary>
@@ -25,18 +25,18 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         /// <param name="serviceFile"></param>
         /// <param name="serviceDate"></param>
         /// <param name="serviceDirectory"></param>
-        /// <param name="serviceEnvironment"></param>
+        /// <param name="servicePlataform"></param>
         /// <param name="serviceFuncStrings"></param>
         public ServiceLog(IServiceFile serviceFile,
                           IServiceDate serviceDate,
                           IServiceDirectory serviceDirectory,
-                          IServiceFuncString serviceFuncStrings,
-                          IServiceEnvironment serviceEnvironment)
+                          IServicePlataform servicePlataform,
+                          IServiceFuncString serviceFuncStrings)
         {
             _serviceFile = serviceFile;
             _serviceDate = serviceDate;
             _serviceDirectory = serviceDirectory;
-            _serviceEnvironment = serviceEnvironment;
+            _servicePlataform = servicePlataform;
             _serviceFuncStrings = serviceFuncStrings;
         }
 
@@ -58,11 +58,12 @@ namespace UnifiedDevelopmentPlatform.Application.Services
 
             if (!_serviceFuncStrings.UDPStringStarts(message, MessageDescription.Initial))
             {
-                caracter = _serviceEnvironment.UDPNewLine();
+                caracter = _servicePlataform.UDPAddNewLine();
             }
 
             StackFrame stackFrame = new StackFrame(1, true);
             informations = $"{caracter}{_serviceDate.UDPGetDateTimeNowFormat()} -->> File [{_serviceFile.UDPGetFileName(stackFrame.GetFileName() ?? _serviceFuncStrings.Empty)}] Line Number [{stackFrame.GetFileLineNumber()}] [{_serviceFuncStrings.UDPUpper(message)}]";
+            this.UDPLogInformation(informations);
             _serviceFile.UDPAppendAllText($"{directoryConfiguration}{DirectoryStandard.Log}{FileStandard.Log}{FileExtension.Txt}", informations);
         }
     }

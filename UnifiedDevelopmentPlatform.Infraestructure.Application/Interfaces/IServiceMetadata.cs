@@ -1,5 +1,5 @@
 ﻿using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities;
-using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.UnifiedDevelopmentPlatformInformation;
+using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.UnifiedDevelopmentParameter;
 
 namespace UnifiedDevelopmentPlatform.Application.Interfaces
 {
@@ -9,16 +9,16 @@ namespace UnifiedDevelopmentPlatform.Application.Interfaces
     public interface IServiceMetadata
     {
         /// <summary>
-        /// Receive and save all tables of schema database.
+        /// Receive and save all table(s) and field(s) of schema database.
         /// </summary>
-        /// <returns>Ther list with the name of table</returns>
-        List<string> UDPReceiveAndSaveAllTableOfSchemaDatabase(MetadataOwner metadata);
+        /// <returns>The Metadata Owner with name(s) and field(s) of schema database.</returns>
+        MetadataOwner UDPReceiveAndSaveAllTableAndFieldsOfSchemaDatabase(MetadataOwner metadata);
 
         /// <summary>
-        /// Receive and save all table and fields of schema database.
+        /// Not implemented yet.
         /// </summary>
         /// <returns></returns>
-        void UDPReceiveAndSaveAllTableAndFieldsOfSchemaDatabase(MetadataOwner metadata);
+        void UDPNotImplemented(MetadataOwner metadata);
 
         /// <summary>
         /// Select parameters the kinds of databases.
@@ -54,6 +54,6 @@ namespace UnifiedDevelopmentPlatform.Application.Interfaces
         /// Return the parameters about Unified development platform.
         /// </summary>
         /// <returns>Information about Unified development platform.</returns>
-        UnifiedDevelopmentPlatformInformation UDPSelectParametersInformationUnifiedDevelopmentPlatform();
+        UnifiedDevelopmentParameters UDPSelectParametersInformationUnifiedDevelopmentPlatform();
     }
 }

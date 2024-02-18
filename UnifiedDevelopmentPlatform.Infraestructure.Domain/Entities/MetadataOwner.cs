@@ -24,25 +24,25 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities
         /// Forms.
         /// </summary>
         [DataMember]
-        public Forms? Forms { get; set; }
-
-        /// <summary>
-        /// Databases.
-        /// </summary>
-        [DataMember]
-        public Databases? Databases { get; set; }
-
-        /// <summary>
-        /// DevelopmentEnvironment.
-        /// </summary>
-        [DataMember]
-        public DevelopmentEnvironment? DevEnvironment { get; set; }
+        public List<Forms>? Forms { get; set; }
 
         /// <summary>
         /// Tables.
         /// </summary>
         [DataMember]
         public List<Tables>? Tables { get; set; }
+
+        /// <summary>
+        /// Databases.
+        /// </summary>
+        [DataMember]
+        public List<Databases>? Databases { get; set; }
+
+        /// <summary>
+        /// Development environment.
+        /// </summary>
+        [DataMember]
+        public List<DevelopmentEnvironment>? DevelopmentEnvironment { get; set; }
 
         /// <summary>
         /// 
@@ -52,14 +52,17 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities
         {
             try
             {
-                var Forms = new Forms();
-                var Databases = new Databases();
-                var DevEnvironment = new DevelopmentEnvironment();
-                List<Tables>? Tables = null;
+                Id = 0;
+                Name = string.Empty;
+                DatabaseSchema = string.Empty;
+                this.Forms = new List<Forms>();
+                this.Tables = new List<Tables>();
+                this.Databases = new List<Databases>();
+                this.DevelopmentEnvironment = new List<DevelopmentEnvironment>();
             }
             catch (Exception)
             {
-                throw new Exception("Creation with erro in " + this.ToString());
+                throw new Exception("The creation of MetadataOwner is with erro in " + this.ToString());
             }
         }
     }

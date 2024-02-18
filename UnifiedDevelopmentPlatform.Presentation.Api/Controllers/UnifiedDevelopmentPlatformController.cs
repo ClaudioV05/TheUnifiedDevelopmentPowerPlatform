@@ -55,7 +55,7 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Controllers
         [Route(ControllerRouterUnifiedDevelopmentPlatform.RouterMetadataAllTablesName)]
         [ServiceFilter(typeof(FilterActionContextLog), IsReusable = false, Order = ControllerOrderExecutationFilter.Second)]
         [ServiceFilter(typeof(FilterActionContextTables<MetadataOwner>), IsReusable = false, Order = ControllerOrderExecutationFilter.Third)]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<string>))]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(MetadataOwner))]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
@@ -66,9 +66,9 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Controllers
         [ProducesResponseType(StatusCodes.Status503ServiceUnavailable)]
         [ProducesResponseType(StatusCodes.Status504GatewayTimeout)]
         [DisableCors]
-        public ActionResult<List<string>> MetadataAllTablesName([BindRequired] AppMetadata metadata)
+        public ActionResult<MetadataOwner> MetadataAllTablesName([BindRequired] AppMetadata metadata)
         {
-            return Ok(_serviceMetadata.UDPReceiveAndSaveAllTableOfSchemaDatabase(metadata: new MetadataOwner() { DatabaseSchema = metadata.DatabaseSchema }));
+            return Ok(_serviceMetadata.UDPReceiveAndSaveAllTableAndFieldsOfSchemaDatabase(metadata: new MetadataOwner() { DatabaseSchema = metadata.DatabaseSchema }));
         }
 
         /// <summary>
@@ -94,7 +94,7 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Controllers
         [Route(ControllerRouterUnifiedDevelopmentPlatform.RouterMetadataAllFieldsName)]
         [ServiceFilter(typeof(FilterActionContextLog), IsReusable = false, Order = ControllerOrderExecutationFilter.Second)]
         [ServiceFilter(typeof(FilterActionContextFields<MetadataOwner>), IsReusable = false, Order = ControllerOrderExecutationFilter.Third)]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<string>))]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(MetadataOwner))]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
@@ -105,12 +105,12 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Controllers
         [ProducesResponseType(StatusCodes.Status503ServiceUnavailable)]
         [ProducesResponseType(StatusCodes.Status504GatewayTimeout)]
         [DisableCors]
-        public ActionResult<List<string>> MetadataAllFieldsName([BindRequired] AppMetadata metadata)
+        public ActionResult<MetadataOwner> MetadataAllFieldsName([BindRequired] AppMetadata metadata)
         {
             // Here enter with field name only. Load the property [Fields].
             // Return the table name and your fields.
 
-            _serviceMetadata.UDPReceiveAndSaveAllTableAndFieldsOfSchemaDatabase(metadata: new MetadataOwner() { DatabaseSchema = metadata.DatabaseSchema });
+            _serviceMetadata.UDPNotImplemented(metadata: new MetadataOwner() { DatabaseSchema = metadata.DatabaseSchema });
             return Ok();
         }
     }

@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc.ApplicationModels;
 using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Controller;
 
-namespace UnifiedDevelopmentPlatform.Presentation.Api.Swagger
+namespace UnifiedDevelopmentPlatform.Presentation.Api.OpenApi
 {
-    public class HideControllerConvention : IActionModelConvention
+    public class OpenApiHideControllerConvention : IActionModelConvention
     {
         public void Apply(ActionModel action)
         {

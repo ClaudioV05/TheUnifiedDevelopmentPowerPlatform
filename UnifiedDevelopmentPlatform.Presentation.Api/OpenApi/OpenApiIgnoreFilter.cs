@@ -3,9 +3,9 @@ using Swashbuckle.AspNetCore.SwaggerGen;
 using System.Reflection;
 using System.Text.Json.Serialization;
 
-namespace UnifiedDevelopmentPlatform.Presentation.Api.Swagger
+namespace UnifiedDevelopmentPlatform.Presentation.Api.OpenApi
 {
-    public class IgnoreFilter : ISchemaFilter
+    public class OpenApiIgnoreFilter : ISchemaFilter
     {
         public void Apply(OpenApiSchema schema, SchemaFilterContext context)
         {

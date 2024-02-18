@@ -2,13 +2,13 @@
 using Swashbuckle.AspNetCore.SwaggerGen;
 using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.OpenApi;
 
-namespace UnifiedDevelopmentPlatform.Presentation.Api.Swagger
+namespace UnifiedDevelopmentPlatform.Presentation.Api.OpenApi
 {
-    public class DocumentationAttribute : IDocumentFilter
+    public class OpenApiDocumentation : IDocumentFilter
     {
-        public void Apply(OpenApiDocument swaggerDoc, DocumentFilterContext context)
+        public void Apply(OpenApiDocument openApiDocumentationAttribute, DocumentFilterContext context)
         {
-            swaggerDoc.Info = new OpenApiInfo
+            openApiDocumentationAttribute.Info = new OpenApiInfo
             {
                 Version = OpenApiInformation.Version,
                 Title = OpenApiInformation.Title,

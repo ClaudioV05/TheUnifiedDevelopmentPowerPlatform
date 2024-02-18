@@ -11,7 +11,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
     {
         private readonly IServiceMessage _serviceMessage;
         private readonly IServiceFuncString _serviceFuncStrings;
-        private readonly IServiceOperationalSystem _serviceOperationalSystem;
+        private readonly IServicePlataform _serviceOperationalSystem;
 
         /// <summary>
         /// The constructor of Service Validation.
@@ -19,7 +19,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         /// <param name="serviceMessage"></param>
         /// <param name="serviceFuncStrings"></param>
         /// <param name="serviceOperationalSystem"></param>
-        public ServiceValidation(IServiceMessage serviceMessage, IServiceFuncString serviceFuncStrings, IServiceOperationalSystem serviceOperationalSystem)
+        public ServiceValidation(IServiceMessage serviceMessage, IServiceFuncString serviceFuncStrings, IServicePlataform serviceOperationalSystem)
         {
             _serviceMessage = serviceMessage;
             _serviceFuncStrings = serviceFuncStrings;
@@ -30,7 +30,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
 
         public bool UDPPlatformWindowsIsOk(ref string message)
         {
-            message = !_serviceOperationalSystem.UPDOperationalSystemIsWindows() ? _serviceMessage.UDPMensagem(MessageType.PlatformIsWindowsErro) : string.Empty;
+            message = !_serviceOperationalSystem.UPDPlataformIsWindows() ? _serviceMessage.UDPMensagem(MessageType.PlatformIsWindowsErro) : string.Empty;
             return _serviceFuncStrings.UDPNullOrEmpty(message);
         }
 
@@ -138,7 +138,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
 
         public bool UDPValidateBase64(string? text)
         {
-            int indexBase64 = 0;
+            int positionIndexBase64 = 0;
             bool validBase64 = true;
 
             try
@@ -161,24 +161,24 @@ namespace UnifiedDevelopmentPlatform.Application.Services
                 else
                 {
                     // 98% of all non base64 values are invalidated by this time.
-                    indexBase64 = text.Length - 1;
+                    positionIndexBase64 = text.Length - 1;
 
                     // If there is padding step back.
-                    if (text[indexBase64] == '=')
+                    if (text[positionIndexBase64].Equals('='))
                     {
-                        indexBase64--;
+                        positionIndexBase64--;
                     }
 
                     // If there are two padding chars step back a second time.
-                    if (text[indexBase64] == '=')
+                    if (text[positionIndexBase64].Equals('='))
                     {
-                        indexBase64--;
+                        positionIndexBase64--;
                     }
 
                     // Now traverse over characters.
                     // You should note that I'm not creating any copy of the existing strings,
                     // assuming that they may be quite large.
-                    for (var i = 0; i <= indexBase64; i++)
+                    for (var i = 0; i <= positionIndexBase64; i++)
                     {
                         // If any of the character is not from the allowed list.
                         if (!_serviceFuncStrings.Base64Chars.Contains(text[i]))

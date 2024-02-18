@@ -1,21 +1,26 @@
-﻿using UnifiedDevelopmentPlatform.Application.Interfaces;
-using System.Security;
+﻿using System.Security;
+using UnifiedDevelopmentPlatform.Application.Interfaces;
 
 namespace UnifiedDevelopmentPlatform.Application.Services
 {
     /// <summary>
-    /// Service Environment.
+    /// Service Plataform.
     /// </summary>
-    public class ServiceEnvironment : IServiceEnvironment
+    public class ServicePlataform : IServicePlataform
     {
         /// <summary>
-        /// The constructor of Service Environment.
+        /// The constructor of Service plataform.
         /// </summary>
-        public ServiceEnvironment() { }
+        public ServicePlataform() { }
 
-        public string? UPDGetEnvVariable(string variable)
+        public string UDPAddNewLine()
         {
-            return Environment.GetEnvironmentVariable(variable) ?? null;
+            return Environment.NewLine;
+        }
+
+        public bool UPDPlataformIsWindows()
+        {
+            return OperatingSystem.IsWindows();
         }
 
         public List<string> UPDGetEnvListVariables()
@@ -37,9 +42,13 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             return envListVariables;
         }
 
-        public string UDPNewLine()
+        public string? UPDGetEnvVariable(string variable)
         {
-            return Environment.NewLine;
+            return Environment.GetEnvironmentVariable(variable) ?? null;
+        }
+        public string? UPDGetOSVersion()
+        {
+            return Environment.OSVersion.Version.ToString();
         }
     }
 }

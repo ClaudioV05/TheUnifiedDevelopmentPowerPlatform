@@ -1,12 +1,12 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.UnifiedDevelopmentPlatformInformation
+namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.UnifiedDevelopmentParameter
 {
     [ComplexType]
     /// <summary>
-    /// Unified development platform information.
+    /// Unified development platform with information about the parameters.
     /// </summary>
-    public class UnifiedDevelopmentPlatformInformation
+    public class UnifiedDevelopmentParameters
     {
         /// <summary>
         /// Title.
@@ -50,5 +50,10 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.UnifiedDeve
                    "04. New version generate class Web in 12.10.2022\n\n" +
 
                    "05. New version Unified development platform in 12.10.2023";
+
+        /// <summary>
+        /// Build platform version.
+        /// </summary>
+        public string? BuildPlatformVersion { get; set; }
     }
 }

@@ -4,7 +4,7 @@ using System.Net.Mime;
 using UnifiedDevelopmentPlatform.Application.Interfaces;
 using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities;
 using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Controller;
-using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.UnifiedDevelopmentPlatformInformation;
+using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.UnifiedDevelopmentParameter;
 using UnifiedDevelopmentPlatform.Presentation.Api.Filters;
 
 namespace UnifiedDevelopmentPlatform.Presentation.Api.Controllers
@@ -13,7 +13,7 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Controllers
     /// Controller unified development platform parameters.
     /// </summary>
     [ApiController]
-    [Route(ControllerRouterUnifiedDevelopmentPlatformInformations.RouterController)]
+    [Route(ControllerRouterUnifiedDevelopmentPlatformParameters.RouterController)]
     [Consumes(MediaTypeNames.Application.Json)]
     [Produces(MediaTypeNames.Application.Json, MediaTypeNames.Application.Xml)]
     [ServiceFilter(typeof(FilterActionContextControllerInformation), IsReusable = false, Order = ControllerOrderExecutationFilter.First)]
@@ -49,7 +49,7 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Controllers
         /// <response code="504">The server, acting as a gateway, timed out waiting for another server to respond.</response>
         [HttpGet]
         [Produces(MediaTypeNames.Application.Json, MediaTypeNames.Application.Xml)]
-        [Route(ControllerRouterUnifiedDevelopmentPlatformInformations.RouterParametersOfDatabases)]
+        [Route(ControllerRouterUnifiedDevelopmentPlatformParameters.RouterParametersOfDatabases)]
         [ProducesResponseType(typeof(IEnumerable<Databases>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
@@ -82,7 +82,7 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Controllers
         /// <response code="504">The server, acting as a gateway, timed out waiting for another server to respond.</response>
         [HttpGet]
         [Produces(MediaTypeNames.Application.Json, MediaTypeNames.Application.Xml)]
-        [Route(ControllerRouterUnifiedDevelopmentPlatformInformations.RouterParametersOfForms)]
+        [Route(ControllerRouterUnifiedDevelopmentPlatformParameters.RouterParametersOfForms)]
         [ProducesResponseType(typeof(IEnumerable<Forms>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
@@ -115,7 +115,7 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Controllers
         /// <response code="504">The server, acting as a gateway, timed out waiting for another server to respond.</response>
         [HttpGet]
         [Produces(MediaTypeNames.Application.Json, MediaTypeNames.Application.Xml)]
-        [Route(ControllerRouterUnifiedDevelopmentPlatformInformations.RouterParametersOfDevelopmentEnviroment)]
+        [Route(ControllerRouterUnifiedDevelopmentPlatformParameters.RouterParametersOfDevelopmentEnviroment)]
         [ProducesResponseType(typeof(IEnumerable<DevelopmentEnvironment>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
@@ -148,7 +148,7 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Controllers
         /// <response code="504">The server, acting as a gateway, timed out waiting for another server to respond.</response>
         [HttpGet]
         [Produces(MediaTypeNames.Application.Json, MediaTypeNames.Application.Xml)]
-        [Route(ControllerRouterUnifiedDevelopmentPlatformInformations.RouterParametersOfDatabasesEngine)]
+        [Route(ControllerRouterUnifiedDevelopmentPlatformParameters.RouterParametersOfDatabasesEngine)]
         [ProducesResponseType(typeof(IEnumerable<DatabasesEngine>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
@@ -181,7 +181,7 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Controllers
         /// <response code="504">The server, acting as a gateway, timed out waiting for another server to respond.</response>
         [HttpGet]
         [Produces(MediaTypeNames.Application.Json, MediaTypeNames.Application.Xml)]
-        [Route(ControllerRouterUnifiedDevelopmentPlatformInformations.RouterParametersOfArchitecturePatterns)]
+        [Route(ControllerRouterUnifiedDevelopmentPlatformParameters.RouterParametersOfArchitecturePatterns)]
         [ProducesResponseType(typeof(IEnumerable<ArchitecturePatterns>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
@@ -214,8 +214,8 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Controllers
         /// <response code="504">The server, acting as a gateway, timed out waiting for another server to respond.</response>
         [HttpGet]
         [Produces(MediaTypeNames.Application.Json, MediaTypeNames.Application.Xml)]
-        [Route(ControllerRouterUnifiedDevelopmentPlatformInformations.RouterParametersOfInformation)]
-        [ProducesResponseType(typeof(UnifiedDevelopmentPlatformInformation), StatusCodes.Status200OK)]
+        [Route(ControllerRouterUnifiedDevelopmentPlatformParameters.RouterParametersOfInformation)]
+        [ProducesResponseType(typeof(UnifiedDevelopmentParameters), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
@@ -224,7 +224,7 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Controllers
         [ProducesResponseType(StatusCodes.Status502BadGateway)]
         [ProducesResponseType(StatusCodes.Status503ServiceUnavailable)]
         [ProducesResponseType(StatusCodes.Status504GatewayTimeout)]
-        public ActionResult<UnifiedDevelopmentPlatformInformation> Informations()
+        public ActionResult<UnifiedDevelopmentParameters> Informations()
         {
             return Ok(_serviceMetadata.UDPSelectParametersInformationUnifiedDevelopmentPlatform());
         }

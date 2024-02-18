@@ -1,9 +1,9 @@
 ﻿using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
 
-namespace UnifiedDevelopmentPlatform.Presentation.Api.Swagger
+namespace UnifiedDevelopmentPlatform.Presentation.Api.OpenApi
 {
-    public class DocumentationHeaderAttribute : IOperationFilter
+    public class OpenApiParameters : IOperationFilter
     {
         public void Apply(OpenApiOperation operation, OperationFilterContext context)
         {

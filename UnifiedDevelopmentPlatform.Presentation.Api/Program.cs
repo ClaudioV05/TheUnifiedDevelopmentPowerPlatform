@@ -1,6 +1,5 @@
 using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.Extensions.DependencyInjection.Extensions;
-using Microsoft.Extensions.Options;
 using System.Reflection;
 using UnifiedDevelopmentPlatform.Application.Interfaces;
 using UnifiedDevelopmentPlatform.Application.Services;
@@ -9,21 +8,19 @@ using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.File;
 using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.OpenApi;
 using UnifiedDevelopmentPlatform.Presentation.Api.Extensions;
 using UnifiedDevelopmentPlatform.Presentation.Api.Filters;
-using UnifiedDevelopmentPlatform.Presentation.Api.Swagger;
-using static UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.DatabasesEngine;
-using static UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.DevelopmentEnvironment;
+using UnifiedDevelopmentPlatform.Presentation.Api.OpenApi;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Method registers endpoint explorers to the DI container.
 builder.Services.AddEndpointsApiExplorer();
 
-#region Swagger.
+#region OpenApi.
 builder.Services.AddSwaggerGen(options =>
 {
-    options.SchemaFilter<IgnoreFilter>();
-    options.DocumentFilter<DocumentationAttribute>();
-    options.OperationFilter<DocumentationHeaderAttribute>();
+    options.SchemaFilter<OpenApiIgnoreFilter>();
+    options.DocumentFilter<OpenApiDocumentation>();
+    options.OperationFilter<OpenApiParameters>();
 
     var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}{FileExtension.Xml}";
     var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
@@ -38,12 +35,12 @@ builder.Services.AddSwaggerGen(options =>
         options.IncludeXmlComments(xmlPath);
     }
 });
-#endregion Swagger.
+#endregion OpenApi.
 
 builder.Services.AddControllers(options =>
 {
     options.RespectBrowserAcceptHeader = true;
-    options.Conventions.Add(new HideControllerConvention());
+    options.Conventions.Add(new OpenApiHideControllerConvention());
 });
 
 builder.Services.AddCors(options =>
@@ -60,13 +57,11 @@ builder.Services.AddCors(options =>
 builder.Services.AddMvc().AddMvcOptions(options => options.OutputFormatters.Add(new XmlDataContractSerializerOutputFormatter()));
 
 #region Action Filters.
-
 builder.Services.TryAddTransient<FilterActionContextController>();
 builder.Services.TryAddTransient<FilterActionContextControllerInformation>();
 builder.Services.TryAddTransient<FilterActionContextLog>();
 builder.Services.TryAddTransient<FilterActionContextFields<MetadataOwner>>();
 builder.Services.TryAddTransient<FilterActionContextTables<MetadataOwner>>();
-
 #endregion Action Filters.
 
 #region Dependency Injection.
@@ -81,7 +76,6 @@ builder.Services.TryAddScoped<IServiceDatabaseEngine, ServiceDatabaseEngine>();
 builder.Services.TryAddScoped<IServiceDate, ServiceDate>();
 builder.Services.TryAddScoped<IServiceDevelopmentEnvironment, ServiceDevelopmentEnvironment>();
 builder.Services.TryAddScoped<IServiceDirectory, ServiceDirectory>();
-builder.Services.TryAddScoped<IServiceEnvironment, ServiceEnvironment>();
 builder.Services.TryAddScoped<IServiceEnumerated, ServiceEnumerated>();
 builder.Services.TryAddScoped<IServiceFile, ServiceFile>();
 builder.Services.TryAddScoped<IServiceForm, ServiceForm>();
@@ -94,11 +88,10 @@ builder.Services.TryAddScoped<IServiceMessage, ServiceMessage>();
 builder.Services.TryAddScoped<IServiceMetadata, ServiceMetadata>();
 builder.Services.TryAddScoped<IServiceMetadataField, ServiceMetadataField>();
 builder.Services.TryAddScoped<IServiceMetadataTable, ServiceMetadataTable>();
-builder.Services.TryAddScoped<IServiceOperationalSystem, ServiceOperationalSystem>();
+builder.Services.TryAddScoped<IServicePlataform, ServicePlataform>();
 builder.Services.TryAddScoped<IServiceValidation, ServiceValidation>();
 builder.Services.TryAddScoped<IServiceXml, ServiceXml>();
 builder.Services.TryAddScoped<IServiceZipFile, ServiceZipFile>();
-
 #endregion Services.
 
 #region Repositories.

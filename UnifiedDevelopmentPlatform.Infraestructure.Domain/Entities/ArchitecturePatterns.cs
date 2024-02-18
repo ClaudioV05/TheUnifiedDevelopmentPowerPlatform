@@ -18,9 +18,9 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities
             [Description("Not Defined")]
             NotDefined = 0,
             [Description("Domain Driven Design")]
-            DDD = 1,
-            [Description("Command Query Responsibility Segregation")]
-            CQRS = 2
+            Ddd = 1,
+            [Description("MediatR and CQRS")]
+            MediatRCqrs = 2
         }
 
         public long Id { get; set; }

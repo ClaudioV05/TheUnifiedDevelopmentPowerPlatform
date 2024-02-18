@@ -7,7 +7,7 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Controller
     /// <summary>
     /// Controller Router for UNIFIED DEVELOPMENT PLATFORM INFORMATION.
     /// </summary>
-    public static class ControllerRouterUnifiedDevelopmentPlatformInformations
+    public static class ControllerRouterUnifiedDevelopmentPlatformParameters
     {
         /// <summary>
         /// Route controller.
