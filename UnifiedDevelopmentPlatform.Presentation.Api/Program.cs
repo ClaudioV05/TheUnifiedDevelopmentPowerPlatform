@@ -114,6 +114,7 @@ if (app.Environment.IsDevelopment())
     {
         options.SwaggerEndpoint(OpenApiConfiguration.Endpoint, OpenApiInformation.Description);
         options.InjectStylesheet(OpenApiConfiguration.StyleSheet);
+        options.EnableTryItOutByDefault();
     });
     #endregion Swagger.
 
