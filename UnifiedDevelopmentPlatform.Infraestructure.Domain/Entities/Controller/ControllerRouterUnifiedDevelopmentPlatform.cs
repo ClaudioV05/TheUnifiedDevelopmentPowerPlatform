@@ -16,7 +16,7 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Controller
         /// <summary>
         /// Route metadata all tables name.
         /// </summary>
-        public const string RouterMetadataAllTablesName = "/MetadataAllTablesName";
+        public const string RouterTablesAndFieldsOfMetadata = "/TablesAndFieldsOfMetadata";
 
         /// <summary>
         /// Route metadata all fields name.

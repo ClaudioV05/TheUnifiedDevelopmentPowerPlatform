@@ -8,24 +8,27 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.OpenApi
     {
         public void Apply(OpenApiDocument openApiDocumentationAttribute, DocumentFilterContext context)
         {
-            openApiDocumentationAttribute.Info = new OpenApiInfo
+            if (openApiDocumentationAttribute is not null)
             {
-                Version = OpenApiInformation.Version,
-                Title = OpenApiInformation.Title,
-                Description = OpenApiInformation.Description,
-                TermsOfService = new Uri(OpenApiInformation.TermsOfService),
-                Contact = new Microsoft.OpenApi.Models.OpenApiContact
+                openApiDocumentationAttribute.Info = new OpenApiInfo
                 {
-                    Name = Infraestructure.Domain.Entities.OpenApi.OpenApiContact.Name,
-                    Email = Infraestructure.Domain.Entities.OpenApi.OpenApiContact.Email,
-                    Url = new Uri(Infraestructure.Domain.Entities.OpenApi.OpenApiContact.Url)
-                },
-                License = new Microsoft.OpenApi.Models.OpenApiLicense
-                {
-                    Name = Infraestructure.Domain.Entities.OpenApi.OpenApiLicense.Name,
-                    Url = new Uri(Infraestructure.Domain.Entities.OpenApi.OpenApiLicense.Url)
-                }
-            };
+                    Version = OpenApiInformation.Version,
+                    Title = OpenApiInformation.Title,
+                    Description = OpenApiInformation.Description,
+                    TermsOfService = new Uri(OpenApiInformation.TermsOfService),
+                    Contact = new Microsoft.OpenApi.Models.OpenApiContact
+                    {
+                        Name = Infraestructure.Domain.Entities.OpenApi.OpenApiContact.Name,
+                        Email = Infraestructure.Domain.Entities.OpenApi.OpenApiContact.Email,
+                        Url = new Uri(Infraestructure.Domain.Entities.OpenApi.OpenApiContact.Url)
+                    },
+                    License = new Microsoft.OpenApi.Models.OpenApiLicense
+                    {
+                        Name = Infraestructure.Domain.Entities.OpenApi.OpenApiLicense.Name,
+                        Url = new Uri(Infraestructure.Domain.Entities.OpenApi.OpenApiLicense.Url)
+                    }
+                };
+            }
         }
     }
 }

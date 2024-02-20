@@ -7,14 +7,17 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.OpenApi
     {
         public void Apply(ActionModel action)
         {
-            if (action.ActionName == ControllerActionName.MetadataAllTablesName)
+            if (action is not null)
             {
-                action.ApiExplorer.IsVisible = ControllerActionVisible.Visible;
-            }
+                if (action.ActionName == ControllerActionName.MetadataAllTablesName)
+                {
+                    action.ApiExplorer.IsVisible = ControllerActionVisible.Visible;
+                }
 
-            if (action.ActionName == ControllerActionName.MetadataAllFieldsName)
-            {
-                action.ApiExplorer.IsVisible = ControllerActionVisible.NotVisible;
+                if (action.ActionName == ControllerActionName.MetadataAllFieldsName)
+                {
+                    action.ApiExplorer.IsVisible = ControllerActionVisible.NotVisible;
+                }
             }
         }
     }

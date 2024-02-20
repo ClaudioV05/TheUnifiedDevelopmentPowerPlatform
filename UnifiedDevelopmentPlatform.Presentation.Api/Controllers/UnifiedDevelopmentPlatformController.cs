@@ -52,7 +52,7 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Controllers
         /// <response code="504">The server, acting as a gateway, timed out waiting for another server to respond.</response>
         [HttpPost]
         [Produces(MediaTypeNames.Application.Json, MediaTypeNames.Application.Xml)]
-        [Route(ControllerRouterUnifiedDevelopmentPlatform.RouterMetadataAllTablesName)]
+        [Route(ControllerRouterUnifiedDevelopmentPlatform.RouterTablesAndFieldsOfMetadata)]
         [ServiceFilter(typeof(FilterActionContextLog), IsReusable = false, Order = ControllerOrderExecutationFilter.Second)]
         [ServiceFilter(typeof(FilterActionContextTables<MetadataOwner>), IsReusable = false, Order = ControllerOrderExecutationFilter.Third)]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(MetadataOwner))]
@@ -66,7 +66,7 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Controllers
         [ProducesResponseType(StatusCodes.Status503ServiceUnavailable)]
         [ProducesResponseType(StatusCodes.Status504GatewayTimeout)]
         [DisableCors]
-        public ActionResult<MetadataOwner> MetadataAllTablesName([BindRequired] AppMetadata metadata)
+        public ActionResult<MetadataOwner> TablesAndFieldsOfMetadata([BindRequired] AppMetadata metadata)
         {
             return Ok(_serviceMetadata.UDPReceiveAndSaveAllTableAndFieldsOfSchemaDatabase(metadata: new MetadataOwner() { DatabaseSchema = metadata.DatabaseSchema }));
         }
