@@ -13,6 +13,7 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities
         /// <summary>
         /// Enum type for entitie Forms.
         /// </summary>
+        [Flags]
         public enum EnumeratedForm : int
         {
             [Description("Not Defined")]

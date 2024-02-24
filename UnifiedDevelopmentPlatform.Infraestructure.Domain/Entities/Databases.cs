@@ -13,6 +13,7 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities
         /// <summary>
         /// Enum type for entitie Databases.
         /// </summary>
+        [Flags]
         public enum EnumeratedDatabases : int
         {
             [Description("Not Defined")]

@@ -13,6 +13,7 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities
         /// <summary>
         /// Enum type for entitie architecture patterns.
         /// </summary>
+        [Flags]
         public enum EnumeratedArchitecturePatterns : int
         {
             [Description("Not Defined")]

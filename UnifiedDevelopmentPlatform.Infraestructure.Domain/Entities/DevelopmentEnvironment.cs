@@ -13,6 +13,7 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities
         /// <summary>
         /// Enum type for entitie DevelopmentEnvironment.
         /// </summary>
+        [Flags]
         public enum EnumeratedDevelopmentEnvironment : int
         {
             [Description("Not Defined")]
