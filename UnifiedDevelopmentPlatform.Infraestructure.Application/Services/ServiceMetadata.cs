@@ -79,7 +79,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         {
             return new UnifiedDevelopmentParameters()
             {
-                BuildPlatformVersion = _servicePlataform.UPDGetOSVersion()
+                BuildPlatformVersion = _servicePlataform.UPDGetOperationalSystemVersion()
             };
         }
     }

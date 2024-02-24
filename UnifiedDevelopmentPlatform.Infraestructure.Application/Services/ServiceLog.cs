@@ -58,7 +58,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
 
             if (!_serviceFuncStrings.UDPStringStarts(message, MessageDescription.Initial))
             {
-                caracter = _servicePlataform.UDPAddNewLine();
+                caracter = _servicePlataform.UDPEnvironmentAddNewLine();
             }
 
             StackFrame stackFrame = new StackFrame(1, true);

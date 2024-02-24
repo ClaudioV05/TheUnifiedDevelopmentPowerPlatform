@@ -99,7 +99,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             {
                 if (_listDirectory != null && _listDirectory.Any())
                 {
-                    for (int i = 0; i < _listDirectory.Count; i++)
+                    for (int i = 0; i <= _listDirectory.Count; i++)
                     {
                         if (!_serviceFuncStrings.UDPNullOrEmpty(_listDirectory[i]))
                         {
