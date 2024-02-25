@@ -66,7 +66,7 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Controllers
         [ProducesResponseType(StatusCodes.Status503ServiceUnavailable)]
         [ProducesResponseType(StatusCodes.Status504GatewayTimeout)]
         [DisableCors]
-        public ActionResult<MetadataOwner> TablesAndFieldsOfMetadata([BindRequired] AppMetadata metadata)
+        public ActionResult<MetadataOwner> TablesAndFieldsOfMetadata([BindRequired] Metadata metadata)
         {
             return Ok(_serviceMetadata.UDPReceiveAndSaveAllTableAndFieldsOfSchemaDatabase(metadata: new MetadataOwner() { DatabaseSchema = metadata.DatabaseSchema }));
         }
@@ -105,7 +105,7 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Controllers
         [ProducesResponseType(StatusCodes.Status503ServiceUnavailable)]
         [ProducesResponseType(StatusCodes.Status504GatewayTimeout)]
         [DisableCors]
-        public ActionResult<MetadataOwner> MetadataAllFieldsName([BindRequired] AppMetadata metadata)
+        public ActionResult<MetadataOwner> MetadataAllFieldsName([BindRequired] Metadata metadata)
         {
             // Here enter with field name only. Load the property [Fields].
             // Return the table name and your fields.

@@ -4,6 +4,7 @@ using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Directory;
 using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.File;
 using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Message;
 using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Sql;
+using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Symbol;
 
 namespace UnifiedDevelopmentPlatform.Application.Services
 {
@@ -34,11 +35,11 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         /// <param name="serviceFuncString"></param>
         public ServiceMetadataTable(IServiceLog serviceLog,
                                     IServiceFile serviceFile,
-                                    IServiceLinq serviceLinq, 
-                                    IServiceCrypto serviceCrypto, 
+                                    IServiceLinq serviceLinq,
+                                    IServiceCrypto serviceCrypto,
                                     IServiceMessage serviceMessage,
                                     IServiceDirectory serviceDirectory,
-                                    IServiceValidation serviceValidation, 
+                                    IServiceValidation serviceValidation,
                                     IServiceFuncString serviceFuncString)
         {
             _serviceLog = serviceLog;
@@ -83,18 +84,44 @@ namespace UnifiedDevelopmentPlatform.Application.Services
 
         public void UDPSaveDatabaseSchemaFromMetadata(MetadataOwner metadata)
         {
-            string scriptMetadata = _serviceFuncString.Empty;
+            string databaseSchema = _serviceFuncString.Empty;
             string directoryConfiguration = _serviceFuncString.Empty;
 
-            scriptMetadata = _serviceCrypto.UPDDecodeBase64(metadata?.DatabaseSchema);
-
-            if (!_serviceFuncString.UDPNullOrEmpty(scriptMetadata))
+            if (!_serviceFuncString.UDPNullOrEmpty(metadata.DatabaseSchema))
             {
-                scriptMetadata = _serviceFuncString.UDPLower(scriptMetadata);
+                databaseSchema = _serviceCrypto.UPDDecodeBase64(metadata?.DatabaseSchema);
+                databaseSchema = _serviceFuncString.UDPLower(databaseSchema);
                 directoryConfiguration = _serviceDirectory.UDPObtainDirectory(DirectoryRootType.Configuration);
-                scriptMetadata = _serviceCrypto.UPDEncrypt(scriptMetadata);
-                _serviceFile.UDPAppendAllText($"{directoryConfiguration}{DirectoryStandard.Log}{FileStandard.DatabaseSchema}{FileExtension.Txt}", scriptMetadata);
+                databaseSchema = _serviceCrypto.UPDEncrypt(databaseSchema);
+                _serviceFile.UDPAppendAllText($"{directoryConfiguration}{DirectoryStandard.Log}{FileStandard.DatabaseSchema}{FileExtension.Txt}", databaseSchema);
             }
+        }
+
+        public string UDPOpenDatabaseSchemaFromMetadata()
+        {
+            string databaseSchema = _serviceFuncString.Empty;
+            string directoryConfiguration = _serviceFuncString.Empty;
+
+            directoryConfiguration = _serviceDirectory.UDPObtainDirectory(DirectoryRootType.Configuration);
+
+            if (_serviceFile.UDPFileExists($"{directoryConfiguration}{DirectoryStandard.Log}{FileStandard.DatabaseSchema}{FileExtension.Txt}"))
+            {
+                databaseSchema = _serviceFile.UDPReadAllText($"{directoryConfiguration}{DirectoryStandard.Log}{FileStandard.DatabaseSchema}{FileExtension.Txt}");
+                databaseSchema = _serviceCrypto.UPDDecrypt(databaseSchema);
+            }
+
+            return databaseSchema;
+        }
+
+        public string UDPGetTableName(string text)
+        {
+            string tableName = _serviceFuncString.Empty;
+
+            tableName = _serviceFuncString.UDPLower(_serviceFuncString.UDPRemoveWhitespace(text));
+            tableName = _serviceFuncString.UDPReplace(tableName, SqlConfiguration.CreateTableWithSpace, _serviceFuncString.Empty);
+            tableName = _serviceFuncString.UDPReplace(tableName, Symbols.LeftParenthese, _serviceFuncString.Empty);
+            tableName = _serviceFuncString.UDPRemoveSpecialCaracter(tableName);
+            return _serviceFuncString.UDPUpper(_serviceFuncString.UDPRemoveWhitespace(tableName));
         }
 
         #region Private Methods.

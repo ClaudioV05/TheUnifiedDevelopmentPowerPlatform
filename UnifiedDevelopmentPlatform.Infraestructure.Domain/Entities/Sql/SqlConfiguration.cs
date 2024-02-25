@@ -19,5 +19,30 @@
         /// Create table with space.
         /// </summary>
         public static string CreateTableWithSpace => "create table ";
+
+        /// <summary>
+        /// Key constraint.
+        /// </summary>
+        public static string KeyConstraint => "constraint";
+
+        /// <summary>
+        /// Key primary key.
+        /// </summary>
+        public static string KeyPrimaryKey => "primary key";
+
+        /// <summary>
+        /// Key not.
+        /// </summary>
+        public static string KeyNot => "not";
+
+        /// <summary>
+        /// Key null value.
+        /// </summary>
+        public static string KeyNullValue => "null";
+
+        /// <summary>
+        /// Key not null value.
+        /// </summary>
+        public static string KeyNotNullValue => "not null";
     }
 }

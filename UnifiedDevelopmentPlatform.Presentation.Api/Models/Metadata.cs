@@ -2,7 +2,7 @@
 
 namespace UnifiedDevelopmentPlatform.Presentation.Api.Models
 {
-    public class AppMetadata
+    public class Metadata
     {
         /// <summary>
         /// Database schema.

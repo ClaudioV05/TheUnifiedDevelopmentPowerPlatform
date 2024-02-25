@@ -236,6 +236,11 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             return text.Replace(oldValue, newValue);
         }
 
+        public bool UDPContains(string text, string value)
+        {
+            return text.Contains(value);
+        }
+
         public string UDPRemoveAnyWhiteSpace(string text)
         {
             return String.Concat(text.Where(c => !Char.IsWhiteSpace(c)));

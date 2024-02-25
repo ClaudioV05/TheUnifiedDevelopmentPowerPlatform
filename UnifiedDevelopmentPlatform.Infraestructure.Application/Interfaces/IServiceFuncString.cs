@@ -149,7 +149,15 @@
         /// <param name="newValue"></param>
         /// <returns></returns>
         string UDPReplace(string text, string oldValue, string newValue);
-        
+
+        /// <summary>
+        /// Contains.
+        /// </summary>
+        /// <param name="text"></param>
+        /// <param name="value"></param>
+        /// <returns>The method will return true, otherwise will return false.</returns>
+        bool UDPContains(string text, string value);
+
         /// <summary>
         /// Remove any whitespace in string.
         /// </summary>

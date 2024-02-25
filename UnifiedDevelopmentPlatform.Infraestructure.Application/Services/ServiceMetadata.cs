@@ -1,5 +1,8 @@
-﻿using UnifiedDevelopmentPlatform.Application.Interfaces;
+﻿using System.Xml.Linq;
+using UnifiedDevelopmentPlatform.Application.Interfaces;
 using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities;
+using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Sql;
+using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Symbol;
 using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.UnifiedDevelopmentParameter;
 
 namespace UnifiedDevelopmentPlatform.Application.Services
@@ -12,7 +15,9 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         private readonly IServiceForm _serviceForm;
         private readonly IServiceDatabase _serviceDatabase;
         private readonly IServicePlataform _servicePlataform;
-        private readonly IServiceMetadataTable _serviceMetadataTables;
+        private readonly IServiceFuncString _serviceFuncString;
+        private readonly IServiceMetadataTable _serviceMetadataTable;
+        private readonly IServiceMetadataField _serviceMetadataField;
         private readonly IServiceDatabaseEngine _serviceDatabaseEngine;
         private readonly IServiceArchitecturePatterns _serviceArchitecturePatterns;
         private readonly IServiceDevelopmentEnvironment _serviceDevelopmentEnvironment;
@@ -23,14 +28,18 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         /// <param name="serviceForm"></param>
         /// <param name="serviceDatabase"></param>
         /// <param name="servicePlataform"></param>
-        /// <param name="serviceMetadataTables"></param>
+        /// <param name="serviceFuncString"></param>
+        /// <param name="serviceMetadataTable"></param>
+        /// <param name="serviceMetadataField"></param>
         /// <param name="serviceDatabaseEngine"></param>
         /// <param name="serviceArchitecturePatterns"></param>
         /// <param name="serviceDevelopmentEnvironment"></param>
         public ServiceMetadata(IServiceForm serviceForm,
                                IServiceDatabase serviceDatabase,
                                IServicePlataform servicePlataform,
-                               IServiceMetadataTable serviceMetadataTables,
+                               IServiceFuncString serviceFuncString,
+                               IServiceMetadataTable serviceMetadataTable,
+                               IServiceMetadataField serviceMetadataField,
                                IServiceDatabaseEngine serviceDatabaseEngine,
                                IServiceArchitecturePatterns serviceArchitecturePatterns,
                                IServiceDevelopmentEnvironment serviceDevelopmentEnvironment)
@@ -38,7 +47,9 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             _serviceForm = serviceForm;
             _serviceDatabase = serviceDatabase;
             _servicePlataform = servicePlataform;
-            _serviceMetadataTables = serviceMetadataTables;
+            _serviceFuncString = serviceFuncString;
+            _serviceMetadataTable = serviceMetadataTable;
+            _serviceMetadataField = serviceMetadataField;
             _serviceDatabaseEngine = serviceDatabaseEngine;
             _serviceArchitecturePatterns = serviceArchitecturePatterns;
             _serviceDevelopmentEnvironment = serviceDevelopmentEnvironment;
@@ -46,24 +57,53 @@ namespace UnifiedDevelopmentPlatform.Application.Services
 
         public MetadataOwner UDPReceiveAndSaveAllTableAndFieldsOfSchemaDatabase(MetadataOwner metadata)
         {
+            string databaseSchemaDecrypt = _serviceFuncString.Empty;
+            List<string> listDatabaseSchemas = new List<string>();
             MetadataOwner metadataOwner = new MetadataOwner();
+            Tables tables = new Tables();
+            Fields fields = new Fields();
 
-            List<string> result = _serviceMetadataTables.UDPListWithTablesNameOfMetadata(metadata);
+            _serviceMetadataTable.UDPSaveDatabaseSchemaFromMetadata(metadata);
+            databaseSchemaDecrypt = _serviceMetadataTable.UDPOpenDatabaseSchemaFromMetadata();
 
-            if (result != null && result.Any())
+            if (!_serviceFuncString.UDPNullOrEmpty(databaseSchemaDecrypt))
             {
-                _serviceMetadataTables.UDPSaveDatabaseSchemaFromMetadata(metadata);
+                var results = databaseSchemaDecrypt.Split(new[] { "\r\n", "\r", "\n" }, StringSplitOptions.None).ToList();
 
-                metadataOwner?.Tables?.Add(new Tables() { Names = result });
+                if (results.Any())
+                {
+                    foreach (string result in results)
+                    {
+                        if (result.Contains(SqlConfiguration.CreateTableWithSpace) || result.Contains(SqlConfiguration.KeyPrimaryKey) || result.EndsWith(Symbols.Comma))
+                        {
+                            listDatabaseSchemas.Add(result.ToLowerInvariant().TrimStart());
+                        }
+                    }
+
+                    for (int i = 0; i < listDatabaseSchemas.Count; i++)
+                    {
+                        if (_serviceFuncString.UDPContains(listDatabaseSchemas[i], SqlConfiguration.CreateTableWithSpace))
+                        {
+                            tables.Name = _serviceMetadataTable.UDPGetTableName(listDatabaseSchemas[i]);
+                            listDatabaseSchemas.Remove(listDatabaseSchemas[i]);
+                        }
+                        
+                        if (listDatabaseSchemas[i].EndsWith(Symbols.Comma))
+                        {
+                            var fieldName = _serviceMetadataField.UDPGetFieldName(listDatabaseSchemas[i]);
+                            var typeFieldName = _serviceMetadataField.UDPGetTypeFieldName(listDatabaseSchemas[i]);
+                            var isnull = _serviceMetadataField.UDPFieldIsNotNull(listDatabaseSchemas[i]);
+                            listDatabaseSchemas.Remove(listDatabaseSchemas[i]);
+                            continue;
+                        }
+                    }
+                }
             }
 
             return metadataOwner;
         }
 
-        public void UDPNotImplemented(MetadataOwner metadata)
-        {
-            throw new NotImplementedException();
-        }
+        public void UDPNotImplemented(MetadataOwner metadata) => throw new NotImplementedException();
 
         public List<Databases> UDPSelectParametersTheKindsOfDatabases() => _serviceDatabase.UDPSelectParametersTheKindsOfDatabases();
 
