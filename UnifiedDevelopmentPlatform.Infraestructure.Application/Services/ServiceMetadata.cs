@@ -57,6 +57,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
 
         public MetadataOwner UDPReceiveAndSaveAllTableAndFieldsOfSchemaDatabase(MetadataOwner metadata)
         {
+            int counter = 0;
             string databaseSchemaDecrypt = _serviceFuncString.Empty;
             List<string> listDatabaseSchemas = new List<string>();
             MetadataOwner metadataOwner = new MetadataOwner();
@@ -68,7 +69,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
 
             if (!_serviceFuncString.UDPNullOrEmpty(databaseSchemaDecrypt))
             {
-                var results = databaseSchemaDecrypt.Split(new[] { "\r\n", "\r", "\n" }, StringSplitOptions.None).ToList();
+                var results = databaseSchemaDecrypt.Split(new[] { "\r\n", "\r", "\n" }, StringSplitOptions.None);
 
                 if (results.Any())
                 {
@@ -80,21 +81,31 @@ namespace UnifiedDevelopmentPlatform.Application.Services
                         }
                     }
 
-                    for (int i = 0; i < listDatabaseSchemas.Count; i++)
+                    for (int i = counter; counter < listDatabaseSchemas.Count; counter++)
                     {
-                        if (_serviceFuncString.UDPContains(listDatabaseSchemas[i], SqlConfiguration.CreateTableWithSpace))
+                        if (_serviceFuncString.UDPContains(listDatabaseSchemas[counter], SqlConfiguration.CreateTableWithSpace))
                         {
-                            tables.Name = _serviceMetadataTable.UDPGetTableName(listDatabaseSchemas[i]);
-                            listDatabaseSchemas.Remove(listDatabaseSchemas[i]);
+                            tables.Name = _serviceMetadataTable.UDPGetTableName(listDatabaseSchemas[counter]);
+                            listDatabaseSchemas.Remove(listDatabaseSchemas[counter]);
                         }
-                        
-                        if (listDatabaseSchemas[i].EndsWith(Symbols.Comma))
+
+                        for (int j = counter; counter < listDatabaseSchemas.Count; counter++)
                         {
-                            var fieldName = _serviceMetadataField.UDPGetFieldName(listDatabaseSchemas[i]);
-                            var typeFieldName = _serviceMetadataField.UDPGetTypeFieldName(listDatabaseSchemas[i]);
-                            var isnull = _serviceMetadataField.UDPFieldIsNotNull(listDatabaseSchemas[i]);
-                            listDatabaseSchemas.Remove(listDatabaseSchemas[i]);
-                            continue;
+                            if (listDatabaseSchemas[counter].EndsWith(Symbols.Comma))
+                            {
+                                var fieldName = _serviceMetadataField.UDPGetFieldName(listDatabaseSchemas[counter]);
+                                var typeFieldName = _serviceMetadataField.UDPGetTypeFieldName(listDatabaseSchemas[counter]);
+                                var isnull = _serviceMetadataField.UDPFieldIsNotNull(listDatabaseSchemas[counter]);
+                            }
+                            else if (listDatabaseSchemas[counter].Contains(SqlConfiguration.KeyPrimaryKey))
+                            {
+                                continue;
+                            }
+                            else if (listDatabaseSchemas[counter].Contains(SqlConfiguration.CreateTableWithSpace))
+                            {
+                                counter--;
+                                break;
+                            }
                         }
                     }
                 }

@@ -6,8 +6,11 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities
     /// Entity Fields.
     /// </summary>
     [ComplexType]
-    public class Fields
+    public class Fields : Tables
     {
-
+        /// <summary>
+        /// If the field has null value.
+        /// </summary>
+        public bool IsNull { get; set; }
     }
 }
