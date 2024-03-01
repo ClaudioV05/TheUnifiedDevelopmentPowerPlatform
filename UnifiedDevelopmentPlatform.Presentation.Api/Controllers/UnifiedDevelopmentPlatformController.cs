@@ -36,7 +36,7 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Controllers
         /// Receive and save all table of schema database.
         /// </summary>
         /// <param name="metadata"></param>
-        /// <returns>List of string with names of tables</returns>
+        /// <returns>The list of tables with name(s) and field(s) of schema database.</returns>
         /// 200 Status Codes: This is the best kind of HTTP status code to receive. A 200-level response means that everything is working exactly as it should.
         /// <response code="200">Everything is OK.</response>
         /// <response code="201">Created.</response>
@@ -55,7 +55,7 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Controllers
         [Route(ControllerRouterUnifiedDevelopmentPlatform.RouterTablesAndFieldsOfMetadata)]
         [ServiceFilter(typeof(FilterActionContextLog), IsReusable = false, Order = ControllerOrderExecutationFilter.Second)]
         [ServiceFilter(typeof(FilterActionContextTables<MetadataOwner>), IsReusable = false, Order = ControllerOrderExecutationFilter.Third)]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(MetadataOwner))]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<Tables>))]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
@@ -66,7 +66,7 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Controllers
         [ProducesResponseType(StatusCodes.Status503ServiceUnavailable)]
         [ProducesResponseType(StatusCodes.Status504GatewayTimeout)]
         [DisableCors]
-        public ActionResult<MetadataOwner> TablesAndFieldsOfMetadata([BindRequired] Metadata metadata)
+        public ActionResult<List<Tables>> TablesAndFieldsOfMetadata([BindRequired] Metadata metadata)
         {
             return Ok(_serviceMetadata.UDPReceiveAndSaveAllTableAndFieldsOfSchemaDatabase(metadata: new MetadataOwner() { DatabaseSchema = metadata.DatabaseSchema }));
         }

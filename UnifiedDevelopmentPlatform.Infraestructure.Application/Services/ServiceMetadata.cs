@@ -54,7 +54,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             _serviceDevelopmentEnvironment = serviceDevelopmentEnvironment;
         }
 
-        public MetadataOwner UDPReceiveAndSaveAllTableAndFieldsOfSchemaDatabase(MetadataOwner metadata)
+        public List<Tables> UDPReceiveAndSaveAllTableAndFieldsOfSchemaDatabase(MetadataOwner metadata)
         {
             int counter = 0;
             int counterOrderTable = 0;
@@ -62,7 +62,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             string tablesName = _serviceFuncString.Empty;
             string databaseSchemaDecrypt = _serviceFuncString.Empty;
             List<string> listDatabaseSchemas = new List<string>();
-            MetadataOwner metadataOwner = new MetadataOwner();
+            List<Tables> listTables = new List<Tables>();
 
             try
             {
@@ -99,12 +99,12 @@ namespace UnifiedDevelopmentPlatform.Application.Services
                                 {
                                     if (firstPassenger)
                                     {
-                                        metadataOwner.Tables.Add(new Tables { Id = counterOrderTable, Name = tablesName });
+                                        listTables.Add(new Tables { Id = counterOrderTable, Name = tablesName });
                                         firstPassenger = false;
                                     }
                                     else if (!firstPassenger)
                                     {
-                                        metadataOwner.Tables.Where(e => e.Id.Equals(counterOrderTable)).First().Fields.Add(new Fields
+                                        listTables.Where(e => e.Id.Equals(counterOrderTable)).First().Fields.Add(new Fields
                                         {
                                             IdTables = counterOrderTable,
                                             Name = _serviceMetadataField.UDPGetFieldName(listDatabaseSchemas[counter]),
@@ -133,7 +133,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
                 throw;
             }
 
-            return metadataOwner;
+            return listTables;
         }
 
         public void UDPNotImplemented(MetadataOwner metadata) => throw new NotImplementedException();

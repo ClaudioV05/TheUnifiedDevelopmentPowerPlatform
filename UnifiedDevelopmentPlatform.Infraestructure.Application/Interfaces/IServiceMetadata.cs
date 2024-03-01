@@ -11,8 +11,8 @@ namespace UnifiedDevelopmentPlatform.Application.Interfaces
         /// <summary>
         /// Receive and save all table(s) and field(s) of schema database.
         /// </summary>
-        /// <returns>The Metadata Owner with name(s) and field(s) of schema database.</returns>
-        MetadataOwner UDPReceiveAndSaveAllTableAndFieldsOfSchemaDatabase(MetadataOwner metadata);
+        /// <returns>The list of tables with name(s) and field(s) of schema database.</returns>
+        List<Tables> UDPReceiveAndSaveAllTableAndFieldsOfSchemaDatabase(MetadataOwner metadata);
 
         /// <summary>
         /// Not implemented yet.
