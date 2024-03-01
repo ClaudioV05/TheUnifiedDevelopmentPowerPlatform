@@ -37,6 +37,8 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             MessageType.LoadAllOfTheTableAndFieldsOfSchemaDatabase => MessageDescription.LoadAllOfTheTableAndFieldsOfSchemaDatabase,
             MessageType.DecryptOkOfTheReceiveAndSaveAllTableAndFieldsOfSchemaDatabase => MessageDescription.DecryptOkOfTheReceiveAndSaveAllTableAndFieldsOfSchemaDatabase,
             MessageType.ErrorReceiveAndSaveAllTableAndFieldsOfSchemaDatabase => MessageDescription.ErrorReceiveAndSaveAllTableAndFieldsOfSchemaDatabase,
+            MessageType.CallStartToTheSelectParametersTheKindsOfDatabases => MessageDescription.CallStartToTheSelectParametersTheKindsOfDatabases,
+            MessageType.CallStartToTheSelectParametersTheKindsOfForms => MessageDescription.CallStartToTheSelectParametersTheKindsOfForms,
             _ => MessageDescription.NoMessage
         };
     }

@@ -132,7 +132,7 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Message
         /// <summary>
         /// Error receive and save all table and fields of schema database.
         /// </summary>
-        public static string ErrorReceiveAndSaveAllTableAndFieldsOfSchemaDatabase => "ERROR OCORRED AT RETURN ALL OF THE TABLE AND FIELDS OF SCHEMA DATABASEIN THE VALIDATION OF FIELDS.";
+        public static string ErrorReceiveAndSaveAllTableAndFieldsOfSchemaDatabase => "ERROR OCCURRED AT RETURN ALL OF THE TABLE AND FIELDS OF SCHEMA DATABASEIN THE VALIDATION OF FIELDS.";
 
         /// <summary>
         /// Call start receive and save all table and fields of schema database.
@@ -148,6 +148,16 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Message
         /// Decrypt ok of the receive and save all table and fields of schema database.
         /// </summary>
         public static string DecryptOkOfTheReceiveAndSaveAllTableAndFieldsOfSchemaDatabase => "DECRYPT OK OF THE RECEIVE AND SAVE ALL TABLE AND FIELDS OF SCHEMA DATABASE.";
+
+        /// <summary>
+        /// Call start to the Select parameters the kinds of databases.
+        /// </summary>
+        public static string CallStartToTheSelectParametersTheKindsOfDatabases => "CALL START TO THE SELECT PARAMETERS THE KINDS OF DATABASES.";
+
+        /// <summary>
+        /// Call start to the Select parameters the kinds of forms.
+        /// </summary>
+        public static string CallStartToTheSelectParametersTheKindsOfForms => "CALL START TO THE SELECT PARAMETERS THE KINDS OF FORMS.";
 
         #endregion ServiceMetadata.
     }

@@ -38,7 +38,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         /// <param name="serviceDatabaseEngine"></param>
         /// <param name="serviceArchitecturePatterns"></param>
         /// <param name="serviceDevelopmentEnvironment"></param>
-        public ServiceMetadata(IServiceLog serviceLog, 
+        public ServiceMetadata(IServiceLog serviceLog,
                                IServiceForm serviceForm,
                                IServiceMessage serviceMessage,
                                IServiceDatabase serviceDatabase,
@@ -152,9 +152,18 @@ namespace UnifiedDevelopmentPlatform.Application.Services
 
         public void UDPNotImplemented(MetadataOwner metadata) => throw new NotImplementedException();
 
-        public List<Databases> UDPSelectParametersTheKindsOfDatabases() => _serviceDatabase.UDPSelectParametersTheKindsOfDatabases();
+        public List<Databases> UDPSelectParametersTheKindsOfDatabases()
+        {
+            _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.CallStartToTheSelectParametersTheKindsOfDatabases));
+            return _serviceDatabase.UDPSelectParametersTheKindsOfDatabases();
+        }
 
-        public List<Forms> UDPSelectParametersTheKindsOfForms() => _serviceForm.UDPSelectParametersTheKindsOfForms();
+        public List<Forms> UDPSelectParametersTheKindsOfForms()
+        {
+            _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.CallStartToTheSelectParametersTheKindsOfForms));
+            return _serviceForm.UDPSelectParametersTheKindsOfForms();
+        }
+
 
         public List<DevelopmentEnvironment> UDPSelectParametersTheKindsOfDevelopmentEnviroment() => _serviceDevelopmentEnvironment.UDPSelectParametersTheKindsOfDevelopmentEnviroment();
 

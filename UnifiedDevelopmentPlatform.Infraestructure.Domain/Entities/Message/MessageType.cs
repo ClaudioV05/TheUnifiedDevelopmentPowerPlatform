@@ -93,7 +93,13 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Message
         DecryptOkOfTheReceiveAndSaveAllTableAndFieldsOfSchemaDatabase = 23,
 
         [Description("Error receive and save all table and fields of schema database")]
-        ErrorReceiveAndSaveAllTableAndFieldsOfSchemaDatabase = 24
+        ErrorReceiveAndSaveAllTableAndFieldsOfSchemaDatabase = 24,
+
+        [Description("Call start to the Select parameters the kinds of databases")]
+        CallStartToTheSelectParametersTheKindsOfDatabases = 25,
+
+        [Description("Call start to the Select parameters the kinds of forms")]
+        CallStartToTheSelectParametersTheKindsOfForms = 26
 
         #endregion ServiceMetadata.
     }
