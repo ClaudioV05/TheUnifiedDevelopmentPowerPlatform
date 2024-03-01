@@ -1,5 +1,6 @@
 ﻿using UnifiedDevelopmentPlatform.Application.Interfaces;
 using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities;
+using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Message;
 using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Sql;
 using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Symbol;
 using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.UnifiedDevelopmentParameter;
@@ -11,7 +12,9 @@ namespace UnifiedDevelopmentPlatform.Application.Services
     /// </summary>
     public class ServiceMetadata : IServiceMetadata
     {
+        private readonly IServiceLog _serviceLog;
         private readonly IServiceForm _serviceForm;
+        private readonly IServiceMessage _serviceMessage;
         private readonly IServiceDatabase _serviceDatabase;
         private readonly IServicePlataform _servicePlataform;
         private readonly IServiceFuncString _serviceFuncString;
@@ -24,7 +27,9 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         /// <summary>
         /// The constructor of Service Metadata.
         /// </summary>
+        /// <param name="serviceLog"></param>
         /// <param name="serviceForm"></param>
+        /// <param name="serviceMessage"></param>
         /// <param name="serviceDatabase"></param>
         /// <param name="servicePlataform"></param>
         /// <param name="serviceFuncString"></param>
@@ -33,7 +38,9 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         /// <param name="serviceDatabaseEngine"></param>
         /// <param name="serviceArchitecturePatterns"></param>
         /// <param name="serviceDevelopmentEnvironment"></param>
-        public ServiceMetadata(IServiceForm serviceForm,
+        public ServiceMetadata(IServiceLog serviceLog, 
+                               IServiceForm serviceForm,
+                               IServiceMessage serviceMessage,
                                IServiceDatabase serviceDatabase,
                                IServicePlataform servicePlataform,
                                IServiceFuncString serviceFuncString,
@@ -43,7 +50,9 @@ namespace UnifiedDevelopmentPlatform.Application.Services
                                IServiceArchitecturePatterns serviceArchitecturePatterns,
                                IServiceDevelopmentEnvironment serviceDevelopmentEnvironment)
         {
+            _serviceLog = serviceLog;
             _serviceForm = serviceForm;
+            _serviceMessage = serviceMessage;
             _serviceDatabase = serviceDatabase;
             _servicePlataform = servicePlataform;
             _serviceFuncString = serviceFuncString;
@@ -57,8 +66,8 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         public List<Tables> UDPReceiveAndSaveAllTableAndFieldsOfSchemaDatabase(MetadataOwner metadata)
         {
             int counter = 0;
-            int counterOrderTable = 0;
-            bool firstPassenger = true;
+            int orderTable = 0;
+            bool newNameTable = true;
             string tablesName = _serviceFuncString.Empty;
             string databaseSchemaDecrypt = _serviceFuncString.Empty;
             List<string> listDatabaseSchemas = new List<string>();
@@ -66,11 +75,13 @@ namespace UnifiedDevelopmentPlatform.Application.Services
 
             try
             {
+                _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.CallStartReceiveAndSaveAllTableAndFieldsOfSchemaDatabase));
                 _serviceMetadataTable.UDPSaveDatabaseSchemaFromMetadata(metadata);
                 databaseSchemaDecrypt = _serviceMetadataTable.UDPOpenDatabaseSchemaFromMetadata();
 
                 if (!_serviceFuncString.UDPNullOrEmpty(databaseSchemaDecrypt))
                 {
+                    _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.DecryptOkOfTheReceiveAndSaveAllTableAndFieldsOfSchemaDatabase));
                     var results = databaseSchemaDecrypt.Split(new[] { "\r\n", "\r", "\n" }, StringSplitOptions.None);
 
                     if (results.Any())
@@ -83,12 +94,14 @@ namespace UnifiedDevelopmentPlatform.Application.Services
                             }
                         }
 
+                        _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.LoadAllOfTheTableAndFieldsOfSchemaDatabase));
+
                         for (int i = counter; counter < listDatabaseSchemas.Count; counter++)
                         {
                             if (_serviceFuncString.UDPContains(listDatabaseSchemas[counter], SqlConfiguration.CreateTableWithSpace))
                             {
-                                counterOrderTable++;
-                                firstPassenger = true;
+                                orderTable++;
+                                newNameTable = true;
                                 tablesName = _serviceMetadataTable.UDPGetTableName(listDatabaseSchemas[counter]);
                                 listDatabaseSchemas.Remove(listDatabaseSchemas[counter]);
                             }
@@ -97,16 +110,16 @@ namespace UnifiedDevelopmentPlatform.Application.Services
                             {
                                 if (_serviceFuncString.UDPStringEnds(listDatabaseSchemas[counter], Symbols.Comma))
                                 {
-                                    if (firstPassenger)
+                                    if (newNameTable)
                                     {
-                                        listTables.Add(new Tables { Id = counterOrderTable, Name = tablesName });
-                                        firstPassenger = false;
+                                        listTables.Add(new Tables { Id = orderTable, Name = tablesName });
+                                        newNameTable = false;
                                     }
-                                    else if (!firstPassenger)
+                                    else if (!newNameTable)
                                     {
-                                        listTables.Where(e => e.Id.Equals(counterOrderTable)).First().Fields.Add(new Fields
+                                        listTables.Where(element => element.Id.Equals(orderTable)).First().Fields.Add(new Fields
                                         {
-                                            IdTables = counterOrderTable,
+                                            IdTables = orderTable,
                                             Name = _serviceMetadataField.UDPGetFieldName(listDatabaseSchemas[counter]),
                                             IsNull = _serviceMetadataField.UDPFieldIsNotNull(listDatabaseSchemas[counter]),
                                             TypeField = _serviceMetadataField.UDPGetTypeFieldName(listDatabaseSchemas[counter])
@@ -129,7 +142,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             }
             catch (Exception)
             {
-                // Insert msg of log hre.
+                _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.ErrorReceiveAndSaveAllTableAndFieldsOfSchemaDatabase));
                 throw;
             }
 

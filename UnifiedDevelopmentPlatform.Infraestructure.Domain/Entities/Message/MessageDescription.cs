@@ -121,5 +121,29 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Message
         /// </summary>
         public static string InvalidBase64 => "THIS BASE 64 ISA INVALID TO GENERATED THE TABLES NAME.";
         #endregion ServiceMetadataTables.
+
+        #region ServiceMetadata.
+
+        /// <summary>
+        /// Error receive and save all table and fields of schema database.
+        /// </summary>
+        public static string ErrorReceiveAndSaveAllTableAndFieldsOfSchemaDatabase => "ERROR OCORRED AT RETURN ALL OF THE TABLE AND FIELDS OF SCHEMA DATABASEIN THE VALIDATION OF FIELDS.";
+
+        /// <summary>
+        /// Call start receive and save all table and fields of schema database.
+        /// </summary>
+        public static string CallStartReceiveAndSaveAllTableAndFieldsOfSchemaDatabase => "CALL START RECEIVE AND SAVE ALL TABLE AND FIELDS OF SCHEMA DATABASE.";
+
+        /// <summary>
+        /// Load all of the table and fields of schema database.
+        /// </summary>
+        public static string LoadAllOfTheTableAndFieldsOfSchemaDatabase => "LOAD ALL OF THE TABLE AND FIELDS OF SCHEMA DATABASE.";
+
+        /// <summary>
+        /// Decrypt ok of the receive and save all table and fields of schema database.
+        /// </summary>
+        public static string DecryptOkOfTheReceiveAndSaveAllTableAndFieldsOfSchemaDatabase => "DECRYPT OK OF THE RECEIVE AND SAVE ALL TABLE AND FIELDS OF SCHEMA DATABASE.";
+
+        #endregion ServiceMetadata.
     }
 }

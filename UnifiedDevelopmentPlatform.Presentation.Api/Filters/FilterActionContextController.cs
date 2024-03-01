@@ -23,9 +23,9 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Filters
         /// <param name="serviceValidation"></param>
         /// <param name="serviceFuncStrings"></param>
         public FilterActionContextController(IServiceLog serviceLog,
-                                             IServiceMessage serviceMessage, 
-                                             IServiceDirectory serviceDirectory, 
-                                             IServiceValidation serviceValidation, 
+                                             IServiceMessage serviceMessage,
+                                             IServiceDirectory serviceDirectory,
+                                             IServiceValidation serviceValidation,
                                              IServiceFuncString serviceFuncStrings)
         {
             _serviceLog = serviceLog;
