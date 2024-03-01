@@ -50,7 +50,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
 
         public void UDPLogReport(string message)
         {
-            string caracter = _serviceFuncStrings.Empty;
+            string newLine = _serviceFuncStrings.Empty;
             string informations = _serviceFuncStrings.Empty;
             string directoryConfiguration = _serviceFuncStrings.Empty;
 
@@ -58,12 +58,19 @@ namespace UnifiedDevelopmentPlatform.Application.Services
 
             if (!_serviceFuncStrings.UDPStringStarts(message, MessageDescription.Initial))
             {
-                caracter = _servicePlataform.UDPEnvironmentAddNewLine();
+                newLine = _servicePlataform.UDPEnvironmentAddNewLine();
             }
 
             StackFrame stackFrame = new StackFrame(1, true);
-            informations = $"{caracter}{_serviceDate.UDPGetDateTimeNowFormat()} -->> File [{_serviceFile.UDPGetFileName(stackFrame.GetFileName() ?? _serviceFuncStrings.Empty)}] Line Number [{stackFrame.GetFileLineNumber()}] [{_serviceFuncStrings.UDPUpper(message)}]";
+
+            informations = $"{newLine}{_serviceDate.UDPGetDateTimeNowFormat()}{_servicePlataform.UDPEnvironmentAddNewLine()}" +
+                           $"File: {_serviceFile.UDPGetFileName(stackFrame.GetFileName() ?? _serviceFuncStrings.Empty)}{_servicePlataform.UDPEnvironmentAddNewLine()}" +
+                           $"Line Number: {stackFrame.GetFileLineNumber()}{_servicePlataform.UDPEnvironmentAddNewLine()}" +
+                           $"Message: {_serviceFuncStrings.UDPUpper(message)}{_servicePlataform.UDPEnvironmentAddNewLine()}" +
+                           $"{_servicePlataform.UDPEnvironmentAddNewLine()}";
+
             this.UDPLogInformation(informations);
+
             _serviceFile.UDPAppendAllText($"{directoryConfiguration}{DirectoryStandard.Log}{FileStandard.Log}{FileExtension.Txt}", informations);
         }
     }
