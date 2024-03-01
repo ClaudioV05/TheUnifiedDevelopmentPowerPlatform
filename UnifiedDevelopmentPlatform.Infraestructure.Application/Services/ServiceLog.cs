@@ -50,8 +50,8 @@ namespace UnifiedDevelopmentPlatform.Application.Services
 
         public void UDPLogReport(string message)
         {
+            string data = _serviceFuncStrings.Empty;
             string newLine = _serviceFuncStrings.Empty;
-            string informations = _serviceFuncStrings.Empty;
             string directoryConfiguration = _serviceFuncStrings.Empty;
 
             directoryConfiguration = _serviceDirectory.UDPObtainDirectory(DirectoryRootType.Configuration);
@@ -63,15 +63,16 @@ namespace UnifiedDevelopmentPlatform.Application.Services
 
             StackFrame stackFrame = new StackFrame(1, true);
 
-            informations = $"{newLine}{_serviceDate.UDPGetDateTimeNowFormat()}{_servicePlataform.UDPEnvironmentAddNewLine()}" +
-                           $"File: {_serviceFile.UDPGetFileName(stackFrame.GetFileName() ?? _serviceFuncStrings.Empty)}{_servicePlataform.UDPEnvironmentAddNewLine()}" +
-                           $"Line Number: {stackFrame.GetFileLineNumber()}{_servicePlataform.UDPEnvironmentAddNewLine()}" +
-                           $"Message: {_serviceFuncStrings.UDPUpper(message)}{_servicePlataform.UDPEnvironmentAddNewLine()}" +
-                           $"{_servicePlataform.UDPEnvironmentAddNewLine()}";
+            data = $"{newLine}{_serviceDate.UDPGetDateTimeNowFormat()}{_servicePlataform.UDPEnvironmentAddNewLine()}" +
+                   $"File: {_serviceFile.UDPGetFileName(stackFrame.GetFileName() ?? _serviceFuncStrings.Empty)}{_servicePlataform.UDPEnvironmentAddNewLine()}" +
+                   $"Line Number: {stackFrame.GetFileLineNumber()}{_servicePlataform.UDPEnvironmentAddNewLine()}" +
+                   $"Line Column: {stackFrame.GetFileColumnNumber()}{_servicePlataform.UDPEnvironmentAddNewLine()}" +
+                   $"Message: {_serviceFuncStrings.UDPUpper(message)}{_servicePlataform.UDPEnvironmentAddNewLine()}" +
+                   $"{_servicePlataform.UDPEnvironmentAddNewLine()}";
 
-            this.UDPLogInformation(informations);
+            this.UDPLogInformation(data);
 
-            _serviceFile.UDPAppendAllText($"{directoryConfiguration}{DirectoryStandard.Log}{FileStandard.Log}{FileExtension.Txt}", informations);
+            _serviceFile.UDPAppendAllText($"{directoryConfiguration}{DirectoryStandard.Log}{FileStandard.Log}{FileExtension.Txt}", data);
         }
     }
 }

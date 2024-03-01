@@ -66,12 +66,12 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         public List<Tables> UDPReceiveAndSaveAllTableAndFieldsOfSchemaDatabase(MetadataOwner metadata)
         {
             int counter = 0;
-            int orderTable = 0;
+            int tableOrder = 0;
             bool newNameTable = true;
             string tablesName = _serviceFuncString.Empty;
             string databaseSchemaDecrypt = _serviceFuncString.Empty;
-            List<string> listDatabaseSchemas = new List<string>();
             List<Tables> listTables = new List<Tables>();
+            List<string> listDatabaseSchemas = new List<string>();
 
             try
             {
@@ -100,7 +100,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
                         {
                             if (_serviceFuncString.UDPContains(listDatabaseSchemas[counter], SqlConfiguration.CreateTableWithSpace))
                             {
-                                orderTable++;
+                                tableOrder++;
                                 newNameTable = true;
                                 tablesName = _serviceMetadataTable.UDPGetTableName(listDatabaseSchemas[counter]);
                                 listDatabaseSchemas.Remove(listDatabaseSchemas[counter]);
@@ -112,14 +112,14 @@ namespace UnifiedDevelopmentPlatform.Application.Services
                                 {
                                     if (newNameTable)
                                     {
-                                        listTables.Add(new Tables { Id = orderTable, Name = tablesName });
+                                        listTables.Add(new Tables { Id = tableOrder, Name = tablesName });
                                         newNameTable = false;
                                     }
                                     else if (!newNameTable)
                                     {
-                                        listTables.Where(element => element.Id.Equals(orderTable)).First().Fields.Add(new Fields
+                                        listTables.Where(element => element.Id.Equals(tableOrder)).First().Fields.Add(new Fields
                                         {
-                                            IdTables = orderTable,
+                                            IdTables = tableOrder,
                                             Name = _serviceMetadataField.UDPGetFieldName(listDatabaseSchemas[counter]),
                                             IsNull = _serviceMetadataField.UDPFieldIsNotNull(listDatabaseSchemas[counter]),
                                             TypeField = _serviceMetadataField.UDPGetTypeFieldName(listDatabaseSchemas[counter])
@@ -146,6 +146,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
                 throw;
             }
 
+            _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.SuccessAtTheReceiveAndSaveAllTableAndFieldsOfSchemaDatabase));
             return listTables;
         }
 

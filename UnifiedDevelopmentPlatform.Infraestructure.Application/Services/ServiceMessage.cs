@@ -32,6 +32,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             MessageType.DirectoryRootIsEmpty => MessageDescription.DirectoryRootIsEmpty,
             MessageType.InvalidBase64 => MessageDescription.InvalidBase64,
             MessageType.MessageUdpArchitectureIsOk => MessageDescription.MessageUdpArchitectureIsOk,
+            MessageType.SuccessAtTheReceiveAndSaveAllTableAndFieldsOfSchemaDatabase => MessageDescription.SuccessAtTheReceiveAndSaveAllTableAndFieldsOfSchemaDatabase,
             MessageType.CallStartReceiveAndSaveAllTableAndFieldsOfSchemaDatabase => MessageDescription.CallStartReceiveAndSaveAllTableAndFieldsOfSchemaDatabase,
             MessageType.LoadAllOfTheTableAndFieldsOfSchemaDatabase => MessageDescription.LoadAllOfTheTableAndFieldsOfSchemaDatabase,
             MessageType.DecryptOkOfTheReceiveAndSaveAllTableAndFieldsOfSchemaDatabase => MessageDescription.DecryptOkOfTheReceiveAndSaveAllTableAndFieldsOfSchemaDatabase,

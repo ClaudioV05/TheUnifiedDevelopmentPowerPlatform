@@ -80,17 +80,20 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Message
 
         #region ServiceMetadata.
 
+        [Description("Success at the receive and save all table and fields of schema database")]
+        SuccessAtTheReceiveAndSaveAllTableAndFieldsOfSchemaDatabase = 20,
+
         [Description("Call start receive and save all table and fields of schema database")]
-        CallStartReceiveAndSaveAllTableAndFieldsOfSchemaDatabase = 20,
+        CallStartReceiveAndSaveAllTableAndFieldsOfSchemaDatabase = 21,
 
         [Description("Load all of the table and fields of schema database")]
-        LoadAllOfTheTableAndFieldsOfSchemaDatabase = 21,
+        LoadAllOfTheTableAndFieldsOfSchemaDatabase = 22,
 
         [Description("Decrypt ok of the receive and save all table and fields of schema database")]
-        DecryptOkOfTheReceiveAndSaveAllTableAndFieldsOfSchemaDatabase = 22,
+        DecryptOkOfTheReceiveAndSaveAllTableAndFieldsOfSchemaDatabase = 23,
 
         [Description("Error receive and save all table and fields of schema database")]
-        ErrorReceiveAndSaveAllTableAndFieldsOfSchemaDatabase = 23
+        ErrorReceiveAndSaveAllTableAndFieldsOfSchemaDatabase = 24
 
         #endregion ServiceMetadata.
     }
