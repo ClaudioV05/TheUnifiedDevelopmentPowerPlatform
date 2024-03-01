@@ -1,5 +1,4 @@
-﻿using System.Xml.Linq;
-using UnifiedDevelopmentPlatform.Application.Interfaces;
+﻿using UnifiedDevelopmentPlatform.Application.Interfaces;
 using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities;
 using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Sql;
 using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Symbol;
@@ -58,57 +57,80 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         public MetadataOwner UDPReceiveAndSaveAllTableAndFieldsOfSchemaDatabase(MetadataOwner metadata)
         {
             int counter = 0;
+            int counterOrderTable = 0;
+            bool firstPassenger = true;
+            string tablesName = _serviceFuncString.Empty;
             string databaseSchemaDecrypt = _serviceFuncString.Empty;
             List<string> listDatabaseSchemas = new List<string>();
             MetadataOwner metadataOwner = new MetadataOwner();
-            Tables tables = new Tables();
-            Fields fields = new Fields();
 
-            _serviceMetadataTable.UDPSaveDatabaseSchemaFromMetadata(metadata);
-            databaseSchemaDecrypt = _serviceMetadataTable.UDPOpenDatabaseSchemaFromMetadata();
-
-            if (!_serviceFuncString.UDPNullOrEmpty(databaseSchemaDecrypt))
+            try
             {
-                var results = databaseSchemaDecrypt.Split(new[] { "\r\n", "\r", "\n" }, StringSplitOptions.None);
+                _serviceMetadataTable.UDPSaveDatabaseSchemaFromMetadata(metadata);
+                databaseSchemaDecrypt = _serviceMetadataTable.UDPOpenDatabaseSchemaFromMetadata();
 
-                if (results.Any())
+                if (!_serviceFuncString.UDPNullOrEmpty(databaseSchemaDecrypt))
                 {
-                    foreach (string result in results)
-                    {
-                        if (result.Contains(SqlConfiguration.CreateTableWithSpace) || result.Contains(SqlConfiguration.KeyPrimaryKey) || result.EndsWith(Symbols.Comma))
-                        {
-                            listDatabaseSchemas.Add(result.ToLowerInvariant().TrimStart());
-                        }
-                    }
+                    var results = databaseSchemaDecrypt.Split(new[] { "\r\n", "\r", "\n" }, StringSplitOptions.None);
 
-                    for (int i = counter; counter < listDatabaseSchemas.Count; counter++)
+                    if (results.Any())
                     {
-                        if (_serviceFuncString.UDPContains(listDatabaseSchemas[counter], SqlConfiguration.CreateTableWithSpace))
+                        foreach (string result in results)
                         {
-                            tables.Name = _serviceMetadataTable.UDPGetTableName(listDatabaseSchemas[counter]);
-                            listDatabaseSchemas.Remove(listDatabaseSchemas[counter]);
+                            if (_serviceFuncString.UDPContains(result, SqlConfiguration.CreateTableWithSpace) || _serviceFuncString.UDPContains(result, SqlConfiguration.KeyPrimaryKey) || _serviceFuncString.UDPStringEnds(result, Symbols.Comma))
+                            {
+                                listDatabaseSchemas.Add(_serviceFuncString.UDPRemoveWhitespaceOnStart(_serviceFuncString.UDPLower(result)));
+                            }
                         }
 
-                        for (int j = counter; counter < listDatabaseSchemas.Count; counter++)
+                        for (int i = counter; counter < listDatabaseSchemas.Count; counter++)
                         {
-                            if (listDatabaseSchemas[counter].EndsWith(Symbols.Comma))
+                            if (_serviceFuncString.UDPContains(listDatabaseSchemas[counter], SqlConfiguration.CreateTableWithSpace))
                             {
-                                var fieldName = _serviceMetadataField.UDPGetFieldName(listDatabaseSchemas[counter]);
-                                var typeFieldName = _serviceMetadataField.UDPGetTypeFieldName(listDatabaseSchemas[counter]);
-                                var isnull = _serviceMetadataField.UDPFieldIsNotNull(listDatabaseSchemas[counter]);
+                                counterOrderTable++;
+                                firstPassenger = true;
+                                tablesName = _serviceMetadataTable.UDPGetTableName(listDatabaseSchemas[counter]);
+                                listDatabaseSchemas.Remove(listDatabaseSchemas[counter]);
                             }
-                            else if (listDatabaseSchemas[counter].Contains(SqlConfiguration.KeyPrimaryKey))
+
+                            for (int j = counter; counter < listDatabaseSchemas.Count; counter++)
                             {
-                                continue;
-                            }
-                            else if (listDatabaseSchemas[counter].Contains(SqlConfiguration.CreateTableWithSpace))
-                            {
-                                counter--;
-                                break;
+                                if (_serviceFuncString.UDPStringEnds(listDatabaseSchemas[counter], Symbols.Comma))
+                                {
+                                    if (firstPassenger)
+                                    {
+                                        metadataOwner.Tables.Add(new Tables { Id = counterOrderTable, Name = tablesName });
+                                        firstPassenger = false;
+                                    }
+                                    else if (!firstPassenger)
+                                    {
+                                        metadataOwner.Tables.Where(e => e.Id.Equals(counterOrderTable)).First().Fields.Add(new Fields
+                                        {
+                                            IdTables = counterOrderTable,
+                                            Name = _serviceMetadataField.UDPGetFieldName(listDatabaseSchemas[counter]),
+                                            IsNull = _serviceMetadataField.UDPFieldIsNotNull(listDatabaseSchemas[counter]),
+                                            TypeField = _serviceMetadataField.UDPGetTypeFieldName(listDatabaseSchemas[counter])
+                                        });
+                                    }
+                                }
+                                else if (_serviceFuncString.UDPContains(listDatabaseSchemas[counter], SqlConfiguration.KeyPrimaryKey))
+                                {
+                                    continue;
+                                }
+                                else if (_serviceFuncString.UDPContains(listDatabaseSchemas[counter], SqlConfiguration.CreateTableWithSpace))
+                                {
+                                    counter--;
+                                    break;
+                                }
                             }
                         }
                     }
                 }
+            }
+            catch (Exception)
+            {
+                // Insert msg of log hre.
+                throw;
             }
 
             return metadataOwner;

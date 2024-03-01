@@ -69,5 +69,12 @@
         /// <param name="path"></param>
         /// <returns></returns>
         string UDPGetFileName(string path);
+
+        /// <summary>
+        /// Count lines using StreamReader.
+        /// </summary>
+        /// <param name="fileName"></param>
+        /// <returns>The number of lines.</returns>
+        int UDPCountLines(string fileName);
     }
 }

@@ -126,6 +126,13 @@
         string UDPRemoveWhitespace(string text);
 
         /// <summary>
+        /// Removes white space On the start of a string.
+        /// </summary>
+        /// <param name="text"></param>
+        /// <returns></returns>
+        string UDPRemoveWhitespaceOnStart(string text);
+
+        /// <summary>
         /// If string starts with the value specified.
         /// </summary>
         /// <param name="text"></param>

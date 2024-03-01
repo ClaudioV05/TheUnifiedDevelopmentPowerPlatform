@@ -72,5 +72,24 @@ namespace UnifiedDevelopmentPlatform.Application.Services
                 return string.Empty;
             }
         }
+
+        public int UDPCountLines(string fileName)
+        {
+            var lineCount = 0;
+
+            if (!this.UDPFileExists(fileName))
+            {
+                throw new FileNotFoundException($"File not found: {fileName}");
+            }
+
+            using StreamReader reader = new(fileName);
+
+            while (reader.ReadLine() is not null)
+            {
+                lineCount++;
+            }
+
+            return lineCount;
+        }
     }
 }

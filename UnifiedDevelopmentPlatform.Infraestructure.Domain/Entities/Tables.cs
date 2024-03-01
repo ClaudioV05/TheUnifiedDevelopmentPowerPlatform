@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.Runtime.Serialization;
 using UnifiedDevelopmentPlatform.Infraestructure.Domain.Interfaces;
 
 namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities
@@ -14,13 +15,23 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities
         public string? Name { get; set; }
 
         /// <summary>
-        /// Name of fields.
-        /// </summary>
-        public List<string>? Names { get; set; }
-
-        /// <summary>
         /// Fields.
         /// </summary>
-        public Fields? Fields { get; set; }
+        [DataMember]
+        public List<Fields> Fields { get; set; }
+
+        public Tables()
+        {
+            try
+            {
+                Id = 0;
+                Name = string.Empty;
+                this.Fields = new List<Fields>();
+            }
+            catch (Exception)
+            {
+                throw new Exception("The creation of " + typeof(Tables).Name + " is with erro.");
+            }
+        }
     }
 }

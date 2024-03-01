@@ -30,7 +30,7 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities
         /// Tables.
         /// </summary>
         [DataMember]
-        public List<Tables>? Tables { get; set; }
+        public List<Tables> Tables { get; set; }
 
         /// <summary>
         /// Databases.
@@ -55,14 +55,14 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities
                 Id = 0;
                 Name = string.Empty;
                 DatabaseSchema = string.Empty;
-                this.Forms = new List<Forms>();
                 this.Tables = new List<Tables>();
+                this.Forms = new List<Forms>();
                 this.Databases = new List<Databases>();
                 this.DevelopmentEnvironment = new List<DevelopmentEnvironment>();
             }
             catch (Exception)
             {
-                throw new Exception("The creation of MetadataOwner is with erro in " + this.ToString());
+                throw new Exception("The creation of " + typeof(MetadataOwner).Name + " is with erro.");
             }
         }
     }

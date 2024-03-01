@@ -221,6 +221,11 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             return text.Trim();
         }
 
+        public string UDPRemoveWhitespaceOnStart(string text)
+        {
+            return text.Trim();
+        }
+
         public bool UDPStringStarts(string text, string value)
         {
             return text.StartsWith(value);
