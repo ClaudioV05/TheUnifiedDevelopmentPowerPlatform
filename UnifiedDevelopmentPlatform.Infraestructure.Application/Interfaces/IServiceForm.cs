@@ -12,5 +12,11 @@ namespace UnifiedDevelopmentPlatform.Application.Interfaces
         /// </summary>
         /// <returns>Return the complete list of forms.</returns>
         List<Forms> UDPSelectParametersTheKindsOfForms();
+
+        /// <summary>
+        /// Save identifier to the form from metadata.
+        /// </summary>
+        /// <param name="metadata"></param>
+        void UDPSaveIdentifierToTheFormFromMetadata(MetadataOwner metadata);
     }
 }
