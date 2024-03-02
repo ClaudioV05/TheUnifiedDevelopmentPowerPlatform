@@ -42,6 +42,15 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             MessageType.CallStartToTheSelectParametersTheKindsOfDevelopmentEnviroment => MessageDescription.CallStartToTheSelectParametersTheKindsOfDevelopmentEnviroment,
             MessageType.CallStartToTheSelectParametersTheKindsOfArchitecturePatterns => MessageDescription.CallStartToTheSelectParametersTheKindsOfArchitecturePatterns,
             MessageType.CallStartToTheSelectParametersTheKindsOfUnifiedDevelopmentPlatform => MessageDescription.CallStartToTheSelectParametersTheKindsOfUnifiedDevelopmentPlatform,
+            MessageType.CallStartToTheEncrypt => MessageDescription.CallStartToTheEncrypt,
+            MessageType.SuccessToTheEncrypt => MessageDescription.SuccessToTheEncrypt,
+            MessageType.ErrorToTheEncrypt => MessageDescription.ErrorToTheEncrypt,
+            MessageType.CallStartToTheDecrypt => MessageDescription.CallStartToTheDecrypt,
+            MessageType.SuccessToTheDecrypt => MessageDescription.SuccessToTheDecrypt,
+            MessageType.ErrorToTheDecrypt => MessageDescription.ErrorToTheDecrypt,
+            MessageType.CallStartToTheDecodeBase64 => MessageDescription.CallStartToTheDecodeBase64,
+            MessageType.SuccessToTheDecodeBase64 => MessageDescription.SuccessToTheDecodeBase64,
+            MessageType.ErrorToTheDecodeBase64 => MessageDescription.ErrorToTheDecodeBase64,
             _ => MessageDescription.NoMessage
         };
     }

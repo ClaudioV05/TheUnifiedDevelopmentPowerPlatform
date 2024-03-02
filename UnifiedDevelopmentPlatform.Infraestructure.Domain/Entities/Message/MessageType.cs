@@ -111,8 +111,39 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Message
         CallStartToTheSelectParametersTheKindsOfArchitecturePatterns = 29,
 
         [Description("Call start to the Select parameters the kinds of unifiedDevelopment platform")]
-        CallStartToTheSelectParametersTheKindsOfUnifiedDevelopmentPlatform = 30
+        CallStartToTheSelectParametersTheKindsOfUnifiedDevelopmentPlatform = 30,
 
         #endregion ServiceMetadata.
+
+        #region ServiceCrypto.
+
+        [Description("Call start to the encrypt")]
+        CallStartToTheEncrypt = 31,
+
+        [Description("Success to the encrypt")]
+        SuccessToTheEncrypt = 32,
+
+        [Description("Error to the encrypt")]
+        ErrorToTheEncrypt = 33,
+
+        [Description("Call start to the decrypt")]
+        CallStartToTheDecrypt = 34,
+
+        [Description("Success to the decrypt")]
+        SuccessToTheDecrypt = 35,
+
+        [Description("Error to the decrypt")]
+        ErrorToTheDecrypt = 36,
+
+        [Description("Call start to the decode base 64")]
+        CallStartToTheDecodeBase64 = 37,
+
+        [Description("Success to the decode base 64")]
+        SuccessToTheDecodeBase64 = 38,
+
+        [Description("Error to the decode base 64")]
+        ErrorToTheDecodeBase64 = 39
+
+        #endregion ServiceCrypto.
     }
 }
