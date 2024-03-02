@@ -3,6 +3,7 @@ using System.Diagnostics;
 using UnifiedDevelopmentPlatform.Application.Interfaces;
 using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Directory;
 using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.File;
+using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Log;
 using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Message;
 
 namespace UnifiedDevelopmentPlatform.Application.Services
@@ -48,11 +49,12 @@ namespace UnifiedDevelopmentPlatform.Application.Services
 
         public void UDPLogWarning(string message) => _logger.Warn(message);
 
-        public void UDPLogReport(string message)
+        public void UDPLogReport(string message, string additionalMessage)
         {
             string data = _serviceFuncStrings.Empty;
             string newLine = _serviceFuncStrings.Empty;
             string directoryConfiguration = _serviceFuncStrings.Empty;
+            StackFrame stackFrame = new StackFrame(1, true);
 
             directoryConfiguration = _serviceDirectory.UDPObtainDirectory(DirectoryRootType.Configuration);
 
@@ -61,13 +63,13 @@ namespace UnifiedDevelopmentPlatform.Application.Services
                 newLine = _servicePlataform.UDPEnvironmentAddNewLine();
             }
 
-            StackFrame stackFrame = new StackFrame(1, true);
-
             data = $"{newLine}{_serviceDate.UDPGetDateTimeNowFormat()}{_servicePlataform.UDPEnvironmentAddNewLine()}" +
-                   $"File: {_serviceFile.UDPGetFileName(stackFrame.GetFileName() ?? _serviceFuncStrings.Empty)}{_servicePlataform.UDPEnvironmentAddNewLine()}" +
-                   $"Line Number: {stackFrame.GetFileLineNumber()}{_servicePlataform.UDPEnvironmentAddNewLine()}" +
-                   $"Line Column: {stackFrame.GetFileColumnNumber()}{_servicePlataform.UDPEnvironmentAddNewLine()}" +
-                   $"Message: {_serviceFuncStrings.UDPUpper(message)}{_servicePlataform.UDPEnvironmentAddNewLine()}" +
+                   $"{LogConfiguration.FileName}{_serviceFuncStrings.StringWhiteSpace}{_serviceFile.UDPGetFileName(stackFrame.GetFileName() ?? _serviceFuncStrings.Empty)}{_servicePlataform.UDPEnvironmentAddNewLine()}" +
+                   $"{LogConfiguration.MethodName}{_serviceFuncStrings.StringWhiteSpace}{stackFrame.GetMethod()?.Name}{_servicePlataform.UDPEnvironmentAddNewLine()}" +
+                   $"{LogConfiguration.LineNumber}{_serviceFuncStrings.StringWhiteSpace}{stackFrame.GetFileLineNumber()}{_servicePlataform.UDPEnvironmentAddNewLine()}" +
+                   $"{LogConfiguration.LineColumn}{_serviceFuncStrings.StringWhiteSpace}{stackFrame.GetFileColumnNumber()}{_servicePlataform.UDPEnvironmentAddNewLine()}" +
+                   $"{LogConfiguration.Message}{_serviceFuncStrings.StringWhiteSpace}{_serviceFuncStrings.UDPUpper(message)}{_servicePlataform.UDPEnvironmentAddNewLine()}" +
+                   $"{LogConfiguration.AdditionalMessage}{_serviceFuncStrings.StringWhiteSpace}{_serviceFuncStrings.UDPUpper(additionalMessage)}{_servicePlataform.UDPEnvironmentAddNewLine()}" +
                    $"{_servicePlataform.UDPEnvironmentAddNewLine()}";
 
             this.UDPLogInformation(data);

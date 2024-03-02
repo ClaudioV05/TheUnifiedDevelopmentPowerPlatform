@@ -44,63 +44,63 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Filters
             {
                 if (!_serviceValidation.UDPModelStateIsOk(context, ref message))
                 {
-                    _serviceLog.UDPLogReport(message);
+                    _serviceLog.UDPLogReport(message, _serviceFuncStrings.Empty);
                     HasMessage(context, message);
                     return;
                 }
 
                 if (!_serviceValidation.UDPDatabaseSchemaIsOk(context, ref message))
                 {
-                    _serviceLog.UDPLogReport(message);
+                    _serviceLog.UDPLogReport(message, _serviceFuncStrings.Empty);
                     HasMessage(context, message);
                     return;
                 }
 
                 if (!_serviceValidation.UDPMetadataIsBase64Ok(context, ref message))
                 {
-                    _serviceLog.UDPLogReport(message);
+                    _serviceLog.UDPLogReport(message, _serviceFuncStrings.Empty);
                     HasMessage(context, message);
                     return;
                 }
 
                 if (!_serviceValidation.UDPDevelopmentEnvironmentIsOk(context, ref message))
                 {
-                    _serviceLog.UDPLogReport(message);
+                    _serviceLog.UDPLogReport(message, _serviceFuncStrings.Empty);
                     HasMessage(context, message);
                     return;
                 }
 
                 if (!_serviceValidation.UDPDatabasesIsOk(context, ref message))
                 {
-                    _serviceLog.UDPLogReport(message);
+                    _serviceLog.UDPLogReport(message, _serviceFuncStrings.Empty);
                     HasMessage(context, message);
                     return;
                 }
 
                 if (!_serviceValidation.UDPDatabasesEngineIsOk(context, ref message))
                 {
-                    _serviceLog.UDPLogReport(message);
+                    _serviceLog.UDPLogReport(message, _serviceFuncStrings.Empty);
                     HasMessage(context, message);
                     return;
                 }
 
                 if (!_serviceValidation.UDPFormIsOk(context, ref message))
                 {
-                    _serviceLog.UDPLogReport(message);
+                    _serviceLog.UDPLogReport(message, _serviceFuncStrings.Empty);
                     HasMessage(context, message);
                     return;
                 }
 
                 if (!_serviceValidation.UDPArchitectureOk(context, ref message))
                 {
-                    _serviceLog.UDPLogReport(message);
+                    _serviceLog.UDPLogReport(message, _serviceFuncStrings.Empty );
                     HasMessage(context, message);
                     return;
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.ErrorFilterActionContextTables));
+                _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.ErrorFilterActionContextTables), ex.Message);
                 throw new Exception(_serviceFuncStrings.UDPUpper(MessageDescription.ErrorFilterActionContextTables));
             }
 
@@ -110,9 +110,9 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Filters
             {
                 _serviceDirectory.UPDCreateDirectoryProjectOfSolution();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.ErrorCreateAllDirectory));
+                _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.ErrorCreateAllDirectory), ex.Message);
                 throw new Exception(_serviceFuncStrings.UDPUpper(MessageDescription.ErrorCreateAllDirectory));
             }
         }

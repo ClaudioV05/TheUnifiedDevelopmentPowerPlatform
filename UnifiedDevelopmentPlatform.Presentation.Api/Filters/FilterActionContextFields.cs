@@ -10,17 +10,21 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Filters
     {
         private readonly IServiceLog _serviceLog;
         private readonly IServiceValidation _serviceValidation;
+        private readonly IServiceFuncString _serviceFuncStrings;
 
         /// <summary>
         /// Filter action context fields.
         /// </summary>
         /// <param name="serviceLog"></param>
         /// <param name="serviceValidation"></param>
+        /// <param name="serviceFuncStrings"></param>
         public FilterActionContextFields(IServiceLog serviceLog,
-                                         IServiceValidation serviceValidation)
+                                         IServiceValidation serviceValidation,
+                                         IServiceFuncString serviceFuncStrings)
         {
             _serviceLog = serviceLog;
             _serviceValidation = serviceValidation;
+            _serviceFuncStrings = serviceFuncStrings;
         }
 
         public async Task OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next)
@@ -29,7 +33,7 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Filters
 
             if (!_serviceValidation.UDPModelStateIsOk(context, ref message))
             {
-                _serviceLog.UDPLogReport(message);
+                _serviceLog.UDPLogReport(message, _serviceFuncStrings.Empty);
                 HasMessage(context, message);
                 return;
             }

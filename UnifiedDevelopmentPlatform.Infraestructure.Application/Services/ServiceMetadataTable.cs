@@ -4,7 +4,7 @@ using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Directory;
 using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.File;
 using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Message;
 using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Sql;
-using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Symbol;
+using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.MetaCharacter;
 
 namespace UnifiedDevelopmentPlatform.Application.Services
 {
@@ -61,7 +61,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             {
                 if (!_serviceValidation.UDPValidateBase64(metadata?.DatabaseSchema))
                 {
-                    _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.InvalidBase64));
+                    _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.InvalidBase64), _serviceFuncString.Empty);
                 }
                 else
                 {
@@ -119,7 +119,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
 
             tableName = _serviceFuncString.UDPLower(_serviceFuncString.UDPRemoveWhitespace(text));
             tableName = _serviceFuncString.UDPReplace(tableName, SqlConfiguration.CreateTableWithSpace, _serviceFuncString.Empty);
-            tableName = _serviceFuncString.UDPReplace(tableName, Symbols.LeftParenthese, _serviceFuncString.Empty);
+            tableName = _serviceFuncString.UDPReplace(tableName, MetaCharacterSymbols.LeftParenthese, _serviceFuncString.Empty);
             tableName = _serviceFuncString.UDPRemoveSpecialCaracter(tableName);
             return _serviceFuncString.UDPUpper(_serviceFuncString.UDPRemoveWhitespace(tableName));
         }

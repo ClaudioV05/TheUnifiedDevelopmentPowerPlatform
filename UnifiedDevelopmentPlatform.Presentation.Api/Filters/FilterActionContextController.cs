@@ -43,19 +43,19 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Filters
             {
                 if (!_serviceValidation.UDPPlatformWindowsIsOk(ref message))
                 {
-                    _serviceLog.UDPLogReport(message);
+                    _serviceLog.UDPLogReport(message, _serviceFuncStrings.Empty);
                     HasMessage(context, message);
                     return;
                 }
 
                 _serviceDirectory.UPDBuildDirectoryStandardOfSolution();
 
-                _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.Initial));
-                _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.PlatformIsWindowsOk));
+                _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.Initial), _serviceFuncStrings.Empty);
+                _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.PlatformIsWindowsOk), _serviceFuncStrings.Empty);
             }
             catch (Exception ex)
             {
-                _serviceLog.UDPLogReport($"{_serviceMessage.UDPMensagem(MessageType.ErrorFilterActionContextController)} {ex.Message}");
+                _serviceLog.UDPLogReport($"{_serviceMessage.UDPMensagem(MessageType.ErrorFilterActionContextController)}", ex.Message);
                 throw new Exception(_serviceFuncStrings.UDPUpper(MessageDescription.ErrorFilterActionContextController));
             }
 

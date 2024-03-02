@@ -1,7 +1,7 @@
 ﻿using UnifiedDevelopmentPlatform.Application.Interfaces;
 using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities;
 using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Sql;
-using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Symbol;
+using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.MetaCharacter;
 
 namespace UnifiedDevelopmentPlatform.Application.Services
 {
@@ -27,7 +27,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             string field = _serviceFuncString.Empty;
 
             field = _serviceFuncString.UDPLower(text);
-            firstPositionWithSpace = field.IndexOf(Symbols.HorizontalTab);
+            firstPositionWithSpace = field.IndexOf(MetaCharacterSymbols.HorizontalTab);
             field = field.Substring(0, firstPositionWithSpace);
             field = _serviceFuncString.UDPRemoveSpecialCaracter(field);
             return _serviceFuncString.UDPUpper(_serviceFuncString.UDPRemoveAnyWhiteSpace(field));
@@ -39,11 +39,11 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             string typeField = _serviceFuncString.Empty;
 
             typeField = _serviceFuncString.UDPLower(text);
-            typeField = _serviceFuncString.UDPReplace(typeField, Symbols.Comma, _serviceFuncString.Empty);
+            typeField = _serviceFuncString.UDPReplace(typeField, MetaCharacterSymbols.Comma, _serviceFuncString.Empty);
             typeField = _serviceFuncString.UDPReplace(typeField, SqlConfiguration.KeyNot, _serviceFuncString.Empty);
             typeField = _serviceFuncString.UDPReplace(typeField, SqlConfiguration.KeyNullValue, _serviceFuncString.Empty);
             typeField = _serviceFuncString.UDPReplace(typeField, SqlConfiguration.KeyNotNullValue, _serviceFuncString.Empty);
-            firstPositionWithSpace = typeField.IndexOf(Symbols.HorizontalTab);
+            firstPositionWithSpace = typeField.IndexOf(MetaCharacterSymbols.HorizontalTab);
             typeField = typeField.Substring(firstPositionWithSpace, System.Math.Abs(firstPositionWithSpace - typeField.Length));
             typeField = _serviceFuncString.UDPRemoveSpecialCaracter(typeField);
             return _serviceFuncString.UDPUpper(_serviceFuncString.UDPRemoveAnyWhiteSpace(typeField));

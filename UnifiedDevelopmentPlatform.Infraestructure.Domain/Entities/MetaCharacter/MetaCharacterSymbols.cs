@@ -1,9 +1,9 @@
-﻿namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Symbol
+﻿namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.MetaCharacter
 {
     /// <summary>
     /// Symbols of Unified Development Platform.
     /// </summary>
-    public static class Symbols
+    public static class MetaCharacterSymbols
     {
         /// <summary>
         /// The scape sequence single quote. Unicode encoding = 0x0027
