@@ -76,7 +76,11 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             try
             {
                 _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.CallStartReceiveAndSaveAllTableAndFieldsOfSchemaDatabase), _serviceFuncString.Empty);
+
+                // >> Will includ log in methods below.
                 _serviceMetadataTable.UDPSaveDatabaseSchemaFromMetadata(metadata);
+                _serviceForm.UDPSaveIdentifierToTheFormFromMetadata(metadata);
+
                 databaseSchemaDecrypt = _serviceMetadataTable.UDPOpenDatabaseSchemaFromMetadata();
 
                 if (!_serviceFuncString.UDPNullOrEmpty(databaseSchemaDecrypt))

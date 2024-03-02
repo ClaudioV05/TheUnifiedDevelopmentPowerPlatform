@@ -9,23 +9,18 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.File
     public static class FileStandard
     {
         /// <summary>
-        /// App.
-        /// </summary>
-        public static string App => "\\_app";
-
-        /// <summary>
-        /// Configuration.
-        /// </summary>
-        public static string Configuration => "\\_configuration";
-
-        /// <summary>
         /// Log.
         /// </summary>
         public static string Log => "\\_log";
 
         /// <summary>
-        /// Database schema.
+        /// The database schema.
         /// </summary>
         public static string DatabaseSchema => "\\_databaseschema";
+
+        /// <summary>
+        /// The identifier the form.
+        /// </summary>
+        public static string IdentifierTheForm => "\\_identifierform";
     }
 }

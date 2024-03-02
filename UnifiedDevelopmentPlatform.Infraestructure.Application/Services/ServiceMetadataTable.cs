@@ -84,6 +84,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
 
         public void UDPSaveDatabaseSchemaFromMetadata(MetadataOwner metadata)
         {
+            string data = _serviceFuncString.Empty;
             string databaseSchema = _serviceFuncString.Empty;
             string directoryConfiguration = _serviceFuncString.Empty;
 
@@ -92,8 +93,8 @@ namespace UnifiedDevelopmentPlatform.Application.Services
                 databaseSchema = _serviceCrypto.UPDDecodeBase64(metadata?.DatabaseSchema);
                 databaseSchema = _serviceFuncString.UDPLower(databaseSchema);
                 directoryConfiguration = _serviceDirectory.UDPObtainDirectory(DirectoryRootType.Configuration);
-                databaseSchema = _serviceCrypto.UPDEncrypt(databaseSchema);
-                _serviceFile.UDPAppendAllText($"{directoryConfiguration}{DirectoryStandard.Log}{FileStandard.DatabaseSchema}{FileExtension.Txt}", databaseSchema);
+                data = _serviceCrypto.UPDEncrypt(databaseSchema);
+                _serviceFile.UDPAppendAllText($"{directoryConfiguration}{DirectoryStandard.Log}{FileStandard.DatabaseSchema}{FileExtension.Txt}", data);
             }
         }
 
