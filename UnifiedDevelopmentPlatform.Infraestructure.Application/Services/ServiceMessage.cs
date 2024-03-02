@@ -39,6 +39,9 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             MessageType.ErrorReceiveAndSaveAllTableAndFieldsOfSchemaDatabase => MessageDescription.ErrorReceiveAndSaveAllTableAndFieldsOfSchemaDatabase,
             MessageType.CallStartToTheSelectParametersTheKindsOfDatabases => MessageDescription.CallStartToTheSelectParametersTheKindsOfDatabases,
             MessageType.CallStartToTheSelectParametersTheKindsOfForms => MessageDescription.CallStartToTheSelectParametersTheKindsOfForms,
+            MessageType.CallStartToTheSelectParametersTheKindsOfDevelopmentEnviroment => MessageDescription.CallStartToTheSelectParametersTheKindsOfDevelopmentEnviroment,
+            MessageType.CallStartToTheSelectParametersTheKindsOfArchitecturePatterns => MessageDescription.CallStartToTheSelectParametersTheKindsOfArchitecturePatterns,
+            MessageType.CallStartToTheSelectParametersTheKindsOfUnifiedDevelopmentPlatform => MessageDescription.CallStartToTheSelectParametersTheKindsOfUnifiedDevelopmentPlatform,
             _ => MessageDescription.NoMessage
         };
     }

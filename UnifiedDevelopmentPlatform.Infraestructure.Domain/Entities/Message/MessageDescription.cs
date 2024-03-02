@@ -159,6 +159,26 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Message
         /// </summary>
         public static string CallStartToTheSelectParametersTheKindsOfForms => "CALL START TO THE SELECT PARAMETERS THE KINDS OF FORMS.";
 
+        /// <summary>
+        /// Call start to the Select parameters the kinds of development enviroment.
+        /// </summary>
+        public static string CallStartToTheSelectParametersTheKindsOfDevelopmentEnviroment => "CALL START TO THE SELECT PARAMETERS THE KINDS OF DEVELOPMENT ENVIROMENT.";
+
+        /// <summary>
+        /// Call start to the Select parameters the kinds of databases engine.
+        /// </summary>
+        public static string CallStartToTheSelectParametersTheKindsOfDatabasesEngine => "CALL START TO THE SELECT PARAMETERS THE KINDS OF DATABASES ENGINE.";
+
+        /// <summary>
+        /// Call start to the Select parameters the kinds of architecture patterns.
+        /// </summary>
+        public static string CallStartToTheSelectParametersTheKindsOfArchitecturePatterns => "CALL START TO THE SELECT PARAMETERS THE KINDS OF ARCHITECTURE PATTERNS.";
+
+        /// <summary>
+        /// Call start to the Select parameters the kinds of unifiedDevelopment platform.
+        /// </summary>
+        public static string CallStartToTheSelectParametersTheKindsOfUnifiedDevelopmentPlatform => "CALL START TO THE SELECT PARAMETERS THE KINDS OF UNIFIEDDEVELOPMENT PLATFORM.";
+
         #endregion ServiceMetadata.
     }
 }

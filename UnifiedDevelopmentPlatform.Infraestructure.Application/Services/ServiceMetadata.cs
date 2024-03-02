@@ -164,19 +164,28 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             return _serviceForm.UDPSelectParametersTheKindsOfForms();
         }
 
+        public List<DevelopmentEnvironment> UDPSelectParametersTheKindsOfDevelopmentEnviroment()
+        {
+            _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.CallStartToTheSelectParametersTheKindsOfDevelopmentEnviroment));
+            return _serviceDevelopmentEnvironment.UDPSelectParametersTheKindsOfDevelopmentEnviroment();
+        }
 
-        public List<DevelopmentEnvironment> UDPSelectParametersTheKindsOfDevelopmentEnviroment() => _serviceDevelopmentEnvironment.UDPSelectParametersTheKindsOfDevelopmentEnviroment();
+        public List<DatabasesEngine> UDPSelectParametersTheKindsOfDatabasesEngine()
+        {
+            _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.CallStartToTheSelectParametersTheKindsOfDatabasesEngine));
+            return _serviceDatabaseEngine.UDPSelectParametersTheKindsOfDatabasesEngine();
+        }
 
-        public List<DatabasesEngine> UDPSelectParametersTheKindsOfDatabasesEngine() => _serviceDatabaseEngine.UDPSelectParametersTheKindsOfDatabasesEngine();
-
-        public List<ArchitecturePatterns> UDPSelectParametersTheKindsOfArchitecturePatterns() => _serviceArchitecturePatterns.UDPSelectParametersTheKindsOfArchitecturePatterns();
+        public List<ArchitecturePatterns> UDPSelectParametersTheKindsOfArchitecturePatterns()
+        {
+            _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.CallStartToTheSelectParametersTheKindsOfArchitecturePatterns));
+            return _serviceArchitecturePatterns.UDPSelectParametersTheKindsOfArchitecturePatterns();
+        }
 
         public UnifiedDevelopmentParameters UDPSelectParametersInformationUnifiedDevelopmentPlatform()
         {
-            return new UnifiedDevelopmentParameters()
-            {
-                BuildPlatformVersion = _servicePlataform.UPDGetOperationalSystemVersion()
-            };
+            _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.CallStartToTheSelectParametersTheKindsOfUnifiedDevelopmentPlatform));
+            return new UnifiedDevelopmentParameters() { BuildPlatformVersion = _servicePlataform.UPDGetOperationalSystemVersion() };
         }
     }
 }

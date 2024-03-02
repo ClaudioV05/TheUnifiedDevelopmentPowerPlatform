@@ -99,7 +99,19 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Message
         CallStartToTheSelectParametersTheKindsOfDatabases = 25,
 
         [Description("Call start to the Select parameters the kinds of forms")]
-        CallStartToTheSelectParametersTheKindsOfForms = 26
+        CallStartToTheSelectParametersTheKindsOfForms = 26,
+
+        [Description("Call start to the Select parameters the kinds of development enviroment")]
+        CallStartToTheSelectParametersTheKindsOfDevelopmentEnviroment = 27,
+
+        [Description("Call start to the Select parameters the kinds of databases engine")]
+        CallStartToTheSelectParametersTheKindsOfDatabasesEngine = 28,
+
+        [Description("Call start to the Select parameters the kinds of architecture patterns")]
+        CallStartToTheSelectParametersTheKindsOfArchitecturePatterns = 29,
+
+        [Description("Call start to the Select parameters the kinds of unifiedDevelopment platform")]
+        CallStartToTheSelectParametersTheKindsOfUnifiedDevelopmentPlatform = 30
 
         #endregion ServiceMetadata.
     }
