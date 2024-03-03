@@ -68,12 +68,7 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Controllers
         [DisableCors]
         public ActionResult<List<Tables>> TablesAndFieldsOfMetadata([BindRequired] Metadata metadata)
         {
-            return Ok(_serviceMetadata.UDPReceiveAndSaveAllTableAndFieldsOfSchemaDatabase(metadata: new MetadataOwner()
-            {
-                DatabaseSchema = metadata.DatabaseSchema,
-                Forms = new List<Forms>() { new Forms() { Id = metadata.IdForms } },
-                DevelopmentEnvironment = new List<DevelopmentEnvironment>() { new DevelopmentEnvironment() { Id = metadata.IdDevelopmentEnvironment } }
-            }));
+            return Ok(_serviceMetadata.UDPReceiveAndSaveAllTableAndFieldsOfSchemaDatabase(metadata: new MetadataOwner() { DatabaseSchema = metadata.DatabaseSchema }));
         }
 
         /// <summary>
