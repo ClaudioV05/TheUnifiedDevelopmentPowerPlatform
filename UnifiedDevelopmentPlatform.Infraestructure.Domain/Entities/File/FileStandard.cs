@@ -22,5 +22,10 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.File
         /// The identifier the form.
         /// </summary>
         public static string IdentifierTheForm => "\\_identifierform";
+
+        /// <summary>
+        /// The identifier the development environment.
+        /// </summary>
+        public static string IdentifierTheDevelopmentEnvironment => "\\_identifierthedevelopmentenvironment";
     }
 }

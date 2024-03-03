@@ -71,7 +71,8 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Controllers
             return Ok(_serviceMetadata.UDPReceiveAndSaveAllTableAndFieldsOfSchemaDatabase(metadata: new MetadataOwner()
             {
                 DatabaseSchema = metadata.DatabaseSchema,
-                Forms = new List<Forms>() { new Forms() { Id = metadata.IdForms } }
+                Forms = new List<Forms>() { new Forms() { Id = metadata.IdForms } },
+                DevelopmentEnvironment = new List<DevelopmentEnvironment>() { new DevelopmentEnvironment() { Id = metadata.IdDevelopmentEnvironment } }
             }));
         }
 

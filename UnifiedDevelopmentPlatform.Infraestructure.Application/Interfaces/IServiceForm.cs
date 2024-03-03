@@ -14,7 +14,7 @@ namespace UnifiedDevelopmentPlatform.Application.Interfaces
         List<Forms> UDPSelectParametersTheKindsOfForms();
 
         /// <summary>
-        /// Save identifier to the form from metadata.
+        /// Save identifier to the from metadata.
         /// </summary>
         /// <param name="metadata"></param>
         void UDPSaveIdentifierToTheFormFromMetadata(MetadataOwner metadata);
