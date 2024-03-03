@@ -169,7 +169,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             return _serviceForm.UDPSelectParametersTheKindsOfForms();
         }
 
-        public List<DevelopmentEnvironment> UDPSelectParametersTheKindsOfDevelopmentEnviroment()
+        public List<DevelopmentEnvironments> UDPSelectParametersTheKindsOfDevelopmentEnviroment()
         {
             _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.CallStartToTheSelectParametersTheKindsOfDevelopmentEnviroment), _serviceFuncString.Empty);
             return _serviceDevelopmentEnvironment.UDPSelectParametersTheKindsOfDevelopmentEnviroment();

@@ -116,7 +116,7 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Controllers
         [HttpGet]
         [Produces(MediaTypeNames.Application.Json, MediaTypeNames.Application.Xml)]
         [Route(ControllerRouterUnifiedDevelopmentPlatformParameters.RouterParametersOfDevelopmentEnviroment)]
-        [ProducesResponseType(typeof(IEnumerable<DevelopmentEnvironment>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(IEnumerable<DevelopmentEnvironments>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
@@ -125,7 +125,7 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Controllers
         [ProducesResponseType(StatusCodes.Status502BadGateway)]
         [ProducesResponseType(StatusCodes.Status503ServiceUnavailable)]
         [ProducesResponseType(StatusCodes.Status504GatewayTimeout)]
-        public ActionResult<IEnumerable<DevelopmentEnvironment>> ParametersTheKindsOfDevelopmentEnvironment()
+        public ActionResult<IEnumerable<DevelopmentEnvironments>> ParametersTheKindsOfDevelopmentEnvironment()
         {
             return Ok(_serviceMetadata.UDPSelectParametersTheKindsOfDevelopmentEnviroment());
         }

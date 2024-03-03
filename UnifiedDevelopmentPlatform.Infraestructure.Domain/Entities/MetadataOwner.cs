@@ -5,7 +5,7 @@ using UnifiedDevelopmentPlatform.Infraestructure.Domain.Interfaces;
 namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities
 {
     /// <summary>
-    /// Entity Metadata.
+    /// Entity Metadata owner.
     /// </summary>
     [ComplexType]
     public sealed class MetadataOwner : IEntity
@@ -19,34 +19,47 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities
         /// </summary>
         [DataMember]
         public string? DatabaseSchema { get; set; }
-        
-        /// <summary>
-        /// Forms.
-        /// </summary>
-        [DataMember]
-        public List<Forms>? Forms { get; set; }
 
         /// <summary>
-        /// Tables.
+        /// The architecture patterns.
         /// </summary>
         [DataMember]
-        public List<Tables> Tables { get; set; }
+        public List<ArchitecturePatterns>? ArchitecturePatterns { get; set; }
 
         /// <summary>
-        /// Databases.
+        /// The Databases.
         /// </summary>
         [DataMember]
         public List<Databases>? Databases { get; set; }
 
         /// <summary>
-        /// Development environment.
+        /// The databases engine.
         /// </summary>
         [DataMember]
-        public List<DevelopmentEnvironment>? DevelopmentEnvironment { get; set; }
+        public List<DatabasesEngine>? DatabasesEngine { get; set; }
 
         /// <summary>
-        /// 
+        /// The development environments.
         /// </summary>
+        [DataMember]
+        public List<DevelopmentEnvironments>? DevelopmentEnvironments { get; set; }
+
+        /// <summary>
+        /// The forms.
+        /// </summary>
+        [DataMember]
+        public List<Forms>? Forms { get; set; }
+
+        /// <summary>
+        /// The tables.
+        /// </summary>
+        [DataMember]
+        public List<Tables> Tables { get; set; }
+
+        /// <summary>
+        /// The constructor of Metadata owner.
+        /// </summary>
+        /// <param name=""></param>
         /// <exception cref="Exception"></exception>
         public MetadataOwner()
         {
@@ -55,10 +68,6 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities
                 Id = 0;
                 Name = string.Empty;
                 DatabaseSchema = string.Empty;
-                this.Tables = new List<Tables>();
-                this.Forms = new List<Forms>();
-                this.Databases = new List<Databases>();
-                this.DevelopmentEnvironment = new List<DevelopmentEnvironment>();
             }
             catch (Exception)
             {

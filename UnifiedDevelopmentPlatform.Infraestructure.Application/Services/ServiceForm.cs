@@ -72,7 +72,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             {
                 directoryConfiguration = _serviceDirectory.UDPObtainDirectory(DirectoryRootType.Configuration);
                 data = _serviceCrypto.UPDEncrypt(Convert.ToString(metadata.Forms.FirstOrDefault().Id));
-                _serviceFile.UDPAppendAllText($"{directoryConfiguration}{DirectoryStandard.Log}{FileStandard.IdentifierTheForm}{FileExtension.Txt}", data);
+                _serviceFile.UDPAppendAllText($"{directoryConfiguration}{DirectoryStandard.Log}{FileStandard.IdForm}{FileExtension.Txt}", data);
             }
         }
     }

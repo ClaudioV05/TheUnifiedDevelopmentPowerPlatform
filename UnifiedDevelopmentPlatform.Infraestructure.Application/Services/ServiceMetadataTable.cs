@@ -94,7 +94,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
                 databaseSchema = _serviceFuncString.UDPLower(databaseSchema);
                 directoryConfiguration = _serviceDirectory.UDPObtainDirectory(DirectoryRootType.Configuration);
                 data = _serviceCrypto.UPDEncrypt(databaseSchema);
-                _serviceFile.UDPAppendAllText($"{directoryConfiguration}{DirectoryStandard.Log}{FileStandard.DatabaseSchema}{FileExtension.Txt}", data);
+                _serviceFile.UDPAppendAllText($"{directoryConfiguration}{DirectoryStandard.Log}{FileStandard.IdDatabaseSchema}{FileExtension.Txt}", data);
             }
         }
 
@@ -105,9 +105,9 @@ namespace UnifiedDevelopmentPlatform.Application.Services
 
             directoryConfiguration = _serviceDirectory.UDPObtainDirectory(DirectoryRootType.Configuration);
 
-            if (_serviceFile.UDPFileExists($"{directoryConfiguration}{DirectoryStandard.Log}{FileStandard.DatabaseSchema}{FileExtension.Txt}"))
+            if (_serviceFile.UDPFileExists($"{directoryConfiguration}{DirectoryStandard.Log}{FileStandard.IdDatabaseSchema}{FileExtension.Txt}"))
             {
-                databaseSchema = _serviceFile.UDPReadAllText($"{directoryConfiguration}{DirectoryStandard.Log}{FileStandard.DatabaseSchema}{FileExtension.Txt}");
+                databaseSchema = _serviceFile.UDPReadAllText($"{directoryConfiguration}{DirectoryStandard.Log}{FileStandard.IdDatabaseSchema}{FileExtension.Txt}");
                 databaseSchema = _serviceCrypto.UPDDecrypt(databaseSchema);
             }
 

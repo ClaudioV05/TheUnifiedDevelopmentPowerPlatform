@@ -5,16 +5,16 @@ using UnifiedDevelopmentPlatform.Infraestructure.Domain.Interfaces;
 namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities
 {
     /// <summary>
-    /// Entity Development Environment.
+    /// Entity Development Environments.
     /// </summary>
     [ComplexType]
-    public class DevelopmentEnvironment : IEntity
+    public class DevelopmentEnvironments : IEntity
     {
         /// <summary>
-        /// Enum type for entitie DevelopmentEnvironment.
+        /// Enum type for entitie development environments.
         /// </summary>
         [Flags]
-        public enum EnumeratedDevelopmentEnvironment : int
+        public enum EnumeratedDevelopmentEnvironments : int
         {
             [Description("Not Defined")]
             NotDefined = 0,
@@ -31,7 +31,7 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities
         /// <summary>
         /// Id Enumeration.
         /// </summary>
-        public EnumeratedDevelopmentEnvironment IdEnumeration { get; set; } = 0;
+        public EnumeratedDevelopmentEnvironments IdEnumeration { get; set; } = 0;
 
         /// <summary>
         /// Name of enumeration.

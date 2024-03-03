@@ -11,7 +11,7 @@ namespace UnifiedDevelopmentPlatform.Application.Interfaces
         /// Select parameters the kinds of development enviroment.
         /// </summary>
         /// <returns>Return the complete list of development enviroment.</returns>
-        List<DevelopmentEnvironment> UDPSelectParametersTheKindsOfDevelopmentEnviroment();
+        List<DevelopmentEnvironments> UDPSelectParametersTheKindsOfDevelopmentEnviroment();
 
         /// <summary>
         /// Save identifier to the form development enviroment.

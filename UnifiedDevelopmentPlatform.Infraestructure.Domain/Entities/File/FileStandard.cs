@@ -14,18 +14,18 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.File
         public static string Log => "\\_log";
 
         /// <summary>
-        /// The database schema.
+        /// The identifier of the database schema.
         /// </summary>
-        public static string DatabaseSchema => "\\_databaseschema";
+        public static string IdDatabaseSchema => "\\_idDatabaseSchema";
 
         /// <summary>
-        /// The identifier the form.
+        /// The identifier of the form.
         /// </summary>
-        public static string IdentifierTheForm => "\\_identifierform";
+        public static string IdForm => "\\_idForm";
 
         /// <summary>
-        /// The identifier the development environment.
+        /// The identifier of the development environment.
         /// </summary>
-        public static string IdentifierTheDevelopmentEnvironment => "\\_identifierthedevelopmentenvironment";
+        public static string IdDevelopmentEnvironment => "\\_idDevelopmentEnvironment";
     }
 }
