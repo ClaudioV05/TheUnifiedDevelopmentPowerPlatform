@@ -120,12 +120,17 @@ namespace UnifiedDevelopmentPlatform.Application.Services
                                 {
                                     if (newNameTable)
                                     {
-                                        listTables.Add(new Tables { Id = tableOrder, Name = tablesName });
+                                        listTables.Add(new Tables()
+                                        { 
+                                            Id = tableOrder, 
+                                            Name = tablesName 
+                                        });
+
                                         newNameTable = false;
                                     }
                                     else if (!newNameTable)
                                     {
-                                        listTables.Where(element => element.Id.Equals(tableOrder)).First().Fields.Add(new Fields
+                                        listTables.Where(element => element.Id.Equals(tableOrder)).First().Fields.Add(new Fields()
                                         {
                                             IdTables = tableOrder,
                                             Name = _serviceMetadataField.UDPGetFieldName(listDatabaseSchemas[counter]),

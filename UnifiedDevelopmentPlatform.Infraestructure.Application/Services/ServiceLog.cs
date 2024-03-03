@@ -58,7 +58,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
 
             directoryConfiguration = _serviceDirectory.UDPObtainDirectory(DirectoryRootType.Configuration);
 
-            if (!_serviceFuncStrings.UDPStringStarts(message, MessageDescription.Initial))
+            if (!_serviceFuncStrings.UDPStringStarts(message, MessageText.Initial))
             {
                 newLine = _servicePlataform.UDPEnvironmentAddNewLine();
             }

@@ -101,7 +101,7 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Filters
             catch (Exception ex)
             {
                 _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.ErrorFilterActionContextTables), ex.Message);
-                throw new Exception(_serviceFuncStrings.UDPUpper(MessageDescription.ErrorFilterActionContextTables));
+                throw new Exception(_serviceFuncStrings.UDPUpper(MessageText.ErrorFilterActionContextTables));
             }
 
             await next();
@@ -113,7 +113,7 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Filters
             catch (Exception ex)
             {
                 _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.ErrorCreateAllDirectory), ex.Message);
-                throw new Exception(_serviceFuncStrings.UDPUpper(MessageDescription.ErrorCreateAllDirectory));
+                throw new Exception(_serviceFuncStrings.UDPUpper(MessageText.ErrorCreateAllDirectory));
             }
         }
 

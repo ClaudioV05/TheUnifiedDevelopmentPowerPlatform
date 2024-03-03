@@ -9,7 +9,7 @@ using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.MetaCharacter;
 namespace UnifiedDevelopmentPlatform.Application.Services
 {
     /// <summary>
-    /// Service Metadata Tables.
+    /// Service metadata tables.
     /// </summary>
     public class ServiceMetadataTable : IServiceMetadataTable
     {
@@ -23,7 +23,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         private readonly IServiceFuncString _serviceFuncString;
 
         /// <summary>
-        /// The constructor of Service Metadata Tables.
+        /// The constructor of service metadata tables.
         /// </summary>
         /// <param name="serviceLog"></param>
         /// <param name="serviceFile"></param>
@@ -59,19 +59,12 @@ namespace UnifiedDevelopmentPlatform.Application.Services
 
             try
             {
-                if (!_serviceValidation.UDPValidateBase64(metadata?.DatabaseSchema))
-                {
-                    _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.InvalidBase64), _serviceFuncString.Empty);
-                }
-                else
-                {
-                    scriptMetadata = _serviceCrypto.UPDDecodeBase64(metadata?.DatabaseSchema);
+                scriptMetadata = _serviceCrypto.UPDDecodeBase64(metadata?.DatabaseSchema);
 
-                    if (!_serviceFuncString.UDPNullOrEmpty(scriptMetadata))
-                    {
-                        scriptMetadata = _serviceFuncString.UDPLower(scriptMetadata);
-                        listWithTablesName = UtilsReturnMetadataAllTablesName(scriptMetadata);
-                    }
+                if (!_serviceFuncString.UDPNullOrEmpty(scriptMetadata))
+                {
+                    scriptMetadata = _serviceFuncString.UDPLower(scriptMetadata);
+                    listWithTablesName = UtilsReturnMetadataAllTablesName(scriptMetadata);
                 }
             }
             catch (Exception)
@@ -90,28 +83,32 @@ namespace UnifiedDevelopmentPlatform.Application.Services
 
             if (!_serviceFuncString.UDPNullOrEmpty(metadata.DatabaseSchema))
             {
+                _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.CallStartToTheSaveDatabaseSchemaFromMetadata), _serviceFuncString.Empty);
+
                 databaseSchema = _serviceCrypto.UPDDecodeBase64(metadata?.DatabaseSchema);
                 databaseSchema = _serviceFuncString.UDPLower(databaseSchema);
                 directoryConfiguration = _serviceDirectory.UDPObtainDirectory(DirectoryRootType.Configuration);
                 data = _serviceCrypto.UPDEncrypt(databaseSchema);
                 _serviceFile.UDPAppendAllText($"{directoryConfiguration}{DirectoryStandard.Log}{FileStandard.IdDatabaseSchema}{FileExtension.Txt}", data);
+
+                _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.SuccessToTheSaveDatabaseSchemaFromMetadata), _serviceFuncString.Empty);
             }
         }
 
         public string UDPOpenDatabaseSchemaFromMetadata()
         {
-            string databaseSchema = _serviceFuncString.Empty;
+            string data = _serviceFuncString.Empty;
             string directoryConfiguration = _serviceFuncString.Empty;
 
             directoryConfiguration = _serviceDirectory.UDPObtainDirectory(DirectoryRootType.Configuration);
 
             if (_serviceFile.UDPFileExists($"{directoryConfiguration}{DirectoryStandard.Log}{FileStandard.IdDatabaseSchema}{FileExtension.Txt}"))
             {
-                databaseSchema = _serviceFile.UDPReadAllText($"{directoryConfiguration}{DirectoryStandard.Log}{FileStandard.IdDatabaseSchema}{FileExtension.Txt}");
-                databaseSchema = _serviceCrypto.UPDDecrypt(databaseSchema);
+                data = _serviceFile.UDPReadAllText($"{directoryConfiguration}{DirectoryStandard.Log}{FileStandard.IdDatabaseSchema}{FileExtension.Txt}");
+                data = _serviceCrypto.UPDDecrypt(data);
             }
 
-            return databaseSchema;
+            return data;
         }
 
         public string UDPGetTableName(string text)

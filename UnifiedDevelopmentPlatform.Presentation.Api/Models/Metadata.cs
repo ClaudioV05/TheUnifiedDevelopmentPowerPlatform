@@ -8,7 +8,7 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Models
         /// Database schema.
         /// </summary>
         [Required]
-        public string? DatabaseSchema { get; set; }
+        public string DatabaseSchema { get; set; }
 
         /// <summary>
         /// Architecture.

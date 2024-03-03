@@ -18,7 +18,7 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities
         /// Database schema.
         /// </summary>
         [DataMember]
-        public string? DatabaseSchema { get; set; }
+        public string DatabaseSchema { get; set; }
 
         /// <summary>
         /// The architecture patterns.

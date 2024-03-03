@@ -56,7 +56,7 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Filters
             catch (Exception ex)
             {
                 _serviceLog.UDPLogReport($"{_serviceMessage.UDPMensagem(MessageType.ErrorFilterActionContextController)}", ex.Message);
-                throw new Exception(_serviceFuncStrings.UDPUpper(MessageDescription.ErrorFilterActionContextController));
+                throw new Exception(_serviceFuncStrings.UDPUpper(MessageText.ErrorFilterActionContextController));
             }
 
             await next();
