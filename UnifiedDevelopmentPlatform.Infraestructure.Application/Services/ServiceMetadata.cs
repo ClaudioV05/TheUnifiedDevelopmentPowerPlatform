@@ -8,59 +8,59 @@ using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.UnifiedDevelopm
 namespace UnifiedDevelopmentPlatform.Application.Services
 {
     /// <summary>
-    /// Service Metadata.
+    /// Service metadata.
     /// </summary>
     public class ServiceMetadata : IServiceMetadata
     {
         private readonly IServiceLog _serviceLog;
         private readonly IServiceForm _serviceForm;
         private readonly IServiceMessage _serviceMessage;
-        private readonly IServiceDatabase _serviceDatabase;
+        private readonly IServiceDatabases _serviceDatabases;
         private readonly IServicePlataform _servicePlataform;
         private readonly IServiceFuncString _serviceFuncString;
         private readonly IServiceMetadataTable _serviceMetadataTable;
         private readonly IServiceMetadataField _serviceMetadataField;
-        private readonly IServiceDatabaseEngine _serviceDatabaseEngine;
+        private readonly IServiceDatabaseEngine _serviceDatabasesEngine;
         private readonly IServiceArchitecturePatterns _serviceArchitecturePatterns;
-        private readonly IServiceDevelopmentEnvironment _serviceDevelopmentEnvironment;
+        private readonly IServiceDevelopmentEnvironments _serviceDevelopmentEnvironments;
 
         /// <summary>
-        /// The constructor of Service Metadata.
+        /// The constructor of service metadata.
         /// </summary>
         /// <param name="serviceLog"></param>
         /// <param name="serviceForm"></param>
         /// <param name="serviceMessage"></param>
-        /// <param name="serviceDatabase"></param>
+        /// <param name="serviceDatabases"></param>
         /// <param name="servicePlataform"></param>
         /// <param name="serviceFuncString"></param>
         /// <param name="serviceMetadataTable"></param>
         /// <param name="serviceMetadataField"></param>
-        /// <param name="serviceDatabaseEngine"></param>
+        /// <param name="serviceDatabasesEngine"></param>
         /// <param name="serviceArchitecturePatterns"></param>
-        /// <param name="serviceDevelopmentEnvironment"></param>
+        /// <param name="serviceDevelopmentEnvironments"></param>
         public ServiceMetadata(IServiceLog serviceLog,
                                IServiceForm serviceForm,
                                IServiceMessage serviceMessage,
-                               IServiceDatabase serviceDatabase,
+                               IServiceDatabases serviceDatabases,
                                IServicePlataform servicePlataform,
                                IServiceFuncString serviceFuncString,
                                IServiceMetadataTable serviceMetadataTable,
                                IServiceMetadataField serviceMetadataField,
-                               IServiceDatabaseEngine serviceDatabaseEngine,
+                               IServiceDatabaseEngine serviceDatabasesEngine,
                                IServiceArchitecturePatterns serviceArchitecturePatterns,
-                               IServiceDevelopmentEnvironment serviceDevelopmentEnvironment)
+                               IServiceDevelopmentEnvironments serviceDevelopmentEnvironments)
         {
             _serviceLog = serviceLog;
             _serviceForm = serviceForm;
             _serviceMessage = serviceMessage;
-            _serviceDatabase = serviceDatabase;
+            _serviceDatabases = serviceDatabases;
             _servicePlataform = servicePlataform;
             _serviceFuncString = serviceFuncString;
             _serviceMetadataTable = serviceMetadataTable;
             _serviceMetadataField = serviceMetadataField;
-            _serviceDatabaseEngine = serviceDatabaseEngine;
+            _serviceDatabasesEngine = serviceDatabasesEngine;
             _serviceArchitecturePatterns = serviceArchitecturePatterns;
-            _serviceDevelopmentEnvironment = serviceDevelopmentEnvironment;
+            _serviceDevelopmentEnvironments = serviceDevelopmentEnvironments;
         }
 
         public List<Tables> UDPReceiveAndSaveAllTableAndFieldsOfSchemaDatabase(MetadataOwner metadata)
@@ -80,14 +80,17 @@ namespace UnifiedDevelopmentPlatform.Application.Services
                 // >> Will includ log in methods below.
                 _serviceMetadataTable.UDPSaveDatabaseSchemaFromMetadata(metadata);
                 _serviceForm.UDPSaveIdentifierToTheFormFromMetadata(metadata);
-                _serviceDevelopmentEnvironment.UDPSaveIdentifierToTheDevelopmentEnviromentFromMetadata(metadata);
+                _serviceDevelopmentEnvironments.UDPSaveIdentifierToTheDevelopmentEnviromentsFromMetadata(metadata);
+                _serviceDatabases.UDPSaveIdentifierToTheDatabasesFromMetadata(metadata);
+                _serviceDatabasesEngine.UDPSaveIdentifierToTheDatabasesEngineFromMetadata(metadata);
+                _serviceArchitecturePatterns.UDPSaveIdentifierToTheArchitecturePatternsFromMetadata(metadata);
 
                 databaseSchemaDecrypt = _serviceMetadataTable.UDPOpenDatabaseSchemaFromMetadata();
 
                 if (!_serviceFuncString.UDPNullOrEmpty(databaseSchemaDecrypt))
                 {
                     _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.DecryptOkOfTheReceiveAndSaveAllTableAndFieldsOfSchemaDatabase), _serviceFuncString.Empty);
-                    var results = databaseSchemaDecrypt.Split(new[] { "\r\n", "\r", "\n" }, StringSplitOptions.None);
+                    var results = databaseSchemaDecrypt.Split(new[] { $"{MetaCharacterSymbols.CarriageReturn}{MetaCharacterSymbols.NewLine}", MetaCharacterSymbols.CarriageReturn, MetaCharacterSymbols.NewLine }, StringSplitOptions.None);
 
                     if (results.Any())
                     {
@@ -160,7 +163,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         public List<Databases> UDPSelectParametersTheKindsOfDatabases()
         {
             _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.CallStartToTheSelectParametersTheKindsOfDatabases), _serviceFuncString.Empty);
-            return _serviceDatabase.UDPSelectParametersTheKindsOfDatabases();
+            return _serviceDatabases.UDPSelectParametersTheKindsOfDatabases();
         }
 
         public List<Forms> UDPSelectParametersTheKindsOfForms()
@@ -172,13 +175,13 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         public List<DevelopmentEnvironments> UDPSelectParametersTheKindsOfDevelopmentEnviroment()
         {
             _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.CallStartToTheSelectParametersTheKindsOfDevelopmentEnviroment), _serviceFuncString.Empty);
-            return _serviceDevelopmentEnvironment.UDPSelectParametersTheKindsOfDevelopmentEnviroment();
+            return _serviceDevelopmentEnvironments.UDPSelectParametersTheKindsOfDevelopmentEnviroment();
         }
 
         public List<DatabasesEngine> UDPSelectParametersTheKindsOfDatabasesEngine()
         {
             _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.CallStartToTheSelectParametersTheKindsOfDatabasesEngine), _serviceFuncString.Empty);
-            return _serviceDatabaseEngine.UDPSelectParametersTheKindsOfDatabasesEngine();
+            return _serviceDatabasesEngine.UDPSelectParametersTheKindsOfDatabasesEngine();
         }
 
         public List<ArchitecturePatterns> UDPSelectParametersTheKindsOfArchitecturePatterns()

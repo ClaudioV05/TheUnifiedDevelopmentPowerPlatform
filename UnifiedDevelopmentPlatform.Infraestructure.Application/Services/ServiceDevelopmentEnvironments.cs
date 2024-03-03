@@ -7,9 +7,9 @@ using static UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Developm
 namespace UnifiedDevelopmentPlatform.Application.Services
 {
     /// <summary>
-    /// Service development environment.
+    /// Service development environments.
     /// </summary>
-    public class ServiceDevelopmentEnvironment : IServiceDevelopmentEnvironment
+    public class ServiceDevelopmentEnvironments : IServiceDevelopmentEnvironments
     {
         private readonly IServiceFile _serviceFile;
         private readonly IServiceCrypto _serviceCrypto;
@@ -18,14 +18,14 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         private readonly IServiceFuncString _serviceFuncString;
 
         /// <summary>
-        /// The constructor of Service development environment.
+        /// The constructor of service development environment.
         /// </summary>
         /// <param name="serviceFile"></param>
         /// <param name="serviceCrypto"></param>
         /// <param name="serviceDirectory"></param>
         /// <param name="serviceEnumerated"></param>
         /// <param name="serviceFuncString"></param>
-        public ServiceDevelopmentEnvironment(IServiceFile serviceFile,
+        public ServiceDevelopmentEnvironments(IServiceFile serviceFile,
                                              IServiceCrypto serviceCrypto,
                                              IServiceDirectory serviceDirectory,
                                              IServiceEnumerated serviceEnumerated,
@@ -63,7 +63,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             return listItems;
         }
 
-        public void UDPSaveIdentifierToTheDevelopmentEnviromentFromMetadata(MetadataOwner metadata)
+        public void UDPSaveIdentifierToTheDevelopmentEnviromentsFromMetadata(MetadataOwner metadata)
         {
             string data = _serviceFuncString.Empty;
             string directoryConfiguration = _serviceFuncString.Empty;

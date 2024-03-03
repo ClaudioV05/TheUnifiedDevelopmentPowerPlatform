@@ -12,5 +12,11 @@ namespace UnifiedDevelopmentPlatform.Application.Interfaces
         /// </summary>
         /// <returns>Return the complete list of architecture patterns.</returns>
         List<ArchitecturePatterns> UDPSelectParametersTheKindsOfArchitecturePatterns();
+
+        /// <summary>
+        /// Save identifier to the architecture patterns from metadata.
+        /// </summary>
+        /// <param name="metadata"></param>
+        void UDPSaveIdentifierToTheArchitecturePatternsFromMetadata(MetadataOwner metadata);
     }
 }

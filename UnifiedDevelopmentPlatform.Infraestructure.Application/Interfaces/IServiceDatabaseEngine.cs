@@ -12,5 +12,11 @@ namespace UnifiedDevelopmentPlatform.Application.Interfaces
         /// </summary>
         /// <returns>Return the complete list of databases engine.</returns>
         List<DatabasesEngine> UDPSelectParametersTheKindsOfDatabasesEngine();
+
+        /// <summary>
+        /// Save identifier to the databases engine from metadata.
+        /// </summary>
+        /// <param name="metadata"></param>
+        void UDPSaveIdentifierToTheDatabasesEngineFromMetadata(MetadataOwner metadata);
     }
 }
