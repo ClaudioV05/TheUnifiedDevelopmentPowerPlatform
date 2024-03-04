@@ -2,6 +2,7 @@
 using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities;
 using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Directory;
 using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.File;
+using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Message;
 using static UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.DevelopmentEnvironments;
 
 namespace UnifiedDevelopmentPlatform.Application.Services
@@ -11,28 +12,36 @@ namespace UnifiedDevelopmentPlatform.Application.Services
     /// </summary>
     public class ServiceDevelopmentEnvironments : IServiceDevelopmentEnvironments
     {
+        private readonly IServiceLog _serviceLog;
         private readonly IServiceFile _serviceFile;
         private readonly IServiceCrypto _serviceCrypto;
+        private readonly IServiceMessage _serviceMessage;
         private readonly IServiceDirectory _serviceDirectory;
         private readonly IServiceEnumerated _serviceEnumerated;
         private readonly IServiceFuncString _serviceFuncString;
 
         /// <summary>
-        /// The constructor of service development environment.
+        /// The constructor of service development environments.
         /// </summary>
+        /// <param name="serviceLog"></param>
         /// <param name="serviceFile"></param>
         /// <param name="serviceCrypto"></param>
+        /// <param name="serviceMessage"></param>
         /// <param name="serviceDirectory"></param>
         /// <param name="serviceEnumerated"></param>
         /// <param name="serviceFuncString"></param>
-        public ServiceDevelopmentEnvironments(IServiceFile serviceFile,
-                                             IServiceCrypto serviceCrypto,
-                                             IServiceDirectory serviceDirectory,
-                                             IServiceEnumerated serviceEnumerated,
-                                             IServiceFuncString serviceFuncString)
+        public ServiceDevelopmentEnvironments(IServiceLog serviceLog,
+                                              IServiceFile serviceFile,
+                                              IServiceCrypto serviceCrypto,
+                                              IServiceMessage serviceMessage,
+                                              IServiceDirectory serviceDirectory,
+                                              IServiceEnumerated serviceEnumerated,
+                                              IServiceFuncString serviceFuncString)
         {
+            _serviceLog = serviceLog;
             _serviceFile = serviceFile;
             _serviceCrypto = serviceCrypto;
+            _serviceMessage = serviceMessage;
             _serviceDirectory = serviceDirectory;
             _serviceEnumerated = serviceEnumerated;
             _serviceFuncString = serviceFuncString;
@@ -70,9 +79,13 @@ namespace UnifiedDevelopmentPlatform.Application.Services
 
             if (metadata.Forms.Any())
             {
+                _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.CallStartToTheSaveIdentifierToTheDevelopmentEnviromentsFromMetadata), _serviceFuncString.Empty);
+
                 directoryConfiguration = _serviceDirectory.UDPObtainDirectory(DirectoryRootType.Configuration);
                 data = _serviceCrypto.UPDEncrypt(Convert.ToString(metadata.DevelopmentEnvironments.FirstOrDefault().Id));
                 _serviceFile.UDPAppendAllText($"{directoryConfiguration}{DirectoryStandard.Log}{FileStandard.IdDevelopmentEnvironment}{FileExtension.Txt}", data);
+
+                _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.SuccessToTheSaveIdentifierToTheDevelopmentEnviromentsFromMetadata), _serviceFuncString.Empty);
             }
         }
     }

@@ -54,6 +54,14 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             MessageType.ErrorToTheDecodeBase64 => MessageText.ErrorToTheDecodeBase64,
             MessageType.CallStartToTheSaveIdentifierToTheFormFromMetadata => MessageText.CallStartToTheSaveIdentifierToTheFormFromMetadata,
             MessageType.SuccessToTheSaveIdentifierToTheFormFromMetadata => MessageText.SuccessToTheSaveIdentifierToTheFormFromMetadata,
+            MessageType.CallStartToTheSaveIdentifierToTheDevelopmentEnviromentsFromMetadata => MessageText.CallStartToTheSaveIdentifierToTheDevelopmentEnviromentsFromMetadata,
+            MessageType.SuccessToTheSaveIdentifierToTheDevelopmentEnviromentsFromMetadata => MessageText.SuccessToTheSaveIdentifierToTheDevelopmentEnviromentsFromMetadata,
+            MessageType.CallStartToTheSaveIdentifierToTheDatabasesFromMetadata => MessageText.CallStartToTheSaveIdentifierToTheDatabasesFromMetadata,
+            MessageType.SuccessToTheSaveIdentifierToTheDatabasesFromMetadata => MessageText.SuccessToTheSaveIdentifierToTheDatabasesFromMetadata,
+            MessageType.CallStartToTheSaveIdentifierToTheDatabasesEngineFromMetadata => MessageText.CallStartToTheSaveIdentifierToTheDatabasesEngineFromMetadata,
+            MessageType.SuccessToTheSaveIdentifierToTheDatabasesEngineFromMetadata => MessageText.SuccessToTheSaveIdentifierToTheDatabasesEngineFromMetadata,
+            MessageType.CallStartToTheSaveIdentifierToTheArchitecturePatternsFromMetadata => MessageText.CallStartToTheSaveIdentifierToTheArchitecturePatternsFromMetadata,
+            MessageType.SuccessToTheSaveIdentifierToTheArchitecturePatternsFromMetadata => MessageText.SuccessToTheSaveIdentifierToTheArchitecturePatternsFromMetadata,
             _ => MessageText.NoMessage
         };
     }

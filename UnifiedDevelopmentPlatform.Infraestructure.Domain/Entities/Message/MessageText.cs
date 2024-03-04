@@ -240,7 +240,7 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Message
         #region Service Form.
 
         /// <summary>
-        /// Call start to the save identifier to the form from metadata
+        /// Call start to the save identifier to the form from metadata.
         /// </summary>
         public static string CallStartToTheSaveIdentifierToTheFormFromMetadata => "CALL START TO THE SAVE IDENTIFIER TO THE FORM FROM METADATA.";
 
@@ -250,5 +250,61 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Message
         public static string SuccessToTheSaveIdentifierToTheFormFromMetadata => "SUCCESS TO THE SAVE IDENTIFIER TO THE FORM FROM METADATA.";
 
         #endregion Service Form.
+
+        #region Service Development environments.
+
+        /// <summary>
+        /// Call start to the save identifier to the development enviroments from metadata.
+        /// </summary>
+        public static string CallStartToTheSaveIdentifierToTheDevelopmentEnviromentsFromMetadata => "CALL START TO THE SAVE IDENTIFIER TO THE DEVELOPMENT ENVIROMENTS FROM METADATA.";
+
+        /// <summary>
+        /// Success to the save identifier to the development enviroments from metadata.
+        /// </summary>
+        public static string SuccessToTheSaveIdentifierToTheDevelopmentEnviromentsFromMetadata => "SUCCESS TO THE SAVE IDENTIFIER TO THE DEVELOPMENT ENVIROMENTS FROM METADATA.";
+
+        #endregion Service Development environments.
+
+        #region Service Databases.
+
+        /// <summary>
+        /// Call start to the save identifier to the databases from metadata.
+        /// </summary>
+        public static string CallStartToTheSaveIdentifierToTheDatabasesFromMetadata => "CALL START TO THE SAVE IDENTIFIER TO THE DATABASES FROM METADATA.";
+
+        /// <summary>
+        /// Success to the save identifier to the databases from metadata.
+        /// </summary>
+        public static string SuccessToTheSaveIdentifierToTheDatabasesFromMetadata => "SUCCESS TO THE SAVE IDENTIFIER TO THE DATABASES FROM METADATA.";
+
+        #endregion Service Databases.
+
+        #region Service Databases engine.
+
+        /// <summary>
+        /// Call start to the save identifier to the databases engine from metadata.
+        /// </summary>
+        public static string CallStartToTheSaveIdentifierToTheDatabasesEngineFromMetadata => "CALL START TO THE SAVE IDENTIFIER TO THE DATABASES ENGINE FROM METADATA.";
+
+        /// <summary>
+        /// Success to the save identifier to the databases engine from metadata.
+        /// </summary>
+        public static string SuccessToTheSaveIdentifierToTheDatabasesEngineFromMetadata => "SUCCESS TO THE SAVE IDENTIFIER TO THE DATABASES ENGINE FROM METADATA.";
+
+        #endregion Service Databases engine.
+
+        #region Service Architecture patterns.
+
+        /// <summary>
+        /// Call start to the save identifier to the architecture patterns from metadata.
+        /// </summary>
+        public static string CallStartToTheSaveIdentifierToTheArchitecturePatternsFromMetadata => "CALL START TO THE SAVE IDENTIFIER TO THE ARCHITECTURE PATTERNS FROM METADATA.";
+
+        /// <summary>
+        /// Success to the save identifier to the architecture patterns from metadata.
+        /// </summary>
+        public static string SuccessToTheSaveIdentifierToTheArchitecturePatternsFromMetadata => "SUCCESS TO THE SAVE IDENTIFIER TO THE ARCHITECTURE PATTERNS FROM METADATA.";
+
+        #endregion Service Architecture patterns.
     }
 }

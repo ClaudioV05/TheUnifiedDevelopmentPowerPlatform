@@ -14,9 +14,14 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities
         public int IdTables { get; set; }
 
         /// <summary>
-        /// If the field has null value.
+        /// Whether the field has null value.
         /// </summary>
         public bool IsNull { get; set; }
+
+        /// <summary>
+        /// Whether the field is primary key.
+        /// </summary>
+        public bool IsPrimaryKey { get; set; }
 
         /// <summary>
         /// The type of field.

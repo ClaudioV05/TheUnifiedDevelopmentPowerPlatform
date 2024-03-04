@@ -77,7 +77,6 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             {
                 _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.CallStartReceiveAndSaveAllTableAndFieldsOfSchemaDatabase), _serviceFuncString.Empty);
 
-                // >> Will includ log in methods below.
                 _serviceMetadataTable.UDPSaveDatabaseSchemaFromMetadata(metadata);
                 _serviceForm.UDPSaveIdentifierToTheFormFromMetadata(metadata);
                 _serviceDevelopmentEnvironments.UDPSaveIdentifierToTheDevelopmentEnviromentsFromMetadata(metadata);
@@ -135,6 +134,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
                                             IdTables = tableOrder,
                                             Name = _serviceMetadataField.UDPGetFieldName(listDatabaseSchemas[counter]),
                                             IsNull = _serviceMetadataField.UDPFieldIsNotNull(listDatabaseSchemas[counter]),
+                                            IsPrimaryKey = false, // Create method here.
                                             TypeField = _serviceMetadataField.UDPGetTypeFieldName(listDatabaseSchemas[counter])
                                         });
                                     }

@@ -2,6 +2,7 @@
 using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities;
 using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Directory;
 using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.File;
+using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Message;
 using static UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.DatabasesEngine;
 
 namespace UnifiedDevelopmentPlatform.Application.Services
@@ -11,8 +12,10 @@ namespace UnifiedDevelopmentPlatform.Application.Services
     /// </summary>
     public class ServiceDatabaseEngine : IServiceDatabaseEngine
     {
+        private readonly IServiceLog _serviceLog;
         private readonly IServiceFile _serviceFile;
         private readonly IServiceCrypto _serviceCrypto;
+        private readonly IServiceMessage _serviceMessage;
         private readonly IServiceDirectory _serviceDirectory;
         private readonly IServiceEnumerated _serviceEnumerated;
         private readonly IServiceFuncString _serviceFuncString;
@@ -20,19 +23,25 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         /// <summary>
         /// The constructor of service databases engine.
         /// </summary>
+        /// <param name="serviceLog"></param>
         /// <param name="serviceFile"></param>
         /// <param name="serviceCrypto"></param>
+        /// <param name="serviceMessage"></param>
         /// <param name="serviceDirectory"></param>
         /// <param name="serviceEnumerated"></param>
         /// <param name="serviceFuncString"></param>
-        public ServiceDatabaseEngine(IServiceFile serviceFile,
+        public ServiceDatabaseEngine(IServiceLog serviceLog,
+                                     IServiceFile serviceFile,
                                      IServiceCrypto serviceCrypto,
+                                     IServiceMessage serviceMessage,
                                      IServiceDirectory serviceDirectory,
                                      IServiceEnumerated serviceEnumerated,
                                      IServiceFuncString serviceFuncString)
         {
+            _serviceLog = serviceLog;
             _serviceFile = serviceFile;
             _serviceCrypto = serviceCrypto;
+            _serviceMessage = serviceMessage;
             _serviceDirectory = serviceDirectory;
             _serviceEnumerated = serviceEnumerated;
             _serviceFuncString = serviceFuncString;
@@ -70,9 +79,13 @@ namespace UnifiedDevelopmentPlatform.Application.Services
 
             if (metadata.DatabasesEngine.Any())
             {
+                _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.CallStartToTheSaveIdentifierToTheDatabasesEngineFromMetadata), _serviceFuncString.Empty);
+
                 directoryConfiguration = _serviceDirectory.UDPObtainDirectory(DirectoryRootType.Configuration);
                 data = _serviceCrypto.UPDEncrypt(Convert.ToString(metadata.DatabasesEngine.FirstOrDefault().Id));
                 _serviceFile.UDPAppendAllText($"{directoryConfiguration}{DirectoryStandard.Log}{FileStandard.IdDatabasesEngine}{FileExtension.Txt}", data);
+                
+                _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.SuccessToTheSaveIdentifierToTheDatabasesEngineFromMetadata), _serviceFuncString.Empty);
             }
         }
     }

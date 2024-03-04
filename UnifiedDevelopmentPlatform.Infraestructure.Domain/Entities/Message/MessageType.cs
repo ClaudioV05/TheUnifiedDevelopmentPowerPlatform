@@ -3,7 +3,7 @@
 namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Message
 {
     /// <summary>
-    /// Message type
+    /// The type of message.
     /// </summary>
     public enum MessageType : int
     {
@@ -157,8 +157,48 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Message
         CallStartToTheSaveIdentifierToTheFormFromMetadata = 41,
 
         [Description("Success to the save identifier to the form from metadata")]
-        SuccessToTheSaveIdentifierToTheFormFromMetadata = 42
+        SuccessToTheSaveIdentifierToTheFormFromMetadata = 42,
 
         #endregion Service Form.
+
+        #region Service Development environments.
+
+        [Description("Call start to the save identifier to the development enviroments from metadata")]
+        CallStartToTheSaveIdentifierToTheDevelopmentEnviromentsFromMetadata = 43,
+
+        [Description("Success to the save identifier to the development enviroments from metadata")]
+        SuccessToTheSaveIdentifierToTheDevelopmentEnviromentsFromMetadata = 44,
+
+        #endregion Service Development environments.
+
+        #region Service Databases.
+
+        [Description("Call start to the save identifier to the databases from metadata")]
+        CallStartToTheSaveIdentifierToTheDatabasesFromMetadata = 45,
+
+        [Description("Success to the save identifier to the databases from metadata")]
+        SuccessToTheSaveIdentifierToTheDatabasesFromMetadata = 46,
+
+        #endregion Service Databases.
+
+        #region Service Databases engine.
+
+        [Description("Call start to the save identifier to the databases engine from metadata")]
+        CallStartToTheSaveIdentifierToTheDatabasesEngineFromMetadata = 47,
+
+        [Description("Success to the save identifier to the databases engine from metadata")]
+        SuccessToTheSaveIdentifierToTheDatabasesEngineFromMetadata = 48,
+
+        #endregion Service Databases engine.
+
+        #region Service Architecture patterns.
+
+        [Description("Call start to the save identifier to the architecture patterns from metadata")]
+        CallStartToTheSaveIdentifierToTheArchitecturePatternsFromMetadata = 49,
+
+        [Description("Success to the save identifier to the architecture patterns from metadata")]
+        SuccessToTheSaveIdentifierToTheArchitecturePatternsFromMetadata = 50
+
+        #endregion Service Architecture patterns.
     }
 }
