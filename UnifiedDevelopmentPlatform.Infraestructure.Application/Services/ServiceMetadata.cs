@@ -120,9 +120,9 @@ namespace UnifiedDevelopmentPlatform.Application.Services
                                     if (newNameTable)
                                     {
                                         listTables.Add(new Tables()
-                                        { 
-                                            Id = tableOrder, 
-                                            Name = tablesName 
+                                        {
+                                            Id = tableOrder,
+                                            Name = tablesName
                                         });
 
                                         newNameTable = false;
@@ -156,7 +156,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             catch (Exception ex)
             {
                 _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.ErrorReceiveAndSaveAllTableAndFieldsOfSchemaDatabase), ex.Message);
-                throw;
+                throw new Exception(MessageText.ErrorReceiveAndSaveAllTableAndFieldsOfSchemaDatabase);
             }
 
             _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.SuccessAtTheReceiveAndSaveAllTableAndFieldsOfSchemaDatabase), _serviceFuncString.Empty);
@@ -165,40 +165,43 @@ namespace UnifiedDevelopmentPlatform.Application.Services
 
         public void UDPNotImplemented(MetadataOwner metadata) => throw new NotImplementedException();
 
-        public List<Databases> UDPSelectParametersTheKindsOfDatabases()
-        {
-            _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.CallStartToTheSelectParametersTheKindsOfDatabases), _serviceFuncString.Empty);
-            return _serviceDatabases.UDPSelectParametersTheKindsOfDatabases();
-        }
-
         public List<Forms> UDPSelectParametersTheKindsOfForms()
         {
-            _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.CallStartToTheSelectParametersTheKindsOfForms), _serviceFuncString.Empty);
             return _serviceForm.UDPSelectParametersTheKindsOfForms();
         }
 
         public List<DevelopmentEnvironments> UDPSelectParametersTheKindsOfDevelopmentEnviroment()
         {
-            _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.CallStartToTheSelectParametersTheKindsOfDevelopmentEnviroment), _serviceFuncString.Empty);
             return _serviceDevelopmentEnvironments.UDPSelectParametersTheKindsOfDevelopmentEnviroment();
+        }
+
+        public List<Databases> UDPSelectParametersTheKindsOfDatabases()
+        {
+            return _serviceDatabases.UDPSelectParametersTheKindsOfDatabases();
         }
 
         public List<DatabasesEngine> UDPSelectParametersTheKindsOfDatabasesEngine()
         {
-            _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.CallStartToTheSelectParametersTheKindsOfDatabasesEngine), _serviceFuncString.Empty);
             return _serviceDatabasesEngine.UDPSelectParametersTheKindsOfDatabasesEngine();
         }
 
         public List<ArchitecturePatterns> UDPSelectParametersTheKindsOfArchitecturePatterns()
         {
-            _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.CallStartToTheSelectParametersTheKindsOfArchitecturePatterns), _serviceFuncString.Empty);
             return _serviceArchitecturePatterns.UDPSelectParametersTheKindsOfArchitecturePatterns();
         }
 
         public UnifiedDevelopmentParameters UDPSelectParametersInformationUnifiedDevelopmentPlatform()
         {
             _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.CallStartToTheSelectParametersTheKindsOfUnifiedDevelopmentPlatform), _serviceFuncString.Empty);
-            return new UnifiedDevelopmentParameters() { BuildPlatformVersion = _servicePlataform.UPDGetOperationalSystemVersion() };
+
+            UnifiedDevelopmentParameters unifiedDevelopmentParameters = new UnifiedDevelopmentParameters()
+            {
+                BuildPlatformVersion = _servicePlataform.UPDGetOperationalSystemVersion()
+            };
+
+            _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.SuccessToTheSelectParametersTheKindsOfUnifiedDevelopmentPlatform), _serviceFuncString.Empty);
+
+            return unifiedDevelopmentParameters;
         }
     }
 }

@@ -49,6 +49,8 @@ namespace UnifiedDevelopmentPlatform.Application.Services
 
         public List<ArchitecturePatterns> UDPSelectParametersTheKindsOfArchitecturePatterns()
         {
+            _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.CallStartToTheSelectParametersTheKindsOfArchitecturePatterns), _serviceFuncString.Empty);
+
             List<ArchitecturePatterns> listItems = new List<ArchitecturePatterns>();
 
             try
@@ -65,6 +67,11 @@ namespace UnifiedDevelopmentPlatform.Application.Services
                             Name = _serviceEnumerated.UDPGetEnumeratedDescription((EnumeratedArchitecturePatterns)i)
                         });
                     }
+                }
+
+                if (listItems.Any())
+                {
+                    _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.SuccessToTheSelectParametersTheKindsOfArchitecturePatterns), _serviceFuncString.Empty);
                 }
             }
             catch (OverflowException) { }

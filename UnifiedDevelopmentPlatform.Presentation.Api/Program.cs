@@ -6,6 +6,7 @@ using UnifiedDevelopmentPlatform.Application.Services;
 using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities;
 using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.File;
 using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.OpenApi;
+using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.WebConfiguration;
 using UnifiedDevelopmentPlatform.Presentation.Api.Extensions;
 using UnifiedDevelopmentPlatform.Presentation.Api.Filters;
 using UnifiedDevelopmentPlatform.Presentation.Api.OpenApi;
@@ -146,16 +147,16 @@ app.Use(async (context, next) =>
 {
     context.Response.OnStarting((state) =>
     {
-        context.Response.Headers.Add("x-unifieddevelopmentplatform", "UnifiedDevelopmentPlatform");
+        context.Response.Headers.Add("unifieddevelopmentplatform", string.Empty);
 
-        if (context.Response.Headers.Count > 0 && context.Response.Headers.ContainsKey("Content-Type"))
+        if (context.Response.Headers.Count > 0 && context.Response.Headers.ContainsKey(WebConfiguration.ContentType))
         {
-            var contentType = context.Response.Headers["Content-Type"].ToString();
+            var contentType = context.Response.Headers[WebConfiguration.ContentType].ToString();
 
-            if (contentType.StartsWith("application/json"))
+            if (contentType.StartsWith(WebConfiguration.ContentTypeApplicationJson))
             {
-                context.Response.Headers.Remove("Content-Type");
-                context.Response.Headers.Append("Content-Type", "application/json");
+                context.Response.Headers.Remove(WebConfiguration.ContentType);
+                context.Response.Headers.Append(WebConfiguration.ContentType, WebConfiguration.ContentTypeApplicationJson);
             }
         }
 

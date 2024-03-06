@@ -16,7 +16,7 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.UnifiedDeve
         /// <summary>
         /// Name.
         /// </summary>
-        public string Name => "UnifiedDevelopmentPlatformInformation";
+        public string Name => "UnifiedDevelopmentPlatformParameters";
 
         /// <summary>
         /// Abreviation.

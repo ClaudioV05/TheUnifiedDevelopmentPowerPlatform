@@ -49,6 +49,8 @@ namespace UnifiedDevelopmentPlatform.Application.Services
 
         public List<Databases> UDPSelectParametersTheKindsOfDatabases()
         {
+            _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.CallStartToTheSelectParametersTheKindsOfDatabases), _serviceFuncString.Empty);
+
             List<Databases> listItems = new List<Databases>();
 
             try
@@ -65,6 +67,11 @@ namespace UnifiedDevelopmentPlatform.Application.Services
                             Name = _serviceEnumerated.UDPGetEnumeratedDescription((EnumeratedDatabases)i)
                         });
                     }
+                }
+
+                if (listItems.Any())
+                {
+                    _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.SuccessToTheSelectParametersTheKindsOfDatabases), _serviceFuncString.Empty);
                 }
             }
             catch (OverflowException) { }

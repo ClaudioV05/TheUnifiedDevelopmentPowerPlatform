@@ -58,6 +58,11 @@ namespace UnifiedDevelopmentPlatform.Application.Services
                 _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.ErrorToTheEncrypt), ex.Message);
                 return _serviceFuncString.Empty;
             }
+            catch (Exception ex)
+            {
+                _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.ErrorToTheEncrypt), ex.Message);
+                return _serviceFuncString.Empty;
+            }
         }
 
         public string UPDDecrypt(string value)
@@ -85,6 +90,11 @@ namespace UnifiedDevelopmentPlatform.Application.Services
                 return data;
             }
             catch (CryptographicException ex)
+            {
+                _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.ErrorToTheDecrypt), ex.Message);
+                return _serviceFuncString.Empty;
+            }
+            catch (Exception ex)
             {
                 _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.ErrorToTheDecrypt), ex.Message);
                 return _serviceFuncString.Empty;

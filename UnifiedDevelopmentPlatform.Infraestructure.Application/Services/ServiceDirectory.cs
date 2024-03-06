@@ -25,8 +25,21 @@ namespace UnifiedDevelopmentPlatform.Application.Services
 
         public string UDPObtainDirectory(DirectoryRootType directoryRootType)
         {
-            DirectoryRoot.DirectoryRootPath = this.UDPGetRootDirectory();
-            return $"{DirectoryRoot.DirectoryRootPath}{this.UDPObtainDirectoryRoot(directoryRootType)}";
+            try
+            {
+                DirectoryRoot.DirectoryRootPath = this.UDPGetRootDirectory();
+                return $"{DirectoryRoot.DirectoryRootPath}{this.UDPObtainDirectoryRoot(directoryRootType)}";
+            }
+            catch (IOException)
+            {
+                return _serviceFuncStrings.Empty;
+                throw;
+            }
+            catch (Exception)
+            {
+                return _serviceFuncStrings.Empty;
+                throw;
+            }
         }
 
         public void UPDBuildDirectoryStandardOfSolution()

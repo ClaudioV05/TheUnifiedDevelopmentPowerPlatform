@@ -49,6 +49,8 @@ namespace UnifiedDevelopmentPlatform.Application.Services
 
         public List<Forms> UDPSelectParametersTheKindsOfForms()
         {
+            _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.CallStartToTheSelectParametersTheKindsOfForms), _serviceFuncString.Empty);
+
             List<Forms> listItems = new List<Forms>();
 
             try
@@ -65,6 +67,11 @@ namespace UnifiedDevelopmentPlatform.Application.Services
                             Name = _serviceEnumerated.UDPGetEnumeratedDescription((EnumeratedForm)i)
                         });
                     }
+                }
+
+                if (listItems.Any())
+                {
+                    _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.SuccessToTheSelectParametersTheKindsOfForms), _serviceFuncString.Empty);
                 }
             }
             catch (OverflowException) { }

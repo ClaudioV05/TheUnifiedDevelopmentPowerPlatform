@@ -2,40 +2,43 @@
 
 namespace UnifiedDevelopmentPlatform.Presentation.Api.Models
 {
+    /// <summary>
+    /// Metadata.
+    /// </summary>
     public class Metadata
     {
         /// <summary>
-        /// Database schema.
+        /// The database schema.
         /// </summary>
         [Required]
         public string DatabaseSchema { get; set; }
 
         /// <summary>
-        /// Architecture.
+        /// The identify of architecture.
         /// </summary>
         [Required]
         public int Architecture { get; set; }
 
         /// <summary>
-        /// Identify of development Environment.
+        /// The identify of development Environment.
         /// </summary>
         [Required]
         public int IdDevelopmentEnvironment { get; set; }
 
         /// <summary>
-        /// Identify of databases.
+        /// The identify of databases.
         /// </summary>
         [Required]
         public int IdDatabases { get; set; }
 
         /// <summary>
-        /// Identify of databases engine.
+        /// The identify of databases engine.
         /// </summary>
         [Required]
         public int IdDatabasesEngine { get; set; }
 
         /// <summary>
-        /// Identify of forms.
+        /// The identify of forms.
         /// </summary>
         [Required]
         public int IdForms { get; set; }

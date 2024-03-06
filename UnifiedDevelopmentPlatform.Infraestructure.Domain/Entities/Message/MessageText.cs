@@ -157,34 +157,14 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Message
         public static string DecryptOkOfTheReceiveAndSaveAllTableAndFieldsOfSchemaDatabase => "DECRYPT OK OF THE RECEIVE AND SAVE ALL TABLE AND FIELDS OF SCHEMA DATABASE.";
 
         /// <summary>
-        /// Call start to the Select parameters the kinds of databases.
-        /// </summary>
-        public static string CallStartToTheSelectParametersTheKindsOfDatabases => "CALL START TO THE SELECT PARAMETERS THE KINDS OF DATABASES.";
-
-        /// <summary>
-        /// Call start to the Select parameters the kinds of forms.
-        /// </summary>
-        public static string CallStartToTheSelectParametersTheKindsOfForms => "CALL START TO THE SELECT PARAMETERS THE KINDS OF FORMS.";
-
-        /// <summary>
-        /// Call start to the Select parameters the kinds of development enviroment.
-        /// </summary>
-        public static string CallStartToTheSelectParametersTheKindsOfDevelopmentEnviroment => "CALL START TO THE SELECT PARAMETERS THE KINDS OF DEVELOPMENT ENVIROMENT.";
-
-        /// <summary>
-        /// Call start to the Select parameters the kinds of databases engine.
-        /// </summary>
-        public static string CallStartToTheSelectParametersTheKindsOfDatabasesEngine => "CALL START TO THE SELECT PARAMETERS THE KINDS OF DATABASES ENGINE.";
-
-        /// <summary>
-        /// Call start to the Select parameters the kinds of architecture patterns.
-        /// </summary>
-        public static string CallStartToTheSelectParametersTheKindsOfArchitecturePatterns => "CALL START TO THE SELECT PARAMETERS THE KINDS OF ARCHITECTURE PATTERNS.";
-
-        /// <summary>
         /// Call start to the Select parameters the kinds of unifiedDevelopment platform.
         /// </summary>
         public static string CallStartToTheSelectParametersTheKindsOfUnifiedDevelopmentPlatform => "CALL START TO THE SELECT PARAMETERS THE KINDS OF UNIFIEDDEVELOPMENT PLATFORM.";
+
+        /// <summary>
+        /// Success to the Select parameters the kinds of unified development platform.
+        /// </summary>
+        public static string SuccessToTheSelectParametersTheKindsOfUnifiedDevelopmentPlatform => "SUCCESS TO THE SELECT PARAMETERS THE KINDS OF UNIFIEDDEVELOPMENT PLATFORM.";
 
         #endregion Service Metadata.
 
@@ -240,6 +220,16 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Message
         #region Service Form.
 
         /// <summary>
+        /// Call start to the Select parameters the kinds of forms.
+        /// </summary>
+        public static string CallStartToTheSelectParametersTheKindsOfForms => "CALL START TO THE SELECT PARAMETERS THE KINDS OF FORMS.";
+
+        /// <summary>
+        /// Success to the Select parameters the kinds of forms.
+        /// </summary>
+        public static string SuccessToTheSelectParametersTheKindsOfForms => "SUCCESS TO THE SELECT PARAMETERS THE KINDS OF FORMS.";
+
+        /// <summary>
         /// Call start to the save identifier to the form from metadata.
         /// </summary>
         public static string CallStartToTheSaveIdentifierToTheFormFromMetadata => "CALL START TO THE SAVE IDENTIFIER TO THE FORM FROM METADATA.";
@@ -252,6 +242,16 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Message
         #endregion Service Form.
 
         #region Service Development environments.
+
+        /// <summary>
+        /// Call start to the Select parameters the kinds of development enviroment.
+        /// </summary>
+        public static string CallStartToTheSelectParametersTheKindsOfDevelopmentEnviroment => "CALL START TO THE SELECT PARAMETERS THE KINDS OF DEVELOPMENT ENVIROMENT.";
+
+        /// <summary>
+        /// Success to the Select parameters the kinds of development enviroment.
+        /// </summary>
+        public static string SuccessToTheSelectParametersTheKindsOfDevelopmentEnviroment => "SUCCESS TO THE SELECT PARAMETERS THE KINDS OF DEVELOPMENT ENVIROMENT.";
 
         /// <summary>
         /// Call start to the save identifier to the development enviroments from metadata.
@@ -268,6 +268,16 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Message
         #region Service Databases.
 
         /// <summary>
+        /// Call start to the Select parameters the kinds of databases.
+        /// </summary>
+        public static string CallStartToTheSelectParametersTheKindsOfDatabases => "CALL START TO THE SELECT PARAMETERS THE KINDS OF DATABASES.";
+
+        /// <summary>
+        /// Success to the Select parameters the kinds of databases.
+        /// </summary>
+        public static string SuccessToTheSelectParametersTheKindsOfDatabases => "SUCCESS TO THE SELECT PARAMETERS THE KINDS OF DATABASES.";
+
+        /// <summary>
         /// Call start to the save identifier to the databases from metadata.
         /// </summary>
         public static string CallStartToTheSaveIdentifierToTheDatabasesFromMetadata => "CALL START TO THE SAVE IDENTIFIER TO THE DATABASES FROM METADATA.";
@@ -282,6 +292,16 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Message
         #region Service Databases engine.
 
         /// <summary>
+        /// Call start to the Select parameters the kinds of databases engine.
+        /// </summary>
+        public static string CallStartToTheSelectParametersTheKindsOfDatabasesEngine => "CALL START TO THE SELECT PARAMETERS THE KINDS OF DATABASES ENGINE.";
+
+        /// <summary>
+        /// Success to the Select parameters the kinds of databases engine.
+        /// </summary>
+        public static string SuccessToTheSelectParametersTheKindsOfDatabasesEngine => "SUCCESS TO THE SELECT PARAMETERS THE KINDS OF DATABASES ENGINE.";
+
+        /// <summary>
         /// Call start to the save identifier to the databases engine from metadata.
         /// </summary>
         public static string CallStartToTheSaveIdentifierToTheDatabasesEngineFromMetadata => "CALL START TO THE SAVE IDENTIFIER TO THE DATABASES ENGINE FROM METADATA.";
@@ -294,6 +314,16 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Message
         #endregion Service Databases engine.
 
         #region Service Architecture patterns.
+
+        /// <summary>
+        /// Call start to the Select parameters the kinds of architecture patterns.
+        /// </summary>
+        public static string CallStartToTheSelectParametersTheKindsOfArchitecturePatterns => "CALL START TO THE SELECT PARAMETERS THE KINDS OF ARCHITECTURE PATTERNS.";
+
+        /// <summary>
+        /// Success to the Select parameters the kinds of architecture patterns.
+        /// </summary>
+        public static string SuccessToTheSelectParametersTheKindsOfArchitecturePatterns => "SUCCESS TO THE SELECT PARAMETERS THE KINDS OF ARCHITECTURE PATTERNS.";
 
         /// <summary>
         /// Call start to the save identifier to the architecture patterns from metadata.

@@ -49,6 +49,8 @@ namespace UnifiedDevelopmentPlatform.Application.Services
 
         public List<DevelopmentEnvironments> UDPSelectParametersTheKindsOfDevelopmentEnviroment()
         {
+            _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.CallStartToTheSelectParametersTheKindsOfDevelopmentEnviroment), _serviceFuncString.Empty);
+
             List<DevelopmentEnvironments> listItems = new List<DevelopmentEnvironments>();
 
             try
@@ -58,13 +60,18 @@ namespace UnifiedDevelopmentPlatform.Application.Services
                     for (int i = 0; i < Enum.GetValues(typeof(EnumeratedDevelopmentEnvironments)).Length; i++)
                     {
                         listItems.Add(new DevelopmentEnvironments()
-                        { 
+                        {
                             Id = (long)(EnumeratedDevelopmentEnvironments)i,
                             IdEnumeration = (EnumeratedDevelopmentEnvironments)i,
                             NameEnumeration = Enum.GetName(typeof(EnumeratedDevelopmentEnvironments), i),
                             Name = _serviceEnumerated.UDPGetEnumeratedDescription((EnumeratedDevelopmentEnvironments)i)
                         });
                     }
+                }
+
+                if (listItems.Any())
+                {
+                    _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.SuccessToTheSelectParametersTheKindsOfDevelopmentEnviroment), _serviceFuncString.Empty);
                 }
             }
             catch (OverflowException) { }
