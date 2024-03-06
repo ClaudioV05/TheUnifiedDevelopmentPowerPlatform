@@ -63,11 +63,21 @@ namespace UnifiedDevelopmentPlatform.Application.Services
 
                 this.UDPCreateDirectory();
             }
+            catch (IOException)
+            {
+                this.UDPDeleteAllRootDirectory($"{DirectoryRoot.DirectoryRootPath}{DirectoryRoot.App}");
+                throw;
+            }
             catch (Exception)
             {
                 this.UDPDeleteAllRootDirectory($"{DirectoryRoot.DirectoryRootPath}{DirectoryRoot.App}");
                 throw;
             }
+        }
+
+        public bool UDPDirectoryExists(string rootPath)
+        {
+            return Directory.Exists(rootPath);
         }
 
         public void UPDCreateDirectoryProjectOfSolution()
@@ -131,12 +141,16 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         {
             try
             {
-                if (Directory.Exists(rootPath))
+                if (this.UDPDirectoryExists(rootPath))
                 {
                     Directory.Delete(rootPath, true);
                 }
             }
             catch (IOException)
+            {
+                return false;
+            }
+            catch (Exception)
             {
                 return false;
             }

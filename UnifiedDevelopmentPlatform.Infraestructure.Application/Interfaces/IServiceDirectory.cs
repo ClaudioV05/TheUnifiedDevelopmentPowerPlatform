@@ -25,5 +25,12 @@ namespace UnifiedDevelopmentPlatform.Application.Interfaces
         /// <param name="directoryRootType"></param>
         /// <returns></returns>
         string UDPObtainDirectory(DirectoryRootType directoryRootType);
+
+        /// <summary>
+        /// Verify if directory exists.
+        /// </summary>
+        /// <param name="rootPath"></param>
+        /// <returns>The method will return true, otherwise will return false.</returns>
+        bool UDPDirectoryExists(string rootPath);
     }
 }

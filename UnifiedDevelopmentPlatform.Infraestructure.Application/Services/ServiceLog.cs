@@ -54,27 +54,33 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             string data = _serviceFuncStrings.Empty;
             string newLine = _serviceFuncStrings.Empty;
             string directoryConfiguration = _serviceFuncStrings.Empty;
-            StackFrame stackFrame = new StackFrame(1, true);
+            StackFrame stack = new StackFrame(1, true);
 
             directoryConfiguration = _serviceDirectory.UDPObtainDirectory(DirectoryRootType.Configuration);
 
-            if (!_serviceFuncStrings.UDPStringStarts(message, MessageText.Initial))
+            if (!_serviceFuncStrings.UDPNullOrEmpty(directoryConfiguration) && _serviceDirectory.UDPDirectoryExists(directoryConfiguration))
             {
-                newLine = _servicePlataform.UDPEnvironmentAddNewLine();
+                if (!_serviceFuncStrings.UDPStringStarts(message, MessageText.Initial))
+                {
+                    newLine = _servicePlataform.UDPEnvironmentAddNewLine();
+                }
+
+                if (stack is not null)
+                {
+                    data = $"{newLine}{_serviceDate.UDPGetDateTimeNowFormat()}{_servicePlataform.UDPEnvironmentAddNewLine()}" +
+                           $"{LogConfiguration.FileName}{_serviceFuncStrings.StringWhiteSpace}{_serviceFile.UDPGetFileName(stack.GetFileName() ?? _serviceFuncStrings.Empty)}{_servicePlataform.UDPEnvironmentAddNewLine()}" +
+                           $"{LogConfiguration.MethodName}{_serviceFuncStrings.StringWhiteSpace}{stack.GetMethod()?.Name}{_servicePlataform.UDPEnvironmentAddNewLine()}" +
+                           $"{LogConfiguration.LineNumber}{_serviceFuncStrings.StringWhiteSpace}{stack.GetFileLineNumber()}{_servicePlataform.UDPEnvironmentAddNewLine()}" +
+                           $"{LogConfiguration.LineColumn}{_serviceFuncStrings.StringWhiteSpace}{stack.GetFileColumnNumber()}{_servicePlataform.UDPEnvironmentAddNewLine()}" +
+                           $"{LogConfiguration.Message}{_serviceFuncStrings.StringWhiteSpace}{_serviceFuncStrings.UDPUpper(message)}{_servicePlataform.UDPEnvironmentAddNewLine()}" +
+                           $"{LogConfiguration.AdditionalMessage}{_serviceFuncStrings.StringWhiteSpace}{_serviceFuncStrings.UDPUpper(additionalMessage)}{_servicePlataform.UDPEnvironmentAddNewLine()}" +
+                           $"{_servicePlataform.UDPEnvironmentAddNewLine()}";
+
+                    this.UDPLogInformation(data);
+
+                    _serviceFile.UDPAppendAllText($"{directoryConfiguration}{DirectoryStandard.Log}{FileStandard.Log}{FileExtension.Txt}", data);
+                }
             }
-
-            data = $"{newLine}{_serviceDate.UDPGetDateTimeNowFormat()}{_servicePlataform.UDPEnvironmentAddNewLine()}" +
-                   $"{LogConfiguration.FileName}{_serviceFuncStrings.StringWhiteSpace}{_serviceFile.UDPGetFileName(stackFrame.GetFileName() ?? _serviceFuncStrings.Empty)}{_servicePlataform.UDPEnvironmentAddNewLine()}" +
-                   $"{LogConfiguration.MethodName}{_serviceFuncStrings.StringWhiteSpace}{stackFrame.GetMethod()?.Name}{_servicePlataform.UDPEnvironmentAddNewLine()}" +
-                   $"{LogConfiguration.LineNumber}{_serviceFuncStrings.StringWhiteSpace}{stackFrame.GetFileLineNumber()}{_servicePlataform.UDPEnvironmentAddNewLine()}" +
-                   $"{LogConfiguration.LineColumn}{_serviceFuncStrings.StringWhiteSpace}{stackFrame.GetFileColumnNumber()}{_servicePlataform.UDPEnvironmentAddNewLine()}" +
-                   $"{LogConfiguration.Message}{_serviceFuncStrings.StringWhiteSpace}{_serviceFuncStrings.UDPUpper(message)}{_servicePlataform.UDPEnvironmentAddNewLine()}" +
-                   $"{LogConfiguration.AdditionalMessage}{_serviceFuncStrings.StringWhiteSpace}{_serviceFuncStrings.UDPUpper(additionalMessage)}{_servicePlataform.UDPEnvironmentAddNewLine()}" +
-                   $"{_servicePlataform.UDPEnvironmentAddNewLine()}";
-
-            this.UDPLogInformation(data);
-
-            _serviceFile.UDPAppendAllText($"{directoryConfiguration}{DirectoryStandard.Log}{FileStandard.Log}{FileExtension.Txt}", data);
         }
     }
 }
