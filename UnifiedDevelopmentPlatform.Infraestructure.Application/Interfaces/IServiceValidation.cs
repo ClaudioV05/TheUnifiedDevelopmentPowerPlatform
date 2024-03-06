@@ -59,6 +59,14 @@
         bool UDPDatabasesIsOk(dynamic context, ref string message);
 
         /// <summary>
+        /// Does Validation for databases implemented isn't ok.
+        /// </summary>
+        /// <param name="context"></param>
+        /// <param name="message"></param>
+        /// <returns>Return true otherwise false.</returns>
+        bool UDPDatabasesImplementedIsntOk(dynamic context, ref string message);
+
+        /// <summary>
         /// Does Validation for Databases Engine.
         /// </summary>
         /// <param name="context"></param>
@@ -67,12 +75,12 @@
         bool UDPDatabasesEngineIsOk(dynamic context, ref string message);
 
         /// <summary>
-        /// Does Validation for Forms.
+        /// Does Validation for forms view.
         /// </summary>
         /// <param name="context"></param>
         /// <param name="message"></param>
         /// <returns>Return true otherwise false.</returns>
-        bool UDPFormIsOk(dynamic context, ref string message);
+        bool UDPFormsViewIsOk(dynamic context, ref string message);
 
         /// <summary>
         /// Does Validation for architecture.

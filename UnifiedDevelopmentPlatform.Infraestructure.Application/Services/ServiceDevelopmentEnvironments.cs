@@ -84,7 +84,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             string data = _serviceFuncString.Empty;
             string directoryConfiguration = _serviceFuncString.Empty;
 
-            if (metadata.Forms.Any())
+            if (metadata.DevelopmentEnvironments.Any())
             {
                 _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.CallStartToTheSaveIdentifierToTheDevelopmentEnviromentsFromMetadata), _serviceFuncString.Empty);
 

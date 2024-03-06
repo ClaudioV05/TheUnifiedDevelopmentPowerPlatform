@@ -3,14 +3,14 @@ using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities;
 using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Directory;
 using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.File;
 using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Message;
-using static UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Forms;
+using static UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.FormsView;
 
 namespace UnifiedDevelopmentPlatform.Application.Services
 {
     /// <summary>
-    /// Service form.
+    /// Service forms view.
     /// </summary>
-    public class ServiceForm : IServiceForm
+    public class ServiceFormsView : IServiceFormsView
     {
         private readonly IServiceLog _serviceLog;
         private readonly IServiceFile _serviceFile;
@@ -21,7 +21,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         private readonly IServiceFuncString _serviceFuncString;
 
         /// <summary>
-        /// The constructor of service form.
+        /// The constructor of service forms view.
         /// </summary>
         /// <param name="serviceLog"></param>
         /// <param name="serviceFile"></param>
@@ -30,7 +30,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         /// <param name="serviceDirectory"></param>
         /// <param name="serviceEnumerated"></param>
         /// <param name="serviceFuncString"></param>
-        public ServiceForm(IServiceLog serviceLog,
+        public ServiceFormsView(IServiceLog serviceLog,
                            IServiceFile serviceFile,
                            IServiceCrypto serviceCrypto,
                            IServiceMessage serviceMessage,
@@ -47,24 +47,24 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             _serviceFuncString = serviceFuncString;
         }
 
-        public List<Forms> UDPSelectParametersTheKindsOfForms()
+        public List<FormsView> UDPSelectParametersTheKindsOfFormsView()
         {
             _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.CallStartToTheSelectParametersTheKindsOfForms), _serviceFuncString.Empty);
 
-            List<Forms> listItems = new List<Forms>();
+            List<FormsView> listItems = new List<FormsView>();
 
             try
             {
-                if (Enum.GetValues(typeof(EnumeratedForm)) != null && Enum.GetValues(typeof(EnumeratedForm)).Length > 0)
+                if (Enum.GetValues(typeof(EnumeratedFormsView)) != null && Enum.GetValues(typeof(EnumeratedFormsView)).Length > 0)
                 {
-                    for (int i = 0; i < Enum.GetValues(typeof(EnumeratedForm)).Length; i++)
+                    for (int i = 0; i < Enum.GetValues(typeof(EnumeratedFormsView)).Length; i++)
                     {
-                        listItems.Add(new Forms()
+                        listItems.Add(new FormsView()
                         {
-                            Id = (long)(EnumeratedForm)i,
-                            IdEnumeration = (EnumeratedForm)i,
-                            NameEnumeration = Enum.GetName(typeof(EnumeratedForm), i),
-                            Name = _serviceEnumerated.UDPGetEnumeratedDescription((EnumeratedForm)i)
+                            Id = (long)(EnumeratedFormsView)i,
+                            IdEnumeration = (EnumeratedFormsView)i,
+                            NameEnumeration = Enum.GetName(typeof(EnumeratedFormsView), i),
+                            Name = _serviceEnumerated.UDPGetEnumeratedDescription((EnumeratedFormsView)i)
                         });
                     }
                 }
@@ -79,17 +79,17 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             return listItems;
         }
 
-        public void UDPSaveIdentifierToTheFormFromMetadata(MetadataOwner metadata)
+        public void UDPSaveIdentifierToTheFormsViewFromMetadata(MetadataOwner metadata)
         {
             string data = _serviceFuncString.Empty;
             string directoryConfiguration = _serviceFuncString.Empty;
 
-            if (metadata.Forms.Any())
+            if (metadata.FormsView.Any())
             {
                 _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.CallStartToTheSaveIdentifierToTheFormFromMetadata), _serviceFuncString.Empty);
 
                 directoryConfiguration = _serviceDirectory.UDPObtainDirectory(DirectoryRootType.Configuration);
-                data = _serviceCrypto.UPDEncrypt(Convert.ToString(metadata.Forms.FirstOrDefault().Id));
+                data = _serviceCrypto.UPDEncrypt(Convert.ToString(metadata.FormsView.FirstOrDefault().Id));
                 _serviceFile.UDPAppendAllText($"{directoryConfiguration}{DirectoryStandard.Log}{FileStandard.IdForm}{FileExtension.Txt}", data);
 
                 _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.SuccessToTheSaveIdentifierToTheFormFromMetadata), _serviceFuncString.Empty);

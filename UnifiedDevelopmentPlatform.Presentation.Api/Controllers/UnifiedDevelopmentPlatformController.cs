@@ -54,7 +54,7 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Controllers
         [Produces(MediaTypeNames.Application.Json, MediaTypeNames.Application.Xml)]
         [Route(ControllerRouterUnifiedDevelopmentPlatform.RouterTablesAndFieldsOfMetadata)]
         [ServiceFilter(typeof(FilterActionContextLog), IsReusable = false, Order = ControllerOrderExecutationFilter.Second)]
-        [ServiceFilter(typeof(FilterActionContextTables<MetadataOwner>), IsReusable = false, Order = ControllerOrderExecutationFilter.Third)]
+        [ServiceFilter(typeof(FilterActionContextTablesAndFieldsOfMetadata<MetadataOwner>), IsReusable = false, Order = ControllerOrderExecutationFilter.Third)]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<Tables>))]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -71,9 +71,9 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Controllers
             return Ok(_serviceMetadata.UDPReceiveAndSaveAllTableAndFieldsOfSchemaDatabase(new MetadataOwner()
             {
                 DatabaseSchema = metadata.DatabaseSchema,
-                Forms = new List<Forms>()
+                FormsView = new List<FormsView>()
                 {
-                    new Forms()
+                    new FormsView()
                     {
                         Id = metadata.IdForms
                     }},

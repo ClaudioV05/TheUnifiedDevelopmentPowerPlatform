@@ -58,44 +58,49 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Message
         public static string MessageDefaultToServiceValidation => "IS NECESSARY FOR GENERATE THE APP.";
 
         /// <summary>
-        /// Message to the model state is ok.
+        /// The model state is ok.
         /// </summary>
-        public static string MessageUdpModelStateIsOk => $"THE (JSON) {MessageText.MessageDefaultToServiceValidation}";
+        public static string TheModelStateIsOk => $"THE (JSON) {MessageText.MessageDefaultToServiceValidation}";
 
         /// <summary>
-        /// Message to the script metadata is ok.
+        /// The script metadata is ok.
         /// </summary>
-        public static string MessageUdpScriptMetadataIsOk => $"THE (METADATA) {MessageText.MessageDefaultToServiceValidation}";
+        public static string TheScriptMetadataIsOk => $"THE (METADATA) {MessageText.MessageDefaultToServiceValidation}";
 
         /// <summary>
-        /// Message to the metadata is base64 ok.
+        /// The metadata is base64 ok.
         /// </summary>
-        public static string MessageUdpMetadataIsBase64Ok => $"THE (METADATA) ON THE FORMAT BASE64 {MessageText.MessageDefaultToServiceValidation}";
+        public static string TheMetadataIsBase64Ok => $"THE (METADATA) ON THE FORMAT BASE64 {MessageText.MessageDefaultToServiceValidation}";
 
         /// <summary>
-        /// Message to the development environment is ok.
+        /// The development environment is ok.
         /// </summary>
-        public static string MessageUdpDevelopmentEnvironmentIsOk => $"THE (DEVELOPMENT ENVIRONMENT) {MessageText.MessageDefaultToServiceValidation}";
+        public static string TheDevelopmentEnvironmentIsOk => $"THE (DEVELOPMENT ENVIRONMENT) {MessageText.MessageDefaultToServiceValidation}";
 
         /// <summary>
-        /// Message to the databases is ok.
+        /// The databases is ok.
         /// </summary>
-        public static string MessageUdpDatabasesIsOk => $"THE (DATABASES) {MessageText.MessageDefaultToServiceValidation}";
+        public static string TheDatabasesIsOk => $"THE (DATABASES) {MessageText.MessageDefaultToServiceValidation}";
 
         /// <summary>
-        /// Message to the databases engine is ok.
+        /// The databases implemented isn't ok.
         /// </summary>
-        public static string MessageUdpDatabasesEngineIsOk => $"THE (DATABASES ENGINE) {MessageText.MessageDefaultToServiceValidation}";
+        public static string TheDatabasesImplementedIsntOk => "THE DATABASES IMPLEMENTED ISN'T OK";
 
         /// <summary>
-        /// Message to the forms is ok.
+        /// The databases engine is ok.
         /// </summary>
-        public static string MessageUdpFormIsOk => $"THE (FORMS) {MessageText.MessageDefaultToServiceValidation}";
+        public static string TheDatabasesEngineIsOk => $"THE (DATABASES ENGINE) {MessageText.MessageDefaultToServiceValidation}";
 
         /// <summary>
-        /// Message to the architecture is ok.
+        /// The form view is ok.
         /// </summary>
-        public static string MessageUdpArchitectureIsOk => $"THE (ARCHITECTURE) {MessageText.MessageDefaultToServiceValidation}";
+        public static string TheFormViewIsOk => $"THE (FORMS VIEW) {MessageText.MessageDefaultToServiceValidation}";
+
+        /// <summary>
+        /// The architecture patterns is ok.
+        /// </summary>
+        public static string TheArchitecturePatternsIsOk => $"THE (ARCHITECTURE PATTERNS) {MessageText.MessageDefaultToServiceValidation}";
 
         #endregion The validation of filter action.
 

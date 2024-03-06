@@ -83,7 +83,7 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Controllers
         [HttpGet]
         [Produces(MediaTypeNames.Application.Json, MediaTypeNames.Application.Xml)]
         [Route(ControllerRouterUnifiedDevelopmentPlatformParameters.RouterParametersOfForms)]
-        [ProducesResponseType(typeof(IEnumerable<Forms>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(IEnumerable<FormsView>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
@@ -92,7 +92,7 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Controllers
         [ProducesResponseType(StatusCodes.Status502BadGateway)]
         [ProducesResponseType(StatusCodes.Status503ServiceUnavailable)]
         [ProducesResponseType(StatusCodes.Status504GatewayTimeout)]
-        public ActionResult<IEnumerable<Forms>> ParametersTheKindsOfForms()
+        public ActionResult<IEnumerable<FormsView>> ParametersTheKindsOfForms()
         {
             return Ok(_serviceMetadata.UDPSelectParametersTheKindsOfForms());
         }

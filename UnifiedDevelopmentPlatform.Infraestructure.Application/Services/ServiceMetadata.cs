@@ -13,8 +13,8 @@ namespace UnifiedDevelopmentPlatform.Application.Services
     public class ServiceMetadata : IServiceMetadata
     {
         private readonly IServiceLog _serviceLog;
-        private readonly IServiceForm _serviceForm;
         private readonly IServiceMessage _serviceMessage;
+        private readonly IServiceFormsView _serviceFormsView;
         private readonly IServiceDatabases _serviceDatabases;
         private readonly IServicePlataform _servicePlataform;
         private readonly IServiceFuncString _serviceFuncString;
@@ -28,8 +28,8 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         /// The constructor of service metadata.
         /// </summary>
         /// <param name="serviceLog"></param>
-        /// <param name="serviceForm"></param>
         /// <param name="serviceMessage"></param>
+        /// <param name="serviceFormsView"></param>
         /// <param name="serviceDatabases"></param>
         /// <param name="servicePlataform"></param>
         /// <param name="serviceFuncString"></param>
@@ -39,8 +39,8 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         /// <param name="serviceArchitecturePatterns"></param>
         /// <param name="serviceDevelopmentEnvironments"></param>
         public ServiceMetadata(IServiceLog serviceLog,
-                               IServiceForm serviceForm,
                                IServiceMessage serviceMessage,
+                               IServiceFormsView serviceFormsView,
                                IServiceDatabases serviceDatabases,
                                IServicePlataform servicePlataform,
                                IServiceFuncString serviceFuncString,
@@ -51,7 +51,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
                                IServiceDevelopmentEnvironments serviceDevelopmentEnvironments)
         {
             _serviceLog = serviceLog;
-            _serviceForm = serviceForm;
+            _serviceFormsView = serviceFormsView;
             _serviceMessage = serviceMessage;
             _serviceDatabases = serviceDatabases;
             _servicePlataform = servicePlataform;
@@ -78,7 +78,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
                 _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.CallStartReceiveAndSaveAllTableAndFieldsOfSchemaDatabase), _serviceFuncString.Empty);
 
                 _serviceMetadataTable.UDPSaveDatabaseSchemaFromMetadata(metadata);
-                _serviceForm.UDPSaveIdentifierToTheFormFromMetadata(metadata);
+                _serviceFormsView.UDPSaveIdentifierToTheFormsViewFromMetadata(metadata);
                 _serviceDevelopmentEnvironments.UDPSaveIdentifierToTheDevelopmentEnviromentsFromMetadata(metadata);
                 _serviceDatabases.UDPSaveIdentifierToTheDatabasesFromMetadata(metadata);
                 _serviceDatabasesEngine.UDPSaveIdentifierToTheDatabasesEngineFromMetadata(metadata);
@@ -156,7 +156,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             catch (Exception ex)
             {
                 _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.ErrorReceiveAndSaveAllTableAndFieldsOfSchemaDatabase), ex.Message);
-                throw new Exception(MessageText.ErrorReceiveAndSaveAllTableAndFieldsOfSchemaDatabase);
+                throw new Exception(MessageText.TheMessageDefaultWhenOccurredError);
             }
 
             _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.SuccessAtTheReceiveAndSaveAllTableAndFieldsOfSchemaDatabase), _serviceFuncString.Empty);
@@ -170,9 +170,9 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             throw new NotImplementedException();
         }
 
-        public List<Forms> UDPSelectParametersTheKindsOfForms()
+        public List<FormsView> UDPSelectParametersTheKindsOfForms()
         {
-            return _serviceForm.UDPSelectParametersTheKindsOfForms();
+            return _serviceFormsView.UDPSelectParametersTheKindsOfFormsView();
         }
 
         public List<DevelopmentEnvironments> UDPSelectParametersTheKindsOfDevelopmentEnviroment()

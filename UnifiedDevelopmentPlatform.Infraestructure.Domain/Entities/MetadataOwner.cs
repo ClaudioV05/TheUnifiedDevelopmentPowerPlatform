@@ -45,10 +45,10 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities
         public List<DevelopmentEnvironments>? DevelopmentEnvironments { get; set; }
 
         /// <summary>
-        /// The forms.
+        /// The forms view.
         /// </summary>
         [DataMember]
-        public List<Forms>? Forms { get; set; }
+        public List<FormsView>? FormsView { get; set; }
 
         /// <summary>
         /// The tables.

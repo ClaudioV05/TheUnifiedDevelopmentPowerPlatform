@@ -5,16 +5,16 @@ using UnifiedDevelopmentPlatform.Infraestructure.Domain.Interfaces;
 namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities
 {
     /// <summary>
-    /// Entity Forms.
+    /// Entity forms view.
     /// </summary>
     [ComplexType]
-    public class Forms : IEntity
+    public class FormsView : IEntity
     {
         /// <summary>
-        /// Enum type for entitie Forms.
+        /// Enum type for entitie forms view.
         /// </summary>
         [Flags]
-        public enum EnumeratedForm : int
+        public enum EnumeratedFormsView : int
         {
             [Description("Not Defined")]
             NotDefined = 0,
@@ -35,7 +35,7 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities
         /// <summary>
         /// Id Enumeration.
         /// </summary>
-        public EnumeratedForm IdEnumeration { get; set; } = 0;
+        public EnumeratedFormsView IdEnumeration { get; set; } = 0;
 
         /// <summary>
         /// Name of enumeration.

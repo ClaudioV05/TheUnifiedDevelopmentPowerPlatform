@@ -42,7 +42,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
 
         public bool UDPModelStateIsOk(dynamic context, ref string message)
         {
-            message = !context.ModelState.IsValid ? _serviceMessage.UDPMensagem(MessageType.MessageUdpModelStateIsOk) : _serviceFuncString.Empty;
+            message = !context.ModelState.IsValid ? _serviceMessage.UDPMensagem(MessageType.TheModelStateIsOk) : _serviceFuncString.Empty;
             return _serviceFuncString.UDPNullOrEmpty(message);
         }
 
@@ -50,7 +50,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         {
             dynamic? obj = null;
             context.ActionArguments.TryGetValue(ControllerFilterActionName.Metadata, out obj);
-            message = _serviceFuncString.UDPNullOrEmpty(obj?.DatabaseSchema) ? _serviceMessage.UDPMensagem(MessageType.MessageUdpScriptMetadataIsOk) : _serviceFuncString.Empty;
+            message = _serviceFuncString.UDPNullOrEmpty(obj?.DatabaseSchema) ? _serviceMessage.UDPMensagem(MessageType.TheScriptMetadataIsOk) : _serviceFuncString.Empty;
             return _serviceFuncString.UDPNullOrEmpty(message);
         }
 
@@ -58,7 +58,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         {
             dynamic? obj = null;
             context.ActionArguments.TryGetValue(ControllerFilterActionName.Metadata, out obj);
-            message = !this.UDPValidateBase64(obj?.DatabaseSchema) ? _serviceMessage.UDPMensagem(MessageType.MessageUdpMetadataIsBase64Ok) : _serviceFuncString.Empty;
+            message = !this.UDPValidateBase64(obj?.DatabaseSchema) ? _serviceMessage.UDPMensagem(MessageType.TheMetadataIsBase64Ok) : _serviceFuncString.Empty;
             return _serviceFuncString.UDPNullOrEmpty(message);
         }
 
@@ -66,7 +66,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         {
             dynamic? obj = null;
             context.ActionArguments.TryGetValue(ControllerFilterActionName.Metadata, out obj);
-            message = obj?.IdDevelopmentEnvironment <= 0 ? _serviceMessage.UDPMensagem(MessageType.MessageUdpDevelopmentEnvironmentIsOk) : _serviceFuncString.Empty;
+            message = obj?.IdDevelopmentEnvironment <= 0 ? _serviceMessage.UDPMensagem(MessageType.TheDevelopmentEnvironmentIsOk) : _serviceFuncString.Empty;
             return _serviceFuncString.UDPNullOrEmpty(message);
         }
 
@@ -74,7 +74,15 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         {
             dynamic? obj = null;
             context.ActionArguments.TryGetValue(ControllerFilterActionName.Metadata, out obj);
-            message = obj?.IdDatabases <= 0 ? _serviceMessage.UDPMensagem(MessageType.MessageUdpDatabasesIsOk) : _serviceFuncString.Empty;
+            message = obj?.IdDatabases <= 0 ? _serviceMessage.UDPMensagem(MessageType.TheDatabasesIsOk) : _serviceFuncString.Empty;
+            return _serviceFuncString.UDPNullOrEmpty(message);
+        }
+
+        public bool UDPDatabasesImplementedIsntOk(dynamic context, ref string message)
+        {
+            dynamic? obj = null;
+            context.ActionArguments.TryGetValue(ControllerFilterActionName.Metadata, out obj);
+            message = obj?.IdDatabases <= 0 || obj?.IdDatabases == 1 || obj?.IdDatabases == 4 ? _serviceMessage.UDPMensagem(MessageType.TheDatabasesIsOk) : _serviceFuncString.Empty;
             return _serviceFuncString.UDPNullOrEmpty(message);
         }
 
@@ -82,11 +90,11 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         {
             dynamic? obj = null;
             context.ActionArguments.TryGetValue(ControllerFilterActionName.Metadata, out obj);
-            message = obj?.IdDatabasesEngine <= 0 ? _serviceMessage.UDPMensagem(MessageType.MessageUdpDatabasesEngineIsOk) : _serviceFuncString.Empty;
+            message = obj?.IdDatabasesEngine <= 0 ? _serviceMessage.UDPMensagem(MessageType.TheDatabasesEngineIsOk) : _serviceFuncString.Empty;
             return _serviceFuncString.UDPNullOrEmpty(message);
         }
 
-        public bool UDPFormIsOk(dynamic context, ref string message)
+        public bool UDPFormsViewIsOk(dynamic context, ref string message)
         {
             dynamic? obj = null;
             context.ActionArguments.TryGetValue(ControllerFilterActionName.Metadata, out obj);
@@ -98,7 +106,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         {
             dynamic? obj = null;
             context.ActionArguments.TryGetValue(ControllerFilterActionName.Metadata, out obj);
-            message = obj?.Architecture <= 0 ? _serviceMessage.UDPMensagem(MessageType.MessageUdpArchitectureIsOk) : _serviceFuncString.Empty;
+            message = obj?.Architecture <= 0 ? _serviceMessage.UDPMensagem(MessageType.TheArchitecturePatternsIsOk) : _serviceFuncString.Empty;
             return _serviceFuncString.UDPNullOrEmpty(message);
         }
 

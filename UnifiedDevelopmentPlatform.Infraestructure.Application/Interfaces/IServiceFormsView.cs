@@ -3,20 +3,20 @@
 namespace UnifiedDevelopmentPlatform.Application.Interfaces
 {
     /// <summary>
-    /// Interface service forms.
+    /// Interface service forms view.
     /// </summary>
-    public interface IServiceForm
+    public interface IServiceFormsView
     {
         /// <summary>
-        /// Select parameters the kinds of forms.
+        /// Select parameters the kinds of forms view.
         /// </summary>
         /// <returns>Return the complete list of forms.</returns>
-        List<Forms> UDPSelectParametersTheKindsOfForms();
+        List<FormsView> UDPSelectParametersTheKindsOfFormsView();
 
         /// <summary>
-        /// Save identifier to the form from metadata.
+        /// Save identifier to the forms view from metadata.
         /// </summary>
         /// <param name="metadata"></param>
-        void UDPSaveIdentifierToTheFormFromMetadata(MetadataOwner metadata);
+        void UDPSaveIdentifierToTheFormsViewFromMetadata(MetadataOwner metadata);
     }
 }

@@ -62,7 +62,7 @@ builder.Services.TryAddTransient<FilterActionContextController>();
 builder.Services.TryAddTransient<FilterActionContextControllerInformation>();
 builder.Services.TryAddTransient<FilterActionContextLog>();
 builder.Services.TryAddTransient<FilterActionContextFields<MetadataOwner>>();
-builder.Services.TryAddTransient<FilterActionContextTables<MetadataOwner>>();
+builder.Services.TryAddTransient<FilterActionContextTablesAndFieldsOfMetadata<MetadataOwner>>();
 #endregion Action Filters.
 
 #region Dependency Injection.
@@ -79,7 +79,7 @@ builder.Services.TryAddScoped<IServiceDevelopmentEnvironments, ServiceDevelopmen
 builder.Services.TryAddScoped<IServiceDirectory, ServiceDirectory>();
 builder.Services.TryAddScoped<IServiceEnumerated, ServiceEnumerated>();
 builder.Services.TryAddScoped<IServiceFile, ServiceFile>();
-builder.Services.TryAddScoped<IServiceForm, ServiceForm>();
+builder.Services.TryAddScoped<IServiceFormsView, ServiceFormsView>();
 builder.Services.TryAddScoped<IServiceFuncString, ServiceFuncString>();
 builder.Services.TryAddScoped<IServiceJson, ServiceJson>();
 builder.Services.TryAddScoped<IServiceLinq, ServiceLinq>();

@@ -7,7 +7,10 @@ using UnifiedDevelopmentPlatform.Presentation.Api.Models;
 
 namespace UnifiedDevelopmentPlatform.Presentation.Api.Filters
 {
-    internal sealed class FilterActionContextTables<T> : IAsyncActionFilter where T : class, IEntity
+    /// <summary>
+    /// Filter action context tables and fields of metadata.
+    /// </summary>
+    internal sealed class FilterActionContextTablesAndFieldsOfMetadata<T> : IAsyncActionFilter where T : class, IEntity
     {
         private readonly IServiceLog _serviceLog;
         private readonly IServiceMessage _serviceMessage;
@@ -16,18 +19,18 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Filters
         private readonly IServiceFuncString _serviceFuncString;
 
         /// <summary>
-        /// Filter action context tables.
+        /// Filter action context tables and fields of metadata.
         /// </summary>
         /// <param name="serviceLog"></param>
         /// <param name="serviceMessage"></param>
         /// <param name="serviceDirectory"></param>
         /// <param name="serviceValidation"></param>
         /// <param name="serviceFuncString"></param>
-        public FilterActionContextTables(IServiceLog serviceLog,
-                                         IServiceMessage serviceMessage, 
-                                         IServiceDirectory serviceDirectory, 
-                                         IServiceValidation serviceValidation, 
-                                         IServiceFuncString serviceFuncString)
+        public FilterActionContextTablesAndFieldsOfMetadata(IServiceLog serviceLog,
+                                                            IServiceMessage serviceMessage, 
+                                                            IServiceDirectory serviceDirectory, 
+                                                            IServiceValidation serviceValidation, 
+                                                            IServiceFuncString serviceFuncString)
         {
             _serviceLog = serviceLog;
             _serviceMessage = serviceMessage;
@@ -77,6 +80,13 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Filters
                     return;
                 }
 
+                if (!_serviceValidation.UDPDatabasesImplementedIsntOk(context, ref message))
+                {
+                    _serviceLog.UDPLogReport(message, _serviceFuncString.Empty);
+                    HasMessage(context, message);
+                    return;
+                }
+
                 if (!_serviceValidation.UDPDatabasesEngineIsOk(context, ref message))
                 {
                     _serviceLog.UDPLogReport(message, _serviceFuncString.Empty);
@@ -84,7 +94,7 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Filters
                     return;
                 }
 
-                if (!_serviceValidation.UDPFormIsOk(context, ref message))
+                if (!_serviceValidation.UDPFormsViewIsOk(context, ref message))
                 {
                     _serviceLog.UDPLogReport(message, _serviceFuncString.Empty);
                     HasMessage(context, message);
