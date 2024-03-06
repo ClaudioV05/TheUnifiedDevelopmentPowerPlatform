@@ -50,13 +50,13 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Filters
 
                 _serviceDirectory.UPDBuildDirectoryStandardOfSolution();
 
-                _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.Initial), _serviceFuncStrings.Empty);
-                _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.PlatformIsWindowsOk), _serviceFuncStrings.Empty);
+                _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.TheInitialMessage), _serviceFuncStrings.Empty);
+                _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.ThePlatformWindowsIsOk), _serviceFuncStrings.Empty);
             }
             catch (Exception ex)
             {
                 _serviceLog.UDPLogReport($"{_serviceMessage.UDPMensagem(MessageType.ErrorFilterActionContextController)}", ex.Message);
-                throw new Exception(_serviceFuncStrings.UDPUpper(MessageText.ErrorFilterActionContextController));
+                throw new Exception(_serviceFuncStrings.UDPUpper(MessageText.TheMessageDefaultWhenOccurredError));
             }
 
             await next();

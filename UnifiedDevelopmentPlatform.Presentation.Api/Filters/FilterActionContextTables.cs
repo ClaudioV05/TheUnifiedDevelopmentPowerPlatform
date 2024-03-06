@@ -13,7 +13,7 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Filters
         private readonly IServiceMessage _serviceMessage;
         private readonly IServiceDirectory _serviceDirectory;
         private readonly IServiceValidation _serviceValidation;
-        private readonly IServiceFuncString _serviceFuncStrings;
+        private readonly IServiceFuncString _serviceFuncString;
 
         /// <summary>
         /// Filter action context tables.
@@ -22,18 +22,18 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Filters
         /// <param name="serviceMessage"></param>
         /// <param name="serviceDirectory"></param>
         /// <param name="serviceValidation"></param>
-        /// <param name="serviceFuncStrings"></param>
+        /// <param name="serviceFuncString"></param>
         public FilterActionContextTables(IServiceLog serviceLog,
                                          IServiceMessage serviceMessage, 
                                          IServiceDirectory serviceDirectory, 
                                          IServiceValidation serviceValidation, 
-                                         IServiceFuncString serviceFuncStrings)
+                                         IServiceFuncString serviceFuncString)
         {
             _serviceLog = serviceLog;
             _serviceMessage = serviceMessage;
             _serviceDirectory = serviceDirectory;
             _serviceValidation = serviceValidation;
-            _serviceFuncStrings = serviceFuncStrings;
+            _serviceFuncString = serviceFuncString;
         }
 
         public async Task OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next)
@@ -44,56 +44,56 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Filters
             {
                 if (!_serviceValidation.UDPModelStateIsOk(context, ref message))
                 {
-                    _serviceLog.UDPLogReport(message, _serviceFuncStrings.Empty);
+                    _serviceLog.UDPLogReport(message, _serviceFuncString.Empty);
                     HasMessage(context, message);
                     return;
                 }
 
                 if (!_serviceValidation.UDPDatabaseSchemaIsOk(context, ref message))
                 {
-                    _serviceLog.UDPLogReport(message, _serviceFuncStrings.Empty);
+                    _serviceLog.UDPLogReport(message, _serviceFuncString.Empty);
                     HasMessage(context, message);
                     return;
                 }
 
                 if (!_serviceValidation.UDPMetadataIsBase64Ok(context, ref message))
                 {
-                    _serviceLog.UDPLogReport(message, _serviceFuncStrings.Empty);
+                    _serviceLog.UDPLogReport(message, _serviceFuncString.Empty);
                     HasMessage(context, message);
                     return;
                 }
 
                 if (!_serviceValidation.UDPDevelopmentEnvironmentIsOk(context, ref message))
                 {
-                    _serviceLog.UDPLogReport(message, _serviceFuncStrings.Empty);
+                    _serviceLog.UDPLogReport(message, _serviceFuncString.Empty);
                     HasMessage(context, message);
                     return;
                 }
 
                 if (!_serviceValidation.UDPDatabasesIsOk(context, ref message))
                 {
-                    _serviceLog.UDPLogReport(message, _serviceFuncStrings.Empty);
+                    _serviceLog.UDPLogReport(message, _serviceFuncString.Empty);
                     HasMessage(context, message);
                     return;
                 }
 
                 if (!_serviceValidation.UDPDatabasesEngineIsOk(context, ref message))
                 {
-                    _serviceLog.UDPLogReport(message, _serviceFuncStrings.Empty);
+                    _serviceLog.UDPLogReport(message, _serviceFuncString.Empty);
                     HasMessage(context, message);
                     return;
                 }
 
                 if (!_serviceValidation.UDPFormIsOk(context, ref message))
                 {
-                    _serviceLog.UDPLogReport(message, _serviceFuncStrings.Empty);
+                    _serviceLog.UDPLogReport(message, _serviceFuncString.Empty);
                     HasMessage(context, message);
                     return;
                 }
 
                 if (!_serviceValidation.UDPArchitectureOk(context, ref message))
                 {
-                    _serviceLog.UDPLogReport(message, _serviceFuncStrings.Empty );
+                    _serviceLog.UDPLogReport(message, _serviceFuncString.Empty );
                     HasMessage(context, message);
                     return;
                 }
@@ -101,19 +101,21 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Filters
             catch (Exception ex)
             {
                 _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.ErrorFilterActionContextTables), ex.Message);
-                throw new Exception(_serviceFuncStrings.UDPUpper(MessageText.ErrorFilterActionContextTables));
+                throw new Exception(_serviceFuncString.UDPUpper(MessageText.TheMessageDefaultWhenOccurredError));
             }
 
             await next();
 
             try 
             {
+                _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.CallStartToTheCreateDirectoryProjectOfSolution), _serviceFuncString.Empty);
                 _serviceDirectory.UPDCreateDirectoryProjectOfSolution();
+                _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.SuccessToTheCreateDirectoryProjectOfSolution), _serviceFuncString.Empty);
             }
             catch (Exception ex)
             {
                 _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.ErrorCreateAllDirectory), ex.Message);
-                throw new Exception(_serviceFuncStrings.UDPUpper(MessageText.ErrorCreateAllDirectory));
+                throw new Exception(_serviceFuncString.UDPUpper(MessageText.TheMessageDefaultWhenOccurredError));
             }
         }
 

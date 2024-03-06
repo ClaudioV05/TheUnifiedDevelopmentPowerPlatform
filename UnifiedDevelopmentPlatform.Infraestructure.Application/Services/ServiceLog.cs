@@ -60,7 +60,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
 
             if (!_serviceFuncStrings.UDPNullOrEmpty(directoryConfiguration) && _serviceDirectory.UDPDirectoryExists(directoryConfiguration))
             {
-                if (!_serviceFuncStrings.UDPStringStarts(message, MessageText.Initial))
+                if (!_serviceFuncStrings.UDPStringStarts(message, MessageText.TheInitialMessage))
                 {
                     newLine = _servicePlataform.UDPEnvironmentAddNewLine();
                 }

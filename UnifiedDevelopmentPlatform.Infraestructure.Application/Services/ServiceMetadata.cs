@@ -163,7 +163,12 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             return listTables;
         }
 
-        public void UDPNotImplemented(MetadataOwner metadata) => throw new NotImplementedException();
+        public void UDPNotImplemented(MetadataOwner metadata)
+        {
+            _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.NoHasMessageSpecifield), _serviceFuncString.Empty);
+
+            throw new NotImplementedException();
+        }
 
         public List<Forms> UDPSelectParametersTheKindsOfForms()
         {

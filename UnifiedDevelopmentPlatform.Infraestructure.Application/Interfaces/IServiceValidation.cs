@@ -8,9 +8,8 @@
         #region Validation for Filter Action Controller.
 
         /// <summary>
-        /// Does validation if platform is Windows
+        /// Does validation if platform is Windows.
         /// </summary>
-        /// <param name="context"></param>
         /// <param name="message"></param>
         /// <returns>Return true otherwise false.</returns>
         bool UDPPlatformWindowsIsOk(ref string message);

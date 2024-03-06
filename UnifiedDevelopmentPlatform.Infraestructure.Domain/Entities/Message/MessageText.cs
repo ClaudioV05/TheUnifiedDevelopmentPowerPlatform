@@ -9,26 +9,31 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Message
     public static class MessageText
     {
         /// <summary>
-        /// No message.
+        /// No has message specifield.
         /// </summary>
-        public static string NoMessage => "ERROR MESSAGE DON'T SPECIFIELD.";
+        public static string NoHasMessageSpecifield => "ERROR MESSAGE DON'T SPECIFIELD.";
 
         /// <summary>
-        /// Message initial of build of UDP.
+        /// The message initial of build of UDPP.
         /// </summary>
-        public static string Initial => "WAS STARTED THE CREATION OF UNIFIED DEVELOPMENT PLATFORM - UDP.";
+        public static string TheInitialMessage => "WAS STARTED THE CREATION OF UNIFIED DEVELOPMENT POWER PLATFORM - UDPP.";
 
         /// <summary>
-        /// Platform is Windows Ok.
+        /// The message default when occurred error.
         /// </summary>
-        public static string PlatformIsWindowsOk => "PLATFORM TO BUILD UNIFIED DEVELOPMENT PLATFORM IS WINDOWS.";
+        public static string TheMessageDefaultWhenOccurredError => "WAS VERIFIED ERRO WHEN GENERATED THE SERVICE. CONTACT THE UNIFIED DEVELOPMENT POWER PLATFORM - UDPP.";
 
         /// <summary>
-        /// Platform is Windows erro.
+        /// The platform Windows is ok.
         /// </summary>
-        public static string PlatformIsWindowsErro => "THIS VERSION OF (UNIFIED DEVELOPMENT PLATFORM) DON'T RUN IN CROSS CROSS PLATFORM. ONLY WINDOWS.";
+        public static string ThePlatformWindowsIsOk => "PLATFORM TO BUILD UNIFIED DEVELOPMENT PLATFORM IS WINDOWS.";
 
-        #region Filter action.
+        /// <summary>
+        /// The platform Windows isn't ok.
+        /// </summary>
+        public static string ThePlatformWindowsIsNotOk => "THIS VERSION OF (UNIFIED DEVELOPMENT PLATFORM) DON'T RUN IN CROSS CROSS PLATFORM. ONLY WINDOWS.";
+
+        #region The filter action context.
 
         /// <summary>
         /// Error filter action context controller.
@@ -94,7 +99,7 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Message
 
         #endregion The validation of filter action.
 
-        #endregion Filter action.
+        #endregion The filter action context.
 
         #region Service directory.
 
