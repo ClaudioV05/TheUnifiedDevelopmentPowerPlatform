@@ -14,7 +14,7 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Message
         TheInitialMessage = 1,
 
         [Description("The message default when occurred error")]
-        TheMessageDefaultWhenOccurredError = 2,
+        TheGlobalErrorMessage = 2,
 
         [Description("The platform Windows is ok")]
         ThePlatformWindowsIsOk = 3,

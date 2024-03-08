@@ -156,7 +156,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             catch (Exception ex)
             {
                 _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.ErrorReceiveAndSaveAllTableAndFieldsOfSchemaDatabase), ex.Message);
-                throw new Exception(MessageText.TheMessageDefaultWhenOccurredError);
+                throw new Exception(MessageText.TheGlobalErrorMessage);
             }
 
             _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.SuccessAtTheReceiveAndSaveAllTableAndFieldsOfSchemaDatabase), _serviceFuncString.Empty);

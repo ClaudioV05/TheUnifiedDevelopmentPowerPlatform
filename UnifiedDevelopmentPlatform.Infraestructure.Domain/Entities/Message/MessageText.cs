@@ -21,7 +21,7 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Message
         /// <summary>
         /// The message default when occurred error.
         /// </summary>
-        public static string TheMessageDefaultWhenOccurredError => "WAS VERIFIED ERRO WHEN GENERATED THE SERVICE. CONTACT THE UNIFIED DEVELOPMENT POWER PLATFORM - UDPP.";
+        public static string TheGlobalErrorMessage => "AN ERROR OCCURRED AT GENERATING THE SERVICE. CONTACT THE TEAM OF UNIFIED DEVELOPMENT POWER PLATFORM - UDPP.";
 
         /// <summary>
         /// The platform Windows is ok.
@@ -38,7 +38,7 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Message
         /// <summary>
         /// Error filter action context controller.
         /// </summary>
-        public static string ErrorFilterActionContextController => "ERROR OCORRED OF THE CREATION THE";
+        public static string ErrorFilterActionContextController => "AN ERROR OCCURRED OF THE CREATION THE";
 
         /// <summary>
         /// Error filter action context tables.

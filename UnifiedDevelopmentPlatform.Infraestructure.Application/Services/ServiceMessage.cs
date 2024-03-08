@@ -28,7 +28,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
                 MessageType.TheInitialMessage => MessageText.TheInitialMessage,
                 MessageType.ThePlatformWindowsIsOk => MessageText.ThePlatformWindowsIsOk,
                 MessageType.ThePlatformWindowsIsNotOk => MessageText.ThePlatformWindowsIsNotOk,
-                MessageType.TheMessageDefaultWhenOccurredError => MessageText.TheMessageDefaultWhenOccurredError,
+                MessageType.TheGlobalErrorMessage => MessageText.TheGlobalErrorMessage,
                 MessageType.ErrorFilterActionContextController => MessageText.ErrorFilterActionContextController,
                 MessageType.ErrorFilterActionContextTables => MessageText.ErrorFilterActionContextTables,
                 MessageType.ErrorFilterActionContextFields => MessageText.ErrorFilterActionContextFields,
