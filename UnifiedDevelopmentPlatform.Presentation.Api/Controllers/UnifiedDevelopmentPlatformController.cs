@@ -36,6 +36,11 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Controllers
         /// Receive and save all table of schema database.
         /// </summary>
         /// <param name="metadata"></param>
+        /// <paramref name=""/>
+        /// <returns></returns>
+        /// <remarks></remarks>
+        /// <exception cref=""></exception>
+        /// <seealso href=""></seealso>
         /// <returns>The list of tables with name(s) and field(s) of schema database.</returns>
         /// 200 Status Codes: This is the best kind of HTTP status code to receive. A 200-level response means that everything is working exactly as it should.
         /// <response code="200">Everything is OK.</response>
@@ -108,6 +113,11 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Controllers
         /// Receive and save all table and fields of schema database.
         /// </summary>
         /// <param name="metadata"></param>
+        /// <paramref name="d"/>
+        /// <returns></returns>
+        /// <remarks></remarks>
+        /// <exception cref=""></exception>
+        /// <seealso href=""></seealso>
         /// <returns>List of string with fields names of tables</returns>
         /// 200 Status Codes: This is the best kind of HTTP status code to receive. A 200-level response means that everything is working exactly as it should.
         /// <response code="200">Everything is OK.</response>

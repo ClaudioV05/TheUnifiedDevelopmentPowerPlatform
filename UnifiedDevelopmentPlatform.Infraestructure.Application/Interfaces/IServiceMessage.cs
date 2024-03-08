@@ -3,7 +3,7 @@
 namespace UnifiedDevelopmentPlatform.Application.Interfaces
 {
     /// <summary>
-    /// Interface service Message.
+    /// Interface ServiceMessage.
     /// </summary>
     public interface IServiceMessage
     {
@@ -11,6 +11,11 @@ namespace UnifiedDevelopmentPlatform.Application.Interfaces
         /// Log mensagem.
         /// </summary>
         /// <param name="messageEnumerated"></param>
+        /// <paramref name=""/>
+        /// <returns></returns>
+        /// <remarks></remarks>
+        /// <exception cref=""></exception>
+        /// <seealso href=""></seealso>
         /// <returns>String with message of error.</returns>
         string UDPMensagem(MessageType messageEnumerated);
     }

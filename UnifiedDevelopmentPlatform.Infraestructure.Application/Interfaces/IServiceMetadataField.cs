@@ -3,7 +3,7 @@
 namespace UnifiedDevelopmentPlatform.Application.Interfaces
 {
     /// <summary>
-    /// Interface service Metadata Fields.
+    /// Interface ServiceMetadataField.
     /// </summary>
     public interface IServiceMetadataField
     {
@@ -11,6 +11,11 @@ namespace UnifiedDevelopmentPlatform.Application.Interfaces
         /// Return all tables name and all fields.
         /// </summary>
         /// <param name="metadata"></param>
+        /// <paramref name=""/>
+        /// <returns></returns>
+        /// <remarks></remarks>
+        /// <exception cref=""></exception>
+        /// <seealso href=""></seealso>
         /// <returns>List with names and fields of table.</returns>
         List<string> UDPMetadataTableAndAllFields(MetadataOwner? metadata);
 
@@ -18,6 +23,11 @@ namespace UnifiedDevelopmentPlatform.Application.Interfaces
         /// Get the field name.
         /// </summary>
         /// <param name="text"></param>
+        /// <paramref name=""/>
+        /// <returns></returns>
+        /// <remarks></remarks>
+        /// <exception cref=""></exception>
+        /// <seealso href=""></seealso>
         /// <returns>The field name</returns>
         string UDPGetFieldName(string text);
 
@@ -25,6 +35,11 @@ namespace UnifiedDevelopmentPlatform.Application.Interfaces
         /// Get the type of field name.
         /// </summary>
         /// <param name="text"></param>
+        /// <paramref name=""/>
+        /// <returns></returns>
+        /// <remarks></remarks>
+        /// <exception cref=""></exception>
+        /// <seealso href=""></seealso>
         /// <returns>The type of field name</returns>
         string UDPGetTypeFieldName(string text);
 
@@ -32,6 +47,11 @@ namespace UnifiedDevelopmentPlatform.Application.Interfaces
         /// Identify whether the field is null.
         /// </summary>
         /// <param name="text"></param>
+        /// <paramref name=""/>
+        /// <returns></returns>
+        /// <remarks></remarks>
+        /// <exception cref=""></exception>
+        /// <seealso href=""></seealso>
         /// <returns>The method will return true, otherwise will return false.</returns>
         bool UDPFieldIsNotNull(string text);
     }

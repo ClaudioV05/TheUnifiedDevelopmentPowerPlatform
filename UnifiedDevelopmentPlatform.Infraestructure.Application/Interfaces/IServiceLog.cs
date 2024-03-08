@@ -3,7 +3,7 @@
 namespace UnifiedDevelopmentPlatform.Application.Interfaces
 {
     /// <summary>
-    /// Interface service Log.
+    /// Interface ServiceLog.
     /// </summary>
     public interface IServiceLog
     {
@@ -11,24 +11,44 @@ namespace UnifiedDevelopmentPlatform.Application.Interfaces
         /// Logging of debug.
         /// </summary>
         /// <param name="message"></param>
+        /// <paramref name=""/>
+        /// <returns></returns>
+        /// <remarks></remarks>
+        /// <exception cref=""></exception>
+        /// <seealso href=""></seealso>
         void UDPLogDebug(string message);
 
         /// <summary>
         /// Error of debug.
         /// </summary>
         /// <param name="message"></param>
+        /// <paramref name=""/>
+        /// <returns></returns>
+        /// <remarks></remarks>
+        /// <exception cref=""></exception>
+        /// <seealso href=""></seealso>
         void UDPLogError(string message);
 
         /// <summary>
         /// Information of debug.
         /// </summary>
         /// <param name="message"></param>
+        /// <paramref name=""/>
+        /// <returns></returns>
+        /// <remarks></remarks>
+        /// <exception cref=""></exception>
+        /// <seealso href=""></seealso>
         void UDPLogInformation(string message);
 
         /// <summary>
         /// Warning of debug.
         /// </summary>
         /// <param name="message"></param>
+        /// <paramref name=""/>
+        /// <returns></returns>
+        /// <remarks></remarks>
+        /// <exception cref=""></exception>
+        /// <seealso href=""></seealso>
         void UDPLogWarning(string message);
 
         /// <summary>
@@ -36,6 +56,11 @@ namespace UnifiedDevelopmentPlatform.Application.Interfaces
         /// </summary>
         /// <param name="message"></param>
         /// <param name="additionalMessage"></param>
+        /// <paramref name=""/>
+        /// <returns></returns>
+        /// <remarks></remarks>
+        /// <exception cref=""></exception>
+        /// <seealso href=""></seealso>
         void UDPLogReport(string message, string additionalMessage);
     }
 }

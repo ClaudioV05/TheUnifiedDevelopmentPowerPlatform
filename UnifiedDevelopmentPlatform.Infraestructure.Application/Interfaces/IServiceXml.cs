@@ -1,7 +1,7 @@
 ﻿namespace UnifiedDevelopmentPlatform.Application.Interfaces
 {
     /// <summary>
-    /// Interface service Extensible Markup Language - XML.
+    /// Interface ServiceXml.
     /// </summary>
     public interface IServiceXml
     {
@@ -11,7 +11,11 @@
         /// <param name="path"></param>
         /// <param name="nameSection"></param>
         /// <param name="item"></param>
+        /// <paramref name=""/>
         /// <returns></returns>
+        /// <remarks></remarks>
+        /// <exception cref=""></exception>
+        /// <seealso href=""></seealso>
         void UPDTreeXmlSave(string path, string nameSection, string item);
 
         /// <summary>
@@ -20,7 +24,11 @@
         /// <param name="path"></param>
         /// <param name="nameSection"></param>
         /// <param name="items"></param>
+        /// <paramref name=""/>
         /// <returns></returns>
+        /// <remarks></remarks>
+        /// <exception cref=""></exception>
+        /// <seealso href=""></seealso>
         void UPDTreeXmlSave(string path, string nameSection, List<string> items);
     }
 }

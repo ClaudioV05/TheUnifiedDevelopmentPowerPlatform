@@ -11,16 +11,16 @@ namespace UnifiedDevelopmentPlatform.Application.Services
     public class ServiceDirectory : IServiceDirectory
     {
         private readonly List<string> _listDirectory;
-        private readonly IServiceFuncString _serviceFuncStrings;
+        private readonly IServiceFuncString _serviceFuncString;
 
         /// <summary>
         /// Constructor of service directory.
         /// </summary>
-        /// <param name="serviceFuncStrings"></param>
-        public ServiceDirectory(IServiceFuncString serviceFuncStrings)
+        /// <param name="serviceFuncString"></param>
+        public ServiceDirectory(IServiceFuncString serviceFuncString)
         {
             _listDirectory = new List<string>();
-            _serviceFuncStrings = serviceFuncStrings;
+            _serviceFuncString = serviceFuncString;
         }
 
         public string UDPObtainDirectory(DirectoryRootType directoryRootType)
@@ -32,12 +32,12 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             }
             catch (IOException)
             {
-                return _serviceFuncStrings.Empty;
+                return _serviceFuncString.Empty;
                 throw;
             }
             catch (Exception)
             {
-                return _serviceFuncStrings.Empty;
+                return _serviceFuncString.Empty;
                 throw;
             }
         }
@@ -75,9 +75,9 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             }
         }
 
-        public bool UDPDirectoryExists(string rootPath)
+        public bool UDPDirectoryExists(string absolutePath)
         {
-            return Directory.Exists(rootPath);
+            return Directory.Exists(absolutePath);
         }
 
         public void UPDCreateDirectoryProjectOfSolution()
@@ -111,9 +111,9 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             }
         }
 
-        private void UDPLoadDirectory(string rootPath)
+        private void UDPLoadDirectory(string absolutePath)
         {
-            _listDirectory.Add(rootPath);
+            _listDirectory.Add(absolutePath);
         }
 
         private void UDPCreateDirectory()
@@ -124,7 +124,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
                 {
                     for (int i = 0; i < _listDirectory.Count; i++)
                     {
-                        if (!_serviceFuncStrings.UDPNullOrEmpty(_listDirectory[i]))
+                        if (!_serviceFuncString.UDPNullOrEmpty(_listDirectory[i]))
                         {
                             Directory.CreateDirectory(_listDirectory[i]);
                         }
@@ -137,13 +137,13 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             }
         }
 
-        private bool UDPDeleteAllRootDirectory(string rootPath)
+        private bool UDPDeleteAllRootDirectory(string absolutePath)
         {
             try
             {
-                if (this.UDPDirectoryExists(rootPath))
+                if (this.UDPDirectoryExists(absolutePath))
                 {
-                    Directory.Delete(rootPath, true);
+                    Directory.Delete(absolutePath, true);
                 }
             }
             catch (IOException)
@@ -158,71 +158,74 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             return true;
         }
 
-        private string UDPObtainDirectoryRoot(DirectoryRootType directoryRootType) => directoryRootType switch
+        private string UDPObtainDirectoryRoot(DirectoryRootType directoryRootType)
         {
-            DirectoryRootType.App => DirectoryRoot.App,
-            DirectoryRootType.Backend => DirectoryRoot.Backend,
-            DirectoryRootType.Frontend => DirectoryRoot.Frontend,
-            DirectoryRootType.Configuration => DirectoryRoot.Configuration,
-            DirectoryRootType.Json => DirectoryRoot.Json,
-            DirectoryRootType.Log => DirectoryRoot.Log,
-            DirectoryRootType.Xml => DirectoryRoot.Xml,
-            DirectoryRootType.BackendPresentation => DirectoryRoot.BackendPresentation,
-            DirectoryRootType.BackendPresentationProperties => DirectoryRoot.BackendPresentationProperties,
-            DirectoryRootType.BackendPresentationControllers => DirectoryRoot.BackendPresentationControllers,
-            DirectoryRootType.BackendPresentationExtensions => DirectoryRoot.BackendPresentationExtensions,
-            DirectoryRootType.BackendPresentationFilters => DirectoryRoot.BackendPresentationFilters,
-            DirectoryRootType.BackendPresentationModels => DirectoryRoot.BackendPresentationModels,
-            DirectoryRootType.BackendPresentationSwagger => DirectoryRoot.BackendPresentationSwagger,
-            DirectoryRootType.FrontendPresentation => DirectoryRoot.FrontendPresentation,
-            DirectoryRootType.FrontendPresentationProperties => DirectoryRoot.FrontendPresentationProperties,
-            DirectoryRootType.FrontendPresentationControllers => DirectoryRoot.FrontendPresentationControllers,
-            DirectoryRootType.FrontendPresentationExtensions => DirectoryRoot.FrontendPresentationExtensions,
-            DirectoryRootType.FrontendPresentationFilters => DirectoryRoot.FrontendPresentationFilters,
-            DirectoryRootType.FrontendPresentationModels => DirectoryRoot.FrontendPresentationModels,
-            DirectoryRootType.FrontendPresentationSwagger => DirectoryRoot.FrontendPresentationSwagger,
-            DirectoryRootType.BackendApplication => DirectoryRoot.BackendApplication,
-            DirectoryRootType.BackendApplicationInterfaces => DirectoryRoot.BackendApplicationInterfaces,
-            DirectoryRootType.BackendApplicationServices => DirectoryRoot.BackendApplicationServices,
-            DirectoryRootType.FrontendApplication => DirectoryRoot.FrontendApplication,
-            DirectoryRootType.FrontendApplicationInterfaces => DirectoryRoot.FrontendApplicationInterfaces,
-            DirectoryRootType.FrontendApplicationServices => DirectoryRoot.FrontendApplicationServices,
-            DirectoryRootType.BackendDomain => DirectoryRoot.BackendDomain,
-            DirectoryRootType.BackendDomainInterfaces => DirectoryRoot.BackendDomainInterfaces,
-            DirectoryRootType.BackendDomainEntities => DirectoryRoot.BackendDomainEntities,
-            DirectoryRootType.FrontendDomain => DirectoryRoot.FrontendDomain,
-            DirectoryRootType.FrontendDomainInterfaces => DirectoryRoot.FrontendDomainInterfaces,
-            DirectoryRootType.FrontendDomainEntities => DirectoryRoot.FrontendDomainEntities,
-            DirectoryRootType.BackendInfrastructure => DirectoryRoot.BackendInfrastructure,
-            DirectoryRootType.BackendInfrastructureCrossCutting => DirectoryRoot.BackendInfrastructureCrossCutting,
-            DirectoryRootType.BackendInfrastructureData => DirectoryRoot.BackendInfrastructureData,
-            DirectoryRootType.FrontendInfrastructure => DirectoryRoot.FrontendInfrastructure,
-            DirectoryRootType.FrontendInfrastructureCrossCutting => DirectoryRoot.FrontendInfrastructureCrossCutting,
-            DirectoryRootType.FrontendInfrastructureData => DirectoryRoot.FrontendInfrastructureData,
-            _ => _serviceFuncStrings.Empty
-        };
+            return directoryRootType switch
+            {
+                DirectoryRootType.App => DirectoryRoot.App,
+                DirectoryRootType.Backend => DirectoryRoot.Backend,
+                DirectoryRootType.Frontend => DirectoryRoot.Frontend,
+                DirectoryRootType.Configuration => DirectoryRoot.Configuration,
+                DirectoryRootType.Json => DirectoryRoot.Json,
+                DirectoryRootType.Log => DirectoryRoot.Log,
+                DirectoryRootType.Xml => DirectoryRoot.Xml,
+                DirectoryRootType.BackendPresentation => DirectoryRoot.BackendPresentation,
+                DirectoryRootType.BackendPresentationProperties => DirectoryRoot.BackendPresentationProperties,
+                DirectoryRootType.BackendPresentationControllers => DirectoryRoot.BackendPresentationControllers,
+                DirectoryRootType.BackendPresentationExtensions => DirectoryRoot.BackendPresentationExtensions,
+                DirectoryRootType.BackendPresentationFilters => DirectoryRoot.BackendPresentationFilters,
+                DirectoryRootType.BackendPresentationModels => DirectoryRoot.BackendPresentationModels,
+                DirectoryRootType.BackendPresentationSwagger => DirectoryRoot.BackendPresentationSwagger,
+                DirectoryRootType.FrontendPresentation => DirectoryRoot.FrontendPresentation,
+                DirectoryRootType.FrontendPresentationProperties => DirectoryRoot.FrontendPresentationProperties,
+                DirectoryRootType.FrontendPresentationControllers => DirectoryRoot.FrontendPresentationControllers,
+                DirectoryRootType.FrontendPresentationExtensions => DirectoryRoot.FrontendPresentationExtensions,
+                DirectoryRootType.FrontendPresentationFilters => DirectoryRoot.FrontendPresentationFilters,
+                DirectoryRootType.FrontendPresentationModels => DirectoryRoot.FrontendPresentationModels,
+                DirectoryRootType.FrontendPresentationSwagger => DirectoryRoot.FrontendPresentationSwagger,
+                DirectoryRootType.BackendApplication => DirectoryRoot.BackendApplication,
+                DirectoryRootType.BackendApplicationInterfaces => DirectoryRoot.BackendApplicationInterfaces,
+                DirectoryRootType.BackendApplicationServices => DirectoryRoot.BackendApplicationServices,
+                DirectoryRootType.FrontendApplication => DirectoryRoot.FrontendApplication,
+                DirectoryRootType.FrontendApplicationInterfaces => DirectoryRoot.FrontendApplicationInterfaces,
+                DirectoryRootType.FrontendApplicationServices => DirectoryRoot.FrontendApplicationServices,
+                DirectoryRootType.BackendDomain => DirectoryRoot.BackendDomain,
+                DirectoryRootType.BackendDomainInterfaces => DirectoryRoot.BackendDomainInterfaces,
+                DirectoryRootType.BackendDomainEntities => DirectoryRoot.BackendDomainEntities,
+                DirectoryRootType.FrontendDomain => DirectoryRoot.FrontendDomain,
+                DirectoryRootType.FrontendDomainInterfaces => DirectoryRoot.FrontendDomainInterfaces,
+                DirectoryRootType.FrontendDomainEntities => DirectoryRoot.FrontendDomainEntities,
+                DirectoryRootType.BackendInfrastructure => DirectoryRoot.BackendInfrastructure,
+                DirectoryRootType.BackendInfrastructureCrossCutting => DirectoryRoot.BackendInfrastructureCrossCutting,
+                DirectoryRootType.BackendInfrastructureData => DirectoryRoot.BackendInfrastructureData,
+                DirectoryRootType.FrontendInfrastructure => DirectoryRoot.FrontendInfrastructure,
+                DirectoryRootType.FrontendInfrastructureCrossCutting => DirectoryRoot.FrontendInfrastructureCrossCutting,
+                DirectoryRootType.FrontendInfrastructureData => DirectoryRoot.FrontendInfrastructureData,
+                _ => _serviceFuncString.Empty
+            };
+        }
 
         private string UDPGetRootDirectory()
         {
             Regex? regex = null;
-            string? exeRootDirectory = _serviceFuncStrings.Empty;
-            string? rootDirectoryOfSolution = _serviceFuncStrings.Empty;
+            string? exeRootDirectory = _serviceFuncString.Empty;
+            string? rootDirectoryOfSolution = _serviceFuncString.Empty;
 
             try
             {
                 regex = new Regex(@"(?<!fil)[A-Za-z]:\\+[\S\s]*?(?=\\+unifieddevelopmentplatform.presentation.api)");
-                exeRootDirectory = _serviceFuncStrings.UDPLower(Assembly.GetExecutingAssembly().Location);
+                exeRootDirectory = _serviceFuncString.UDPLower(Assembly.GetExecutingAssembly().Location);
 
-                if (regex.IsMatch(exeRootDirectory ?? _serviceFuncStrings.Empty))
+                if (regex.IsMatch(exeRootDirectory ?? _serviceFuncString.Empty))
                 {
-                    rootDirectoryOfSolution = regex.Match(exeRootDirectory ?? _serviceFuncStrings.Empty).Value;
+                    rootDirectoryOfSolution = regex.Match(exeRootDirectory ?? _serviceFuncString.Empty).Value;
                 }
 
                 return rootDirectoryOfSolution;
             }
             catch (IOException)
             {
-                return _serviceFuncStrings.Empty;
+                return _serviceFuncString.Empty;
             }
         }
     }

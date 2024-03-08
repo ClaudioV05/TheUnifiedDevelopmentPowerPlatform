@@ -3,7 +3,7 @@
 namespace UnifiedDevelopmentPlatform.Application.Interfaces
 {
     /// <summary>
-    /// Interface service Metadata Tables.
+    /// Interface ServiceMetadataTable.
     /// </summary>
     public interface IServiceMetadataTable
     {
@@ -11,6 +11,11 @@ namespace UnifiedDevelopmentPlatform.Application.Interfaces
         /// Return a list with tables name of metadata.
         /// </summary>
         /// <param name="metadata"></param>
+        /// <paramref name=""/>
+        /// <returns></returns>
+        /// <remarks></remarks>
+        /// <exception cref=""></exception>
+        /// <seealso href=""></seealso>
         /// <returns>List with names of table.</returns>
         List<string> UDPListWithTablesNameOfMetadata(MetadataOwner metadata);
 
@@ -18,6 +23,11 @@ namespace UnifiedDevelopmentPlatform.Application.Interfaces
         /// Save the database schema from metadata.
         /// </summary>
         /// <param name="metadata"></param>
+        /// <paramref name=""/>
+        /// <returns></returns>
+        /// <remarks></remarks>
+        /// <exception cref=""></exception>
+        /// <seealso href=""></seealso>
         /// <returns></returns>
         void UDPSaveDatabaseSchemaFromMetadata(MetadataOwner metadata);
 
@@ -25,6 +35,11 @@ namespace UnifiedDevelopmentPlatform.Application.Interfaces
         /// Open the database schema from metadata.
         /// </summary>
         /// <param name=""></param>
+        /// <paramref name=""/>
+        /// <returns></returns>
+        /// <remarks></remarks>
+        /// <exception cref=""></exception>
+        /// <seealso href=""></seealso>
         /// <returns>The string with database schema.</returns>
         string UDPOpenDatabaseSchemaFromMetadata();
 
@@ -32,6 +47,11 @@ namespace UnifiedDevelopmentPlatform.Application.Interfaces
         /// Get the table name.
         /// </summary>
         /// <param name="text"></param>
+        /// <paramref name=""/>
+        /// <returns></returns>
+        /// <remarks></remarks>
+        /// <exception cref=""></exception>
+        /// <seealso href=""></seealso>
         /// <returns>The table name</returns>
         string UDPGetTableName(string text);
     }

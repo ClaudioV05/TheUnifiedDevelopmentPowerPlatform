@@ -1,7 +1,7 @@
 ﻿namespace UnifiedDevelopmentPlatform.Application.Interfaces
 {
     /// <summary>
-    /// Interface service Functions String.
+    /// Interface ServiceFuncString.
     /// </summary>
     public interface IServiceFuncString
     {
@@ -29,6 +29,11 @@
         /// Remove special caracter.
         /// </summary>
         /// <param name="text"></param>
+        /// <paramref name=""/>
+        /// <returns></returns>
+        /// <remarks></remarks>
+        /// <exception cref=""></exception>
+        /// <seealso href=""></seealso>
         /// <returns>The strings without special caracter.</returns>
         string UDPRemoveSpecialCaracter(string text);
 
@@ -36,6 +41,11 @@
         /// Remove all white space.
         /// </summary>
         /// <param name="text"></param>
+        /// <paramref name=""/>
+        /// <returns></returns>
+        /// <remarks></remarks>
+        /// <exception cref=""></exception>
+        /// <seealso href=""></seealso>
         /// <returns>The strings without white space.</returns>
         string UDPRemoveAllWhiteSpace(string text);
 
@@ -43,6 +53,11 @@
         /// Enconde to base64.
         /// </summary>
         /// <param name="data"></param>
+        /// <paramref name=""/>
+        /// <returns></returns>
+        /// <remarks></remarks>
+        /// <exception cref=""></exception>
+        /// <seealso href=""></seealso>
         /// <returns></returns>
         string UDPEncondeToBase64(string data);
 
@@ -50,6 +65,11 @@
         /// Decode to base64.
         /// </summary>
         /// <param name="data"></param>
+        /// <paramref name=""/>
+        /// <returns></returns>
+        /// <remarks></remarks>
+        /// <exception cref=""></exception>
+        /// <seealso href=""></seealso>
         /// <returns></returns>
         string UDPDecodeToBase64(string data);
 
@@ -57,6 +77,11 @@
         /// Remove special caracter from path.
         /// </summary>
         /// <param name="path"></param>
+        /// <paramref name=""/>
+        /// <returns></returns>
+        /// <remarks></remarks>
+        /// <exception cref=""></exception>
+        /// <seealso href=""></seealso>
         /// <returns></returns>
         string UDPRemoveSpecialCaracterFromPath(string path);
 
@@ -64,6 +89,11 @@
         /// Select section.
         /// </summary>
         /// <param name="text"></param>
+        /// <paramref name=""/>
+        /// <returns></returns>
+        /// <remarks></remarks>
+        /// <exception cref=""></exception>
+        /// <seealso href=""></seealso>
         /// <returns>Section name.</returns>
         string UDPSelectSection(string text);
 
@@ -71,6 +101,11 @@
         /// Verify if string contains only ascii letters.
         /// </summary>
         /// <param name="text"></param>
+        /// <paramref name=""/>
+        /// <returns></returns>
+        /// <remarks></remarks>
+        /// <exception cref=""></exception>
+        /// <seealso href=""></seealso>
         /// <returns>The method will return true, otherwise will return false.</returns>
         bool UDPIsOnlyAsciiLetters(string text);
 
@@ -78,6 +113,11 @@
         /// Verify if string contains only ascii letters.
         /// </summary>
         /// <param name="text"></param>
+        /// <paramref name=""/>
+        /// <returns></returns>
+        /// <remarks></remarks>
+        /// <exception cref=""></exception>
+        /// <seealso href=""></seealso>
         /// <returns>The method will return true, otherwise will return false.</returns>
         bool UDPIsOnlyAsciiLettersBySwitchCase(string text);
 
@@ -87,6 +127,11 @@
         /// To Upper.
         /// </summary>
         /// <param name="text"></param>
+        /// <paramref name=""/>
+        /// <returns></returns>
+        /// <remarks></remarks>
+        /// <exception cref=""></exception>
+        /// <seealso href=""></seealso>
         /// <returns>String to upper.</returns>
         string UDPUpper(string text);
 
@@ -94,6 +139,11 @@
         /// To Lower.
         /// </summary>
         /// <param name="text"></param>
+        /// <paramref name=""/>
+        /// <returns></returns>
+        /// <remarks></remarks>
+        /// <exception cref=""></exception>
+        /// <seealso href=""></seealso>
         /// <returns>String to lower.</returns>
         string UDPLower(string text);
 
@@ -101,6 +151,11 @@
         /// Lower in list.
         /// </summary>
         /// <param name="text"></param>
+        /// <paramref name=""/>
+        /// <returns></returns>
+        /// <remarks></remarks>
+        /// <exception cref=""></exception>
+        /// <seealso href=""></seealso>
         /// <returns></returns>
         IEnumerable<string> UDPLowerInList(string text);
 
@@ -108,6 +163,11 @@
         /// If string contains caracther null or empty.
         /// </summary>
         /// <param name="text"></param>
+        /// <paramref name=""/>
+        /// <returns></returns>
+        /// <remarks></remarks>
+        /// <exception cref=""></exception>
+        /// <seealso href=""></seealso>
         /// <returns>The method will return true, otherwise will return false.</returns>
         bool UDPNullOrEmpty(string text);
 
@@ -115,6 +175,11 @@
         /// If string contains caracther null or with white space.
         /// </summary>
         /// <param name="text"></param>
+        /// <paramref name=""/>
+        /// <returns></returns>
+        /// <remarks></remarks>
+        /// <exception cref=""></exception>
+        /// <seealso href=""></seealso>
         /// <returns>The method will return true, otherwise will return false.</returns>
         bool UDPNullOrWhiteSpace(string text);
 
@@ -122,6 +187,11 @@
         /// Removes white space from both sides of a string.
         /// </summary>
         /// <param name="text"></param>
+        /// <paramref name=""/>
+        /// <returns></returns>
+        /// <remarks></remarks>
+        /// <exception cref=""></exception>
+        /// <seealso href=""></seealso>
         /// <returns></returns>
         string UDPRemoveWhitespace(string text);
 
@@ -129,6 +199,11 @@
         /// Removes white space On the start of a string.
         /// </summary>
         /// <param name="text"></param>
+        /// <paramref name=""/>
+        /// <returns></returns>
+        /// <remarks></remarks>
+        /// <exception cref=""></exception>
+        /// <seealso href=""></seealso>
         /// <returns></returns>
         string UDPRemoveWhitespaceOnStart(string text);
 
@@ -137,6 +212,11 @@
         /// </summary>
         /// <param name="text"></param>
         /// <param name="value"></param>
+        /// <paramref name=""/>
+        /// <returns></returns>
+        /// <remarks></remarks>
+        /// <exception cref=""></exception>
+        /// <seealso href=""></seealso>
         /// <returns>The method will return true, otherwise will return false.</returns>
         bool UDPStringStarts(string text, string value);
 
@@ -145,6 +225,11 @@
         /// </summary>
         /// <param name="text"></param>
         /// <param name="value"></param>
+        /// <paramref name=""/>
+        /// <returns></returns>
+        /// <remarks></remarks>
+        /// <exception cref=""></exception>
+        /// <seealso href=""></seealso>
         /// <returns>The method will return true, otherwise will return false.</returns>
         bool UDPStringEnds(string text, string value);
 
@@ -154,6 +239,11 @@
         /// <param name="text"></param>
         /// <param name="oldValue"></param>
         /// <param name="newValue"></param>
+        /// <paramref name=""/>
+        /// <returns></returns>
+        /// <remarks></remarks>
+        /// <exception cref=""></exception>
+        /// <seealso href=""></seealso>
         /// <returns></returns>
         string UDPReplace(string text, string oldValue, string newValue);
 
@@ -162,6 +252,11 @@
         /// </summary>
         /// <param name="text"></param>
         /// <param name="value"></param>
+        /// <paramref name=""/>
+        /// <returns></returns>
+        /// <remarks></remarks>
+        /// <exception cref=""></exception>
+        /// <seealso href=""></seealso>
         /// <returns>The method will return true, otherwise will return false.</returns>
         bool UDPContains(string text, string value);
 
@@ -169,6 +264,11 @@
         /// Remove any whitespace in string.
         /// </summary>
         /// <param name="text"></param>
+        /// <paramref name=""/>
+        /// <returns></returns>
+        /// <remarks></remarks>
+        /// <exception cref=""></exception>
+        /// <seealso href=""></seealso>
         /// <returns></returns>
         string UDPRemoveAnyWhiteSpace(string text);
 
@@ -176,6 +276,11 @@
         /// To Camel Case.
         /// </summary>
         /// <param name="text"></param>
+        /// <paramref name=""/>
+        /// <returns></returns>
+        /// <remarks></remarks>
+        /// <exception cref=""></exception>
+        /// <seealso href=""></seealso>
         /// <returns></returns>
         string UDPToCamelCase(string text);
 
@@ -183,6 +288,11 @@
         /// To Pascal Case.
         /// </summary>
         /// <param name="text"></param>
+        /// <paramref name=""/>
+        /// <returns></returns>
+        /// <remarks></remarks>
+        /// <exception cref=""></exception>
+        /// <seealso href=""></seealso>
         /// <returns></returns>
         string UDPToPascalCase(string text);
 

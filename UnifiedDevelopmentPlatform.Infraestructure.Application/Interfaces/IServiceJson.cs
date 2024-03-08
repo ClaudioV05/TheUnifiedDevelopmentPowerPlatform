@@ -1,7 +1,7 @@
 ﻿namespace UnifiedDevelopmentPlatform.Application.Interfaces
 {
     /// <summary>
-    /// Interface service JavaScript Object Notation - JSON.
+    /// Interface ServiceJson.
     /// </summary>
     public interface IServiceJson
     {
@@ -9,6 +9,11 @@
         /// Serializer JSON (JavaScript Object Notation). Using System.Text.Json.
         /// </summary>
         /// <param name="obj"></param>
+        /// <paramref name=""/>
+        /// <returns></returns>
+        /// <remarks></remarks>
+        /// <exception cref=""></exception>
+        /// <seealso href=""></seealso>
         /// <returns></returns>
         string UDPSerializerJson(object obj);
     }

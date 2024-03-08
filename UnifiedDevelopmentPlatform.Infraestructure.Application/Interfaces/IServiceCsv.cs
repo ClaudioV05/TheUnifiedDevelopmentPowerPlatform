@@ -1,7 +1,7 @@
 ﻿namespace UnifiedDevelopmentPlatform.Application.Interfaces
 {
     /// <summary>
-    /// Interface service Comma-separated values Csv.
+    /// Interface ServiceCsv.
     /// </summary>
     public interface IServiceCsv
     {

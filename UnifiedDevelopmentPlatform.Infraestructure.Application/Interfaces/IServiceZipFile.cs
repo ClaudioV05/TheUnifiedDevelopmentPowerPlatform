@@ -1,7 +1,7 @@
 ﻿namespace UnifiedDevelopmentPlatform.Application.Interfaces
 {
     /// <summary>
-    /// Interface service Zip File.
+    /// Interface ServiceZipFile.
     /// </summary>
     public interface IServiceZipFile
     {

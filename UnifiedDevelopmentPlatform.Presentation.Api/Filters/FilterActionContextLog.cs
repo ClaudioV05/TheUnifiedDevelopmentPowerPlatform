@@ -20,6 +20,13 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Filters
             _serviceDate = serviceDate;
         }
 
+        /// <summary>
+        /// On Action Execution Async.
+        /// </summary>
+        /// <param name="context"></param>
+        /// <param name="next"></param>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
         public async Task OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next)
         {
             _serviceLog.UDPLogInformation("### -> OnActionExecuted");

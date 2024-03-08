@@ -9,23 +9,30 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Filters
     internal sealed class FilterActionContextControllerInformation : IAsyncActionFilter
     {
         private readonly IServiceValidation _serviceValidation;
-        private readonly IServiceFuncString _serviceFuncStrings;
+        private readonly IServiceFuncString _serviceFuncString;
 
         /// <summary>
         /// Filter action context controller information.
         /// </summary>
         /// <param name="serviceValidation"></param>
-        /// <param name="serviceFuncStrings"></param>
+        /// <param name="serviceFuncString"></param>
         public FilterActionContextControllerInformation(IServiceValidation serviceValidation, 
-                                                        IServiceFuncString serviceFuncStrings)
+                                                        IServiceFuncString serviceFuncString)
         {
             _serviceValidation = serviceValidation;
-            _serviceFuncStrings = serviceFuncStrings;
+            _serviceFuncString = serviceFuncString;
         }
 
+        /// <summary>
+        /// On Action Execution Async.
+        /// </summary>
+        /// <param name="context"></param>
+        /// <param name="next"></param>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
         public async Task OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next)
         {
-            string message = _serviceFuncStrings.Empty;
+            string message = _serviceFuncString.Empty;
 
             try
             {
@@ -37,12 +44,17 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Filters
             }
             catch (Exception)
             {
-                throw new Exception(_serviceFuncStrings.UDPUpper(MessageText.TheGlobalErrorMessage));
+                throw new Exception(_serviceFuncString.UDPUpper(MessageText.TheGlobalErrorMessage));
             }
 
             await next();
         }
 
+        /// <summary>
+        /// Has Message.
+        /// </summary>
+        /// <param name="context"></param>
+        /// <param name="message"></param>
         private static void HasMessage(ActionExecutingContext context, string message)
         {
             context.Result = new BadRequestObjectResult(new ErrorDetails() { StatusCode = 1, Message = message });

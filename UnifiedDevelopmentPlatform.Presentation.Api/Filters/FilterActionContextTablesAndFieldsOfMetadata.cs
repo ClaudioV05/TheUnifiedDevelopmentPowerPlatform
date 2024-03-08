@@ -39,6 +39,13 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Filters
             _serviceFuncString = serviceFuncString;
         }
 
+        /// <summary>
+        /// On Action Execution Async.
+        /// </summary>
+        /// <param name="context"></param>
+        /// <param name="next"></param>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
         public async Task OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next)
         {
             string message = string.Empty;
@@ -129,6 +136,11 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Filters
             }
         }
 
+        /// <summary>
+        /// Has Message.
+        /// </summary>
+        /// <param name="context"></param>
+        /// <param name="message"></param>
         private static void HasMessage(ActionExecutingContext context, string message)
         {
             context.Result = new BadRequestObjectResult(new ErrorDetails() { StatusCode = 1, Message = message });

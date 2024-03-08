@@ -3,13 +3,19 @@
 namespace UnifiedDevelopmentPlatform.Application.Interfaces
 {
     /// <summary>
-    /// Interface service databases.
+    /// Interface ServiceDatabases.
     /// </summary>
     public interface IServiceDatabases
     {
         /// <summary>
-        /// Select parameters the kinds of databases.
+        /// Select parameters the kinds of the databases.
         /// </summary>
+        /// <param name=""></param>
+        /// <paramref name=""/>
+        /// <returns></returns>
+        /// <remarks></remarks>
+        /// <exception cref=""></exception>
+        /// <seealso href=""></seealso>
         /// <returns>Return the complete list of databases.</returns>
         List<Databases> UDPSelectParametersTheKindsOfDatabases();
 
@@ -17,6 +23,11 @@ namespace UnifiedDevelopmentPlatform.Application.Interfaces
         /// Save identifier to the databases from metadata.
         /// </summary>
         /// <param name="metadata"></param>
+        /// <paramref name=""/>
+        /// <returns></returns>
+        /// <remarks></remarks>
+        /// <exception cref=""></exception>
+        /// <seealso href=""></seealso>
         void UDPSaveIdentifierToTheDatabasesFromMetadata(MetadataOwner metadata);
     }
 }
