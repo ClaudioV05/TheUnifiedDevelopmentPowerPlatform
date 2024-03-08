@@ -136,7 +136,7 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Controllers
         [Produces(MediaTypeNames.Application.Json, MediaTypeNames.Application.Xml)]
         [Route(ControllerRouterUnifiedDevelopmentPlatform.RouterMetadataAllFieldsName)]
         [ServiceFilter(typeof(FilterActionContextLog), IsReusable = false, Order = ControllerOrderExecutationFilter.Second)]
-        [ServiceFilter(typeof(FilterActionContextFields<MetadataOwner>), IsReusable = false, Order = ControllerOrderExecutationFilter.Third)]
+        [ServiceFilter(typeof(FilterActionStopWatch<MetadataOwner>), IsReusable = false, Order = ControllerOrderExecutationFilter.Third)]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(MetadataOwner))]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]

@@ -61,14 +61,13 @@ builder.Services.AddMvc().AddMvcOptions(options => options.OutputFormatters.Add(
 builder.Services.TryAddTransient<FilterActionContextController>();
 builder.Services.TryAddTransient<FilterActionContextControllerInformation>();
 builder.Services.TryAddTransient<FilterActionContextLog>();
-builder.Services.TryAddTransient<FilterActionContextFields<MetadataOwner>>();
+builder.Services.TryAddTransient<FilterActionStopWatch<MetadataOwner>>();
 builder.Services.TryAddTransient<FilterActionContextTablesAndFieldsOfMetadata<MetadataOwner>>();
 #endregion Action Filters.
 
 #region Dependency Injection.
 
 #region Services.
-builder.Services.TryAddScoped<IServiceAppSettings, ServiceAppSettings>();
 builder.Services.TryAddScoped<IServiceArchitecturePatterns, ServiceArchitecturePatterns>();
 builder.Services.TryAddScoped<IServiceCrypto, ServiceCrypto>();
 builder.Services.TryAddScoped<IServiceCsv, ServiceCsv>();

@@ -7,7 +7,7 @@ using UnifiedDevelopmentPlatform.Presentation.Api.Models;
 
 namespace UnifiedDevelopmentPlatform.Presentation.Api.Filters
 {
-    internal sealed class FilterActionContextFields<T> : IAsyncActionFilter where T : class, IEntity
+    internal sealed class FilterActionStopWatch<T> : IAsyncActionFilter where T : class, IEntity
     {
         private readonly IServiceLog _serviceLog;
         private readonly IServiceMessage _serviceMessage;
@@ -15,13 +15,13 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Filters
         private readonly IServiceFuncString _serviceFuncString;
 
         /// <summary>
-        /// Filter action context fields.
+        /// Filter action stop Watch.
         /// </summary>
         /// <param name="serviceLog"></param>
         /// <param name="serviceMessage"></param>
         /// <param name="serviceValidation"></param>
         /// <param name="serviceFuncString"></param>
-        public FilterActionContextFields(IServiceLog serviceLog,
+        public FilterActionStopWatch(IServiceLog serviceLog,
                                          IServiceMessage serviceMessage,
                                          IServiceValidation serviceValidation,
                                          IServiceFuncString serviceFuncString)
