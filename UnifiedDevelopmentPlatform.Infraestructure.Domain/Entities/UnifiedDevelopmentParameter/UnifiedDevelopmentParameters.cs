@@ -51,6 +51,8 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.UnifiedDeve
 
                    "05. New version Unified development platform in 12.10.2023";
 
+        public List<string>? Authors { get; set; }
+
         /// <summary>
         /// Build platform version.
         /// </summary>

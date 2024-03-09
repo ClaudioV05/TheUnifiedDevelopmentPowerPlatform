@@ -199,7 +199,8 @@ namespace UnifiedDevelopmentPlatform.Application.Services
 
             UnifiedDevelopmentParameters unifiedDevelopmentParameters = new UnifiedDevelopmentParameters()
             {
-                BuildPlatformVersion = _servicePlataform.UPDGetOperationalSystemVersion()
+                BuildPlatformVersion = _servicePlataform.UPDGetOperationalSystemVersion(),
+                Authors = new List<string>() { "Jesus Cristo", "Claudio Fernandes Rodrigues Ventura", "Claudiomildo Ventura" }
             };
 
             _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.SuccessToTheSelectParametersTheKindsOfUnifiedDevelopmentPlatform), _serviceFuncString.Empty);
