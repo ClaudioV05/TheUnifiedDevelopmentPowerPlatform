@@ -158,8 +158,6 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             return true;
         }
 
-        #region For Treatment of Strings.
-
         public string UDPUpper(string text)
         {
             string value = this.Empty;
@@ -221,7 +219,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             return text.Trim();
         }
 
-        public string UDPRemoveWhitespaceOnStart(string text)
+        public string UDPRemoveWhitespaceAtStart(string text)
         {
             return text.Trim();
         }
@@ -272,6 +270,10 @@ namespace UnifiedDevelopmentPlatform.Application.Services
                                  return $"{Char.ToUpper(word[0])}{word.Substring(1)}";
                              }));
         }
-        #endregion For Treatment of Strings.
+
+        public string[]? UDPStringSplitWithOptionsNone(string[] separator, string text)
+        {
+            return text.Split(separator, StringSplitOptions.None);
+        }
     }
 }

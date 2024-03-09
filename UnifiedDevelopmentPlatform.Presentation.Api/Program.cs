@@ -61,7 +61,6 @@ builder.Services.AddMvc().AddMvcOptions(options => options.OutputFormatters.Add(
 builder.Services.TryAddTransient<FilterActionContextController>();
 builder.Services.TryAddTransient<FilterActionContextControllerInformation>();
 builder.Services.TryAddTransient<FilterActionContextLog>();
-builder.Services.TryAddTransient<FilterActionStopWatch<MetadataOwner>>();
 builder.Services.TryAddTransient<FilterActionContextTablesAndFieldsOfMetadata<MetadataOwner>>();
 #endregion Action Filters.
 

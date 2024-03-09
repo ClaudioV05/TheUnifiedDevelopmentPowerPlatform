@@ -1,19 +1,19 @@
 ﻿using UnifiedDevelopmentPlatform.Application.Interfaces;
 using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities;
-using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Sql;
 using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.MetaCharacter;
+using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Sql;
 
 namespace UnifiedDevelopmentPlatform.Application.Services
 {
     /// <summary>
-    /// Service Metadata Fields.
+    /// ServiceMetadataField.
     /// </summary>
     public class ServiceMetadataField : IServiceMetadataField
     {
         private readonly IServiceFuncString _serviceFuncString;
 
         /// <summary>
-        /// The constructor of Service Metadata Fields.
+        /// The constructor of ServiceMetadataField.
         /// </summary>
         /// <param name="serviceFuncString"></param>
         public ServiceMetadataField(IServiceFuncString serviceFuncString)
@@ -21,7 +21,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             _serviceFuncString = serviceFuncString;
         }
 
-        public string UDPGetFieldName(string text)
+        public string UDPGetTheFieldName(string text)
         {
             int firstPositionWithSpace = 0;
             string field = _serviceFuncString.Empty;
@@ -33,7 +33,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             return _serviceFuncString.UDPUpper(_serviceFuncString.UDPRemoveAnyWhiteSpace(field));
         }
 
-        public string UDPGetTypeFieldName(string text)
+        public string UDPGetTheTypeOfFieldName(string text)
         {
             int firstPositionWithSpace = 0;
             string typeField = _serviceFuncString.Empty;
@@ -49,14 +49,54 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             return _serviceFuncString.UDPUpper(_serviceFuncString.UDPRemoveAnyWhiteSpace(typeField));
         }
 
-        public bool UDPFieldIsNotNull(string text)
+        public string UDPGetThePrimaryKeyFieldName(string text)
+        {
+            string field = _serviceFuncString.Empty;
+
+            field = _serviceFuncString.UDPReplace(text, SqlConfiguration.KeyPrimaryKey, _serviceFuncString.Empty);
+            field = _serviceFuncString.UDPReplace(field, MetaCharacterSymbols.LeftParenthese, _serviceFuncString.Empty);
+            field = _serviceFuncString.UDPReplace(field, MetaCharacterSymbols.RightParenthese, _serviceFuncString.Empty);
+            field = _serviceFuncString.UDPReplace(field, MetaCharacterSymbols.SingleQuote, _serviceFuncString.Empty);
+            field = _serviceFuncString.UDPReplace(field, MetaCharacterSymbols.DoubleQuote, _serviceFuncString.Empty);
+            field = _serviceFuncString.UDPRemoveAnyWhiteSpace(field);
+            return _serviceFuncString.UDPUpper(field);
+        }
+
+        public bool UDPTheFieldIsNotNull(string text)
         {
             return _serviceFuncString.UDPContains(text, SqlConfiguration.KeyNotNullValue);
         }
 
-        public List<string> UDPMetadataTableAndAllFields(MetadataOwner? metadata)
+        public void UDPLoadTheFieldAtTable(ref List<Tables> listTables, int idTable, string text)
         {
-            throw new NotImplementedException();
+            listTables.Where(element => element.Id.Equals(idTable)).First().Fields.Add(new Fields()
+            {
+                IdTables = idTable,
+                Name = this.UDPGetTheFieldName(text),
+                IsNull = this.UDPTheFieldIsNotNull(text),
+                IsPrimaryKey = false,
+                TypeField = this.UDPGetTheTypeOfFieldName(text)
+            });
+        }
+
+        public void UDPLoadTheFieldsPrimarykeyAtTable(ref List<Tables> listTables, int idTable, string[]? listOfFieldsPrimaryKey)
+        {
+            if (listTables is not null && listTables.Any(element => element.Id.Equals(idTable)))
+            {
+                if (listOfFieldsPrimaryKey is not null && listOfFieldsPrimaryKey.Any())
+                {
+                    for (int i = 0; i < listTables.Where(element => element.Id.Equals(idTable)).First().Fields.Count; i++)
+                    {
+                        for (int j = 0; j < listOfFieldsPrimaryKey.Length; j++)
+                        {
+                            if (listTables.Where(element => element.Id.Equals(idTable)).First().Fields.Where(element => element.Name.Contains(listOfFieldsPrimaryKey[j])).Any())
+                            {
+                                listTables.Where(element => element.Id.Equals(idTable)).First().Fields.Where(element => element.Name.Contains(listOfFieldsPrimaryKey[j])).FirstOrDefault().IsPrimaryKey = true;
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }

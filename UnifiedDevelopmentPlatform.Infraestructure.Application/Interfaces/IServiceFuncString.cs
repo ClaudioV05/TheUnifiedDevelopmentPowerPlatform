@@ -121,8 +121,6 @@
         /// <returns>The method will return true, otherwise will return false.</returns>
         bool UDPIsOnlyAsciiLettersBySwitchCase(string text);
 
-        #region For Treatment of Strings.
-
         /// <summary>
         /// To Upper.
         /// </summary>
@@ -196,7 +194,7 @@
         string UDPRemoveWhitespace(string text);
 
         /// <summary>
-        /// Removes white space On the start of a string.
+        /// Removes white space at the start of a string.
         /// </summary>
         /// <param name="text"></param>
         /// <paramref name=""/>
@@ -205,7 +203,7 @@
         /// <exception cref=""></exception>
         /// <seealso href=""></seealso>
         /// <returns></returns>
-        string UDPRemoveWhitespaceOnStart(string text);
+        string UDPRemoveWhitespaceAtStart(string text);
 
         /// <summary>
         /// If string starts with the value specified.
@@ -296,6 +294,17 @@
         /// <returns></returns>
         string UDPToPascalCase(string text);
 
-        #endregion For Treatment of Strings.
+        /// <summary>
+        /// To string split with options none.
+        /// </summary>
+        /// <param name="separator"></param>
+        /// <param name="text"></param>
+        /// <paramref name=""/>
+        /// <returns></returns>
+        /// <remarks></remarks>
+        /// <exception cref=""></exception>
+        /// <seealso href=""></seealso>
+        /// <returns>The array of string</returns>
+        string[]? UDPStringSplitWithOptionsNone(string[] separator, string text);
     }
 }

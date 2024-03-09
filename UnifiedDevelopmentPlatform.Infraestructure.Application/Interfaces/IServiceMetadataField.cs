@@ -8,18 +8,6 @@ namespace UnifiedDevelopmentPlatform.Application.Interfaces
     public interface IServiceMetadataField
     {
         /// <summary>
-        /// Return all tables name and all fields.
-        /// </summary>
-        /// <param name="metadata"></param>
-        /// <paramref name=""/>
-        /// <returns></returns>
-        /// <remarks></remarks>
-        /// <exception cref=""></exception>
-        /// <seealso href=""></seealso>
-        /// <returns>List with names and fields of table.</returns>
-        List<string> UDPMetadataTableAndAllFields(MetadataOwner? metadata);
-
-        /// <summary>
         /// Get the field name.
         /// </summary>
         /// <param name="text"></param>
@@ -29,7 +17,7 @@ namespace UnifiedDevelopmentPlatform.Application.Interfaces
         /// <exception cref=""></exception>
         /// <seealso href=""></seealso>
         /// <returns>The field name</returns>
-        string UDPGetFieldName(string text);
+        string UDPGetTheFieldName(string text);
 
         /// <summary>
         /// Get the type of field name.
@@ -41,10 +29,22 @@ namespace UnifiedDevelopmentPlatform.Application.Interfaces
         /// <exception cref=""></exception>
         /// <seealso href=""></seealso>
         /// <returns>The type of field name</returns>
-        string UDPGetTypeFieldName(string text);
+        string UDPGetTheTypeOfFieldName(string text);
 
         /// <summary>
-        /// Identify whether the field is null.
+        /// Get the primary key field name.
+        /// </summary>
+        /// <param name="text"></param>
+        /// <paramref name=""/>
+        /// <returns></returns>
+        /// <remarks></remarks>
+        /// <exception cref=""></exception>
+        /// <seealso href=""></seealso>
+        /// <returns>The primary key of field name</returns>
+        string UDPGetThePrimaryKeyFieldName(string text);
+
+        /// <summary>
+        /// Identify whether the field is not null.
         /// </summary>
         /// <param name="text"></param>
         /// <paramref name=""/>
@@ -53,6 +53,34 @@ namespace UnifiedDevelopmentPlatform.Application.Interfaces
         /// <exception cref=""></exception>
         /// <seealso href=""></seealso>
         /// <returns>The method will return true, otherwise will return false.</returns>
-        bool UDPFieldIsNotNull(string text);
+        bool UDPTheFieldIsNotNull(string text);
+
+        /// <summary>
+        /// Load the field at the table.
+        /// </summary>
+        /// <param name="listTables"></param>
+        /// <param name="idTable"></param>
+        /// <param name="text"></param>
+        /// <paramref name=""/>
+        /// <returns></returns>
+        /// <remarks></remarks>
+        /// <exception cref=""></exception>
+        /// <seealso href=""></seealso>
+        /// <returns></returns>
+        void UDPLoadTheFieldAtTable(ref List<Tables> listTables, int idTable, string text);
+
+        /// <summary>
+        /// Load the fields primary key at the table.
+        /// </summary>
+        /// <param name="listTables"></param>
+        /// <param name="idTable"></param>
+        /// <param name="listOfFieldsPrimaryKey"></param>
+        /// <paramref name=""/>
+        /// <returns></returns>
+        /// <remarks></remarks>
+        /// <exception cref=""></exception>
+        /// <seealso href=""></seealso>
+        /// <returns></returns>
+        void UDPLoadTheFieldsPrimarykeyAtTable(ref List<Tables> listTables, int idTable, string[]? listOfFieldsPrimaryKey);
     }
 }

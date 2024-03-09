@@ -9,7 +9,7 @@ using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.MetaCharacter;
 namespace UnifiedDevelopmentPlatform.Application.Services
 {
     /// <summary>
-    /// Service metadata tables.
+    /// Service Metadata Tables.
     /// </summary>
     public class ServiceMetadataTable : IServiceMetadataTable
     {
@@ -19,7 +19,6 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         private readonly IServiceCrypto _serviceCrypto;
         private readonly IServiceMessage _serviceMessage;
         private readonly IServiceDirectory _serviceDirectory;
-        private readonly IServiceValidation _serviceValidation;
         private readonly IServiceFuncString _serviceFuncString;
 
         /// <summary>
@@ -31,7 +30,6 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         /// <param name="serviceCrypto"></param>
         /// <param name="serviceMessage"></param>
         /// <param name="serviceDirectory"></param>
-        /// <param name="serviceValidation"></param>
         /// <param name="serviceFuncString"></param>
         public ServiceMetadataTable(IServiceLog serviceLog,
                                     IServiceFile serviceFile,
@@ -39,7 +37,6 @@ namespace UnifiedDevelopmentPlatform.Application.Services
                                     IServiceCrypto serviceCrypto,
                                     IServiceMessage serviceMessage,
                                     IServiceDirectory serviceDirectory,
-                                    IServiceValidation serviceValidation,
                                     IServiceFuncString serviceFuncString)
         {
             _serviceLog = serviceLog;
@@ -48,7 +45,6 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             _serviceCrypto = serviceCrypto;
             _serviceMessage = serviceMessage;
             _serviceDirectory = serviceDirectory;
-            _serviceValidation = serviceValidation;
             _serviceFuncString = serviceFuncString;
         }
 
@@ -120,6 +116,15 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             tableName = _serviceFuncString.UDPReplace(tableName, MetaCharacterSymbols.LeftParenthese, _serviceFuncString.Empty);
             tableName = _serviceFuncString.UDPRemoveSpecialCaracter(tableName);
             return _serviceFuncString.UDPUpper(_serviceFuncString.UDPRemoveWhitespace(tableName));
+        }
+
+        public void UDPLoadTheTable(ref List<Tables> listTables, int idTable, string text)
+        {
+            listTables.Add(new Tables()
+            {
+                Id = idTable,
+                Name = text
+            });
         }
 
         #region Private Methods.

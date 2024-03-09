@@ -54,5 +54,19 @@ namespace UnifiedDevelopmentPlatform.Application.Interfaces
         /// <seealso href=""></seealso>
         /// <returns>The table name</returns>
         string UDPGetTableName(string text);
+
+        /// <summary>
+        /// Load the table.
+        /// </summary>
+        /// <param name="listTables"></param>
+        /// <param name="idTable"></param>
+        /// <param name="text"></param>
+        /// <paramref name=""/>
+        /// <returns></returns>
+        /// <remarks></remarks>
+        /// <exception cref=""></exception>
+        /// <seealso href=""></seealso>
+        /// <returns></returns>
+        void UDPLoadTheTable(ref List<Tables> listTables, int idTable, string text);
     }
 }

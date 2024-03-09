@@ -82,7 +82,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         {
             dynamic? obj = null;
             context.ActionArguments.TryGetValue(ControllerFilterActionName.Metadata, out obj);
-            message = obj?.IdDatabases <= 0 || obj?.IdDatabases == 1 || obj?.IdDatabases == 4 ? _serviceMessage.UDPMensagem(MessageType.TheDatabasesIsOk) : _serviceFuncString.Empty;
+            message = obj?.IdDatabases <= 0 || obj?.IdDatabases == 1 || obj?.IdDatabases == 4 ? _serviceMessage.UDPMensagem(MessageType.TheDatabasesImplementedIsntOk) : _serviceFuncString.Empty;
             return _serviceFuncString.UDPNullOrEmpty(message);
         }
 
