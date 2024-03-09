@@ -97,7 +97,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
                     {
                         foreach (string result in results)
                         {
-                            if (_serviceFuncString.UDPContains(result, SqlConfiguration.CreateTableWithSpace) || _serviceFuncString.UDPContains(result, SqlConfiguration.KeyPrimaryKey) || _serviceFuncString.UDPStringEnds(result, MetaCharacterSymbols.Comma))
+                            if (_serviceFuncString.UDPContains(result, SqlConfiguration.CreateTableWithSpace) || _serviceFuncString.UDPContains(result, SqlConfiguration.PrimaryKey) || _serviceFuncString.UDPStringEnds(result, MetaCharacterSymbols.Comma))
                             {
                                 listDatabaseSchemas.Add(_serviceFuncString.UDPRemoveWhitespaceAtStart(_serviceFuncString.UDPLower(result)));
                             }
@@ -132,7 +132,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
                                         _serviceMetadataField.UDPLoadTheFieldAtTable(ref listTables, idTable, listDatabaseSchemas[counter]);
                                     }
                                 }
-                                else if (_serviceFuncString.UDPContains(listDatabaseSchemas[counter], SqlConfiguration.KeyPrimaryKey))
+                                else if (_serviceFuncString.UDPContains(listDatabaseSchemas[counter], SqlConfiguration.PrimaryKey))
                                 {
                                     fieldsPrimaryKey = _serviceFuncString.Empty;
                                     fieldsPrimaryKey = _serviceMetadataField.UDPGetThePrimaryKeyFieldName(listDatabaseSchemas[counter]);
@@ -157,6 +157,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             }
 
             _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.SuccessAtTheReceiveAndSaveAllTableAndFieldsOfSchemaDatabase), _serviceFuncString.Empty);
+
             return listTables;
         }
 

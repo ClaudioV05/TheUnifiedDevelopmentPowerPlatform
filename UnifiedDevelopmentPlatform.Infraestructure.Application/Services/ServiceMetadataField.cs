@@ -35,7 +35,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
 
         public string UDPGetTheTypeOfFieldName(string text)
         {
-            int firstPositionWithSpace = 0;
+            int positionWithSpace = 0;
             string typeField = _serviceFuncString.Empty;
 
             typeField = _serviceFuncString.UDPLower(text);
@@ -43,17 +43,26 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             typeField = _serviceFuncString.UDPReplace(typeField, SqlConfiguration.KeyNot, _serviceFuncString.Empty);
             typeField = _serviceFuncString.UDPReplace(typeField, SqlConfiguration.KeyNullValue, _serviceFuncString.Empty);
             typeField = _serviceFuncString.UDPReplace(typeField, SqlConfiguration.KeyNotNullValue, _serviceFuncString.Empty);
-            firstPositionWithSpace = typeField.IndexOf(MetaCharacterSymbols.HorizontalTab);
-            typeField = typeField.Substring(firstPositionWithSpace, System.Math.Abs(firstPositionWithSpace - typeField.Length));
+            positionWithSpace = typeField.IndexOf(MetaCharacterSymbols.HorizontalTab);
+            typeField = typeField.Substring(positionWithSpace, System.Math.Abs(positionWithSpace - typeField.Length));
             typeField = _serviceFuncString.UDPRemoveSpecialCaracter(typeField);
             return _serviceFuncString.UDPUpper(_serviceFuncString.UDPRemoveAnyWhiteSpace(typeField));
         }
 
         public string UDPGetThePrimaryKeyFieldName(string text)
         {
+            int positionPrimaryKey = 0;
             string field = _serviceFuncString.Empty;
 
-            field = _serviceFuncString.UDPReplace(text, SqlConfiguration.KeyPrimaryKey, _serviceFuncString.Empty);
+            field = text;
+            positionPrimaryKey = field.IndexOf(SqlConfiguration.PrimaryKey);
+
+            if (positionPrimaryKey > 0)
+            {
+                field = field.Substring(positionPrimaryKey, System.Math.Abs(positionPrimaryKey - text.Length));
+            }
+
+            field = _serviceFuncString.UDPReplace(field, SqlConfiguration.PrimaryKey, _serviceFuncString.Empty);
             field = _serviceFuncString.UDPReplace(field, MetaCharacterSymbols.LeftParenthese, _serviceFuncString.Empty);
             field = _serviceFuncString.UDPReplace(field, MetaCharacterSymbols.RightParenthese, _serviceFuncString.Empty);
             field = _serviceFuncString.UDPReplace(field, MetaCharacterSymbols.SingleQuote, _serviceFuncString.Empty);

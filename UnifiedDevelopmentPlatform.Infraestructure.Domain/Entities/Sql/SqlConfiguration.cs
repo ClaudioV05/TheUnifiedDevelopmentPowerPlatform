@@ -28,7 +28,7 @@
         /// <summary>
         /// Key primary key.
         /// </summary>
-        public static string KeyPrimaryKey => "primary key";
+        public static string PrimaryKey => "primary key";
 
         /// <summary>
         /// Key not.
