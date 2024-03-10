@@ -6,6 +6,6 @@
 
 <p dir="auto"><a></a></p>
   
-[![My Skills](https://skillicons.dev/icons?i=dotnet,cs,angular,react,git,github,md,html,css,js,jquery,ts,nodejs)](https://skillicons.dev)
+[![My Skills](https://skillicons.dev/icons?i=dotnet,cs,git,github,md)](https://skillicons.dev)
 
 </article>
