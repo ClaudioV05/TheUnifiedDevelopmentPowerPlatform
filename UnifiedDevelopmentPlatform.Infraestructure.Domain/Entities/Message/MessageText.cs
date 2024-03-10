@@ -135,9 +135,23 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Message
         /// <summary>
         /// Success to the save database schema from metadata.
         /// </summary>
-        public static string SuccessToTheSaveDatabaseSchemaFromMetadata => "SUCCESS TO THE SAVE DATABASE SCHEMA FROM METADATA..";
+        public static string SuccessToTheSaveDatabaseSchemaFromMetadata => "SUCCESS TO THE SAVE DATABASE SCHEMA FROM METADATA.";
 
         #endregion Service Metadata Tables.
+
+        #region Service Metadata Fields.
+
+        /// <summary>
+        /// Call start to the load the fields primary key at the table.
+        /// </summary>
+        public static string CallStartToTheLoadTheFieldsPrimarykeyAtTable => "CALL START TO THE LOAD THE FIELDS PRIMARY KEY AT THE TABLE.";
+
+        /// <summary>
+        /// Success to the load the fields primary key at the table.
+        /// </summary>
+        public static string SuccessToTheLoadTheFieldsPrimarykeyAtTable => "SUCCESS TO THE LOAD THE FIELDS PRIMARY KEY AT THE TABLE.";
+
+        #endregion Service Metadata Fields.
 
         #region Service Metadata.
 

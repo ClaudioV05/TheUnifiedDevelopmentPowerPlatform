@@ -44,6 +44,8 @@ namespace UnifiedDevelopmentPlatform.Application.Services
                 MessageType.DirectoryRootIsEmpty => MessageText.DirectoryRootIsEmpty,
                 MessageType.CallStartToTheSaveDatabaseSchemaFromMetadata => MessageText.CallStartToTheSaveDatabaseSchemaFromMetadata,
                 MessageType.SuccessToTheSaveDatabaseSchemaFromMetadata => MessageText.SuccessToTheSaveDatabaseSchemaFromMetadata,
+                MessageType.CallStartToTheLoadTheFieldsPrimarykeyAtTable => MessageText.CallStartToTheLoadTheFieldsPrimarykeyAtTable,
+                MessageType.SuccessToTheLoadTheFieldsPrimarykeyAtTable => MessageText.SuccessToTheLoadTheFieldsPrimarykeyAtTable,
                 MessageType.TheArchitecturePatternsIsOk => MessageText.TheArchitecturePatternsIsOk,
                 MessageType.SuccessAtTheReceiveAndSaveAllTableAndFieldsOfSchemaDatabase => MessageText.SuccessAtTheReceiveAndSaveAllTableAndFieldsOfSchemaDatabase,
                 MessageType.CallStartReceiveAndSaveAllTableAndFieldsOfSchemaDatabase => MessageText.CallStartReceiveAndSaveAllTableAndFieldsOfSchemaDatabase,

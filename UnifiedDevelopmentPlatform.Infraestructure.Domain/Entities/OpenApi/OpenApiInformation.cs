@@ -9,22 +9,22 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.OpenApi
     public static class OpenApiInformation
     {
         /// <summary>
-        /// Version.
+        /// The version.
         /// </summary>
         public static string Version => "v1";
 
         /// <summary>
-        /// Title.
+        /// The title.
         /// </summary>
         public static string Title => "UNIFIED DEVELOPMENT PLATFORM";
 
         /// <summary>
-        /// Description.
+        /// The description.
         /// </summary>
-        public static string Description => "Generator of Class to C#";
+        public static string Description => "Generator of Solution to C#";
 
         /// <summary>
-        /// Terms of service.
+        /// The terms of service.
         /// </summary>
         public static string TermsOfService => "https://claudiomildo.net/terms";
     }

@@ -88,7 +88,7 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Message
 
         #endregion Service directory.
 
-        #region Service metadataTables.
+        #region Service Metadata Tables.
 
         [Description("Call start to the save database schema from metadata")]
         CallStartToTheSaveDatabaseSchemaFromMetadata = 23,
@@ -96,141 +96,151 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Message
         [Description("Success to the save database schema from metadata")]
         SuccessToTheSaveDatabaseSchemaFromMetadata = 24,
 
-        #endregion Service metadataTables.
+        #endregion Service Metadata Tables.
+
+        #region Service Metadata Fields.
+
+        [Description("Call start to the load the fields primary key at the table")]
+        CallStartToTheLoadTheFieldsPrimarykeyAtTable = 25,
+
+        [Description("Success to the load the fields primary key at the table")]
+        SuccessToTheLoadTheFieldsPrimarykeyAtTable = 26,
+
+        #endregion Service Metadata Fields.
 
         #region Service Metadata.
 
         [Description("Success at the receive and save all table and fields of schema database")]
-        SuccessAtTheReceiveAndSaveAllTableAndFieldsOfSchemaDatabase = 25,
+        SuccessAtTheReceiveAndSaveAllTableAndFieldsOfSchemaDatabase = 27,
 
         [Description("Call start receive and save all table and fields of schema database")]
-        CallStartReceiveAndSaveAllTableAndFieldsOfSchemaDatabase = 26,
+        CallStartReceiveAndSaveAllTableAndFieldsOfSchemaDatabase = 28,
 
         [Description("Load all of the table and fields of schema database")]
-        LoadAllOfTheTableAndFieldsOfSchemaDatabase = 27,
+        LoadAllOfTheTableAndFieldsOfSchemaDatabase = 29,
 
         [Description("Decrypt ok of the receive and save all table and fields of schema database")]
-        DecryptOkOfTheReceiveAndSaveAllTableAndFieldsOfSchemaDatabase = 28,
+        DecryptOkOfTheReceiveAndSaveAllTableAndFieldsOfSchemaDatabase = 30,
 
         [Description("Call start to the select parameters the kinds of unifiedDevelopment platform")]
-        CallStartToTheSelectParametersTheKindsOfUnifiedDevelopmentPlatform = 29,
+        CallStartToTheSelectParametersTheKindsOfUnifiedDevelopmentPlatform = 31,
 
         [Description("Success to the select parameters the kinds of unifiedDevelopment platform")]
-        SuccessToTheSelectParametersTheKindsOfUnifiedDevelopmentPlatform = 30,
+        SuccessToTheSelectParametersTheKindsOfUnifiedDevelopmentPlatform = 32,
 
         #endregion Service Metadata.
 
         #region Service Crypto.
 
         [Description("Call start to the encrypt")]
-        CallStartToTheEncrypt = 31,
+        CallStartToTheEncrypt = 33,
 
         [Description("Success to the encrypt")]
-        SuccessToTheEncrypt = 32,
+        SuccessToTheEncrypt = 34,
 
         [Description("Error to the encrypt")]
-        ErrorToTheEncrypt = 33,
+        ErrorToTheEncrypt = 35,
 
         [Description("Call start to the decrypt")]
-        CallStartToTheDecrypt = 34,
+        CallStartToTheDecrypt = 36,
 
         [Description("Success to the decrypt")]
-        SuccessToTheDecrypt = 35,
+        SuccessToTheDecrypt = 37,
 
         [Description("Error to the decrypt")]
-        ErrorToTheDecrypt = 36,
+        ErrorToTheDecrypt = 38,
 
         [Description("Call start to the decode base 64")]
-        CallStartToTheDecodeBase64 = 37,
+        CallStartToTheDecodeBase64 = 39,
 
         [Description("Success to the decode base 64")]
-        SuccessToTheDecodeBase64 = 38,
+        SuccessToTheDecodeBase64 = 40,
 
         [Description("Error to the decode base 64")]
-        ErrorToTheDecodeBase64 = 39,
+        ErrorToTheDecodeBase64 = 41,
 
         #endregion Service Crypto.
 
         #region Service Form.
 
         [Description("Call start to the Select parameters the kinds of forms")]
-        CallStartToTheSelectParametersTheKindsOfForms = 40,
+        CallStartToTheSelectParametersTheKindsOfForms = 42,
 
         [Description("Success to the select parameters the kinds of forms")]
-        SuccessToTheSelectParametersTheKindsOfForms = 41,
+        SuccessToTheSelectParametersTheKindsOfForms = 43,
 
         [Description("Call start to the save identifier to the form from metadata")]
-        CallStartToTheSaveIdentifierToTheFormFromMetadata = 42,
+        CallStartToTheSaveIdentifierToTheFormFromMetadata = 44,
 
         [Description("Success to the save identifier to the form from metadata")]
-        SuccessToTheSaveIdentifierToTheFormFromMetadata = 43,
+        SuccessToTheSaveIdentifierToTheFormFromMetadata = 45,
 
         #endregion Service Form.
 
         #region Service Development environments.
 
         [Description("Call start to the select parameters the kinds of development enviroment")]
-        CallStartToTheSelectParametersTheKindsOfDevelopmentEnviroment = 44,
+        CallStartToTheSelectParametersTheKindsOfDevelopmentEnviroment = 46,
 
         [Description("Success to the select parameters the kinds of development enviroment")]
-        SuccessToTheSelectParametersTheKindsOfDevelopmentEnviroment = 45,
+        SuccessToTheSelectParametersTheKindsOfDevelopmentEnviroment = 47,
 
         [Description("Call start to the save identifier to the development enviroments from metadata")]
-        CallStartToTheSaveIdentifierToTheDevelopmentEnviromentsFromMetadata = 46,
+        CallStartToTheSaveIdentifierToTheDevelopmentEnviromentsFromMetadata = 48,
 
         [Description("Success to the save identifier to the development enviroments from metadata")]
-        SuccessToTheSaveIdentifierToTheDevelopmentEnviromentsFromMetadata = 47,
+        SuccessToTheSaveIdentifierToTheDevelopmentEnviromentsFromMetadata = 49,
 
         #endregion Service Development environments.
 
         #region Service Databases.
 
         [Description("Error receive and save all table and fields of schema database")]
-        ErrorReceiveAndSaveAllTableAndFieldsOfSchemaDatabase = 48,
+        ErrorReceiveAndSaveAllTableAndFieldsOfSchemaDatabase = 50,
 
         [Description("Call start to the select parameters the kinds of databases")]
-        CallStartToTheSelectParametersTheKindsOfDatabases = 49,
+        CallStartToTheSelectParametersTheKindsOfDatabases = 51,
 
         [Description("Success to the select parameters the kinds of databases")]
-        SuccessToTheSelectParametersTheKindsOfDatabases = 50,
+        SuccessToTheSelectParametersTheKindsOfDatabases = 52,
 
         [Description("Call start to the save identifier to the databases from metadata")]
-        CallStartToTheSaveIdentifierToTheDatabasesFromMetadata = 51,
+        CallStartToTheSaveIdentifierToTheDatabasesFromMetadata = 53,
 
         [Description("Success to the save identifier to the databases from metadata")]
-        SuccessToTheSaveIdentifierToTheDatabasesFromMetadata = 52,
+        SuccessToTheSaveIdentifierToTheDatabasesFromMetadata = 54,
 
         #endregion Service Databases.
 
         #region Service Databases engine.
 
         [Description("Call start to the Select parameters the kinds of databases engine")]
-        CallStartToTheSelectParametersTheKindsOfDatabasesEngine = 53,
+        CallStartToTheSelectParametersTheKindsOfDatabasesEngine = 55,
 
         [Description("Success to the select parameters the kinds of databases engine")]
-        SuccessToTheSelectParametersTheKindsOfDatabasesEngine = 54,
+        SuccessToTheSelectParametersTheKindsOfDatabasesEngine = 56,
 
         [Description("Call start to the save identifier to the databases engine from metadata")]
-        CallStartToTheSaveIdentifierToTheDatabasesEngineFromMetadata = 55,
+        CallStartToTheSaveIdentifierToTheDatabasesEngineFromMetadata = 57,
 
         [Description("Success to the save identifier to the databases engine from metadata")]
-        SuccessToTheSaveIdentifierToTheDatabasesEngineFromMetadata = 56,
+        SuccessToTheSaveIdentifierToTheDatabasesEngineFromMetadata = 58,
 
         #endregion Service Databases engine.
 
         #region Service Architecture patterns.
 
         [Description("Call start to the select parameters the kinds of architecture patterns")]
-        CallStartToTheSelectParametersTheKindsOfArchitecturePatterns = 57,
+        CallStartToTheSelectParametersTheKindsOfArchitecturePatterns = 59,
 
         [Description("Success to the select parameters the kinds of architecture patterns")]
-        SuccessToTheSelectParametersTheKindsOfArchitecturePatterns = 58,
+        SuccessToTheSelectParametersTheKindsOfArchitecturePatterns = 60,
 
         [Description("Call start to the save identifier to the architecture patterns from metadata")]
-        CallStartToTheSaveIdentifierToTheArchitecturePatternsFromMetadata = 59,
+        CallStartToTheSaveIdentifierToTheArchitecturePatternsFromMetadata = 61,
 
         [Description("Success to the save identifier to the architecture patterns from metadata")]
-        SuccessToTheSaveIdentifierToTheArchitecturePatternsFromMetadata = 60
+        SuccessToTheSaveIdentifierToTheArchitecturePatternsFromMetadata = 62
 
         #endregion Service Architecture patterns.
     }

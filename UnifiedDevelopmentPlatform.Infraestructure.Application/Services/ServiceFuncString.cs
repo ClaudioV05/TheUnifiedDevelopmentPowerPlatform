@@ -275,5 +275,15 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         {
             return text.Split(separators, StringSplitOptions.None);
         }
+
+        public int UDPIndexOf(string text, string itemToFind)
+        {
+            return text.IndexOf(itemToFind);
+        }
+
+        public string UDPSubString(string text, int startIndex, int lenght)
+        {
+            return text.Substring(startIndex, lenght);
+        }
     }
 }

@@ -306,5 +306,32 @@
         /// <seealso href=""></seealso>
         /// <returns>The array of string</returns>
         string[]? UDPParseLine(string[] separators, string text);
+
+        /// <summary>
+        /// Do find index of in a string.
+        /// </summary>
+        /// <param name="text"></param>
+        /// <param name="itemToFind"></param>
+        /// <paramref name=""/>
+        /// <returns></returns>
+        /// <remarks></remarks>
+        /// <exception cref=""></exception>
+        /// <seealso href=""></seealso>
+        /// <returns>Position of string.</returns>
+        int UDPIndexOf(string text, string itemToFind);
+
+        /// <summary>
+        /// Sub String.
+        /// </summary>
+        /// <param name="text"></param>
+        /// <param name="startIndex"></param>
+        /// <param name="lenght"></param>
+        /// <paramref name=""/>
+        /// <returns></returns>
+        /// <remarks></remarks>
+        /// <exception cref=""></exception>
+        /// <seealso href=""></seealso>
+        /// <returns>Retrieve a substring for a instance.</returns>
+        string UDPSubString(string text, int startIndex, int lenght);
     }
 }

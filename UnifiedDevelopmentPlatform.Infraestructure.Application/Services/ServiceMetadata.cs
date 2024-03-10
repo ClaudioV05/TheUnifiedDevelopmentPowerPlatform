@@ -91,7 +91,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
                 if (!_serviceFuncString.UDPNullOrEmpty(databaseSchemaDecrypt))
                 {
                     _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.DecryptOkOfTheReceiveAndSaveAllTableAndFieldsOfSchemaDatabase), _serviceFuncString.Empty);
-                    var results = _serviceFuncString.UDPParseLineOptionsNone(new[] { $"{MetaCharacterSymbols.CarriageReturn}{MetaCharacterSymbols.NewLine}", MetaCharacterSymbols.CarriageReturn, MetaCharacterSymbols.NewLine }, databaseSchemaDecrypt);
+                    var results = _serviceFuncString.UDPParseLine(new[] { $"{MetaCharacterSymbols.CarriageReturn}{MetaCharacterSymbols.NewLine}", MetaCharacterSymbols.CarriageReturn, MetaCharacterSymbols.NewLine }, databaseSchemaDecrypt);
 
                     if (results is not null && results.Any())
                     {
