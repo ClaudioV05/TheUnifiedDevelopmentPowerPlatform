@@ -8,8 +8,6 @@ This API service is the evolution of the old project of generate class that was 
 
 <p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/1f2430b50e963615b6a3a547a56409dee769db0a48a7cd98f126dee53de8cb76/68747470733a2f2f736b696c6c69636f6e732e6465762f69636f6e733f693d6769742c6d642c68746d6c2c6373732c736173732c6a732c6a71756572792c74732c776f726470726573732c6e6f64656a732c7068702c676f2c7675652c72656163742c6c69742c706f7374677265732c6d7973716c2c646f636b65722c6b756265726e657465732c6669676d612c626173682c6e67696e782c7673636f6465267468656d653d6c69676874267065726c696e653d3130"></a></p>
   
-[![My Skills](https://skillicons.dev/icons?i=dotnet,cs,angular,react,git,github,md,html,css,sass,js,jquery,ts,nodejs,postgres,mysql,docker,kubernetes,figma,vscode,azure)](https://skillicons.dev)
-
-
+[![My Skills](https://skillicons.dev/icons?i=dotnet,cs,angular,react,git,github,md,html,cssjs,jquery,ts,nodejs)](https://skillicons.dev)
 
 </article>
