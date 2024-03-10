@@ -8,6 +8,6 @@ This API service is the evolution of the old project of generate class that was 
 
 <p dir="auto"><a></a></p>
   
-[![My Skills](https://skillicons.dev/icons?i=dotnet,cs,angular,react,git,github,md,html,cssjs,jquery,ts,nodejs)](https://skillicons.dev)
+[![My Skills](https://skillicons.dev/icons?i=dotnet,cs,angular,react,git,github,md,html,css,js,jquery,ts,nodejs)](https://skillicons.dev)
 
 </article>
