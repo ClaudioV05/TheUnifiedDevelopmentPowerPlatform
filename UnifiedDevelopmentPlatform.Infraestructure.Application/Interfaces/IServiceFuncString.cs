@@ -297,7 +297,7 @@
         /// <summary>
         /// To string split with options none.
         /// </summary>
-        /// <param name="separator"></param>
+        /// <param name="separators"></param>
         /// <param name="text"></param>
         /// <paramref name=""/>
         /// <returns></returns>
@@ -305,6 +305,6 @@
         /// <exception cref=""></exception>
         /// <seealso href=""></seealso>
         /// <returns>The array of string</returns>
-        string[]? UDPStringSplitWithOptionsNone(string[] separator, string text);
+        string[]? UDPParseLine(string[] separators, string text);
     }
 }

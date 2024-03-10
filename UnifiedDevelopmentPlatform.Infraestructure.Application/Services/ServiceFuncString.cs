@@ -271,9 +271,9 @@ namespace UnifiedDevelopmentPlatform.Application.Services
                              }));
         }
 
-        public string[]? UDPStringSplitWithOptionsNone(string[] separator, string text)
+        public string[]? UDPParseLine(string[] separators, string text)
         {
-            return text.Split(separator, StringSplitOptions.None);
+            return text.Split(separators, StringSplitOptions.None);
         }
     }
 }

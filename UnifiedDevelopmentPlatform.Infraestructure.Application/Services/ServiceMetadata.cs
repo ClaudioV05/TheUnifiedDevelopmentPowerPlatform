@@ -91,7 +91,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
                 if (!_serviceFuncString.UDPNullOrEmpty(databaseSchemaDecrypt))
                 {
                     _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.DecryptOkOfTheReceiveAndSaveAllTableAndFieldsOfSchemaDatabase), _serviceFuncString.Empty);
-                    var results = _serviceFuncString.UDPStringSplitWithOptionsNone(new[] { $"{MetaCharacterSymbols.CarriageReturn}{MetaCharacterSymbols.NewLine}", MetaCharacterSymbols.CarriageReturn, MetaCharacterSymbols.NewLine }, databaseSchemaDecrypt);
+                    var results = _serviceFuncString.UDPParseLineOptionsNone(new[] { $"{MetaCharacterSymbols.CarriageReturn}{MetaCharacterSymbols.NewLine}", MetaCharacterSymbols.CarriageReturn, MetaCharacterSymbols.NewLine }, databaseSchemaDecrypt);
 
                     if (results is not null && results.Any())
                     {
@@ -134,9 +134,8 @@ namespace UnifiedDevelopmentPlatform.Application.Services
                                 }
                                 else if (_serviceFuncString.UDPContains(listDatabaseSchemas[counter], SqlConfiguration.PrimaryKey))
                                 {
-                                    fieldsPrimaryKey = _serviceFuncString.Empty;
                                     fieldsPrimaryKey = _serviceMetadataField.UDPGetThePrimaryKeyFieldName(listDatabaseSchemas[counter]);
-                                    listOfFieldsPrimaryKey = _serviceFuncString.UDPStringSplitWithOptionsNone(new[] { MetaCharacterSymbols.Comma }, fieldsPrimaryKey);
+                                    listOfFieldsPrimaryKey = _serviceFuncString.UDPParseLine(new[] { MetaCharacterSymbols.Comma }, fieldsPrimaryKey);
                                     _serviceMetadataField.UDPLoadTheFieldsPrimarykeyAtTable(ref listTables, idTable, listOfFieldsPrimaryKey);
                                     continue;
                                 }
