@@ -96,12 +96,15 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             string data = _serviceFuncString.Empty;
             string directoryConfiguration = _serviceFuncString.Empty;
 
+            _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.CallStartToTheOpenDatabaseSchemaFromMetadata), _serviceFuncString.Empty);
+
             directoryConfiguration = _serviceDirectory.UDPObtainDirectory(DirectoryRootType.Configuration);
 
             if (_serviceFile.UDPFileExists($"{directoryConfiguration}{DirectoryStandard.Log}{FileStandard.IdDatabaseSchema}{FileExtension.Txt}"))
             {
                 data = _serviceFile.UDPReadAllText($"{directoryConfiguration}{DirectoryStandard.Log}{FileStandard.IdDatabaseSchema}{FileExtension.Txt}");
                 data = _serviceCrypto.UPDDecrypt(data);
+                _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.SuccessToTheOpenDatabaseSchemaFromMetadata), _serviceFuncString.Empty);
             }
 
             return data;

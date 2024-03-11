@@ -95,5 +95,20 @@ namespace UnifiedDevelopmentPlatform.Application.Services
                 _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.SuccessToTheSaveIdentifierToTheDevelopmentEnviromentsFromMetadata), _serviceFuncString.Empty);
             }
         }
+
+        static string Main(string type)
+        {
+            string message;
+            // create object type.
+
+            return type switch
+            {
+                "integer" => System.Data.DbType.Int32.ToString(),
+                "double" => System.Data.DbType.Double.ToString(),
+                "date" => System.Data.DbType.Date.ToString(),
+                "time" => System.Data.DbType.Time.ToString(),
+                "varchar" => System.Data.DbType.String.ToString()
+            };
+        }
     }
 }

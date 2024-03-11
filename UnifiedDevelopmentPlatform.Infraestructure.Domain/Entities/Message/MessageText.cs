@@ -137,6 +137,16 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Message
         /// </summary>
         public static string SuccessToTheSaveDatabaseSchemaFromMetadata => "SUCCESS TO THE SAVE DATABASE SCHEMA FROM METADATA.";
 
+        /// <summary>
+        /// Call start to the open the database schema from metadata.
+        /// </summary>
+        public static string CallStartToTheOpenDatabaseSchemaFromMetadata => "CALL START TO THE OPEN THE DATABASE SCHEMA FROM METADATA.";
+
+        /// <summary>
+        /// Success to the open the database schema from metadata.
+        /// </summary>
+        public static string SuccessToTheOpenDatabaseSchemaFromMetadata => "SUCCESS TO THE OPEN THE DATABASE SCHEMA FROM METADATA.";
+
         #endregion Service Metadata Tables.
 
         #region Service Metadata Fields.
