@@ -161,6 +161,16 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Message
         /// </summary>
         public static string SuccessToTheLoadTheFieldsPrimarykeyAtTable => "SUCCESS TO THE LOAD THE FIELDS PRIMARY KEY AT THE TABLE.";
 
+        /// <summary>
+        /// Call start to the get the primary key field name.
+        /// </summary>
+        public static string CallStartToTheGetThePrimaryKeyFieldName => "CALL START TO THE GET THE PRIMARY KEY FIELD NAME.";
+
+        /// <summary>
+        /// Success to the get the primary key field name.
+        /// </summary>
+        public static string SuccessToTheGetThePrimaryKeyFieldName => "SUCCESS TO THE LOAD THE GET THE PRIMARY KEY FIELD NAME.";
+
         #endregion Service Metadata Fields.
 
         #region Service Metadata.

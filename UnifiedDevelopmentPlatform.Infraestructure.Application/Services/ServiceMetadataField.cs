@@ -62,6 +62,8 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             int positionPrimaryKey = 0;
             string field = _serviceFuncString.Empty;
 
+            _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.CallStartToTheGetThePrimaryKeyFieldName), _serviceFuncString.Empty);
+
             field = text;
             positionPrimaryKey = _serviceFuncString.UDPIndexOf(field, SqlConfiguration.PrimaryKey);
 
@@ -76,7 +78,11 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             field = _serviceFuncString.UDPReplace(field, MetaCharacterSymbols.SingleQuote, _serviceFuncString.Empty);
             field = _serviceFuncString.UDPReplace(field, MetaCharacterSymbols.DoubleQuote, _serviceFuncString.Empty);
             field = _serviceFuncString.UDPRemoveAnyWhiteSpace(field);
-            return _serviceFuncString.UDPUpper(field);
+            field = _serviceFuncString.UDPUpper(field);
+
+            _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.SuccessToTheGetThePrimaryKeyFieldName), _serviceFuncString.Empty);
+
+            return field;
         }
 
         public bool UDPTheFieldIsNotNull(string text)
