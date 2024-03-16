@@ -96,19 +96,27 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             }
         }
 
-        static string Main(string type)
+        public string UDPGetTheTypeOfCSharp(string type)
         {
-            string message;
-            // create object type.
+            string returnType = _serviceFuncString.Empty;
 
-            return type switch
+            // Create the log for this method.
+            // Create the object wit this fields above.
+
+            if (_serviceFuncString.UDPNullOrEmpty(type))
             {
-                "integer" => System.Data.DbType.Int32.ToString(),
-                "double" => System.Data.DbType.Double.ToString(),
-                "date" => System.Data.DbType.Date.ToString(),
-                "time" => System.Data.DbType.Time.ToString(),
-                "varchar" => System.Data.DbType.String.ToString()
-            };
+                returnType = type switch
+                {
+                    "integer" => System.Data.DbType.Int32.ToString(),
+                    "double" => System.Data.DbType.Double.ToString(),
+                    "date" => System.Data.DbType.Date.ToString(),
+                    "time" => System.Data.DbType.Time.ToString(),
+                    "varchar" => System.Data.DbType.String.ToString(),
+                    _ => _serviceFuncString.Empty
+                };
+            }
+
+            return _serviceFuncString.UDPLower(returnType);
         }
     }
 }

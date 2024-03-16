@@ -14,30 +14,45 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         private readonly IServiceLog _serviceLog;
         private readonly IServiceMessage _serviceMessage;
         private readonly IServiceFuncString _serviceFuncString;
+        private readonly IServiceDevelopmentEnvironments _serviceDevelopmentEnvironments;
 
         /// <summary>
         /// The constructor of ServiceMetadataField.
         /// </summary>
         /// <param name="serviceLog"></param>
+        /// <param name="serviceMessage"></param>
         /// <param name="serviceFuncString"></param>
+        /// <param name="serviceDevelopmentEnvironments"></param>
         public ServiceMetadataField(IServiceLog serviceLog,
-                                    IServiceMessage serviceMessage, 
-                                    IServiceFuncString serviceFuncString)
+                                    IServiceMessage serviceMessage,
+                                    IServiceFuncString serviceFuncString,
+                                    IServiceDevelopmentEnvironments serviceDevelopmentEnvironments)
         {
             _serviceLog = serviceLog;
             _serviceMessage = serviceMessage;
             _serviceFuncString = serviceFuncString;
+            _serviceDevelopmentEnvironments = serviceDevelopmentEnvironments;
         }
 
         public string UDPGetTheFieldName(string text)
         {
-            int firstPositionWithSpace = 0;
+            int positionWithSpace = 0;
             string field = _serviceFuncString.Empty;
 
             field = _serviceFuncString.UDPLower(text);
-            firstPositionWithSpace = _serviceFuncString.UDPIndexOf(field, MetaCharacterSymbols.HorizontalTab);
-            field = _serviceFuncString.UDPSubString(field, 0, firstPositionWithSpace);
             field = _serviceFuncString.UDPRemoveSpecialCaracter(field);
+
+            positionWithSpace = _serviceFuncString.UDPIndexOf(field, MetaCharacterSymbols.HorizontalTab);
+            field = _serviceFuncString.UDPRemoveWhitespaceAtStart(field);
+
+            if (positionWithSpace == -1)
+            {
+                positionWithSpace = 0;
+                positionWithSpace = _serviceFuncString.UDPIndexOf(field, MetaCharacterSymbols.WhiteSpace);
+            }
+
+            field = _serviceFuncString.UDPRemoveWhitespaceAtStart(field);
+            field = _serviceFuncString.UDPSubString(field, 0, positionWithSpace);
             return _serviceFuncString.UDPUpper(_serviceFuncString.UDPRemoveAnyWhiteSpace(field));
         }
 
@@ -51,7 +66,18 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             typeField = _serviceFuncString.UDPReplace(typeField, SqlConfiguration.KeyNot, _serviceFuncString.Empty);
             typeField = _serviceFuncString.UDPReplace(typeField, SqlConfiguration.KeyNullValue, _serviceFuncString.Empty);
             typeField = _serviceFuncString.UDPReplace(typeField, SqlConfiguration.KeyNotNullValue, _serviceFuncString.Empty);
+            typeField = _serviceFuncString.UDPReplace(typeField, SqlConfiguration.KeyAutoIncrement, _serviceFuncString.Empty);
             positionWithSpace = _serviceFuncString.UDPIndexOf(typeField, MetaCharacterSymbols.HorizontalTab);
+
+            typeField = _serviceFuncString.UDPRemoveWhitespaceAtStart(typeField);
+
+            if (positionWithSpace == -1)
+            {
+                positionWithSpace = 0;
+                positionWithSpace = _serviceFuncString.UDPIndexOf(typeField, MetaCharacterSymbols.WhiteSpace);
+            }
+
+            typeField = _serviceFuncString.UDPRemoveWhitespaceAtStart(typeField);
             typeField = _serviceFuncString.UDPSubString(typeField, positionWithSpace, Math.Abs(positionWithSpace - typeField.Length));
             typeField = _serviceFuncString.UDPRemoveSpecialCaracter(typeField);
             return _serviceFuncString.UDPUpper(_serviceFuncString.UDPRemoveAnyWhiteSpace(typeField));
@@ -66,12 +92,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
 
             field = text;
             positionPrimaryKey = _serviceFuncString.UDPIndexOf(field, SqlConfiguration.PrimaryKey);
-
-            if (positionPrimaryKey > 0)
-            {
-                field = _serviceFuncString.UDPSubString(field, positionPrimaryKey, Math.Abs(positionPrimaryKey - text.Length));
-            }
-
+            field = _serviceFuncString.UDPSubString(field, positionPrimaryKey, Math.Abs(positionPrimaryKey - text.Length));
             field = _serviceFuncString.UDPReplace(field, SqlConfiguration.PrimaryKey, _serviceFuncString.Empty);
             field = _serviceFuncString.UDPReplace(field, MetaCharacterSymbols.LeftParenthese, _serviceFuncString.Empty);
             field = _serviceFuncString.UDPReplace(field, MetaCharacterSymbols.RightParenthese, _serviceFuncString.Empty);
@@ -98,7 +119,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
                 Name = this.UDPGetTheFieldName(text),
                 IsNull = this.UDPTheFieldIsNotNull(text),
                 IsPrimaryKey = false,
-                TypeField = this.UDPGetTheTypeOfFieldName(text)
+                TypeField = _serviceDevelopmentEnvironments.UDPGetTheTypeOfCSharp(this.UDPGetTheTypeOfFieldName(text))
             });
         }
 

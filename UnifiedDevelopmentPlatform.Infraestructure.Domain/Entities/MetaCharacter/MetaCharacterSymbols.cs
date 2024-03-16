@@ -114,5 +114,15 @@
         /// The right square bracket.
         /// </summary>
         public static string RightSquareBracket => "[";
+
+        /// <summary>
+        /// string with white space.
+        /// </summary>
+        public static string WhiteSpace => " ";
+
+        /// <summary>
+        /// char with white space.
+        /// </summary>
+        public static char CharWhiteSpace => ' ';
     }
 }

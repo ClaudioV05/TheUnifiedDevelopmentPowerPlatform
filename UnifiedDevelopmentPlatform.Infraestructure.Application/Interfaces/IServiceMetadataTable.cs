@@ -52,8 +52,20 @@ namespace UnifiedDevelopmentPlatform.Application.Interfaces
         /// <remarks></remarks>
         /// <exception cref=""></exception>
         /// <seealso href=""></seealso>
-        /// <returns>The table name</returns>
+        /// <returns>The table name.</returns>
         string UDPGetTableName(string text);
+
+        /// <summary>
+        /// Load the database schema.
+        /// </summary>
+        /// <param name="listDatabaseSchema"></param>
+        /// <param name="databaseSchema"></param>
+        /// <paramref name=""/>
+        /// <returns></returns>
+        /// <remarks></remarks>
+        /// <exception cref=""></exception>
+        /// <seealso href=""></seealso> 
+        void UDPLoadTheDatabaseSchema(ref List<string> listDatabaseSchema, string[]? databaseSchema);
 
         /// <summary>
         /// Load the table.

@@ -25,7 +25,9 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities
             [Description("Firebird")]
             Firebird = 3,
             [Description("Oracle")]
-            Oracle = 4
+            Oracle = 4,
+            [Description("Sybase")]
+            Sybase = 5
         }
 
         public long Id { get; set; }

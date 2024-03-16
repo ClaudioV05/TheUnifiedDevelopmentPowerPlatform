@@ -79,6 +79,7 @@ builder.Services.TryAddScoped<IServiceEnumerated, ServiceEnumerated>();
 builder.Services.TryAddScoped<IServiceFile, ServiceFile>();
 builder.Services.TryAddScoped<IServiceFormsView, ServiceFormsView>();
 builder.Services.TryAddScoped<IServiceFuncString, ServiceFuncString>();
+builder.Services.TryAddScoped<IServiceGuid, ServiceGuid>();
 builder.Services.TryAddScoped<IServiceJson, ServiceJson>();
 builder.Services.TryAddScoped<IServiceLinq, ServiceLinq>();
 builder.Services.TryAddScoped<IServiceLog, ServiceLog>();

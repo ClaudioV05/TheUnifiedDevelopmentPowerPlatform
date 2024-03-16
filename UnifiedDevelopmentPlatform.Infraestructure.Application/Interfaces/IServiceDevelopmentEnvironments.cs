@@ -29,5 +29,17 @@ namespace UnifiedDevelopmentPlatform.Application.Interfaces
         /// <exception cref=""></exception>
         /// <seealso href=""></seealso>
         void UDPSaveIdentifierToTheDevelopmentEnviromentsFromMetadata(MetadataOwner metadata);
+
+        /// <summary>
+        /// Get the type of CSharp.
+        /// </summary>
+        /// <param name="metadata"></param>
+        /// /// <paramref name=""/>
+        /// <returns></returns>
+        /// <remarks></remarks>
+        /// <exception cref=""></exception>
+        /// <seealso href=""></seealso>
+        /// <return>The type of CSharp</return>
+        string UDPGetTheTypeOfCSharp(string type);
     }
 }

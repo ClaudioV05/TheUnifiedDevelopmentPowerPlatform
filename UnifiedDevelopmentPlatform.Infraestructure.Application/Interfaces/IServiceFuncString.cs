@@ -11,16 +11,6 @@
         public string Empty { get; }
 
         /// <summary>
-        /// string with white space.
-        /// </summary>
-        public string StringWhiteSpace { get; }
-
-        /// <summary>
-        /// char with white space.
-        /// </summary>
-        public char CharWhiteSpace { get; }
-
-        /// <summary>
         /// Base 64 chars.
         /// </summary>
         public char[] Base64Chars { get; }

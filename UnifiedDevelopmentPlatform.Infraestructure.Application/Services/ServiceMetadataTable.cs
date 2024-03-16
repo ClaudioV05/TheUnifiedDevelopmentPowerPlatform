@@ -117,8 +117,23 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             tableName = _serviceFuncString.UDPLower(_serviceFuncString.UDPRemoveWhitespace(text));
             tableName = _serviceFuncString.UDPReplace(tableName, SqlConfiguration.CreateTableWithSpace, _serviceFuncString.Empty);
             tableName = _serviceFuncString.UDPReplace(tableName, MetaCharacterSymbols.LeftParenthese, _serviceFuncString.Empty);
+            tableName = _serviceFuncString.UDPReplace(tableName, SqlConfiguration.DatabaseObject, _serviceFuncString.Empty);
             tableName = _serviceFuncString.UDPRemoveSpecialCaracter(tableName);
             return _serviceFuncString.UDPUpper(_serviceFuncString.UDPRemoveWhitespace(tableName));
+        }
+
+        public void UDPLoadTheDatabaseSchema(ref List<string> listDatabaseSchema, string[]? databaseSchema)
+        {
+            if (databaseSchema is not null && databaseSchema.Any())
+            {
+                foreach (string result in databaseSchema)
+                {
+                    if (_serviceFuncString.UDPContains(result, SqlConfiguration.CreateTableWithSpace) || _serviceFuncString.UDPContains(result, SqlConfiguration.PrimaryKey) || _serviceFuncString.UDPStringEnds(result, MetaCharacterSymbols.Comma))
+                    {
+                        listDatabaseSchema.Add(_serviceFuncString.UDPRemoveWhitespaceAtStart(_serviceFuncString.UDPLower(result)));
+                    }
+                }
+            }
         }
 
         public void UDPLoadTheTable(ref List<Tables> listTables, int idTable, string text)
@@ -151,7 +166,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
                 {
                     count++;
 
-                    if (count > SqlConfiguration.CreateTableDefaultPosition && lineCreateTable.EndsWith(_serviceFuncString.StringWhiteSpace))
+                    if (count > SqlConfiguration.CreateTableDefaultPosition && lineCreateTable.EndsWith(MetaCharacterSymbols.WhiteSpace))
                     {
                         UtilsFindTableIntoList(lineCreateTable, ref tables);
                         count = 0;
@@ -186,7 +201,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
                     count++;
                     table += metadata[i];
 
-                    if (count > SqlConfiguration.CreateTableDefaultPosition && table.EndsWith(_serviceFuncString.StringWhiteSpace))
+                    if (count > SqlConfiguration.CreateTableDefaultPosition && table.EndsWith(MetaCharacterSymbols.WhiteSpace))
                     {
                         break;
                     }

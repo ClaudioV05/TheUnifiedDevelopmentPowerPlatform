@@ -1,6 +1,7 @@
 ﻿using System.Text;
 using System.Text.RegularExpressions;
 using UnifiedDevelopmentPlatform.Application.Interfaces;
+using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.MetaCharacter;
 
 namespace UnifiedDevelopmentPlatform.Application.Services
 {
@@ -16,10 +17,6 @@ namespace UnifiedDevelopmentPlatform.Application.Services
 
         public string Empty { get; } = string.Empty;
 
-        public string StringWhiteSpace { get; } = " ";
-
-        public char CharWhiteSpace { get; } = ' ';
-
         public char[] Base64Chars { get; } = new[] { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '+', '/' };
 
         public string UDPRemoveSpecialCaracter(string text)
@@ -28,12 +25,12 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             {
                 List<string> specialCaracter = new List<string>()
                 {
-                    "¹", "²", "³", "£", "¢", "¬", "º", "¨", "\"", "'", ".", ",", "-", ":", "(", ")", "ª", "|", "\\\\", "°",
-                    "_", "@", "#", "!", "$", "%", "&", "*", ";", "/", "<", ">", "?","[", "]", "{", "}", "=", "+", "§" ,"´",
-                    "`", "^", "~", "\r", "\n"
+                    "¹", "²", "³", "£", "¢", "¬", "º", "¨", "\"", "'", ".", ",", "-", ":", "(", ")", "ª",
+                    "|", "\\\\", "°", "_", "@", "#", "!", "$", "%", "&", "*", ";", "/", "<", ">", "?","[",
+                    "]", "{", "}", "=", "+", "§" ,"´", "`", "^", "~", "\r", "\n"
                 };
 
-                specialCaracter.ForEach(t => text = text.Replace(t, this.StringWhiteSpace));
+                specialCaracter.ForEach(t => text = text.Replace(t, MetaCharacterSymbols.WhiteSpace));
                 return text;
             }
             catch (Exception)
@@ -198,7 +195,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
 
         public IEnumerable<string> UDPLowerInList(string text)
         {
-            foreach (var item in text.Split(this.CharWhiteSpace, StringSplitOptions.None))
+            foreach (var item in text.Split(MetaCharacterSymbols.CharWhiteSpace, StringSplitOptions.None))
             {
                 yield return this.UDPLower(item);
             }
@@ -283,7 +280,18 @@ namespace UnifiedDevelopmentPlatform.Application.Services
 
         public string UDPSubString(string text, int startIndex, int lenght)
         {
-            return text.Substring(startIndex, lenght);
+            string textValue = this.Empty;
+
+            if (lenght > 0)
+            {
+                textValue = text.Substring(startIndex, lenght);
+            }
+            else
+            {
+                textValue = text;
+            }
+
+            return textValue;
         }
     }
 }

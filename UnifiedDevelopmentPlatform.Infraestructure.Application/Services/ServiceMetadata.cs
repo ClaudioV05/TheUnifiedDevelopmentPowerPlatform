@@ -91,18 +91,12 @@ namespace UnifiedDevelopmentPlatform.Application.Services
                 if (!_serviceFuncString.UDPNullOrEmpty(databaseSchemaDecrypt))
                 {
                     _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.DecryptOkOfTheReceiveAndSaveAllTableAndFieldsOfSchemaDatabase), _serviceFuncString.Empty);
+
                     var results = _serviceFuncString.UDPParseLine(new[] { $"{MetaCharacterSymbols.CarriageReturn}{MetaCharacterSymbols.NewLine}", MetaCharacterSymbols.CarriageReturn, MetaCharacterSymbols.NewLine }, databaseSchemaDecrypt);
+                    _serviceMetadataTable.UDPLoadTheDatabaseSchema(ref listDatabaseSchemas, results);
 
-                    if (results is not null && results.Any())
+                    if (listDatabaseSchemas is not null && listDatabaseSchemas.Any())
                     {
-                        foreach (string result in results)
-                        {
-                            if (_serviceFuncString.UDPContains(result, SqlConfiguration.CreateTableWithSpace) || _serviceFuncString.UDPContains(result, SqlConfiguration.PrimaryKey) || _serviceFuncString.UDPStringEnds(result, MetaCharacterSymbols.Comma))
-                            {
-                                listDatabaseSchemas.Add(_serviceFuncString.UDPRemoveWhitespaceAtStart(_serviceFuncString.UDPLower(result)));
-                            }
-                        }
-
                         _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.LoadAllOfTheTableAndFieldsOfSchemaDatabase), _serviceFuncString.Empty);
 
                         for (int i = counter; counter < listDatabaseSchemas.Count; counter++)
@@ -117,9 +111,9 @@ namespace UnifiedDevelopmentPlatform.Application.Services
 
                             for (int j = counter; counter < listDatabaseSchemas.Count; counter++)
                             {
-                                var field = listDatabaseSchemas[counter];
-
-                                if (_serviceFuncString.UDPStringEnds(listDatabaseSchemas[counter], MetaCharacterSymbols.Comma))
+                                if (_serviceFuncString.UDPStringEnds(listDatabaseSchemas[counter], MetaCharacterSymbols.Comma) &&
+                                   !_serviceFuncString.UDPContains(listDatabaseSchemas[counter], SqlConfiguration.PrimaryKey) &&
+                                   !_serviceFuncString.UDPContains(listDatabaseSchemas[counter], SqlConfiguration.KeyIndex))
                                 {
                                     if (newNameTable)
                                     {

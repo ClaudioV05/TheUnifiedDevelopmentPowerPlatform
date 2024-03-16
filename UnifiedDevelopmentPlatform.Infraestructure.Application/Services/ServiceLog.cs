@@ -5,6 +5,7 @@ using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Directory;
 using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.File;
 using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Log;
 using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Message;
+using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.MetaCharacter;
 
 namespace UnifiedDevelopmentPlatform.Application.Services
 {
@@ -14,6 +15,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
     public class ServiceLog : IServiceLog
     {
         private readonly IServiceFile _serviceFile;
+        private readonly IServiceGuid _serviceGuid;
         private readonly IServiceDate _serviceDate;
         private readonly IServiceDirectory _serviceDirectory;
         private readonly IServicePlataform _servicePlataform;
@@ -24,17 +26,20 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         /// The constructor of Service Log.
         /// </summary>
         /// <param name="serviceFile"></param>
+        /// <param name="serviceGuid"></param>
         /// <param name="serviceDate"></param>
         /// <param name="serviceDirectory"></param>
         /// <param name="servicePlataform"></param>
         /// <param name="serviceFuncStrings"></param>
         public ServiceLog(IServiceFile serviceFile,
+                          IServiceGuid serviceGuid,
                           IServiceDate serviceDate,
                           IServiceDirectory serviceDirectory,
                           IServicePlataform servicePlataform,
                           IServiceFuncString serviceFuncStrings)
         {
             _serviceFile = serviceFile;
+            _serviceGuid = serviceGuid;
             _serviceDate = serviceDate;
             _serviceDirectory = serviceDirectory;
             _servicePlataform = servicePlataform;
@@ -67,13 +72,14 @@ namespace UnifiedDevelopmentPlatform.Application.Services
 
                 if (stack is not null)
                 {
-                    data = $"{newLine}{_serviceDate.UDPGetDateTimeNowFormat()}{_servicePlataform.UDPEnvironmentAddNewLine()}" +
-                           $"{LogConfiguration.FileName}{_serviceFuncStrings.StringWhiteSpace}{_serviceFile.UDPGetFileName(stack.GetFileName() ?? _serviceFuncStrings.Empty)}{_servicePlataform.UDPEnvironmentAddNewLine()}" +
-                           $"{LogConfiguration.MethodName}{_serviceFuncStrings.StringWhiteSpace}{stack.GetMethod()?.Name}{_servicePlataform.UDPEnvironmentAddNewLine()}" +
-                           $"{LogConfiguration.LineNumber}{_serviceFuncStrings.StringWhiteSpace}{stack.GetFileLineNumber()}{_servicePlataform.UDPEnvironmentAddNewLine()}" +
-                           $"{LogConfiguration.LineColumn}{_serviceFuncStrings.StringWhiteSpace}{stack.GetFileColumnNumber()}{_servicePlataform.UDPEnvironmentAddNewLine()}" +
-                           $"{LogConfiguration.Message}{_serviceFuncStrings.StringWhiteSpace}{_serviceFuncStrings.UDPUpper(message)}{_servicePlataform.UDPEnvironmentAddNewLine()}" +
-                           $"{LogConfiguration.AdditionalMessage}{_serviceFuncStrings.StringWhiteSpace}{_serviceFuncStrings.UDPUpper(additionalMessage)}{_servicePlataform.UDPEnvironmentAddNewLine()}" +
+                    data = $"{newLine}{LogConfiguration.Identifier}{_serviceGuid.UDPGenerateTheNewGuidObject()}{_servicePlataform.UDPEnvironmentAddNewLine()}" +
+                           $"{LogConfiguration.Datetime}{_serviceDate.UDPGetDateTimeNowFormat()}{_servicePlataform.UDPEnvironmentAddNewLine()}" +
+                           $"{LogConfiguration.FileName}{MetaCharacterSymbols.WhiteSpace}{_serviceFile.UDPGetFileName(stack.GetFileName() ?? _serviceFuncStrings.Empty)}{_servicePlataform.UDPEnvironmentAddNewLine()}" +
+                           $"{LogConfiguration.MethodName}{MetaCharacterSymbols.WhiteSpace}{stack.GetMethod()?.Name}{_servicePlataform.UDPEnvironmentAddNewLine()}" +
+                           $"{LogConfiguration.LineNumber}{MetaCharacterSymbols.WhiteSpace}{stack.GetFileLineNumber()}{_servicePlataform.UDPEnvironmentAddNewLine()}" +
+                           $"{LogConfiguration.LineColumn}{MetaCharacterSymbols.WhiteSpace}{stack.GetFileColumnNumber()}{_servicePlataform.UDPEnvironmentAddNewLine()}" +
+                           $"{LogConfiguration.Message}{MetaCharacterSymbols.WhiteSpace}{_serviceFuncStrings.UDPUpper(message)}{_servicePlataform.UDPEnvironmentAddNewLine()}" +
+                           $"{LogConfiguration.AdditionalMessage}{MetaCharacterSymbols.WhiteSpace}{_serviceFuncStrings.UDPUpper(additionalMessage)}{_servicePlataform.UDPEnvironmentAddNewLine()}" +
                            $"{_servicePlataform.UDPEnvironmentAddNewLine()}";
 
                     this.UDPLogInformation(data);

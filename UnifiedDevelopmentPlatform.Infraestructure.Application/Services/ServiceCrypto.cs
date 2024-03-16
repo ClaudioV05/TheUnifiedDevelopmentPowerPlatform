@@ -3,6 +3,7 @@ using System.Text;
 using UnifiedDevelopmentPlatform.Application.Interfaces;
 using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Cryptography;
 using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Message;
+using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.MetaCharacter;
 
 namespace UnifiedDevelopmentPlatform.Application.Services
 {
@@ -77,7 +78,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             {
                 _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.CallStartToTheDecrypt), _serviceFuncString.Empty);
                 input = new byte[value.Length];
-                input = Convert.FromBase64String(value.Replace(_serviceFuncString.StringWhiteSpace, "+"));
+                input = Convert.FromBase64String(value.Replace(MetaCharacterSymbols.WhiteSpace, "+"));
                 key = Encoding.UTF8.GetBytes(CryptographyConfiguration.CryptographyKey.Substring(0, 8));
 
                 CryptoStream cryptoStream = new CryptoStream(memoryStream, provider.CreateDecryptor(key, CryptographyConfiguration.CryptographyByteArray), CryptoStreamMode.Write);

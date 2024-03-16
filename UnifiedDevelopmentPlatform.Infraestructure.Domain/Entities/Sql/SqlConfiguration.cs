@@ -21,28 +21,45 @@
         public static string CreateTableWithSpace => "create table ";
 
         /// <summary>
-        /// Key constraint.
+        /// The key constraint.
         /// </summary>
         public static string KeyConstraint => "constraint";
 
         /// <summary>
-        /// Key primary key.
+        /// The key index.
+        /// </summary>
+        public static string KeyIndex => "index";
+
+        /// <summary>
+        /// The key primary key.
         /// </summary>
         public static string PrimaryKey => "primary key";
 
         /// <summary>
-        /// Key not.
+        /// The key not.
         /// </summary>
         public static string KeyNot => "not";
 
         /// <summary>
-        /// Key null value.
+        /// The key null value.
         /// </summary>
         public static string KeyNullValue => "null";
 
         /// <summary>
-        /// Key not null value.
+        /// The key not null value.
         /// </summary>
         public static string KeyNotNullValue => "not null";
+
+        /// <summary>
+        /// The key of auto increment from database.
+        /// </summary>
+        public static string KeyAutoIncrement => "auto_increment";
+
+        /// <summary>
+        /// The database object.
+        /// </summary>
+        public static string DatabaseObject => "dbo";
+
+        
     }
 }
