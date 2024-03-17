@@ -162,6 +162,16 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Message
         public static string SuccessToTheLoadTheFieldsPrimarykeyAtTable => "SUCCESS TO THE LOAD THE FIELDS PRIMARY KEY AT THE TABLE.";
 
         /// <summary>
+        /// Call start to the load the field at the table.
+        /// </summary>
+        public static string CallStartToTheLoadTheFieldAtTable => "CALL START TO THE LOAD THE FIELD AT THE TABLE.";
+
+        /// <summary>
+        /// Success to the load the field at the table.
+        /// </summary>
+        public static string SuccessToTheLoadTheFieldAtTable => "Success to the load the field at the table.";
+
+        /// <summary>
         /// Call start to the get the primary key field name.
         /// </summary>
         public static string CallStartToTheGetThePrimaryKeyFieldName => "CALL START TO THE GET THE PRIMARY KEY FIELD NAME.";

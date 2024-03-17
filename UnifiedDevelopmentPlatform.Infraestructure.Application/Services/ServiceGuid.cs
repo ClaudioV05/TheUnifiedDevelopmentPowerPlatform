@@ -7,15 +7,27 @@ namespace UnifiedDevelopmentPlatform.Application.Services
     /// </summary>
     public class ServiceGuid : IServiceGuid
     {
+        private readonly IServiceFuncString _serviceFuncString;
+
         /// <summary>
         /// The constructor of service guid.
         /// </summary>
-        /// <param name=""></param>
-        public ServiceGuid() { }
+        /// <param name="serviceFuncString"></param>
+        public ServiceGuid(IServiceFuncString serviceFuncString)
+        {
+            _serviceFuncString = serviceFuncString;
+        }
 
         public string UDPGenerateTheNewGuidObject()
         {
-            return Guid.NewGuid().ToString();
+            try
+            {
+                return Guid.NewGuid().ToString();
+            }
+            catch (Exception)
+            {
+                return _serviceFuncString.Empty;
+            }
         }
     }
 }

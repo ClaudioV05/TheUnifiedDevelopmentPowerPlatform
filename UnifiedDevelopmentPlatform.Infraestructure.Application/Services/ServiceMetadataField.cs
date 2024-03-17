@@ -113,6 +113,8 @@ namespace UnifiedDevelopmentPlatform.Application.Services
 
         public void UDPLoadTheFieldAtTable(ref List<Tables> listTables, int idTable, string text)
         {
+            _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.CallStartToTheLoadTheFieldAtTable), _serviceFuncString.Empty);
+
             listTables.Where(element => element.Id.Equals(idTable)).First().Fields.Add(new Fields()
             {
                 IdTables = idTable,
@@ -121,6 +123,8 @@ namespace UnifiedDevelopmentPlatform.Application.Services
                 IsPrimaryKey = false,
                 TypeField = _serviceDevelopmentEnvironments.UDPGetTheTypeOfCSharp(this.UDPGetTheTypeOfFieldName(text))
             });
+
+            _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.SuccessToTheLoadTheFieldAtTable), _serviceFuncString.Empty);
         }
 
         public void UDPLoadTheFieldsPrimarykeyAtTable(ref List<Tables> listTables, int idTable, string[]? listOfFieldsPrimaryKey)

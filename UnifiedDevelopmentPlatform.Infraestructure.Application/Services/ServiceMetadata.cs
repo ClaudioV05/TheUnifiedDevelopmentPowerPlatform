@@ -72,7 +72,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             string tablesName = _serviceFuncString.Empty;
             string fieldsPrimaryKey = _serviceFuncString.Empty;
             string databaseSchemaDecrypt = _serviceFuncString.Empty;
-            List<Tables> listTables = new List<Tables>();
+            List<Tables> listOfTables = new List<Tables>();
             List<string> listDatabaseSchemas = new List<string>();
 
             try
@@ -91,9 +91,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
                 if (!_serviceFuncString.UDPNullOrEmpty(databaseSchemaDecrypt))
                 {
                     _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.DecryptOkOfTheReceiveAndSaveAllTableAndFieldsOfSchemaDatabase), _serviceFuncString.Empty);
-
-                    var results = _serviceFuncString.UDPParseLine(new[] { $"{MetaCharacterSymbols.CarriageReturn}{MetaCharacterSymbols.NewLine}", MetaCharacterSymbols.CarriageReturn, MetaCharacterSymbols.NewLine }, databaseSchemaDecrypt);
-                    _serviceMetadataTable.UDPLoadTheDatabaseSchema(ref listDatabaseSchemas, results);
+                    _serviceMetadataTable.UDPLoadTheDatabaseSchema(ref listDatabaseSchemas, _serviceFuncString.UDPParseLine(new[] { $"{MetaCharacterSymbols.CarriageReturn}{MetaCharacterSymbols.NewLine}", MetaCharacterSymbols.CarriageReturn, MetaCharacterSymbols.NewLine }, databaseSchemaDecrypt));
 
                     if (listDatabaseSchemas is not null && listDatabaseSchemas.Any())
                     {
@@ -117,20 +115,20 @@ namespace UnifiedDevelopmentPlatform.Application.Services
                                 {
                                     if (newNameTable)
                                     {
-                                        _serviceMetadataTable.UDPLoadTheTable(ref listTables, idTable, tablesName);
-                                        _serviceMetadataField.UDPLoadTheFieldAtTable(ref listTables, idTable, listDatabaseSchemas[counter]);
+                                        _serviceMetadataTable.UDPLoadTheTable(ref listOfTables, idTable, tablesName);
+                                        _serviceMetadataField.UDPLoadTheFieldAtTable(ref listOfTables, idTable, listDatabaseSchemas[counter]);
                                         newNameTable = false;
                                     }
                                     else if (!newNameTable)
                                     {
-                                        _serviceMetadataField.UDPLoadTheFieldAtTable(ref listTables, idTable, listDatabaseSchemas[counter]);
+                                        _serviceMetadataField.UDPLoadTheFieldAtTable(ref listOfTables, idTable, listDatabaseSchemas[counter]);
                                     }
                                 }
                                 else if (_serviceFuncString.UDPContains(listDatabaseSchemas[counter], SqlConfiguration.PrimaryKey))
                                 {
                                     fieldsPrimaryKey = _serviceMetadataField.UDPGetThePrimaryKeyFieldName(listDatabaseSchemas[counter]);
                                     listOfFieldsPrimaryKey = _serviceFuncString.UDPParseLine(new[] { MetaCharacterSymbols.Comma }, fieldsPrimaryKey);
-                                    _serviceMetadataField.UDPLoadTheFieldsPrimarykeyAtTable(ref listTables, idTable, listOfFieldsPrimaryKey);
+                                    _serviceMetadataField.UDPLoadTheFieldsPrimarykeyAtTable(ref listOfTables, idTable, listOfFieldsPrimaryKey);
                                     continue;
                                 }
                                 else if (_serviceFuncString.UDPContains(listDatabaseSchemas[counter], SqlConfiguration.CreateTableWithSpace))
@@ -140,6 +138,13 @@ namespace UnifiedDevelopmentPlatform.Application.Services
                                 }
                             }
                         }
+                    }
+
+                    if (listOfTables is not null && listOfTables.Any())
+                    {
+                        // In service table call the method to save the...
+                        // qtd of tables. qtd of fields
+                        // See the possibility to create the service to register the time of creation.
                     }
                 }
             }
@@ -151,7 +156,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
 
             _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.SuccessAtTheReceiveAndSaveAllTableAndFieldsOfSchemaDatabase), _serviceFuncString.Empty);
 
-            return listTables;
+            return listOfTables;
         }
 
         public void UDPNotImplemented(MetadataOwner metadata)

@@ -48,6 +48,8 @@ namespace UnifiedDevelopmentPlatform.Application.Services
                     MessageType.SuccessToTheSaveDatabaseSchemaFromMetadata => MessageText.SuccessToTheSaveDatabaseSchemaFromMetadata,
                     MessageType.CallStartToTheLoadTheFieldsPrimarykeyAtTable => MessageText.CallStartToTheLoadTheFieldsPrimarykeyAtTable,
                     MessageType.SuccessToTheLoadTheFieldsPrimarykeyAtTable => MessageText.SuccessToTheLoadTheFieldsPrimarykeyAtTable,
+                    MessageType.CallStartToTheLoadTheFieldAtTable => MessageText.CallStartToTheLoadTheFieldAtTable,
+                    MessageType.SuccessToTheLoadTheFieldAtTable => MessageText.SuccessToTheLoadTheFieldAtTable,
                     MessageType.CallStartToTheGetThePrimaryKeyFieldName => MessageText.CallStartToTheGetThePrimaryKeyFieldName,
                     MessageType.SuccessToTheGetThePrimaryKeyFieldName => MessageText.SuccessToTheGetThePrimaryKeyFieldName,
                     MessageType.TheArchitecturePatternsIsOk => MessageText.TheArchitecturePatternsIsOk,

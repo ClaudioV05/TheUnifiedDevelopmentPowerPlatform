@@ -52,7 +52,7 @@ namespace UnifiedDevelopmentPlatform.Application.Interfaces
         void UDPLogWarning(string message);
 
         /// <summary>
-        /// Register Log general for application.
+        /// Make the register of log general for all application.
         /// </summary>
         /// <param name="message"></param>
         /// <param name="additionalMessage"></param>
