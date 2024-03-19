@@ -22,7 +22,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         {
             try
             {
-                return Guid.NewGuid().ToString();
+                return Convert.ToString(Guid.NewGuid());
             }
             catch (Exception)
             {

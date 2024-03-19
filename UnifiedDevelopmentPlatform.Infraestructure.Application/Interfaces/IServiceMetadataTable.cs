@@ -68,7 +68,7 @@ namespace UnifiedDevelopmentPlatform.Application.Interfaces
         void UDPLoadTheDatabaseSchema(ref List<string> listDatabaseSchema, string[]? databaseSchema);
 
         /// <summary>
-        /// Load the table.
+        /// To does add and save the table.
         /// </summary>
         /// <param name="listTables"></param>
         /// <param name="idTable"></param>
@@ -79,6 +79,6 @@ namespace UnifiedDevelopmentPlatform.Application.Interfaces
         /// <exception cref=""></exception>
         /// <seealso href=""></seealso>
         /// <returns></returns>
-        void UDPLoadTheTable(ref List<Tables> listTables, int idTable, string text);
+        void UDPAddAndSaveTheTable(ref List<Tables> listTables, int idTable, string text);
     }
 }

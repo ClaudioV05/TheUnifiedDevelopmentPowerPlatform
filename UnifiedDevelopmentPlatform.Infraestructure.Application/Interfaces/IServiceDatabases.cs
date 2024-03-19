@@ -29,5 +29,28 @@ namespace UnifiedDevelopmentPlatform.Application.Interfaces
         /// <exception cref=""></exception>
         /// <seealso href=""></seealso>
         void UDPSaveIdentifierToTheDatabasesFromMetadata(MetadataOwner metadata);
+
+        /// <summary>
+        /// Save the metrics of the generation of tables and fields.
+        /// </summary>
+        /// <param name="listOfTables"></param>
+        /// <paramref name=""/>
+        /// <returns></returns>
+        /// <remarks></remarks>
+        /// <exception cref=""></exception>
+        /// <seealso href=""></seealso>
+        void UDPSaveMetricsOfTheGenerationOfTablesAndFields(List<Tables> listOfTables);
+
+        /// <summary>
+        /// Get the metrics of quantities of tables.
+        /// </summary>
+        /// <param name="listOfTables"></param>
+        /// <paramref name=""/>
+        /// <returns></returns>
+        /// <remarks></remarks>
+        /// <exception cref=""></exception>
+        /// <seealso href=""></seealso>
+        /// <returns>The total number of tables.</returns>
+        long UDPGetMetricsOfQuantitiesOfTables(List<Tables> listOfTables);
     }
 }

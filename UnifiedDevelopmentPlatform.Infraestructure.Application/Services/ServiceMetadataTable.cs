@@ -136,7 +136,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             }
         }
 
-        public void UDPLoadTheTable(ref List<Tables> listTables, int idTable, string text)
+        public void UDPAddAndSaveTheTable(ref List<Tables> listTables, int idTable, string text)
         {
             listTables.Add(new Tables()
             {

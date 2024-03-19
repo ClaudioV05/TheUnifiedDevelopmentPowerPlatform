@@ -228,37 +228,49 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Message
         [Description("Success to the save identifier to the databases from metadata")]
         SuccessToTheSaveIdentifierToTheDatabasesFromMetadata = 60,
 
+        [Description("Call start to the get the metrics of quantities of tables")]
+        CallStartToTheSaveMetricsOfTheGenerationOfTablesAndFields = 61,
+
+        [Description("Success to the get the metrics of quantities of tables")]
+        SuccessToTheSaveMetricsOfTheGenerationOfTablesAndFields = 62,
+
+        [Description("Call start to the get the metrics of quantities of tables")]
+        CallStartToTheGetMetricsOfQuantitiesOfTables = 63,
+
+        [Description("Success to the get the metrics of quantities of tables")]
+        SuccessToTheGetMetricsOfQuantitiesOfTables = 64,
+
         #endregion Service Databases.
 
         #region Service Databases engine.
 
         [Description("Call start to the Select parameters the kinds of databases engine")]
-        CallStartToTheSelectParametersTheKindsOfDatabasesEngine = 61,
+        CallStartToTheSelectParametersTheKindsOfDatabasesEngine = 65,
 
         [Description("Success to the select parameters the kinds of databases engine")]
-        SuccessToTheSelectParametersTheKindsOfDatabasesEngine = 62,
+        SuccessToTheSelectParametersTheKindsOfDatabasesEngine = 66,
 
         [Description("Call start to the save identifier to the databases engine from metadata")]
-        CallStartToTheSaveIdentifierToTheDatabasesEngineFromMetadata = 63,
+        CallStartToTheSaveIdentifierToTheDatabasesEngineFromMetadata = 67,
 
         [Description("Success to the save identifier to the databases engine from metadata")]
-        SuccessToTheSaveIdentifierToTheDatabasesEngineFromMetadata = 64,
+        SuccessToTheSaveIdentifierToTheDatabasesEngineFromMetadata = 68,
 
         #endregion Service Databases engine.
 
         #region Service Architecture patterns.
 
         [Description("Call start to the select parameters the kinds of architecture patterns")]
-        CallStartToTheSelectParametersTheKindsOfArchitecturePatterns = 65,
+        CallStartToTheSelectParametersTheKindsOfArchitecturePatterns = 69,
 
         [Description("Success to the select parameters the kinds of architecture patterns")]
-        SuccessToTheSelectParametersTheKindsOfArchitecturePatterns = 66,
+        SuccessToTheSelectParametersTheKindsOfArchitecturePatterns = 70,
 
         [Description("Call start to the save identifier to the architecture patterns from metadata")]
-        CallStartToTheSaveIdentifierToTheArchitecturePatternsFromMetadata = 67,
+        CallStartToTheSaveIdentifierToTheArchitecturePatternsFromMetadata = 71,
 
         [Description("Success to the save identifier to the architecture patterns from metadata")]
-        SuccessToTheSaveIdentifierToTheArchitecturePatternsFromMetadata = 68
+        SuccessToTheSaveIdentifierToTheArchitecturePatternsFromMetadata = 72
 
         #endregion Service Architecture patterns.
     }

@@ -56,7 +56,7 @@ namespace UnifiedDevelopmentPlatform.Application.Interfaces
         bool UDPTheFieldIsNotNull(string text);
 
         /// <summary>
-        /// Load the field at the table.
+        /// Load the fields at the table.
         /// </summary>
         /// <param name="listTables"></param>
         /// <param name="idTable"></param>
@@ -67,7 +67,7 @@ namespace UnifiedDevelopmentPlatform.Application.Interfaces
         /// <exception cref=""></exception>
         /// <seealso href=""></seealso>
         /// <returns></returns>
-        void UDPLoadTheFieldAtTable(ref List<Tables> listTables, int idTable, string text);
+        void UDPLoadTheFieldsAtTable(ref List<Tables> listTables, int idTable, string text);
 
         /// <summary>
         /// Load the fields primary key at the table.
@@ -82,5 +82,18 @@ namespace UnifiedDevelopmentPlatform.Application.Interfaces
         /// <seealso href=""></seealso>
         /// <returns></returns>
         void UDPLoadTheFieldsPrimarykeyAtTable(ref List<Tables> listTables, int idTable, string[]? listOfFieldsPrimaryKey);
+
+        /// <summary>
+        /// Get the metrics of quantities of fields.
+        /// </summary>
+        /// <param name="listOfFields"></param>
+        /// <param name="quantityOfTables"></param>
+        /// <paramref name=""/>
+        /// <returns></returns>
+        /// <remarks></remarks>
+        /// <exception cref=""></exception>
+        /// <seealso href=""></seealso>
+        /// <returns>The total number of fields.</returns>
+        long UDPGetMetricsOfQuantitiesOfFields(List<Tables> listOfTables, long quantityOfTables);
     }
 }

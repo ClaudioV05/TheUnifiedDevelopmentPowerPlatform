@@ -341,6 +341,26 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Message
         /// </summary>
         public static string SuccessToTheSaveIdentifierToTheDatabasesFromMetadata => "SUCCESS TO THE SAVE IDENTIFIER TO THE DATABASES FROM METADATA.";
 
+        /// <summary>
+        /// Call start to the get the metrics of quantities of tables.
+        /// </summary>
+        public static string CallStartToTheSaveMetricsOfTheGenerationOfTablesAndFields => "CALL START TO THE GET THE METRICS OF QUANTITIES OF TABLES.";
+
+        /// <summary>
+        /// Success to the get the metrics of quantities of tables.
+        /// </summary>
+        public static string SuccessToTheSaveMetricsOfTheGenerationOfTablesAndFields => "SUCCESS TO THE GET THE METRICS OF QUANTITIES OF TABLES.";
+
+        /// <summary>
+        /// Call start to the get the metrics of quantities of tables.
+        /// </summary>
+        public static string CallStartToTheGetMetricsOfQuantitiesOfTables => "CALL START TO THE GET THE METRICS OF QUANTITIES OF TABLES.";
+
+        /// <summary>
+        /// Success to the get the metrics of quantities of tables.
+        /// </summary>
+        public static string SuccessToTheGetMetricsOfQuantitiesOfTables => "SUCCESS TO THE GET THE METRICS OF QUANTITIES OF TABLES.";
+
         #endregion Service Databases.
 
         #region Service Databases engine.

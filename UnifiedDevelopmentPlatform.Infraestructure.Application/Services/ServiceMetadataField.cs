@@ -111,7 +111,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             return _serviceFuncString.UDPContains(text, SqlConfiguration.KeyNotNullValue);
         }
 
-        public void UDPLoadTheFieldAtTable(ref List<Tables> listTables, int idTable, string text)
+        public void UDPLoadTheFieldsAtTable(ref List<Tables> listTables, int idTable, string text)
         {
             _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.CallStartToTheLoadTheFieldAtTable), _serviceFuncString.Empty);
 
@@ -149,6 +149,24 @@ namespace UnifiedDevelopmentPlatform.Application.Services
                     _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.SuccessToTheLoadTheFieldsPrimarykeyAtTable), _serviceFuncString.Empty);
                 }
             }
+        }
+
+        public long UDPGetMetricsOfQuantitiesOfFields(List<Tables> listOfTables, long quantityOfTables)
+        {
+            long quantityOfFields = 0;
+
+            try
+            {
+                for (int i = 0; i < quantityOfTables; i++)
+                {
+                    quantityOfFields += listOfTables.Where(element => !element.Id.Equals(0) && element.Id.Equals(i + 1)).First().Fields
+                                                    .Where(element => !element.IdTables.Equals(0) && element.IdTables.Equals(i + 1))
+                                                    .LongCount();
+                }
+            }
+            catch (Exception) { }
+
+            return quantityOfFields;
         }
     }
 }

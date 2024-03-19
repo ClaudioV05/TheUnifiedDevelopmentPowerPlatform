@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using System.IO;
+using System.Reflection;
 using System.Text.RegularExpressions;
 using UnifiedDevelopmentPlatform.Application.Interfaces;
 using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Directory;
@@ -109,6 +110,45 @@ namespace UnifiedDevelopmentPlatform.Application.Services
                 this.UDPDeleteAllRootDirectory($"{DirectoryRoot.DirectoryRootPath}{DirectoryRoot.App}");
                 throw new IOException();
             }
+        }
+
+        public long GetTotalSizeOfDirectoryByParallelProcessing(DirectoryInfo directory, SearchOption searchOption = SearchOption.AllDirectories)
+        {
+            if (directory is null || !directory.Exists)
+            {
+                throw new DirectoryNotFoundException("Directory does not exist.");
+            }
+
+            long size = 0;
+
+            try
+            {
+                Parallel.ForEach(directory.EnumerateFiles("*", searchOption), fileInfo =>
+                {
+                    try
+                    {
+                        Interlocked.Add(ref size, fileInfo.Length);
+                    }
+                    catch (UnauthorizedAccessException)
+                    {
+                        throw new UnauthorizedAccessException($"Unauthorized access to {fileInfo.FullName}");
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new Exception($"Error processing {fileInfo.FullName} | Error {ex.Message} ");
+                    }
+                });
+            }
+            catch (UnauthorizedAccessException)
+            {
+                throw new Exception($"Unauthorized access to {directory.FullName}");
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error processing {directory.FullName} | Error {ex.Message} ");
+            }
+
+            return size;
         }
 
         private void UDPLoadDirectory(string absolutePath)

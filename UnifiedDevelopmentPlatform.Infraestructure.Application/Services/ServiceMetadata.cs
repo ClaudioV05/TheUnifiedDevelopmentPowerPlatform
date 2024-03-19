@@ -115,13 +115,13 @@ namespace UnifiedDevelopmentPlatform.Application.Services
                                 {
                                     if (newNameTable)
                                     {
-                                        _serviceMetadataTable.UDPLoadTheTable(ref listOfTables, idTable, tablesName);
-                                        _serviceMetadataField.UDPLoadTheFieldAtTable(ref listOfTables, idTable, listDatabaseSchemas[counter]);
+                                        _serviceMetadataTable.UDPAddAndSaveTheTable(ref listOfTables, idTable, tablesName);
+                                        _serviceMetadataField.UDPLoadTheFieldsAtTable(ref listOfTables, idTable, listDatabaseSchemas[counter]);
                                         newNameTable = false;
                                     }
                                     else if (!newNameTable)
                                     {
-                                        _serviceMetadataField.UDPLoadTheFieldAtTable(ref listOfTables, idTable, listDatabaseSchemas[counter]);
+                                        _serviceMetadataField.UDPLoadTheFieldsAtTable(ref listOfTables, idTable, listDatabaseSchemas[counter]);
                                     }
                                 }
                                 else if (_serviceFuncString.UDPContains(listDatabaseSchemas[counter], SqlConfiguration.PrimaryKey))
@@ -140,12 +140,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
                         }
                     }
 
-                    if (listOfTables is not null && listOfTables.Any())
-                    {
-                        // In service table call the method to save the...
-                        // qtd of tables. qtd of fields
-                        // See the possibility to create the service to register the time of creation.
-                    }
+                    _serviceDatabases.UDPSaveMetricsOfTheGenerationOfTablesAndFields(listOfTables);
                 }
             }
             catch (Exception ex)

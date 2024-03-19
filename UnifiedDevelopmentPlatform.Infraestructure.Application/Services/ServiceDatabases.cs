@@ -19,6 +19,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         private readonly IServiceDirectory _serviceDirectory;
         private readonly IServiceEnumerated _serviceEnumerated;
         private readonly IServiceFuncString _serviceFuncString;
+        private readonly IServiceMetadataField _serviceMetadataField;
 
         /// <summary>
         /// The constructor of service databases.
@@ -30,13 +31,15 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         /// <param name="serviceDirectory"></param>
         /// <param name="serviceEnumerated"></param>
         /// <param name="serviceFuncString"></param>
+        /// <param name="serviceMetadataField"></param>
         public ServiceDatabases(IServiceLog serviceLog,
                                 IServiceFile serviceFile,
                                 IServiceCrypto serviceCrypto,
                                 IServiceMessage serviceMessage,
                                 IServiceDirectory serviceDirectory,
                                 IServiceEnumerated serviceEnumerated,
-                                IServiceFuncString serviceFuncString)
+                                IServiceFuncString serviceFuncString,
+                                IServiceMetadataField serviceMetadataField)
         {
             _serviceLog = serviceLog;
             _serviceFile = serviceFile;
@@ -45,6 +48,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             _serviceDirectory = serviceDirectory;
             _serviceEnumerated = serviceEnumerated;
             _serviceFuncString = serviceFuncString;
+            _serviceMetadataField = serviceMetadataField;
         }
 
         public List<Databases> UDPSelectParametersTheKindsOfDatabases()
@@ -94,6 +98,38 @@ namespace UnifiedDevelopmentPlatform.Application.Services
 
                 _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.SuccessToTheSaveIdentifierToTheDatabasesFromMetadata), _serviceFuncString.Empty);
             }
+        }
+
+        public void UDPSaveMetricsOfTheGenerationOfTablesAndFields(List<Tables> listOfTables)
+        {
+            _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.CallStartToTheSaveMetricsOfTheGenerationOfTablesAndFields), _serviceFuncString.Empty);
+
+            long quantityOfTables = 0;
+
+            // See the possibility to create the service to register the time of creation.
+            // create log to method of fields.
+            // register time of execution.
+
+            if (listOfTables is not null && listOfTables.Any())
+            {
+                this.UDPGetMetricsOfQuantitiesOfTables(listOfTables);
+                _serviceMetadataField.UDPGetMetricsOfQuantitiesOfFields(listOfTables, quantityOfTables);
+                _serviceDirectory.GetTotalSizeOfDirectoryByParallelProcessing(new DirectoryInfo(_serviceDirectory.UDPObtainDirectory(DirectoryRootType.App)), SearchOption.AllDirectories);
+
+                _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.SuccessToTheSaveMetricsOfTheGenerationOfTablesAndFields), _serviceFuncString.Empty);
+            }
+        }
+
+        public long UDPGetMetricsOfQuantitiesOfTables(List<Tables> listOfTables)
+        {
+            _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.CallStartToTheGetMetricsOfQuantitiesOfTables), _serviceFuncString.Empty);
+
+            long quantityOfTables = 0;
+            quantityOfTables = listOfTables.Where(element => !element.Id.Equals(0)).Distinct().LongCount();
+
+            _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.SuccessToTheGetMetricsOfQuantitiesOfTables), _serviceFuncString.Empty);
+
+            return quantityOfTables;
         }
     }
 }
