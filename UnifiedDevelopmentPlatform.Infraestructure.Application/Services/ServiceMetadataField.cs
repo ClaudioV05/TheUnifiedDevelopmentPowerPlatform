@@ -7,7 +7,7 @@ using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Sql;
 namespace UnifiedDevelopmentPlatform.Application.Services
 {
     /// <summary>
-    /// ServiceMetadataField.
+    /// Service MetadataField.
     /// </summary>
     public class ServiceMetadataField : IServiceMetadataField
     {
@@ -154,6 +154,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         public long UDPGetMetricsOfQuantitiesOfFields(List<Tables> listOfTables, long quantityOfTables)
         {
             long quantityOfFields = 0;
+            _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.CallStartToTheGetMetricsOfQuantitiesOfFields), _serviceFuncString.Empty);
 
             try
             {
@@ -163,6 +164,9 @@ namespace UnifiedDevelopmentPlatform.Application.Services
                                                     .Where(element => !element.IdTables.Equals(0) && element.IdTables.Equals(i + 1))
                                                     .LongCount();
                 }
+
+                _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.SuccessToTheGetMetricsOfQuantitiesOfFields), _serviceFuncString.Empty);
+
             }
             catch (Exception) { }
 
