@@ -102,19 +102,15 @@ namespace UnifiedDevelopmentPlatform.Application.Services
 
         public void UDPSaveMetricsOfTheGenerationOfTablesAndFields(List<Tables> listOfTables)
         {
-            _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.CallStartToTheSaveMetricsOfTheGenerationOfTablesAndFields), _serviceFuncString.Empty);
-
             long quantityOfTables = 0;
 
-            // See the possibility to create the service to register the time of creation.
-            // create log to method of fields.
-            // register time of execution.
+            _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.CallStartToTheSaveMetricsOfTheGenerationOfTablesAndFields), _serviceFuncString.Empty);
 
             if (listOfTables is not null && listOfTables.Any())
             {
-                this.UDPGetMetricsOfQuantitiesOfTables(listOfTables);
-                _serviceMetadataField.UDPGetMetricsOfQuantitiesOfFields(listOfTables, quantityOfTables);
-                _serviceDirectory.GetTotalSizeOfDirectoryByParallelProcessing(new DirectoryInfo(_serviceDirectory.UDPObtainDirectory(DirectoryRootType.App)), SearchOption.AllDirectories);
+                _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.TheMetricsOfQuantitiesOfTables), Convert.ToString(this.UDPGetMetricsOfQuantitiesOfTables(listOfTables)));
+                _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.TheMetricsOfQuantitiesOfFields), Convert.ToString(_serviceMetadataField.UDPGetMetricsOfQuantitiesOfFields(listOfTables, quantityOfTables)));
+                _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.TheMetricsOfTotalSizeOfDirectoryByParallelProcessing), Convert.ToString(_serviceDirectory.GetMetricsOfTheTotalSizeOfDirectoryByParallelProcessing(new DirectoryInfo(_serviceDirectory.UDPObtainDirectory(DirectoryRootType.App)))));
 
                 _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.SuccessToTheSaveMetricsOfTheGenerationOfTablesAndFields), _serviceFuncString.Empty);
             }

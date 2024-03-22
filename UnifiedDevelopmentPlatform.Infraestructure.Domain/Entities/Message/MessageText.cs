@@ -371,6 +371,21 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Message
         /// </summary>
         public static string CallStartToTheSaveIdentifierToTheDatabasesFromMetadata => "CALL START TO THE SAVE IDENTIFIER TO THE DATABASES FROM METADATA.";
 
+        /// <summary>
+        /// The metrics of quantities of the tables.
+        /// </summary>
+        public static string TheMetricsOfQuantitiesOfTables => "THE QUANTITY OF THE TOTAL OF TABLES WHITHIN THE DATABASE SCHEMA.";
+
+        /// <summary>
+        /// The metrics of quantities of the fields.
+        /// </summary>
+        public static string TheMetricsOfQuantitiesOfFields => "THE QUANTITY OF THE TOTAL OF FIELDS WHITHIN THE DATABASE SCHEMA.";
+
+        /// <summary>
+        /// The metrics of total size of directory by parallel processing.
+        /// </summary>
+        public static string TheMetricsOfTotalSizeOfDirectoryByParallelProcessing => "THE TOTAL SIZE OF DIRECTORY APP AT THE MOMENT OF GENERATION OF THE TABLES AND FIELDS.";
+
         #endregion Service Databases.
 
         #region Service Databases engine.

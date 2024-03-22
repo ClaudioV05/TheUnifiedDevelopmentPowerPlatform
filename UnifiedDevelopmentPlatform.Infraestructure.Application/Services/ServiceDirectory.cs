@@ -112,7 +112,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             }
         }
 
-        public long GetTotalSizeOfDirectoryByParallelProcessing(DirectoryInfo directory, SearchOption searchOption = SearchOption.AllDirectories)
+        public long GetMetricsOfTheTotalSizeOfDirectoryByParallelProcessing(DirectoryInfo directory)
         {
             if (directory is null || !directory.Exists)
             {
@@ -123,7 +123,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
 
             try
             {
-                Parallel.ForEach(directory.EnumerateFiles("*", searchOption), fileInfo =>
+                Parallel.ForEach(directory.EnumerateFiles("*", SearchOption.AllDirectories), fileInfo =>
                 {
                     try
                     {

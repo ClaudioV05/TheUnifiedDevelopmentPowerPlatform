@@ -20,17 +20,16 @@ namespace UnifiedDevelopmentPlatform.Application.Interfaces
         void UPDCreateDirectoryProjectOfSolution();
 
         /// <summary>
-        /// Get total size of directory by parallel processing.
+        /// Get metrics of the total size of directory by parallel processing.
         /// </summary>
         /// <param name="directory"></param>
-        /// <param name="searchOption"></param>
         /// <paramref name=""/>
         /// <returns></returns>
         /// <remarks></remarks>
         /// <exception cref=""></exception>
         /// <seealso href=""></seealso>
         /// <returns>Return the total size of directoy at the moment of call.</returns>
-        long GetTotalSizeOfDirectoryByParallelProcessing(DirectoryInfo directory, SearchOption searchOption = SearchOption.AllDirectories);
+        long GetMetricsOfTheTotalSizeOfDirectoryByParallelProcessing(DirectoryInfo directory);
 
         /// <summary>
         /// Build directory standard of solution.
