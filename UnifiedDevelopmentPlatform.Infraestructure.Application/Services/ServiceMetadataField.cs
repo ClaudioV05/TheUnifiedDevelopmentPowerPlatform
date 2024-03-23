@@ -67,6 +67,8 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             typeField = _serviceFuncString.UDPReplace(typeField, SqlConfiguration.KeyNullValue, _serviceFuncString.Empty);
             typeField = _serviceFuncString.UDPReplace(typeField, SqlConfiguration.KeyNotNullValue, _serviceFuncString.Empty);
             typeField = _serviceFuncString.UDPReplace(typeField, SqlConfiguration.KeyAutoIncrement, _serviceFuncString.Empty);
+            typeField = _serviceFuncString.UDPReplace(typeField, MetaCharacterSymbols.LeftSquareBracket, _serviceFuncString.Empty);
+            typeField = _serviceFuncString.UDPReplace(typeField, MetaCharacterSymbols.RightSquareBracket, _serviceFuncString.Empty);
             positionWithSpace = _serviceFuncString.UDPIndexOf(typeField, MetaCharacterSymbols.HorizontalTab);
 
             typeField = _serviceFuncString.UDPRemoveWhitespaceAtStart(typeField);
@@ -96,6 +98,8 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             field = _serviceFuncString.UDPReplace(field, SqlConfiguration.PrimaryKey, _serviceFuncString.Empty);
             field = _serviceFuncString.UDPReplace(field, MetaCharacterSymbols.LeftParenthese, _serviceFuncString.Empty);
             field = _serviceFuncString.UDPReplace(field, MetaCharacterSymbols.RightParenthese, _serviceFuncString.Empty);
+            field = _serviceFuncString.UDPReplace(field, MetaCharacterSymbols.LeftSquareBracket, _serviceFuncString.Empty);
+            field = _serviceFuncString.UDPReplace(field, MetaCharacterSymbols.RightSquareBracket, _serviceFuncString.Empty);
             field = _serviceFuncString.UDPReplace(field, MetaCharacterSymbols.SingleQuote, _serviceFuncString.Empty);
             field = _serviceFuncString.UDPReplace(field, MetaCharacterSymbols.DoubleQuote, _serviceFuncString.Empty);
             field = _serviceFuncString.UDPRemoveAnyWhiteSpace(field);
