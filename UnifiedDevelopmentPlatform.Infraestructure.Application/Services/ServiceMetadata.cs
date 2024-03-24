@@ -68,9 +68,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             int counter = 0;
             int idTable = 0;
             bool newNameTable = true;
-            string[]? listOfFieldsPrimaryKey;
             string tablesName = _serviceFuncString.Empty;
-            string fieldsPrimaryKey = _serviceFuncString.Empty;
             string databaseSchemaDecrypt = _serviceFuncString.Empty;
             List<Tables> listOfTables = new List<Tables>();
             List<string> listDatabaseSchemas = new List<string>();
@@ -126,9 +124,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
                                 }
                                 else if (_serviceFuncString.UDPContains(listDatabaseSchemas[counter], SqlConfiguration.PrimaryKey))
                                 {
-                                    fieldsPrimaryKey = _serviceMetadataField.UDPGetThePrimaryKeyFieldName(listDatabaseSchemas[counter]);
-                                    listOfFieldsPrimaryKey = _serviceFuncString.UDPParseLine(new[] { MetaCharacterSymbols.Comma }, fieldsPrimaryKey);
-                                    _serviceMetadataField.UDPLoadTheFieldsPrimarykeyAtTable(ref listOfTables, idTable, listOfFieldsPrimaryKey);
+                                    _serviceMetadataField.UDPLoadTheFieldsPrimarykeyAtTable(ref listOfTables, idTable, listDatabaseSchemas[counter]);
                                     continue;
                                 }
                                 else if (_serviceFuncString.UDPContains(listDatabaseSchemas[counter], SqlConfiguration.CreateTableWithSpace))

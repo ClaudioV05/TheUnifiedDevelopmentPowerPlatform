@@ -74,14 +74,14 @@ namespace UnifiedDevelopmentPlatform.Application.Interfaces
         /// </summary>
         /// <param name="listTables"></param>
         /// <param name="idTable"></param>
-        /// <param name="listOfFieldsPrimaryKey"></param>
+        /// <param name="fieldsPrimaryKey"></param>
         /// <paramref name=""/>
         /// <returns></returns>
         /// <remarks></remarks>
         /// <exception cref=""></exception>
         /// <seealso href=""></seealso>
         /// <returns></returns>
-        void UDPLoadTheFieldsPrimarykeyAtTable(ref List<Tables> listTables, int idTable, string[]? listOfFieldsPrimaryKey);
+        void UDPLoadTheFieldsPrimarykeyAtTable(ref List<Tables> listTables, int idTable, string fieldsPrimaryKey);
 
         /// <summary>
         /// Get the metrics of quantities of fields.

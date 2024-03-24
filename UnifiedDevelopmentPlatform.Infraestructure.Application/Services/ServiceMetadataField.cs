@@ -1,4 +1,5 @@
-﻿using UnifiedDevelopmentPlatform.Application.Interfaces;
+﻿using System.Diagnostics.Metrics;
+using UnifiedDevelopmentPlatform.Application.Interfaces;
 using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities;
 using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Message;
 using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.MetaCharacter;
@@ -131,26 +132,35 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.SuccessToTheLoadTheFieldAtTable), _serviceFuncString.Empty);
         }
 
-        public void UDPLoadTheFieldsPrimarykeyAtTable(ref List<Tables> listTables, int idTable, string[]? listOfFieldsPrimaryKey)
+        public void UDPLoadTheFieldsPrimarykeyAtTable(ref List<Tables> listTables, int idTable, string fieldsPrimaryKey)
         {
-            if (listTables is not null && listTables.Any(element => element.Id.Equals(idTable)))
-            {
-                _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.CallStartToTheLoadTheFieldsPrimarykeyAtTable), _serviceFuncString.Empty);
+            string primaryKeys = _serviceFuncString.Empty;
+            string[]? listOfFieldsPrimaryKey;
 
-                if (listOfFieldsPrimaryKey is not null && listOfFieldsPrimaryKey.Any())
+            primaryKeys = this.UDPGetThePrimaryKeyFieldName(fieldsPrimaryKey);
+            listOfFieldsPrimaryKey = _serviceFuncString.UDPParseLine(new[] { MetaCharacterSymbols.Comma }, primaryKeys);
+
+            if (listOfFieldsPrimaryKey is not null && listOfFieldsPrimaryKey.Any())
+            {
+                if (listTables is not null && listTables.Any(element => element.Id.Equals(idTable)))
                 {
-                    for (int i = 0; i < listTables.Where(element => element.Id.Equals(idTable)).First().Fields.Count; i++)
+                    _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.CallStartToTheLoadTheFieldsPrimarykeyAtTable), _serviceFuncString.Empty);
+
+                    if (listOfFieldsPrimaryKey is not null && listOfFieldsPrimaryKey.Any())
                     {
-                        for (int j = 0; j < listOfFieldsPrimaryKey.Length; j++)
+                        for (int i = 0; i < listTables.Where(element => element.Id.Equals(idTable)).First().Fields.Count; i++)
                         {
-                            if (listTables.Where(element => element.Id.Equals(idTable)).First().Fields.Where(element => element.Name.Contains(listOfFieldsPrimaryKey[j])).Any())
+                            for (int j = 0; j < listOfFieldsPrimaryKey.Length; j++)
                             {
-                                listTables.Where(element => element.Id.Equals(idTable)).First().Fields.Where(element => element.Name.Contains(listOfFieldsPrimaryKey[j])).FirstOrDefault().IsPrimaryKey = true;
+                                if (listTables.Where(element => element.Id.Equals(idTable)).First().Fields.Where(element => element.Name.Contains(listOfFieldsPrimaryKey[j])).Any())
+                                {
+                                    listTables.Where(element => element.Id.Equals(idTable)).First().Fields.Where(element => element.Name.Contains(listOfFieldsPrimaryKey[j])).FirstOrDefault().IsPrimaryKey = true;
+                                }
                             }
                         }
-                    }
 
-                    _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.SuccessToTheLoadTheFieldsPrimarykeyAtTable), _serviceFuncString.Empty);
+                        _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.SuccessToTheLoadTheFieldsPrimarykeyAtTable), _serviceFuncString.Empty);
+                    }
                 }
             }
         }
