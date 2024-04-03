@@ -27,9 +27,9 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Filters
         /// <param name="serviceValidation"></param>
         /// <param name="serviceFuncString"></param>
         public FilterActionContextTablesAndFieldsOfMetadata(IServiceLog serviceLog,
-                                                            IServiceMessage serviceMessage, 
-                                                            IServiceDirectory serviceDirectory, 
-                                                            IServiceValidation serviceValidation, 
+                                                            IServiceMessage serviceMessage,
+                                                            IServiceDirectory serviceDirectory,
+                                                            IServiceValidation serviceValidation,
                                                             IServiceFuncString serviceFuncString)
         {
             _serviceLog = serviceLog;
@@ -110,7 +110,7 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Filters
 
                 if (!_serviceValidation.UDPArchitectureOk(context, ref message))
                 {
-                    _serviceLog.UDPLogReport(message, _serviceFuncString.Empty );
+                    _serviceLog.UDPLogReport(message, _serviceFuncString.Empty);
                     HasMessage(context, message);
                     return;
                 }
@@ -123,7 +123,7 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Filters
 
             await next();
 
-            try 
+            try
             {
                 _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.CallStartToTheCreateDirectoryProjectOfSolution), _serviceFuncString.Empty);
                 _serviceDirectory.UPDCreateDirectoryProjectOfSolution();

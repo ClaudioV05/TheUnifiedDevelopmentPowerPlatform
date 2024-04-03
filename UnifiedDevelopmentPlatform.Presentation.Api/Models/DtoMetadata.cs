@@ -6,14 +6,15 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Models
     /// <summary>
     /// Metadata.
     /// </summary>
-    public class Metadata
+    public class DtoMetadata
     {
         /// <summary>
         /// The database schema.
         /// </summary>
         [Required]
+        [Base64String]
         [JsonPropertyName("databaseSchema")]
-        public string DatabaseSchema { get; set; }
+        public string? DatabaseSchema { get; set; }
 
         /// <summary>
         /// The identify of architecture.
