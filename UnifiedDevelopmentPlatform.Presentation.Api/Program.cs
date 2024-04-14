@@ -70,8 +70,12 @@ builder.Services.TryAddTransient<FilterActionContextTablesAndFieldsOfMetadata<Me
 builder.Services.TryAddScoped<IServiceArchitecturePatterns, ServiceArchitecturePatterns>();
 builder.Services.TryAddScoped<IServiceCrypto, ServiceCrypto>();
 builder.Services.TryAddScoped<IServiceCsv, ServiceCsv>();
-builder.Services.TryAddScoped<IServiceDatabases, ServiceDatabases>();
 builder.Services.TryAddScoped<IServiceDatabaseEngine, ServiceDatabaseEngine>();
+builder.Services.TryAddScoped<IServiceDatabases, ServiceDatabases>();
+builder.Services.TryAddScoped<IServiceDataTypeAnsiSql, ServiceDataTypeAnsiSql>();
+builder.Services.TryAddScoped<IServiceDataTypeCSharp, ServiceDataTypeCSharp>();
+builder.Services.TryAddScoped<IServiceDataTypePascal, ServiceDataTypePascal>();
+builder.Services.TryAddScoped<IServiceDataTypeSqlServer, ServiceDataTypeSqlServer>();
 builder.Services.TryAddScoped<IServiceDate, ServiceDate>();
 builder.Services.TryAddScoped<IServiceDevelopmentEnvironments, ServiceDevelopmentEnvironments>();
 builder.Services.TryAddScoped<IServiceDirectory, ServiceDirectory>();
@@ -90,7 +94,6 @@ builder.Services.TryAddScoped<IServiceMetadataField, ServiceMetadataField>();
 builder.Services.TryAddScoped<IServiceMetadataTable, ServiceMetadataTable>();
 builder.Services.TryAddScoped<IServicePlataform, ServicePlataform>();
 builder.Services.TryAddScoped<IServiceValidation, ServiceValidation>();
-builder.Services.TryAddScoped<IServiceXml, ServiceXml>();
 builder.Services.TryAddScoped<IServiceZipFile, ServiceZipFile>();
 #endregion Services.
 

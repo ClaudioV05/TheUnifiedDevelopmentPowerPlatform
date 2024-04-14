@@ -3,7 +3,7 @@ using System.Diagnostics;
 using UnifiedDevelopmentPlatform.Application.Interfaces;
 using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Directory;
 using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.File;
-using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Log;
+using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Logging;
 using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Message;
 
 namespace UnifiedDevelopmentPlatform.Application.Services
@@ -71,7 +71,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
 
                 if (stack is not null)
                 {
-                    data = $"{newFirstLine}{LogConfiguration.Identifier}{_serviceGuid.UDPGenerateTheNewGuidObject()}{_servicePlataform.UDPEnvironmentAddNewLine()}" +
+                    data = $"{newFirstLine}{LogConfiguration.Identifier}{_serviceGuid.UDPGenerateTheNewUniversallyUniqueIdentifier()}{_servicePlataform.UDPEnvironmentAddNewLine()}" +
                            $"{LogConfiguration.Datetime}{_serviceDate.UDPGetDateTimeNowFormat()}{_servicePlataform.UDPEnvironmentAddNewLine()}" +
                            $"{LogConfiguration.FileName}{_serviceFile.UDPGetFileName(stack.GetFileName() ?? _serviceFuncStrings.Empty)}{_servicePlataform.UDPEnvironmentAddNewLine()}" +
                            $"{LogConfiguration.MethodName}{stack.GetMethod()?.Name}{_servicePlataform.UDPEnvironmentAddNewLine()}" +

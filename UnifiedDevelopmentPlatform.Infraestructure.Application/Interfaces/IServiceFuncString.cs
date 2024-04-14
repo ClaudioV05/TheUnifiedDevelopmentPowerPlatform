@@ -88,6 +88,30 @@
         string UDPSelectSection(string text);
 
         /// <summary>
+        /// Only letter.
+        /// </summary>
+        /// <param name="text"></param>
+        /// <paramref name=""/>
+        /// <returns></returns>
+        /// <remarks></remarks>
+        /// <exception cref=""></exception>
+        /// <seealso href=""></seealso>
+        /// <returns>The text only with letter.</returns>
+        string UDPOnlyLetter(string text);
+
+        /// <summary>
+        /// Only number.
+        /// </summary>
+        /// <param name="text"></param>
+        /// <paramref name=""/>
+        /// <returns></returns>
+        /// <remarks></remarks>
+        /// <exception cref=""></exception>
+        /// <seealso href=""></seealso>
+        /// <returns>The text only with number.</returns>
+        string UDPOnlyNumber(string text);
+
+        /// <summary>
         /// Verify if string contains only ascii letters.
         /// </summary>
         /// <param name="text"></param>
@@ -98,6 +122,18 @@
         /// <seealso href=""></seealso>
         /// <returns>The method will return true, otherwise will return false.</returns>
         bool UDPIsOnlyAsciiLetters(string text);
+
+        /// <summary>
+        /// Verify if string contains only value numeric.
+        /// </summary>
+        /// <param name="text"></param>
+        /// <paramref name=""/>
+        /// <returns></returns>
+        /// <remarks></remarks>
+        /// <exception cref=""></exception>
+        /// <seealso href=""></seealso>
+        /// <returns>The method will return true, otherwise will return false.</returns>
+        bool UDPIsOnlyDigit(string text);
 
         /// <summary>
         /// Verify if string contains only ascii letters.
@@ -309,6 +345,19 @@
         /// <seealso href=""></seealso>
         /// <returns>Position of string.</returns>
         int UDPIndexOf(string text, string itemToFind);
+
+        /// <summary>
+        /// Do find the last index of in a string.
+        /// </summary>
+        /// <param name="text"></param>
+        /// <param name="itemToFind"></param>
+        /// <paramref name=""/>
+        /// <returns></returns>
+        /// <remarks></remarks>
+        /// <exception cref=""></exception>
+        /// <seealso href=""></seealso>
+        /// <returns>Position of string.</returns>
+        int UDPLastIndexOf(string text, string itemToFind);
 
         /// <summary>
         /// Sub String.

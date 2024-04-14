@@ -56,6 +56,18 @@ namespace UnifiedDevelopmentPlatform.Application.Interfaces
         bool UDPTheFieldIsNotNull(string text);
 
         /// <summary>
+        /// Indicates the maximum number of characters that are required to represent data in character format.
+        /// </summary>
+        /// <param name="text"></param>
+        /// <paramref name=""/>
+        /// <returns></returns>
+        /// <remarks></remarks>
+        /// <exception cref=""></exception>
+        /// <seealso href=""></seealso>
+        /// <returns>The maximum number of characters.</returns>
+        int? UDPGetFieldLenght(string text);
+
+        /// <summary>
         /// Load the fields at the table.
         /// </summary>
         /// <param name="listTables"></param>

@@ -1,5 +1,4 @@
-﻿using System.IO;
-using System.Reflection;
+﻿using System.Reflection;
 using System.Text.RegularExpressions;
 using UnifiedDevelopmentPlatform.Application.Interfaces;
 using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Directory;

@@ -143,7 +143,11 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Filters
         /// <param name="message"></param>
         private static void HasMessage(ActionExecutingContext context, string message)
         {
-            context.Result = new BadRequestObjectResult(new ErrorDetails() { StatusCode = 1, Message = message });
+            context.Result = new BadRequestObjectResult(new ErrorDetails()
+            {
+                StatusCode = 1,
+                Message = message
+            });
         }
     }
 }

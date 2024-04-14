@@ -1,4 +1,5 @@
-﻿using UnifiedDevelopmentPlatform.Application.Interfaces;
+﻿using System.Text.RegularExpressions;
+using UnifiedDevelopmentPlatform.Application.Interfaces;
 
 namespace UnifiedDevelopmentPlatform.Application.Services
 {
@@ -18,16 +19,53 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             _serviceFuncString = serviceFuncString;
         }
 
-        public string UDPGenerateTheNewGuidObject()
+        public string? UDPGenerateTheNewUniversallyUniqueIdentifier()
         {
+            string? value;
+
             try
             {
-                return Convert.ToString(Guid.NewGuid());
+                value = Convert.ToString(Guid.NewGuid());
+
+                if (!this.UDValidateWithRegexTheUniversallyUniqueIdentifier(value))
+                {
+                    value = _serviceFuncString.Empty;
+                }
+
+                return value;
             }
             catch (Exception)
             {
                 return _serviceFuncString.Empty;
             }
+        }
+
+        public bool UDValidateWithRegexTheUniversallyUniqueIdentifier(string value)
+        {
+            Regex? regex = new Regex(@"^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{12}$");
+
+            try
+            {
+                return regex.IsMatch(value);
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        public bool UDValidateWithGuidParseTheUniversallyUniqueIdentifier(string value)
+        {
+            try
+            {
+                Guid.Parse(value);
+            }
+            catch (FormatException)
+            {
+                return false;
+            }
+
+            return true;
         }
     }
 }

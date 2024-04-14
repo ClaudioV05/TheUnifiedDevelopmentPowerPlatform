@@ -101,7 +101,13 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.DataTypes
             /// System.Decimal.
             /// </summary>
             [Description("decimal")]
-            Decimal = 14
+            Decimal = 14,
+
+            /// <summary>
+            /// System.Datetime.
+            /// </summary>
+            [Description("datetime")]
+            DateTime = 15
         }
     }
 }

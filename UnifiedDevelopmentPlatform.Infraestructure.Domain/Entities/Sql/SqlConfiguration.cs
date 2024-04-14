@@ -41,14 +41,14 @@
         public static string KeyNot => "not";
 
         /// <summary>
-        /// The key null value.
+        /// SQL null constraint.
         /// </summary>
-        public static string KeyNullValue => "null";
+        public static string SqlConstraintNull => "null";
 
         /// <summary>
-        /// The key not null value.
+        /// SQL not null constraint.
         /// </summary>
-        public static string KeyNotNullValue => "not null";
+        public static string SqlConstraintNotNull => "not null";
 
         /// <summary>
         /// The key of auto increment from database.
@@ -60,6 +60,19 @@
         /// </summary>
         public static string DatabaseObject => "dbo";
 
-        
+        /// <summary>
+        /// SQL Collate constraint.
+        /// </summary>
+        public static string SqlConstraintCollate => "collate";
+
+        /// <summary>
+        /// UTF-8 with mb4 general ci.
+        /// </summary>
+        public static string Utf8WithMb4GeneralCi => "utf8mb4_general_ci";
+
+        /// <summary>
+        /// SQL Default constraint.
+        /// </summary>
+        public static string SqlConstraintDefault => "default";
     }
 }

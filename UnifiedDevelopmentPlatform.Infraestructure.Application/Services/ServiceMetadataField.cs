@@ -1,5 +1,4 @@
-﻿using System.Diagnostics.Metrics;
-using UnifiedDevelopmentPlatform.Application.Interfaces;
+﻿using UnifiedDevelopmentPlatform.Application.Interfaces;
 using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities;
 using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Message;
 using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.MetaCharacter;
@@ -60,21 +59,31 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         public string UDPGetTheTypeOfFieldName(string text)
         {
             int positionWithSpace = 0;
+            int positionConstraintDefault = 0;
             string typeField = _serviceFuncString.Empty;
 
             typeField = _serviceFuncString.UDPLower(text);
             typeField = _serviceFuncString.UDPReplace(typeField, MetaCharacterSymbols.Comma, _serviceFuncString.Empty);
             typeField = _serviceFuncString.UDPReplace(typeField, SqlConfiguration.KeyNot, _serviceFuncString.Empty);
-            typeField = _serviceFuncString.UDPReplace(typeField, SqlConfiguration.KeyNullValue, _serviceFuncString.Empty);
-            typeField = _serviceFuncString.UDPReplace(typeField, SqlConfiguration.KeyNotNullValue, _serviceFuncString.Empty);
+            typeField = _serviceFuncString.UDPReplace(typeField, SqlConfiguration.SqlConstraintNull, _serviceFuncString.Empty);
+            typeField = _serviceFuncString.UDPReplace(typeField, SqlConfiguration.SqlConstraintNotNull, _serviceFuncString.Empty);
             typeField = _serviceFuncString.UDPReplace(typeField, SqlConfiguration.KeyAutoIncrement, _serviceFuncString.Empty);
+            typeField = _serviceFuncString.UDPReplace(typeField, SqlConfiguration.SqlConstraintCollate, _serviceFuncString.Empty);
+            typeField = _serviceFuncString.UDPReplace(typeField, SqlConfiguration.Utf8WithMb4GeneralCi, _serviceFuncString.Empty);
             typeField = _serviceFuncString.UDPReplace(typeField, MetaCharacterSymbols.LeftSquareBracket, _serviceFuncString.Empty);
             typeField = _serviceFuncString.UDPReplace(typeField, MetaCharacterSymbols.RightSquareBracket, _serviceFuncString.Empty);
-            positionWithSpace = _serviceFuncString.UDPIndexOf(typeField, MetaCharacterSymbols.HorizontalTab);
 
+            if (_serviceFuncString.UDPContains(typeField, SqlConfiguration.SqlConstraintDefault))
+            {
+                positionConstraintDefault = _serviceFuncString.UDPLastIndexOf(typeField, SqlConfiguration.SqlConstraintDefault);
+                typeField = _serviceFuncString.UDPSubString(typeField, 0, positionConstraintDefault + SqlConfiguration.SqlConstraintDefault.Length);
+                typeField = _serviceFuncString.UDPReplace(typeField, SqlConfiguration.SqlConstraintDefault, _serviceFuncString.Empty);
+            }
+
+            positionWithSpace = _serviceFuncString.UDPIndexOf(typeField, MetaCharacterSymbols.HorizontalTab);
             typeField = _serviceFuncString.UDPRemoveWhitespaceAtStart(typeField);
 
-            if (positionWithSpace == -1)
+            if (positionWithSpace.Equals(-1))
             {
                 positionWithSpace = 0;
                 positionWithSpace = _serviceFuncString.UDPIndexOf(typeField, MetaCharacterSymbols.WhiteSpace);
@@ -83,6 +92,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             typeField = _serviceFuncString.UDPRemoveWhitespaceAtStart(typeField);
             typeField = _serviceFuncString.UDPSubString(typeField, positionWithSpace, Math.Abs(positionWithSpace - typeField.Length));
             typeField = _serviceFuncString.UDPRemoveSpecialCaracter(typeField);
+
             return _serviceFuncString.UDPUpper(_serviceFuncString.UDPRemoveAnyWhiteSpace(typeField));
         }
 
@@ -113,7 +123,31 @@ namespace UnifiedDevelopmentPlatform.Application.Services
 
         public bool UDPTheFieldIsNotNull(string text)
         {
-            return _serviceFuncString.UDPContains(text, SqlConfiguration.KeyNotNullValue);
+            return _serviceFuncString.UDPContains(text, SqlConfiguration.SqlConstraintNotNull);
+        }
+
+        public int? UDPGetFieldLenght(string text)
+        {
+            int? returnValue = null;
+            string data = _serviceFuncString.Empty;
+
+            try
+            {
+                data = text;
+                data = _serviceFuncString.UDPLower(data);
+                data = _serviceFuncString.UDPOnlyNumber(data);
+
+                if (!_serviceFuncString.UDPNullOrEmpty(data) && _serviceFuncString.UDPIsOnlyDigit(data))
+                {
+                    returnValue = Convert.ToInt32(data);
+                }
+
+                return returnValue;
+            }
+            catch (Exception)
+            {
+                return returnValue;
+            }
         }
 
         public void UDPLoadTheFieldsAtTable(ref List<Tables> listTables, int idTable, string text)
@@ -126,7 +160,8 @@ namespace UnifiedDevelopmentPlatform.Application.Services
                 Name = this.UDPGetTheFieldName(text),
                 IsNull = this.UDPTheFieldIsNotNull(text),
                 IsPrimaryKey = false,
-                TypeField = _serviceDevelopmentEnvironments.UDPGetTheTypeOfCSharp(this.UDPGetTheTypeOfFieldName(text))
+                FieldLenght = this.UDPGetFieldLenght(this.UDPGetTheTypeOfFieldName(text)),
+                TypeField = _serviceDevelopmentEnvironments.UDPGetDataTypeOfCSharp(this.UDPGetTheTypeOfFieldName(text))
             });
 
             _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.SuccessToTheLoadTheFieldAtTable), _serviceFuncString.Empty);
@@ -168,6 +203,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         public long UDPGetMetricsOfQuantitiesOfFields(List<Tables> listOfTables, long quantityOfTables)
         {
             long quantityOfFields = 0;
+
             _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.CallStartToTheGetMetricsOfQuantitiesOfFields), _serviceFuncString.Empty);
 
             try

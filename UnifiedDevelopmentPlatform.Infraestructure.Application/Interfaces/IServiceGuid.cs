@@ -6,7 +6,7 @@
     public interface IServiceGuid
     {
         /// <summary>
-        /// Generate the new guid object.
+        /// To generate the new "universally unique identifier" (UUID) object.
         /// </summary>
         /// <param name=""></param>
         /// <paramref name=""/>
@@ -15,6 +15,30 @@
         /// <exception cref=""></exception>
         /// <seealso href=""></seealso>
         /// <returns>The guid object.</returns>
-        string UDPGenerateTheNewGuidObject();
+        string? UDPGenerateTheNewUniversallyUniqueIdentifier();
+
+        /// <summary>
+        /// To validate the "universally unique identifier" (UUID) with regex.
+        /// </summary>
+        /// <param name="value"></param>
+        /// <paramref name=""/>
+        /// <returns></returns>
+        /// <remarks></remarks>
+        /// <exception cref=""></exception>
+        /// <seealso href=""></seealso>
+        /// <returns>The method will return true, otherwise will return false.</returns>
+        bool UDValidateWithRegexTheUniversallyUniqueIdentifier(string value);
+
+        /// <summary>
+        /// To validate the "universally unique identifier" (UUID) with guid parse.
+        /// </summary>
+        /// <param name="value"></param>
+        /// <paramref name=""/>
+        /// <returns></returns>
+        /// <remarks></remarks>
+        /// <exception cref=""></exception>
+        /// <seealso href=""></seealso>
+        /// <returns>The method will return true, otherwise will return false.</returns>
+        bool UDValidateWithGuidParseTheUniversallyUniqueIdentifier(string value);
     }
 }

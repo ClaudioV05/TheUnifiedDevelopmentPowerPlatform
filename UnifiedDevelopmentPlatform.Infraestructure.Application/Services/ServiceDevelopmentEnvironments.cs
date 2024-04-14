@@ -1,5 +1,7 @@
-﻿using UnifiedDevelopmentPlatform.Application.Interfaces;
+﻿using System.Xml.Linq;
+using UnifiedDevelopmentPlatform.Application.Interfaces;
 using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities;
+using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.DataTypes;
 using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Directory;
 using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.File;
 using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Message;
@@ -19,6 +21,8 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         private readonly IServiceDirectory _serviceDirectory;
         private readonly IServiceEnumerated _serviceEnumerated;
         private readonly IServiceFuncString _serviceFuncString;
+        private readonly IServiceDataTypeCSharp _serviceDataTypeCSharp;
+        private readonly IServiceDataTypeAnsiSql _serviceDataTypeAnsiSql;
 
         /// <summary>
         /// The constructor of service development environments.
@@ -30,13 +34,17 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         /// <param name="serviceDirectory"></param>
         /// <param name="serviceEnumerated"></param>
         /// <param name="serviceFuncString"></param>
+        /// <param name="serviceDataTypeCSharp"></param>
+        /// <param name="serviceDataTypeAnsiSql"></param>
         public ServiceDevelopmentEnvironments(IServiceLog serviceLog,
                                               IServiceFile serviceFile,
                                               IServiceCrypto serviceCrypto,
                                               IServiceMessage serviceMessage,
                                               IServiceDirectory serviceDirectory,
                                               IServiceEnumerated serviceEnumerated,
-                                              IServiceFuncString serviceFuncString)
+                                              IServiceFuncString serviceFuncString,
+                                              IServiceDataTypeCSharp serviceDataTypeCSharp,
+                                              IServiceDataTypeAnsiSql serviceDataTypeAnsiSql)
         {
             _serviceLog = serviceLog;
             _serviceFile = serviceFile;
@@ -45,6 +53,8 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             _serviceDirectory = serviceDirectory;
             _serviceEnumerated = serviceEnumerated;
             _serviceFuncString = serviceFuncString;
+            _serviceDataTypeCSharp = serviceDataTypeCSharp;
+            _serviceDataTypeAnsiSql = serviceDataTypeAnsiSql;
         }
 
         public List<DevelopmentEnvironments> UDPSelectParametersTheKindsOfDevelopmentEnviroment()
@@ -96,27 +106,76 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             }
         }
 
-        public string UDPGetTheTypeOfCSharp(string type)
+        public string UDPGetDataTypeOfCSharp(string type)
         {
-            string returnType = _serviceFuncString.Empty;
+            int returnValueType = 0;
+            string? returnType = _serviceFuncString.Empty;
 
-            // Create the log for this method.
-            // Create the object wit this fields above.
-
-            if (_serviceFuncString.UDPNullOrEmpty(type))
+            try
             {
-                returnType = type switch
-                {
-                    "integer" => System.Data.DbType.Int32.ToString(),
-                    "double" => System.Data.DbType.Double.ToString(),
-                    "date" => System.Data.DbType.Date.ToString(),
-                    "time" => System.Data.DbType.Time.ToString(),
-                    "varchar" => System.Data.DbType.String.ToString(),
-                    _ => _serviceFuncString.Empty
-                };
-            }
+                returnType = _serviceDataTypeCSharp.UDPGetAsStringTheEnumType(CSharp.DataType.Undefined);
 
-            return _serviceFuncString.UDPLower(returnType);
+                if (!_serviceFuncString.UDPNullOrEmpty(type))
+                {
+                    returnValueType = _serviceDataTypeAnsiSql.UDPReturnIndexFromTheListOfDataTypes(type);
+
+                    if (returnValueType != -1)
+                    {
+                        if (_serviceDataTypeAnsiSql.UDPByIndexEnumTypeIsDefined(returnValueType))
+                        {
+                            returnType = _serviceDataTypeAnsiSql.UDPGetAsEnumeratedTheEnumType(returnValueType) switch
+                            {
+                                AnsiSql.DataType.Varchar => _serviceDataTypeCSharp.UDPGetAsStringTheEnumType(CSharp.DataType.String),
+                                AnsiSql.DataType.Char => _serviceDataTypeCSharp.UDPGetAsStringTheEnumType(CSharp.DataType.Char),
+                                AnsiSql.DataType.Smallint => _serviceDataTypeCSharp.UDPGetAsStringTheEnumType(CSharp.DataType.Int),
+                                AnsiSql.DataType.Integer => _serviceDataTypeCSharp.UDPGetAsStringTheEnumType(CSharp.DataType.Int),
+                                AnsiSql.DataType.Decimal => _serviceDataTypeCSharp.UDPGetAsStringTheEnumType(CSharp.DataType.Decimal),
+                                AnsiSql.DataType.Float => _serviceDataTypeCSharp.UDPGetAsStringTheEnumType(CSharp.DataType.Float),
+                                AnsiSql.DataType.DoublePrecision => _serviceDataTypeCSharp.UDPGetAsStringTheEnumType(CSharp.DataType.Double),
+                                AnsiSql.DataType.Real => _serviceDataTypeCSharp.UDPGetAsStringTheEnumType(CSharp.DataType.Double),
+                                AnsiSql.DataType.Timestamp => _serviceDataTypeCSharp.UDPGetAsStringTheEnumType(CSharp.DataType.DateTime),
+                                _ => _serviceDataTypeCSharp.UDPGetAsStringTheEnumType(CSharp.DataType.Undefined)
+                            };
+                        }
+                    }
+                }
+
+                return _serviceFuncString.UDPLower(returnType);
+            }
+            catch (Exception)
+            {
+                return _serviceDataTypeCSharp.UDPGetAsStringTheEnumType(CSharp.DataType.Undefined);
+            }
         }
     }
 }
+
+/*
+    string ReturnAsStringTheDataType(string type) => "ddd";
+    string ReturnTheListOfDataTypes() => "ddd";
+
+    string CallStartToGetTheDataTypeOfFieldInScriptMetadata = "CALL START TO GET THE DATA TYPE OF FIELD IN SCRIPT METADATA.";
+    string ErrorToGetTheDataTypeOfFieldInScriptMetadata = "ERROR TO GET THE DATA TYPE OF FIELD IN SCRIPT METADATA.";
+    string SuccessToGetTheDataTypeOfFieldInScriptMetadata = "SUCCESS TO GET THE DATA TYPE OF FIELD IN SCRIPT METADATA.";
+
+    string CallStartToReturnTheListOfAnsiSqlDataTypes = "CALL START TO RETURN THE LIST OF ANSI SQL DATA TYPES.";
+    string SuccessToReturnTheListOfAnsiSqlDataTypes = "SUCCESS TO RETURN THE LIST OF ANSI SQL DATA TYPES.";
+
+    string CallStartToReturnTheListOfPascalDataTypes = "CALL START TO RETURN THE LIST OF PASCAL DATA TYPES.";
+    string SuccessToReturnTheListOfPascalDataTypes = "SUCCESS TO RETURN THE LIST OF PASCAL DATA TYPES.";
+
+    string CallStartToReturnTheListOfDotNetDataTypes = "CALL START TO RETURN THE LIST OF DOT NET DATA TYPES.";
+    string SuccessToReturnTheListOfDotNetDataTypes = "SUCCESS TO RETURN THE LIST OF DOT NET DATA TYPES.";
+
+    string CallStartToReturnTheListOfSqlServerDataTypes = "CALL START TO RETURN THE LIST OF SQL SERVER DATA TYPES.";
+    string SuccessToReturnTheListOfSqlServerDataTypes = "SUCCESS TO RETURN THE LIST OF SQL SERVER DATA TYPES.";
+
+    bool HasLenghtInDataType() => true;
+    int ReturnTheLenghtOfDataType() => 0;
+
+    string CallStartToReturnTheLenghtOfDataType = "CALL START TO RETURN THE LENGHT OF DATA TYPE.";
+    string SuccessToReturnTheLenghtOfDataType = "SUCCESS TO RETURN THE LENGHT OF DATA TYPE.";
+
+    string CallStartToHasLenghtInDataType = "CALL START TO HAS LENGHT IN DATA TYPE.";
+    string SuccessToHasLenghtInDataType = "SUCCESS TO HAS LENGHT IN DATA TYPE.";
+*/

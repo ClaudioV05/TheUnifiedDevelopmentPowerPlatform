@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.Drawing;
+using System.Text;
 using System.Text.RegularExpressions;
 using UnifiedDevelopmentPlatform.Application.Interfaces;
 using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.MetaCharacter;
@@ -111,22 +112,23 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             return section;
         }
 
-        [Obsolete("The method is obsolete", true)]
         public string UDPOnlyLetter(string text)
         {
-            string onlyLetter = this.Empty;
-
             try
             {
-                foreach (char c in text)
-                {
-                    if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z') || c.Equals(' '))
-                    {
-                        onlyLetter += c;
-                    }
-                }
+                return string.Concat(text.Where(char.IsLetter));
+            }
+            catch (Exception)
+            {
+                return this.Empty;
+            }
+        }
 
-                return onlyLetter;
+        public string UDPOnlyNumber(string text)
+        {
+            try
+            {
+                return string.Concat(text.Where(char.IsNumber));
             }
             catch (Exception)
             {
@@ -137,6 +139,11 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         public bool UDPIsOnlyAsciiLetters(string text)
         {
             return text.All(char.IsAscii);
+        }
+
+        public bool UDPIsOnlyDigit(string text)
+        {
+            return int.TryParse(text, out _);
         }
 
         public bool UDPIsOnlyAsciiLettersBySwitchCase(string text)
@@ -276,6 +283,11 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         public int UDPIndexOf(string text, string itemToFind)
         {
             return text.IndexOf(itemToFind);
+        }
+
+        public int UDPLastIndexOf(string text, string itemToFind)
+        {
+            return text.LastIndexOf(itemToFind);
         }
 
         public string UDPSubString(string text, int startIndex, int lenght)
