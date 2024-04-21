@@ -4,7 +4,7 @@ using UnifiedDevelopmentPlatform.Application.Interfaces;
 using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Directory;
 using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.File;
 using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Logging;
-using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Message;
+using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Message.Text;
 
 namespace UnifiedDevelopmentPlatform.Application.Services
 {

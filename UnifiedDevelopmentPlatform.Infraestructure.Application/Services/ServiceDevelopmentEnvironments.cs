@@ -1,10 +1,9 @@
-﻿using System.Xml.Linq;
-using UnifiedDevelopmentPlatform.Application.Interfaces;
+﻿using UnifiedDevelopmentPlatform.Application.Interfaces;
 using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities;
 using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.DataTypes;
 using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Directory;
 using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.File;
-using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Message;
+using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Message.Type;
 using static UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.DevelopmentEnvironments;
 
 namespace UnifiedDevelopmentPlatform.Application.Services
@@ -59,7 +58,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
 
         public List<DevelopmentEnvironments> UDPSelectParametersTheKindsOfDevelopmentEnviroment()
         {
-            _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.CallStartToTheSelectParametersTheKindsOfDevelopmentEnviroment), _serviceFuncString.Empty);
+            _serviceLog.UDPLogReport(_serviceMessage.UDPMessageDevelopmentEnvironments(MessageTypeDevelopmentEnvironments.CallStartToTheSelectParametersTheKindsOfDevelopmentEnviroment), _serviceFuncString.Empty);
 
             List<DevelopmentEnvironments> listItems = new List<DevelopmentEnvironments>();
 
@@ -81,7 +80,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
 
                 if (listItems.Any())
                 {
-                    _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.SuccessToTheSelectParametersTheKindsOfDevelopmentEnviroment), _serviceFuncString.Empty);
+                    _serviceLog.UDPLogReport(_serviceMessage.UDPMessageDevelopmentEnvironments(MessageTypeDevelopmentEnvironments.SuccessToTheSelectParametersTheKindsOfDevelopmentEnviroment), _serviceFuncString.Empty);
                 }
             }
             catch (OverflowException) { }
@@ -96,23 +95,58 @@ namespace UnifiedDevelopmentPlatform.Application.Services
 
             if (metadata.DevelopmentEnvironments.Any())
             {
-                _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.CallStartToTheSaveIdentifierToTheDevelopmentEnviromentsFromMetadata), _serviceFuncString.Empty);
+                _serviceLog.UDPLogReport(_serviceMessage.UDPMessageDevelopmentEnvironments(MessageTypeDevelopmentEnvironments.CallStartToTheSaveIdentifierToTheDevelopmentEnviromentsFromMetadata), _serviceFuncString.Empty);
 
                 directoryConfiguration = _serviceDirectory.UDPObtainDirectory(DirectoryRootType.Configuration);
                 data = _serviceCrypto.UPDEncrypt(Convert.ToString(metadata.DevelopmentEnvironments.FirstOrDefault().Id));
                 _serviceFile.UDPAppendAllText($"{directoryConfiguration}{DirectoryStandard.Log}{FileStandard.IdDevelopmentEnvironment}{FileExtension.Txt}", data);
 
-                _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.SuccessToTheSaveIdentifierToTheDevelopmentEnviromentsFromMetadata), _serviceFuncString.Empty);
+                _serviceLog.UDPLogReport(_serviceMessage.UDPMessageDevelopmentEnvironments(MessageTypeDevelopmentEnvironments.SuccessToTheSaveIdentifierToTheDevelopmentEnviromentsFromMetadata), _serviceFuncString.Empty);
             }
         }
 
-        public string UDPGetDataTypeOfCSharp(string type)
+        public string UDPGetDataTypeFromTableInScriptMetadata(string type)
+        {
+            int idDevelopmentEnvironment = 0;
+            string data = _serviceFuncString.Empty;
+            string? returnType = _serviceFuncString.Empty;
+
+            try
+            {
+                _serviceLog.UDPLogReport(_serviceMessage.UDPMessageDevelopmentEnvironments(MessageTypeDevelopmentEnvironments.CallStartToTheGetDataTypeFromTableInScriptMetadata), _serviceFuncString.Empty);
+                data = _serviceFile.UDPGetDataFileFromDirectoryConfiguration(DirectoryStandard.Log, $"{FileStandard.IdDevelopmentEnvironment}{FileExtension.Txt}");
+                data = _serviceCrypto.UPDDecrypt(data);
+
+                if (int.TryParse(data, out idDevelopmentEnvironment))
+                {
+                    returnType = (EnumeratedDevelopmentEnvironments)idDevelopmentEnvironment switch
+                    {
+                        EnumeratedDevelopmentEnvironments.NotDefined => _serviceFuncString.Empty,
+                        EnumeratedDevelopmentEnvironments.DelphiXe10 => this.UDPGetDataTypeOfPascal(type),
+                        EnumeratedDevelopmentEnvironments.VisualStudio => this.UDPGetDataTypeOfCSharp(type),
+                        _ => _serviceFuncString.Empty
+                    };
+                }
+
+                _serviceLog.UDPLogReport(_serviceMessage.UDPMessageDevelopmentEnvironments(MessageTypeDevelopmentEnvironments.SuccessToTheGetDataTypeFromTableInScriptMetadata), _serviceFuncString.Empty);
+                return returnType;
+            }
+            catch (Exception)
+            {
+                _serviceLog.UDPLogReport(_serviceMessage.UDPMessageDevelopmentEnvironments(MessageTypeDevelopmentEnvironments.ErrorToTheGetDataTypeFromTableInScriptMetadata), _serviceFuncString.Empty);
+                return _serviceFuncString.Empty;
+            }
+        }
+
+        private string UDPGetDataTypeOfCSharp(string type)
         {
             int returnValueType = 0;
             string? returnType = _serviceFuncString.Empty;
 
             try
             {
+                _serviceLog.UDPLogReport(_serviceMessage.UDPMessageDevelopmentEnvironments(MessageTypeDevelopmentEnvironments.CallStartToGetDataTypeOfCSharp), _serviceFuncString.Empty);
+
                 returnType = _serviceDataTypeCSharp.UDPGetAsStringTheEnumType(CSharp.DataType.Undefined);
 
                 if (!_serviceFuncString.UDPNullOrEmpty(type))
@@ -140,42 +174,30 @@ namespace UnifiedDevelopmentPlatform.Application.Services
                     }
                 }
 
+                _serviceLog.UDPLogReport(_serviceMessage.UDPMessageDevelopmentEnvironments(MessageTypeDevelopmentEnvironments.SuccessToGetDataTypeOfCSharp), _serviceFuncString.Empty);
                 return _serviceFuncString.UDPLower(returnType);
             }
             catch (Exception)
             {
+                _serviceLog.UDPLogReport(_serviceMessage.UDPMessageDevelopmentEnvironments(MessageTypeDevelopmentEnvironments.ErrorToGetDataTypeOfCSharp), _serviceFuncString.Empty);
                 return _serviceDataTypeCSharp.UDPGetAsStringTheEnumType(CSharp.DataType.Undefined);
+            }
+        }
+
+        private string UDPGetDataTypeOfPascal(string type)
+        {
+            try
+            {
+                _serviceLog.UDPLogReport(_serviceMessage.UDPMessageDevelopmentEnvironments(MessageTypeDevelopmentEnvironments.CallStartToGetDataTypeOfPascal), _serviceFuncString.Empty);
+                _serviceLog.UDPLogReport(_serviceMessage.UDPMessageDevelopmentEnvironments(MessageTypeDevelopmentEnvironments.SuccessToGetDataTypeOfPascal), _serviceFuncString.Empty);
+
+                return _serviceFuncString.Empty;
+            }
+            catch (Exception)
+            {
+                _serviceLog.UDPLogReport(_serviceMessage.UDPMessageDevelopmentEnvironments(MessageTypeDevelopmentEnvironments.ErrorToGetDataTypeOfPascal), _serviceFuncString.Empty);
+                return _serviceFuncString.Empty;
             }
         }
     }
 }
-
-/*
-    string ReturnAsStringTheDataType(string type) => "ddd";
-    string ReturnTheListOfDataTypes() => "ddd";
-
-    string CallStartToGetTheDataTypeOfFieldInScriptMetadata = "CALL START TO GET THE DATA TYPE OF FIELD IN SCRIPT METADATA.";
-    string ErrorToGetTheDataTypeOfFieldInScriptMetadata = "ERROR TO GET THE DATA TYPE OF FIELD IN SCRIPT METADATA.";
-    string SuccessToGetTheDataTypeOfFieldInScriptMetadata = "SUCCESS TO GET THE DATA TYPE OF FIELD IN SCRIPT METADATA.";
-
-    string CallStartToReturnTheListOfAnsiSqlDataTypes = "CALL START TO RETURN THE LIST OF ANSI SQL DATA TYPES.";
-    string SuccessToReturnTheListOfAnsiSqlDataTypes = "SUCCESS TO RETURN THE LIST OF ANSI SQL DATA TYPES.";
-
-    string CallStartToReturnTheListOfPascalDataTypes = "CALL START TO RETURN THE LIST OF PASCAL DATA TYPES.";
-    string SuccessToReturnTheListOfPascalDataTypes = "SUCCESS TO RETURN THE LIST OF PASCAL DATA TYPES.";
-
-    string CallStartToReturnTheListOfDotNetDataTypes = "CALL START TO RETURN THE LIST OF DOT NET DATA TYPES.";
-    string SuccessToReturnTheListOfDotNetDataTypes = "SUCCESS TO RETURN THE LIST OF DOT NET DATA TYPES.";
-
-    string CallStartToReturnTheListOfSqlServerDataTypes = "CALL START TO RETURN THE LIST OF SQL SERVER DATA TYPES.";
-    string SuccessToReturnTheListOfSqlServerDataTypes = "SUCCESS TO RETURN THE LIST OF SQL SERVER DATA TYPES.";
-
-    bool HasLenghtInDataType() => true;
-    int ReturnTheLenghtOfDataType() => 0;
-
-    string CallStartToReturnTheLenghtOfDataType = "CALL START TO RETURN THE LENGHT OF DATA TYPE.";
-    string SuccessToReturnTheLenghtOfDataType = "SUCCESS TO RETURN THE LENGHT OF DATA TYPE.";
-
-    string CallStartToHasLenghtInDataType = "CALL START TO HAS LENGHT IN DATA TYPE.";
-    string SuccessToHasLenghtInDataType = "SUCCESS TO HAS LENGHT IN DATA TYPE.";
-*/

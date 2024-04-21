@@ -1,10 +1,10 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Message
+namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Message.Text
 {
     [ComplexType]
     /// <summary>
-    /// The text of mensagem.
+    /// The text of message.
     /// </summary>
     public static class MessageText
     {
@@ -60,27 +60,27 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Message
         /// <summary>
         /// The model state is ok.
         /// </summary>
-        public static string TheModelStateIsOk => $"THE (JSON) {MessageText.MessageDefaultToServiceValidation}";
+        public static string TheModelStateIsOk => $"THE (JSON) {MessageDefaultToServiceValidation}";
 
         /// <summary>
         /// The script metadata is ok.
         /// </summary>
-        public static string TheScriptMetadataIsOk => $"THE (METADATA) {MessageText.MessageDefaultToServiceValidation}";
+        public static string TheScriptMetadataIsOk => $"THE (METADATA) {MessageDefaultToServiceValidation}";
 
         /// <summary>
         /// The metadata is base64 ok.
         /// </summary>
-        public static string TheMetadataIsBase64Ok => $"THE (METADATA) ON THE FORMAT BASE64 {MessageText.MessageDefaultToServiceValidation}";
+        public static string TheMetadataIsBase64Ok => $"THE (METADATA) ON THE FORMAT BASE64 {MessageDefaultToServiceValidation}";
 
         /// <summary>
         /// The development environment is ok.
         /// </summary>
-        public static string TheDevelopmentEnvironmentIsOk => $"THE (DEVELOPMENT ENVIRONMENT) {MessageText.MessageDefaultToServiceValidation}";
+        public static string TheDevelopmentEnvironmentIsOk => $"THE (DEVELOPMENT ENVIRONMENT) {MessageDefaultToServiceValidation}";
 
         /// <summary>
         /// The databases is ok.
         /// </summary>
-        public static string TheDatabasesIsOk => $"THE (DATABASES) {MessageText.MessageDefaultToServiceValidation}";
+        public static string TheDatabasesIsOk => $"THE (DATABASES) {MessageDefaultToServiceValidation}";
 
         /// <summary>
         /// The databases implemented isn't ok.
@@ -90,17 +90,17 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Message
         /// <summary>
         /// The databases engine is ok.
         /// </summary>
-        public static string TheDatabasesEngineIsOk => $"THE (DATABASES ENGINE) {MessageText.MessageDefaultToServiceValidation}";
+        public static string TheDatabasesEngineIsOk => $"THE (DATABASES ENGINE) {MessageDefaultToServiceValidation}";
 
         /// <summary>
         /// The form view is ok.
         /// </summary>
-        public static string TheFormViewIsOk => $"THE (FORMS VIEW) {MessageText.MessageDefaultToServiceValidation}";
+        public static string TheFormViewIsOk => $"THE (FORMS VIEW) {MessageDefaultToServiceValidation}";
 
         /// <summary>
         /// The architecture patterns is ok.
         /// </summary>
-        public static string TheArchitecturePatternsIsOk => $"THE (ARCHITECTURE PATTERNS) {MessageText.MessageDefaultToServiceValidation}";
+        public static string TheArchitecturePatternsIsOk => $"THE (ARCHITECTURE PATTERNS) {MessageDefaultToServiceValidation}";
 
         #endregion The validation of filter action.
 
@@ -329,30 +329,6 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Message
         public static string SuccessToTheSaveIdentifierToTheFormFromMetadata => "SUCCESS TO THE SAVE IDENTIFIER TO THE FORM FROM METADATA.";
 
         #endregion Service Forms view.
-
-        #region Service Development environments.
-
-        /// <summary>
-        /// Call start to the Select parameters the kinds of development enviroment.
-        /// </summary>
-        public static string CallStartToTheSelectParametersTheKindsOfDevelopmentEnviroment => "CALL START TO THE SELECT PARAMETERS THE KINDS OF DEVELOPMENT ENVIROMENT.";
-
-        /// <summary>
-        /// Success to the Select parameters the kinds of development enviroment.
-        /// </summary>
-        public static string SuccessToTheSelectParametersTheKindsOfDevelopmentEnviroment => "SUCCESS TO THE SELECT PARAMETERS THE KINDS OF DEVELOPMENT ENVIROMENT.";
-
-        /// <summary>
-        /// Call start to the save identifier to the development enviroments from metadata.
-        /// </summary>
-        public static string CallStartToTheSaveIdentifierToTheDevelopmentEnviromentsFromMetadata => "CALL START TO THE SAVE IDENTIFIER TO THE DEVELOPMENT ENVIROMENTS FROM METADATA.";
-
-        /// <summary>
-        /// Success to the save identifier to the development enviroments from metadata.
-        /// </summary>
-        public static string SuccessToTheSaveIdentifierToTheDevelopmentEnviromentsFromMetadata => "SUCCESS TO THE SAVE IDENTIFIER TO THE DEVELOPMENT ENVIROMENTS FROM METADATA.";
-
-        #endregion Service Development environments.
 
         #region Service Databases.
 

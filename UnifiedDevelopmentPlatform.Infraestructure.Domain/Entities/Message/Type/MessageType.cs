@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Message
+namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Message.Type
 {
     /// <summary>
     /// The type of message.
@@ -212,22 +212,6 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Message
         SuccessToTheSaveIdentifierToTheFormFromMetadata = 57,
 
         #endregion Service Forms View.
-
-        #region Service Development environments.
-
-        [Description("Call start to the select parameters the kinds of development enviroment")]
-        CallStartToTheSelectParametersTheKindsOfDevelopmentEnviroment = 58,
-
-        [Description("Success to the select parameters the kinds of development enviroment")]
-        SuccessToTheSelectParametersTheKindsOfDevelopmentEnviroment = 59,
-
-        [Description("Call start to the save identifier to the development enviroments from metadata")]
-        CallStartToTheSaveIdentifierToTheDevelopmentEnviromentsFromMetadata = 60,
-
-        [Description("Success to the save identifier to the development enviroments from metadata")]
-        SuccessToTheSaveIdentifierToTheDevelopmentEnviromentsFromMetadata = 61,
-
-        #endregion Service Development environments.
 
         #region Service Databases.
 

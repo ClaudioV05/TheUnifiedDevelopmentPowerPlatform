@@ -1,9 +1,10 @@
 ﻿using UnifiedDevelopmentPlatform.Application.Interfaces;
 using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities;
-using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Message;
 using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Sql;
 using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.MetaCharacter;
 using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.UnifiedDevelopmentParameter;
+using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Message.Text;
+using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Message.Type;
 
 namespace UnifiedDevelopmentPlatform.Application.Services
 {
@@ -75,7 +76,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
 
             try
             {
-                _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.CallStartReceiveAndSaveAllTableAndFieldsOfSchemaDatabase), _serviceFuncString.Empty);
+                _serviceLog.UDPLogReport(_serviceMessage.UDPMessage(MessageType.CallStartReceiveAndSaveAllTableAndFieldsOfSchemaDatabase), _serviceFuncString.Empty);
 
                 _serviceMetadataTable.UDPSaveDatabaseSchemaFromMetadata(metadata);
                 _serviceFormsView.UDPSaveIdentifierToTheFormsViewFromMetadata(metadata);
@@ -88,12 +89,12 @@ namespace UnifiedDevelopmentPlatform.Application.Services
 
                 if (!_serviceFuncString.UDPNullOrEmpty(databaseSchemaDecrypt))
                 {
-                    _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.DecryptOkOfTheReceiveAndSaveAllTableAndFieldsOfSchemaDatabase), _serviceFuncString.Empty);
+                    _serviceLog.UDPLogReport(_serviceMessage.UDPMessage(MessageType.DecryptOkOfTheReceiveAndSaveAllTableAndFieldsOfSchemaDatabase), _serviceFuncString.Empty);
                     _serviceMetadataTable.UDPLoadTheDatabaseSchema(ref listDatabaseSchemas, _serviceFuncString.UDPParseLine(new[] { $"{MetaCharacterSymbols.CarriageReturn}{MetaCharacterSymbols.NewLine}", MetaCharacterSymbols.CarriageReturn, MetaCharacterSymbols.NewLine }, databaseSchemaDecrypt));
 
                     if (listDatabaseSchemas is not null && listDatabaseSchemas.Any())
                     {
-                        _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.LoadAllOfTheTableAndFieldsOfSchemaDatabase), _serviceFuncString.Empty);
+                        _serviceLog.UDPLogReport(_serviceMessage.UDPMessage(MessageType.LoadAllOfTheTableAndFieldsOfSchemaDatabase), _serviceFuncString.Empty);
 
                         for (int i = counter; counter < listDatabaseSchemas.Count; counter++)
                         {
@@ -141,18 +142,18 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             }
             catch (Exception ex)
             {
-                _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.ErrorReceiveAndSaveAllTableAndFieldsOfSchemaDatabase), ex.Message);
+                _serviceLog.UDPLogReport(_serviceMessage.UDPMessage(MessageType.ErrorReceiveAndSaveAllTableAndFieldsOfSchemaDatabase), ex.Message);
                 throw new Exception(MessageText.TheGlobalErrorMessage);
             }
 
-            _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.SuccessAtTheReceiveAndSaveAllTableAndFieldsOfSchemaDatabase), _serviceFuncString.Empty);
+            _serviceLog.UDPLogReport(_serviceMessage.UDPMessage(MessageType.SuccessAtTheReceiveAndSaveAllTableAndFieldsOfSchemaDatabase), _serviceFuncString.Empty);
 
             return listOfTables;
         }
 
         public void UDPNotImplemented(MetadataOwner metadata)
         {
-            _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.NoHasMessageSpecifield), _serviceFuncString.Empty);
+            _serviceLog.UDPLogReport(_serviceMessage.UDPMessage(MessageType.NoHasMessageSpecifield), _serviceFuncString.Empty);
 
             throw new NotImplementedException();
         }
@@ -184,7 +185,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
 
         public UnifiedDevelopmentParameters UDPSelectParametersInformationUnifiedDevelopmentPlatform()
         {
-            _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.CallStartToTheSelectParametersTheKindsOfUnifiedDevelopmentPlatform), _serviceFuncString.Empty);
+            _serviceLog.UDPLogReport(_serviceMessage.UDPMessage(MessageType.CallStartToTheSelectParametersTheKindsOfUnifiedDevelopmentPlatform), _serviceFuncString.Empty);
 
             UnifiedDevelopmentParameters unifiedDevelopmentParameters = new UnifiedDevelopmentParameters()
             {
@@ -192,7 +193,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
                 Authors = new List<string>() { "Jesus Cristo", "Claudio Fernandes Rodrigues Ventura", "Claudiomildo Ventura" }
             };
 
-            _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.SuccessToTheSelectParametersTheKindsOfUnifiedDevelopmentPlatform), _serviceFuncString.Empty);
+            _serviceLog.UDPLogReport(_serviceMessage.UDPMessage(MessageType.SuccessToTheSelectParametersTheKindsOfUnifiedDevelopmentPlatform), _serviceFuncString.Empty);
 
             return unifiedDevelopmentParameters;
         }

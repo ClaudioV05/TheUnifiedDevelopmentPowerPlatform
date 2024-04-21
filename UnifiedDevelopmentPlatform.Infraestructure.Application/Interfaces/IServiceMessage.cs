@@ -1,4 +1,4 @@
-﻿using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Message;
+﻿using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Message.Type;
 
 namespace UnifiedDevelopmentPlatform.Application.Interfaces
 {
@@ -8,15 +8,27 @@ namespace UnifiedDevelopmentPlatform.Application.Interfaces
     public interface IServiceMessage
     {
         /// <summary>
-        /// Log mensagem.
+        /// Log message.
         /// </summary>
-        /// <param name="messageEnumerated"></param>
+        /// <param name="enumerated"></param>
         /// <paramref name=""/>
         /// <returns></returns>
         /// <remarks></remarks>
         /// <exception cref=""></exception>
         /// <seealso href=""></seealso>
-        /// <returns>String with message of error.</returns>
-        string UDPMensagem(MessageType messageEnumerated);
+        /// <returns>The description message.</returns>
+        string UDPMessage(MessageType enumerated);
+
+        /// <summary>
+        /// Log message to the development environments.
+        /// </summary>
+        /// <param name="enumerated"></param>
+        /// <paramref name=""/>
+        /// <returns></returns>
+        /// <remarks></remarks>
+        /// <exception cref=""></exception>
+        /// <seealso href=""></seealso>
+        /// <returns>The description message.</returns>
+        string UDPMessageDevelopmentEnvironments(MessageTypeDevelopmentEnvironments enumerated);
     }
 }

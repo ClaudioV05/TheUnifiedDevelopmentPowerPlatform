@@ -1,7 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using UnifiedDevelopmentPlatform.Application.Interfaces;
-using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Message;
+using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Message.Text;
+using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Message.Type;
 using UnifiedDevelopmentPlatform.Presentation.Api.Models;
 
 namespace UnifiedDevelopmentPlatform.Presentation.Api.Filters
@@ -57,12 +58,12 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Filters
 
                 _serviceDirectory.UPDBuildDirectoryStandardOfSolution();
 
-                _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.TheInitialMessage), _serviceFuncStrings.Empty);
-                _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.ThePlatformWindowsIsOk), _serviceFuncStrings.Empty);
+                _serviceLog.UDPLogReport(_serviceMessage.UDPMessage(MessageType.TheInitialMessage), _serviceFuncStrings.Empty);
+                _serviceLog.UDPLogReport(_serviceMessage.UDPMessage(MessageType.ThePlatformWindowsIsOk), _serviceFuncStrings.Empty);
             }
             catch (Exception ex)
             {
-                _serviceLog.UDPLogReport($"{_serviceMessage.UDPMensagem(MessageType.ErrorFilterActionContextController)}", ex.Message);
+                _serviceLog.UDPLogReport($"{_serviceMessage.UDPMessage(MessageType.ErrorFilterActionContextController)}", ex.Message);
                 throw new Exception(_serviceFuncStrings.UDPUpper(MessageText.TheGlobalErrorMessage));
             }
 

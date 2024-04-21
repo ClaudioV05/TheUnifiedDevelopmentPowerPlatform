@@ -1,5 +1,9 @@
 ﻿using System.Text;
 using UnifiedDevelopmentPlatform.Application.Interfaces;
+using static System.Runtime.InteropServices.JavaScript.JSType;
+using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Directory;
+using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.File;
+using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Message;
 
 namespace UnifiedDevelopmentPlatform.Application.Services
 {
@@ -8,6 +12,8 @@ namespace UnifiedDevelopmentPlatform.Application.Services
     /// </summary>
     public class ServiceFile : IServiceFile
     {
+        private readonly IServiceDirectory _serviceDirectory;
+        private readonly IServiceFuncString _serviceFuncString;
         private readonly FileStreamOptions _fileStreamOptions = new FileStreamOptions()
         {
             Access = FileAccess.Read,
@@ -18,7 +24,14 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         /// <summary>
         /// The constructor of Service File.
         /// </summary>
-        public ServiceFile() { }
+        /// <param name="serviceDirectory"></param>
+        /// <param name="serviceFuncString"></param>
+        public ServiceFile(IServiceDirectory serviceDirectory,
+                           IServiceFuncString serviceFuncString)
+        {
+            _serviceDirectory = serviceDirectory;
+            _serviceFuncString = serviceFuncString;
+        }
 
         public bool UDPFileExists(string? path)
         {
@@ -90,6 +103,28 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             }
 
             return lineCount;
+        }
+
+        public string UDPGetDataFileFromDirectoryConfiguration(string section, string file)
+        {
+            string data = _serviceFuncString.Empty;
+            string directoryConfiguration = _serviceFuncString.Empty;
+
+            try
+            {
+                directoryConfiguration = _serviceDirectory.UDPObtainDirectory(DirectoryRootType.Configuration);
+
+                if (this.UDPFileExists($"{directoryConfiguration}{section}{file}"))
+                {
+                    data = this.UDPReadAllText($"{directoryConfiguration}{section}{file}");
+                }
+
+                return data;
+            }
+            catch (Exception)
+            {
+                return string.Empty;
+            }
         }
     }
 }

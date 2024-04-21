@@ -1,5 +1,6 @@
 ﻿using UnifiedDevelopmentPlatform.Application.Interfaces;
-using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Message;
+using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Message.Text;
+using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Message.Type;
 
 namespace UnifiedDevelopmentPlatform.Application.Services
 {
@@ -19,13 +20,13 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             _serviceFuncString = serviceFuncString;
         }
 
-        public string UDPMensagem(MessageType messageType)
+        public string UDPMessage(MessageType enumerated)
         {
             string message = _serviceFuncString.Empty;
 
-            if (Enum.IsDefined(typeof(MessageType), messageType)) // Create the method for this
+            if (Enum.IsDefined(typeof(MessageType), enumerated)) // Create the method for this
             {
-                message = messageType switch
+                message = enumerated switch
                 {
                     MessageType.TheInitialMessage => MessageText.TheInitialMessage,
                     MessageType.ThePlatformWindowsIsOk => MessageText.ThePlatformWindowsIsOk,
@@ -81,10 +82,6 @@ namespace UnifiedDevelopmentPlatform.Application.Services
                     MessageType.CallStartToTheSelectParametersTheKindsOfForms => MessageText.CallStartToTheSelectParametersTheKindsOfForms,
                     MessageType.CallStartToTheSaveIdentifierToTheFormFromMetadata => MessageText.CallStartToTheSaveIdentifierToTheFormFromMetadata,
                     MessageType.SuccessToTheSaveIdentifierToTheFormFromMetadata => MessageText.SuccessToTheSaveIdentifierToTheFormFromMetadata,
-                    MessageType.CallStartToTheSelectParametersTheKindsOfDevelopmentEnviroment => MessageText.CallStartToTheSelectParametersTheKindsOfDevelopmentEnviroment,
-                    MessageType.SuccessToTheSelectParametersTheKindsOfDevelopmentEnviroment => MessageText.SuccessToTheSelectParametersTheKindsOfDevelopmentEnviroment,
-                    MessageType.CallStartToTheSaveIdentifierToTheDevelopmentEnviromentsFromMetadata => MessageText.CallStartToTheSaveIdentifierToTheDevelopmentEnviromentsFromMetadata,
-                    MessageType.SuccessToTheSaveIdentifierToTheDevelopmentEnviromentsFromMetadata => MessageText.SuccessToTheSaveIdentifierToTheDevelopmentEnviromentsFromMetadata,
                     MessageType.CallStartToTheSelectParametersTheKindsOfDatabases => MessageText.CallStartToTheSelectParametersTheKindsOfDatabases,
                     MessageType.SuccessToTheSelectParametersTheKindsOfDatabases => MessageText.SuccessToTheSelectParametersTheKindsOfDatabases,
                     MessageType.CallStartToTheSaveIdentifierToTheDatabasesFromMetadata => MessageText.CallStartToTheSaveIdentifierToTheDatabasesFromMetadata,
@@ -105,6 +102,28 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             }
 
             return _serviceFuncString.UDPUpper(message);
+        }
+
+        public string UDPMessageDevelopmentEnvironments(MessageTypeDevelopmentEnvironments enumerated)
+        {
+            return _serviceFuncString.UDPUpper(enumerated switch
+            {
+                MessageTypeDevelopmentEnvironments.TheMessageTypeDoNotSpecified => MessageTextDevelopmentEnvironments.TheMessageTypeDoNotSpecified,
+                MessageTypeDevelopmentEnvironments.CallStartToTheGetDataTypeFromTableInScriptMetadata => MessageTextDevelopmentEnvironments.CallStartToTheGetDataTypeFromTableInScriptMetadata,
+                MessageTypeDevelopmentEnvironments.SuccessToTheGetDataTypeFromTableInScriptMetadata => MessageTextDevelopmentEnvironments.SuccessToTheGetDataTypeFromTableInScriptMetadata,
+                MessageTypeDevelopmentEnvironments.ErrorToTheGetDataTypeFromTableInScriptMetadata => MessageTextDevelopmentEnvironments.ErrorToTheGetDataTypeFromTableInScriptMetadata,
+                MessageTypeDevelopmentEnvironments.CallStartToGetDataTypeOfCSharp => MessageTextDevelopmentEnvironments.CallStartToGetDataTypeOfCSharp,
+                MessageTypeDevelopmentEnvironments.SuccessToGetDataTypeOfCSharp => MessageTextDevelopmentEnvironments.SuccessToGetDataTypeOfCSharp,
+                MessageTypeDevelopmentEnvironments.ErrorToGetDataTypeOfCSharp => MessageTextDevelopmentEnvironments.ErrorToGetDataTypeOfCSharp,
+                MessageTypeDevelopmentEnvironments.CallStartToGetDataTypeOfPascal => MessageTextDevelopmentEnvironments.CallStartToGetDataTypeOfPascal,
+                MessageTypeDevelopmentEnvironments.SuccessToGetDataTypeOfPascal => MessageTextDevelopmentEnvironments.SuccessToGetDataTypeOfPascal,
+                MessageTypeDevelopmentEnvironments.ErrorToGetDataTypeOfPascal => MessageTextDevelopmentEnvironments.ErrorToGetDataTypeOfPascal,
+                MessageTypeDevelopmentEnvironments.CallStartToTheSelectParametersTheKindsOfDevelopmentEnviroment => MessageTextDevelopmentEnvironments.CallStartToTheSelectParametersTheKindsOfDevelopmentEnviroment,
+                MessageTypeDevelopmentEnvironments.SuccessToTheSelectParametersTheKindsOfDevelopmentEnviroment => MessageTextDevelopmentEnvironments.SuccessToTheSelectParametersTheKindsOfDevelopmentEnviroment,
+                MessageTypeDevelopmentEnvironments.CallStartToTheSaveIdentifierToTheDevelopmentEnviromentsFromMetadata => MessageTextDevelopmentEnvironments.CallStartToTheSaveIdentifierToTheDevelopmentEnviromentsFromMetadata,
+                MessageTypeDevelopmentEnvironments.SuccessToTheSaveIdentifierToTheDevelopmentEnviromentsFromMetadata => MessageTextDevelopmentEnvironments.SuccessToTheSaveIdentifierToTheDevelopmentEnviromentsFromMetadata,
+                _ => _serviceFuncString.Empty
+            });
         }
     }
 }

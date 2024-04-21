@@ -31,15 +31,15 @@ namespace UnifiedDevelopmentPlatform.Application.Interfaces
         void UDPSaveIdentifierToTheDevelopmentEnviromentsFromMetadata(MetadataOwner metadata);
 
         /// <summary>
-        /// Get the data type of CSharp.
+        /// Get the data type from table in script metadata.
         /// </summary>
-        /// <param name="metadata"></param>
+        /// <param name="type"></param>
         /// /// <paramref name=""/>
         /// <returns></returns>
         /// <remarks></remarks>
         /// <exception cref=""></exception>
         /// <seealso href=""></seealso>
-        /// <return>The string with the type of CSharp</return>
-        string UDPGetDataTypeOfCSharp(string type);
+        /// <return>The string with the data type</return>
+        string UDPGetDataTypeFromTableInScriptMetadata(string type);
     }
 }

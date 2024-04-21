@@ -1,7 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using UnifiedDevelopmentPlatform.Application.Interfaces;
-using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Message;
+using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Message.Text;
+using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Message.Type;
 using UnifiedDevelopmentPlatform.Infraestructure.Domain.Interfaces;
 using UnifiedDevelopmentPlatform.Presentation.Api.Models;
 
@@ -117,7 +118,7 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Filters
             }
             catch (Exception ex)
             {
-                _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.ErrorFilterActionContextTables), ex.Message);
+                _serviceLog.UDPLogReport(_serviceMessage.UDPMessage(MessageType.ErrorFilterActionContextTables), ex.Message);
                 throw new Exception(_serviceFuncString.UDPUpper(MessageText.TheGlobalErrorMessage));
             }
 
@@ -125,13 +126,13 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Filters
 
             try
             {
-                _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.CallStartToTheCreateDirectoryProjectOfSolution), _serviceFuncString.Empty);
+                _serviceLog.UDPLogReport(_serviceMessage.UDPMessage(MessageType.CallStartToTheCreateDirectoryProjectOfSolution), _serviceFuncString.Empty);
                 _serviceDirectory.UPDCreateDirectoryProjectOfSolution();
-                _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.SuccessToTheCreateDirectoryProjectOfSolution), _serviceFuncString.Empty);
+                _serviceLog.UDPLogReport(_serviceMessage.UDPMessage(MessageType.SuccessToTheCreateDirectoryProjectOfSolution), _serviceFuncString.Empty);
             }
             catch (Exception ex)
             {
-                _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.ErrorCreateAllDirectory), ex.Message);
+                _serviceLog.UDPLogReport(_serviceMessage.UDPMessage(MessageType.ErrorCreateAllDirectory), ex.Message);
                 throw new Exception(_serviceFuncString.UDPUpper(MessageText.TheGlobalErrorMessage));
             }
         }

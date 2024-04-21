@@ -2,7 +2,7 @@
 using System.Text;
 using UnifiedDevelopmentPlatform.Application.Interfaces;
 using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Cryptography;
-using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Message;
+using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Message.Type;
 using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.MetaCharacter;
 
 namespace UnifiedDevelopmentPlatform.Application.Services
@@ -41,7 +41,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
 
             try
             {
-                _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.CallStartToTheEncrypt), _serviceFuncString.Empty);
+                _serviceLog.UDPLogReport(_serviceMessage.UDPMessage(MessageType.CallStartToTheEncrypt), _serviceFuncString.Empty);
                 input = Encoding.UTF8.GetBytes(value);
                 key = Encoding.UTF8.GetBytes(CryptographyConfiguration.CryptographyKey.Substring(0, 8));
 
@@ -50,18 +50,18 @@ namespace UnifiedDevelopmentPlatform.Application.Services
                 cryptoStream.FlushFinalBlock();
                 data = Convert.ToBase64String(memoryStream.ToArray());
 
-                _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.SuccessToTheEncrypt), _serviceFuncString.Empty);
+                _serviceLog.UDPLogReport(_serviceMessage.UDPMessage(MessageType.SuccessToTheEncrypt), _serviceFuncString.Empty);
 
                 return data;
             }
             catch (CryptographicException ex)
             {
-                _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.ErrorToTheEncrypt), ex.Message);
+                _serviceLog.UDPLogReport(_serviceMessage.UDPMessage(MessageType.ErrorToTheEncrypt), ex.Message);
                 return _serviceFuncString.Empty;
             }
             catch (Exception ex)
             {
-                _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.ErrorToTheEncrypt), ex.Message);
+                _serviceLog.UDPLogReport(_serviceMessage.UDPMessage(MessageType.ErrorToTheEncrypt), ex.Message);
                 return _serviceFuncString.Empty;
             }
         }
@@ -76,7 +76,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
 
             try
             {
-                _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.CallStartToTheDecrypt), _serviceFuncString.Empty);
+                _serviceLog.UDPLogReport(_serviceMessage.UDPMessage(MessageType.CallStartToTheDecrypt), _serviceFuncString.Empty);
                 input = new byte[value.Length];
                 input = Convert.FromBase64String(value.Replace(MetaCharacterSymbols.WhiteSpace, "+"));
                 key = Encoding.UTF8.GetBytes(CryptographyConfiguration.CryptographyKey.Substring(0, 8));
@@ -86,18 +86,18 @@ namespace UnifiedDevelopmentPlatform.Application.Services
                 cryptoStream.FlushFinalBlock();
                 data = Encoding.UTF8.GetString(memoryStream.ToArray());
 
-                _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.SuccessToTheDecrypt), _serviceFuncString.Empty);
+                _serviceLog.UDPLogReport(_serviceMessage.UDPMessage(MessageType.SuccessToTheDecrypt), _serviceFuncString.Empty);
 
                 return data;
             }
             catch (CryptographicException ex)
             {
-                _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.ErrorToTheDecrypt), ex.Message);
+                _serviceLog.UDPLogReport(_serviceMessage.UDPMessage(MessageType.ErrorToTheDecrypt), ex.Message);
                 return _serviceFuncString.Empty;
             }
             catch (Exception ex)
             {
-                _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.ErrorToTheDecrypt), ex.Message);
+                _serviceLog.UDPLogReport(_serviceMessage.UDPMessage(MessageType.ErrorToTheDecrypt), ex.Message);
                 return _serviceFuncString.Empty;
             }
         }
@@ -108,17 +108,17 @@ namespace UnifiedDevelopmentPlatform.Application.Services
 
             try
             {
-                _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.CallStartToTheDecodeBase64), _serviceFuncString.Empty);
+                _serviceLog.UDPLogReport(_serviceMessage.UDPMessage(MessageType.CallStartToTheDecodeBase64), _serviceFuncString.Empty);
                 var valueBytes = Convert.FromBase64String(value ?? _serviceFuncString.Empty);
                 data = Encoding.UTF8.GetString(valueBytes);
 
-                _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.SuccessToTheDecodeBase64), _serviceFuncString.Empty);
+                _serviceLog.UDPLogReport(_serviceMessage.UDPMessage(MessageType.SuccessToTheDecodeBase64), _serviceFuncString.Empty);
 
                 return data;
             }
             catch (Exception ex)
             {
-                _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.ErrorToTheDecodeBase64), ex.Message);
+                _serviceLog.UDPLogReport(_serviceMessage.UDPMessage(MessageType.ErrorToTheDecodeBase64), ex.Message);
                 return _serviceFuncString.Empty;
             }
         }

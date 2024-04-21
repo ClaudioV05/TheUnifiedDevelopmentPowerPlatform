@@ -122,5 +122,18 @@
         /// <seealso href=""></seealso>
         /// <returns>The number of lines.</returns>
         int UDPCountLines(string fileName);
+
+        /// <summary>
+        /// Get data file from directory configuration.
+        /// </summary>
+        /// <param name="section"></param>
+        /// <param name="file"></param>
+        /// <paramref name=""/>
+        /// <returns></returns>
+        /// <remarks></remarks>
+        /// <exception cref=""></exception>
+        /// <seealso href=""></seealso>
+        /// <returns>Content from file.</returns>
+        string UDPGetDataFileFromDirectoryConfiguration(string section, string file);
     }
 }

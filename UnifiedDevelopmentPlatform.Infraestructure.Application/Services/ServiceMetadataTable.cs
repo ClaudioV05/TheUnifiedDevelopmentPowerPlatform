@@ -2,9 +2,9 @@
 using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities;
 using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Directory;
 using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.File;
-using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Message;
 using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Sql;
 using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.MetaCharacter;
+using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Message.Type;
 
 namespace UnifiedDevelopmentPlatform.Application.Services
 {
@@ -79,7 +79,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
 
             if (!_serviceFuncString.UDPNullOrEmpty(metadata.DatabaseSchema))
             {
-                _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.CallStartToTheSaveDatabaseSchemaFromMetadata), _serviceFuncString.Empty);
+                _serviceLog.UDPLogReport(_serviceMessage.UDPMessage(MessageType.CallStartToTheSaveDatabaseSchemaFromMetadata), _serviceFuncString.Empty);
 
                 databaseSchema = _serviceCrypto.UPDDecodeBase64(metadata?.DatabaseSchema);
                 databaseSchema = _serviceFuncString.UDPLower(databaseSchema);
@@ -87,7 +87,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
                 data = _serviceCrypto.UPDEncrypt(databaseSchema);
                 _serviceFile.UDPAppendAllText($"{directoryConfiguration}{DirectoryStandard.Log}{FileStandard.IdDatabaseSchema}{FileExtension.Txt}", data);
 
-                _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.SuccessToTheSaveDatabaseSchemaFromMetadata), _serviceFuncString.Empty);
+                _serviceLog.UDPLogReport(_serviceMessage.UDPMessage(MessageType.SuccessToTheSaveDatabaseSchemaFromMetadata), _serviceFuncString.Empty);
             }
         }
 
@@ -96,7 +96,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             string data = _serviceFuncString.Empty;
             string directoryConfiguration = _serviceFuncString.Empty;
 
-            _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.CallStartToTheOpenDatabaseSchemaFromMetadata), _serviceFuncString.Empty);
+            _serviceLog.UDPLogReport(_serviceMessage.UDPMessage(MessageType.CallStartToTheOpenDatabaseSchemaFromMetadata), _serviceFuncString.Empty);
 
             directoryConfiguration = _serviceDirectory.UDPObtainDirectory(DirectoryRootType.Configuration);
 
@@ -104,7 +104,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             {
                 data = _serviceFile.UDPReadAllText($"{directoryConfiguration}{DirectoryStandard.Log}{FileStandard.IdDatabaseSchema}{FileExtension.Txt}");
                 data = _serviceCrypto.UPDDecrypt(data);
-                _serviceLog.UDPLogReport(_serviceMessage.UDPMensagem(MessageType.SuccessToTheOpenDatabaseSchemaFromMetadata), _serviceFuncString.Empty);
+                _serviceLog.UDPLogReport(_serviceMessage.UDPMessage(MessageType.SuccessToTheOpenDatabaseSchemaFromMetadata), _serviceFuncString.Empty);
             }
 
             return data;
