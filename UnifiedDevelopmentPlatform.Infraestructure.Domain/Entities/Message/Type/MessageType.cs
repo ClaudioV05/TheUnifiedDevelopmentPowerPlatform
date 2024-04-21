@@ -256,21 +256,5 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Message.Typ
         SuccessToTheSaveIdentifierToTheDatabasesEngineFromMetadata = 73,
 
         #endregion Service Databases engine.
-
-        #region Service Architecture patterns.
-
-        [Description("Call start to the select parameters the kinds of architecture patterns")]
-        CallStartToTheSelectParametersTheKindsOfArchitecturePatterns = 74,
-
-        [Description("Success to the select parameters the kinds of architecture patterns")]
-        SuccessToTheSelectParametersTheKindsOfArchitecturePatterns = 75,
-
-        [Description("Call start to the save identifier to the architecture patterns from metadata")]
-        CallStartToTheSaveIdentifierToTheArchitecturePatternsFromMetadata = 76,
-
-        [Description("Success to the save identifier to the architecture patterns from metadata")]
-        SuccessToTheSaveIdentifierToTheArchitecturePatternsFromMetadata = 77
-
-        #endregion Service Architecture patterns.
     }
 }

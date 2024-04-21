@@ -49,7 +49,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
 
         public List<ArchitecturePatterns> UDPSelectParametersTheKindsOfArchitecturePatterns()
         {
-            _serviceLog.UDPLogReport(_serviceMessage.UDPMessage(MessageType.CallStartToTheSelectParametersTheKindsOfArchitecturePatterns), _serviceFuncString.Empty);
+            _serviceLog.UDPLogReport(_serviceMessage.UDPMessage(TypeArchitecturePatterns.CallStartToTheSelectParametersTheKindsOfArchitecturePatterns), _serviceFuncString.Empty);
 
             List<ArchitecturePatterns> listItems = new List<ArchitecturePatterns>();
 
@@ -71,7 +71,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
 
                 if (listItems.Any())
                 {
-                    _serviceLog.UDPLogReport(_serviceMessage.UDPMessage(MessageType.SuccessToTheSelectParametersTheKindsOfArchitecturePatterns), _serviceFuncString.Empty);
+                    _serviceLog.UDPLogReport(_serviceMessage.UDPMessage(TypeArchitecturePatterns.SuccessToTheSelectParametersTheKindsOfArchitecturePatterns), _serviceFuncString.Empty);
                 }
             }
             catch (OverflowException) { }
@@ -86,13 +86,13 @@ namespace UnifiedDevelopmentPlatform.Application.Services
 
             if (metadata.ArchitecturePatterns.Any())
             {
-                _serviceLog.UDPLogReport(_serviceMessage.UDPMessage(MessageType.CallStartToTheSaveIdentifierToTheArchitecturePatternsFromMetadata), _serviceFuncString.Empty);
+                _serviceLog.UDPLogReport(_serviceMessage.UDPMessage(TypeArchitecturePatterns.CallStartToTheSaveIdentifierToTheArchitecturePatternsFromMetadata), _serviceFuncString.Empty);
 
                 directoryConfiguration = _serviceDirectory.UDPObtainDirectory(DirectoryRootType.Configuration);
                 data = _serviceCrypto.UPDEncrypt(Convert.ToString(metadata.ArchitecturePatterns.FirstOrDefault().Id));
                 _serviceFile.UDPAppendAllText($"{directoryConfiguration}{DirectoryStandard.Log}{FileStandard.IdArchitecturePatterns}{FileExtension.Txt}", data);
 
-                _serviceLog.UDPLogReport(_serviceMessage.UDPMessage(MessageType.SuccessToTheSaveIdentifierToTheArchitecturePatternsFromMetadata), _serviceFuncString.Empty);
+                _serviceLog.UDPLogReport(_serviceMessage.UDPMessage(TypeArchitecturePatterns.SuccessToTheSaveIdentifierToTheArchitecturePatternsFromMetadata), _serviceFuncString.Empty);
             }
         }
     }

@@ -387,29 +387,5 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Message.Tex
         public static string SuccessToTheSaveIdentifierToTheDatabasesEngineFromMetadata => "SUCCESS TO THE SAVE IDENTIFIER TO THE DATABASES ENGINE FROM METADATA.";
 
         #endregion Service Databases engine.
-
-        #region Service Architecture patterns.
-
-        /// <summary>
-        /// Call start to the Select parameters the kinds of architecture patterns.
-        /// </summary>
-        public static string CallStartToTheSelectParametersTheKindsOfArchitecturePatterns => "CALL START TO THE SELECT PARAMETERS THE KINDS OF ARCHITECTURE PATTERNS.";
-
-        /// <summary>
-        /// Success to the Select parameters the kinds of architecture patterns.
-        /// </summary>
-        public static string SuccessToTheSelectParametersTheKindsOfArchitecturePatterns => "SUCCESS TO THE SELECT PARAMETERS THE KINDS OF ARCHITECTURE PATTERNS.";
-
-        /// <summary>
-        /// Call start to the save identifier to the architecture patterns from metadata.
-        /// </summary>
-        public static string CallStartToTheSaveIdentifierToTheArchitecturePatternsFromMetadata => "CALL START TO THE SAVE IDENTIFIER TO THE ARCHITECTURE PATTERNS FROM METADATA.";
-
-        /// <summary>
-        /// Success to the save identifier to the architecture patterns from metadata.
-        /// </summary>
-        public static string SuccessToTheSaveIdentifierToTheArchitecturePatternsFromMetadata => "SUCCESS TO THE SAVE IDENTIFIER TO THE ARCHITECTURE PATTERNS FROM METADATA.";
-
-        #endregion Service Architecture patterns.
     }
 }

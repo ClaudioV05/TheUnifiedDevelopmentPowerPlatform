@@ -4,14 +4,14 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Message.Tex
 {
     [ComplexType]
     /// <summary>
-    /// The text of message of development environments.
+    /// The text to the development environments.
     /// </summary>
-    public static class MessageTextDevelopmentEnvironments
+    public static class TextDevelopmentEnvironments
     {
         /// <summary>
         /// Message type do not specified.
-        /// </summary>  
-        public static string TheMessageTypeDoNotSpecified => "THE MESSAGE TYPE DO NOT SPECIFIED.";
+        /// </summary>
+        public static string DoNotSpecified => "THE MESSAGE TYPE DO NOT SPECIFIED.";
 
         /// <summary>
         /// Call start to the get data type from table at script metadata.

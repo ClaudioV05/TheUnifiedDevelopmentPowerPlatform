@@ -3,12 +3,12 @@
 namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Message.Type
 {
     /// <summary>
-    /// The type of message development environments.
+    /// The type to the development environments.
     /// </summary>
-    public enum MessageTypeDevelopmentEnvironments : int
+    public enum TypeDevelopmentEnvironments : int
     {
         [Description("The Message type do not specified")]
-        TheMessageTypeDoNotSpecified = 0,
+        DoNotSpecified = 0,
 
         [Description("Call start to the get data type from table at script metadata")]
         CallStartToTheGetDataTypeFromTableInScriptMetadata = 1,

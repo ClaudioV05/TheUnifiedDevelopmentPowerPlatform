@@ -3,12 +3,12 @@
 namespace UnifiedDevelopmentPlatform.Application.Interfaces
 {
     /// <summary>
-    /// Interface ServiceMessage.
+    /// Interface of Service Message.
     /// </summary>
     public interface IServiceMessage
     {
         /// <summary>
-        /// Log message.
+        /// The message.
         /// </summary>
         /// <param name="enumerated"></param>
         /// <paramref name=""/>
@@ -16,19 +16,31 @@ namespace UnifiedDevelopmentPlatform.Application.Interfaces
         /// <remarks></remarks>
         /// <exception cref=""></exception>
         /// <seealso href=""></seealso>
-        /// <returns>The description message.</returns>
+        /// <returns>The description of message.</returns>
         string UDPMessage(MessageType enumerated);
 
         /// <summary>
-        /// Log message to the development environments.
+        /// The message.
         /// </summary>
-        /// <param name="enumerated"></param>
+        /// <param name="type"></param>
         /// <paramref name=""/>
         /// <returns></returns>
         /// <remarks></remarks>
         /// <exception cref=""></exception>
         /// <seealso href=""></seealso>
-        /// <returns>The description message.</returns>
-        string UDPMessageDevelopmentEnvironments(MessageTypeDevelopmentEnvironments enumerated);
+        /// <returns>The description of message.</returns>
+        string UDPMessage(TypeDevelopmentEnvironments type);
+
+        /// <summary>
+        /// The message.
+        /// </summary>
+        /// <param name="type"></param>
+        /// <paramref name=""/>
+        /// <returns></returns>
+        /// <remarks></remarks>
+        /// <exception cref=""></exception>
+        /// <seealso href=""></seealso>
+        /// <returns>The description of message.</returns>
+        string UDPMessage(TypeArchitecturePatterns type);
     }
 }
