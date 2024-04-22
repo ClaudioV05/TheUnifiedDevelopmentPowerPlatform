@@ -143,7 +143,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             catch (Exception ex)
             {
                 _serviceLog.UDPLogReport(_serviceMessage.UDPGetMessage(TypeDatabases.ErrorReceiveAndSaveAllTableAndFieldsOfSchemaDatabase), ex.Message);
-                throw new Exception(MessageText.TheGlobalErrorMessage);
+                throw new Exception(TextInformations.TheGlobalErrorMessage);
             }
 
             _serviceLog.UDPLogReport(_serviceMessage.UDPGetMessage(TypeMetadata.SuccessAtTheReceiveAndSaveAllTableAndFieldsOfSchemaDatabase), _serviceFuncString.Empty);
@@ -153,7 +153,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
 
         public void UDPNotImplemented(MetadataOwner metadata)
         {
-            _serviceLog.UDPLogReport(_serviceMessage.UDPGetMessage(MessageType.NoHasMessageSpecifield), _serviceFuncString.Empty);
+            _serviceLog.UDPLogReport(_serviceMessage.UDPGetMessage(TypeInformations.DoNotSpecified), _serviceFuncString.Empty);
 
             throw new NotImplementedException();
         }

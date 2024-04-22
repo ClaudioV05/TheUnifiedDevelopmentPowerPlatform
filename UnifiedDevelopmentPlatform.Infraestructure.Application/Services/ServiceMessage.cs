@@ -20,39 +20,18 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             _serviceFuncString = serviceFuncString;
         }
 
-        public string UDPGetMessage(MessageType enumerated)
+        public string UDPGetMessage(TypeInformations enumerated)
         {
-            string message = _serviceFuncString.Empty;
-
-            if (Enum.IsDefined(typeof(MessageType), enumerated)) // Create the method for this
+            return _serviceFuncString.UDPUpper(enumerated switch
             {
-                message = enumerated switch
-                {
-                    MessageType.TheInitialMessage => MessageText.TheInitialMessage,
-                    MessageType.ThePlatformWindowsIsOk => MessageText.ThePlatformWindowsIsOk,
-                    MessageType.ThePlatformWindowsIsNotOk => MessageText.ThePlatformWindowsIsNotOk,
-                    MessageType.TheGlobalErrorMessage => MessageText.TheGlobalErrorMessage,
-                    MessageType.ErrorFilterActionContextController => MessageText.ErrorFilterActionContextController,
-                    MessageType.ErrorFilterActionContextTables => MessageText.ErrorFilterActionContextTables,
-                    MessageType.ErrorFilterActionContextFields => MessageText.ErrorFilterActionContextFields,
-                    MessageType.MessageDefaultToServiceValidation => MessageText.MessageDefaultToServiceValidation,
-                    MessageType.TheModelStateIsOk => MessageText.TheModelStateIsOk,
-                    MessageType.TheScriptMetadataIsOk => MessageText.TheScriptMetadataIsOk,
-                    MessageType.TheMetadataIsBase64Ok => MessageText.TheMetadataIsBase64Ok,
-                    MessageType.TheDevelopmentEnvironmentIsOk => MessageText.TheDevelopmentEnvironmentIsOk,
-                    MessageType.TheDatabasesIsOk => MessageText.TheDatabasesIsOk,
-                    MessageType.TheDatabasesImplementedIsntOk => MessageText.TheDatabasesImplementedIsntOk,
-                    MessageType.TheDatabasesEngineIsOk => MessageText.TheDatabasesEngineIsOk,
-                    MessageType.BuildDirectoryStandardOfSolution => MessageText.BuildDirectoryStandardOfSolution,
-                    MessageType.DirectoryRootIsEmpty => MessageText.DirectoryRootIsEmpty,
-                   
-                    MessageType.TheArchitecturePatternsIsOk => MessageText.TheArchitecturePatternsIsOk,
-                    
-                    _ => MessageText.NoHasMessageSpecifield
-                };
-            }
-
-            return _serviceFuncString.UDPUpper(message);
+                TypeInformations.DoNotSpecified => TextInformations.DoNotSpecified,
+                TypeInformations.TheInitialMessage => TextInformations.TheInitialMessage,
+                TypeInformations.TheGlobalErrorMessage => TextInformations.TheGlobalErrorMessage,
+                TypeInformations.ErrorFilterActionContextController => TextInformations.ErrorFilterActionContextController,
+                TypeInformations.ErrorFilterActionContextTables => TextInformations.ErrorFilterActionContextTables,
+                TypeInformations.ErrorFilterActionContextFields => TextInformations.ErrorFilterActionContextFields,
+                _ => _serviceFuncString.Empty
+            });
         }
 
         public string UDPGetMessage(TypeDevelopmentEnvironments type)
@@ -196,6 +175,40 @@ namespace UnifiedDevelopmentPlatform.Application.Services
                 TypeMetadataTable.SuccessToTheSaveMetricsOfTheGenerationOfTablesAndFields => TextMetadataTables.SuccessToTheSaveMetricsOfTheGenerationOfTablesAndFields,
                 TypeMetadataTable.CallStartToTheGetMetricsOfQuantitiesOfTables => TextMetadataTables.CallStartToTheGetMetricsOfQuantitiesOfTables,
                 TypeMetadataTable.SuccessToTheGetMetricsOfQuantitiesOfTables => TextMetadataTables.SuccessToTheGetMetricsOfQuantitiesOfTables,
+                _ => _serviceFuncString.Empty
+            });
+        }
+
+        public string UDPGetMessage(TypeDirectory type)
+        {
+            return _serviceFuncString.UDPUpper(type switch
+            {
+                TypeDirectory.DoNotSpecified => TextDirectory.DoNotSpecified,
+                TypeDirectory.DirectoryRootIsEmpty => TextDirectory.DirectoryRootIsEmpty,
+                TypeDirectory.ErrorCreateAllDirectory => TextDirectory.ErrorCreateAllDirectory,
+                TypeDirectory.BuildDirectoryStandardOfSolution => TextDirectory.BuildDirectoryStandardOfSolution,
+                TypeDirectory.CallStartToTheCreateDirectoryProjectOfSolution => TextDirectory.CallStartToTheCreateDirectoryProjectOfSolution,
+                TypeDirectory.SuccessToTheCreateDirectoryProjectOfSolution => TextDirectory.SuccessToTheCreateDirectoryProjectOfSolution,
+                _ => _serviceFuncString.Empty
+            });
+        }
+
+        public string UDPGetMessage(TypeValidation type)
+        {
+            return _serviceFuncString.UDPUpper(type switch
+            {
+                TypeValidation.DoNotSpecified => TextValidation.DoNotSpecified,
+                TypeValidation.TheModelStateIsOk => TextValidation.TheModelStateIsOk,
+                TypeValidation.TheScriptMetadataIsOk => TextValidation.TheScriptMetadataIsOk,
+                TypeValidation.TheMetadataIsBase64Ok => TextValidation.TheMetadataIsBase64Ok,
+                TypeValidation.TheDevelopmentEnvironmentIsOk => TextValidation.TheDevelopmentEnvironmentIsOk,
+                TypeValidation.TheFormsViewIsOk => TextValidation.TheFormsViewIsOk,
+                TypeValidation.TheDatabasesIsOk => TextValidation.TheDatabasesIsOk,
+                TypeValidation.TheDatabasesImplementedIsntOk => TextValidation.TheDatabasesImplementedIsntOk,
+                TypeValidation.TheDatabasesEngineIsOk => TextValidation.TheDatabasesEngineIsOk,
+                TypeValidation.TheArchitecturePatternsIsOk => TextValidation.TheArchitecturePatternsIsOk,
+                TypeValidation.ThePlatformWindowsIsOk => TextValidation.ThePlatformWindowsIsOk,
+                TypeValidation.ThePlatformWindowsIsNotOk => TextValidation.ThePlatformWindowsIsNotOk,
                 _ => _serviceFuncString.Empty
             });
         }

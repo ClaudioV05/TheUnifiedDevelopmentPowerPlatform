@@ -17,7 +17,7 @@ namespace UnifiedDevelopmentPlatform.Application.Interfaces
         /// <exception cref=""></exception>
         /// <seealso href=""></seealso>
         /// <returns>The description of message.</returns>
-        string UDPGetMessage(MessageType enumerated);
+        string UDPGetMessage(TypeInformations enumerated);
 
         /// <summary>
         /// The get message.
@@ -126,5 +126,29 @@ namespace UnifiedDevelopmentPlatform.Application.Interfaces
         /// <seealso href=""></seealso>
         /// <returns>The description of message.</returns>
         string UDPGetMessage(TypeMetadataTable type);
+
+        /// <summary>
+        /// The get message.
+        /// </summary>
+        /// <param name="type"></param>
+        /// <paramref name=""/>
+        /// <returns></returns>
+        /// <remarks></remarks>
+        /// <exception cref=""></exception>
+        /// <seealso href=""></seealso>
+        /// <returns>The description of message.</returns>
+        string UDPGetMessage(TypeDirectory type);
+
+        /// <summary>
+        /// The get message.
+        /// </summary>
+        /// <param name="type"></param>
+        /// <paramref name=""/>
+        /// <returns></returns>
+        /// <remarks></remarks>
+        /// <exception cref=""></exception>
+        /// <seealso href=""></seealso>
+        /// <returns>The description of message.</returns>
+        string UDPGetMessage(TypeValidation type);
     }
 }

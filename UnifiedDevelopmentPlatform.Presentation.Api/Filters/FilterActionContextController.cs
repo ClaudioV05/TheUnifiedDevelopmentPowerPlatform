@@ -58,13 +58,13 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Filters
 
                 _serviceDirectory.UPDBuildDirectoryStandardOfSolution();
 
-                _serviceLog.UDPLogReport(_serviceMessage.UDPGetMessage(MessageType.TheInitialMessage), _serviceFuncStrings.Empty);
-                _serviceLog.UDPLogReport(_serviceMessage.UDPGetMessage(MessageType.ThePlatformWindowsIsOk), _serviceFuncStrings.Empty);
+                _serviceLog.UDPLogReport(_serviceMessage.UDPGetMessage(TypeInformations.TheInitialMessage), _serviceFuncStrings.Empty);
+                _serviceLog.UDPLogReport(_serviceMessage.UDPGetMessage(TypeValidation.ThePlatformWindowsIsOk), _serviceFuncStrings.Empty);
             }
             catch (Exception ex)
             {
-                _serviceLog.UDPLogReport($"{_serviceMessage.UDPGetMessage(MessageType.ErrorFilterActionContextController)}", ex.Message);
-                throw new Exception(_serviceFuncStrings.UDPUpper(MessageText.TheGlobalErrorMessage));
+                _serviceLog.UDPLogReport($"{_serviceMessage.UDPGetMessage(TypeInformations.ErrorFilterActionContextController)}", ex.Message);
+                throw new Exception(_serviceFuncStrings.UDPUpper(TextInformations.TheGlobalErrorMessage));
             }
 
             await next();

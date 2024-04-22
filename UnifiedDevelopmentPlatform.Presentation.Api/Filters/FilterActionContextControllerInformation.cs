@@ -44,7 +44,7 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Filters
             }
             catch (Exception)
             {
-                throw new Exception(_serviceFuncString.UDPUpper(MessageText.TheGlobalErrorMessage));
+                throw new Exception(_serviceFuncString.UDPUpper(TextInformations.TheGlobalErrorMessage));
             }
 
             await next();
