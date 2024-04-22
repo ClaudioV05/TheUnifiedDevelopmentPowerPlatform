@@ -2,10 +2,10 @@
 
 namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Message.Text
 {
-    [ComplexType]
     /// <summary>
     /// The text to the development environments.
     /// </summary>
+    [ComplexType]
     public static class TextDevelopmentEnvironments
     {
         /// <summary>

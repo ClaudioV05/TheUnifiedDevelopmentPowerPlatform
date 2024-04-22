@@ -118,7 +118,7 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Filters
             }
             catch (Exception ex)
             {
-                _serviceLog.UDPLogReport(_serviceMessage.UDPMessage(MessageType.ErrorFilterActionContextTables), ex.Message);
+                _serviceLog.UDPLogReport(_serviceMessage.UDPGetMessage(MessageType.ErrorFilterActionContextTables), ex.Message);
                 throw new Exception(_serviceFuncString.UDPUpper(MessageText.TheGlobalErrorMessage));
             }
 
@@ -126,13 +126,13 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.Filters
 
             try
             {
-                _serviceLog.UDPLogReport(_serviceMessage.UDPMessage(MessageType.CallStartToTheCreateDirectoryProjectOfSolution), _serviceFuncString.Empty);
+                _serviceLog.UDPLogReport(_serviceMessage.UDPGetMessage(MessageType.CallStartToTheCreateDirectoryProjectOfSolution), _serviceFuncString.Empty);
                 _serviceDirectory.UPDCreateDirectoryProjectOfSolution();
-                _serviceLog.UDPLogReport(_serviceMessage.UDPMessage(MessageType.SuccessToTheCreateDirectoryProjectOfSolution), _serviceFuncString.Empty);
+                _serviceLog.UDPLogReport(_serviceMessage.UDPGetMessage(MessageType.SuccessToTheCreateDirectoryProjectOfSolution), _serviceFuncString.Empty);
             }
             catch (Exception ex)
             {
-                _serviceLog.UDPLogReport(_serviceMessage.UDPMessage(MessageType.ErrorCreateAllDirectory), ex.Message);
+                _serviceLog.UDPLogReport(_serviceMessage.UDPGetMessage(MessageType.ErrorCreateAllDirectory), ex.Message);
                 throw new Exception(_serviceFuncString.UDPUpper(MessageText.TheGlobalErrorMessage));
             }
         }

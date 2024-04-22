@@ -2,15 +2,15 @@
 
 namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Message.Text
 {
-    [ComplexType]
     /// <summary>
     /// The text to the architecture patterns.
     /// </summary>
+    [ComplexType]
     public static class TextArchitecturePatterns
     {
         /// <summary>
         /// Message type do not specified.
-        /// </summary>  
+        /// </summary>
         public static string DoNotSpecified => "THE MESSAGE TYPE DO NOT SPECIFIED.";
 
         /// <summary>

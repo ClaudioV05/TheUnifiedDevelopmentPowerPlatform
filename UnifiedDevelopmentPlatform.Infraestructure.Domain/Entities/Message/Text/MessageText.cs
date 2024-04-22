@@ -2,10 +2,10 @@
 
 namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Message.Text
 {
-    [ComplexType]
     /// <summary>
     /// The text of message.
     /// </summary>
+    [ComplexType]
     public static class MessageText
     {
         /// <summary>
@@ -147,11 +147,7 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Message.Tex
         /// </summary>
         public static string SuccessToTheOpenDatabaseSchemaFromMetadata => "SUCCESS TO THE OPEN THE DATABASE SCHEMA FROM METADATA.";
 
-        /// <summary>
-        /// Success to the save identifier to the databases from metadata.
-        /// </summary>
-        public static string SuccessToTheSaveIdentifierToTheDatabasesFromMetadata => "SUCCESS TO THE SAVE IDENTIFIER TO THE DATABASES FROM METADATA.";
-
+        
         /// <summary>
         /// Call start to the get the metrics of quantities of tables.
         /// </summary>
@@ -226,11 +222,6 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Message.Tex
         public static string SuccessAtTheReceiveAndSaveAllTableAndFieldsOfSchemaDatabase => "SUCCESS AT THE RECEIVE AND SAVE ALL TABLE AND FIELDS OF SCHEMA DATABASE.";
 
         /// <summary>
-        /// Error receive and save all table and fields of schema database.
-        /// </summary>
-        public static string ErrorReceiveAndSaveAllTableAndFieldsOfSchemaDatabase => "ERROR OCCURRED AT RETURN ALL OF THE TABLE AND FIELDS OF SCHEMA DATABASEIN THE VALIDATION OF FIELDS.";
-
-        /// <summary>
         /// Call start receive and save all table and fields of schema database.
         /// </summary>
         public static string CallStartReceiveAndSaveAllTableAndFieldsOfSchemaDatabase => "CALL START RECEIVE AND SAVE ALL TABLE AND FIELDS OF SCHEMA DATABASE.";
@@ -256,136 +247,5 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Message.Tex
         public static string SuccessToTheSelectParametersTheKindsOfUnifiedDevelopmentPlatform => "SUCCESS TO THE SELECT PARAMETERS THE KINDS OF UNIFIEDDEVELOPMENT PLATFORM.";
 
         #endregion Service Metadata.
-
-        #region Service Crypto.
-
-        /// <summary>
-        /// Call start to the encrypt.
-        /// </summary>
-        public static string CallStartToTheEncrypt => "CALL START TO THE ENCRYPT.";
-
-        /// <summary>
-        /// Success start to the encrypt.
-        /// </summary>
-        public static string SuccessToTheEncrypt => "SUCCESS START TO THE ENCRYPT.";
-
-        /// <summary>
-        /// Error start to the encrypt.
-        /// </summary>
-        public static string ErrorToTheEncrypt => "ERROR START TO THE ENCRYPT.";
-
-        /// <summary>
-        /// Call start to the decrypt.
-        /// </summary>
-        public static string CallStartToTheDecrypt => "CALL START TO THE DECRYPT.";
-
-        /// <summary>
-        /// Success start to the decrypt.
-        /// </summary>
-        public static string SuccessToTheDecrypt => "SUCCESS START TO THE DECRYPT.";
-
-        /// <summary>
-        /// Error start to the decrypt.
-        /// </summary>
-        public static string ErrorToTheDecrypt => "ERROR START TO THE DECRYPT.";
-
-        /// <summary>
-        /// Call start to the decode base 64.
-        /// </summary>
-        public static string CallStartToTheDecodeBase64 => "CALL START TO THE DECODE BASE 64.";
-
-        /// <summary>
-        /// Success start to the decode base 64.
-        /// </summary>
-        public static string SuccessToTheDecodeBase64 => "SUCCESS START TO THE DECODE BASE 64.";
-
-        /// <summary>
-        /// Error start to the decode base 64.
-        /// </summary>
-        public static string ErrorToTheDecodeBase64 => "ERROR START TO THE DECODE BASE 64.";
-
-        #endregion Service Crypto.
-
-        #region Service Forms view.
-
-        /// <summary>
-        /// Call start to the Select parameters the kinds of forms.
-        /// </summary>
-        public static string CallStartToTheSelectParametersTheKindsOfForms => "CALL START TO THE SELECT PARAMETERS THE KINDS OF FORMS.";
-
-        /// <summary>
-        /// Success to the Select parameters the kinds of forms.
-        /// </summary>
-        public static string SuccessToTheSelectParametersTheKindsOfForms => "SUCCESS TO THE SELECT PARAMETERS THE KINDS OF FORMS.";
-
-        /// <summary>
-        /// Call start to the save identifier to the form from metadata.
-        /// </summary>
-        public static string CallStartToTheSaveIdentifierToTheFormFromMetadata => "CALL START TO THE SAVE IDENTIFIER TO THE FORM FROM METADATA.";
-
-        /// <summary>
-        /// Success to the save identifier to the form from metadata.
-        /// </summary>
-        public static string SuccessToTheSaveIdentifierToTheFormFromMetadata => "SUCCESS TO THE SAVE IDENTIFIER TO THE FORM FROM METADATA.";
-
-        #endregion Service Forms view.
-
-        #region Service Databases.
-
-        /// <summary>
-        /// Call start to the Select parameters the kinds of databases.
-        /// </summary>
-        public static string CallStartToTheSelectParametersTheKindsOfDatabases => "CALL START TO THE SELECT PARAMETERS THE KINDS OF DATABASES.";
-
-        /// <summary>
-        /// Success to the Select parameters the kinds of databases.
-        /// </summary>
-        public static string SuccessToTheSelectParametersTheKindsOfDatabases => "SUCCESS TO THE SELECT PARAMETERS THE KINDS OF DATABASES.";
-
-        /// <summary>
-        /// Call start to the save identifier to the databases from metadata.
-        /// </summary>
-        public static string CallStartToTheSaveIdentifierToTheDatabasesFromMetadata => "CALL START TO THE SAVE IDENTIFIER TO THE DATABASES FROM METADATA.";
-
-        /// <summary>
-        /// The metrics of quantities of the tables.
-        /// </summary>
-        public static string TheMetricsOfQuantitiesOfTables => "THE QUANTITY OF THE TOTAL OF TABLES WHITHIN THE DATABASE SCHEMA.";
-
-        /// <summary>
-        /// The metrics of quantities of the fields.
-        /// </summary>
-        public static string TheMetricsOfQuantitiesOfFields => "THE QUANTITY OF THE TOTAL OF FIELDS WHITHIN THE DATABASE SCHEMA.";
-
-        /// <summary>
-        /// The metrics of total size of directory by parallel processing.
-        /// </summary>
-        public static string TheMetricsOfTotalSizeOfDirectoryByParallelProcessing => "THE TOTAL SIZE OF DIRECTORY APP AT THE MOMENT OF GENERATION OF THE TABLES AND FIELDS.";
-
-        #endregion Service Databases.
-
-        #region Service Databases engine.
-
-        /// <summary>
-        /// Call start to the Select parameters the kinds of databases engine.
-        /// </summary>
-        public static string CallStartToTheSelectParametersTheKindsOfDatabasesEngine => "CALL START TO THE SELECT PARAMETERS THE KINDS OF DATABASES ENGINE.";
-
-        /// <summary>
-        /// Success to the Select parameters the kinds of databases engine.
-        /// </summary>
-        public static string SuccessToTheSelectParametersTheKindsOfDatabasesEngine => "SUCCESS TO THE SELECT PARAMETERS THE KINDS OF DATABASES ENGINE.";
-
-        /// <summary>
-        /// Call start to the save identifier to the databases engine from metadata.
-        /// </summary>
-        public static string CallStartToTheSaveIdentifierToTheDatabasesEngineFromMetadata => "CALL START TO THE SAVE IDENTIFIER TO THE DATABASES ENGINE FROM METADATA.";
-
-        /// <summary>
-        /// Success to the save identifier to the databases engine from metadata.
-        /// </summary>
-        public static string SuccessToTheSaveIdentifierToTheDatabasesEngineFromMetadata => "SUCCESS TO THE SAVE IDENTIFIER TO THE DATABASES ENGINE FROM METADATA.";
-
-        #endregion Service Databases engine.
     }
 }

@@ -5,7 +5,7 @@ using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Message.Type;
 namespace UnifiedDevelopmentPlatform.Application.Services
 {
     /// <summary>
-    /// Service message.
+    /// Service of Message.
     /// </summary>
     public class ServiceMessage : IServiceMessage
     {
@@ -20,7 +20,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             _serviceFuncString = serviceFuncString;
         }
 
-        public string UDPMessage(MessageType enumerated)
+        public string UDPGetMessage(MessageType enumerated)
         {
             string message = _serviceFuncString.Empty;
 
@@ -66,33 +66,8 @@ namespace UnifiedDevelopmentPlatform.Application.Services
                     MessageType.CallStartReceiveAndSaveAllTableAndFieldsOfSchemaDatabase => MessageText.CallStartReceiveAndSaveAllTableAndFieldsOfSchemaDatabase,
                     MessageType.LoadAllOfTheTableAndFieldsOfSchemaDatabase => MessageText.LoadAllOfTheTableAndFieldsOfSchemaDatabase,
                     MessageType.DecryptOkOfTheReceiveAndSaveAllTableAndFieldsOfSchemaDatabase => MessageText.DecryptOkOfTheReceiveAndSaveAllTableAndFieldsOfSchemaDatabase,
-                    MessageType.ErrorReceiveAndSaveAllTableAndFieldsOfSchemaDatabase => MessageText.ErrorReceiveAndSaveAllTableAndFieldsOfSchemaDatabase,
-                    MessageType.CallStartToTheEncrypt => MessageText.CallStartToTheEncrypt,
-                    MessageType.SuccessToTheEncrypt => MessageText.SuccessToTheEncrypt,
-                    MessageType.ErrorToTheEncrypt => MessageText.ErrorToTheEncrypt,
-                    MessageType.CallStartToTheDecrypt => MessageText.CallStartToTheDecrypt,
-                    MessageType.SuccessToTheDecrypt => MessageText.SuccessToTheDecrypt,
-                    MessageType.ErrorToTheDecrypt => MessageText.ErrorToTheDecrypt,
-                    MessageType.CallStartToTheDecodeBase64 => MessageText.CallStartToTheDecodeBase64,
-                    MessageType.SuccessToTheDecodeBase64 => MessageText.SuccessToTheDecodeBase64,
-                    MessageType.ErrorToTheDecodeBase64 => MessageText.ErrorToTheDecodeBase64,
                     MessageType.CallStartToTheSelectParametersTheKindsOfUnifiedDevelopmentPlatform => MessageText.CallStartToTheSelectParametersTheKindsOfUnifiedDevelopmentPlatform,
                     MessageType.SuccessToTheSelectParametersTheKindsOfUnifiedDevelopmentPlatform => MessageText.SuccessToTheSelectParametersTheKindsOfUnifiedDevelopmentPlatform,
-                    MessageType.SuccessToTheSelectParametersTheKindsOfForms => MessageText.SuccessToTheSelectParametersTheKindsOfForms,
-                    MessageType.CallStartToTheSelectParametersTheKindsOfForms => MessageText.CallStartToTheSelectParametersTheKindsOfForms,
-                    MessageType.CallStartToTheSaveIdentifierToTheFormFromMetadata => MessageText.CallStartToTheSaveIdentifierToTheFormFromMetadata,
-                    MessageType.SuccessToTheSaveIdentifierToTheFormFromMetadata => MessageText.SuccessToTheSaveIdentifierToTheFormFromMetadata,
-                    MessageType.CallStartToTheSelectParametersTheKindsOfDatabases => MessageText.CallStartToTheSelectParametersTheKindsOfDatabases,
-                    MessageType.SuccessToTheSelectParametersTheKindsOfDatabases => MessageText.SuccessToTheSelectParametersTheKindsOfDatabases,
-                    MessageType.CallStartToTheSaveIdentifierToTheDatabasesFromMetadata => MessageText.CallStartToTheSaveIdentifierToTheDatabasesFromMetadata,
-                    MessageType.SuccessToTheSaveIdentifierToTheDatabasesFromMetadata => MessageText.SuccessToTheSaveIdentifierToTheDatabasesFromMetadata,
-                    MessageType.TheMetricsOfQuantitiesOfTables => MessageText.TheMetricsOfQuantitiesOfTables,
-                    MessageType.TheMetricsOfQuantitiesOfFields => MessageText.TheMetricsOfQuantitiesOfFields,
-                    MessageType.TheMetricsOfTotalSizeOfDirectoryByParallelProcessing => MessageText.TheMetricsOfTotalSizeOfDirectoryByParallelProcessing,
-                    MessageType.CallStartToTheSelectParametersTheKindsOfDatabasesEngine => MessageText.CallStartToTheSelectParametersTheKindsOfDatabasesEngine,
-                    MessageType.SuccessToTheSelectParametersTheKindsOfDatabasesEngine => MessageText.SuccessToTheSelectParametersTheKindsOfDatabasesEngine,
-                    MessageType.CallStartToTheSaveIdentifierToTheDatabasesEngineFromMetadata => MessageText.CallStartToTheSaveIdentifierToTheDatabasesEngineFromMetadata,
-                    MessageType.SuccessToTheSaveIdentifierToTheDatabasesEngineFromMetadata => MessageText.SuccessToTheSaveIdentifierToTheDatabasesEngineFromMetadata,
                     _ => MessageText.NoHasMessageSpecifield
                 };
             }
@@ -100,7 +75,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             return _serviceFuncString.UDPUpper(message);
         }
 
-        public string UDPMessage(TypeDevelopmentEnvironments type)
+        public string UDPGetMessage(TypeDevelopmentEnvironments type)
         {
             return _serviceFuncString.UDPUpper(type switch
             {
@@ -122,7 +97,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             });
         }
 
-        public string UDPMessage(TypeArchitecturePatterns type)
+        public string UDPGetMessage(TypeArchitecturePatterns type)
         {
             return _serviceFuncString.UDPUpper(type switch
             {
@@ -131,6 +106,67 @@ namespace UnifiedDevelopmentPlatform.Application.Services
                 TypeArchitecturePatterns.SuccessToTheSelectParametersTheKindsOfArchitecturePatterns => TextArchitecturePatterns.SuccessToTheSelectParametersTheKindsOfArchitecturePatterns,
                 TypeArchitecturePatterns.CallStartToTheSaveIdentifierToTheArchitecturePatternsFromMetadata => TextArchitecturePatterns.CallStartToTheSaveIdentifierToTheArchitecturePatternsFromMetadata,
                 TypeArchitecturePatterns.SuccessToTheSaveIdentifierToTheArchitecturePatternsFromMetadata => TextArchitecturePatterns.SuccessToTheSaveIdentifierToTheArchitecturePatternsFromMetadata,
+                _ => _serviceFuncString.Empty
+            });
+        }
+
+        public string UDPGetMessage(TypeDatabasesEngine type)
+        {
+            return _serviceFuncString.UDPUpper(type switch
+            {
+                TypeDatabasesEngine.DoNotSpecified => TextDatabasesEngine.DoNotSpecified,
+                TypeDatabasesEngine.CallStartToTheSelectParametersTheKindsOfDatabasesEngine => TextDatabasesEngine.CallStartToTheSelectParametersTheKindsOfDatabasesEngine,
+                TypeDatabasesEngine.SuccessToTheSelectParametersTheKindsOfDatabasesEngine => TextDatabasesEngine.SuccessToTheSelectParametersTheKindsOfDatabasesEngine,
+                TypeDatabasesEngine.CallStartToTheSaveIdentifierToTheDatabasesEngineFromMetadata => TextDatabasesEngine.CallStartToTheSaveIdentifierToTheDatabasesEngineFromMetadata,
+                TypeDatabasesEngine.SuccessToTheSaveIdentifierToTheDatabasesEngineFromMetadata => TextDatabasesEngine.SuccessToTheSaveIdentifierToTheDatabasesEngineFromMetadata,
+                _ => _serviceFuncString.Empty
+            });
+        }
+
+        public string UDPGetMessage(TypeDatabases type)
+        {
+            return _serviceFuncString.UDPUpper(type switch
+            {
+                TypeDatabases.DoNotSpecified => TextDatabases.DoNotSpecified,
+                TypeDatabases.CallStartToTheSelectParametersTheKindsOfDatabases => TextDatabases.CallStartToTheSelectParametersTheKindsOfDatabases,
+                TypeDatabases.SuccessToTheSelectParametersTheKindsOfDatabases => TextDatabases.SuccessToTheSelectParametersTheKindsOfDatabases,
+                TypeDatabases.CallStartToTheSaveIdentifierToTheDatabasesFromMetadata => TextDatabases.CallStartToTheSaveIdentifierToTheDatabasesFromMetadata,
+                TypeDatabases.SuccessToTheSaveIdentifierToTheDatabasesFromMetadata => TextDatabases.SuccessToTheSaveIdentifierToTheDatabasesFromMetadata,
+                TypeDatabases.TheMetricsOfQuantitiesOfTables => TextDatabases.TheMetricsOfQuantitiesOfTables,
+                TypeDatabases.TheMetricsOfQuantitiesOfFields => TextDatabases.TheMetricsOfQuantitiesOfFields,
+                TypeDatabases.TheMetricsOfTotalSizeOfDirectoryByParallelProcessing => TextDatabases.TheMetricsOfTotalSizeOfDirectoryByParallelProcessing,
+                TypeDatabases.ErrorReceiveAndSaveAllTableAndFieldsOfSchemaDatabase => TextDatabases.ErrorReceiveAndSaveAllTableAndFieldsOfSchemaDatabase,
+                _ => _serviceFuncString.Empty
+            });
+        }
+
+        public string UDPGetMessage(TypeFormsView type)
+        {
+            return _serviceFuncString.UDPUpper(type switch
+            {
+                TypeFormsView.DoNotSpecified => TextFormsView.DoNotSpecified,
+                TypeFormsView.SuccessToTheSelectParametersTheKindsOfForms => TextFormsView.SuccessToTheSelectParametersTheKindsOfForms,
+                TypeFormsView.CallStartToTheSelectParametersTheKindsOfForms => TextFormsView.CallStartToTheSelectParametersTheKindsOfForms,
+                TypeFormsView.CallStartToTheSaveIdentifierToTheFormFromMetadata => TextFormsView.CallStartToTheSaveIdentifierToTheFormFromMetadata,
+                TypeFormsView.SuccessToTheSaveIdentifierToTheFormFromMetadata => TextFormsView.SuccessToTheSaveIdentifierToTheFormFromMetadata,
+                _ => _serviceFuncString.Empty
+            });
+        }
+
+        public string UDPGetMessage(TypeCrypto type)
+        {
+            return _serviceFuncString.UDPUpper(type switch
+            {
+                TypeCrypto.DoNotSpecified => TextCrypto.DoNotSpecified,
+                TypeCrypto.CallStartToTheEncrypt => TextCrypto.CallStartToTheEncrypt,
+                TypeCrypto.SuccessToTheEncrypt => TextCrypto.SuccessToTheEncrypt,
+                TypeCrypto.ErrorToTheEncrypt => TextCrypto.ErrorToTheEncrypt,
+                TypeCrypto.CallStartToTheDecrypt => TextCrypto.CallStartToTheDecrypt,
+                TypeCrypto.SuccessToTheDecrypt => TextCrypto.SuccessToTheDecrypt,
+                TypeCrypto.ErrorToTheDecrypt => TextCrypto.ErrorToTheDecrypt,
+                TypeCrypto.CallStartToTheDecodeBase64 => TextCrypto.CallStartToTheDecodeBase64,
+                TypeCrypto.SuccessToTheDecodeBase64 => TextCrypto.SuccessToTheDecodeBase64,
+                TypeCrypto.ErrorToTheDecodeBase64 => TextCrypto.ErrorToTheDecodeBase64,
                 _ => _serviceFuncString.Empty
             });
         }

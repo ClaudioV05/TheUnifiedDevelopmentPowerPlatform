@@ -3,12 +3,12 @@
 namespace UnifiedDevelopmentPlatform.Application.Interfaces
 {
     /// <summary>
-    /// Interface of Service Message.
+    /// Interface of service Message.
     /// </summary>
     public interface IServiceMessage
     {
         /// <summary>
-        /// The message.
+        /// The get message.
         /// </summary>
         /// <param name="enumerated"></param>
         /// <paramref name=""/>
@@ -17,10 +17,10 @@ namespace UnifiedDevelopmentPlatform.Application.Interfaces
         /// <exception cref=""></exception>
         /// <seealso href=""></seealso>
         /// <returns>The description of message.</returns>
-        string UDPMessage(MessageType enumerated);
+        string UDPGetMessage(MessageType enumerated);
 
         /// <summary>
-        /// The message.
+        /// The get message.
         /// </summary>
         /// <param name="type"></param>
         /// <paramref name=""/>
@@ -29,10 +29,10 @@ namespace UnifiedDevelopmentPlatform.Application.Interfaces
         /// <exception cref=""></exception>
         /// <seealso href=""></seealso>
         /// <returns>The description of message.</returns>
-        string UDPMessage(TypeDevelopmentEnvironments type);
+        string UDPGetMessage(TypeDevelopmentEnvironments type);
 
         /// <summary>
-        /// The message.
+        /// The get message.
         /// </summary>
         /// <param name="type"></param>
         /// <paramref name=""/>
@@ -41,6 +41,54 @@ namespace UnifiedDevelopmentPlatform.Application.Interfaces
         /// <exception cref=""></exception>
         /// <seealso href=""></seealso>
         /// <returns>The description of message.</returns>
-        string UDPMessage(TypeArchitecturePatterns type);
+        string UDPGetMessage(TypeArchitecturePatterns type);
+
+        /// <summary>
+        /// The get message.
+        /// </summary>
+        /// <param name="type"></param>
+        /// <paramref name=""/>
+        /// <returns></returns>
+        /// <remarks></remarks>
+        /// <exception cref=""></exception>
+        /// <seealso href=""></seealso>
+        /// <returns>The description of message.</returns>
+        string UDPGetMessage(TypeDatabasesEngine type);
+
+        /// <summary>
+        /// The get message.
+        /// </summary>
+        /// <param name="type"></param>
+        /// <paramref name=""/>
+        /// <returns></returns>
+        /// <remarks></remarks>
+        /// <exception cref=""></exception>
+        /// <seealso href=""></seealso>
+        /// <returns>The description of message.</returns>
+        string UDPGetMessage(TypeDatabases type);
+
+        /// <summary>
+        /// The get message.
+        /// </summary>
+        /// <param name="type"></param>
+        /// <paramref name=""/>
+        /// <returns></returns>
+        /// <remarks></remarks>
+        /// <exception cref=""></exception>
+        /// <seealso href=""></seealso>
+        /// <returns>The description of message.</returns>
+        string UDPGetMessage(TypeFormsView type);
+
+        /// <summary>
+        /// The get message.
+        /// </summary>
+        /// <param name="type"></param>
+        /// <paramref name=""/>
+        /// <returns></returns>
+        /// <remarks></remarks>
+        /// <exception cref=""></exception>
+        /// <seealso href=""></seealso>
+        /// <returns>The description of message.</returns>
+        string UDPGetMessage(TypeCrypto type);
     }
 }
