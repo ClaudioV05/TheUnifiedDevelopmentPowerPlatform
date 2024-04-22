@@ -11,7 +11,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
     public class ServiceFuncString : IServiceFuncString
     {
         /// <summary>
-        /// The constructor of Service Functions of Strings.
+        /// The constructor of service func string.
         /// </summary>
         public ServiceFuncString() { }
 

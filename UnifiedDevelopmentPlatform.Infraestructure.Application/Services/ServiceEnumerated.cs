@@ -9,7 +9,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
     public class ServiceEnumerated : IServiceEnumerated
     {
         /// <summary>
-        /// The constructor of Service Enumerated.
+        /// The constructor of service enumerated.
         /// </summary>
         public ServiceEnumerated() { }
 

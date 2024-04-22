@@ -17,7 +17,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         private readonly IServiceDevelopmentEnvironments _serviceDevelopmentEnvironments;
 
         /// <summary>
-        /// The constructor of ServiceMetadataField.
+        /// The constructor of service metadata field.
         /// </summary>
         /// <param name="serviceLog"></param>
         /// <param name="serviceMessage"></param>

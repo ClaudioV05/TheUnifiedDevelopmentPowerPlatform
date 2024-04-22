@@ -26,7 +26,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         };
 
         /// <summary>
-        /// The constructor of Service for JavaScript Object Notation - JSON.
+        /// The constructor of service json.
         /// </summary>
         public ServiceJson() { }
 

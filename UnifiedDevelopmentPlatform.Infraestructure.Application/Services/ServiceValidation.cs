@@ -14,7 +14,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         private readonly IServicePlataform _serviceOperationalSystem;
 
         /// <summary>
-        /// The constructor of Service Validation.
+        /// The constructor of service validation.
         /// </summary>
         /// <param name="serviceMessage"></param>
         /// <param name="serviceFuncString"></param>

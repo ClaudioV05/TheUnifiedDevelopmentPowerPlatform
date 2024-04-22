@@ -8,7 +8,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
     public class ServiceZipFile : IServiceZipFile
     {
         /// <summary>
-        /// The constructor of Service Zip File.
+        /// The constructor of service zip file.
         /// </summary>
         public ServiceZipFile() { }
     }

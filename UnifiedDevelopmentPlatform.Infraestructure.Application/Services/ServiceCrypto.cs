@@ -17,7 +17,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         private readonly IServiceFuncString _serviceFuncString;
 
         /// <summary>
-        /// The constructor of Service Crypto.
+        /// The constructor of service crypto.
         /// </summary>
         /// <param name="serviceLog"></param>
         /// <param name="serviceMessage"></param>

@@ -9,7 +9,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
     public class ServicePlataform : IServicePlataform
     {
         /// <summary>
-        /// The constructor of Service plataform.
+        /// The constructor of service plataform.
         /// </summary>
         /// <param name=""></param>
         public ServicePlataform() { }

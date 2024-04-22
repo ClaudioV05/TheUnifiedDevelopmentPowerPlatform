@@ -11,7 +11,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         private readonly IServiceFuncString _serviceFuncString;
 
         /// <summary>
-        /// The constructor of ServiceDataTypeAnsiSql.
+        /// The constructor of service data type ansi sql.
         /// </summary>
         /// <param name="serviceFuncString" />
         public ServiceDataTypeAnsiSql(IServiceFuncString serviceFuncString)

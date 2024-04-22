@@ -8,7 +8,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
     public class ServiceMail : IServiceMail
     {
         /// <summary>
-        /// The constructor of Service Mail.
+        /// The constructor of service mail.
         /// </summary>
         public ServiceMail() { }
     }

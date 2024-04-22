@@ -9,7 +9,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
     public class ServiceDate : IServiceDate
     {
         /// <summary>
-        /// The constructor of Service Date.
+        /// The constructor of service date.
         /// </summary>
         public ServiceDate() { }
 

@@ -22,7 +22,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         private readonly ILogger _logger = LogManager.GetCurrentClassLogger();
 
         /// <summary>
-        /// The constructor of Service Log.
+        /// The constructor of service Log.
         /// </summary>
         /// <param name="serviceFile"></param>
         /// <param name="serviceGuid"></param>

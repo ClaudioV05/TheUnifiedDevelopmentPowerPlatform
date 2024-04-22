@@ -11,7 +11,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         private readonly IServiceFuncString _serviceFuncStrings;
 
         /// <summary>
-        /// The constructor of Service Language Integrated Query - LINQ.
+        /// The constructor of service linq.
         /// </summary>
         public ServiceLinq(IServiceFuncString serviceFuncStrings)
         {

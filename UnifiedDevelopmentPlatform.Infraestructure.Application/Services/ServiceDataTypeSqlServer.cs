@@ -8,7 +8,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
     public class ServiceDataTypeSqlServer : IServiceDataTypeSqlServer
     {
         /// <summary>
-        /// The constructor of ServiceDataTypeSqlServer.
+        /// The constructor of service data type sql server.
         /// </summary>
         public ServiceDataTypeSqlServer() { }
     }

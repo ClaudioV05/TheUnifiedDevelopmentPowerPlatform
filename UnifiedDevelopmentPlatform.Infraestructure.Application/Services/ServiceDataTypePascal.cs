@@ -8,7 +8,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
     public class ServiceDataTypePascal : IServiceDataTypePascal
     {
         /// <summary>
-        /// The constructor of ServiceDataTypePascal.
+        /// The constructor of service data type pascal.
         /// </summary>
         public ServiceDataTypePascal() { }
     }

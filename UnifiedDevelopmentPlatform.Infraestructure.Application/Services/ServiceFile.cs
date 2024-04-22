@@ -19,7 +19,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         };
 
         /// <summary>
-        /// The constructor of Service File.
+        /// The constructor of service file.
         /// </summary>
         /// <param name="serviceDirectory"></param>
         /// <param name="serviceFuncString"></param>

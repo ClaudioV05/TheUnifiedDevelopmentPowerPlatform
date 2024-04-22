@@ -9,7 +9,7 @@ using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Message.Type;
 namespace UnifiedDevelopmentPlatform.Application.Services
 {
     /// <summary>
-    /// Service metadata tables.
+    /// Service metadata table.
     /// </summary>
     public class ServiceMetadataTable : IServiceMetadataTable
     {
@@ -22,7 +22,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         private readonly IServiceFuncString _serviceFuncString;
 
         /// <summary>
-        /// The constructor of service metadata tables.
+        /// The constructor of service metadata table.
         /// </summary>
         /// <param name="serviceLog"></param>
         /// <param name="serviceFile"></param>
