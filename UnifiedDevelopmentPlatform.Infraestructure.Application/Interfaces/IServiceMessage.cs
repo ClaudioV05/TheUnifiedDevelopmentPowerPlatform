@@ -90,5 +90,41 @@ namespace UnifiedDevelopmentPlatform.Application.Interfaces
         /// <seealso href=""></seealso>
         /// <returns>The description of message.</returns>
         string UDPGetMessage(TypeCrypto type);
+
+        /// <summary>
+        /// The get message.
+        /// </summary>
+        /// <param name="type"></param>
+        /// <paramref name=""/>
+        /// <returns></returns>
+        /// <remarks></remarks>
+        /// <exception cref=""></exception>
+        /// <seealso href=""></seealso>
+        /// <returns>The description of message.</returns>
+        string UDPGetMessage(TypeMetadata type);
+
+        /// <summary>
+        /// The get message.
+        /// </summary>
+        /// <param name="type"></param>
+        /// <paramref name=""/>
+        /// <returns></returns>
+        /// <remarks></remarks>
+        /// <exception cref=""></exception>
+        /// <seealso href=""></seealso>
+        /// <returns>The description of message.</returns>
+        string UDPGetMessage(TypeMetadataFields type);
+
+        /// <summary>
+        /// The get message.
+        /// </summary>
+        /// <param name="type"></param>
+        /// <paramref name=""/>
+        /// <returns></returns>
+        /// <remarks></remarks>
+        /// <exception cref=""></exception>
+        /// <seealso href=""></seealso>
+        /// <returns>The description of message.</returns>
+        string UDPGetMessage(TypeMetadataTable type);
     }
 }

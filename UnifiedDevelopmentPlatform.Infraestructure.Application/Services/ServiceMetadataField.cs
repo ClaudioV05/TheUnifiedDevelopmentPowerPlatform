@@ -101,7 +101,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             int positionPrimaryKey = 0;
             string field = _serviceFuncString.Empty;
 
-            _serviceLog.UDPLogReport(_serviceMessage.UDPGetMessage(MessageType.CallStartToTheGetThePrimaryKeyFieldName), _serviceFuncString.Empty);
+            _serviceLog.UDPLogReport(_serviceMessage.UDPGetMessage(TypeMetadataFields.CallStartToTheGetThePrimaryKeyFieldName), _serviceFuncString.Empty);
 
             field = text;
             positionPrimaryKey = _serviceFuncString.UDPIndexOf(field, SqlConfiguration.PrimaryKey);
@@ -116,7 +116,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             field = _serviceFuncString.UDPRemoveAnyWhiteSpace(field);
             field = _serviceFuncString.UDPUpper(field);
 
-            _serviceLog.UDPLogReport(_serviceMessage.UDPGetMessage(MessageType.SuccessToTheGetThePrimaryKeyFieldName), _serviceFuncString.Empty);
+            _serviceLog.UDPLogReport(_serviceMessage.UDPGetMessage(TypeMetadataFields.SuccessToTheGetThePrimaryKeyFieldName), _serviceFuncString.Empty);
 
             return field;
         }
@@ -152,7 +152,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
 
         public void UDPLoadTheFieldsAtTable(ref List<Tables> listTables, int idTable, string text)
         {
-            _serviceLog.UDPLogReport(_serviceMessage.UDPGetMessage(MessageType.CallStartToTheLoadTheFieldAtTable), _serviceFuncString.Empty);
+            _serviceLog.UDPLogReport(_serviceMessage.UDPGetMessage(TypeMetadataFields.CallStartToTheLoadTheFieldAtTable), _serviceFuncString.Empty);
 
             listTables.Where(element => element.Id.Equals(idTable)).First().Fields.Add(new Fields()
             {
@@ -164,7 +164,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
                 TypeField = _serviceDevelopmentEnvironments.UDPGetDataTypeFromTableInScriptMetadata(this.UDPGetTheTypeOfFieldName(text))
             });
 
-            _serviceLog.UDPLogReport(_serviceMessage.UDPGetMessage(MessageType.SuccessToTheLoadTheFieldAtTable), _serviceFuncString.Empty);
+            _serviceLog.UDPLogReport(_serviceMessage.UDPGetMessage(TypeMetadataFields.SuccessToTheLoadTheFieldAtTable), _serviceFuncString.Empty);
         }
 
         public void UDPLoadTheFieldsPrimarykeyAtTable(ref List<Tables> listTables, int idTable, string fieldsPrimaryKey)
@@ -179,7 +179,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             {
                 if (listTables is not null && listTables.Any(element => element.Id.Equals(idTable)))
                 {
-                    _serviceLog.UDPLogReport(_serviceMessage.UDPGetMessage(MessageType.CallStartToTheLoadTheFieldsPrimarykeyAtTable), _serviceFuncString.Empty);
+                    _serviceLog.UDPLogReport(_serviceMessage.UDPGetMessage(TypeMetadataFields.CallStartToTheLoadTheFieldsPrimarykeyAtTable), _serviceFuncString.Empty);
 
                     if (listOfFieldsPrimaryKey is not null && listOfFieldsPrimaryKey.Any())
                     {
@@ -194,7 +194,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
                             }
                         }
 
-                        _serviceLog.UDPLogReport(_serviceMessage.UDPGetMessage(MessageType.SuccessToTheLoadTheFieldsPrimarykeyAtTable), _serviceFuncString.Empty);
+                        _serviceLog.UDPLogReport(_serviceMessage.UDPGetMessage(TypeMetadataFields.SuccessToTheLoadTheFieldsPrimarykeyAtTable), _serviceFuncString.Empty);
                     }
                 }
             }
@@ -204,7 +204,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         {
             long quantityOfFields = 0;
 
-            _serviceLog.UDPLogReport(_serviceMessage.UDPGetMessage(MessageType.CallStartToTheGetMetricsOfQuantitiesOfFields), _serviceFuncString.Empty);
+            _serviceLog.UDPLogReport(_serviceMessage.UDPGetMessage(TypeMetadataFields.CallStartToTheGetMetricsOfQuantitiesOfFields), _serviceFuncString.Empty);
 
             try
             {
@@ -215,7 +215,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
                                                     .LongCount();
                 }
 
-                _serviceLog.UDPLogReport(_serviceMessage.UDPGetMessage(MessageType.SuccessToTheGetMetricsOfQuantitiesOfFields), _serviceFuncString.Empty);
+                _serviceLog.UDPLogReport(_serviceMessage.UDPGetMessage(TypeMetadataFields.SuccessToTheGetMetricsOfQuantitiesOfFields), _serviceFuncString.Empty);
 
             }
             catch (Exception) { }

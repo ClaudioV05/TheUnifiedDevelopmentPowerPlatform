@@ -45,29 +45,9 @@ namespace UnifiedDevelopmentPlatform.Application.Services
                     MessageType.TheDatabasesEngineIsOk => MessageText.TheDatabasesEngineIsOk,
                     MessageType.BuildDirectoryStandardOfSolution => MessageText.BuildDirectoryStandardOfSolution,
                     MessageType.DirectoryRootIsEmpty => MessageText.DirectoryRootIsEmpty,
-                    MessageType.CallStartToTheSaveDatabaseSchemaFromMetadata => MessageText.CallStartToTheSaveDatabaseSchemaFromMetadata,
-                    MessageType.SuccessToTheSaveDatabaseSchemaFromMetadata => MessageText.SuccessToTheSaveDatabaseSchemaFromMetadata,
-                    MessageType.CallStartToTheOpenDatabaseSchemaFromMetadata => MessageText.CallStartToTheOpenDatabaseSchemaFromMetadata,
-                    MessageType.SuccessToTheOpenDatabaseSchemaFromMetadata => MessageText.SuccessToTheOpenDatabaseSchemaFromMetadata,
-                    MessageType.CallStartToTheSaveMetricsOfTheGenerationOfTablesAndFields => MessageText.CallStartToTheSaveMetricsOfTheGenerationOfTablesAndFields,
-                    MessageType.SuccessToTheSaveMetricsOfTheGenerationOfTablesAndFields => MessageText.SuccessToTheSaveMetricsOfTheGenerationOfTablesAndFields,
-                    MessageType.CallStartToTheGetMetricsOfQuantitiesOfTables => MessageText.CallStartToTheGetMetricsOfQuantitiesOfTables,
-                    MessageType.SuccessToTheGetMetricsOfQuantitiesOfTables => MessageText.SuccessToTheGetMetricsOfQuantitiesOfTables,
-                    MessageType.CallStartToTheLoadTheFieldsPrimarykeyAtTable => MessageText.CallStartToTheLoadTheFieldsPrimarykeyAtTable,
-                    MessageType.SuccessToTheLoadTheFieldsPrimarykeyAtTable => MessageText.SuccessToTheLoadTheFieldsPrimarykeyAtTable,
-                    MessageType.CallStartToTheLoadTheFieldAtTable => MessageText.CallStartToTheLoadTheFieldAtTable,
-                    MessageType.SuccessToTheLoadTheFieldAtTable => MessageText.SuccessToTheLoadTheFieldAtTable,
-                    MessageType.CallStartToTheGetThePrimaryKeyFieldName => MessageText.CallStartToTheGetThePrimaryKeyFieldName,
-                    MessageType.SuccessToTheGetThePrimaryKeyFieldName => MessageText.SuccessToTheGetThePrimaryKeyFieldName,
-                    MessageType.CallStartToTheGetMetricsOfQuantitiesOfFields => MessageText.CallStartToTheGetMetricsOfQuantitiesOfFields,
-                    MessageType.SuccessToTheGetMetricsOfQuantitiesOfFields => MessageText.SuccessToTheGetMetricsOfQuantitiesOfFields,
+                   
                     MessageType.TheArchitecturePatternsIsOk => MessageText.TheArchitecturePatternsIsOk,
-                    MessageType.SuccessAtTheReceiveAndSaveAllTableAndFieldsOfSchemaDatabase => MessageText.SuccessAtTheReceiveAndSaveAllTableAndFieldsOfSchemaDatabase,
-                    MessageType.CallStartReceiveAndSaveAllTableAndFieldsOfSchemaDatabase => MessageText.CallStartReceiveAndSaveAllTableAndFieldsOfSchemaDatabase,
-                    MessageType.LoadAllOfTheTableAndFieldsOfSchemaDatabase => MessageText.LoadAllOfTheTableAndFieldsOfSchemaDatabase,
-                    MessageType.DecryptOkOfTheReceiveAndSaveAllTableAndFieldsOfSchemaDatabase => MessageText.DecryptOkOfTheReceiveAndSaveAllTableAndFieldsOfSchemaDatabase,
-                    MessageType.CallStartToTheSelectParametersTheKindsOfUnifiedDevelopmentPlatform => MessageText.CallStartToTheSelectParametersTheKindsOfUnifiedDevelopmentPlatform,
-                    MessageType.SuccessToTheSelectParametersTheKindsOfUnifiedDevelopmentPlatform => MessageText.SuccessToTheSelectParametersTheKindsOfUnifiedDevelopmentPlatform,
+                    
                     _ => MessageText.NoHasMessageSpecifield
                 };
             }
@@ -167,6 +147,55 @@ namespace UnifiedDevelopmentPlatform.Application.Services
                 TypeCrypto.CallStartToTheDecodeBase64 => TextCrypto.CallStartToTheDecodeBase64,
                 TypeCrypto.SuccessToTheDecodeBase64 => TextCrypto.SuccessToTheDecodeBase64,
                 TypeCrypto.ErrorToTheDecodeBase64 => TextCrypto.ErrorToTheDecodeBase64,
+                _ => _serviceFuncString.Empty
+            });
+        }
+
+        public string UDPGetMessage(TypeMetadata type)
+        {
+            return _serviceFuncString.UDPUpper(type switch
+            {
+                TypeMetadata.DoNotSpecified => TextMetadata.DoNotSpecified,
+                TypeMetadata.SuccessAtTheReceiveAndSaveAllTableAndFieldsOfSchemaDatabase => TextMetadata.SuccessAtTheReceiveAndSaveAllTableAndFieldsOfSchemaDatabase,
+                TypeMetadata.CallStartReceiveAndSaveAllTableAndFieldsOfSchemaDatabase => TextMetadata.CallStartReceiveAndSaveAllTableAndFieldsOfSchemaDatabase,
+                TypeMetadata.LoadAllOfTheTableAndFieldsOfSchemaDatabase => TextMetadata.LoadAllOfTheTableAndFieldsOfSchemaDatabase,
+                TypeMetadata.DecryptOkOfTheReceiveAndSaveAllTableAndFieldsOfSchemaDatabase => TextMetadata.DecryptOkOfTheReceiveAndSaveAllTableAndFieldsOfSchemaDatabase,
+                TypeMetadata.CallStartToTheSelectParametersTheKindsOfUnifiedDevelopmentPlatform => TextMetadata.CallStartToTheSelectParametersTheKindsOfUnifiedDevelopmentPlatform,
+                TypeMetadata.SuccessToTheSelectParametersTheKindsOfUnifiedDevelopmentPlatform => TextMetadata.SuccessToTheSelectParametersTheKindsOfUnifiedDevelopmentPlatform,
+                _ => _serviceFuncString.Empty
+            });
+        }
+
+        public string UDPGetMessage(TypeMetadataFields type)
+        {
+            return _serviceFuncString.UDPUpper(type switch
+            {
+                TypeMetadataFields.DoNotSpecified => TextMetadataFields.DoNotSpecified,
+                TypeMetadataFields.CallStartToTheLoadTheFieldsPrimarykeyAtTable => TextMetadataFields.CallStartToTheLoadTheFieldsPrimarykeyAtTable,
+                TypeMetadataFields.SuccessToTheLoadTheFieldsPrimarykeyAtTable => TextMetadataFields.SuccessToTheLoadTheFieldsPrimarykeyAtTable,
+                TypeMetadataFields.CallStartToTheLoadTheFieldAtTable => TextMetadataFields.CallStartToTheLoadTheFieldAtTable,
+                TypeMetadataFields.SuccessToTheLoadTheFieldAtTable => TextMetadataFields.SuccessToTheLoadTheFieldAtTable,
+                TypeMetadataFields.CallStartToTheGetThePrimaryKeyFieldName => TextMetadataFields.CallStartToTheGetThePrimaryKeyFieldName,
+                TypeMetadataFields.SuccessToTheGetThePrimaryKeyFieldName => TextMetadataFields.SuccessToTheGetThePrimaryKeyFieldName,
+                TypeMetadataFields.CallStartToTheGetMetricsOfQuantitiesOfFields => TextMetadataFields.CallStartToTheGetMetricsOfQuantitiesOfFields,
+                TypeMetadataFields.SuccessToTheGetMetricsOfQuantitiesOfFields => TextMetadataFields.SuccessToTheGetMetricsOfQuantitiesOfFields,
+                _ => _serviceFuncString.Empty
+            });
+        }
+
+        public string UDPGetMessage(TypeMetadataTable type)
+        {
+            return _serviceFuncString.UDPUpper(type switch
+            {
+                TypeMetadataTable.DoNotSpecified => TextMetadataTables.DoNotSpecified,
+                TypeMetadataTable.CallStartToTheSaveDatabaseSchemaFromMetadata => TextMetadataTables.CallStartToTheSaveDatabaseSchemaFromMetadata,
+                TypeMetadataTable.SuccessToTheSaveDatabaseSchemaFromMetadata => TextMetadataTables.SuccessToTheSaveDatabaseSchemaFromMetadata,
+                TypeMetadataTable.CallStartToTheOpenDatabaseSchemaFromMetadata => TextMetadataTables.CallStartToTheOpenDatabaseSchemaFromMetadata,
+                TypeMetadataTable.SuccessToTheOpenDatabaseSchemaFromMetadata => TextMetadataTables.SuccessToTheOpenDatabaseSchemaFromMetadata,
+                TypeMetadataTable.CallStartToTheSaveMetricsOfTheGenerationOfTablesAndFields => TextMetadataTables.CallStartToTheSaveMetricsOfTheGenerationOfTablesAndFields,
+                TypeMetadataTable.SuccessToTheSaveMetricsOfTheGenerationOfTablesAndFields => TextMetadataTables.SuccessToTheSaveMetricsOfTheGenerationOfTablesAndFields,
+                TypeMetadataTable.CallStartToTheGetMetricsOfQuantitiesOfTables => TextMetadataTables.CallStartToTheGetMetricsOfQuantitiesOfTables,
+                TypeMetadataTable.SuccessToTheGetMetricsOfQuantitiesOfTables => TextMetadataTables.SuccessToTheGetMetricsOfQuantitiesOfTables,
                 _ => _serviceFuncString.Empty
             });
         }

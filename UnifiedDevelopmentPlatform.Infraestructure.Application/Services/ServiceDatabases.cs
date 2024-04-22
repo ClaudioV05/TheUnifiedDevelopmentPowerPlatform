@@ -104,7 +104,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         {
             long quantityOfTables = 0;
 
-            _serviceLog.UDPLogReport(_serviceMessage.UDPGetMessage(MessageType.CallStartToTheSaveMetricsOfTheGenerationOfTablesAndFields), _serviceFuncString.Empty);
+            _serviceLog.UDPLogReport(_serviceMessage.UDPGetMessage(TypeMetadataTable.CallStartToTheSaveMetricsOfTheGenerationOfTablesAndFields), _serviceFuncString.Empty);
 
             if (listOfTables is not null && listOfTables.Any())
             {
@@ -112,18 +112,18 @@ namespace UnifiedDevelopmentPlatform.Application.Services
                 _serviceLog.UDPLogReport(_serviceMessage.UDPGetMessage(TypeDatabases.TheMetricsOfQuantitiesOfFields), Convert.ToString(_serviceMetadataField.UDPGetMetricsOfQuantitiesOfFields(listOfTables, quantityOfTables)));
                 _serviceLog.UDPLogReport(_serviceMessage.UDPGetMessage(TypeDatabases.TheMetricsOfTotalSizeOfDirectoryByParallelProcessing), Convert.ToString(_serviceDirectory.GetMetricsOfTheTotalSizeOfDirectoryByParallelProcessing(new DirectoryInfo(_serviceDirectory.UDPObtainDirectory(DirectoryRootType.App)))));
 
-                _serviceLog.UDPLogReport(_serviceMessage.UDPGetMessage(MessageType.SuccessToTheSaveMetricsOfTheGenerationOfTablesAndFields), _serviceFuncString.Empty);
+                _serviceLog.UDPLogReport(_serviceMessage.UDPGetMessage(TypeMetadataTable.SuccessToTheSaveMetricsOfTheGenerationOfTablesAndFields), _serviceFuncString.Empty);
             }
         }
 
         public long UDPGetMetricsOfQuantitiesOfTables(List<Tables> listOfTables)
         {
-            _serviceLog.UDPLogReport(_serviceMessage.UDPGetMessage(MessageType.CallStartToTheGetMetricsOfQuantitiesOfTables), _serviceFuncString.Empty);
+            _serviceLog.UDPLogReport(_serviceMessage.UDPGetMessage(TypeMetadataTable.CallStartToTheGetMetricsOfQuantitiesOfTables), _serviceFuncString.Empty);
 
             long quantityOfTables = 0;
             quantityOfTables = listOfTables.Where(element => !element.Id.Equals(0)).Distinct().LongCount();
 
-            _serviceLog.UDPLogReport(_serviceMessage.UDPGetMessage(MessageType.SuccessToTheGetMetricsOfQuantitiesOfTables), _serviceFuncString.Empty);
+            _serviceLog.UDPLogReport(_serviceMessage.UDPGetMessage(TypeMetadataTable.SuccessToTheGetMetricsOfQuantitiesOfTables), _serviceFuncString.Empty);
 
             return quantityOfTables;
         }
