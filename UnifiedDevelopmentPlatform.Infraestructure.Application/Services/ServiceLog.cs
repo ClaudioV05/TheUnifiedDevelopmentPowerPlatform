@@ -9,7 +9,7 @@ using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Message.Text;
 namespace UnifiedDevelopmentPlatform.Application.Services
 {
     /// <summary>
-    /// Service Log.
+    /// Service log.
     /// </summary>
     public class ServiceLog : IServiceLog
     {

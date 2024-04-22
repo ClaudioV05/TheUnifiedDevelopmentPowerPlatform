@@ -3,7 +3,7 @@
 namespace UnifiedDevelopmentPlatform.Application.Interfaces
 {
     /// <summary>
-    /// Interface IServiceDataTypeAnsiSql.
+    /// Interface service data type ansi sql.
     /// </summary>
     public interface IServiceDataTypeAnsiSql
     {

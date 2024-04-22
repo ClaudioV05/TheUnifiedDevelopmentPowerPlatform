@@ -3,7 +3,7 @@
 namespace UnifiedDevelopmentPlatform.Application.Interfaces
 {
     /// <summary>
-    /// Interface ServiceMetadataTable.
+    /// Interface service metadata table.
     /// </summary>
     public interface IServiceMetadataTable
     {

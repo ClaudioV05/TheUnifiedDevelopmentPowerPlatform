@@ -1,7 +1,7 @@
 ﻿namespace UnifiedDevelopmentPlatform.Application.Interfaces
 {
     /// <summary>
-    /// Interface ServiceFile.
+    /// Interface service file.
     /// </summary>
     public interface IServiceFile
     {

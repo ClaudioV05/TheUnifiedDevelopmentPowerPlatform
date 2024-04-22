@@ -3,7 +3,7 @@
 namespace UnifiedDevelopmentPlatform.Application.Interfaces
 {
     /// <summary>
-    /// Interface ServiceDevelopmentEnvironments.
+    /// Interface service development environments.
     /// </summary>
     public interface IServiceDevelopmentEnvironments
     {

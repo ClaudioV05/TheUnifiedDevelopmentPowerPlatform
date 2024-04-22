@@ -1,5 +1,4 @@
-﻿using System.Drawing;
-using System.Text;
+﻿using System.Text;
 using System.Text.RegularExpressions;
 using UnifiedDevelopmentPlatform.Application.Interfaces;
 using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.MetaCharacter;
@@ -7,7 +6,7 @@ using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.MetaCharacter;
 namespace UnifiedDevelopmentPlatform.Application.Services
 {
     /// <summary>
-    /// Service Functions of String.
+    /// Service func string.
     /// </summary>
     public class ServiceFuncString : IServiceFuncString
     {

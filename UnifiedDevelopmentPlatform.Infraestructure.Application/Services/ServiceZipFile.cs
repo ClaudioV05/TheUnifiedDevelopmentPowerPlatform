@@ -3,7 +3,7 @@
 namespace UnifiedDevelopmentPlatform.Application.Services
 {
     /// <summary>
-    /// Service Zip File.
+    /// Service zip file.
     /// </summary>
     public class ServiceZipFile : IServiceZipFile
     {

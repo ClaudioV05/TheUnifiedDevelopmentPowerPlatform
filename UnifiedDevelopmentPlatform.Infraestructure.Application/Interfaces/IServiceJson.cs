@@ -1,7 +1,7 @@
 ﻿namespace UnifiedDevelopmentPlatform.Application.Interfaces
 {
     /// <summary>
-    /// Interface ServiceJson.
+    /// Interface service json.
     /// </summary>
     public interface IServiceJson
     {

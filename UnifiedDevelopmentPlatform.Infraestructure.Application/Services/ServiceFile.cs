@@ -1,14 +1,11 @@
 ﻿using System.Text;
 using UnifiedDevelopmentPlatform.Application.Interfaces;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Directory;
-using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.File;
-using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Message;
 
 namespace UnifiedDevelopmentPlatform.Application.Services
 {
     /// <summary>
-    /// Service File.
+    /// Service file.
     /// </summary>
     public class ServiceFile : IServiceFile
     {

@@ -1,7 +1,7 @@
 ﻿namespace UnifiedDevelopmentPlatform.Application.Interfaces
 {
     /// <summary>
-    /// Interface ServiceMail.
+    /// Interface service mail.
     /// </summary>
     public interface IServiceMail
     {

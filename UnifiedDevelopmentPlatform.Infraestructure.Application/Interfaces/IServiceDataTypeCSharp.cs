@@ -3,7 +3,7 @@
 namespace UnifiedDevelopmentPlatform.Application.Interfaces
 {
     /// <summary>
-    /// Interface IServiceDataTypeCSharp.
+    /// Interface service data type c-sharp.
     /// </summary>
     public interface IServiceDataTypeCSharp
     {

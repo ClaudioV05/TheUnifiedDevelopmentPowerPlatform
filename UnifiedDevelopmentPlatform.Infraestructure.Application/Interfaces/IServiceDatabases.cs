@@ -3,7 +3,7 @@
 namespace UnifiedDevelopmentPlatform.Application.Interfaces
 {
     /// <summary>
-    /// Interface ServiceDatabases.
+    /// Interface service databases.
     /// </summary>
     public interface IServiceDatabases
     {

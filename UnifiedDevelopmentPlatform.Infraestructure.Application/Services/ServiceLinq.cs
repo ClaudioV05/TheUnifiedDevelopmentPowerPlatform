@@ -1,11 +1,10 @@
 ﻿using UnifiedDevelopmentPlatform.Application.Interfaces;
-using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities;
 using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Directory;
 
 namespace UnifiedDevelopmentPlatform.Application.Services
 {
     /// <summary>
-    /// Service Language Integrated Query - LINQ.
+    /// Service linq.
     /// </summary>
     public class ServiceLinq : IServiceLinq
     {

@@ -4,7 +4,7 @@ using UnifiedDevelopmentPlatform.Application.Interfaces;
 namespace UnifiedDevelopmentPlatform.Application.Services
 {
     /// <summary>
-    /// Service Enumerated.
+    /// Service enumerated.
     /// </summary>
     public class ServiceEnumerated : IServiceEnumerated
     {

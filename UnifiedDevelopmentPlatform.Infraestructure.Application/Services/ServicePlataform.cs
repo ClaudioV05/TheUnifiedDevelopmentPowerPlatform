@@ -4,7 +4,7 @@ using UnifiedDevelopmentPlatform.Application.Interfaces;
 namespace UnifiedDevelopmentPlatform.Application.Services
 {
     /// <summary>
-    /// Service Plataform.
+    /// Service plataform.
     /// </summary>
     public class ServicePlataform : IServicePlataform
     {

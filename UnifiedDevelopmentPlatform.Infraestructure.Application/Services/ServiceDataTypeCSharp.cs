@@ -4,7 +4,7 @@ using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.DataTypes;
 namespace UnifiedDevelopmentPlatform.Application.Services
 {
     /// <summary>
-    /// ServiceDataTypeCSharp.
+    /// Service data type c-sharp.
     /// </summary>
     public class ServiceDataTypeCSharp : IServiceDataTypeCSharp
     {

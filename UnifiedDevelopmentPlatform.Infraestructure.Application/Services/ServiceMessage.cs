@@ -5,7 +5,7 @@ using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Message.Type;
 namespace UnifiedDevelopmentPlatform.Application.Services
 {
     /// <summary>
-    /// Service of Message.
+    /// Service message.
     /// </summary>
     public class ServiceMessage : IServiceMessage
     {
@@ -20,9 +20,9 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             _serviceFuncString = serviceFuncString;
         }
 
-        public string UDPGetMessage(TypeInformations enumerated)
+        public string UDPGetMessage(TypeInformations type)
         {
-            return _serviceFuncString.UDPUpper(enumerated switch
+            return _serviceFuncString.UDPUpper(type switch
             {
                 TypeInformations.DoNotSpecified => TextInformations.DoNotSpecified,
                 TypeInformations.TheInitialMessage => TextInformations.TheInitialMessage,

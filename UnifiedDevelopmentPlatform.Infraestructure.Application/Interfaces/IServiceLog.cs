@@ -3,7 +3,7 @@
 namespace UnifiedDevelopmentPlatform.Application.Interfaces
 {
     /// <summary>
-    /// Interface ServiceLog.
+    /// Interface service log.
     /// </summary>
     public interface IServiceLog
     {

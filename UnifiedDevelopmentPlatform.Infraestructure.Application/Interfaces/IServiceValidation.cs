@@ -1,7 +1,7 @@
 ﻿namespace UnifiedDevelopmentPlatform.Application.Interfaces
 {
     /// <summary>
-    /// Interface ServiceValidation.
+    /// Interface service validation.
     /// </summary>
     public interface IServiceValidation
     {

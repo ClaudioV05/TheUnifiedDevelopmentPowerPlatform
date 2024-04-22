@@ -1,7 +1,7 @@
 ﻿namespace UnifiedDevelopmentPlatform.Application.Interfaces
 {
     /// <summary>
-    /// Interface ServiceEnumerated
+    /// Interface service enumerated
     /// </summary>
     public interface IServiceEnumerated
     {

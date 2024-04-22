@@ -69,7 +69,6 @@ builder.Services.TryAddTransient<FilterActionContextTablesAndFieldsOfMetadata<Me
 #region Services.
 builder.Services.TryAddScoped<IServiceArchitecturePatterns, ServiceArchitecturePatterns>();
 builder.Services.TryAddScoped<IServiceCrypto, ServiceCrypto>();
-builder.Services.TryAddScoped<IServiceCsv, ServiceCsv>();
 builder.Services.TryAddScoped<IServiceDatabaseEngine, ServiceDatabaseEngine>();
 builder.Services.TryAddScoped<IServiceDatabases, ServiceDatabases>();
 builder.Services.TryAddScoped<IServiceDataTypeAnsiSql, ServiceDataTypeAnsiSql>();

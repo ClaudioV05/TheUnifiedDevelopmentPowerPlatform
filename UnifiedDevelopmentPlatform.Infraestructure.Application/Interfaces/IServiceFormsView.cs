@@ -3,7 +3,7 @@
 namespace UnifiedDevelopmentPlatform.Application.Interfaces
 {
     /// <summary>
-    /// Interface ServiceFormsView.
+    /// Interface service forms view.
     /// </summary>
     public interface IServiceFormsView
     {

@@ -3,7 +3,7 @@
 namespace UnifiedDevelopmentPlatform.Application.Interfaces
 {
     /// <summary>
-    /// Interface ServiceArchitecturePatterns.
+    /// Interface service architecture patterns.
     /// </summary>
     public interface IServiceArchitecturePatterns
     {

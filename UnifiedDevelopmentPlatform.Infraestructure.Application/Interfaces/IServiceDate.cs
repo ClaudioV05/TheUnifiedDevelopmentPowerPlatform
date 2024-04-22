@@ -1,7 +1,7 @@
 ﻿namespace UnifiedDevelopmentPlatform.Application.Interfaces
 {
     /// <summary>
-    /// Interface ServiceDate.
+    /// Interface service date.
     /// </summary>
     public interface IServiceDate
     {

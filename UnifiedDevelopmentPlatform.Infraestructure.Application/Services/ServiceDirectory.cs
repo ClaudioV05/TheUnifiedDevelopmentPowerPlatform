@@ -6,7 +6,7 @@ using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Directory;
 namespace UnifiedDevelopmentPlatform.Application.Services
 {
     /// <summary>
-    /// Service Directory.
+    /// Service directory.
     /// </summary>
     public class ServiceDirectory : IServiceDirectory
     {

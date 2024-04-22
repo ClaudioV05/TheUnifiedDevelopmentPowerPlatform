@@ -1,7 +1,7 @@
 ﻿namespace UnifiedDevelopmentPlatform.Application.Interfaces
 {
     /// <summary>
-    /// Interface ServiceGuid.
+    /// Interface service guid.
     /// </summary>
     public interface IServiceGuid
     {

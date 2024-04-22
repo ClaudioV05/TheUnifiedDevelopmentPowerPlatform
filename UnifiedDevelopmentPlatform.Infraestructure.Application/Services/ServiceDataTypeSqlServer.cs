@@ -3,7 +3,7 @@
 namespace UnifiedDevelopmentPlatform.Application.Services
 {
     /// <summary>
-    /// Service Zip File.
+    /// Service data type sql server.
     /// </summary>
     public class ServiceDataTypeSqlServer : IServiceDataTypeSqlServer
     {

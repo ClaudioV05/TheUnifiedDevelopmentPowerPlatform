@@ -8,7 +8,7 @@ using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.MetaCharacter;
 namespace UnifiedDevelopmentPlatform.Application.Services
 {
     /// <summary>
-    /// Service Crypto.
+    /// Service crypto.
     /// </summary>
     public class ServiceCrypto : IServiceCrypto
     {

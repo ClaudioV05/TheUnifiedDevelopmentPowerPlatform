@@ -1,11 +1,10 @@
-﻿using System.Globalization;
-using UnifiedDevelopmentPlatform.Application.Interfaces;
+﻿using UnifiedDevelopmentPlatform.Application.Interfaces;
 using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Datetime;
 
 namespace UnifiedDevelopmentPlatform.Application.Services
 {
     /// <summary>
-    /// Service Date.
+    /// Service date.
     /// </summary>
     public class ServiceDate : IServiceDate
     {

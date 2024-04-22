@@ -1,7 +1,7 @@
 ﻿namespace UnifiedDevelopmentPlatform.Application.Interfaces
 {
     /// <summary>
-    /// Interface IServiceDataTypeSqlServer.
+    /// Interface service data type sql server.
     /// </summary>
     public interface IServiceDataTypeSqlServer
     {

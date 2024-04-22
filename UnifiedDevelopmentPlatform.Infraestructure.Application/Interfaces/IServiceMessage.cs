@@ -3,21 +3,21 @@
 namespace UnifiedDevelopmentPlatform.Application.Interfaces
 {
     /// <summary>
-    /// Interface of service Message.
+    /// Interface of service message.
     /// </summary>
     public interface IServiceMessage
     {
         /// <summary>
         /// The get message.
         /// </summary>
-        /// <param name="enumerated"></param>
+        /// <param name="type"></param>
         /// <paramref name=""/>
         /// <returns></returns>
         /// <remarks></remarks>
         /// <exception cref=""></exception>
         /// <seealso href=""></seealso>
         /// <returns>The description of message.</returns>
-        string UDPGetMessage(TypeInformations enumerated);
+        string UDPGetMessage(TypeInformations type);
 
         /// <summary>
         /// The get message.

@@ -1,7 +1,7 @@
 ﻿namespace UnifiedDevelopmentPlatform.Application.Interfaces
 {
     /// <summary>
-    /// Interface ServicePlataform.
+    /// Interface service plataform.
     /// </summary>
     public interface IServicePlataform
     {

@@ -4,7 +4,7 @@ using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.UnifiedDevelopm
 namespace UnifiedDevelopmentPlatform.Application.Interfaces
 {
     /// <summary>
-    /// Interface ServiceMetadata.
+    /// Interface service metadata.
     /// </summary>
     public interface IServiceMetadata
     {

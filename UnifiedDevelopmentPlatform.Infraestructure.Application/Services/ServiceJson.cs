@@ -6,7 +6,7 @@ using UnifiedDevelopmentPlatform.Application.Interfaces;
 namespace UnifiedDevelopmentPlatform.Application.Services
 {
     /// <summary>
-    /// Service JavaScript Object Notation - JSON.
+    /// Service json.
     /// </summary>
     public class ServiceJson : IServiceJson
     {

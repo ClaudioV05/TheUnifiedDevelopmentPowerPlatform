@@ -3,7 +3,7 @@
 namespace UnifiedDevelopmentPlatform.Application.Services
 {
     /// <summary>
-    /// ServiceDataTypePascal.
+    /// Service data type pascal.
     /// </summary>
     public class ServiceDataTypePascal : IServiceDataTypePascal
     {

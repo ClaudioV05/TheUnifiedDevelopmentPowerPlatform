@@ -5,7 +5,7 @@ using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Message.Type;
 namespace UnifiedDevelopmentPlatform.Application.Services
 {
     /// <summary>
-    /// Service Validation.
+    /// Service validation.
     /// </summary>
     public class ServiceValidation : IServiceValidation
     {

@@ -4,7 +4,7 @@ using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Directory;
 namespace UnifiedDevelopmentPlatform.Application.Interfaces
 {
     /// <summary>
-    /// Interface ServiceLinq.
+    /// Interface service linq.
     /// </summary>
     public interface IServiceLinq
     {

@@ -7,7 +7,7 @@ using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Sql;
 namespace UnifiedDevelopmentPlatform.Application.Services
 {
     /// <summary>
-    /// Service MetadataField.
+    /// Service metadata field.
     /// </summary>
     public class ServiceMetadataField : IServiceMetadataField
     {

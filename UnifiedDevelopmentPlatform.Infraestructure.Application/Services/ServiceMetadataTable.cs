@@ -9,7 +9,7 @@ using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Message.Type;
 namespace UnifiedDevelopmentPlatform.Application.Services
 {
     /// <summary>
-    /// Service Metadata Tables.
+    /// Service metadata tables.
     /// </summary>
     public class ServiceMetadataTable : IServiceMetadataTable
     {

@@ -4,7 +4,7 @@ using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.DataTypes;
 namespace UnifiedDevelopmentPlatform.Application.Services
 {
     /// <summary>
-    /// ServiceDataTypeAnsiSql.
+    /// Service data type ansi sql.
     /// </summary>
     public class ServiceDataTypeAnsiSql : IServiceDataTypeAnsiSql
     {
