@@ -77,7 +77,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             }
         }
 
-        [Obsolete("The method is with problem", true)]
+        [Obsolete("deprecated method", true)]
         public string UDPRemoveSpecialCaracterFromPath(string path)
         {
             try

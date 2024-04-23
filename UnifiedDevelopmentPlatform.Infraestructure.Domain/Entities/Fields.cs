@@ -24,6 +24,11 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities
         public string? TypeField { get; set; }
 
         /// <summary>
+        /// The field will be auto create when generate the class.
+        /// </summary>
+        public bool AutoCreate { get; set; }
+
+        /// <summary>
         /// The lenght of field.
         /// </summary>
         public int? FieldLenght { get; set; }

@@ -122,7 +122,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
                     returnType = (EnumeratedDevelopmentEnvironments)idDevelopmentEnvironment switch
                     {
                         EnumeratedDevelopmentEnvironments.NotDefined => _serviceFuncString.Empty,
-                        EnumeratedDevelopmentEnvironments.DelphiXe10 => this.UDPGetDataTypeOfPascal(type),
+                        EnumeratedDevelopmentEnvironments.DelphiXe10 => _serviceFuncString.Empty,
                         EnumeratedDevelopmentEnvironments.VisualStudio => this.UDPGetDataTypeOfCSharp(type),
                         _ => _serviceFuncString.Empty
                     };
@@ -181,22 +181,6 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             {
                 _serviceLog.UDPLogReport(_serviceMessage.UDPGetMessage(TypeDevelopmentEnvironments.ErrorToGetDataTypeOfCSharp), ex.Message);
                 return _serviceDataTypeCSharp.UDPGetAsStringTheEnumType(CSharp.DataType.Undefined);
-            }
-        }
-
-        private string UDPGetDataTypeOfPascal(string type)
-        {
-            try
-            {
-                _serviceLog.UDPLogReport(_serviceMessage.UDPGetMessage(TypeDevelopmentEnvironments.CallStartToGetDataTypeOfPascal), _serviceFuncString.Empty);
-                _serviceLog.UDPLogReport(_serviceMessage.UDPGetMessage(TypeDevelopmentEnvironments.SuccessToGetDataTypeOfPascal), _serviceFuncString.Empty);
-
-                return _serviceFuncString.Empty;
-            }
-            catch (Exception ex)
-            {
-                _serviceLog.UDPLogReport(_serviceMessage.UDPGetMessage(TypeDevelopmentEnvironments.ErrorToGetDataTypeOfPascal), ex.Message);
-                return _serviceFuncString.Empty;
             }
         }
     }

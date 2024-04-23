@@ -73,7 +73,6 @@ builder.Services.TryAddScoped<IServiceDatabaseEngine, ServiceDatabaseEngine>();
 builder.Services.TryAddScoped<IServiceDatabases, ServiceDatabases>();
 builder.Services.TryAddScoped<IServiceDataTypeAnsiSql, ServiceDataTypeAnsiSql>();
 builder.Services.TryAddScoped<IServiceDataTypeCSharp, ServiceDataTypeCSharp>();
-builder.Services.TryAddScoped<IServiceDataTypePascal, ServiceDataTypePascal>();
 builder.Services.TryAddScoped<IServiceDataTypeSqlServer, ServiceDataTypeSqlServer>();
 builder.Services.TryAddScoped<IServiceDate, ServiceDate>();
 builder.Services.TryAddScoped<IServiceDevelopmentEnvironments, ServiceDevelopmentEnvironments>();

@@ -154,15 +154,18 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         {
             _serviceLog.UDPLogReport(_serviceMessage.UDPGetMessage(TypeMetadataFields.CallStartToTheLoadTheFieldAtTable), _serviceFuncString.Empty);
 
-            listTables.Where(element => element.Id.Equals(idTable)).First().Fields.Add(new Fields()
+            Fields fields = new Fields()
             {
                 IdTables = idTable,
                 Name = this.UDPGetTheFieldName(text),
+                AutoCreate = true,
                 IsNull = this.UDPTheFieldIsNotNull(text),
                 IsPrimaryKey = false,
                 FieldLenght = this.UDPGetFieldLenght(this.UDPGetTheTypeOfFieldName(text)),
                 TypeField = _serviceDevelopmentEnvironments.UDPGetDataTypeFromTableInScriptMetadata(this.UDPGetTheTypeOfFieldName(text))
-            });
+            };
+
+            listTables.Where(element => element.Id.Equals(idTable)).First().Fields.Add(fields);
 
             _serviceLog.UDPLogReport(_serviceMessage.UDPGetMessage(TypeMetadataFields.SuccessToTheLoadTheFieldAtTable), _serviceFuncString.Empty);
         }

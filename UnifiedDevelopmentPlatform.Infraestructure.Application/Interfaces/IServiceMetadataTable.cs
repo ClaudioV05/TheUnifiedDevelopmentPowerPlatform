@@ -8,18 +8,6 @@ namespace UnifiedDevelopmentPlatform.Application.Interfaces
     public interface IServiceMetadataTable
     {
         /// <summary>
-        /// Return a list with tables name of metadata.
-        /// </summary>
-        /// <param name="metadata"></param>
-        /// <paramref name=""/>
-        /// <returns></returns>
-        /// <remarks></remarks>
-        /// <exception cref=""></exception>
-        /// <seealso href=""></seealso>
-        /// <returns>List with names of table.</returns>
-        List<string> UDPListWithTablesNameOfMetadata(MetadataOwner metadata);
-
-        /// <summary>
         /// Save the database schema from metadata.
         /// </summary>
         /// <param name="metadata"></param>

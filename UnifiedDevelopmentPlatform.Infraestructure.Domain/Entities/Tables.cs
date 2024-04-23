@@ -15,6 +15,11 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities
         public string? Name { get; set; }
 
         /// <summary>
+        /// The table will be auto create when generate the class.
+        /// </summary>
+        public bool AutoCreate { get; set; }
+
+        /// <summary>
         /// Fields.
         /// </summary>
         [DataMember]

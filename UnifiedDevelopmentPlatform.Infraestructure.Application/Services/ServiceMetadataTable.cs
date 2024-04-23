@@ -15,7 +15,6 @@ namespace UnifiedDevelopmentPlatform.Application.Services
     {
         private readonly IServiceLog _serviceLog;
         private readonly IServiceFile _serviceFile;
-        private readonly IServiceLinq _serviceLinq;
         private readonly IServiceCrypto _serviceCrypto;
         private readonly IServiceMessage _serviceMessage;
         private readonly IServiceDirectory _serviceDirectory;
@@ -26,14 +25,12 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         /// </summary>
         /// <param name="serviceLog"></param>
         /// <param name="serviceFile"></param>
-        /// <param name="serviceLinq"></param>
         /// <param name="serviceCrypto"></param>
         /// <param name="serviceMessage"></param>
         /// <param name="serviceDirectory"></param>
         /// <param name="serviceFuncString"></param>
         public ServiceMetadataTable(IServiceLog serviceLog,
                                     IServiceFile serviceFile,
-                                    IServiceLinq serviceLinq,
                                     IServiceCrypto serviceCrypto,
                                     IServiceMessage serviceMessage,
                                     IServiceDirectory serviceDirectory,
@@ -41,34 +38,10 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         {
             _serviceLog = serviceLog;
             _serviceFile = serviceFile;
-            _serviceLinq = serviceLinq;
             _serviceCrypto = serviceCrypto;
             _serviceMessage = serviceMessage;
             _serviceDirectory = serviceDirectory;
             _serviceFuncString = serviceFuncString;
-        }
-
-        public List<string> UDPListWithTablesNameOfMetadata(MetadataOwner metadata)
-        {
-            List<string> listWithTablesName = new List<string>();
-            string scriptMetadata = _serviceFuncString.Empty;
-
-            try
-            {
-                scriptMetadata = _serviceCrypto.UPDDecodeBase64(metadata?.DatabaseSchema);
-
-                if (!_serviceFuncString.UDPNullOrEmpty(scriptMetadata))
-                {
-                    scriptMetadata = _serviceFuncString.UDPLower(scriptMetadata);
-                    listWithTablesName = UtilsReturnMetadataAllTablesName(scriptMetadata);
-                }
-            }
-            catch (Exception)
-            {
-                throw new Exception();
-            }
-
-            return listWithTablesName;
         }
 
         public void UDPSaveDatabaseSchemaFromMetadata(MetadataOwner metadata)
@@ -77,7 +50,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             string databaseSchema = _serviceFuncString.Empty;
             string directoryConfiguration = _serviceFuncString.Empty;
 
-            if (!_serviceFuncString.UDPNullOrEmpty(metadata.DatabaseSchema))
+            if (!_serviceFuncString.UDPNullOrEmpty(metadata?.DatabaseSchema))
             {
                 _serviceLog.UDPLogReport(_serviceMessage.UDPGetMessage(TypeMetadataTable.CallStartToTheSaveDatabaseSchemaFromMetadata), _serviceFuncString.Empty);
 
@@ -94,18 +67,13 @@ namespace UnifiedDevelopmentPlatform.Application.Services
         public string UDPOpenDatabaseSchemaFromMetadata()
         {
             string data = _serviceFuncString.Empty;
-            string directoryConfiguration = _serviceFuncString.Empty;
 
             _serviceLog.UDPLogReport(_serviceMessage.UDPGetMessage(TypeMetadataTable.CallStartToTheOpenDatabaseSchemaFromMetadata), _serviceFuncString.Empty);
 
-            directoryConfiguration = _serviceDirectory.UDPObtainDirectory(DirectoryRootType.Configuration);
+            data = _serviceFile.UDPGetDataFileFromDirectoryConfiguration(DirectoryStandard.Log, $"{FileStandard.IdDatabaseSchema}{FileExtension.Txt}");
+            data = _serviceCrypto.UPDDecrypt(data);
 
-            if (_serviceFile.UDPFileExists($"{directoryConfiguration}{DirectoryStandard.Log}{FileStandard.IdDatabaseSchema}{FileExtension.Txt}"))
-            {
-                data = _serviceFile.UDPReadAllText($"{directoryConfiguration}{DirectoryStandard.Log}{FileStandard.IdDatabaseSchema}{FileExtension.Txt}");
-                data = _serviceCrypto.UPDDecrypt(data);
-                _serviceLog.UDPLogReport(_serviceMessage.UDPGetMessage(TypeMetadataTable.SuccessToTheOpenDatabaseSchemaFromMetadata), _serviceFuncString.Empty);
-            }
+            _serviceLog.UDPLogReport(_serviceMessage.UDPGetMessage(TypeMetadataTable.SuccessToTheOpenDatabaseSchemaFromMetadata), _serviceFuncString.Empty);
 
             return data;
         }
@@ -138,87 +106,14 @@ namespace UnifiedDevelopmentPlatform.Application.Services
 
         public void UDPAddAndSaveTheTable(ref List<Tables> listTables, int idTable, string text)
         {
-            listTables.Add(new Tables()
+            Tables tables = new Tables()
             {
                 Id = idTable,
-                Name = text
-            });
+                Name = text,
+                AutoCreate = true,
+            };
+
+            listTables.Add(tables);
         }
-
-        #region Private Methods.
-
-        /// <summary>
-        /// Return the metadata all tables name.
-        /// </summary>
-        /// <param name="metadata"></param>
-        /// <returns></returns>
-        private List<string> UtilsReturnMetadataAllTablesName(string? metadata)
-        {
-            long count = 0;
-            string lineCreateTable = _serviceFuncString.Empty;
-            List<string> tables = new List<string>();
-
-            for (int i = 0; i < metadata?.Length; i++)
-            {
-                lineCreateTable += metadata[i];
-
-                if (lineCreateTable.Contains(SqlConfiguration.CreateTableWithSpace))
-                {
-                    count++;
-
-                    if (count > SqlConfiguration.CreateTableDefaultPosition && lineCreateTable.EndsWith(MetaCharacterSymbols.WhiteSpace))
-                    {
-                        UtilsFindTableIntoList(lineCreateTable, ref tables);
-                        count = 0;
-                        lineCreateTable = string.Empty;
-                    }
-                }
-            }
-
-            tables = _serviceLinq.UDPDistinct(tables);
-
-            return tables ?? new List<string>();
-        }
-
-        /// <summary>
-        /// find table into list.
-        /// </summary>
-        /// <param name="metadata"></param>
-        /// <param name="tableList"></param>
-        private void UtilsFindTableIntoList(string metadata, ref List<string> tableList)
-        {
-            int count = 0;
-            int indexCreateTable = 0;
-            string table = _serviceFuncString.Empty;
-
-            try
-            {
-                metadata = _serviceFuncString.UDPRemoveSpecialCaracter(metadata);
-                indexCreateTable = metadata.IndexOf(SqlConfiguration.CreateTableWithSpace);
-
-                for (int i = (indexCreateTable + SqlConfiguration.CreateTablePosition); i < metadata?.Length; i++)
-                {
-                    count++;
-                    table += metadata[i];
-
-                    if (count > SqlConfiguration.CreateTableDefaultPosition && table.EndsWith(MetaCharacterSymbols.WhiteSpace))
-                    {
-                        break;
-                    }
-                }
-
-                table = _serviceFuncString.UDPRemoveSpecialCaracter(table);
-                table = _serviceFuncString.UDPRemoveAllWhiteSpace(table);
-                table = _serviceFuncString.UDPUpper(table);
-            }
-            catch (Exception)
-            {
-                table = _serviceFuncString.Empty;
-            }
-
-            tableList?.Add(table);
-        }
-
-        #endregion Private Methods.
     }
 }
