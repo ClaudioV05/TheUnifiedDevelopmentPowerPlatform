@@ -1,6 +1,6 @@
 ﻿using System.Text;
 
-namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Cryptography
+namespace UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.Cryptography
 {
     /// <summary>
     /// Cryptography.

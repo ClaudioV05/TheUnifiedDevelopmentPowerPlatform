@@ -1,12 +1,12 @@
-﻿using UnifiedDevelopmentPlatform.Application.Interfaces;
-using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities;
-using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Sql;
-using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.MetaCharacter;
-using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.UnifiedDevelopmentParameter;
-using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Message.Text;
-using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Message.Type;
+﻿using UnifiedDevelopmentPowerPlatform.Application.Interfaces;
+using UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities;
+using UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.Sql;
+using UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.MetaCharacter;
+using UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.UnifiedDevelopmentParameter;
+using UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.Message.Text;
+using UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.Message.Type;
 
-namespace UnifiedDevelopmentPlatform.Application.Services
+namespace UnifiedDevelopmentPowerPlatform.Application.Services
 {
     /// <summary>
     /// Service metadata.
@@ -183,9 +183,9 @@ namespace UnifiedDevelopmentPlatform.Application.Services
             return _serviceArchitecturePatterns.UDPSelectParametersTheKindsOfArchitecturePatterns();
         }
 
-        public UnifiedDevelopmentParameters UDPSelectParametersInformationUnifiedDevelopmentPlatform()
+        public UnifiedDevelopmentParameters UDPSelectParametersInformationUnifiedDevelopmentPowerPlatform()
         {
-            _serviceLog.UDPLogReport(_serviceMessage.UDPGetMessage(TypeMetadata.CallStartToTheSelectParametersTheKindsOfUnifiedDevelopmentPlatform), _serviceFuncString.Empty);
+            _serviceLog.UDPLogReport(_serviceMessage.UDPGetMessage(TypeMetadata.CallStartToTheSelectParametersTheKindsOfUnifiedDevelopmentPowerPlatform), _serviceFuncString.Empty);
 
             UnifiedDevelopmentParameters unifiedDevelopmentParameters = new UnifiedDevelopmentParameters()
             {
@@ -193,7 +193,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
                 Authors = new List<string>() { "Jesus Cristo", "Claudio Fernandes Rodrigues Ventura", "Claudiomildo Ventura" }
             };
 
-            _serviceLog.UDPLogReport(_serviceMessage.UDPGetMessage(TypeMetadata.SuccessToTheSelectParametersTheKindsOfUnifiedDevelopmentPlatform), _serviceFuncString.Empty);
+            _serviceLog.UDPLogReport(_serviceMessage.UDPGetMessage(TypeMetadata.SuccessToTheSelectParametersTheKindsOfUnifiedDevelopmentPowerPlatform), _serviceFuncString.Empty);
 
             return unifiedDevelopmentParameters;
         }

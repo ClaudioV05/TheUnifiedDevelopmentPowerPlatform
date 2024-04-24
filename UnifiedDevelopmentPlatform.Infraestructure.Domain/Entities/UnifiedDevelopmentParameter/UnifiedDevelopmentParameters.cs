@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.UnifiedDevelopmentParameter
+namespace UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.UnifiedDevelopmentParameter
 {
     [ComplexType]
     /// <summary>
@@ -16,7 +16,7 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.UnifiedDeve
         /// <summary>
         /// Name.
         /// </summary>
-        public string Name => "UnifiedDevelopmentPlatformParameters";
+        public string Name => "UnifiedDevelopmentPowerPlatformParameters";
 
         /// <summary>
         /// Abreviation.

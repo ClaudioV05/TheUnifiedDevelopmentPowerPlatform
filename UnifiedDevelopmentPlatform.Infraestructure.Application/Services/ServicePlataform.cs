@@ -1,7 +1,7 @@
 ﻿using System.Security;
-using UnifiedDevelopmentPlatform.Application.Interfaces;
+using UnifiedDevelopmentPowerPlatform.Application.Interfaces;
 
-namespace UnifiedDevelopmentPlatform.Application.Services
+namespace UnifiedDevelopmentPowerPlatform.Application.Services
 {
     /// <summary>
     /// Service plataform.

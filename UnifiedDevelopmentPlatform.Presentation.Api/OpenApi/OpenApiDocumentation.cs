@@ -1,8 +1,8 @@
 ﻿using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
-using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.OpenApi;
+using UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.OpenApi;
 
-namespace UnifiedDevelopmentPlatform.Presentation.Api.OpenApi
+namespace UnifiedDevelopmentPowerPlatform.Presentation.Api.OpenApi
 {
     public class OpenApiDocumentation : IDocumentFilter
     {

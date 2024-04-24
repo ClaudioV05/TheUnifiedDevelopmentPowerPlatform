@@ -1,11 +1,11 @@
 ﻿using System.Security.Cryptography;
 using System.Text;
-using UnifiedDevelopmentPlatform.Application.Interfaces;
-using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Cryptography;
-using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Message.Type;
-using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.MetaCharacter;
+using UnifiedDevelopmentPowerPlatform.Application.Interfaces;
+using UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.Cryptography;
+using UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.Message.Type;
+using UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.MetaCharacter;
 
-namespace UnifiedDevelopmentPlatform.Application.Services
+namespace UnifiedDevelopmentPowerPlatform.Application.Services
 {
     /// <summary>
     /// Service crypto.

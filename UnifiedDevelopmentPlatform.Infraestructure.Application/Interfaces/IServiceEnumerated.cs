@@ -1,4 +1,4 @@
-﻿namespace UnifiedDevelopmentPlatform.Application.Interfaces
+﻿namespace UnifiedDevelopmentPowerPlatform.Application.Interfaces
 {
     /// <summary>
     /// Interface service enumerated

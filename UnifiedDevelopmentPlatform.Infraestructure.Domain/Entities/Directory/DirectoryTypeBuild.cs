@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Directory
+namespace UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.Directory
 {
     /// <summary>
     /// Directory root type build.

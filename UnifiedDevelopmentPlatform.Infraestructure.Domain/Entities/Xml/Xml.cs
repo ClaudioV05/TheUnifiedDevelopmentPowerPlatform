@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.Xml.Serialization;
 
-namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Xml
+namespace UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.Xml
 {
     [ComplexType]
     /// <summary>

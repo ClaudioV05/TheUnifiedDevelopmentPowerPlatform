@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Directory
+namespace UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.Directory
 {
     [ComplexType]
     /// <summary>

@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Runtime.Serialization;
 
-namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.DataTypes
+namespace UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.DataTypes
 {
     /// <summary>
     /// AnsiSql.

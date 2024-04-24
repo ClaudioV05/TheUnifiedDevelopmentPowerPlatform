@@ -15,7 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\UnifiedDevelopmentPlatform.Infraestructure.Domain\UnifiedDevelopmentPlatform.Infraestructure.Domain.csproj" />
+    <ProjectReference Include="..\UnifiedDevelopmentPowerPlatform.Infraestructure.Domain\UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.csproj" />
   </ItemGroup>
 
 </Project>

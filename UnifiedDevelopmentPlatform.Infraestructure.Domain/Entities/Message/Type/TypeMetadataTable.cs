@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Message.Type
+namespace UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.Message.Type
 {
     /// <summary>
     /// The type to the metadata table.

@@ -1,8 +1,8 @@
-﻿using UnifiedDevelopmentPlatform.Application.Interfaces;
-using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Controller;
-using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Message.Type;
+﻿using UnifiedDevelopmentPowerPlatform.Application.Interfaces;
+using UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.Controller;
+using UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.Message.Type;
 
-namespace UnifiedDevelopmentPlatform.Application.Services
+namespace UnifiedDevelopmentPowerPlatform.Application.Services
 {
     /// <summary>
     /// Service validation.

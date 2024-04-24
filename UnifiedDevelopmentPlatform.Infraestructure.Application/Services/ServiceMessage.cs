@@ -1,8 +1,8 @@
-﻿using UnifiedDevelopmentPlatform.Application.Interfaces;
-using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Message.Text;
-using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Message.Type;
+﻿using UnifiedDevelopmentPowerPlatform.Application.Interfaces;
+using UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.Message.Text;
+using UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.Message.Type;
 
-namespace UnifiedDevelopmentPlatform.Application.Services
+namespace UnifiedDevelopmentPowerPlatform.Application.Services
 {
     /// <summary>
     /// Service message.
@@ -139,8 +139,8 @@ namespace UnifiedDevelopmentPlatform.Application.Services
                 TypeMetadata.CallStartReceiveAndSaveAllTableAndFieldsOfSchemaDatabase => TextMetadata.CallStartReceiveAndSaveAllTableAndFieldsOfSchemaDatabase,
                 TypeMetadata.LoadAllOfTheTableAndFieldsOfSchemaDatabase => TextMetadata.LoadAllOfTheTableAndFieldsOfSchemaDatabase,
                 TypeMetadata.DecryptOkOfTheReceiveAndSaveAllTableAndFieldsOfSchemaDatabase => TextMetadata.DecryptOkOfTheReceiveAndSaveAllTableAndFieldsOfSchemaDatabase,
-                TypeMetadata.CallStartToTheSelectParametersTheKindsOfUnifiedDevelopmentPlatform => TextMetadata.CallStartToTheSelectParametersTheKindsOfUnifiedDevelopmentPlatform,
-                TypeMetadata.SuccessToTheSelectParametersTheKindsOfUnifiedDevelopmentPlatform => TextMetadata.SuccessToTheSelectParametersTheKindsOfUnifiedDevelopmentPlatform,
+                TypeMetadata.CallStartToTheSelectParametersTheKindsOfUnifiedDevelopmentPowerPlatform => TextMetadata.CallStartToTheSelectParametersTheKindsOfUnifiedDevelopmentPowerPlatform,
+                TypeMetadata.SuccessToTheSelectParametersTheKindsOfUnifiedDevelopmentPowerPlatform => TextMetadata.SuccessToTheSelectParametersTheKindsOfUnifiedDevelopmentPowerPlatform,
                 _ => _serviceFuncString.Empty
             });
         }

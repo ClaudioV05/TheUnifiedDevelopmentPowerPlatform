@@ -17,10 +17,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\UnifiedDevelopmentPlatform.Infraestructure.Application\UnifiedDevelopmentPlatform.Application.csproj" />
-    <ProjectReference Include="..\UnifiedDevelopmentPlatform.Infraestructure.Application\UnifiedDevelopmentPlatform.Application.csproj" />
-    <ProjectReference Include="..\UnifiedDevelopmentPlatform.Infraestructure.Application\UnifiedDevelopmentPlatform.Application.csproj" />
-    <ProjectReference Include="..\UnifiedDevelopmentPlatform.Infraestructure.Application\UnifiedDevelopmentPlatform.Application.csproj" />
+    <ProjectReference Include="..\UnifiedDevelopmentPlatform.Infraestructure.Application\UnifiedDevelopmentPowerPlatform.Application.csproj" />
+    <ProjectReference Include="..\UnifiedDevelopmentPlatform.Infraestructure.Application\UnifiedDevelopmentPowerPlatform.Application.csproj" />
+    <ProjectReference Include="..\UnifiedDevelopmentPlatform.Infraestructure.Application\UnifiedDevelopmentPowerPlatform.Application.csproj" />
+    <ProjectReference Include="..\UnifiedDevelopmentPlatform.Infraestructure.Application\UnifiedDevelopmentPowerPlatform.Application.csproj" />
+    <ProjectReference Include="..\UnifiedDevelopmentPlatform.Infraestructure.Application\UnifiedDevelopmentPowerPlatform.Application.csproj" />
   </ItemGroup>
 
 </Project>

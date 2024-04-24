@@ -1,6 +1,6 @@
-﻿using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Message.Type;
+﻿using UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.Message.Type;
 
-namespace UnifiedDevelopmentPlatform.Application.Interfaces
+namespace UnifiedDevelopmentPowerPlatform.Application.Interfaces
 {
     /// <summary>
     /// Interface of service message.

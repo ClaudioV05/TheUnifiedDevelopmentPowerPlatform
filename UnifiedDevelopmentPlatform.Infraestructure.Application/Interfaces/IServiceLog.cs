@@ -1,6 +1,6 @@
-﻿using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Message;
+﻿using UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.Message;
 
-namespace UnifiedDevelopmentPlatform.Application.Interfaces
+namespace UnifiedDevelopmentPowerPlatform.Application.Interfaces
 {
     /// <summary>
     /// Interface service log.

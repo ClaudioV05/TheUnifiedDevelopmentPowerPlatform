@@ -1,4 +1,4 @@
-﻿namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.MetaCharacter
+﻿namespace UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.MetaCharacter
 {
     /// <summary>
     /// Symbols of Unified Development Platform.

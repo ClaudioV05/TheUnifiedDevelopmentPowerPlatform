@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.OpenApi
+namespace UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.OpenApi
 {
     [ComplexType]
     /// <summary>

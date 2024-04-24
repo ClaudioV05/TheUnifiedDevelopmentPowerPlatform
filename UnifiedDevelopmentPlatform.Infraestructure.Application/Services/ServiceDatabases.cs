@@ -1,11 +1,11 @@
-﻿using UnifiedDevelopmentPlatform.Application.Interfaces;
-using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities;
-using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Directory;
-using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.File;
-using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Message.Type;
-using static UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Databases;
+﻿using UnifiedDevelopmentPowerPlatform.Application.Interfaces;
+using UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities;
+using UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.Directory;
+using UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.File;
+using UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.Message.Type;
+using static UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.Databases;
 
-namespace UnifiedDevelopmentPlatform.Application.Services
+namespace UnifiedDevelopmentPowerPlatform.Application.Services
 {
     /// <summary>
     /// Service databases.

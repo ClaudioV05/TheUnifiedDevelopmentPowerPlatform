@@ -15,15 +15,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CrossCutting", "CrossCuttin
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{E68F11A9-C51E-4E6A-AC38-A73DFA2107A9}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnifiedDevelopmentPlatform.Presentation.Api", "UnifiedDevelopmentPlatform.Presentation.Api\UnifiedDevelopmentPlatform.Presentation.Api.csproj", "{36C2DC79-F80B-40AA-88A2-57CD41755656}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnifiedDevelopmentPowerPlatform.Presentation.Api", "UnifiedDevelopmentPlatform.Presentation.Api\UnifiedDevelopmentPowerPlatform.Presentation.Api.csproj", "{36C2DC79-F80B-40AA-88A2-57CD41755656}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnifiedDevelopmentPlatform.Application", "UnifiedDevelopmentPlatform.Infraestructure.Application\UnifiedDevelopmentPlatform.Application.csproj", "{9ED63B90-C31D-47A6-9285-6AED6BD12011}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnifiedDevelopmentPowerPlatform.Application", "UnifiedDevelopmentPlatform.Infraestructure.Application\UnifiedDevelopmentPowerPlatform.Application.csproj", "{9ED63B90-C31D-47A6-9285-6AED6BD12011}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnifiedDevelopmentPlatform.Infraestructure.Domain", "UnifiedDevelopmentPlatform.Infraestructure.Domain\UnifiedDevelopmentPlatform.Infraestructure.Domain.csproj", "{6D6E7FBC-B365-4FD2-9A67-825BB95A4985}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnifiedDevelopmentPowerPlatform.Infraestructure.Domain", "UnifiedDevelopmentPlatform.Infraestructure.Domain\UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.csproj", "{6D6E7FBC-B365-4FD2-9A67-825BB95A4985}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnifiedDevelopmentPlatform.Infraestructure.CrossCutting", "UnifiedDevelopmentPlatform.Infraestructure.CrossCutting\UnifiedDevelopmentPlatform.Infraestructure.CrossCutting.csproj", "{61D03821-57CC-499F-82EE-699D5D4AA97F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnifiedDevelopmentPowerPlatform.Infraestructure.CrossCutting", "UnifiedDevelopmentPlatform.Infraestructure.CrossCutting\UnifiedDevelopmentPowerPlatform.Infraestructure.CrossCutting.csproj", "{61D03821-57CC-499F-82EE-699D5D4AA97F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnifiedDevelopmentPlatform.Infraestructure.Data", "UnifiedDevelopmentPlatform.Infraestructure.Data\UnifiedDevelopmentPlatform.Infraestructure.Data.csproj", "{AC80D2EB-D3FA-4194-91A6-893C0F7FC641}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnifiedDevelopmentPowerPlatform.Infraestructure.Data", "UnifiedDevelopmentPlatform.Infraestructure.Data\UnifiedDevelopmentPowerPlatform.Infraestructure.Data.csproj", "{AC80D2EB-D3FA-4194-91A6-893C0F7FC641}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

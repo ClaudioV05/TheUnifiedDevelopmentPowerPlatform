@@ -1,4 +1,4 @@
-﻿namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.WebConfiguration
+﻿namespace UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.WebConfiguration
 {
     public static class WebConfiguration
     {

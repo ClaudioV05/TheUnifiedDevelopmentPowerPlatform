@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations.Schema;
-using UnifiedDevelopmentPlatform.Infraestructure.Domain.Interfaces;
+using UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Interfaces;
 
-namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities
+namespace UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities
 {
     /// <summary>
     /// Entity Development Environments.

@@ -1,12 +1,12 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Controller
+namespace UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.Controller
 {
     [ComplexType]
     /// <summary>
     /// Controller Router for UNIFIED DEVELOPMENT PLATFORM.
     /// </summary>
-    public static class ControllerRouterUnifiedDevelopmentPlatform
+    public static class ControllerRouterUnifiedDevelopmentPowerPlatform
     {
         /// <summary>
         /// Route controller.

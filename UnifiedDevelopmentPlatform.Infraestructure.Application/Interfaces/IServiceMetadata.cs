@@ -1,7 +1,7 @@
-﻿using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities;
-using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.UnifiedDevelopmentParameter;
+﻿using UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities;
+using UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.UnifiedDevelopmentParameter;
 
-namespace UnifiedDevelopmentPlatform.Application.Interfaces
+namespace UnifiedDevelopmentPowerPlatform.Application.Interfaces
 {
     /// <summary>
     /// Interface service metadata.
@@ -102,6 +102,6 @@ namespace UnifiedDevelopmentPlatform.Application.Interfaces
         /// <exception cref=""></exception>
         /// <seealso href=""></seealso>
         /// <returns>Information about Unified development platform.</returns>
-        UnifiedDevelopmentParameters UDPSelectParametersInformationUnifiedDevelopmentPlatform();
+        UnifiedDevelopmentParameters UDPSelectParametersInformationUnifiedDevelopmentPowerPlatform();
     }
 }

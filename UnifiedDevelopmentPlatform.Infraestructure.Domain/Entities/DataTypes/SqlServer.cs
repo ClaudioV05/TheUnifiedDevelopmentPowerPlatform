@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.DataTypes
+namespace UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.DataTypes
 {
     /// <summary>
     /// SqlServer.

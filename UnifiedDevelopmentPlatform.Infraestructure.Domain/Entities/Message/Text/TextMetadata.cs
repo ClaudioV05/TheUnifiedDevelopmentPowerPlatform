@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Message.Text
+namespace UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.Message.Text
 {
     /// <summary>
     /// The text to the metadata.
@@ -36,11 +36,11 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Message.Tex
         /// <summary>
         /// Call start to the Select parameters the kinds of unifiedDevelopment platform.
         /// </summary>
-        public static string CallStartToTheSelectParametersTheKindsOfUnifiedDevelopmentPlatform => "CALL START TO THE SELECT PARAMETERS THE KINDS OF UNIFIEDDEVELOPMENT PLATFORM.";
+        public static string CallStartToTheSelectParametersTheKindsOfUnifiedDevelopmentPowerPlatform => "CALL START TO THE SELECT PARAMETERS THE KINDS OF UNIFIEDDEVELOPMENT PLATFORM.";
 
         /// <summary>
         /// Success to the Select parameters the kinds of unified development platform.
         /// </summary>
-        public static string SuccessToTheSelectParametersTheKindsOfUnifiedDevelopmentPlatform => "SUCCESS TO THE SELECT PARAMETERS THE KINDS OF UNIFIEDDEVELOPMENT PLATFORM.";
+        public static string SuccessToTheSelectParametersTheKindsOfUnifiedDevelopmentPowerPlatform => "SUCCESS TO THE SELECT PARAMETERS THE KINDS OF UNIFIEDDEVELOPMENT PLATFORM.";
     }
 }

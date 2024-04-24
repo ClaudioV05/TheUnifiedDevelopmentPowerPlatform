@@ -1,4 +1,4 @@
-﻿namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Sql
+﻿namespace UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.Sql
 {
     /// <summary>
     /// Structured Query Language - SQL Configuration

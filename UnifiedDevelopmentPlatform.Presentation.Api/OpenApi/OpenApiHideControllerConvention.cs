@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc.ApplicationModels;
-using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Controller;
+using UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.Controller;
 
-namespace UnifiedDevelopmentPlatform.Presentation.Api.OpenApi
+namespace UnifiedDevelopmentPowerPlatform.Presentation.Api.OpenApi
 {
     public class OpenApiHideControllerConvention : IActionModelConvention
     {

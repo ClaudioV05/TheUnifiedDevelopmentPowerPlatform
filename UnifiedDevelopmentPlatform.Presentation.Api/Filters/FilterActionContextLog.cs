@@ -1,7 +1,7 @@
-﻿using UnifiedDevelopmentPlatform.Application.Interfaces;
+﻿using UnifiedDevelopmentPowerPlatform.Application.Interfaces;
 using Microsoft.AspNetCore.Mvc.Filters;
 
-namespace UnifiedDevelopmentPlatform.Presentation.Api.Filters
+namespace UnifiedDevelopmentPowerPlatform.Presentation.Api.Filters
 {
     internal sealed class FilterActionContextLog : IAsyncActionFilter
     {

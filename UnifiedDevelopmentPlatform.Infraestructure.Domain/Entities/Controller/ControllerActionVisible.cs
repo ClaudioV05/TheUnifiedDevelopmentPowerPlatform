@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Controller
+namespace UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.Controller
 {
     [ComplexType]
     /// <summary>

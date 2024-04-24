@@ -1,6 +1,6 @@
-﻿using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities;
+﻿using UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities;
 
-namespace UnifiedDevelopmentPlatform.Application.Interfaces
+namespace UnifiedDevelopmentPowerPlatform.Application.Interfaces
 {
     /// <summary>
     /// Interface service database engine.

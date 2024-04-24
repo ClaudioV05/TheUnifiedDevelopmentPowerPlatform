@@ -1,6 +1,6 @@
-﻿using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Directory;
+﻿using UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.Directory;
 
-namespace UnifiedDevelopmentPlatform.Application.Interfaces
+namespace UnifiedDevelopmentPowerPlatform.Application.Interfaces
 {
     /// <summary>
     /// Interface service directory.

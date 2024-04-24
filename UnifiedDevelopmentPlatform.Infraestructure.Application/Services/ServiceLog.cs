@@ -1,12 +1,12 @@
 ﻿using NLog;
 using System.Diagnostics;
-using UnifiedDevelopmentPlatform.Application.Interfaces;
-using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Directory;
-using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.File;
-using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Logging;
-using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Message.Text;
+using UnifiedDevelopmentPowerPlatform.Application.Interfaces;
+using UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.Directory;
+using UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.File;
+using UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.Logging;
+using UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.Message.Text;
 
-namespace UnifiedDevelopmentPlatform.Application.Services
+namespace UnifiedDevelopmentPowerPlatform.Application.Services
 {
     /// <summary>
     /// Service log.

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.File
+namespace UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.File
 {
     [ComplexType]
     /// <summary>

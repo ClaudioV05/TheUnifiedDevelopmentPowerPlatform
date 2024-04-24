@@ -1,10 +1,10 @@
-﻿using UnifiedDevelopmentPlatform.Application.Interfaces;
-using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities;
-using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Message.Type;
-using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.MetaCharacter;
-using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Sql;
+﻿using UnifiedDevelopmentPowerPlatform.Application.Interfaces;
+using UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities;
+using UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.Message.Type;
+using UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.MetaCharacter;
+using UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.Sql;
 
-namespace UnifiedDevelopmentPlatform.Application.Services
+namespace UnifiedDevelopmentPowerPlatform.Application.Services
 {
     /// <summary>
     /// Service metadata field.

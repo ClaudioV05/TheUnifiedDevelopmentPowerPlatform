@@ -1,12 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
-using UnifiedDevelopmentPlatform.Application.Interfaces;
-using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Message.Text;
-using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Message.Type;
-using UnifiedDevelopmentPlatform.Infraestructure.Domain.Interfaces;
-using UnifiedDevelopmentPlatform.Presentation.Api.Models;
+using UnifiedDevelopmentPowerPlatform.Application.Interfaces;
+using UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.Message.Text;
+using UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.Message.Type;
+using UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Interfaces;
+using UnifiedDevelopmentPowerPlatform.Presentation.Api.Models;
 
-namespace UnifiedDevelopmentPlatform.Presentation.Api.Filters
+namespace UnifiedDevelopmentPowerPlatform.Presentation.Api.Filters
 {
     /// <summary>
     /// Filter action context tables and fields of metadata.

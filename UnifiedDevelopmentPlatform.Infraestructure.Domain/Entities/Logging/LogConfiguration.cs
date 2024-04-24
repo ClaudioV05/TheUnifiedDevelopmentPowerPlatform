@@ -1,6 +1,6 @@
-﻿using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.MetaCharacter;
+﻿using UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.MetaCharacter;
 
-namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Logging
+namespace UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.Logging
 {
     public static class LogConfiguration
     {

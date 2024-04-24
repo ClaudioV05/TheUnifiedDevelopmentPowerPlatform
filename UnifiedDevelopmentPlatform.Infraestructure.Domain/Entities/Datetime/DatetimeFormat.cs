@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Datetime
+namespace UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.Datetime
 {
     [ComplexType]
     /// <summary>

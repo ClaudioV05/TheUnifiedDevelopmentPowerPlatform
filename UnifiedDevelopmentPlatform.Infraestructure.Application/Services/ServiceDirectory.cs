@@ -1,9 +1,9 @@
 ﻿using System.Reflection;
 using System.Text.RegularExpressions;
-using UnifiedDevelopmentPlatform.Application.Interfaces;
-using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Directory;
+using UnifiedDevelopmentPowerPlatform.Application.Interfaces;
+using UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.Directory;
 
-namespace UnifiedDevelopmentPlatform.Application.Services
+namespace UnifiedDevelopmentPowerPlatform.Application.Services
 {
     /// <summary>
     /// Service directory.
@@ -252,7 +252,7 @@ namespace UnifiedDevelopmentPlatform.Application.Services
 
             try
             {
-                regex = new Regex(@"(?<!fil)[A-Za-z]:\\+[\S\s]*?(?=\\+unifieddevelopmentplatform.presentation.api)");
+                regex = new Regex(@"(?<!fil)[A-Za-z]:\\+[\S\s]*?(?=\\+UnifiedDevelopmentPowerPlatform.presentation.api)");
                 exeRootDirectory = _serviceFuncString.UDPLower(Assembly.GetExecutingAssembly().Location);
 
                 if (regex.IsMatch(exeRootDirectory ?? _serviceFuncString.Empty))

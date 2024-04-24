@@ -1,9 +1,9 @@
 {
   "profiles": {
-    "UnifiedDevelopmentPlatform.Presentation.Api": {
+    "UnifiedDevelopmentPowerPlatform.Presentation.Api": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "unifieddevelopmentplatform",
+      "launchUrl": "UnifiedDevelopmentPowerPlatform",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },

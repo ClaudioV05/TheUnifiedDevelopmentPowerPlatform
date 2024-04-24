@@ -1,9 +1,9 @@
 ﻿using System.Text.Json;
-using UnifiedDevelopmentPlatform.Application.Interfaces;
-using UnifiedDevelopmentPlatform.Application.Services;
-using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Message;
+using UnifiedDevelopmentPowerPlatform.Application.Interfaces;
+using UnifiedDevelopmentPowerPlatform.Application.Services;
+using UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.Message;
 
-namespace UnifiedDevelopmentPlatform.Presentation.Api.Models
+namespace UnifiedDevelopmentPowerPlatform.Presentation.Api.Models
 {
     /// <summary>
     /// ErrorDetails.

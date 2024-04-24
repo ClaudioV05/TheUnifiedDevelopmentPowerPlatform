@@ -1,11 +1,11 @@
 ﻿using Microsoft.AspNetCore.Diagnostics;
 using System.Net;
-using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.WebConfiguration;
-using UnifiedDevelopmentPlatform.Presentation.Api.Models;
+using UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.WebConfiguration;
+using UnifiedDevelopmentPowerPlatform.Presentation.Api.Models;
 
-namespace UnifiedDevelopmentPlatform.Presentation.Api.Extensions
+namespace UnifiedDevelopmentPowerPlatform.Presentation.Api.Extensions
 {
-    public static class UnifiedDevelopmentPlatformExceptionMiddlewareExtensions
+    public static class UnifiedDevelopmentPowerPlatformExceptionMiddlewareExtensions
     {
         public static void ConfigureExceptionHandler(this IApplicationBuilder app)
         {

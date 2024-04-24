@@ -1,6 +1,6 @@
-﻿using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.DataTypes;
+﻿using UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.DataTypes;
 
-namespace UnifiedDevelopmentPlatform.Application.Interfaces
+namespace UnifiedDevelopmentPowerPlatform.Application.Interfaces
 {
     /// <summary>
     /// Interface service data type ansi sql.

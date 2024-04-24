@@ -3,7 +3,7 @@ using Swashbuckle.AspNetCore.SwaggerGen;
 using System.Reflection;
 using System.Text.Json.Serialization;
 
-namespace UnifiedDevelopmentPlatform.Presentation.Api.OpenApi
+namespace UnifiedDevelopmentPowerPlatform.Presentation.Api.OpenApi
 {
     public class OpenApiIgnoreFilter : ISchemaFilter
     {

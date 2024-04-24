@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Message.Text
+namespace UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.Message.Text
 {
     /// <summary>
     /// The text of informations.

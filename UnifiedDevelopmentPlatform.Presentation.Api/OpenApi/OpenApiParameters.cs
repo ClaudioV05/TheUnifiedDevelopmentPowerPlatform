@@ -1,8 +1,8 @@
 ﻿using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
-using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Controller;
+using UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.Controller;
 
-namespace UnifiedDevelopmentPlatform.Presentation.Api.OpenApi
+namespace UnifiedDevelopmentPowerPlatform.Presentation.Api.OpenApi
 {
     public class OpenApiParameters : IOperationFilter
     {
@@ -12,7 +12,7 @@ namespace UnifiedDevelopmentPlatform.Presentation.Api.OpenApi
             {
                 var actionExecuted = context.ApiDescription.RelativePath.ToLowerInvariant();
 
-                if (actionExecuted.Equals(ControllerRouterUnifiedDevelopmentPlatform.RouterTablesAndFieldsOfMetadata.ToLowerInvariant().Replace("/", string.Empty)))
+                if (actionExecuted.Equals(ControllerRouterUnifiedDevelopmentPowerPlatform.RouterTablesAndFieldsOfMetadata.ToLowerInvariant().Replace("/", string.Empty)))
                 {
                     if (operation.Parameters is null)
                     {

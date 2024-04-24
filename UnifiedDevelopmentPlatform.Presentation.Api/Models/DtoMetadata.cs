@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 
-namespace UnifiedDevelopmentPlatform.Presentation.Api.Models
+namespace UnifiedDevelopmentPowerPlatform.Presentation.Api.Models
 {
     /// <summary>
     /// Metadata.

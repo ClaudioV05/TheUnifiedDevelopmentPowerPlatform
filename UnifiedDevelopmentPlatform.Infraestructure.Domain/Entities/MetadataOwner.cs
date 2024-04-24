@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.Runtime.Serialization;
-using UnifiedDevelopmentPlatform.Infraestructure.Domain.Interfaces;
+using UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Interfaces;
 
-namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities
+namespace UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities
 {
     /// <summary>
     /// Entity Metadata owner.
@@ -54,7 +54,7 @@ namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities
         /// The tables.
         /// </summary>
         [DataMember]
-        public List<Tables> Tables { get; set; }
+        public List<Tables>? Tables { get; set; }
 
         /// <summary>
         /// The constructor of Metadata owner.

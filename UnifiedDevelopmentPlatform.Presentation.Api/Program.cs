@@ -1,15 +1,15 @@
 using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using System.Reflection;
-using UnifiedDevelopmentPlatform.Application.Interfaces;
-using UnifiedDevelopmentPlatform.Application.Services;
-using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities;
-using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.File;
-using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.OpenApi;
-using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.WebConfiguration;
-using UnifiedDevelopmentPlatform.Presentation.Api.Extensions;
-using UnifiedDevelopmentPlatform.Presentation.Api.Filters;
-using UnifiedDevelopmentPlatform.Presentation.Api.OpenApi;
+using UnifiedDevelopmentPowerPlatform.Application.Interfaces;
+using UnifiedDevelopmentPowerPlatform.Application.Services;
+using UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities;
+using UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.File;
+using UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.OpenApi;
+using UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.WebConfiguration;
+using UnifiedDevelopmentPowerPlatform.Presentation.Api.Extensions;
+using UnifiedDevelopmentPowerPlatform.Presentation.Api.Filters;
+using UnifiedDevelopmentPowerPlatform.Presentation.Api.OpenApi;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -147,7 +147,7 @@ app.Use(async (context, next) =>
 {
     context.Response.OnStarting((state) =>
     {
-        context.Response.Headers.Add("unifieddevelopmentplatform", string.Empty);
+        context.Response.Headers.Add("UnifiedDevelopmentPowerPlatform", string.Empty);
 
         if (context.Response.Headers.Count > 0 && context.Response.Headers.ContainsKey(WebConfiguration.ContentType))
         {

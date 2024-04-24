@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.Runtime.Serialization;
-using UnifiedDevelopmentPlatform.Infraestructure.Domain.Interfaces;
+using UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Interfaces;
 
-namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities
+namespace UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities
 {
     /// <summary>
     /// Entity Tables.

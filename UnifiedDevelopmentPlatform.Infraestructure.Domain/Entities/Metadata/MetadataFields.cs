@@ -1,4 +1,4 @@
-﻿namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Metadata
+﻿namespace UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.Metadata
 {
     public static class MetadataFields
     {

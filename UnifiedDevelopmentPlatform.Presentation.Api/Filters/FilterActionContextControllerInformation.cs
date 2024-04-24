@@ -1,10 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
-using UnifiedDevelopmentPlatform.Application.Interfaces;
-using UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities.Message.Text;
-using UnifiedDevelopmentPlatform.Presentation.Api.Models;
+using UnifiedDevelopmentPowerPlatform.Application.Interfaces;
+using UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.Message.Text;
+using UnifiedDevelopmentPowerPlatform.Presentation.Api.Models;
 
-namespace UnifiedDevelopmentPlatform.Presentation.Api.Filters
+namespace UnifiedDevelopmentPowerPlatform.Presentation.Api.Filters
 {
     internal sealed class FilterActionContextControllerInformation : IAsyncActionFilter
     {

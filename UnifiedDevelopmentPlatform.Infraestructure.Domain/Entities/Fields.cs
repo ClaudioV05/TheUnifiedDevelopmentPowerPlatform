@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Entities
+namespace UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities
 {
     /// <summary>
     /// Entity Fields.

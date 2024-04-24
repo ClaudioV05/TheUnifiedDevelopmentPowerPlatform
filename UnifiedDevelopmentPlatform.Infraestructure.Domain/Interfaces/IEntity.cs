@@ -1,4 +1,4 @@
-﻿namespace UnifiedDevelopmentPlatform.Infraestructure.Domain.Interfaces
+﻿namespace UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Interfaces
 {
     /// <summary>
     /// Interface IEntity.

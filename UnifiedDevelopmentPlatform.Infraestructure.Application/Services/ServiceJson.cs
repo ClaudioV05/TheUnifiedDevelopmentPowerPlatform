@@ -1,9 +1,9 @@
 ﻿using System.Text.Encodings.Web;
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using UnifiedDevelopmentPlatform.Application.Interfaces;
+using UnifiedDevelopmentPowerPlatform.Application.Interfaces;
 
-namespace UnifiedDevelopmentPlatform.Application.Services
+namespace UnifiedDevelopmentPowerPlatform.Application.Services
 {
     /// <summary>
     /// Service json.
