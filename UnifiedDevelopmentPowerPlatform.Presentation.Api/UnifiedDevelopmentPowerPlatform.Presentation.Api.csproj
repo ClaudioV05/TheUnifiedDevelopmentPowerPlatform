@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <NoWarn>$(NoWarn);1591</NoWarn>
+    <LangVersion>11.0</LangVersion>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors> <!--The options control how the compiler reports errors and warnings.-->
+    <InvariantGlobalization>true</InvariantGlobalization> <!--Determines whether a .NET Core app runs in globalization-invariant mode without access to culture-specific data and behavior.-->
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNet.WebApi.Cors" Version="5.3.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\UnifiedDevelopmentPowerPlatform.Infraestructure.Application\UnifiedDevelopmentPowerPlatform.Application.csproj" />
+    <ProjectReference Include="..\UnifiedDevelopmentPowerPlatform.Infraestructure.Application\UnifiedDevelopmentPowerPlatform.Application.csproj" />
+    <ProjectReference Include="..\UnifiedDevelopmentPowerPlatform.Infraestructure.Application\UnifiedDevelopmentPowerPlatform.Application.csproj" />
+    <ProjectReference Include="..\UnifiedDevelopmentPowerPlatform.Infraestructure.Application\UnifiedDevelopmentPowerPlatform.Application.csproj" />
+    <ProjectReference Include="..\UnifiedDevelopmentPowerPlatform.Infraestructure.Application\UnifiedDevelopmentPowerPlatform.Application.csproj" />
+    <ProjectReference Include="..\UnifiedDevelopmentPowerPlatform.Infraestructure.Application\UnifiedDevelopmentPowerPlatform.Application.csproj" />
+  </ItemGroup>
+
+</Project>

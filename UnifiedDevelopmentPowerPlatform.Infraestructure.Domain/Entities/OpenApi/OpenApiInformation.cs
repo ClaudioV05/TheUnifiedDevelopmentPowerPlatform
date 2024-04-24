@@ -16,12 +16,12 @@ namespace UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.OpenAp
         /// <summary>
         /// The title.
         /// </summary>
-        public static string Title => "UNIFIED DEVELOPMENT PLATFORM";
+        public static string Title => "UNIFIED DEVELOPMENT POWER PLATFORM";
 
         /// <summary>
         /// The description.
         /// </summary>
-        public static string Description => "Generator of Solution to C#";
+        public static string Description => "The solution generator to C#";
 
         /// <summary>
         /// The terms of service.

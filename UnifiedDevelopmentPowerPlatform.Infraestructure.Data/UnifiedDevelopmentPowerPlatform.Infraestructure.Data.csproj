@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
@@ -10,12 +10,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="NLog" Version="5.0.0" />
+    <Folder Include="Context\" />
+    <Folder Include="Repositorys\" />
   </ItemGroup>
 
   <ItemGroup>
-    <!--<ProjectReference Include="..\UnifiedDevelopmentPlatform.Infraestructure.Domain\UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.csproj" />-->
-    <ProjectReference Include="..\UnifiedDevelopmentPlatform.Infraestructure.Domain\UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.csproj" />
+    <ProjectReference Include="..\UnifiedDevelopmentPowerPlatform.Infraestructure.Domain\UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.csproj" />
   </ItemGroup>
 
 </Project>
