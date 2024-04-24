@@ -12,7 +12,7 @@ namespace UnifiedDevelopmentPowerPlatform.Presentation.Api.OpenApi
             {
                 var actionExecuted = context.ApiDescription.RelativePath.ToLowerInvariant();
 
-                if (actionExecuted.Equals(ControllerRouterUnifiedDevelopmentPowerPlatform.RouterTablesAndFieldsOfMetadata.ToLowerInvariant().Replace("/", string.Empty)))
+                if (actionExecuted.Equals(ControllerRouterUnifiedDevelopmentPowerPlatform.RouterMetadata.ToLowerInvariant().Replace("/", string.Empty)))
                 {
                     if (operation.Parameters is null)
                     {

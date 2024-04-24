@@ -2,10 +2,10 @@
 
 namespace UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.Controller
 {
-    [ComplexType]
     /// <summary>
-    /// Controller Router for UNIFIED DEVELOPMENT PLATFORM.
+    /// Controller Router for UNIFIED DEVELOPMENT POWER PLATFORM.
     /// </summary>
+    [ComplexType]
     public static class ControllerRouterUnifiedDevelopmentPowerPlatform
     {
         /// <summary>
@@ -14,13 +14,13 @@ namespace UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.Contro
         public const string RouterController = "[Controller]";
 
         /// <summary>
-        /// Routing to controller tables and fields of metadata.
+        /// Routing to controller metadata.
         /// </summary>
-        public const string RouterTablesAndFieldsOfMetadata = "/TablesAndFieldsOfMetadata";
+        public const string RouterMetadata = "/Metadata";
 
         /// <summary>
-        /// Route metadata all fields name.
+        ///  Routing to controller tables.
         /// </summary>
-        public const string RouterMetadataAllFieldsName = "/MetadataAllFieldsName";
+        public const string RouterTables = "/Tables";
     }
 }

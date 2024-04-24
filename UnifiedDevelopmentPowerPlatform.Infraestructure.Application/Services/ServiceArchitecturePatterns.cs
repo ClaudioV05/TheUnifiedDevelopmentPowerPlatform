@@ -89,7 +89,7 @@ namespace UnifiedDevelopmentPowerPlatform.Application.Services
                 _serviceLog.UDPLogReport(_serviceMessage.UDPGetMessage(TypeArchitecturePatterns.CallStartToTheSaveIdentifierToTheArchitecturePatternsFromMetadata), _serviceFuncString.Empty);
 
                 directoryConfiguration = _serviceDirectory.UDPObtainDirectory(DirectoryRootType.Configuration);
-                data = _serviceCrypto.UPDEncrypt(Convert.ToString(metadata.ArchitecturePatterns.FirstOrDefault().Id));
+                data = _serviceCrypto.UPDEncryptData(Convert.ToString(metadata.ArchitecturePatterns.FirstOrDefault().Id));
                 _serviceFile.UDPAppendAllText($"{directoryConfiguration}{DirectoryStandard.Log}{FileStandard.IdArchitecturePatterns}{FileExtension.Txt}", data);
 
                 _serviceLog.UDPLogReport(_serviceMessage.UDPGetMessage(TypeArchitecturePatterns.SuccessToTheSaveIdentifierToTheArchitecturePatternsFromMetadata), _serviceFuncString.Empty);

@@ -14,6 +14,7 @@ namespace UnifiedDevelopmentPowerPlatform.Application.Services
     public class ServiceMetadata : IServiceMetadata
     {
         private readonly IServiceLog _serviceLog;
+        private readonly IServiceCrypto _serviceCrypto;
         private readonly IServiceMessage _serviceMessage;
         private readonly IServiceFormsView _serviceFormsView;
         private readonly IServiceDatabases _serviceDatabases;
@@ -29,6 +30,7 @@ namespace UnifiedDevelopmentPowerPlatform.Application.Services
         /// The constructor of service metadata.
         /// </summary>
         /// <param name="serviceLog"></param>
+        /// <param name="serviceCrypto"></param>
         /// <param name="serviceMessage"></param>
         /// <param name="serviceFormsView"></param>
         /// <param name="serviceDatabases"></param>
@@ -40,6 +42,7 @@ namespace UnifiedDevelopmentPowerPlatform.Application.Services
         /// <param name="serviceArchitecturePatterns"></param>
         /// <param name="serviceDevelopmentEnvironments"></param>
         public ServiceMetadata(IServiceLog serviceLog,
+                               IServiceCrypto serviceCrypto,
                                IServiceMessage serviceMessage,
                                IServiceFormsView serviceFormsView,
                                IServiceDatabases serviceDatabases,
@@ -52,6 +55,7 @@ namespace UnifiedDevelopmentPowerPlatform.Application.Services
                                IServiceDevelopmentEnvironments serviceDevelopmentEnvironments)
         {
             _serviceLog = serviceLog;
+            _serviceCrypto = serviceCrypto;
             _serviceMessage = serviceMessage;
             _serviceFormsView = serviceFormsView;
             _serviceDatabases = serviceDatabases;
@@ -147,6 +151,8 @@ namespace UnifiedDevelopmentPowerPlatform.Application.Services
             }
 
             _serviceLog.UDPLogReport(_serviceMessage.UDPGetMessage(TypeMetadata.SuccessAtTheReceiveAndSaveAllTableAndFieldsOfSchemaDatabase), _serviceFuncString.Empty);
+
+            var aux = _serviceCrypto.UPDEncodeToBase64(listOfTables.ToString());
 
             return listOfTables;
         }

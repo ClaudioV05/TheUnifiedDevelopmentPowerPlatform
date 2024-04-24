@@ -44,18 +44,33 @@ namespace UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.Messag
         public static string ErrorToTheDecrypt => "ERROR START TO THE DECRYPT.";
 
         /// <summary>
-        /// Call start to the decode base 64.
+        /// Call start to the decode from base 64.
         /// </summary>
-        public static string CallStartToTheDecodeBase64 => "CALL START TO THE DECODE BASE 64.";
+        public static string CallStartToTheDecodeFromBase64 => "CALL START TO THE DECODE FROM BASE 64.";
 
         /// <summary>
-        /// Success start to the decode base 64.
+        /// Success start to the decode from base 64.
         /// </summary>
-        public static string SuccessToTheDecodeBase64 => "SUCCESS START TO THE DECODE BASE 64.";
+        public static string SuccessToTheDecodeFromBase64 => "SUCCESS START TO THE DECODE FROM BASE 64.";
 
         /// <summary>
         /// Error start to the decode base 64.
         /// </summary>
-        public static string ErrorToTheDecodeBase64 => "ERROR START TO THE DECODE BASE 64.";
+        public static string ErrorToTheDecodeFromBase64 => "ERROR START TO THE DECODE FROM BASE 64.";
+
+        /// <summary>
+        /// Call start to the encode to base 64.
+        /// </summary>
+        public static string CallStartToTheEncodeToBase64 => "CALL START TO THE ENCODE TO BASE 64.";
+
+        /// <summary>
+        /// Success start to the encode to base 64.
+        /// </summary>
+        public static string SuccessToTheEncodeToBase64 => "SUCCESS START TO THE ENCODE TO BASE 64.";
+
+        /// <summary>
+        /// Error start to the encode to base 64.
+        /// </summary>
+        public static string ErrorToTheEncodeToBase64 => "ERROR START TO THE ENCODE TO BASE 64.";
     }
 }

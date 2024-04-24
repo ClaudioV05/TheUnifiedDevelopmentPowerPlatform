@@ -54,10 +54,10 @@ namespace UnifiedDevelopmentPowerPlatform.Application.Services
             {
                 _serviceLog.UDPLogReport(_serviceMessage.UDPGetMessage(TypeMetadataTable.CallStartToTheSaveDatabaseSchemaFromMetadata), _serviceFuncString.Empty);
 
-                databaseSchema = _serviceCrypto.UPDDecodeBase64(metadata?.DatabaseSchema);
+                databaseSchema = _serviceCrypto.UPDDecodeFromBase64(metadata?.DatabaseSchema);
                 databaseSchema = _serviceFuncString.UDPLower(databaseSchema);
                 directoryConfiguration = _serviceDirectory.UDPObtainDirectory(DirectoryRootType.Configuration);
-                data = _serviceCrypto.UPDEncrypt(databaseSchema);
+                data = _serviceCrypto.UPDEncryptData(databaseSchema);
                 _serviceFile.UDPAppendAllText($"{directoryConfiguration}{DirectoryStandard.Log}{FileStandard.IdDatabaseSchema}{FileExtension.Txt}", data);
 
                 _serviceLog.UDPLogReport(_serviceMessage.UDPGetMessage(TypeMetadataTable.SuccessToTheSaveDatabaseSchemaFromMetadata), _serviceFuncString.Empty);
@@ -71,7 +71,7 @@ namespace UnifiedDevelopmentPowerPlatform.Application.Services
             _serviceLog.UDPLogReport(_serviceMessage.UDPGetMessage(TypeMetadataTable.CallStartToTheOpenDatabaseSchemaFromMetadata), _serviceFuncString.Empty);
 
             data = _serviceFile.UDPGetDataFileFromDirectoryConfiguration(DirectoryStandard.Log, $"{FileStandard.IdDatabaseSchema}{FileExtension.Txt}");
-            data = _serviceCrypto.UPDDecrypt(data);
+            data = _serviceCrypto.UPDDecryptData(data);
 
             _serviceLog.UDPLogReport(_serviceMessage.UDPGetMessage(TypeMetadataTable.SuccessToTheOpenDatabaseSchemaFromMetadata), _serviceFuncString.Empty);
 

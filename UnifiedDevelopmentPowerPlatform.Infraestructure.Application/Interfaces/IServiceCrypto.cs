@@ -6,7 +6,7 @@
     public interface IServiceCrypto
     {
         /// <summary>
-        /// Encrypt.
+        /// Encrypt data.
         /// </summary>
         /// <param name="value"></param>
         /// <paramref name=""/>
@@ -15,10 +15,10 @@
         /// <exception cref=""></exception>
         /// <seealso href=""></seealso>
         /// <returns>Data encrypt.</returns>
-        string UPDEncrypt(string value);
+        string UPDEncryptData(string value);
 
         /// <summary>
-        /// Decrypt.
+        /// Decrypt data.
         /// </summary>
         /// <param name="value"></param>
         /// <paramref name=""/>
@@ -27,10 +27,10 @@
         /// <exception cref=""></exception>
         /// <seealso href=""></seealso>
         /// <returns>Data decrypt.</returns>
-        string UPDDecrypt(string value);
+        string UPDDecryptData(string value);
 
         /// <summary>
-        /// Decode to base64.
+        /// Encode to base64.
         /// </summary>
         /// <param name="value"></param>
         /// <paramref name=""/>
@@ -38,7 +38,19 @@
         /// <remarks></remarks>
         /// <exception cref=""></exception>
         /// <seealso href=""></seealso>
-        /// <returns>Data decode in base64.</returns>
-        string UPDDecodeBase64(string? value);
+        /// <returns>Data encoded from base 64 to format string.</returns>
+        string UPDEncodeToBase64(string? value);
+
+        /// <summary>
+        /// Decode from base 64.
+        /// </summary>
+        /// <param name="value"></param>
+        /// <paramref name=""/>
+        /// <returns></returns>
+        /// <remarks></remarks>
+        /// <exception cref=""></exception>
+        /// <seealso href=""></seealso>
+        /// <returns>Data decode from base 64.</returns>
+        string UPDDecodeFromBase64(string? value);
     }
 }

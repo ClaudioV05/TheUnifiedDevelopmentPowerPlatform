@@ -33,13 +33,13 @@ namespace UnifiedDevelopmentPowerPlatform.Presentation.Api.Controllers
         }
 
         /// <summary>
-        /// Receive and save all table of schema database.
+        /// To receive the schema of database.
         /// </summary>
-        /// <param name="metadata"></param>
-        /// <paramref name=""/>
+        /// <param name="metaData"></param>
+        /// <paramref />
         /// <returns></returns>
         /// <remarks></remarks>
-        /// <exception cref=""></exception>
+        /// <exception></exception>
         /// <seealso href=""></seealso>
         /// <returns>The list of tables with name(s) and field(s) of schema database.</returns>
         /// 200 Status Codes: This is the best kind of HTTP status code to receive. A 200-level response means that everything is working exactly as it should.
@@ -57,9 +57,9 @@ namespace UnifiedDevelopmentPowerPlatform.Presentation.Api.Controllers
         /// <response code="504">The server, acting as a gateway, timed out waiting for another server to respond.</response>
         [HttpPost]
         [Produces(MediaTypeNames.Application.Json, MediaTypeNames.Application.Xml)]
-        [Route(ControllerRouterUnifiedDevelopmentPowerPlatform.RouterTablesAndFieldsOfMetadata)]
+        [Route(ControllerRouterUnifiedDevelopmentPowerPlatform.RouterMetadata)]
         [ServiceFilter(typeof(FilterActionContextLog), IsReusable = false, Order = ControllerOrderExecutationFilter.Second)]
-        [ServiceFilter(typeof(FilterActionContextTablesAndFieldsOfMetadata<MetadataOwner>), IsReusable = false, Order = ControllerOrderExecutationFilter.Third)]
+        [ServiceFilter(typeof(FilterActionContextMetadata<MetadataOwner>), IsReusable = false, Order = ControllerOrderExecutationFilter.Third)]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<Tables>))]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -71,52 +71,54 @@ namespace UnifiedDevelopmentPowerPlatform.Presentation.Api.Controllers
         [ProducesResponseType(StatusCodes.Status503ServiceUnavailable)]
         [ProducesResponseType(StatusCodes.Status504GatewayTimeout)]
         [DisableCors]
-        public ActionResult<List<Tables>> TablesAndFieldsOfMetadata([BindRequired] DtoMetadata metadata)
+        public ActionResult<List<Tables>> Metadata([BindRequired] DtoMetaData metaData)
         {
-            return Ok(_serviceMetadata.UDPReceiveAndSaveAllTableAndFieldsOfSchemaDatabase(new MetadataOwner()
+            MetadataOwner metadataOwner = new MetadataOwner()
             {
-                DatabaseSchema = metadata.DatabaseSchema,
+                DatabaseSchema = metaData.DatabaseSchema,
                 FormsView = new List<FormsView>()
                 {
                     new FormsView()
                     {
-                        Id = metadata.IdForms
+                        Id = metaData.IdForms
                     }},
                 Databases = new List<Databases>()
                 {
                     new Databases()
                     {
-                        Id = metadata.IdDatabases
+                        Id = metaData.IdDatabases
                     }},
                 DatabasesEngine = new List<DatabasesEngine>()
                 {
                     new DatabasesEngine()
                     {
-                        Id = metadata.IdDatabasesEngine
+                        Id = metaData.IdDatabasesEngine
                     }},
                 ArchitecturePatterns = new List<ArchitecturePatterns>()
                 {
                     new ArchitecturePatterns()
                     {
-                        Id = metadata.Architecture
+                        Id = metaData.Architecture
                     }},
                 DevelopmentEnvironments = new List<DevelopmentEnvironments>()
                 {
                     new DevelopmentEnvironments()
                     {
-                        Id = metadata.IdDevelopmentEnvironment
+                        Id = metaData.IdDevelopmentEnvironment
                     }},
-            }));
+            };
+
+            return Ok(_serviceMetadata.UDPReceiveAndSaveAllTableAndFieldsOfSchemaDatabase(metadataOwner));
         }
 
         /// <summary>
-        /// Receive and save all table and fields of schema database.
+        /// To receive the table(s) with your field(s) to generate the magic solution.
         /// </summary>
-        /// <param name="metadata"></param>
-        /// <paramref name="d"/>
+        /// <param name="dtoTablesData"></param>
+        /// <paramref />
         /// <returns></returns>
         /// <remarks></remarks>
-        /// <exception cref=""></exception>
+        /// <exception ></exception>
         /// <seealso href=""></seealso>
         /// <returns>List of string with fields names of tables</returns>
         /// 200 Status Codes: This is the best kind of HTTP status code to receive. A 200-level response means that everything is working exactly as it should.
@@ -134,9 +136,9 @@ namespace UnifiedDevelopmentPowerPlatform.Presentation.Api.Controllers
         /// <response code="504">The server, acting as a gateway, timed out waiting for another server to respond.</response>
         [HttpPost]
         [Produces(MediaTypeNames.Application.Json, MediaTypeNames.Application.Xml)]
-        [Route(ControllerRouterUnifiedDevelopmentPowerPlatform.RouterMetadataAllFieldsName)]
+        [Route(ControllerRouterUnifiedDevelopmentPowerPlatform.RouterTables)]
         [ServiceFilter(typeof(FilterActionContextLog), IsReusable = false, Order = ControllerOrderExecutationFilter.Second)]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(MetadataOwner))]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(ActionResult))]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
@@ -147,12 +149,22 @@ namespace UnifiedDevelopmentPowerPlatform.Presentation.Api.Controllers
         [ProducesResponseType(StatusCodes.Status503ServiceUnavailable)]
         [ProducesResponseType(StatusCodes.Status504GatewayTimeout)]
         [DisableCors]
-        public ActionResult<MetadataOwner> MetadataAllFieldsName([BindRequired] DtoMetadata metadata)
+        public ActionResult Tables([BindRequired] DtoTablesData dtoTablesData)
         {
-            // Here enter with field name only. Load the property [Fields].
-            // Return the table name and your fields.
+            /*
+            MetadataOwner metadataOwner = new MetadataOwner()
+            {
+                Tables = new List<Tables>()
+                {
+                    new Tables()
+                    {
+                        
+                    }
+                }
+            };
+            */
+            //_serviceMetadata.UDPNotImplemented(metadata: new MetadataOwner() { Tables = new List<Tables> metadata.DatabaseSchema });
 
-            _serviceMetadata.UDPNotImplemented(metadata: new MetadataOwner() { DatabaseSchema = metadata.DatabaseSchema });
             return Ok();
         }
     }

@@ -89,7 +89,7 @@ namespace UnifiedDevelopmentPowerPlatform.Application.Services
                 _serviceLog.UDPLogReport(_serviceMessage.UDPGetMessage(TypeFormsView.CallStartToTheSaveIdentifierToTheFormFromMetadata), _serviceFuncString.Empty);
 
                 directoryConfiguration = _serviceDirectory.UDPObtainDirectory(DirectoryRootType.Configuration);
-                data = _serviceCrypto.UPDEncrypt(Convert.ToString(metadata.FormsView.FirstOrDefault().Id));
+                data = _serviceCrypto.UPDEncryptData(Convert.ToString(metadata.FormsView.FirstOrDefault().Id));
                 _serviceFile.UDPAppendAllText($"{directoryConfiguration}{DirectoryStandard.Log}{FileStandard.IdForm}{FileExtension.Txt}", data);
 
                 _serviceLog.UDPLogReport(_serviceMessage.UDPGetMessage(TypeFormsView.SuccessToTheSaveIdentifierToTheFormFromMetadata), _serviceFuncString.Empty);

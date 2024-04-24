@@ -93,7 +93,7 @@ namespace UnifiedDevelopmentPowerPlatform.Application.Services
                 _serviceLog.UDPLogReport(_serviceMessage.UDPGetMessage(TypeDatabases.CallStartToTheSaveIdentifierToTheDatabasesFromMetadata), _serviceFuncString.Empty);
 
                 directoryConfiguration = _serviceDirectory.UDPObtainDirectory(DirectoryRootType.Configuration);
-                data = _serviceCrypto.UPDEncrypt(Convert.ToString(metadata.Databases.FirstOrDefault().Id));
+                data = _serviceCrypto.UPDEncryptData(Convert.ToString(metadata.Databases.FirstOrDefault().Id));
                 _serviceFile.UDPAppendAllText($"{directoryConfiguration}{DirectoryStandard.Log}{FileStandard.IdDatabases}{FileExtension.Txt}", data);
 
                 _serviceLog.UDPLogReport(_serviceMessage.UDPGetMessage(TypeDatabases.SuccessToTheSaveIdentifierToTheDatabasesFromMetadata), _serviceFuncString.Empty);

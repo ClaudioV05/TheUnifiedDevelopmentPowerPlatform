@@ -123,9 +123,12 @@ namespace UnifiedDevelopmentPowerPlatform.Application.Services
                 TypeCrypto.CallStartToTheDecrypt => TextCrypto.CallStartToTheDecrypt,
                 TypeCrypto.SuccessToTheDecrypt => TextCrypto.SuccessToTheDecrypt,
                 TypeCrypto.ErrorToTheDecrypt => TextCrypto.ErrorToTheDecrypt,
-                TypeCrypto.CallStartToTheDecodeBase64 => TextCrypto.CallStartToTheDecodeBase64,
-                TypeCrypto.SuccessToTheDecodeBase64 => TextCrypto.SuccessToTheDecodeBase64,
-                TypeCrypto.ErrorToTheDecodeBase64 => TextCrypto.ErrorToTheDecodeBase64,
+                TypeCrypto.CallStartToTheDecodeFromBase64 => TextCrypto.CallStartToTheDecodeFromBase64,
+                TypeCrypto.SuccessToTheDecodeFromBase64 => TextCrypto.SuccessToTheDecodeFromBase64,
+                TypeCrypto.ErrorToTheDecodeFromBase64 => TextCrypto.ErrorToTheDecodeFromBase64,
+                TypeCrypto.CallStartToTheEncodeToBase64 => TextCrypto.CallStartToTheEncodeToBase64,
+                TypeCrypto.SuccessToTheEncodeToBase64 => TextCrypto.SuccessToTheEncodeToBase64,
+                TypeCrypto.ErrorToTheEncodeToBase64 => TextCrypto.ErrorToTheEncodeToBase64,
                 _ => _serviceFuncString.Empty
             });
         }

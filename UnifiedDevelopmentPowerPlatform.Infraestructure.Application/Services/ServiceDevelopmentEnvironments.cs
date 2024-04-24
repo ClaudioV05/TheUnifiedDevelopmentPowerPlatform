@@ -98,7 +98,7 @@ namespace UnifiedDevelopmentPowerPlatform.Application.Services
                 _serviceLog.UDPLogReport(_serviceMessage.UDPGetMessage(TypeDevelopmentEnvironments.CallStartToTheSaveIdentifierToTheDevelopmentEnviromentsFromMetadata), _serviceFuncString.Empty);
 
                 directoryConfiguration = _serviceDirectory.UDPObtainDirectory(DirectoryRootType.Configuration);
-                data = _serviceCrypto.UPDEncrypt(Convert.ToString(metadata.DevelopmentEnvironments.FirstOrDefault().Id));
+                data = _serviceCrypto.UPDEncryptData(Convert.ToString(metadata.DevelopmentEnvironments.FirstOrDefault().Id));
                 _serviceFile.UDPAppendAllText($"{directoryConfiguration}{DirectoryStandard.Log}{FileStandard.IdDevelopmentEnvironment}{FileExtension.Txt}", data);
 
                 _serviceLog.UDPLogReport(_serviceMessage.UDPGetMessage(TypeDevelopmentEnvironments.SuccessToTheSaveIdentifierToTheDevelopmentEnviromentsFromMetadata), _serviceFuncString.Empty);
@@ -115,7 +115,7 @@ namespace UnifiedDevelopmentPowerPlatform.Application.Services
             {
                 _serviceLog.UDPLogReport(_serviceMessage.UDPGetMessage(TypeDevelopmentEnvironments.CallStartToTheGetDataTypeFromTableInScriptMetadata), _serviceFuncString.Empty);
                 data = _serviceFile.UDPGetDataFileFromDirectoryConfiguration(DirectoryStandard.Log, $"{FileStandard.IdDevelopmentEnvironment}{FileExtension.Txt}");
-                data = _serviceCrypto.UPDDecrypt(data);
+                data = _serviceCrypto.UPDDecryptData(data);
 
                 if (int.TryParse(data, out idDevelopmentEnvironment))
                 {

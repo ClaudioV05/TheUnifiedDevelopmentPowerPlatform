@@ -31,7 +31,7 @@ namespace UnifiedDevelopmentPowerPlatform.Application.Services
             _serviceFuncString = serviceFuncString;
         }
 
-        public string UPDEncrypt(string value)
+        public string UPDEncryptData(string value)
         {
             byte[] input;
             byte[] key = { };
@@ -66,7 +66,7 @@ namespace UnifiedDevelopmentPowerPlatform.Application.Services
             }
         }
 
-        public string UPDDecrypt(string value)
+        public string UPDDecryptData(string value)
         {
             byte[] input;
             byte[] key = { };
@@ -102,23 +102,46 @@ namespace UnifiedDevelopmentPowerPlatform.Application.Services
             }
         }
 
-        public string UPDDecodeBase64(string? value)
+        public string UPDEncodeToBase64(string? value)
         {
             string data = _serviceFuncString.Empty;
 
             try
             {
-                _serviceLog.UDPLogReport(_serviceMessage.UDPGetMessage(TypeCrypto.CallStartToTheDecodeBase64), _serviceFuncString.Empty);
-                var valueBytes = Convert.FromBase64String(value ?? _serviceFuncString.Empty);
-                data = Encoding.UTF8.GetString(valueBytes);
+                _serviceLog.UDPLogReport(_serviceMessage.UDPGetMessage(TypeCrypto.CallStartToTheEncodeToBase64), _serviceFuncString.Empty);
+                
+                byte[] textBytes = Encoding.ASCII.GetBytes(value);
+                data = Convert.ToBase64String(textBytes, Base64FormattingOptions.None);
 
-                _serviceLog.UDPLogReport(_serviceMessage.UDPGetMessage(TypeCrypto.SuccessToTheDecodeBase64), _serviceFuncString.Empty);
+               _serviceLog.UDPLogReport(_serviceMessage.UDPGetMessage(TypeCrypto.SuccessToTheEncodeToBase64), _serviceFuncString.Empty);
 
                 return data;
             }
             catch (Exception ex)
             {
-                _serviceLog.UDPLogReport(_serviceMessage.UDPGetMessage(TypeCrypto.ErrorToTheDecodeBase64), ex.Message);
+                _serviceLog.UDPLogReport(_serviceMessage.UDPGetMessage(TypeCrypto.ErrorToTheEncodeToBase64), ex.Message);
+                return _serviceFuncString.Empty;
+            }
+        }
+
+        public string UPDDecodeFromBase64(string? value)
+        {
+            string data = _serviceFuncString.Empty;
+
+            try
+            {
+                _serviceLog.UDPLogReport(_serviceMessage.UDPGetMessage(TypeCrypto.CallStartToTheDecodeFromBase64), _serviceFuncString.Empty);
+
+                var valueBytes = Convert.FromBase64String(value ?? _serviceFuncString.Empty);
+                data = Encoding.UTF8.GetString(valueBytes);
+
+                _serviceLog.UDPLogReport(_serviceMessage.UDPGetMessage(TypeCrypto.SuccessToTheDecodeFromBase64), _serviceFuncString.Empty);
+
+                return data;
+            }
+            catch (Exception ex)
+            {
+                _serviceLog.UDPLogReport(_serviceMessage.UDPGetMessage(TypeCrypto.ErrorToTheDecodeFromBase64), ex.Message);
                 return _serviceFuncString.Empty;
             }
         }

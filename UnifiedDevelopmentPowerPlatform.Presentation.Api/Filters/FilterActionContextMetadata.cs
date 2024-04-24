@@ -11,7 +11,7 @@ namespace UnifiedDevelopmentPowerPlatform.Presentation.Api.Filters
     /// <summary>
     /// Filter action context tables and fields of metadata.
     /// </summary>
-    internal sealed class FilterActionContextTablesAndFieldsOfMetadata<T> : IAsyncActionFilter where T : class, IEntity
+    internal sealed class FilterActionContextMetadata<T> : IAsyncActionFilter where T : class, IEntity
     {
         private readonly IServiceLog _serviceLog;
         private readonly IServiceMessage _serviceMessage;
@@ -27,11 +27,11 @@ namespace UnifiedDevelopmentPowerPlatform.Presentation.Api.Filters
         /// <param name="serviceDirectory"></param>
         /// <param name="serviceValidation"></param>
         /// <param name="serviceFuncString"></param>
-        public FilterActionContextTablesAndFieldsOfMetadata(IServiceLog serviceLog,
-                                                            IServiceMessage serviceMessage,
-                                                            IServiceDirectory serviceDirectory,
-                                                            IServiceValidation serviceValidation,
-                                                            IServiceFuncString serviceFuncString)
+        public FilterActionContextMetadata(IServiceLog serviceLog,
+                                           IServiceMessage serviceMessage,
+                                           IServiceDirectory serviceDirectory,
+                                           IServiceValidation serviceValidation,
+                                           IServiceFuncString serviceFuncString)
         {
             _serviceLog = serviceLog;
             _serviceMessage = serviceMessage;
@@ -49,7 +49,7 @@ namespace UnifiedDevelopmentPowerPlatform.Presentation.Api.Filters
         /// <exception cref="Exception"></exception>
         public async Task OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next)
         {
-            string message = string.Empty;
+            string message = _serviceFuncString.Empty;
 
             try
             {

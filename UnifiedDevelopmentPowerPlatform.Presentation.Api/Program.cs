@@ -40,7 +40,7 @@ builder.Services.AddSwaggerGen(options =>
 
 builder.Services.AddControllers(options =>
 {
-    options.RespectBrowserAcceptHeader = true;
+    //options.RespectBrowserAcceptHeader = true;
     options.Conventions.Add(new OpenApiHideControllerConvention());
 });
 
@@ -61,7 +61,7 @@ builder.Services.AddMvc().AddMvcOptions(options => options.OutputFormatters.Add(
 builder.Services.TryAddTransient<FilterActionContextController>();
 builder.Services.TryAddTransient<FilterActionContextControllerInformation>();
 builder.Services.TryAddTransient<FilterActionContextLog>();
-builder.Services.TryAddTransient<FilterActionContextTablesAndFieldsOfMetadata<MetadataOwner>>();
+builder.Services.TryAddTransient<FilterActionContextMetadata<MetadataOwner>>();
 #endregion Action Filters.
 
 #region Dependency Injection.

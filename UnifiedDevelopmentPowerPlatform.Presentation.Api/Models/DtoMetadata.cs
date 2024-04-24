@@ -4,9 +4,9 @@ using System.Text.Json.Serialization;
 namespace UnifiedDevelopmentPowerPlatform.Presentation.Api.Models
 {
     /// <summary>
-    /// Metadata.
+    /// The data transfer object - Meta Data.
     /// </summary>
-    public class DtoMetadata
+    public class DtoMetaData
     {
         /// <summary>
         /// The database schema.
