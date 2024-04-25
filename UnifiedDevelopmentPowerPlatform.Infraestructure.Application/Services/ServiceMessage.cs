@@ -205,16 +205,16 @@ namespace UnifiedDevelopmentPowerPlatform.Application.Services
             return _serviceFuncString.UDPUpper(type switch
             {
                 TypeValidation.DoNotSpecified => TextValidation.DoNotSpecified,
-                TypeValidation.TheModelStateIsOk => TextValidation.TheModelStateIsOk,
-                TypeValidation.TheScriptMetadataIsOk => TextValidation.TheScriptMetadataIsOk,
-                TypeValidation.TheMetadataIsBase64Ok => TextValidation.TheMetadataIsBase64Ok,
-                TypeValidation.TheDevelopmentEnvironmentIsOk => TextValidation.TheDevelopmentEnvironmentIsOk,
-                TypeValidation.TheFormsViewIsOk => TextValidation.TheFormsViewIsOk,
-                TypeValidation.TheDatabasesIsOk => TextValidation.TheDatabasesIsOk,
+                TypeValidation.TheModelStateIsNotOk => TextValidation.TheModelStateIsOk,
+                TypeValidation.TheScriptMetadataIsNotOk => TextValidation.TheScriptMetadataIsOk,
+                TypeValidation.TheMetadataIsNotIsBase64Ok => TextValidation.TheMetadataIsBase64Ok,
+                TypeValidation.TheDevelopmentEnvironmentIsNotOk => TextValidation.TheDevelopmentEnvironmentIsOk,
+                TypeValidation.TheFormsViewIsNotOk => TextValidation.TheFormsViewIsOk,
+                TypeValidation.TheDatabasesIsNotOk => TextValidation.TheDatabasesIsOk,
                 TypeValidation.TheDatabasesImplementedIsntOk => TextValidation.TheDatabasesImplementedIsntOk,
-                TypeValidation.TheDatabasesEngineIsOk => TextValidation.TheDatabasesEngineIsOk,
-                TypeValidation.TheArchitecturePatternsIsOk => TextValidation.TheArchitecturePatternsIsOk,
-                TypeValidation.ThePlatformWindowsIsOk => TextValidation.ThePlatformWindowsIsOk,
+                TypeValidation.TheDatabasesEngineIsNotOk => TextValidation.TheDatabasesEngineIsOk,
+                TypeValidation.TheArchitecturePatternsIsNotOk => TextValidation.TheArchitecturePatternsIsOk,
+                TypeValidation.ThePlatformWindowsIsNotOk => TextValidation.ThePlatformWindowsIsOk,
                 TypeValidation.ThePlatformWindowsIsNotOk => TextValidation.ThePlatformWindowsIsNotOk,
                 _ => _serviceFuncString.Empty
             });

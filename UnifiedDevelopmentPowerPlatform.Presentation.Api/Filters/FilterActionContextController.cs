@@ -57,7 +57,7 @@ namespace UnifiedDevelopmentPowerPlatform.Presentation.Api.Filters
                 _serviceDirectory.UPDBuildDirectoryStandardOfSolution();
 
                 _serviceLog.UDPRegisterLog(_serviceMessage.UDPGetMessage(TypeGlobal.CallStartToTheCreationOfUnifiedDevelopmentPowerPlatform), _serviceFuncStrings.Empty);
-                _serviceLog.UDPRegisterLog(_serviceMessage.UDPGetMessage(TypeValidation.ThePlatformWindowsIsOk), _serviceFuncStrings.Empty);
+                _serviceLog.UDPRegisterLog(_serviceMessage.UDPGetMessage(TypeValidation.ThePlatformWindowsIsNotOk), _serviceFuncStrings.Empty);
             }
             catch (Exception ex)
             {
