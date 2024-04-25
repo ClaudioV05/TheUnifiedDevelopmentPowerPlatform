@@ -2,10 +2,10 @@
 
 namespace UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.Controller
 {
-    [ComplexType]
     /// <summary>
-    /// Controller filter action name for UNIFIED DEVELOPMENT PLATFORM.
+    /// Controller filter action name for UNIFIED DEVELOPMENT POWER PLATFORM.
     /// </summary>
+    [ComplexType]
     public static class ControllerFilterActionName
     {
         /// <summary>
@@ -17,5 +17,10 @@ namespace UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.Contro
         /// Metadata.
         /// </summary>
         public const string Metadata = "metadata";
+
+        /// <summary>
+        /// Tables data.
+        /// </summary>
+        public const string Tablesdata = "tablesdata";
     }
 }

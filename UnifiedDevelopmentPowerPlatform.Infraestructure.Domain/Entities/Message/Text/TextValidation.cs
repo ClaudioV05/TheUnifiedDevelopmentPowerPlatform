@@ -54,7 +54,7 @@ namespace UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.Messag
         public static string TheDatabasesEngineIsOk => $"THE (DATABASES ENGINE) {_messageDefaultToServiceValidation}";
 
         /// <summary>
-        /// The form view is ok.
+        /// The forms view is ok.
         /// </summary>
         public static string TheFormsViewIsOk => $"THE (FORMS VIEW) {_messageDefaultToServiceValidation}";
 

@@ -107,7 +107,7 @@ namespace UnifiedDevelopmentPowerPlatform.Application.Services
         public bool UDPTablesMetadataIsOk(dynamic context, ref string message)
         {
             dynamic? obj = null;
-            context.ActionArguments.TryGetValue(ControllerFilterActionName.Metadata, out obj);
+            context.ActionArguments.TryGetValue(ControllerFilterActionName.Tablesdata, out obj);
             message = obj?.Architecture <= 0 ? _serviceMessage.UDPGetMessage(TypeValidation.TheArchitecturePatternsIsNotOk) : _serviceFuncString.Empty;
             return _serviceFuncString.UDPNullOrEmpty(message);
         }

@@ -214,7 +214,7 @@ namespace UnifiedDevelopmentPowerPlatform.Application.Services
                 TypeValidation.TheDatabasesImplementedIsntOk => TextValidation.TheDatabasesImplementedIsntOk,
                 TypeValidation.TheDatabasesEngineIsNotOk => TextValidation.TheDatabasesEngineIsOk,
                 TypeValidation.TheArchitecturePatternsIsNotOk => TextValidation.TheArchitecturePatternsIsOk,
-                TypeValidation.ThePlatformWindowsIsNotOk => TextValidation.ThePlatformWindowsIsOk,
+                TypeValidation.ThePlatformWindowsIsOk => TextValidation.ThePlatformWindowsIsOk,
                 TypeValidation.ThePlatformWindowsIsNotOk => TextValidation.ThePlatformWindowsIsNotOk,
                 _ => _serviceFuncString.Empty
             });
