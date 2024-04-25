@@ -28,17 +28,11 @@ namespace UnifiedDevelopmentPowerPlatform.Application.Services
             _serviceOperationalSystem = serviceOperationalSystem;
         }
 
-        #region Validation for Filter Action Controller.
-
         public bool UDPPlatformWindowsIsOk(ref string message)
         {
             message = !_serviceOperationalSystem.UPDPlataformIsWindows() ? _serviceMessage.UDPGetMessage(TypeValidation.ThePlatformWindowsIsNotOk) : _serviceFuncString.Empty;
             return _serviceFuncString.UDPNullOrEmpty(message);
         }
-
-        #endregion Validation for Filter Action Controller.
-
-        #region Validation for Filters Actions Context Tables and Fields.
 
         public bool UDPModelStateIsOk(dynamic context, ref string message)
         {
@@ -78,7 +72,7 @@ namespace UnifiedDevelopmentPowerPlatform.Application.Services
             return _serviceFuncString.UDPNullOrEmpty(message);
         }
 
-        public bool UDPDatabasesImplementedIsntOk(dynamic context, ref string message)
+        public bool UDPDatabasesImplementedIsOk(dynamic context, ref string message)
         {
             dynamic? obj = null;
             context.ActionArguments.TryGetValue(ControllerFilterActionName.Metadata, out obj);
@@ -110,41 +104,23 @@ namespace UnifiedDevelopmentPowerPlatform.Application.Services
             return _serviceFuncString.UDPNullOrEmpty(message);
         }
 
-        #endregion Validation for Filters Actions Context Tables and Fields.
-
-        #region Validation for Files.
-        public bool IsFileInUseGeneric(FileInfo file)
+        public bool UDPTablesMetadataIsOk(dynamic context, ref string message)
         {
-            bool validfile = false;
-
-            try
-            {
-                using var stream = file.Open(FileMode.Open, FileAccess.Read, FileShare.None);
-            }
-            catch (IOException)
-            {
-                validfile = true;
-            }
-
-            return validfile;
+            dynamic? obj = null;
+            context.ActionArguments.TryGetValue(ControllerFilterActionName.Metadata, out obj);
+            message = obj?.Architecture <= 0 ? _serviceMessage.UDPGetMessage(TypeValidation.TheArchitecturePatternsIsOk) : _serviceFuncString.Empty;
+            return _serviceFuncString.UDPNullOrEmpty(message);
         }
 
-        public bool IsFileInUse(FileInfo file)
+        public bool UDPDirectoryAreOk(dynamic context, ref string message)
         {
-            bool validfile = false;
-
-            try
-            {
-                using var stream = file.Open(FileMode.Open, FileAccess.Read, FileShare.None);
-            }
-            catch (IOException e) when ((e.HResult & 0x0000FFFF) == 32)
-            {
-                validfile = true;
-            }
-
-            return validfile;
+            return false;
         }
-        #endregion Validation for Files.
+
+        public bool UDPFilesAreOk(dynamic context, ref string message)
+        {
+            return false;
+        }
 
         public bool UDPValidateBase64(string? text)
         {

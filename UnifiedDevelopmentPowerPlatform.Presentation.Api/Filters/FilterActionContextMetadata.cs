@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using UnifiedDevelopmentPowerPlatform.Application.Interfaces;
-using UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.Message.Text;
 using UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.Message.Type;
 using UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Interfaces;
 using UnifiedDevelopmentPowerPlatform.Presentation.Api.Models;
@@ -9,7 +8,7 @@ using UnifiedDevelopmentPowerPlatform.Presentation.Api.Models;
 namespace UnifiedDevelopmentPowerPlatform.Presentation.Api.Filters
 {
     /// <summary>
-    /// Filter action context tables and fields of metadata.
+    /// Filter action context to metadata.
     /// </summary>
     internal sealed class FilterActionContextMetadata<T> : IAsyncActionFilter where T : class, IEntity
     {
@@ -20,7 +19,7 @@ namespace UnifiedDevelopmentPowerPlatform.Presentation.Api.Filters
         private readonly IServiceFuncString _serviceFuncString;
 
         /// <summary>
-        /// Filter action context tables and fields of metadata.
+        /// Filter action context to metadata.
         /// </summary>
         /// <param name="serviceLog"></param>
         /// <param name="serviceMessage"></param>
@@ -53,87 +52,93 @@ namespace UnifiedDevelopmentPowerPlatform.Presentation.Api.Filters
 
             try
             {
+                _serviceLog.UDPRegisterLog(_serviceMessage.UDPGetMessage(TypeGlobal.CallStartToTheFilterActionContextMetadata), _serviceFuncString.Empty);
+
                 if (!_serviceValidation.UDPModelStateIsOk(context, ref message))
                 {
-                    _serviceLog.UDPLogReport(message, _serviceFuncString.Empty);
+                    _serviceLog.UDPRegisterLog(message, _serviceFuncString.Empty);
                     HasMessage(context, message);
                     return;
                 }
 
                 if (!_serviceValidation.UDPDatabaseSchemaIsOk(context, ref message))
                 {
-                    _serviceLog.UDPLogReport(message, _serviceFuncString.Empty);
+                    _serviceLog.UDPRegisterLog(message, _serviceFuncString.Empty);
                     HasMessage(context, message);
                     return;
                 }
 
                 if (!_serviceValidation.UDPMetadataIsBase64Ok(context, ref message))
                 {
-                    _serviceLog.UDPLogReport(message, _serviceFuncString.Empty);
+                    _serviceLog.UDPRegisterLog(message, _serviceFuncString.Empty);
                     HasMessage(context, message);
                     return;
                 }
 
                 if (!_serviceValidation.UDPDevelopmentEnvironmentIsOk(context, ref message))
                 {
-                    _serviceLog.UDPLogReport(message, _serviceFuncString.Empty);
+                    _serviceLog.UDPRegisterLog(message, _serviceFuncString.Empty);
                     HasMessage(context, message);
                     return;
                 }
 
                 if (!_serviceValidation.UDPDatabasesIsOk(context, ref message))
                 {
-                    _serviceLog.UDPLogReport(message, _serviceFuncString.Empty);
+                    _serviceLog.UDPRegisterLog(message, _serviceFuncString.Empty);
                     HasMessage(context, message);
                     return;
                 }
 
-                if (!_serviceValidation.UDPDatabasesImplementedIsntOk(context, ref message))
+                if (!_serviceValidation.UDPDatabasesImplementedIsOk(context, ref message))
                 {
-                    _serviceLog.UDPLogReport(message, _serviceFuncString.Empty);
+                    _serviceLog.UDPRegisterLog(message, _serviceFuncString.Empty);
                     HasMessage(context, message);
                     return;
                 }
 
                 if (!_serviceValidation.UDPDatabasesEngineIsOk(context, ref message))
                 {
-                    _serviceLog.UDPLogReport(message, _serviceFuncString.Empty);
+                    _serviceLog.UDPRegisterLog(message, _serviceFuncString.Empty);
                     HasMessage(context, message);
                     return;
                 }
 
                 if (!_serviceValidation.UDPFormsViewIsOk(context, ref message))
                 {
-                    _serviceLog.UDPLogReport(message, _serviceFuncString.Empty);
+                    _serviceLog.UDPRegisterLog(message, _serviceFuncString.Empty);
                     HasMessage(context, message);
                     return;
                 }
 
                 if (!_serviceValidation.UDPArchitectureOk(context, ref message))
                 {
-                    _serviceLog.UDPLogReport(message, _serviceFuncString.Empty);
+                    _serviceLog.UDPRegisterLog(message, _serviceFuncString.Empty);
                     HasMessage(context, message);
                     return;
                 }
+
+                _serviceLog.UDPRegisterLog(_serviceMessage.UDPGetMessage(TypeGlobal.SuccessToTheFilterActionContextMetadata), _serviceFuncString.Empty);
             }
             catch (Exception ex)
             {
-                _serviceLog.UDPLogReport(_serviceMessage.UDPGetMessage(TypeInformations.ErrorFilterActionContextTables), ex.Message);
-                throw new Exception(_serviceFuncString.UDPUpper(TextInformations.TheGlobalErrorMessage));
+                _serviceLog.UDPRegisterLog(_serviceMessage.UDPGetMessage(TypeGlobal.ErrorFilterActionContextMetadata), ex.Message);
+                throw new Exception(_serviceMessage.UDPGetMessage(TypeGlobal.TheExceptionGlobalErrorMessage));
             }
 
             await next();
 
             try
             {
-                _serviceLog.UDPLogReport(_serviceMessage.UDPGetMessage(TypeDirectory.CallStartToTheCreateDirectoryProjectOfSolution), _serviceFuncString.Empty);
+                _serviceLog.UDPRegisterLog(_serviceMessage.UDPGetMessage(TypeDirectory.CallStartToTheCreateDirectoryProjectOfSolution), _serviceFuncString.Empty);
+
                 _serviceDirectory.UPDCreateDirectoryProjectOfSolution();
-                _serviceLog.UDPLogReport(_serviceMessage.UDPGetMessage(TypeDirectory.SuccessToTheCreateDirectoryProjectOfSolution), _serviceFuncString.Empty);
+
+                _serviceLog.UDPRegisterLog(_serviceMessage.UDPGetMessage(TypeDirectory.SuccessToTheCreateDirectoryProjectOfSolution), _serviceFuncString.Empty);
             }
             catch (Exception ex)
             {
-                _serviceLog.UDPLogReport(_serviceMessage.UDPGetMessage(TypeDirectory.ErrorCreateAllDirectory), ex.Message);
-                throw new Exception(_serviceFuncString.UDPUpper(TextInformations.TheGlobalErrorMessage));
+                _serviceLog.UDPRegisterLog(_serviceMessage.UDPGetMessage(TypeDirectory.ErrorCreateAllDirectory), ex.Message);
+                throw new Exception(_serviceMessage.UDPGetMessage(TypeGlobal.TheExceptionGlobalErrorMessage));
             }
         }
 

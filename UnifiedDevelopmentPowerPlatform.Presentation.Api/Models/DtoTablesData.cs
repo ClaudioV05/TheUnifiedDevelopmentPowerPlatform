@@ -7,7 +7,7 @@ namespace UnifiedDevelopmentPowerPlatform.Presentation.Api.Models
     /// <summary>
     /// The data transfer object - Tables Data.
     /// </summary>
-    public class DtoTablesData
+    public class DtoTablesdata
     {
         /// <summary>
         /// The list of tables .

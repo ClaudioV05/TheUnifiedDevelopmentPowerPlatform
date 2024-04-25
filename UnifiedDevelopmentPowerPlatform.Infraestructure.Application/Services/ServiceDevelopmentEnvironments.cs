@@ -58,7 +58,7 @@ namespace UnifiedDevelopmentPowerPlatform.Application.Services
 
         public List<DevelopmentEnvironments> UDPSelectParametersTheKindsOfDevelopmentEnviroment()
         {
-            _serviceLog.UDPLogReport(_serviceMessage.UDPGetMessage(TypeDevelopmentEnvironments.CallStartToTheSelectParametersTheKindsOfDevelopmentEnviroment), _serviceFuncString.Empty);
+            _serviceLog.UDPRegisterLog(_serviceMessage.UDPGetMessage(TypeDevelopmentEnvironments.CallStartToTheSelectParametersTheKindsOfDevelopmentEnviroment), _serviceFuncString.Empty);
 
             List<DevelopmentEnvironments> listItems = new List<DevelopmentEnvironments>();
 
@@ -80,7 +80,7 @@ namespace UnifiedDevelopmentPowerPlatform.Application.Services
 
                 if (listItems.Any())
                 {
-                    _serviceLog.UDPLogReport(_serviceMessage.UDPGetMessage(TypeDevelopmentEnvironments.SuccessToTheSelectParametersTheKindsOfDevelopmentEnviroment), _serviceFuncString.Empty);
+                    _serviceLog.UDPRegisterLog(_serviceMessage.UDPGetMessage(TypeDevelopmentEnvironments.SuccessToTheSelectParametersTheKindsOfDevelopmentEnviroment), _serviceFuncString.Empty);
                 }
             }
             catch (OverflowException) { }
@@ -95,13 +95,13 @@ namespace UnifiedDevelopmentPowerPlatform.Application.Services
 
             if (metadata.DevelopmentEnvironments.Any())
             {
-                _serviceLog.UDPLogReport(_serviceMessage.UDPGetMessage(TypeDevelopmentEnvironments.CallStartToTheSaveIdentifierToTheDevelopmentEnviromentsFromMetadata), _serviceFuncString.Empty);
+                _serviceLog.UDPRegisterLog(_serviceMessage.UDPGetMessage(TypeDevelopmentEnvironments.CallStartToTheSaveIdentifierToTheDevelopmentEnviromentsFromMetadata), _serviceFuncString.Empty);
 
                 directoryConfiguration = _serviceDirectory.UDPObtainDirectory(DirectoryRootType.Configuration);
                 data = _serviceCrypto.UPDEncryptData(Convert.ToString(metadata.DevelopmentEnvironments.FirstOrDefault().Id));
                 _serviceFile.UDPAppendAllText($"{directoryConfiguration}{DirectoryStandard.Log}{FileStandard.IdDevelopmentEnvironment}{FileExtension.Txt}", data);
 
-                _serviceLog.UDPLogReport(_serviceMessage.UDPGetMessage(TypeDevelopmentEnvironments.SuccessToTheSaveIdentifierToTheDevelopmentEnviromentsFromMetadata), _serviceFuncString.Empty);
+                _serviceLog.UDPRegisterLog(_serviceMessage.UDPGetMessage(TypeDevelopmentEnvironments.SuccessToTheSaveIdentifierToTheDevelopmentEnviromentsFromMetadata), _serviceFuncString.Empty);
             }
         }
 
@@ -113,7 +113,7 @@ namespace UnifiedDevelopmentPowerPlatform.Application.Services
 
             try
             {
-                _serviceLog.UDPLogReport(_serviceMessage.UDPGetMessage(TypeDevelopmentEnvironments.CallStartToTheGetDataTypeFromTableInScriptMetadata), _serviceFuncString.Empty);
+                _serviceLog.UDPRegisterLog(_serviceMessage.UDPGetMessage(TypeDevelopmentEnvironments.CallStartToTheGetDataTypeFromTableInScriptMetadata), _serviceFuncString.Empty);
                 data = _serviceFile.UDPGetDataFileFromDirectoryConfiguration(DirectoryStandard.Log, $"{FileStandard.IdDevelopmentEnvironment}{FileExtension.Txt}");
                 data = _serviceCrypto.UPDDecryptData(data);
 
@@ -128,12 +128,12 @@ namespace UnifiedDevelopmentPowerPlatform.Application.Services
                     };
                 }
 
-                _serviceLog.UDPLogReport(_serviceMessage.UDPGetMessage(TypeDevelopmentEnvironments.SuccessToTheGetDataTypeFromTableInScriptMetadata), _serviceFuncString.Empty);
+                _serviceLog.UDPRegisterLog(_serviceMessage.UDPGetMessage(TypeDevelopmentEnvironments.SuccessToTheGetDataTypeFromTableInScriptMetadata), _serviceFuncString.Empty);
                 return returnType;
             }
             catch (Exception ex)
             {
-                _serviceLog.UDPLogReport(_serviceMessage.UDPGetMessage(TypeDevelopmentEnvironments.ErrorToTheGetDataTypeFromTableInScriptMetadata), ex.Message);
+                _serviceLog.UDPRegisterLog(_serviceMessage.UDPGetMessage(TypeDevelopmentEnvironments.ErrorToTheGetDataTypeFromTableInScriptMetadata), ex.Message);
                 return _serviceFuncString.Empty;
             }
         }
@@ -145,7 +145,7 @@ namespace UnifiedDevelopmentPowerPlatform.Application.Services
 
             try
             {
-                _serviceLog.UDPLogReport(_serviceMessage.UDPGetMessage(TypeDevelopmentEnvironments.CallStartToGetDataTypeOfCSharp), _serviceFuncString.Empty);
+                _serviceLog.UDPRegisterLog(_serviceMessage.UDPGetMessage(TypeDevelopmentEnvironments.CallStartToGetDataTypeOfCSharp), _serviceFuncString.Empty);
 
                 returnType = _serviceDataTypeCSharp.UDPGetAsStringTheEnumType(CSharp.DataType.Undefined);
 
@@ -174,12 +174,12 @@ namespace UnifiedDevelopmentPowerPlatform.Application.Services
                     }
                 }
 
-                _serviceLog.UDPLogReport(_serviceMessage.UDPGetMessage(TypeDevelopmentEnvironments.SuccessToGetDataTypeOfCSharp), _serviceFuncString.Empty);
+                _serviceLog.UDPRegisterLog(_serviceMessage.UDPGetMessage(TypeDevelopmentEnvironments.SuccessToGetDataTypeOfCSharp), _serviceFuncString.Empty);
                 return _serviceFuncString.UDPLower(returnType);
             }
             catch (Exception ex)
             {
-                _serviceLog.UDPLogReport(_serviceMessage.UDPGetMessage(TypeDevelopmentEnvironments.ErrorToGetDataTypeOfCSharp), ex.Message);
+                _serviceLog.UDPRegisterLog(_serviceMessage.UDPGetMessage(TypeDevelopmentEnvironments.ErrorToGetDataTypeOfCSharp), ex.Message);
                 return _serviceDataTypeCSharp.UDPGetAsStringTheEnumType(CSharp.DataType.Undefined);
             }
         }

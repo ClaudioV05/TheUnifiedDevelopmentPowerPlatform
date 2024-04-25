@@ -52,7 +52,7 @@ namespace UnifiedDevelopmentPowerPlatform.Application.Services
 
             if (!_serviceFuncString.UDPNullOrEmpty(metadata?.DatabaseSchema))
             {
-                _serviceLog.UDPLogReport(_serviceMessage.UDPGetMessage(TypeMetadataTable.CallStartToTheSaveDatabaseSchemaFromMetadata), _serviceFuncString.Empty);
+                _serviceLog.UDPRegisterLog(_serviceMessage.UDPGetMessage(TypeMetadataTable.CallStartToTheSaveDatabaseSchemaFromMetadata), _serviceFuncString.Empty);
 
                 databaseSchema = _serviceCrypto.UPDDecodeFromBase64(metadata?.DatabaseSchema);
                 databaseSchema = _serviceFuncString.UDPLower(databaseSchema);
@@ -60,7 +60,7 @@ namespace UnifiedDevelopmentPowerPlatform.Application.Services
                 data = _serviceCrypto.UPDEncryptData(databaseSchema);
                 _serviceFile.UDPAppendAllText($"{directoryConfiguration}{DirectoryStandard.Log}{FileStandard.IdDatabaseSchema}{FileExtension.Txt}", data);
 
-                _serviceLog.UDPLogReport(_serviceMessage.UDPGetMessage(TypeMetadataTable.SuccessToTheSaveDatabaseSchemaFromMetadata), _serviceFuncString.Empty);
+                _serviceLog.UDPRegisterLog(_serviceMessage.UDPGetMessage(TypeMetadataTable.SuccessToTheSaveDatabaseSchemaFromMetadata), _serviceFuncString.Empty);
             }
         }
 
@@ -68,12 +68,12 @@ namespace UnifiedDevelopmentPowerPlatform.Application.Services
         {
             string data = _serviceFuncString.Empty;
 
-            _serviceLog.UDPLogReport(_serviceMessage.UDPGetMessage(TypeMetadataTable.CallStartToTheOpenDatabaseSchemaFromMetadata), _serviceFuncString.Empty);
+            _serviceLog.UDPRegisterLog(_serviceMessage.UDPGetMessage(TypeMetadataTable.CallStartToTheOpenDatabaseSchemaFromMetadata), _serviceFuncString.Empty);
 
             data = _serviceFile.UDPGetDataFileFromDirectoryConfiguration(DirectoryStandard.Log, $"{FileStandard.IdDatabaseSchema}{FileExtension.Txt}");
             data = _serviceCrypto.UPDDecryptData(data);
 
-            _serviceLog.UDPLogReport(_serviceMessage.UDPGetMessage(TypeMetadataTable.SuccessToTheOpenDatabaseSchemaFromMetadata), _serviceFuncString.Empty);
+            _serviceLog.UDPRegisterLog(_serviceMessage.UDPGetMessage(TypeMetadataTable.SuccessToTheOpenDatabaseSchemaFromMetadata), _serviceFuncString.Empty);
 
             return data;
         }

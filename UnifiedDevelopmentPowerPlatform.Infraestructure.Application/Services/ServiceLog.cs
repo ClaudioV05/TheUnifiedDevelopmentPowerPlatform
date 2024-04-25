@@ -53,7 +53,7 @@ namespace UnifiedDevelopmentPowerPlatform.Application.Services
 
         public void UDPLogWarning(string message) => _logger.Warn(message);
 
-        public void UDPLogReport(string message, string additionalMessage)
+        public void UDPRegisterLog(string message, string additionalMessage)
         {
             string data = _serviceFuncStrings.Empty;
             string newFirstLine = _serviceFuncStrings.Empty;
@@ -64,7 +64,7 @@ namespace UnifiedDevelopmentPowerPlatform.Application.Services
 
             if (!_serviceFuncStrings.UDPNullOrEmpty(directoryConfiguration) && _serviceDirectory.UDPDirectoryExists(directoryConfiguration))
             {
-                if (!_serviceFuncStrings.UDPStringStarts(message, TextInformations.TheInitialMessage))
+                if (!_serviceFuncStrings.UDPStringStarts(message, TextGlobal.CallStartToTheCreationOfUnifiedDevelopmentPowerPlatform))
                 {
                     newFirstLine = _servicePlataform.UDPEnvironmentAddNewLine();
                 }

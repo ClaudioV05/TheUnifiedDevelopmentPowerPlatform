@@ -61,6 +61,6 @@ namespace UnifiedDevelopmentPowerPlatform.Application.Interfaces
         /// <remarks></remarks>
         /// <exception cref=""></exception>
         /// <seealso href=""></seealso>
-        void UDPLogReport(string message, string additionalMessage);
+        void UDPRegisterLog(string message, string additionalMessage);
     }
 }

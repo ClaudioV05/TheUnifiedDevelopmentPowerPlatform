@@ -6,7 +6,7 @@ namespace UnifiedDevelopmentPowerPlatform.Presentation.Api.Models
     /// <summary>
     /// The data transfer object - Meta Data.
     /// </summary>
-    public class DtoMetaData
+    public class DtoMetadata
     {
         /// <summary>
         /// The database schema.

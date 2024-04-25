@@ -1,24 +1,28 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using UnifiedDevelopmentPowerPlatform.Application.Interfaces;
-using UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.Message.Text;
+using UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.Message.Type;
 using UnifiedDevelopmentPowerPlatform.Presentation.Api.Models;
 
 namespace UnifiedDevelopmentPowerPlatform.Presentation.Api.Filters
 {
     internal sealed class FilterActionContextControllerInformation : IAsyncActionFilter
     {
+        private readonly IServiceMessage _serviceMessage;
         private readonly IServiceValidation _serviceValidation;
         private readonly IServiceFuncString _serviceFuncString;
 
         /// <summary>
         /// Filter action context controller information.
         /// </summary>
+        /// <param name="serviceMessage"></param>
         /// <param name="serviceValidation"></param>
         /// <param name="serviceFuncString"></param>
-        public FilterActionContextControllerInformation(IServiceValidation serviceValidation, 
+        public FilterActionContextControllerInformation(IServiceMessage serviceMessage,
+                                                        IServiceValidation serviceValidation,
                                                         IServiceFuncString serviceFuncString)
         {
+            _serviceMessage = serviceMessage;
             _serviceValidation = serviceValidation;
             _serviceFuncString = serviceFuncString;
         }
@@ -44,7 +48,7 @@ namespace UnifiedDevelopmentPowerPlatform.Presentation.Api.Filters
             }
             catch (Exception)
             {
-                throw new Exception(_serviceFuncString.UDPUpper(TextInformations.TheGlobalErrorMessage));
+                throw new Exception(_serviceMessage.UDPGetMessage(TypeGlobal.TheExceptionGlobalErrorMessage));
             }
 
             await next();
@@ -57,7 +61,11 @@ namespace UnifiedDevelopmentPowerPlatform.Presentation.Api.Filters
         /// <param name="message"></param>
         private static void HasMessage(ActionExecutingContext context, string message)
         {
-            context.Result = new BadRequestObjectResult(new ErrorDetails() { StatusCode = 1, Message = message });
+            context.Result = new BadRequestObjectResult(new ErrorDetails()
+            {
+                StatusCode = 1,
+                Message = message
+            });
         }
     }
 }

@@ -49,7 +49,7 @@ namespace UnifiedDevelopmentPowerPlatform.Application.Services
 
         public List<DatabasesEngine> UDPSelectParametersTheKindsOfDatabasesEngine()
         {
-            _serviceLog.UDPLogReport(_serviceMessage.UDPGetMessage(TypeDatabasesEngine.CallStartToTheSelectParametersTheKindsOfDatabasesEngine), _serviceFuncString.Empty);
+            _serviceLog.UDPRegisterLog(_serviceMessage.UDPGetMessage(TypeDatabasesEngine.CallStartToTheSelectParametersTheKindsOfDatabasesEngine), _serviceFuncString.Empty);
 
             List<DatabasesEngine> listItems = new List<DatabasesEngine>();
 
@@ -71,7 +71,7 @@ namespace UnifiedDevelopmentPowerPlatform.Application.Services
 
                 if (listItems.Any())
                 {
-                    _serviceLog.UDPLogReport(_serviceMessage.UDPGetMessage(TypeDatabasesEngine.SuccessToTheSelectParametersTheKindsOfDatabasesEngine), _serviceFuncString.Empty);
+                    _serviceLog.UDPRegisterLog(_serviceMessage.UDPGetMessage(TypeDatabasesEngine.SuccessToTheSelectParametersTheKindsOfDatabasesEngine), _serviceFuncString.Empty);
                 }
             }
             catch (OverflowException) { }
@@ -86,13 +86,13 @@ namespace UnifiedDevelopmentPowerPlatform.Application.Services
 
             if (metadata.DatabasesEngine.Any())
             {
-                _serviceLog.UDPLogReport(_serviceMessage.UDPGetMessage(TypeDatabasesEngine.CallStartToTheSaveIdentifierToTheDatabasesEngineFromMetadata), _serviceFuncString.Empty);
+                _serviceLog.UDPRegisterLog(_serviceMessage.UDPGetMessage(TypeDatabasesEngine.CallStartToTheSaveIdentifierToTheDatabasesEngineFromMetadata), _serviceFuncString.Empty);
 
                 directoryConfiguration = _serviceDirectory.UDPObtainDirectory(DirectoryRootType.Configuration);
                 data = _serviceCrypto.UPDEncryptData(Convert.ToString(metadata.DatabasesEngine.FirstOrDefault().Id));
                 _serviceFile.UDPAppendAllText($"{directoryConfiguration}{DirectoryStandard.Log}{FileStandard.IdDatabasesEngine}{FileExtension.Txt}", data);
 
-                _serviceLog.UDPLogReport(_serviceMessage.UDPGetMessage(TypeDatabasesEngine.SuccessToTheSaveIdentifierToTheDatabasesEngineFromMetadata), _serviceFuncString.Empty);
+                _serviceLog.UDPRegisterLog(_serviceMessage.UDPGetMessage(TypeDatabasesEngine.SuccessToTheSaveIdentifierToTheDatabasesEngineFromMetadata), _serviceFuncString.Empty);
             }
         }
     }

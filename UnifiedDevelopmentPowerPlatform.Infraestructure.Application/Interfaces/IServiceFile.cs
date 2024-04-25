@@ -135,5 +135,29 @@
         /// <seealso href=""></seealso>
         /// <returns>Content from file.</returns>
         string UDPGetDataFileFromDirectoryConfiguration(string section, string file);
+
+        /// <summary>
+        /// Method will check if the file is in use generic.
+        /// </summary>
+        /// <param name="file"></param>
+        /// <paramref name=""/>
+        /// <returns></returns>
+        /// <remarks></remarks>
+        /// <exception cref=""></exception>
+        /// <seealso href=""></seealso>
+        /// <returns>Return true otherwise false.</returns>
+        bool UDPIsFileInUseGeneric(FileInfo file);
+
+        /// <summary>
+        /// Method will check if the file is in use.
+        /// </summary>
+        /// <param name="file"></param>
+        /// <paramref name=""/>
+        /// <returns></returns>
+        /// <remarks></remarks>
+        /// <exception cref=""></exception>
+        /// <seealso href=""></seealso>
+        /// <returns>Return true otherwise false.</returns>
+        bool UDPIsFileInUse(FileInfo file);
     }
 }

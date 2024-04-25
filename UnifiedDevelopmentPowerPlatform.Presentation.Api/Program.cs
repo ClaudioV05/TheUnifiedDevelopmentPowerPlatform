@@ -62,6 +62,7 @@ builder.Services.TryAddTransient<FilterActionContextController>();
 builder.Services.TryAddTransient<FilterActionContextControllerInformation>();
 builder.Services.TryAddTransient<FilterActionContextLog>();
 builder.Services.TryAddTransient<FilterActionContextMetadata<MetadataOwner>>();
+builder.Services.TryAddTransient<FilterActionContextTablesdata<MetadataOwner>>();
 #endregion Action Filters.
 
 #region Dependency Injection.

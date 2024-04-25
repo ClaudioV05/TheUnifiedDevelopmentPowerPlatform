@@ -20,16 +20,20 @@ namespace UnifiedDevelopmentPowerPlatform.Application.Services
             _serviceFuncString = serviceFuncString;
         }
 
-        public string UDPGetMessage(TypeInformations type)
+        public string UDPGetMessage(TypeGlobal type)
         {
             return _serviceFuncString.UDPUpper(type switch
             {
-                TypeInformations.DoNotSpecified => TextInformations.DoNotSpecified,
-                TypeInformations.TheInitialMessage => TextInformations.TheInitialMessage,
-                TypeInformations.TheGlobalErrorMessage => TextInformations.TheGlobalErrorMessage,
-                TypeInformations.ErrorFilterActionContextController => TextInformations.ErrorFilterActionContextController,
-                TypeInformations.ErrorFilterActionContextTables => TextInformations.ErrorFilterActionContextTables,
-                TypeInformations.ErrorFilterActionContextFields => TextInformations.ErrorFilterActionContextFields,
+                TypeGlobal.DoNotSpecified => TextGlobal.DoNotSpecified,
+                TypeGlobal.CallStartToTheCreationOfUnifiedDevelopmentPowerPlatform => TextGlobal.CallStartToTheCreationOfUnifiedDevelopmentPowerPlatform,
+                TypeGlobal.TheExceptionGlobalErrorMessage => TextGlobal.TheExceptionGlobalErrorMessage,
+                TypeGlobal.ErrorFilterActionContextController => TextGlobal.ErrorFilterActionContextController,
+                TypeGlobal.CallStartToTheFilterActionContextMetadata => TextGlobal.CallStartToTheFilterActionContextMetadata,
+                TypeGlobal.SuccessToTheFilterActionContextMetadata => TextGlobal.SuccessToTheFilterActionContextMetadata,
+                TypeGlobal.ErrorFilterActionContextMetadata => TextGlobal.ErrorFilterActionContextMetadata,
+                TypeGlobal.CallStartToTheFilterActionContextTablesdata => TextGlobal.CallStartToTheFilterActionContextTablesdata,
+                TypeGlobal.SuccessToTheFilterActionContextTablesdata => TextGlobal.SuccessToTheFilterActionContextTablesdata,
+                TypeGlobal.ErrorFilterActionContextTablesdata => TextGlobal.ErrorFilterActionContextTablesdata,
                 _ => _serviceFuncString.Empty
             });
         }

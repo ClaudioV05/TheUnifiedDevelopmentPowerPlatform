@@ -17,7 +17,7 @@ namespace UnifiedDevelopmentPowerPlatform.Application.Interfaces
         /// <exception cref=""></exception>
         /// <seealso href=""></seealso>
         /// <returns>The description of message.</returns>
-        string UDPGetMessage(TypeInformations type);
+        string UDPGetMessage(TypeGlobal type);
 
         /// <summary>
         /// The get message.

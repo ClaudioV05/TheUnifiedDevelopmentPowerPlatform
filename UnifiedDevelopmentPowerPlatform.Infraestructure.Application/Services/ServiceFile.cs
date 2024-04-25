@@ -123,5 +123,31 @@ namespace UnifiedDevelopmentPowerPlatform.Application.Services
                 return string.Empty;
             }
         }
+
+        public bool UDPIsFileInUseGeneric(FileInfo file)
+        {
+            try
+            {
+                using var stream = file.Open(FileMode.Open, FileAccess.Read, FileShare.None);
+                return false;
+            }
+            catch (IOException)
+            {
+                return true;
+            }
+        }
+
+        public bool UDPIsFileInUse(FileInfo file)
+        {
+            try
+            {
+                using var stream = file.Open(FileMode.Open, FileAccess.Read, FileShare.None);
+                return false;
+            }
+            catch (IOException e) when ((e.HResult & 0x0000FFFF) == 32)
+            {
+                return true;
+            }
+        }
     }
 }

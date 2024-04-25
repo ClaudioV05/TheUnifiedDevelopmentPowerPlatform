@@ -2,37 +2,41 @@
 using Microsoft.AspNetCore.Mvc.Filters;
 using UnifiedDevelopmentPowerPlatform.Application.Interfaces;
 using UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.Message.Type;
+using UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Interfaces;
 using UnifiedDevelopmentPowerPlatform.Presentation.Api.Models;
 
 namespace UnifiedDevelopmentPowerPlatform.Presentation.Api.Filters
 {
-    internal sealed class FilterActionContextController : IAsyncActionFilter
+    /// <summary>
+    /// Filter action context to tables data.
+    /// </summary>
+    internal sealed class FilterActionContextTablesdata<T> : IAsyncActionFilter where T : class, IEntity
     {
         private readonly IServiceLog _serviceLog;
         private readonly IServiceMessage _serviceMessage;
         private readonly IServiceDirectory _serviceDirectory;
         private readonly IServiceValidation _serviceValidation;
-        private readonly IServiceFuncString _serviceFuncStrings;
+        private readonly IServiceFuncString _serviceFuncString;
 
         /// <summary>
-        /// Filter action context controller.
+        /// Filter action context to tables data.
         /// </summary>
         /// <param name="serviceLog"></param>
         /// <param name="serviceMessage"></param>
         /// <param name="serviceDirectory"></param>
         /// <param name="serviceValidation"></param>
-        /// <param name="serviceFuncStrings"></param>
-        public FilterActionContextController(IServiceLog serviceLog,
+        /// <param name="serviceFuncString"></param>
+        public FilterActionContextTablesdata(IServiceLog serviceLog,
                                              IServiceMessage serviceMessage,
                                              IServiceDirectory serviceDirectory,
                                              IServiceValidation serviceValidation,
-                                             IServiceFuncString serviceFuncStrings)
+                                             IServiceFuncString serviceFuncString)
         {
             _serviceLog = serviceLog;
             _serviceMessage = serviceMessage;
             _serviceDirectory = serviceDirectory;
             _serviceValidation = serviceValidation;
-            _serviceFuncStrings = serviceFuncStrings;
+            _serviceFuncString = serviceFuncString;
         }
 
         /// <summary>
@@ -44,24 +48,45 @@ namespace UnifiedDevelopmentPowerPlatform.Presentation.Api.Filters
         /// <exception cref="Exception"></exception>
         public async Task OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next)
         {
-            string message = _serviceFuncStrings.Empty;
+            string message = _serviceFuncString.Empty;
 
             try
             {
-                if (!_serviceValidation.UDPPlatformWindowsIsOk(ref message))
+                _serviceLog.UDPRegisterLog(_serviceMessage.UDPGetMessage(TypeGlobal.CallStartToTheFilterActionContextTablesdata), _serviceFuncString.Empty);
+
+                if (!_serviceValidation.UDPModelStateIsOk(context, ref message))
                 {
+                    _serviceLog.UDPRegisterLog(message, _serviceFuncString.Empty);
                     HasMessage(context, message);
                     return;
                 }
 
-                _serviceDirectory.UPDBuildDirectoryStandardOfSolution();
+                if (!_serviceValidation.UDPTablesMetadataIsOk(context, ref message))
+                {
+                    _serviceLog.UDPRegisterLog(message, _serviceFuncString.Empty);
+                    HasMessage(context, message);
+                    return;
+                }
 
-                _serviceLog.UDPRegisterLog(_serviceMessage.UDPGetMessage(TypeGlobal.CallStartToTheCreationOfUnifiedDevelopmentPowerPlatform), _serviceFuncStrings.Empty);
-                _serviceLog.UDPRegisterLog(_serviceMessage.UDPGetMessage(TypeValidation.ThePlatformWindowsIsOk), _serviceFuncStrings.Empty);
+                if (!_serviceValidation.UDPDirectoryAreOk(context, ref message))
+                {
+                    _serviceLog.UDPRegisterLog(message, _serviceFuncString.Empty);
+                    HasMessage(context, message);
+                    return;
+                }
+
+                if (!_serviceValidation.UDPFilesAreOk(context, ref message))
+                {
+                    _serviceLog.UDPRegisterLog(message, _serviceFuncString.Empty);
+                    HasMessage(context, message);
+                    return;
+                }
+
+                _serviceLog.UDPRegisterLog(_serviceMessage.UDPGetMessage(TypeGlobal.SuccessToTheFilterActionContextTablesdata), _serviceFuncString.Empty);
             }
             catch (Exception ex)
             {
-                _serviceLog.UDPRegisterLog(_serviceMessage.UDPGetMessage(TypeGlobal.ErrorFilterActionContextController), ex.Message);
+                _serviceLog.UDPRegisterLog(_serviceMessage.UDPGetMessage(TypeGlobal.ErrorFilterActionContextTablesdata), ex.Message);
                 throw new Exception(_serviceMessage.UDPGetMessage(TypeGlobal.TheExceptionGlobalErrorMessage));
             }
 

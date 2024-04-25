@@ -71,7 +71,7 @@ namespace UnifiedDevelopmentPowerPlatform.Presentation.Api.Controllers
         [ProducesResponseType(StatusCodes.Status503ServiceUnavailable)]
         [ProducesResponseType(StatusCodes.Status504GatewayTimeout)]
         [DisableCors]
-        public ActionResult<List<Tables>> Metadata([BindRequired] DtoMetaData metaData)
+        public ActionResult<List<Tables>> Metadata([BindRequired] DtoMetadata metaData)
         {
             MetadataOwner metadataOwner = new MetadataOwner()
             {
@@ -138,6 +138,7 @@ namespace UnifiedDevelopmentPowerPlatform.Presentation.Api.Controllers
         [Produces(MediaTypeNames.Application.Json, MediaTypeNames.Application.Xml)]
         [Route(ControllerRouterUnifiedDevelopmentPowerPlatform.RouterTables)]
         [ServiceFilter(typeof(FilterActionContextLog), IsReusable = false, Order = ControllerOrderExecutationFilter.Second)]
+        [ServiceFilter(typeof(FilterActionContextTablesdata<MetadataOwner>), IsReusable = false, Order = ControllerOrderExecutationFilter.Third)]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(ActionResult))]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -149,7 +150,7 @@ namespace UnifiedDevelopmentPowerPlatform.Presentation.Api.Controllers
         [ProducesResponseType(StatusCodes.Status503ServiceUnavailable)]
         [ProducesResponseType(StatusCodes.Status504GatewayTimeout)]
         [DisableCors]
-        public ActionResult Tables([BindRequired] DtoTablesData dtoTablesData)
+        public ActionResult Tables([BindRequired] DtoTablesdata dtoTablesData)
         {
             /*
             MetadataOwner metadataOwner = new MetadataOwner()
