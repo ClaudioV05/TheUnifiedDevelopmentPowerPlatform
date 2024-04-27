@@ -6,7 +6,6 @@ using UnifiedDevelopmentPowerPlatform.Application.Services;
 using UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities;
 using UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.File;
 using UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.OpenApi;
-using UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.WebConfiguration;
 using UnifiedDevelopmentPowerPlatform.Presentation.Api.Extensions;
 using UnifiedDevelopmentPowerPlatform.Presentation.Api.Filters;
 using UnifiedDevelopmentPowerPlatform.Presentation.Api.OpenApi;
@@ -65,8 +64,6 @@ builder.Services.TryAddTransient<FilterActionContextMetadata<MetadataOwner>>();
 builder.Services.TryAddTransient<FilterActionContextTablesdata<MetadataOwner>>();
 #endregion Action Filters.
 
-#region Dependency Injection.
-
 #region Services.
 builder.Services.TryAddScoped<IServiceArchitecturePatterns, ServiceArchitecturePatterns>();
 builder.Services.TryAddScoped<IServiceCrypto, ServiceCrypto>();
@@ -96,12 +93,6 @@ builder.Services.TryAddScoped<IServiceValidation, ServiceValidation>();
 builder.Services.TryAddScoped<IServiceZipFile, ServiceZipFile>();
 #endregion Services.
 
-#region Repositories.
-// Code from Repositories here.
-#endregion Repositories.
-
-#endregion Dependency Injection.
-
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -110,15 +101,25 @@ if (app.Environment.IsDevelopment())
 {
     // Code for Development here.
 
-    #region Swagger.
     app.UseSwagger();
+
     app.UseSwaggerUI(options =>
     {
         options.SwaggerEndpoint(OpenApiConfiguration.Endpoint, OpenApiInformation.Description);
         options.InjectStylesheet(OpenApiConfiguration.StyleSheet);
         options.EnableTryItOutByDefault();
     });
-    #endregion Swagger.
+
+    app.Use(async (context, next) =>
+    {
+        if (context.Request.Path == "/UnifiedDevelopmentPowerPlatform")
+        {
+            context.Response.Redirect(OpenApiConfiguration.Html);
+            return;
+        }
+
+        await next();
+    });
 
     app.UseDeveloperExceptionPage();
 }
@@ -135,37 +136,8 @@ else if (app.Environment.IsProduction())
 }
 
 app.UseCors(options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
-
 app.ConfigureExceptionHandler();
-
 app.UseHttpsRedirection();
-
 app.UseAuthorization();
-
 app.MapControllers();
-
-app.Use(async (context, next) =>
-{
-    context.Response.OnStarting((state) =>
-    {
-        context.Response.Headers.Append("UnifiedDevelopmentPowerPlatform", string.Empty);
-
-        if (context.Response.Headers.Count > 0 && context.Response.Headers.ContainsKey(WebConfiguration.ContentType))
-        {
-            var contentType = context.Response.Headers[WebConfiguration.ContentType].ToString();
-
-            if (contentType.StartsWith(WebConfiguration.ContentTypeApplicationJson))
-            {
-                context.Response.Headers.Remove(WebConfiguration.ContentType);
-                context.Response.Headers.Append(WebConfiguration.ContentType, WebConfiguration.ContentTypeApplicationJson);
-            }
-        }
-
-        return Task.FromResult(0);
-    }, context);
-
-    await next.Invoke();
-
-});
-
 app.Run();

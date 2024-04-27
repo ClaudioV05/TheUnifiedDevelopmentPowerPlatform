@@ -17,5 +17,11 @@ namespace UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.OpenAp
         /// Style Sheet.
         /// </summary>
         public static string StyleSheet => "/swagger-ui/custom.css";
+
+        /// <summary>
+        /// Open Api HTML.
+        /// </summary>
+        public static string Html => "/swagger/index.html";
+        
     }
 }
