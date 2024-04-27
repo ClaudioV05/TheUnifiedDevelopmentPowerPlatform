@@ -16,7 +16,7 @@ namespace UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.OpenAp
         /// <summary>
         /// The title.
         /// </summary>
-        public static string Title => "UNIFIED DEVELOPMENT POWER PLATFORM";
+        public static string Title => "UNIFIED DEVELOPMENT POWER PLATFORM - UDPP";
 
         /// <summary>
         /// The description.

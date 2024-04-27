@@ -148,7 +148,7 @@ app.Use(async (context, next) =>
 {
     context.Response.OnStarting((state) =>
     {
-        context.Response.Headers.Add("UnifiedDevelopmentPowerPlatform", string.Empty);
+        context.Response.Headers.Append("UnifiedDevelopmentPowerPlatform", string.Empty);
 
         if (context.Response.Headers.Count > 0 && context.Response.Headers.ContainsKey(WebConfiguration.ContentType))
         {

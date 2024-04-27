@@ -2,10 +2,10 @@
 
 namespace UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.OpenApi
 {
-    [ComplexType]
     /// <summary>
     /// Configuration about the OpenApi.
     /// </summary>
+    [ComplexType]
     public static class OpenApiConfiguration
     {
         /// <summary>
