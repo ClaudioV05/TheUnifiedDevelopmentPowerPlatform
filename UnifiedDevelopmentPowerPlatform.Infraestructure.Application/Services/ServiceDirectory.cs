@@ -252,7 +252,7 @@ namespace UnifiedDevelopmentPowerPlatform.Application.Services
 
             try
             {
-                regex = new Regex(@"(?<!fil)[A-Za-z]:\\+[\S\s]*?(?=\\+UnifiedDevelopmentPowerPlatform.presentation.api)");
+                regex = new Regex(@"(?<!fil)[A-Za-z]:\\+[\S\s]*?(?=\\+unifieddevelopmentpowerplatform.presentation.api)");
                 exeRootDirectory = _serviceFuncString.UDPLower(Assembly.GetExecutingAssembly().Location);
 
                 if (regex.IsMatch(exeRootDirectory ?? _serviceFuncString.Empty))

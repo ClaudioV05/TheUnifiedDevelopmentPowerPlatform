@@ -25,7 +25,7 @@ namespace UnifiedDevelopmentPowerPlatform.Application.Services
         /// <param name="servicePlataform "></param>
         /// <param name="serviceDirectory"></param>
         /// <param name="serviceFuncString"></param>
-        public ServiceValidation(IServiceFile serviceFile, 
+        public ServiceValidation(IServiceFile serviceFile,
                                  IServiceMessage serviceMessage,
                                  IServicePlataform servicePlataform,
                                  IServiceDirectory serviceDirectory,
@@ -110,24 +110,22 @@ namespace UnifiedDevelopmentPowerPlatform.Application.Services
         public bool UDPTablesdataIsOk(dynamic context, ref string message)
         {
             context.ActionArguments.TryGetValue(ControllerActionArgumentsKey.Tablesdata, out dynamic? values);
-            message = values?.Id <= 0 ? _serviceMessage.UDPGetMessage(TypeValidation.TheTablesdataIsNotOk) : _serviceFuncString.Empty;
+            message = values?.Tables[0]?.Id <= 0 ? _serviceMessage.UDPGetMessage(TypeValidation.TheTablesdataIsNotOk) : _serviceFuncString.Empty;
             return _serviceFuncString.UDPNullOrEmpty(message);
         }
 
         public bool UDPTablesdataHasFieldsContent(dynamic context, ref string message)
         {
             context.ActionArguments.TryGetValue(ControllerActionArgumentsKey.Tablesdata, out dynamic? values);
-            message = !values?.Fields.Any() ? _serviceMessage.UDPGetMessage(TypeValidation.TheTablesdataHasNoFieldsContent) : _serviceFuncString.Empty;
+            message = values?.Tables[0]?.Fields?.Count <= 0 ? _serviceMessage.UDPGetMessage(TypeValidation.TheTablesdataHasNoFieldsContent) : _serviceFuncString.Empty;
             return _serviceFuncString.UDPNullOrEmpty(message);
         }
 
         public bool UDPDirectoriesOk(dynamic context, ref string message)
         {
-            string directoryApp = _serviceFuncString.Empty;
-
             try
             {
-                directoryApp = _serviceDirectory.UDPObtainDirectory(DirectoryRootType.Configuration);
+                string directoryApp = _serviceDirectory.UDPObtainDirectory(DirectoryRootType.App);
                 message = !_serviceDirectory.UDPDirectoryExists(directoryApp) ? _serviceMessage.UDPGetMessage(TypeValidation.TheDirectoriesIsNotOk) : _serviceFuncString.Empty;
                 return _serviceFuncString.UDPNullOrEmpty(message);
             }
@@ -140,12 +138,9 @@ namespace UnifiedDevelopmentPowerPlatform.Application.Services
 
         public bool UDPFilesOk(dynamic context, ref string message)
         {
-            string fileDatabaseSchema = _serviceFuncString.Empty;
-
             try
             {
-                fileDatabaseSchema = _serviceFile.UDPGetDataFileFromDirectoryConfiguration(DirectoryStandard.Log, $"{FileStandard.IdDatabaseSchema}{FileExtension.Txt}");
-                message = !_serviceFile.UDPFileExists(fileDatabaseSchema) ? _serviceMessage.UDPGetMessage(TypeValidation.TheFilesIsNotOk) : _serviceFuncString.Empty;
+                message = _serviceFuncString.UDPNullOrEmpty(_serviceFile.UDPGetDataFileFromDirectoryConfiguration(DirectoryStandard.Log, $"{FileStandard.IdDatabaseSchema}{FileExtension.Txt}")) ? _serviceMessage.UDPGetMessage(TypeValidation.TheFilesIsNotOk) : _serviceFuncString.Empty;
                 return _serviceFuncString.UDPNullOrEmpty(message);
             }
             catch (Exception)
@@ -157,12 +152,14 @@ namespace UnifiedDevelopmentPowerPlatform.Application.Services
 
         public bool UDPFilesHasContent(dynamic context, ref string message)
         {
+            string directoryConfiguration = _serviceFuncString.Empty;
             string fileDatabaseSchema = _serviceFuncString.Empty;
 
             try
             {
-                fileDatabaseSchema = _serviceFile.UDPGetDataFileFromDirectoryConfiguration(DirectoryStandard.Log, $"{FileStandard.IdDatabaseSchema}{FileExtension.Txt}");
-                message = _serviceFile.UDPCountLines(fileDatabaseSchema) == 0 || _serviceFile.UDPCountLines(fileDatabaseSchema) <= 0 ? _serviceMessage.UDPGetMessage(TypeValidation.TheFilesIsNotOk) : _serviceFuncString.Empty;
+                directoryConfiguration = _serviceDirectory.UDPObtainDirectory(DirectoryRootType.Configuration);
+                fileDatabaseSchema = $"{directoryConfiguration}{DirectoryStandard.Log}{FileStandard.IdDatabaseSchema}{FileExtension.Txt}";
+                message = _serviceFile.UDPCountLines(fileDatabaseSchema) <= 0 ? _serviceMessage.UDPGetMessage(TypeValidation.TheFilesIsNotOk) : _serviceFuncString.Empty;
                 return _serviceFuncString.UDPNullOrEmpty(message);
             }
             catch (Exception)

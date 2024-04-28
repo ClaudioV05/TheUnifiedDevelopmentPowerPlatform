@@ -31,17 +31,17 @@ namespace UnifiedDevelopmentPowerPlatform.Application.Services
 
         public int UDPReturnIndexFromTheListOfDataTypes(string dataType)
         {
-            string resultDataType = _serviceFuncString.Empty;
+            string type = _serviceFuncString.Empty;
 
             try
             {
-                resultDataType = dataType;
-                resultDataType = _serviceFuncString.UDPLower(resultDataType);
-                resultDataType = _serviceFuncString.UDPOnlyLetter(resultDataType);
+                type = dataType;
+                type = _serviceFuncString.UDPLower(type);
+                type = _serviceFuncString.UDPOnlyLetter(type);
 
                 return Enum.GetNames(typeof(CSharp.DataType))
                            .ToList()
-                           .FindIndex(element => _serviceFuncString.UDPContains(_serviceFuncString.UDPLower(element), resultDataType));
+                           .FindIndex(element => _serviceFuncString.UDPContains(_serviceFuncString.UDPLower(element), type));
             }
             catch (Exception)
             {

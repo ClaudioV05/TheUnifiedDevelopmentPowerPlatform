@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.IO;
+using System.Text;
 using UnifiedDevelopmentPowerPlatform.Application.Interfaces;
 using UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.Directory;
 
@@ -87,19 +88,26 @@ namespace UnifiedDevelopmentPowerPlatform.Application.Services
         {
             var lineCount = 0;
 
-            if (!this.UDPFileExists(fileName))
+            try
             {
-                throw new FileNotFoundException($"File not found: {fileName}");
+                if (!this.UDPFileExists(fileName))
+                {
+                    throw new FileNotFoundException($"File not found");
+                }
+
+                using StreamReader reader = new StreamReader(new FileStream(fileName, FileMode.Open), Encoding.UTF8);
+
+                while (reader.ReadLine() is not null)
+                {
+                    lineCount++;
+                }
+
+                return lineCount;
             }
-
-            using StreamReader reader = new(fileName);
-
-            while (reader.ReadLine() is not null)
+            catch (Exception)
             {
-                lineCount++;
+                throw;
             }
-
-            return lineCount;
         }
 
         public string UDPGetDataFileFromDirectoryConfiguration(string section, string file)
