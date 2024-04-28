@@ -34,9 +34,9 @@ namespace UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.Messag
         public static string SuccessToTheSaveIdentifierToTheDatabasesFromMetadata => "SUCCESS TO THE SAVE IDENTIFIER TO THE DATABASES FROM METADATA.";
 
         /// <summary>
-        /// Error receive and save all table and fields of schema database.
+        /// Error receive and save all table(s) and field(s) of schema database.
         /// </summary>
-        public static string ErrorReceiveAndSaveAllTableAndFieldsOfSchemaDatabase => "ERROR OCCURRED AT RETURN ALL OF THE TABLE AND FIELDS OF SCHEMA DATABASEIN THE VALIDATION OF FIELDS.";
+        public static string ErrorReceiveAndSaveAllTablesAndFieldsOfSchemaDatabase => "ERROR OCCURRED AT RETURN ALL OF THE TABLES AND FIELDS OF SCHEMA DATABASEIN THE VALIDATION OF FIELDS.";
 
         /// <summary>
         /// The metrics of quantities of the tables.

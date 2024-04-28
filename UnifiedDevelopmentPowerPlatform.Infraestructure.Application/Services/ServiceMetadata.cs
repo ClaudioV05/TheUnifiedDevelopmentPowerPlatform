@@ -1,10 +1,9 @@
 ﻿using UnifiedDevelopmentPowerPlatform.Application.Interfaces;
 using UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities;
-using UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.Sql;
-using UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.MetaCharacter;
-using UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.UnifiedDevelopmentParameter;
-using UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.Message.Text;
 using UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.Message.Type;
+using UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.MetaCharacter;
+using UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.Sql;
+using UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.UnifiedDevelopmentParameter;
 
 namespace UnifiedDevelopmentPowerPlatform.Application.Services
 {
@@ -64,7 +63,7 @@ namespace UnifiedDevelopmentPowerPlatform.Application.Services
             _serviceDevelopmentEnvironments = serviceDevelopmentEnvironments;
         }
 
-        public List<Tables> UDPReceiveAndSaveAllTableAndFieldsOfSchemaDatabase(MetadataOwner metadata)
+        public List<Tables> UDPReceiveAndSaveAllTablesAndFieldsOfSchemaDatabase(MetadataOwner metadata)
         {
             int counter = 0;
             int idTable = 0;
@@ -76,7 +75,7 @@ namespace UnifiedDevelopmentPowerPlatform.Application.Services
 
             try
             {
-                _serviceLog.UDPRegisterLog(_serviceMessage.UDPGetMessage(TypeMetadata.CallStartReceiveAndSaveAllTableAndFieldsOfSchemaDatabase), _serviceFuncString.Empty);
+                _serviceLog.UDPRegisterLog(_serviceMessage.UDPGetMessage(TypeMetadata.CallStartToTheReceiveAndSaveAllTablesAndFieldsOfSchemaDatabase), _serviceFuncString.Empty);
 
                 _serviceMetadataTable.UDPSaveDatabaseSchemaFromMetadata(metadata);
                 _serviceFormsView.UDPSaveIdentifierToTheFormsViewFromMetadata(metadata);
@@ -94,7 +93,7 @@ namespace UnifiedDevelopmentPowerPlatform.Application.Services
 
                     if (listDatabaseSchemas is not null && listDatabaseSchemas.Any())
                     {
-                        _serviceLog.UDPRegisterLog(_serviceMessage.UDPGetMessage(TypeMetadata.LoadAllOfTheTableAndFieldsOfSchemaDatabase), _serviceFuncString.Empty);
+                        _serviceLog.UDPRegisterLog(_serviceMessage.UDPGetMessage(TypeMetadata.LoadAllOfTheTablesAndFieldsOfSchemaDatabase), _serviceFuncString.Empty);
 
                         for (int i = counter; counter < listDatabaseSchemas.Count; counter++)
                         {
@@ -144,8 +143,29 @@ namespace UnifiedDevelopmentPowerPlatform.Application.Services
             }
             catch (Exception ex)
             {
-                _serviceLog.UDPRegisterLog(_serviceMessage.UDPGetMessage(TypeDatabases.ErrorReceiveAndSaveAllTableAndFieldsOfSchemaDatabase), ex.Message);
-                throw new Exception(TextGlobal.TheExceptionGlobalErrorMessage);
+                _serviceLog.UDPRegisterLog(_serviceMessage.UDPGetMessage(TypeDatabases.ErrorReceiveAndSaveAllTablesAndFieldsOfSchemaDatabase), ex.Message);
+                throw new Exception(_serviceMessage.UDPGetMessage(TypeGlobal.TheExceptionGlobalErrorMessage));
+            }
+        }
+
+        public MetadataOwner UDPReceiveTheTablesdataAndGenerateTheSolution(MetadataOwner metadata)
+        {
+            try
+            {
+                _serviceLog.UDPRegisterLog(_serviceMessage.UDPGetMessage(TypeMetadata.CallStartToTheReceiveTheTablesdataAndGenerateTheSolution), _serviceFuncString.Empty);
+                // Code here.
+
+
+
+
+                _serviceLog.UDPRegisterLog(_serviceMessage.UDPGetMessage(TypeMetadata.SuccessToTheReceiveTheTablesdataAndGenerateTheSolution), _serviceFuncString.Empty);
+
+                return null;
+            }
+            catch (Exception ex)
+            {
+                _serviceLog.UDPRegisterLog(_serviceMessage.UDPGetMessage(TypeMetadata.ErroToTheReceiveTheTablesdataAndGenerateTheSolution), ex.Message);
+                throw new Exception(_serviceMessage.UDPGetMessage(TypeGlobal.TheExceptionGlobalErrorMessage));
             }
         }
 

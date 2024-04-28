@@ -9,8 +9,8 @@ namespace UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.Messag
     {
         [Description("The Message type do not specified")]
         DoNotSpecified = 0,
-        [Description("Error receive and save all table and fields of schema database")]
-        ErrorReceiveAndSaveAllTableAndFieldsOfSchemaDatabase = 1,
+        [Description("Error receive and save all tables and fields of schema database")]
+        ErrorReceiveAndSaveAllTablesAndFieldsOfSchemaDatabase = 1,
         [Description("Call start to the select parameters the kinds of databases")]
         CallStartToTheSelectParametersTheKindsOfDatabases = 2,
         [Description("Success to the select parameters the kinds of databases")]

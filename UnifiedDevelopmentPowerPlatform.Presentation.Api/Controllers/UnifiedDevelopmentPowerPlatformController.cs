@@ -108,7 +108,7 @@ namespace UnifiedDevelopmentPowerPlatform.Presentation.Api.Controllers
                     }},
             };
 
-            return Ok(_serviceMetadata.UDPReceiveAndSaveAllTableAndFieldsOfSchemaDatabase(metadataOwner));
+            return Ok(_serviceMetadata.UDPReceiveAndSaveAllTablesAndFieldsOfSchemaDatabase(metadata: metadataOwner));
         }
 
         /// <summary>
@@ -152,22 +152,12 @@ namespace UnifiedDevelopmentPowerPlatform.Presentation.Api.Controllers
         [DisableCors]
         public ActionResult Tablesdata([BindRequired] DtoTablesdata tablesdata)
         {
-            /*
             MetadataOwner metadataOwner = new MetadataOwner()
             {
-                Tables = new List<Tables>()
-                {
-                    new Tables()
-                    {
-                        
-                    }
-                }
+                Tables = tablesdata.Tables
             };
-            */
 
-            //_serviceMetadata.UDPNotImplemented(metadata: new MetadataOwner() { Tables = new List<Tables> metadata.DatabaseSchema });
-
-            return Ok();
+            return Ok(_serviceMetadata.UDPReceiveTheTablesdataAndGenerateTheSolution(metadata: metadataOwner));
         }
     }
 }

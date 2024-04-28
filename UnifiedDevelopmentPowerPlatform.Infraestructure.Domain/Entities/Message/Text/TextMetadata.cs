@@ -14,24 +14,24 @@ namespace UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.Messag
         public static string DoNotSpecified => "THE MESSAGE TYPE DO NOT SPECIFIED.";
 
         /// <summary>
-        /// Success at the receive and save all table and fields of schema database.
+        /// Call start to the receive and save all table(s) and field(s) of schema database.
         /// </summary>
-        public static string SuccessAtTheReceiveAndSaveAllTableAndFieldsOfSchemaDatabase => "SUCCESS AT THE RECEIVE AND SAVE ALL TABLE AND FIELDS OF SCHEMA DATABASE.";
+        public static string CallStartToTheReceiveAndSaveAllTablesAndFieldsOfSchemaDatabase => "CALL START TO THE RECEIVE AND SAVE ALL TABLES AND FIELDS OF SCHEMA DATABASE.";
 
         /// <summary>
-        /// Call start receive and save all table and fields of schema database.
+        /// Success to the receive and save all table(s) and field(s) of schema database.
         /// </summary>
-        public static string CallStartReceiveAndSaveAllTableAndFieldsOfSchemaDatabase => "CALL START RECEIVE AND SAVE ALL TABLE AND FIELDS OF SCHEMA DATABASE.";
+        public static string SuccessToTheReceiveAndSaveAllTableAndFieldsOfSchemaDatabase => "SUCCESS TO THE RECEIVE AND SAVE ALL TABLES AND FIELDS OF SCHEMA DATABASE.";
 
         /// <summary>
-        /// Load all of the table and fields of schema database.
+        /// Load all of the table(s) and fields of schema database.
         /// </summary>
-        public static string LoadAllOfTheTableAndFieldsOfSchemaDatabase => "LOAD ALL OF THE TABLE AND FIELDS OF SCHEMA DATABASE.";
+        public static string LoadAllOfTheTablesAndFieldsOfSchemaDatabase => "LOAD ALL OF THE TABLES AND FIELDS OF SCHEMA DATABASE.";
 
         /// <summary>
-        /// Decrypt ok of the receive and save all table and fields of schema database.
+        /// Decrypt ok from the receive and save all table and fields of schema database.
         /// </summary>
-        public static string DecryptOkOfTheReceiveAndSaveAllTableAndFieldsOfSchemaDatabase => "DECRYPT OK OF THE RECEIVE AND SAVE ALL TABLE AND FIELDS OF SCHEMA DATABASE.";
+        public static string DecryptOkFromTheReceiveAndSaveAllTableAndFieldsOfSchemaDatabase => "DECRYPT OK FROM THE RECEIVE AND SAVE ALL TABLE AND FIELDS OF SCHEMA DATABASE.";
 
         /// <summary>
         /// Call start to the Select parameters the kinds of unifiedDevelopment platform.
@@ -42,5 +42,20 @@ namespace UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.Messag
         /// Success to the Select parameters the kinds of unified development platform.
         /// </summary>
         public static string SuccessToTheSelectParametersTheKindsOfUnifiedDevelopmentPowerPlatform => "SUCCESS TO THE SELECT PARAMETERS THE KINDS OF UNIFIEDDEVELOPMENT PLATFORM.";
+
+        /// <summary>
+        /// Call start to the receive the tables data with their fields that will generate the solution.
+        /// </summary>
+        public static string CallStartToTheReceiveTheTablesdataAndGenerateTheSolution => "CALL START TO THE RECEIVE THE TABLES DATA WITH THEIR FIELDS THAT WILL GENERATE THE SOLUTION.";
+
+        /// <summary>
+        /// Success to the receive the tables data with their fields that will generate the solution.
+        /// </summary>
+        public static string SuccessToTheReceiveTheTablesdataAndGenerateTheSolution => "SUCCESS TO THE RECEIVE THE TABLES DATA WITH THEIR FIELDS THAT WILL GENERATE THE SOLUTION.";
+
+        /// <summary>
+        /// Error to the receive the tables data with their fields that will generate the solution.
+        /// </summary>
+        public static string ErroToTheReceiveTheTablesdataAndGenerateTheSolution => "ERROR TO THE RECEIVE THE TABLES DATA WITH THEIR FIELDS THAT WILL GENERATE THE SOLUTION.";
     }
 }

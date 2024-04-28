@@ -18,7 +18,19 @@ namespace UnifiedDevelopmentPowerPlatform.Application.Interfaces
         /// <exception cref=""></exception>
         /// <seealso href=""></seealso>
         /// <returns>The list of tables with name(s) and field(s) of schema database.</returns>
-        List<Tables> UDPReceiveAndSaveAllTableAndFieldsOfSchemaDatabase(MetadataOwner metadata);
+        List<Tables> UDPReceiveAndSaveAllTablesAndFieldsOfSchemaDatabase(MetadataOwner metadata);
+
+        /// <summary>
+        /// Receive the table(s) data with their field(s) that will generate the solution UDPP.
+        /// </summary>
+        /// <param name="metadata"></param>
+        /// <paramref name=""/>
+        /// <returns></returns>
+        /// <remarks></remarks>
+        /// <exception cref=""></exception>
+        /// <seealso href=""></seealso>
+        /// <returns>The solution in the format specified.</returns>
+        MetadataOwner UDPReceiveTheTablesdataAndGenerateTheSolution(MetadataOwner metadata);
 
         /// <summary>
         /// Not implemented yet.

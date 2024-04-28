@@ -98,7 +98,7 @@ namespace UnifiedDevelopmentPowerPlatform.Application.Services
                 TypeDatabases.TheMetricsOfQuantitiesOfTables => TextDatabases.TheMetricsOfQuantitiesOfTables,
                 TypeDatabases.TheMetricsOfQuantitiesOfFields => TextDatabases.TheMetricsOfQuantitiesOfFields,
                 TypeDatabases.TheMetricsOfTotalSizeOfDirectoryByParallelProcessing => TextDatabases.TheMetricsOfTotalSizeOfDirectoryByParallelProcessing,
-                TypeDatabases.ErrorReceiveAndSaveAllTableAndFieldsOfSchemaDatabase => TextDatabases.ErrorReceiveAndSaveAllTableAndFieldsOfSchemaDatabase,
+                TypeDatabases.ErrorReceiveAndSaveAllTablesAndFieldsOfSchemaDatabase => TextDatabases.ErrorReceiveAndSaveAllTablesAndFieldsOfSchemaDatabase,
                 _ => _serviceFuncString.Empty
             });
         }
@@ -142,12 +142,15 @@ namespace UnifiedDevelopmentPowerPlatform.Application.Services
             return _serviceFuncString.UDPUpper(type switch
             {
                 TypeMetadata.DoNotSpecified => TextMetadata.DoNotSpecified,
-                TypeMetadata.SuccessAtTheReceiveAndSaveAllTableAndFieldsOfSchemaDatabase => TextMetadata.SuccessAtTheReceiveAndSaveAllTableAndFieldsOfSchemaDatabase,
-                TypeMetadata.CallStartReceiveAndSaveAllTableAndFieldsOfSchemaDatabase => TextMetadata.CallStartReceiveAndSaveAllTableAndFieldsOfSchemaDatabase,
-                TypeMetadata.LoadAllOfTheTableAndFieldsOfSchemaDatabase => TextMetadata.LoadAllOfTheTableAndFieldsOfSchemaDatabase,
-                TypeMetadata.DecryptOkOfTheReceiveAndSaveAllTableAndFieldsOfSchemaDatabase => TextMetadata.DecryptOkOfTheReceiveAndSaveAllTableAndFieldsOfSchemaDatabase,
+                TypeMetadata.CallStartToTheReceiveAndSaveAllTablesAndFieldsOfSchemaDatabase => TextMetadata.CallStartToTheReceiveAndSaveAllTablesAndFieldsOfSchemaDatabase,
+                TypeMetadata.SuccessToTheReceiveAndSaveAllTableAndFieldsOfSchemaDatabase => TextMetadata.SuccessToTheReceiveAndSaveAllTableAndFieldsOfSchemaDatabase,
+                TypeMetadata.LoadAllOfTheTablesAndFieldsOfSchemaDatabase => TextMetadata.LoadAllOfTheTablesAndFieldsOfSchemaDatabase,
+                TypeMetadata.DecryptOkFromTheReceiveAndSaveAllTableAndFieldsOfSchemaDatabase => TextMetadata.DecryptOkFromTheReceiveAndSaveAllTableAndFieldsOfSchemaDatabase,
                 TypeMetadata.CallStartToTheSelectParametersTheKindsOfUnifiedDevelopmentPowerPlatform => TextMetadata.CallStartToTheSelectParametersTheKindsOfUnifiedDevelopmentPowerPlatform,
                 TypeMetadata.SuccessToTheSelectParametersTheKindsOfUnifiedDevelopmentPowerPlatform => TextMetadata.SuccessToTheSelectParametersTheKindsOfUnifiedDevelopmentPowerPlatform,
+                TypeMetadata.CallStartToTheReceiveTheTablesdataAndGenerateTheSolution => TextMetadata.CallStartToTheReceiveTheTablesdataAndGenerateTheSolution,
+                TypeMetadata.SuccessToTheReceiveTheTablesdataAndGenerateTheSolution => TextMetadata.SuccessToTheReceiveTheTablesdataAndGenerateTheSolution,
+                TypeMetadata.ErroToTheReceiveTheTablesdataAndGenerateTheSolution => TextMetadata.ErroToTheReceiveTheTablesdataAndGenerateTheSolution,
                 _ => _serviceFuncString.Empty
             });
         }
