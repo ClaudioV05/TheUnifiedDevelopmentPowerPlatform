@@ -205,17 +205,21 @@ namespace UnifiedDevelopmentPowerPlatform.Application.Services
             return _serviceFuncString.UDPUpper(type switch
             {
                 TypeValidation.DoNotSpecified => TextValidation.DoNotSpecified,
-                TypeValidation.TheModelStateIsNotOk => TextValidation.TheModelStateIsOk,
-                TypeValidation.TheScriptMetadataIsNotOk => TextValidation.TheScriptMetadataIsOk,
-                TypeValidation.TheMetadataIsNotIsBase64Ok => TextValidation.TheMetadataIsBase64Ok,
-                TypeValidation.TheDevelopmentEnvironmentIsNotOk => TextValidation.TheDevelopmentEnvironmentIsOk,
-                TypeValidation.TheFormsViewIsNotOk => TextValidation.TheFormsViewIsOk,
-                TypeValidation.TheDatabasesIsNotOk => TextValidation.TheDatabasesIsOk,
-                TypeValidation.TheDatabasesImplementedIsntOk => TextValidation.TheDatabasesImplementedIsntOk,
-                TypeValidation.TheDatabasesEngineIsNotOk => TextValidation.TheDatabasesEngineIsOk,
-                TypeValidation.TheArchitecturePatternsIsNotOk => TextValidation.TheArchitecturePatternsIsOk,
+                TypeValidation.TheModelStateIsNotOk => TextValidation.TheModelStateIsNotOk,
+                TypeValidation.TheScriptMetadataIsNotOk => TextValidation.TheScriptMetadataIsNotOk,
+                TypeValidation.TheMetadataIsNotInBase64Ok => TextValidation.TheMetadataIsNotInBase64Ok,
+                TypeValidation.TheDevelopmentEnvironmentIsNotOk => TextValidation.TheDevelopmentEnvironmentIsNotOk,
+                TypeValidation.TheFormsViewIsNotOk => TextValidation.TheFormsViewIsNotOk,
+                TypeValidation.TheDatabasesIsNotOk => TextValidation.TheDatabasesIsNotOk,
+                TypeValidation.TheDatabasesImplementedIsNotOk => TextValidation.TheDatabasesImplementedIsNotOk,
+                TypeValidation.TheDatabasesEngineIsNotOk => TextValidation.TheDatabasesEngineIsNotOk,
+                TypeValidation.TheArchitecturePatternsIsNotOk => TextValidation.TheArchitecturePatternsIsNotOk,
                 TypeValidation.ThePlatformWindowsIsOk => TextValidation.ThePlatformWindowsIsOk,
                 TypeValidation.ThePlatformWindowsIsNotOk => TextValidation.ThePlatformWindowsIsNotOk,
+                TypeValidation.TheTablesdataIsNotOk => TextValidation.TheTablesdataIsNotOk,
+                TypeValidation.TheTablesdataHasNoFieldsContent => TextValidation.TheTablesdataHasNoFieldsContent,
+                TypeValidation.TheDirectoriesIsNotOk => TextValidation.TheDirectoriesIsNotOk,
+                TypeValidation.TheFilesIsNotOk => TextValidation.TheFilesIsNotOk,
                 _ => _serviceFuncString.Empty
             });
         }

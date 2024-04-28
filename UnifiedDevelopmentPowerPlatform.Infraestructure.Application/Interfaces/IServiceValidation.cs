@@ -6,7 +6,7 @@
     public interface IServiceValidation
     {
         /// <summary>
-        /// Does validation if platform is Windows.
+        /// It does validation if platform is Windows.
         /// </summary>
         /// <param name="message"></param>
         /// <paramref name=""/>
@@ -14,11 +14,11 @@
         /// <remarks></remarks>
         /// <exception cref=""></exception>
         /// <seealso href=""></seealso>
-        /// <returns>Return true otherwise false.</returns>
+        /// <returns>The method will return true, otherwise will return false.</returns>
         bool UDPPlatformWindowsIsOk(ref string message);
 
         /// <summary>
-        /// Does Validation if model state are Ok.
+        /// It does validation if model state are Ok.
         /// </summary>
         /// <param name="context"></param>
         /// <param name="message"></param>
@@ -27,11 +27,11 @@
         /// <remarks></remarks>
         /// <exception cref=""></exception>
         /// <seealso href=""></seealso>
-        /// <returns>Return true otherwise false.</returns>
+        /// <returns>The method will return true, otherwise will return false.</returns>
         bool UDPModelStateIsOk(dynamic context, ref string message);
 
         /// <summary>
-        /// Does Validation to the database schema.
+        /// It does validation to the database schema.
         /// </summary>
         /// <param name="context"></param>
         /// <param name="message"></param>
@@ -40,11 +40,11 @@
         /// <remarks></remarks>
         /// <exception cref=""></exception>
         /// <seealso href=""></seealso>
-        /// <returns>Return true otherwise false.</returns>
+        /// <returns>The method will return true, otherwise will return false.</returns>
         bool UDPDatabaseSchemaIsOk(dynamic context, ref string message);
 
         /// <summary>
-        /// Validateing whether string is Base64.
+        /// It does validation if string is Base64.
         /// </summary>
         /// <param name="context"></param>
         /// <param name="message"></param>
@@ -53,11 +53,11 @@
         /// <remarks></remarks>
         /// <exception cref=""></exception>
         /// <seealso href=""></seealso>
-        /// <returns>Return true otherwise false.</returns>
+        /// <returns>The method will return true, otherwise will return false.</returns>
         bool UDPMetadataIsBase64Ok(dynamic context, ref string message);
 
         /// <summary>
-        /// Does Validation to the development environment.
+        /// It does validation to the development environment.
         /// </summary>
         /// <param name="context"></param>
         /// <param name="message"></param>
@@ -66,11 +66,11 @@
         /// <remarks></remarks>
         /// <exception cref=""></exception>
         /// <seealso href=""></seealso>
-        /// <returns>Return true otherwise false.</returns>
+        /// <returns>The method will return true, otherwise will return false.</returns>
         bool UDPDevelopmentEnvironmentIsOk(dynamic context, ref string message);
 
         /// <summary>
-        /// Does Validation to the Databases.
+        /// It does validation to the databases.
         /// </summary>
         /// <param name="context"></param>
         /// <param name="message"></param>
@@ -79,11 +79,11 @@
         /// <remarks></remarks>
         /// <exception cref=""></exception>
         /// <seealso href=""></seealso>
-        /// <returns>Return true otherwise false.</returns>
+        /// <returns>The method will return true, otherwise will return false.</returns>
         bool UDPDatabasesIsOk(dynamic context, ref string message);
 
         /// <summary>
-        /// Does Validation to the databases implemented ok.
+        /// It does validation to the databases implemented ok.
         /// </summary>
         /// <param name="context"></param>
         /// <param name="message"></param>
@@ -92,11 +92,11 @@
         /// <remarks></remarks>
         /// <exception cref=""></exception>
         /// <seealso href=""></seealso>
-        /// <returns>Return true otherwise false.</returns>
+        /// <returns>The method will return true, otherwise will return false.</returns>
         bool UDPDatabasesImplementedIsOk(dynamic context, ref string message);
 
         /// <summary>
-        /// Does Validation to the Databases Engine.
+        /// It does validation to the databases engine.
         /// </summary>
         /// <param name="context"></param>
         /// <param name="message"></param>
@@ -105,11 +105,11 @@
         /// <remarks></remarks>
         /// <exception cref=""></exception>
         /// <seealso href=""></seealso>
-        /// <returns>Return true otherwise false.</returns>
+        /// <returns>The method will return true, otherwise will return false.</returns>
         bool UDPDatabasesEngineIsOk(dynamic context, ref string message);
 
         /// <summary>
-        /// Does Validation to the forms view.
+        /// It does validation to the forms view.
         /// </summary>
         /// <param name="context"></param>
         /// <param name="message"></param>
@@ -118,11 +118,11 @@
         /// <remarks></remarks>
         /// <exception cref=""></exception>
         /// <seealso href=""></seealso>
-        /// <returns>Return true otherwise false.</returns>
+        /// <returns>The method will return true, otherwise will return false.</returns>
         bool UDPFormsViewIsOk(dynamic context, ref string message);
 
         /// <summary>
-        /// Does Validation to the architecture.
+        /// It does validation to the architecture.
         /// </summary>
         /// <param name="context"></param>
         /// <param name="message"></param>
@@ -131,7 +131,7 @@
         /// <remarks></remarks>
         /// <exception cref=""></exception>
         /// <seealso href=""></seealso>
-        /// <returns>Return true otherwise false.</returns>
+        /// <returns>The method will return true, otherwise will return false.</returns>
         bool UDPArchitectureOk(dynamic context, ref string message);
 
         /// <summary>
@@ -143,11 +143,11 @@
         /// <remarks></remarks>
         /// <exception cref=""></exception>
         /// <seealso href=""></seealso>
-        /// <returns>Return true otherwise false.</returns>
+        /// <returns>The method will return true, otherwise will return false.</returns>
         bool UDPValidateBase64(string? text);
 
         /// <summary>
-        /// Does Validation to the tables of metadata.
+        /// It does validation to the tables data.
         /// </summary>
         /// <param name="context"></param>
         /// <param name="message"></param>
@@ -156,11 +156,11 @@
         /// <remarks></remarks>
         /// <exception cref=""></exception>
         /// <seealso href=""></seealso>
-        /// <returns>Return true otherwise false.</returns>
-        bool UDPTablesMetadataIsOk(dynamic context, ref string message);
+        /// <returns>The method will return true, otherwise will return false.</returns>
+        bool UDPTablesdataIsOk(dynamic context, ref string message);
 
         /// <summary>
-        /// Does Validation to the directory are.
+        /// It does validation to the tables data has fields content.
         /// </summary>
         /// <param name="context"></param>
         /// <param name="message"></param>
@@ -169,11 +169,11 @@
         /// <remarks></remarks>
         /// <exception cref=""></exception>
         /// <seealso href=""></seealso>
-        /// <returns>Return true otherwise false.</returns>
-        bool UDPDirectoryAreOk(dynamic context, ref string message);
+        /// <returns>The method will return true, otherwise will return false.</returns>
+        bool UDPTablesdataHasFieldsContent(dynamic context, ref string message);
 
         /// <summary>
-        /// Does Validation tor the tiles are ok.
+        /// It does validation to the all directories are ok.
         /// </summary>
         /// <param name="context"></param>
         /// <param name="message"></param>
@@ -182,7 +182,33 @@
         /// <remarks></remarks>
         /// <exception cref=""></exception>
         /// <seealso href=""></seealso>
-        /// <returns>Return true otherwise false.</returns>
-        bool UDPFilesAreOk(dynamic context, ref string message);
+        /// <returns>The method will return true, otherwise will return false.</returns>
+        bool UDPDirectoriesOk(dynamic context, ref string message);
+
+        /// <summary>
+        /// It does validation to the files are ok.
+        /// </summary>
+        /// <param name="context"></param>
+        /// <param name="message"></param>
+        /// <paramref name=""/>
+        /// <returns></returns>
+        /// <remarks></remarks>
+        /// <exception cref=""></exception>
+        /// <seealso href=""></seealso>
+        /// <returns>The method will return true, otherwise will return false.</returns>
+        bool UDPFilesOk(dynamic context, ref string message);
+
+        /// <summary>
+        /// It does validation to the files has content.
+        /// </summary>
+        /// <param name="context"></param>
+        /// <param name="message"></param>
+        /// <paramref name=""/>
+        /// <returns></returns>
+        /// <remarks></remarks>
+        /// <exception cref=""></exception>
+        /// <seealso href=""></seealso>
+        /// <returns>The method will return true, otherwise will return false.</returns>
+        bool UDPFilesHasContent(dynamic context, ref string message);
     }
 }

@@ -19,8 +19,8 @@ namespace UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.Contro
         public const string RouterMetadata = "/Metadata";
 
         /// <summary>
-        ///  Routing to controller tables.
+        ///  Routing to controller tables data.
         /// </summary>
-        public const string RouterTables = "/Tables";
+        public const string RouterTablesdata = "/Tablesdata";
     }
 }

@@ -19,58 +19,78 @@ namespace UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.Messag
         public static string DoNotSpecified => "THE MESSAGE TYPE DO NOT SPECIFIED.";
 
         /// <summary>
-        /// The model state is ok.
+        /// The model state isn't ok.
         /// </summary>
-        public static string TheModelStateIsOk => $"THE (JSON) {_messageDefaultToServiceValidation}";
+        public static string TheModelStateIsNotOk => $"THE (JSON) {_messageDefaultToServiceValidation}";
 
         /// <summary>
-        /// The script metadata is ok.
+        /// The script metadata isn't ok.
         /// </summary>
-        public static string TheScriptMetadataIsOk => $"THE (METADATA) {_messageDefaultToServiceValidation}";
+        public static string TheScriptMetadataIsNotOk => $"THE (METADATA) {_messageDefaultToServiceValidation}";
 
         /// <summary>
-        /// The metadata is base64 ok.
+        /// The metadata isn't in base64 ok.
         /// </summary>
-        public static string TheMetadataIsBase64Ok => $"THE (METADATA) ON THE FORMAT BASE64 {_messageDefaultToServiceValidation}";
+        public static string TheMetadataIsNotInBase64Ok => $"THE (METADATA) ON THE FORMAT BASE64 {_messageDefaultToServiceValidation}";
 
         /// <summary>
-        /// The development environment is ok.
+        /// The development environment isn't ok.
         /// </summary>
-        public static string TheDevelopmentEnvironmentIsOk => $"THE (DEVELOPMENT ENVIRONMENT) {_messageDefaultToServiceValidation}";
+        public static string TheDevelopmentEnvironmentIsNotOk => $"THE (DEVELOPMENT ENVIRONMENT) {_messageDefaultToServiceValidation}";
 
         /// <summary>
-        /// The databases is ok.
+        /// The databases isn't ok.
         /// </summary>
-        public static string TheDatabasesIsOk => $"THE (DATABASES) {_messageDefaultToServiceValidation}";
+        public static string TheDatabasesIsNotOk => $"THE (DATABASES) {_messageDefaultToServiceValidation}";
 
         /// <summary>
         /// The databases implemented isn't ok.
         /// </summary>
-        public static string TheDatabasesImplementedIsntOk => "THE DATABASES IMPLEMENTED ISN'T OK";
+        public static string TheDatabasesImplementedIsNotOk => "THE DATABASES IMPLEMENTED ISN'T OK";
 
         /// <summary>
-        /// The databases engine is ok.
+        /// The databases engine isn't ok.
         /// </summary>
-        public static string TheDatabasesEngineIsOk => $"THE (DATABASES ENGINE) {_messageDefaultToServiceValidation}";
+        public static string TheDatabasesEngineIsNotOk => $"THE (DATABASES ENGINE) {_messageDefaultToServiceValidation}";
 
         /// <summary>
         /// The forms view is ok.
         /// </summary>
-        public static string TheFormsViewIsOk => $"THE (FORMS VIEW) {_messageDefaultToServiceValidation}";
+        public static string TheFormsViewIsNotOk => $"THE (FORMS VIEW) {_messageDefaultToServiceValidation}";
 
         /// <summary>
-        /// The architecture patterns is ok.
+        /// The architecture patterns isn't ok.
         /// </summary>
-        public static string TheArchitecturePatternsIsOk => $"THE (ARCHITECTURE PATTERNS) {_messageDefaultToServiceValidation}";
+        public static string TheArchitecturePatternsIsNotOk => $"THE (ARCHITECTURE PATTERNS) {_messageDefaultToServiceValidation}";
 
         /// <summary>
         /// The platform Windows is ok.
         /// </summary>
-        public static string ThePlatformWindowsIsOk => "PLATFORM TO BUILD UNIFIED DEVELOPMENT PLATFORM IS WINDOWS.";
+        public static string ThePlatformWindowsIsOk => "PLATFORM TO BUILD UNIFIED DEVELOPMENT POWER PLATFORM IS WINDOWS.";
 
         /// <summary>
         /// The platform Windows isn't ok.
         /// </summary>
-        public static string ThePlatformWindowsIsNotOk => "THIS VERSION OF (UNIFIED DEVELOPMENT PLATFORM) DON'T RUN IN CROSS CROSS PLATFORM. ONLY WINDOWS.";
+        public static string ThePlatformWindowsIsNotOk => "THIS VERSION OF (UNIFIED DEVELOPMENT POWER PLATFORM) DON'T RUN IN CROSS PLATFORM. ONLY IN WINDOWS.";
+
+        /// <summary>
+        /// The tables data isn't ok.
+        /// </summary>
+        public static string TheTablesdataIsNotOk => "THE TABLES DATA ISN'T OK.";
+
+        /// <summary>
+        /// The tables data has no fields content.
+        /// </summary>
+        public static string TheTablesdataHasNoFieldsContent => "THE TABLES DATA HAS NO FIELDS CONTENT.";
+
+        /// <summary>
+        /// The directories isn't ok.
+        /// </summary>
+        public static string TheDirectoriesIsNotOk => "THE DIRECTORIES ISN'T OK.";
+
+        /// <summary>
+        /// The files isn't ok.
+        /// </summary>
+        public static string TheFilesIsNotOk => "THE FILES ISN'T OK.";
     }
 }

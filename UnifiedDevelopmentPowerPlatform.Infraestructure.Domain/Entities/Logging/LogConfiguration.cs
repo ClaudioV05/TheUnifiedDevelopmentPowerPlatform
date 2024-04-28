@@ -42,6 +42,6 @@ namespace UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.Loggin
         /// <summary>
         /// The datetime of log.
         /// </summary>
-        public static string Datetime => $"DateTime{MetaCharacterSymbols.Colon}{MetaCharacterSymbols.WhiteSpace}";
+        public static string Datetime => $"Date and time{MetaCharacterSymbols.Colon}{MetaCharacterSymbols.WhiteSpace}";
     }
 }

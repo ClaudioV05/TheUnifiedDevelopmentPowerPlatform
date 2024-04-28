@@ -11,7 +11,7 @@ using UnifiedDevelopmentPowerPlatform.Presentation.Api.Models;
 namespace UnifiedDevelopmentPowerPlatform.Presentation.Api.Controllers
 {
     /// <summary>
-    /// Controller unified development power platform.
+    /// Controller Unified Development Power Platform - UDPP.
     /// </summary>
     [ApiController]
     [Route(ControllerRouterUnifiedDevelopmentPowerPlatform.RouterController)]
@@ -33,15 +33,15 @@ namespace UnifiedDevelopmentPowerPlatform.Presentation.Api.Controllers
         }
 
         /// <summary>
-        /// To receive the schema of database.
+        /// To receive the schema of database and do the creation of the tables with their fields.
         /// </summary>
-        /// <param name="metaData"></param>
+        /// <param name="metadata"></param>
         /// <paramref />
         /// <returns></returns>
         /// <remarks></remarks>
         /// <exception></exception>
         /// <seealso href=""></seealso>
-        /// <returns>The list of tables with name(s) and field(s) of schema database.</returns>
+        /// <returns>The list of tables with their name(s) and field(s) after extract data of database schema.</returns>
         /// 200 Status Codes: This is the best kind of HTTP status code to receive. A 200-level response means that everything is working exactly as it should.
         /// <response code="200">Everything is OK.</response>
         /// <response code="201">Created.</response>
@@ -71,40 +71,40 @@ namespace UnifiedDevelopmentPowerPlatform.Presentation.Api.Controllers
         [ProducesResponseType(StatusCodes.Status503ServiceUnavailable)]
         [ProducesResponseType(StatusCodes.Status504GatewayTimeout)]
         [DisableCors]
-        public ActionResult<List<Tables>> Metadata([BindRequired] DtoMetadata metaData)
+        public ActionResult<List<Tables>> Metadata([BindRequired] DtoMetadata metadata)
         {
             MetadataOwner metadataOwner = new MetadataOwner()
             {
-                DatabaseSchema = metaData.DatabaseSchema,
+                DatabaseSchema = metadata.DatabaseSchema,
                 FormsView = new List<FormsView>()
                 {
                     new FormsView()
                     {
-                        Id = metaData.IdForms
+                        Id = metadata.IdForms
                     }},
                 Databases = new List<Databases>()
                 {
                     new Databases()
                     {
-                        Id = metaData.IdDatabases
+                        Id = metadata.IdDatabases
                     }},
                 DatabasesEngine = new List<DatabasesEngine>()
                 {
                     new DatabasesEngine()
                     {
-                        Id = metaData.IdDatabasesEngine
+                        Id = metadata.IdDatabasesEngine
                     }},
                 ArchitecturePatterns = new List<ArchitecturePatterns>()
                 {
                     new ArchitecturePatterns()
                     {
-                        Id = metaData.Architecture
+                        Id = metadata.Architecture
                     }},
                 DevelopmentEnvironments = new List<DevelopmentEnvironments>()
                 {
                     new DevelopmentEnvironments()
                     {
-                        Id = metaData.IdDevelopmentEnvironment
+                        Id = metadata.IdDevelopmentEnvironment
                     }},
             };
 
@@ -112,15 +112,15 @@ namespace UnifiedDevelopmentPowerPlatform.Presentation.Api.Controllers
         }
 
         /// <summary>
-        /// To receive the table(s) with your field(s) to generate the magic solution.
+        /// To receive the table(s) with their field(s) that will generate the magic solution - UDPP.
         /// </summary>
-        /// <param name="dtoTablesData"></param>
+        /// <param name="tablesdata"></param>
         /// <paramref />
         /// <returns></returns>
         /// <remarks></remarks>
-        /// <exception ></exception>
+        /// <exception></exception>
         /// <seealso href=""></seealso>
-        /// <returns>List of string with fields names of tables</returns>
+        /// <returns>The solution in the format specified.</returns>
         /// 200 Status Codes: This is the best kind of HTTP status code to receive. A 200-level response means that everything is working exactly as it should.
         /// <response code="200">Everything is OK.</response>
         /// <response code="201">Created.</response>
@@ -136,7 +136,7 @@ namespace UnifiedDevelopmentPowerPlatform.Presentation.Api.Controllers
         /// <response code="504">The server, acting as a gateway, timed out waiting for another server to respond.</response>
         [HttpPost]
         [Produces(MediaTypeNames.Application.Json, MediaTypeNames.Application.Xml)]
-        [Route(ControllerRouterUnifiedDevelopmentPowerPlatform.RouterTables)]
+        [Route(ControllerRouterUnifiedDevelopmentPowerPlatform.RouterTablesdata)]
         [ServiceFilter(typeof(FilterActionContextLog), IsReusable = false, Order = ControllerOrderExecutationFilter.Second)]
         [ServiceFilter(typeof(FilterActionContextTablesdata<MetadataOwner>), IsReusable = false, Order = ControllerOrderExecutationFilter.Third)]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(ActionResult))]
@@ -150,7 +150,7 @@ namespace UnifiedDevelopmentPowerPlatform.Presentation.Api.Controllers
         [ProducesResponseType(StatusCodes.Status503ServiceUnavailable)]
         [ProducesResponseType(StatusCodes.Status504GatewayTimeout)]
         [DisableCors]
-        public ActionResult Tables([BindRequired] DtoTablesdata dtoTablesData)
+        public ActionResult Tablesdata([BindRequired] DtoTablesdata tablesdata)
         {
             /*
             MetadataOwner metadataOwner = new MetadataOwner()
@@ -164,6 +164,7 @@ namespace UnifiedDevelopmentPowerPlatform.Presentation.Api.Controllers
                 }
             };
             */
+
             //_serviceMetadata.UDPNotImplemented(metadata: new MetadataOwner() { Tables = new List<Tables> metadata.DatabaseSchema });
 
             return Ok();

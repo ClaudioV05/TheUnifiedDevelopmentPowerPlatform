@@ -14,7 +14,6 @@ namespace UnifiedDevelopmentPowerPlatform.Presentation.Api.Filters
     {
         private readonly IServiceLog _serviceLog;
         private readonly IServiceMessage _serviceMessage;
-        private readonly IServiceDirectory _serviceDirectory;
         private readonly IServiceValidation _serviceValidation;
         private readonly IServiceFuncString _serviceFuncString;
 
@@ -23,18 +22,15 @@ namespace UnifiedDevelopmentPowerPlatform.Presentation.Api.Filters
         /// </summary>
         /// <param name="serviceLog"></param>
         /// <param name="serviceMessage"></param>
-        /// <param name="serviceDirectory"></param>
         /// <param name="serviceValidation"></param>
         /// <param name="serviceFuncString"></param>
         public FilterActionContextTablesdata(IServiceLog serviceLog,
                                              IServiceMessage serviceMessage,
-                                             IServiceDirectory serviceDirectory,
                                              IServiceValidation serviceValidation,
                                              IServiceFuncString serviceFuncString)
         {
             _serviceLog = serviceLog;
             _serviceMessage = serviceMessage;
-            _serviceDirectory = serviceDirectory;
             _serviceValidation = serviceValidation;
             _serviceFuncString = serviceFuncString;
         }
@@ -61,21 +57,35 @@ namespace UnifiedDevelopmentPowerPlatform.Presentation.Api.Filters
                     return;
                 }
 
-                if (!_serviceValidation.UDPTablesMetadataIsOk(context, ref message))
+                if (!_serviceValidation.UDPTablesdataIsOk(context, ref message))
                 {
                     _serviceLog.UDPRegisterLog(message, _serviceFuncString.Empty);
                     HasMessage(context, message);
                     return;
                 }
 
-                if (!_serviceValidation.UDPDirectoryAreOk(context, ref message))
+                if (!_serviceValidation.UDPTablesdataHasFieldsContent(context, ref message))
                 {
                     _serviceLog.UDPRegisterLog(message, _serviceFuncString.Empty);
                     HasMessage(context, message);
                     return;
                 }
 
-                if (!_serviceValidation.UDPFilesAreOk(context, ref message))
+                if (!_serviceValidation.UDPDirectoriesOk(context, ref message))
+                {
+                    _serviceLog.UDPRegisterLog(message, _serviceFuncString.Empty);
+                    HasMessage(context, message);
+                    return;
+                }
+
+                if (!_serviceValidation.UDPFilesOk(context, ref message))
+                {
+                    _serviceLog.UDPRegisterLog(message, _serviceFuncString.Empty);
+                    HasMessage(context, message);
+                    return;
+                }
+
+                if (!_serviceValidation.UDPFilesHasContent(context, ref message))
                 {
                     _serviceLog.UDPRegisterLog(message, _serviceFuncString.Empty);
                     HasMessage(context, message);

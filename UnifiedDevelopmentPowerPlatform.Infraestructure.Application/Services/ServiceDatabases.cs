@@ -111,7 +111,6 @@ namespace UnifiedDevelopmentPowerPlatform.Application.Services
                 _serviceLog.UDPRegisterLog(_serviceMessage.UDPGetMessage(TypeDatabases.TheMetricsOfQuantitiesOfTables), Convert.ToString(this.UDPGetMetricsOfQuantitiesOfTables(listOfTables)));
                 _serviceLog.UDPRegisterLog(_serviceMessage.UDPGetMessage(TypeDatabases.TheMetricsOfQuantitiesOfFields), Convert.ToString(_serviceMetadataField.UDPGetMetricsOfQuantitiesOfFields(listOfTables, quantityOfTables)));
                 _serviceLog.UDPRegisterLog(_serviceMessage.UDPGetMessage(TypeDatabases.TheMetricsOfTotalSizeOfDirectoryByParallelProcessing), Convert.ToString(_serviceDirectory.GetMetricsOfTheTotalSizeOfDirectoryByParallelProcessing(new DirectoryInfo(_serviceDirectory.UDPObtainDirectory(DirectoryRootType.App)))));
-
                 _serviceLog.UDPRegisterLog(_serviceMessage.UDPGetMessage(TypeMetadataTable.SuccessToTheSaveMetricsOfTheGenerationOfTablesAndFields), _serviceFuncString.Empty);
             }
         }
