@@ -9,6 +9,9 @@
     <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
     <InvariantGlobalization>true</InvariantGlobalization>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <Authors>Claudiomildo Ventura</Authors>
+    <Company>CVWork</Company>
+    <Copyright>2024 clv.net</Copyright>
   </PropertyGroup>
 
   <ItemGroup>

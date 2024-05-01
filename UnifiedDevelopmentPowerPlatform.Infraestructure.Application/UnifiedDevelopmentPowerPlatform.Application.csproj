@@ -6,6 +6,9 @@
     <Nullable>enable</Nullable>
     <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
     <InvariantGlobalization>true</InvariantGlobalization>
+    <Authors>Claudiomildo Ventura</Authors>
+    <Company>CVWork</Company>
+    <Copyright>2024 clv.net</Copyright>
   </PropertyGroup>
 
   <ItemGroup>
