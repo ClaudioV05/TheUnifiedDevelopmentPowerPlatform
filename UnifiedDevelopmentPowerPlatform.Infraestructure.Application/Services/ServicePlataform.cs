@@ -1,44 +1,43 @@
 ﻿using System.Security;
 using UnifiedDevelopmentPowerPlatform.Application.Interfaces;
 
-namespace UnifiedDevelopmentPowerPlatform.Application.Services
+namespace UnifiedDevelopmentPowerPlatform.Application.Services;
+
+/// <summary>
+/// Service plataform.
+/// </summary>
+public class ServicePlataform : IServicePlataform
 {
     /// <summary>
-    /// Service plataform.
+    /// The constructor of service plataform.
     /// </summary>
-    public class ServicePlataform : IServicePlataform
+    /// <param name=""></param>
+    public ServicePlataform() { }
+
+    public bool UPDPlataformIsWindows() => OperatingSystem.IsWindows();
+
+    public string UDPEnvironmentAddNewLine() => Environment.NewLine;
+
+    public string UPDGetEnvironmentVariable(string variable) => Environment.GetEnvironmentVariable(variable);
+
+    public string UPDGetOperationalSystemVersion() => Environment.OSVersion.Version.ToString();
+
+    public List<string> UPDGetListEnvironmentVariables()
     {
-        /// <summary>
-        /// The constructor of service plataform.
-        /// </summary>
-        /// <param name=""></param>
-        public ServicePlataform() { }
+        List<string> listEnvironmentVariables = new List<string>();
 
-        public bool UPDPlataformIsWindows() => OperatingSystem.IsWindows();
-
-        public string UDPEnvironmentAddNewLine() => Environment.NewLine;
-
-        public string UPDGetEnvironmentVariable(string variable) => Environment.GetEnvironmentVariable(variable);
-
-        public string UPDGetOperationalSystemVersion() => Environment.OSVersion.Version.ToString();
-
-        public List<string> UPDGetListEnvironmentVariables()
+        try
         {
-            List<string> listEnvironmentVariables = new List<string>();
-
-            try
+            if (Environment.GetEnvironmentVariables().Keys is not null)
             {
-                if (Environment.GetEnvironmentVariables().Keys is not null)
+                foreach (string environmentVar in Environment.GetEnvironmentVariables().Keys)
                 {
-                    foreach (string environmentVar in Environment.GetEnvironmentVariables().Keys)
-                    {
-                        listEnvironmentVariables.Add(this.UPDGetEnvironmentVariable(environmentVar));
-                    }
+                    listEnvironmentVariables.Add(this.UPDGetEnvironmentVariable(environmentVar));
                 }
             }
-            catch (SecurityException) { }
-
-            return listEnvironmentVariables;
         }
+        catch (SecurityException) { }
+
+        return listEnvironmentVariables;
     }
 }

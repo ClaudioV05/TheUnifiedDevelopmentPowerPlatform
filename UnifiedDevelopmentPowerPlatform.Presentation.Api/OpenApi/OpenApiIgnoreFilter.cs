@@ -3,27 +3,26 @@ using Swashbuckle.AspNetCore.SwaggerGen;
 using System.Reflection;
 using System.Text.Json.Serialization;
 
-namespace UnifiedDevelopmentPowerPlatform.Presentation.Api.OpenApi
+namespace UnifiedDevelopmentPowerPlatform.Presentation.Api.OpenApi;
+
+public class OpenApiIgnoreFilter : ISchemaFilter
 {
-    public class OpenApiIgnoreFilter : ISchemaFilter
+    public void Apply(OpenApiSchema schema, SchemaFilterContext context)
     {
-        public void Apply(OpenApiSchema schema, SchemaFilterContext context)
+        if (schema.Properties.Count == 0)
         {
-            if (schema.Properties.Count == 0)
-            {
-                return;
-            }
+            return;
+        }
 
-            var properties = context.Type.GetProperties();
+        var properties = context.Type.GetProperties();
 
-            var excludedList = properties
-                .Where(element => element.GetCustomAttribute<SwaggerIgnoreAttribute>() is not null)
-                .Select(element => element.GetCustomAttribute<JsonPropertyNameAttribute>()?.Name ?? element.Name);
+        var excludedList = properties
+            .Where(element => element.GetCustomAttribute<SwaggerIgnoreAttribute>() is not null)
+            .Select(element => element.GetCustomAttribute<JsonPropertyNameAttribute>()?.Name ?? element.Name);
 
-            foreach (var excludedName in excludedList)
-            {
-                schema.Properties.Remove(excludedName);
-            }
+        foreach (var excludedName in excludedList)
+        {
+            schema.Properties.Remove(excludedName);
         }
     }
 }

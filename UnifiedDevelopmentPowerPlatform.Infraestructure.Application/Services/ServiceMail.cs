@@ -1,15 +1,14 @@
 ﻿using UnifiedDevelopmentPowerPlatform.Application.Interfaces;
 
-namespace UnifiedDevelopmentPowerPlatform.Application.Services
+namespace UnifiedDevelopmentPowerPlatform.Application.Services;
+
+/// <summary>
+/// Service mail.
+/// </summary>
+public class ServiceMail : IServiceMail
 {
     /// <summary>
-    /// Service mail.
+    /// The constructor of service mail.
     /// </summary>
-    public class ServiceMail : IServiceMail
-    {
-        /// <summary>
-        /// The constructor of service mail.
-        /// </summary>
-        public ServiceMail() { }
-    }
+    public ServiceMail() { }
 }

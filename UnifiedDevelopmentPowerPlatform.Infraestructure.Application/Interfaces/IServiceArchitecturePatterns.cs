@@ -1,33 +1,32 @@
 ﻿using UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities;
 
-namespace UnifiedDevelopmentPowerPlatform.Application.Interfaces
+namespace UnifiedDevelopmentPowerPlatform.Application.Interfaces;
+
+/// <summary>
+/// Interface service architecture patterns.
+/// </summary>
+public interface IServiceArchitecturePatterns
 {
     /// <summary>
-    /// Interface service architecture patterns.
+    /// Select parameters the kinds of architecture patterns.
     /// </summary>
-    public interface IServiceArchitecturePatterns
-    {
-        /// <summary>
-        /// Select parameters the kinds of architecture patterns.
-        /// </summary>
-        /// <param name=""></param>
-        /// <paramref name=""/>
-        /// <returns></returns>
-        /// <remarks></remarks>
-        /// <exception cref=""></exception>
-        /// <seealso href=""></seealso>
-        /// <returns>Return the complete list of the architecture patterns.</returns>
-        List<ArchitecturePatterns> UDPSelectParametersTheKindsOfArchitecturePatterns();
+    /// <param name=""></param>
+    /// <paramref name=""/>
+    /// <returns></returns>
+    /// <remarks></remarks>
+    /// <exception cref=""></exception>
+    /// <seealso href=""></seealso>
+    /// <returns>Return the complete list of the architecture patterns.</returns>
+    List<ArchitecturePatterns> UDPSelectParametersTheKindsOfArchitecturePatterns();
 
-        /// <summary>
-        /// Save identifier to the architecture patterns from metadata.
-        /// </summary>
-        /// <param name="metadata"></param>
-        /// <paramref name=""/>
-        /// <returns></returns>
-        /// <remarks></remarks>
-        /// <exception cref=""></exception>
-        /// <seealso href=""></seealso>
-        void UDPSaveIdentifierToTheArchitecturePatternsFromMetadata(MetadataOwner metadata);
-    }
+    /// <summary>
+    /// Save identifier to the architecture patterns from metadata.
+    /// </summary>
+    /// <param name="metadata"></param>
+    /// <paramref name=""/>
+    /// <returns></returns>
+    /// <remarks></remarks>
+    /// <exception cref=""></exception>
+    /// <seealso href=""></seealso>
+    void UDPSaveIdentifierToTheArchitecturePatternsFromMetadata(MetadataOwner metadata);
 }

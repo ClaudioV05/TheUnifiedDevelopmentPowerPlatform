@@ -1,20 +1,19 @@
-﻿namespace UnifiedDevelopmentPowerPlatform.Application.Interfaces
+﻿namespace UnifiedDevelopmentPowerPlatform.Application.Interfaces;
+
+/// <summary>
+/// Interface service json.
+/// </summary>
+public interface IServiceJson
 {
     /// <summary>
-    /// Interface service json.
+    /// Serializer JSON (JavaScript Object Notation). Using System.Text.Json.
     /// </summary>
-    public interface IServiceJson
-    {
-        /// <summary>
-        /// Serializer JSON (JavaScript Object Notation). Using System.Text.Json.
-        /// </summary>
-        /// <param name="obj"></param>
-        /// <paramref name=""/>
-        /// <returns></returns>
-        /// <remarks></remarks>
-        /// <exception cref=""></exception>
-        /// <seealso href=""></seealso>
-        /// <returns></returns>
-        string UDPSerializerJson(object obj);
-    }
+    /// <param name="obj"></param>
+    /// <paramref name=""/>
+    /// <returns></returns>
+    /// <remarks></remarks>
+    /// <exception cref=""></exception>
+    /// <seealso href=""></seealso>
+    /// <returns></returns>
+    string UDPSerializerJson(object obj);
 }

@@ -2,40 +2,39 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Interfaces;
 
-namespace UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities
+namespace UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities;
+
+/// <summary>
+/// Entity Development Environments.
+/// </summary>
+[ComplexType]
+public class DevelopmentEnvironments : IEntity
 {
     /// <summary>
-    /// Entity Development Environments.
+    /// Enum type for entitie development environments.
     /// </summary>
-    [ComplexType]
-    public class DevelopmentEnvironments : IEntity
+    [Flags]
+    public enum EnumeratedDevelopmentEnvironments : int
     {
-        /// <summary>
-        /// Enum type for entitie development environments.
-        /// </summary>
-        [Flags]
-        public enum EnumeratedDevelopmentEnvironments : int
-        {
-            [Description("Not Defined")]
-            NotDefined = 0,
-            [Description("DelphiXe10")]
-            DelphiXe10 = 1,
-            [Description("VisualStudio")]
-            VisualStudio = 2
-        }
-
-        public long Id { get; set; }
-
-        public string? Name { get; set; }
-
-        /// <summary>
-        /// Id Enumeration.
-        /// </summary>
-        public EnumeratedDevelopmentEnvironments IdEnumeration { get; set; } = 0;
-
-        /// <summary>
-        /// Name of enumeration.
-        /// </summary>
-        public string? NameEnumeration { get; set; }
+        [Description("Not Defined")]
+        NotDefined = 0,
+        [Description("DelphiXe10")]
+        DelphiXe10 = 1,
+        [Description("VisualStudio")]
+        VisualStudio = 2
     }
+
+    public long Id { get; set; }
+
+    public string? Name { get; set; }
+
+    /// <summary>
+    /// Id Enumeration.
+    /// </summary>
+    public EnumeratedDevelopmentEnvironments IdEnumeration { get; set; } = 0;
+
+    /// <summary>
+    /// Name of enumeration.
+    /// </summary>
+    public string? NameEnumeration { get; set; }
 }

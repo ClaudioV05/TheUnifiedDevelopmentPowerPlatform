@@ -1,18 +1,17 @@
-﻿namespace UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Interfaces
+﻿namespace UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Interfaces;
+
+/// <summary>
+/// Interface IEntity.
+/// </summary>
+public interface IEntity
 {
     /// <summary>
-    /// Interface IEntity.
+    /// IEntity identifier.
     /// </summary>
-    public interface IEntity
-    {
-        /// <summary>
-        /// IEntity identifier.
-        /// </summary>
-        long Id { get; set; }
+    long Id { get; set; }
 
-        /// <summary>
-        /// IEntity name.
-        /// </summary>
-        string? Name { get; set; }
-    }
+    /// <summary>
+    /// IEntity name.
+    /// </summary>
+    string? Name { get; set; }
 }

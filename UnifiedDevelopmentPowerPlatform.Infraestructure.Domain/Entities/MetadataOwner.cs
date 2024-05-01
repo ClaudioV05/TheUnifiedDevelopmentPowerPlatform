@@ -2,77 +2,76 @@
 using System.Runtime.Serialization;
 using UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Interfaces;
 
-namespace UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities
+namespace UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities;
+
+/// <summary>
+/// Entity Metadata owner.
+/// </summary>
+[ComplexType]
+public sealed class MetadataOwner : IEntity
 {
+    public long Id { get; set; }
+
+    public string? Name { get; set; }
+
     /// <summary>
-    /// Entity Metadata owner.
+    /// Database schema.
     /// </summary>
-    [ComplexType]
-    public sealed class MetadataOwner : IEntity
+    [DataMember]
+    public string? DatabaseSchema { get; set; }
+
+    /// <summary>
+    /// The architecture patterns.
+    /// </summary>
+    [DataMember]
+    public List<ArchitecturePatterns>? ArchitecturePatterns { get; set; }
+
+    /// <summary>
+    /// The Databases.
+    /// </summary>
+    [DataMember]
+    public List<Databases>? Databases { get; set; }
+
+    /// <summary>
+    /// The databases engine.
+    /// </summary>
+    [DataMember]
+    public List<DatabasesEngine>? DatabasesEngine { get; set; }
+
+    /// <summary>
+    /// The development environments.
+    /// </summary>
+    [DataMember]
+    public List<DevelopmentEnvironments>? DevelopmentEnvironments { get; set; }
+
+    /// <summary>
+    /// The forms view.
+    /// </summary>
+    [DataMember]
+    public List<FormsView>? FormsView { get; set; }
+
+    /// <summary>
+    /// The tables.
+    /// </summary>
+    [DataMember]
+    public List<Tables>? Tables { get; set; }
+
+    /// <summary>
+    /// The constructor of Metadata owner.
+    /// </summary>
+    /// <param name=""></param>
+    /// <exception cref="Exception"></exception>
+    public MetadataOwner()
     {
-        public long Id { get; set; }
-
-        public string? Name { get; set; }
-
-        /// <summary>
-        /// Database schema.
-        /// </summary>
-        [DataMember]
-        public string? DatabaseSchema { get; set; }
-
-        /// <summary>
-        /// The architecture patterns.
-        /// </summary>
-        [DataMember]
-        public List<ArchitecturePatterns>? ArchitecturePatterns { get; set; }
-
-        /// <summary>
-        /// The Databases.
-        /// </summary>
-        [DataMember]
-        public List<Databases>? Databases { get; set; }
-
-        /// <summary>
-        /// The databases engine.
-        /// </summary>
-        [DataMember]
-        public List<DatabasesEngine>? DatabasesEngine { get; set; }
-
-        /// <summary>
-        /// The development environments.
-        /// </summary>
-        [DataMember]
-        public List<DevelopmentEnvironments>? DevelopmentEnvironments { get; set; }
-
-        /// <summary>
-        /// The forms view.
-        /// </summary>
-        [DataMember]
-        public List<FormsView>? FormsView { get; set; }
-
-        /// <summary>
-        /// The tables.
-        /// </summary>
-        [DataMember]
-        public List<Tables>? Tables { get; set; }
-
-        /// <summary>
-        /// The constructor of Metadata owner.
-        /// </summary>
-        /// <param name=""></param>
-        /// <exception cref="Exception"></exception>
-        public MetadataOwner()
+        try
         {
-            try
-            {
-                Id = 0;
-                Name = string.Empty;
-                DatabaseSchema = string.Empty;
-            }
-            catch (Exception)
-            {
-                throw new Exception("The creation of " + typeof(MetadataOwner).Name + " is with erro.");
-            }
+            Id = 0;
+            Name = string.Empty;
+            DatabaseSchema = string.Empty;
+        }
+        catch (Exception)
+        {
+            throw new Exception("The creation of " + typeof(MetadataOwner).Name + " is with erro.");
         }
     }
 }

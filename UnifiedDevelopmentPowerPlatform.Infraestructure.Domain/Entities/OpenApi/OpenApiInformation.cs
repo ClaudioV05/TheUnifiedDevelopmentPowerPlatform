@@ -1,31 +1,30 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.OpenApi
+namespace UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.OpenApi;
+
+[ComplexType]
+/// <summary>
+/// Documentation about the informations of API.
+/// </summary>
+public static class OpenApiInformation
 {
-    [ComplexType]
     /// <summary>
-    /// Documentation about the informations of API.
+    /// The version.
     /// </summary>
-    public static class OpenApiInformation
-    {
-        /// <summary>
-        /// The version.
-        /// </summary>
-        public static string Version => "v1";
+    public static string Version => "v1";
 
-        /// <summary>
-        /// The title.
-        /// </summary>
-        public static string Title => "UNIFIED DEVELOPMENT POWER PLATFORM - UDPP";
+    /// <summary>
+    /// The title.
+    /// </summary>
+    public static string Title => "UNIFIED DEVELOPMENT POWER PLATFORM - UDPP";
 
-        /// <summary>
-        /// The description.
-        /// </summary>
-        public static string Description => "The solution generator to C#";
+    /// <summary>
+    /// The description.
+    /// </summary>
+    public static string Description => "The solution generator to C#";
 
-        /// <summary>
-        /// The terms of service.
-        /// </summary>
-        public static string TermsOfService => "https://claudiomildo.net/terms";
-    }
+    /// <summary>
+    /// The terms of service.
+    /// </summary>
+    public static string TermsOfService => "https://claudiomildo.net/terms";
 }

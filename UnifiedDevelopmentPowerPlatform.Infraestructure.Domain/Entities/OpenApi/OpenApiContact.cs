@@ -1,26 +1,25 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.OpenApi
+namespace UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.OpenApi;
+
+[ComplexType]
+/// <summary>
+/// Documentation about the contacts of API.
+/// </summary>
+public static class OpenApiContact
 {
-    [ComplexType]
     /// <summary>
-    /// Documentation about the contacts of API.
+    /// Name.
     /// </summary>
-    public static class OpenApiContact
-    {
-        /// <summary>
-        /// Name.
-        /// </summary>
-        public static string Name => "CLAUDIOMILDO VENTURA";
+    public static string Name => "CLAUDIOMILDO VENTURA";
 
-        /// <summary>
-        /// Email.
-        /// </summary>
-        public static string Email => "claudiomildo@hotmail.com";
+    /// <summary>
+    /// Email.
+    /// </summary>
+    public static string Email => "claudiomildo@hotmail.com";
 
-        /// <summary>
-        /// Url.
-        /// </summary>
-        public static string Url => "https://www.claudiomildo.net";
-    }
+    /// <summary>
+    /// Url.
+    /// </summary>
+    public static string Url => "https://www.claudiomildo.net";
 }

@@ -2,46 +2,45 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Interfaces;
 
-namespace UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities
+namespace UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities;
+
+/// <summary>
+/// Entity Databases.
+/// </summary>
+[ComplexType]
+public class Databases : IEntity
 {
     /// <summary>
-    /// Entity Databases.
+    /// Enum type for entitie Databases.
     /// </summary>
-    [ComplexType]
-    public class Databases : IEntity
+    [Flags]
+    public enum EnumeratedDatabases : int
     {
-        /// <summary>
-        /// Enum type for entitie Databases.
-        /// </summary>
-        [Flags]
-        public enum EnumeratedDatabases : int
-        {
-            [Description("Not Defined")]
-            NotDefined = 0,
-            [Description("SqlServer")]
-            SqlServer = 1,
-            [Description("MySql")]
-            MySql = 2,
-            [Description("Firebird")]
-            Firebird = 3,
-            [Description("Oracle")]
-            Oracle = 4,
-            [Description("Sybase")]
-            Sybase = 5
-        }
-
-        public long Id { get; set; }
-
-        public string? Name { get; set; }
-
-        /// <summary>
-        /// Id Enumeration.
-        /// </summary>
-        public EnumeratedDatabases IdEnumeration { get; set; } = 0;
-
-        /// <summary>
-        /// Name of enumeration.
-        /// </summary>
-        public string? NameEnumeration { get; set; }
+        [Description("Not Defined")]
+        NotDefined = 0,
+        [Description("SqlServer")]
+        SqlServer = 1,
+        [Description("MySql")]
+        MySql = 2,
+        [Description("Firebird")]
+        Firebird = 3,
+        [Description("Oracle")]
+        Oracle = 4,
+        [Description("Sybase")]
+        Sybase = 5
     }
+
+    public long Id { get; set; }
+
+    public string? Name { get; set; }
+
+    /// <summary>
+    /// Id Enumeration.
+    /// </summary>
+    public EnumeratedDatabases IdEnumeration { get; set; } = 0;
+
+    /// <summary>
+    /// Name of enumeration.
+    /// </summary>
+    public string? NameEnumeration { get; set; }
 }
