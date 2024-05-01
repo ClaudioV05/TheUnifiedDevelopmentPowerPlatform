@@ -1,4 +1,4 @@
-﻿using UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.Directory;
+﻿using UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.Directory.DomainDrivenDesign;
 
 namespace UnifiedDevelopmentPowerPlatform.Application.Interfaces
 {
@@ -20,18 +20,6 @@ namespace UnifiedDevelopmentPowerPlatform.Application.Interfaces
         void UPDCreateDirectoryProjectOfSolution();
 
         /// <summary>
-        /// Get metrics of the total size of directory by parallel processing.
-        /// </summary>
-        /// <param name="directory"></param>
-        /// <paramref name=""/>
-        /// <returns></returns>
-        /// <remarks></remarks>
-        /// <exception cref=""></exception>
-        /// <seealso href=""></seealso>
-        /// <returns>Return the total size of directoy at the moment of call.</returns>
-        long GetMetricsOfTheTotalSizeOfDirectoryByParallelProcessing(DirectoryInfo directory);
-
-        /// <summary>
         /// Build directory standard of solution.
         /// </summary>
         /// <paramref name=""/>
@@ -41,6 +29,18 @@ namespace UnifiedDevelopmentPowerPlatform.Application.Interfaces
         /// <seealso href=""></seealso>
         /// <returns></returns>
         void UPDBuildDirectoryStandardOfSolution();
+
+        /// <summary>
+        /// Verify if directory exists.
+        /// </summary>
+        /// <param name="absolutePath"></param>
+        /// <paramref name=""/>
+        /// <returns></returns>
+        /// <remarks></remarks>
+        /// <exception cref=""></exception>
+        /// <seealso href=""></seealso>
+        /// <returns>The method will return true, otherwise will return false.</returns>
+        bool UDPDirectoryExists(string absolutePath);
 
         /// <summary>
         /// Obtain directory root.
@@ -55,15 +55,15 @@ namespace UnifiedDevelopmentPowerPlatform.Application.Interfaces
         string UDPObtainDirectory(DirectoryRootType directoryRootType);
 
         /// <summary>
-        /// Verify if directory exists.
+        /// Get metrics of the total size of directory by parallel processing.
         /// </summary>
-        /// <param name="absolutePath"></param>
+        /// <param name="directory"></param>
         /// <paramref name=""/>
         /// <returns></returns>
         /// <remarks></remarks>
         /// <exception cref=""></exception>
         /// <seealso href=""></seealso>
-        /// <returns>The method will return true, otherwise will return false.</returns>
-        bool UDPDirectoryExists(string absolutePath);
+        /// <returns>Return the total size of directoy at the moment of call.</returns>
+        long UDPGetMetricsOfTheTotalSizeOfDirectory(DirectoryInfo directory);
     }
 }

@@ -1,10 +1,10 @@
 ﻿using UnifiedDevelopmentPowerPlatform.Application.Interfaces;
 using UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities;
-using UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.Directory;
 using UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.File;
 using UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.Sql;
 using UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.MetaCharacter;
 using UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.Message.Type;
+using UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.Directory.DomainDrivenDesign;
 
 namespace UnifiedDevelopmentPowerPlatform.Application.Services
 {

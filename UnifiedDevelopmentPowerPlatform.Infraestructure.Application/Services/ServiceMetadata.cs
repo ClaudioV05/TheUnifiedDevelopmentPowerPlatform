@@ -88,7 +88,7 @@ namespace UnifiedDevelopmentPowerPlatform.Application.Services
 
                 if (!_serviceFuncString.UDPNullOrEmpty(databaseSchemaDecrypt))
                 {
-                    _serviceLog.UDPRegisterLog(_serviceMessage.UDPGetMessage(TypeMetadata.DecryptOkOfTheReceiveAndSaveAllTableAndFieldsOfSchemaDatabase), _serviceFuncString.Empty);
+                    _serviceLog.UDPRegisterLog(_serviceMessage.UDPGetMessage(TypeMetadata.DecryptOkFromTheReceiveAndSaveAllTableAndFieldsOfSchemaDatabase), _serviceFuncString.Empty);
                     _serviceMetadataTable.UDPLoadTheDatabaseSchema(ref listDatabaseSchemas, _serviceFuncString.UDPParseLine(new[] { $"{MetaCharacterSymbols.CarriageReturn}{MetaCharacterSymbols.NewLine}", MetaCharacterSymbols.CarriageReturn, MetaCharacterSymbols.NewLine }, databaseSchemaDecrypt));
 
                     if (listDatabaseSchemas is not null && listDatabaseSchemas.Any())
@@ -138,7 +138,7 @@ namespace UnifiedDevelopmentPowerPlatform.Application.Services
                     _serviceDatabases.UDPSaveMetricsOfTheGenerationOfTablesAndFields(listOfTables);
                 }
 
-                _serviceLog.UDPRegisterLog(_serviceMessage.UDPGetMessage(TypeMetadata.SuccessAtTheReceiveAndSaveAllTableAndFieldsOfSchemaDatabase), _serviceFuncString.Empty);
+                _serviceLog.UDPRegisterLog(_serviceMessage.UDPGetMessage(TypeMetadata.SuccessToTheReceiveAndSaveAllTableAndFieldsOfSchemaDatabase), _serviceFuncString.Empty);
                 return listOfTables;
             }
             catch (Exception ex)
@@ -160,7 +160,7 @@ namespace UnifiedDevelopmentPowerPlatform.Application.Services
 
                 _serviceLog.UDPRegisterLog(_serviceMessage.UDPGetMessage(TypeMetadata.SuccessToTheReceiveTheTablesdataAndGenerateTheSolution), _serviceFuncString.Empty);
 
-                return null;
+                return new();
             }
             catch (Exception ex)
             {

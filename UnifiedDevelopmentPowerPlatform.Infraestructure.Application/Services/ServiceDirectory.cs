@@ -1,7 +1,8 @@
 ﻿using System.Reflection;
 using System.Text.RegularExpressions;
 using UnifiedDevelopmentPowerPlatform.Application.Interfaces;
-using UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.Directory;
+using UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.Directory.DomainDrivenDesign;
+using UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.MetaCharacter;
 
 namespace UnifiedDevelopmentPowerPlatform.Application.Services
 {
@@ -23,25 +24,6 @@ namespace UnifiedDevelopmentPowerPlatform.Application.Services
             _serviceFuncString = serviceFuncString;
         }
 
-        public string UDPObtainDirectory(DirectoryRootType directoryRootType)
-        {
-            try
-            {
-                DirectoryRoot.DirectoryRootPath = this.UDPGetRootDirectory();
-                return $"{DirectoryRoot.DirectoryRootPath}{this.UDPObtainDirectoryRoot(directoryRootType)}";
-            }
-            catch (IOException)
-            {
-                return _serviceFuncString.Empty;
-                throw;
-            }
-            catch (Exception)
-            {
-                return _serviceFuncString.Empty;
-                throw;
-            }
-        }
-
         public void UPDBuildDirectoryStandardOfSolution()
         {
             try
@@ -54,30 +36,20 @@ namespace UnifiedDevelopmentPowerPlatform.Application.Services
                 {
                     for (int i = 0; i < Enum.GetValues(typeof(DirectoryRootType)).Length; i++)
                     {
-                        if ((DirectoryRootType)i == DirectoryRootType.App || (DirectoryRootType)i == DirectoryRootType.Configuration || (DirectoryRootType)i == DirectoryRootType.Json || (DirectoryRootType)i == DirectoryRootType.Log || (DirectoryRootType)i == DirectoryRootType.Xml)
+                        if ((DirectoryRootType)i == DirectoryRootType.App || (DirectoryRootType)i == DirectoryRootType.Configuration || (DirectoryRootType)i == DirectoryRootType.Log)
                         {
-                            this.UDPLoadDirectory($"{DirectoryRoot.DirectoryRootPath}{this.UDPObtainDirectoryRoot((DirectoryRootType)i)}");
+                            this.UDPAddAllRootDirectory($"{DirectoryRoot.DirectoryRootPath}{this.UDPObtainDirectoryRoot((DirectoryRootType)i)}");
                         }
                     }
                 }
 
-                this.UDPCreateDirectory();
-            }
-            catch (IOException)
-            {
-                this.UDPDeleteAllRootDirectory($"{DirectoryRoot.DirectoryRootPath}{DirectoryRoot.App}");
-                throw;
+                this.UDPCreateAllRootDirectory();
             }
             catch (Exception)
             {
                 this.UDPDeleteAllRootDirectory($"{DirectoryRoot.DirectoryRootPath}{DirectoryRoot.App}");
                 throw;
             }
-        }
-
-        public bool UDPDirectoryExists(string absolutePath)
-        {
-            return Directory.Exists(absolutePath);
         }
 
         public void UPDCreateDirectoryProjectOfSolution()
@@ -95,14 +67,14 @@ namespace UnifiedDevelopmentPowerPlatform.Application.Services
                             continue;
                         }
 
-                        if ((DirectoryRootType)i != DirectoryRootType.App || (DirectoryRootType)i != DirectoryRootType.Configuration || (DirectoryRootType)i != DirectoryRootType.Json || (DirectoryRootType)i != DirectoryRootType.Log || (DirectoryRootType)i != DirectoryRootType.Xml)
+                        if ((DirectoryRootType)i != DirectoryRootType.App || (DirectoryRootType)i != DirectoryRootType.Configuration || (DirectoryRootType)i != DirectoryRootType.Log)
                         {
-                            this.UDPLoadDirectory($"{DirectoryRoot.DirectoryRootPath}{this.UDPObtainDirectoryRoot((DirectoryRootType)i)}");
+                            this.UDPAddAllRootDirectory($"{DirectoryRoot.DirectoryRootPath}{this.UDPObtainDirectoryRoot((DirectoryRootType)i)}");
                         }
                     }
                 }
 
-                this.UDPCreateDirectory();
+                this.UDPCreateAllRootDirectory();
             }
             catch (IOException)
             {
@@ -111,7 +83,25 @@ namespace UnifiedDevelopmentPowerPlatform.Application.Services
             }
         }
 
-        public long GetMetricsOfTheTotalSizeOfDirectoryByParallelProcessing(DirectoryInfo directory)
+        public bool UDPDirectoryExists(string absolutePath)
+        {
+            return Directory.Exists(absolutePath);
+        }
+
+        public string UDPObtainDirectory(DirectoryRootType directoryRootType)
+        {
+            try
+            {
+                DirectoryRoot.DirectoryRootPath = this.UDPGetRootDirectory();
+                return $"{DirectoryRoot.DirectoryRootPath}{this.UDPObtainDirectoryRoot(directoryRootType)}";
+            }
+            catch (Exception)
+            {
+                return _serviceFuncString.Empty;
+            }
+        }
+
+        public long UDPGetMetricsOfTheTotalSizeOfDirectory(DirectoryInfo directory)
         {
             if (directory is null || !directory.Exists)
             {
@@ -122,7 +112,7 @@ namespace UnifiedDevelopmentPowerPlatform.Application.Services
 
             try
             {
-                Parallel.ForEach(directory.EnumerateFiles("*", SearchOption.AllDirectories), fileInfo =>
+                Parallel.ForEach(directory.EnumerateFiles(MetaCharacterSymbols.Asterisk, SearchOption.AllDirectories), fileInfo =>
                 {
                     try
                     {
@@ -150,33 +140,13 @@ namespace UnifiedDevelopmentPowerPlatform.Application.Services
             return size;
         }
 
-        private void UDPLoadDirectory(string absolutePath)
-        {
-            _listDirectory.Add(absolutePath);
-        }
+        #region Private methods.
 
-        private void UDPCreateDirectory()
-        {
-            try
-            {
-                if (_listDirectory != null && _listDirectory.Any())
-                {
-                    for (int i = 0; i < _listDirectory.Count; i++)
-                    {
-                        if (!_serviceFuncString.UDPNullOrEmpty(_listDirectory[i]))
-                        {
-                            Directory.CreateDirectory(_listDirectory[i]);
-                        }
-                    }
-                }
-            }
-            catch (IOException)
-            {
-                throw new IOException();
-            }
-        }
+        private void UDPAddAllRootDirectory(string absolutePath) => _listDirectory.Add(absolutePath);
 
-        private bool UDPDeleteAllRootDirectory(string absolutePath)
+        private void UDPCreateAllRootDirectory() => _listDirectory.ForEach(dir => Directory.CreateDirectory(dir));
+
+        private void UDPDeleteAllRootDirectory(string absolutePath)
         {
             try
             {
@@ -185,16 +155,7 @@ namespace UnifiedDevelopmentPowerPlatform.Application.Services
                     Directory.Delete(absolutePath, true);
                 }
             }
-            catch (IOException)
-            {
-                return false;
-            }
-            catch (Exception)
-            {
-                return false;
-            }
-
-            return true;
+            catch (Exception) { }
         }
 
         private string UDPObtainDirectoryRoot(DirectoryRootType directoryRootType)
@@ -205,9 +166,7 @@ namespace UnifiedDevelopmentPowerPlatform.Application.Services
                 DirectoryRootType.Backend => DirectoryRoot.Backend,
                 DirectoryRootType.Frontend => DirectoryRoot.Frontend,
                 DirectoryRootType.Configuration => DirectoryRoot.Configuration,
-                DirectoryRootType.Json => DirectoryRoot.Json,
                 DirectoryRootType.Log => DirectoryRoot.Log,
-                DirectoryRootType.Xml => DirectoryRoot.Xml,
                 DirectoryRootType.BackendPresentation => DirectoryRoot.BackendPresentation,
                 DirectoryRootType.BackendPresentationProperties => DirectoryRoot.BackendPresentationProperties,
                 DirectoryRootType.BackendPresentationControllers => DirectoryRoot.BackendPresentationControllers,
@@ -246,26 +205,21 @@ namespace UnifiedDevelopmentPowerPlatform.Application.Services
 
         private string UDPGetRootDirectory()
         {
-            Regex? regex = null;
-            string? exeRootDirectory = _serviceFuncString.Empty;
-            string? rootDirectoryOfSolution = _serviceFuncString.Empty;
-
             try
             {
-                regex = new Regex(@"(?<!fil)[A-Za-z]:\\+[\S\s]*?(?=\\+unifieddevelopmentpowerplatform.presentation.api)");
+                string? exeRootDirectory = _serviceFuncString.Empty;
+
+                Regex? regex = new Regex(@"(?<!fil)[A-Za-z]:\\+[\S\s]*?(?=\\+unifieddevelopmentpowerplatform.presentation.api)");
                 exeRootDirectory = _serviceFuncString.UDPLower(Assembly.GetExecutingAssembly().Location);
 
-                if (regex.IsMatch(exeRootDirectory ?? _serviceFuncString.Empty))
-                {
-                    rootDirectoryOfSolution = regex.Match(exeRootDirectory ?? _serviceFuncString.Empty).Value;
-                }
-
-                return rootDirectoryOfSolution;
+                return regex.IsMatch(exeRootDirectory) ? regex.Match(exeRootDirectory).Value : _serviceFuncString.Empty;
             }
             catch (IOException)
             {
                 return _serviceFuncString.Empty;
             }
         }
+
+        #endregion Private methods.
     }
 }

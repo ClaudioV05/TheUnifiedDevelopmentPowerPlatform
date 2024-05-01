@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.Directory
+namespace UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.Directory.DomainDrivenDesign
 {
     /// <summary>
     /// Directory root type.
@@ -23,126 +23,120 @@ namespace UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.Direct
         [Description("Directory root configuration")]
         Configuration = 4,
 
-        [Description("Directory root json")]
-        Json = 5,
-
         [Description("Directory root log")]
-        Log = 6,
-
-        [Description("Directory root xml")]
-        Xml = 7,
+        Log = 5,
 
         #endregion Standard Path.
 
         #region Presentation.
 
         [Description("Directory root backend presentation")]
-        BackendPresentation = 8,
+        BackendPresentation = 6,
 
         [Description("Directory root backend presentation properties")]
-        BackendPresentationProperties = 9,
+        BackendPresentationProperties = 7,
 
         [Description("Directory root backend presentation controllers")]
-        BackendPresentationControllers = 10,
+        BackendPresentationControllers = 8,
 
         [Description("Directory root backend presentation extensions")]
-        BackendPresentationExtensions = 11,
+        BackendPresentationExtensions = 9,
 
         [Description("Directory root backend presentation filters")]
-        BackendPresentationFilters = 12,
+        BackendPresentationFilters = 10,
 
         [Description("Directory root backend presentation models")]
-        BackendPresentationModels = 13,
+        BackendPresentationModels = 11,
 
         [Description("Directory root backend presentation swagger")]
-        BackendPresentationSwagger = 14,
+        BackendPresentationSwagger = 12,
 
         [Description("Directory root frontend presentation")]
-        FrontendPresentation = 15,
+        FrontendPresentation = 13,
 
         [Description("Directory root frontend presentation properties")]
-        FrontendPresentationProperties = 17,
+        FrontendPresentationProperties = 14,
 
         [Description("Directory root frontend presentation controllers")]
-        FrontendPresentationControllers = 18,
+        FrontendPresentationControllers = 15,
 
         [Description("Directory root frontend presentation extensions")]
-        FrontendPresentationExtensions = 19,
+        FrontendPresentationExtensions = 16,
 
         [Description("Directory root frontend presentation filters")]
-        FrontendPresentationFilters = 20,
+        FrontendPresentationFilters = 17,
 
         [Description("Directory root frontend presentation models")]
-        FrontendPresentationModels = 21,
+        FrontendPresentationModels = 18,
 
         [Description("Directory root frontend presentation swagger")]
-        FrontendPresentationSwagger = 22,
+        FrontendPresentationSwagger = 19,
 
         #endregion Presentation.
 
         #region Application.
 
         [Description("Directory root backend application")]
-        BackendApplication = 23,
+        BackendApplication = 20,
 
         [Description("Directory root backend application properties")]
-        BackendApplicationInterfaces = 24,
+        BackendApplicationInterfaces = 21,
 
         [Description("Directory root backend application services")]
-        BackendApplicationServices = 25,
+        BackendApplicationServices = 22,
 
         [Description("Directory root frontend application")]
-        FrontendApplication = 26,
+        FrontendApplication = 23,
 
         [Description("Directory root frontend application properties")]
-        FrontendApplicationInterfaces = 27,
+        FrontendApplicationInterfaces = 24,
 
         [Description("Directory root frontend application services")]
-        FrontendApplicationServices = 28,
+        FrontendApplicationServices = 25,
 
         #endregion Application.
 
         #region Domain.
 
         [Description("Directory root backend domain")]
-        BackendDomain = 29,
+        BackendDomain = 26,
 
         [Description("Directory root backend domain properties")]
-        BackendDomainInterfaces = 30,
+        BackendDomainInterfaces = 27,
 
         [Description("Directory root backend domain entities")]
-        BackendDomainEntities = 31,
+        BackendDomainEntities = 28,
 
         [Description("Directory root Frontend domain")]
-        FrontendDomain = 32,
+        FrontendDomain = 29,
 
         [Description("Directory root Frontend domain properties")]
-        FrontendDomainInterfaces = 33,
+        FrontendDomainInterfaces = 30,
 
         [Description("Directory root Frontend domain entities")]
-        FrontendDomainEntities = 34,
+        FrontendDomainEntities = 31,
 
         #endregion Domain.
 
         #region Infrastructure.
 
         [Description("Directory root backend infrastructure")]
-        BackendInfrastructure = 35,
+        BackendInfrastructure = 32,
 
         [Description("Directory root backend infrastructure cross cutting")]
-        BackendInfrastructureCrossCutting = 36,
+        BackendInfrastructureCrossCutting = 33,
 
         [Description("Directory root backend infrastructure data")]
-        BackendInfrastructureData = 37,
+        BackendInfrastructureData = 34,
 
         [Description("Directory root Frontend infrastructure")]
-        FrontendInfrastructure = 38,
+        FrontendInfrastructure = 35,
 
         [Description("Directory root Frontend infrastructure cross cutting")]
-        FrontendInfrastructureCrossCutting = 39,
+        FrontendInfrastructureCrossCutting = 36,
 
         [Description("Directory root Frontend infrastructure data")]
-        FrontendInfrastructureData = 40
+        FrontendInfrastructureData = 37
 
         #endregion Infrastructure.
     }

@@ -1,6 +1,6 @@
 ﻿using UnifiedDevelopmentPowerPlatform.Application.Interfaces;
 using UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities;
-using UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.Directory;
+using UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.Directory.DomainDrivenDesign;
 using UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.File;
 using UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.Message.Type;
 using static UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.Databases;
@@ -110,7 +110,7 @@ namespace UnifiedDevelopmentPowerPlatform.Application.Services
             {
                 _serviceLog.UDPRegisterLog(_serviceMessage.UDPGetMessage(TypeDatabases.TheMetricsOfQuantitiesOfTables), Convert.ToString(this.UDPGetMetricsOfQuantitiesOfTables(listOfTables)));
                 _serviceLog.UDPRegisterLog(_serviceMessage.UDPGetMessage(TypeDatabases.TheMetricsOfQuantitiesOfFields), Convert.ToString(_serviceMetadataField.UDPGetMetricsOfQuantitiesOfFields(listOfTables, quantityOfTables)));
-                _serviceLog.UDPRegisterLog(_serviceMessage.UDPGetMessage(TypeDatabases.TheMetricsOfTotalSizeOfDirectoryByParallelProcessing), Convert.ToString(_serviceDirectory.GetMetricsOfTheTotalSizeOfDirectoryByParallelProcessing(new DirectoryInfo(_serviceDirectory.UDPObtainDirectory(DirectoryRootType.App)))));
+                _serviceLog.UDPRegisterLog(_serviceMessage.UDPGetMessage(TypeDatabases.TheMetricsOfTotalSizeOfDirectoryByParallelProcessing), Convert.ToString(_serviceDirectory.UDPGetMetricsOfTheTotalSizeOfDirectory(new DirectoryInfo(_serviceDirectory.UDPObtainDirectory(DirectoryRootType.App)))));
                 _serviceLog.UDPRegisterLog(_serviceMessage.UDPGetMessage(TypeMetadataTable.SuccessToTheSaveMetricsOfTheGenerationOfTablesAndFields), _serviceFuncString.Empty);
             }
         }

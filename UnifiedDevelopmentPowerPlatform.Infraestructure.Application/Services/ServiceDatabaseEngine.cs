@@ -1,6 +1,6 @@
 ﻿using UnifiedDevelopmentPowerPlatform.Application.Interfaces;
 using UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities;
-using UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.Directory;
+using UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.Directory.DomainDrivenDesign;
 using UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.File;
 using UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.Message.Type;
 using static UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.DatabasesEngine;

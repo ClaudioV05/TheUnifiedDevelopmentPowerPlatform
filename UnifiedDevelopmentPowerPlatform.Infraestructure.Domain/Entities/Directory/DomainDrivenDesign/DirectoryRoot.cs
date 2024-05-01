@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.Directory
+namespace UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.Directory.DomainDrivenDesign
 {
     [ComplexType]
     /// <summary>
@@ -36,19 +36,9 @@ namespace UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.Direct
         public static string Configuration => $"{DirectoryStandard.App}{DirectoryStandard.Configuration}";
 
         /// <summary>
-        /// Directory root json.
-        /// </summary>
-        public static string Json => $"{DirectoryStandard.App}{DirectoryStandard.Configuration}{DirectoryStandard.Json}";
-
-        /// <summary>
         /// Directory root log.
         /// </summary>
         public static string Log => $"{DirectoryStandard.App}{DirectoryStandard.Configuration}{DirectoryStandard.Log}";
-
-        /// <summary>
-        /// Directory root xml.
-        /// </summary>
-        public static string Xml => $"{DirectoryStandard.App}{DirectoryStandard.Configuration}{DirectoryStandard.Xml}";
 
         #endregion Standard Path.
 

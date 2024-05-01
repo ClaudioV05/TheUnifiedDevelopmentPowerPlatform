@@ -1,7 +1,7 @@
 ﻿using NLog;
 using System.Diagnostics;
 using UnifiedDevelopmentPowerPlatform.Application.Interfaces;
-using UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.Directory;
+using UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.Directory.DomainDrivenDesign;
 using UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.File;
 using UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.Logging;
 using UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.Message.Text;

@@ -1,7 +1,7 @@
 ﻿namespace UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.MetaCharacter
 {
     /// <summary>
-    /// Symbols of Unified Development Platform.
+    /// Symbols of Unified Development Power Platform.
     /// </summary>
     public static class MetaCharacterSymbols
     {
@@ -124,5 +124,10 @@
         /// char with white space.
         /// </summary>
         public static char CharWhiteSpace => ' ';
+
+        /// <summary>
+        /// string with white asterisk.
+        /// </summary>
+        public static string Asterisk => "*";
     }
 }

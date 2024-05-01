@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using System.Text;
 using UnifiedDevelopmentPowerPlatform.Application.Interfaces;
-using UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.Directory;
+using UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.Directory.DomainDrivenDesign;
 
 namespace UnifiedDevelopmentPowerPlatform.Application.Services
 {

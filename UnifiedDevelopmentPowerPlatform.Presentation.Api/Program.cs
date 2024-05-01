@@ -64,34 +64,7 @@ builder.Services.TryAddTransient<FilterActionContextMetadata<MetadataOwner>>();
 builder.Services.TryAddTransient<FilterActionContextTablesdata<MetadataOwner>>();
 #endregion Action Filters.
 
-#region Services.
-builder.Services.TryAddScoped<IServiceArchitecturePatterns, ServiceArchitecturePatterns>();
-builder.Services.TryAddScoped<IServiceCrypto, ServiceCrypto>();
-builder.Services.TryAddScoped<IServiceDatabaseEngine, ServiceDatabaseEngine>();
-builder.Services.TryAddScoped<IServiceDatabases, ServiceDatabases>();
-builder.Services.TryAddScoped<IServiceDataTypeAnsiSql, ServiceDataTypeAnsiSql>();
-builder.Services.TryAddScoped<IServiceDataTypeCSharp, ServiceDataTypeCSharp>();
-builder.Services.TryAddScoped<IServiceDataTypeSqlServer, ServiceDataTypeSqlServer>();
-builder.Services.TryAddScoped<IServiceDate, ServiceDate>();
-builder.Services.TryAddScoped<IServiceDevelopmentEnvironments, ServiceDevelopmentEnvironments>();
-builder.Services.TryAddScoped<IServiceDirectory, ServiceDirectory>();
-builder.Services.TryAddScoped<IServiceEnumerated, ServiceEnumerated>();
-builder.Services.TryAddScoped<IServiceFile, ServiceFile>();
-builder.Services.TryAddScoped<IServiceFormsView, ServiceFormsView>();
-builder.Services.TryAddScoped<IServiceFuncString, ServiceFuncString>();
-builder.Services.TryAddScoped<IServiceGuid, ServiceGuid>();
-builder.Services.TryAddScoped<IServiceJson, ServiceJson>();
-builder.Services.TryAddScoped<IServiceLinq, ServiceLinq>();
-builder.Services.TryAddScoped<IServiceLog, ServiceLog>();
-builder.Services.TryAddScoped<IServiceMail, ServiceMail>();
-builder.Services.TryAddScoped<IServiceMessage, ServiceMessage>();
-builder.Services.TryAddScoped<IServiceMetadata, ServiceMetadata>();
-builder.Services.TryAddScoped<IServiceMetadataField, ServiceMetadataField>();
-builder.Services.TryAddScoped<IServiceMetadataTable, ServiceMetadataTable>();
-builder.Services.TryAddScoped<IServicePlataform, ServicePlataform>();
-builder.Services.TryAddScoped<IServiceValidation, ServiceValidation>();
-builder.Services.TryAddScoped<IServiceZipFile, ServiceZipFile>();
-#endregion Services.
+builder.Services.AddClassesMatchingInterfaces(nameof(UnifiedDevelopmentPowerPlatform));
 
 var app = builder.Build();
 
@@ -101,8 +74,9 @@ if (app.Environment.IsDevelopment())
 {
     // Code for Development here.
 
-    app.UseSwagger();
+    app.UseDeveloperExceptionPage();
 
+    app.UseSwagger();
     app.UseSwaggerUI(options =>
     {
         options.SwaggerEndpoint(OpenApiConfiguration.Endpoint, OpenApiInformation.Description);
@@ -120,8 +94,6 @@ if (app.Environment.IsDevelopment())
 
         await next();
     });
-
-    app.UseDeveloperExceptionPage();
 }
 else if (app.Environment.IsStaging())
 {
