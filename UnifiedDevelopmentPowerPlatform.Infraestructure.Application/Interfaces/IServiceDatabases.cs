@@ -17,7 +17,7 @@ public interface IServiceDatabases
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
     /// <returns>Return the complete list of databases.</returns>
-    List<Databases> UDPSelectParametersTheKindsOfDatabases();
+    List<Databases> UDPPSelectParametersTheKindsOfDatabases();
 
     /// <summary>
     /// Save identifier to the databases from metadata.
@@ -28,7 +28,7 @@ public interface IServiceDatabases
     /// <remarks></remarks>
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
-    void UDPSaveIdentifierToTheDatabasesFromMetadata(MetadataOwner metadata);
+    void UDPPSaveIdentifierToTheDatabasesFromMetadata(MetadataOwner metadata);
 
     /// <summary>
     /// Save the metrics of the generation of tables and fields.
@@ -39,7 +39,7 @@ public interface IServiceDatabases
     /// <remarks></remarks>
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
-    void UDPSaveMetricsOfTheGenerationOfTablesAndFields(List<Tables> listOfTables);
+    void UDPPSaveMetricsOfTheGenerationOfTablesAndFields(List<Tables> listOfTables);
 
     /// <summary>
     /// Get the metrics of quantities of tables.
@@ -51,5 +51,5 @@ public interface IServiceDatabases
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
     /// <returns>The total number of tables.</returns>
-    long UDPGetMetricsOfQuantitiesOfTables(List<Tables> listOfTables);
+    long UDPPGetMetricsOfQuantitiesOfTables(List<Tables> listOfTables);
 }

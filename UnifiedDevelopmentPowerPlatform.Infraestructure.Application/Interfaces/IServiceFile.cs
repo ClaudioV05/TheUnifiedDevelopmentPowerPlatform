@@ -15,7 +15,7 @@ public interface IServiceFile
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
     /// <returns>Return true otherwise false.</returns>
-    bool UDPFileExists(string? path);
+    bool UDPPFileExists(string? path);
 
     /// <summary>
     /// Read all text.
@@ -27,7 +27,7 @@ public interface IServiceFile
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
     /// <returns>String with the data.</returns>
-    string UDPReadAllText(string path);
+    string UDPPReadAllText(string path);
 
     /// <summary>
     /// Reading lines from files.
@@ -39,7 +39,7 @@ public interface IServiceFile
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
     /// <returns>Return in IEnumerable of string.</returns>
-    IEnumerable<string>? UDPReadAllLines(string path);
+    IEnumerable<string>? UDPPReadAllLines(string path);
 
     /// <summary>
     /// Create all lines and save in file.
@@ -51,7 +51,7 @@ public interface IServiceFile
     /// <remarks></remarks>
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
-    void UDPWriteAllText(string path, string contents);
+    void UDPPWriteAllText(string path, string contents);
 
     /// <summary>
     /// Create and save initial file with class File.
@@ -62,7 +62,7 @@ public interface IServiceFile
     /// <remarks></remarks>
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
-    void UDPCreateAndSaveFile(string path);
+    void UDPPCreateAndSaveFile(string path);
 
     /// <summary>
     /// Create and save file whit Class StreamWrite.
@@ -73,7 +73,7 @@ public interface IServiceFile
     /// <remarks></remarks>
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
-    void UDPCreateAndSaveFileWithStreamWrite(string path);
+    void UDPPCreateAndSaveFileWithStreamWrite(string path);
 
     /// <summary>
     /// Open and read all text.
@@ -85,7 +85,7 @@ public interface IServiceFile
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
     /// <returns>FileStream with the data.</returns>
-    FileStream UDPOpenRead(string path);
+    FileStream UDPPOpenRead(string path);
 
     /// <summary>
     /// Append all text in existing file.
@@ -97,7 +97,7 @@ public interface IServiceFile
     /// <remarks></remarks>
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
-    void UDPAppendAllText(string path, string content);
+    void UDPPAppendAllText(string path, string content);
 
     /// <summary>
     /// Get the file name.
@@ -109,7 +109,7 @@ public interface IServiceFile
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
     /// <returns></returns>
-    string UDPGetFileName(string path);
+    string UDPPGetFileName(string path);
 
     /// <summary>
     /// Count lines using StreamReader.
@@ -121,7 +121,7 @@ public interface IServiceFile
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
     /// <returns>The number of lines.</returns>
-    int UDPCountLines(string fileName);
+    int UDPPCountLines(string fileName);
 
     /// <summary>
     /// Get data file from directory configuration.
@@ -134,7 +134,7 @@ public interface IServiceFile
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
     /// <returns>Content from file.</returns>
-    string UDPGetDataFileFromDirectoryConfiguration(string section, string file);
+    string UDPPGetDataFileFromDirectoryConfiguration(string section, string file);
 
     /// <summary>
     /// Method will check if the file is in use generic.
@@ -146,7 +146,7 @@ public interface IServiceFile
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
     /// <returns>Return true otherwise false.</returns>
-    bool UDPIsFileInUseGeneric(FileInfo file);
+    bool UDPPIsFileInUseGeneric(FileInfo file);
 
     /// <summary>
     /// Method will check if the file is in use.
@@ -158,5 +158,5 @@ public interface IServiceFile
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
     /// <returns>Return true otherwise false.</returns>
-    bool UDPIsFileInUse(FileInfo file);
+    bool UDPPIsFileInUse(FileInfo file);
 }

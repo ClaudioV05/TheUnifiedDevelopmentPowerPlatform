@@ -17,7 +17,7 @@ public interface IServiceDatabaseEngine
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
     /// <returns>Return the complete list of databases engine.</returns>
-    List<DatabasesEngine> UDPSelectParametersTheKindsOfDatabasesEngine();
+    List<DatabasesEngine> UDPPSelectParametersTheKindsOfDatabasesEngine();
 
     /// <summary>
     /// Save identifier to the databases engine from metadata.
@@ -28,5 +28,5 @@ public interface IServiceDatabaseEngine
     /// <remarks></remarks>
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
-    void UDPSaveIdentifierToTheDatabasesEngineFromMetadata(MetadataOwner metadata);
+    void UDPPSaveIdentifierToTheDatabasesEngineFromMetadata(MetadataOwner metadata);
 }

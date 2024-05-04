@@ -15,5 +15,5 @@ public interface IServiceEnumerated
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
     /// <returns>The string with enumerated description.</returns>
-    string UDPGetEnumeratedDescription(Enum EnumeratedValue);
+    string UDPPGetEnumeratedDescription(Enum EnumeratedValue);
 }

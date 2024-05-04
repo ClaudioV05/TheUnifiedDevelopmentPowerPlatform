@@ -13,12 +13,12 @@ public class ServiceDate : IServiceDate
     /// </summary>
     public ServiceDate() { }
 
-    public string UDPGetDateTimeNowFormat()
+    public string UDPPGetDateTimeNowFormat()
     {
         return DateTime.Now.ToString(DatetimeFormat.Format_13);
     }
 
-    public string UDPGetDateTimeToLongTime()
+    public string UDPPGetDateTimeToLongTime()
     {
         return DateTime.Now.ToLongTimeString();
     }

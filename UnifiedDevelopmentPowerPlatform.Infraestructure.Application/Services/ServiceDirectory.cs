@@ -25,7 +25,7 @@ public class ServiceDirectory : IServiceDirectory
         _serviceFuncString = serviceFuncString;
     }
 
-    public void UPDCreateDirectoriesDefault()
+    public void UDPPCreateDirectoriesDefault()
     {
         try
         {
@@ -53,7 +53,7 @@ public class ServiceDirectory : IServiceDirectory
         }
     }
 
-    public void UPDCreateDirectoriesFromArchitecture(EnumeratedArchitecturePatterns enumeratedArchitecturePatterns)
+    public void UDPPCreateDirectoriesFromArchitecture(EnumeratedArchitecturePatterns enumeratedArchitecturePatterns)
     {
         try
         {
@@ -85,12 +85,12 @@ public class ServiceDirectory : IServiceDirectory
         }
     }
 
-    public bool UDPDirectoryExists(string absolutePath)
+    public bool UDPPDirectoryExists(string absolutePath)
     {
         return Directory.Exists(absolutePath);
     }
 
-    public string UDPObtainDirectory(DirectoryRootType directoryRootType)
+    public string UDPPObtainDirectory(DirectoryRootType directoryRootType)
     {
         try
         {
@@ -103,7 +103,7 @@ public class ServiceDirectory : IServiceDirectory
         }
     }
 
-    public long UDPGetMetricsOfTheTotalSizeOfDirectory(DirectoryInfo directory)
+    public long UDPPGetMetricsOfTheTotalSizeOfDirectory(DirectoryInfo directory)
     {
         if (directory is null || !directory.Exists)
         {
@@ -149,7 +149,7 @@ public class ServiceDirectory : IServiceDirectory
         try
         {
             Regex? regex = new(@"(?<!fil)[A-Za-z]:\\+[\S\s]*?(?=\\+unifieddevelopmentpowerplatform.presentation.api)");
-            string? exeRootDirectory = _serviceFuncString.UDPLower(Assembly.GetExecutingAssembly().Location);
+            string? exeRootDirectory = _serviceFuncString.UDPPLower(Assembly.GetExecutingAssembly().Location);
 
             return regex.IsMatch(exeRootDirectory) ? regex.Match(exeRootDirectory).Value : _serviceFuncString.Empty;
         }
@@ -208,7 +208,7 @@ public class ServiceDirectory : IServiceDirectory
     {
         try
         {
-            if (this.UDPDirectoryExists(absolutePath))
+            if (this.UDPPDirectoryExists(absolutePath))
             {
                 Directory.Delete(absolutePath, true);
             }

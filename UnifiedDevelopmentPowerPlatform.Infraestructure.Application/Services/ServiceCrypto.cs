@@ -31,7 +31,7 @@ public class ServiceCrypto : IServiceCrypto
         _serviceFuncString = serviceFuncString;
     }
 
-    public string UPDEncryptData(string value)
+    public string UDPPEncryptData(string value)
     {
         byte[] input;
         byte[] key = { };
@@ -41,7 +41,7 @@ public class ServiceCrypto : IServiceCrypto
 
         try
         {
-            _serviceLog.UDPRegisterLog(_serviceMessage.UDPGetMessage(TypeCrypto.CallStartToTheEncrypt), _serviceFuncString.Empty);
+            _serviceLog.UDPPRegisterLog(_serviceMessage.UDPGetMessage(TypeCrypto.CallStartToTheEncrypt), _serviceFuncString.Empty);
             input = Encoding.UTF8.GetBytes(value);
             key = Encoding.UTF8.GetBytes(CryptographyConfiguration.CryptographyKey.Substring(0, 8));
 
@@ -50,23 +50,23 @@ public class ServiceCrypto : IServiceCrypto
             cryptoStream.FlushFinalBlock();
             data = Convert.ToBase64String(memoryStream.ToArray());
 
-            _serviceLog.UDPRegisterLog(_serviceMessage.UDPGetMessage(TypeCrypto.SuccessToTheEncrypt), _serviceFuncString.Empty);
+            _serviceLog.UDPPRegisterLog(_serviceMessage.UDPGetMessage(TypeCrypto.SuccessToTheEncrypt), _serviceFuncString.Empty);
 
             return data;
         }
         catch (CryptographicException ex)
         {
-            _serviceLog.UDPRegisterLog(_serviceMessage.UDPGetMessage(TypeCrypto.ErrorToTheEncrypt), ex.Message);
+            _serviceLog.UDPPRegisterLog(_serviceMessage.UDPGetMessage(TypeCrypto.ErrorToTheEncrypt), ex.Message);
             return _serviceFuncString.Empty;
         }
         catch (Exception ex)
         {
-            _serviceLog.UDPRegisterLog(_serviceMessage.UDPGetMessage(TypeCrypto.ErrorToTheEncrypt), ex.Message);
+            _serviceLog.UDPPRegisterLog(_serviceMessage.UDPGetMessage(TypeCrypto.ErrorToTheEncrypt), ex.Message);
             return _serviceFuncString.Empty;
         }
     }
 
-    public string UPDDecryptData(string value)
+    public string UDPPDecryptData(string value)
     {
         byte[] input;
         byte[] key = { };
@@ -76,7 +76,7 @@ public class ServiceCrypto : IServiceCrypto
 
         try
         {
-            _serviceLog.UDPRegisterLog(_serviceMessage.UDPGetMessage(TypeCrypto.CallStartToTheDecrypt), _serviceFuncString.Empty);
+            _serviceLog.UDPPRegisterLog(_serviceMessage.UDPGetMessage(TypeCrypto.CallStartToTheDecrypt), _serviceFuncString.Empty);
             input = new byte[value.Length];
             input = Convert.FromBase64String(value.Replace(MetaCharacterSymbols.WhiteSpace, "+"));
             key = Encoding.UTF8.GetBytes(CryptographyConfiguration.CryptographyKey.Substring(0, 8));
@@ -86,62 +86,62 @@ public class ServiceCrypto : IServiceCrypto
             cryptoStream.FlushFinalBlock();
             data = Encoding.UTF8.GetString(memoryStream.ToArray());
 
-            _serviceLog.UDPRegisterLog(_serviceMessage.UDPGetMessage(TypeCrypto.SuccessToTheDecrypt), _serviceFuncString.Empty);
+            _serviceLog.UDPPRegisterLog(_serviceMessage.UDPGetMessage(TypeCrypto.SuccessToTheDecrypt), _serviceFuncString.Empty);
 
             return data;
         }
         catch (CryptographicException ex)
         {
-            _serviceLog.UDPRegisterLog(_serviceMessage.UDPGetMessage(TypeCrypto.ErrorToTheDecrypt), ex.Message);
+            _serviceLog.UDPPRegisterLog(_serviceMessage.UDPGetMessage(TypeCrypto.ErrorToTheDecrypt), ex.Message);
             return _serviceFuncString.Empty;
         }
         catch (Exception ex)
         {
-            _serviceLog.UDPRegisterLog(_serviceMessage.UDPGetMessage(TypeCrypto.ErrorToTheDecrypt), ex.Message);
+            _serviceLog.UDPPRegisterLog(_serviceMessage.UDPGetMessage(TypeCrypto.ErrorToTheDecrypt), ex.Message);
             return _serviceFuncString.Empty;
         }
     }
 
-    public string UPDEncodeToBase64(string? value)
+    public string UDPPEncodeToBase64(string? value)
     {
         string data = _serviceFuncString.Empty;
 
         try
         {
-            _serviceLog.UDPRegisterLog(_serviceMessage.UDPGetMessage(TypeCrypto.CallStartToTheEncodeToBase64), _serviceFuncString.Empty);
+            _serviceLog.UDPPRegisterLog(_serviceMessage.UDPGetMessage(TypeCrypto.CallStartToTheEncodeToBase64), _serviceFuncString.Empty);
             
             byte[] textBytes = Encoding.ASCII.GetBytes(value);
             data = Convert.ToBase64String(textBytes, Base64FormattingOptions.None);
 
-           _serviceLog.UDPRegisterLog(_serviceMessage.UDPGetMessage(TypeCrypto.SuccessToTheEncodeToBase64), _serviceFuncString.Empty);
+           _serviceLog.UDPPRegisterLog(_serviceMessage.UDPGetMessage(TypeCrypto.SuccessToTheEncodeToBase64), _serviceFuncString.Empty);
 
             return data;
         }
         catch (Exception ex)
         {
-            _serviceLog.UDPRegisterLog(_serviceMessage.UDPGetMessage(TypeCrypto.ErrorToTheEncodeToBase64), ex.Message);
+            _serviceLog.UDPPRegisterLog(_serviceMessage.UDPGetMessage(TypeCrypto.ErrorToTheEncodeToBase64), ex.Message);
             return _serviceFuncString.Empty;
         }
     }
 
-    public string UPDDecodeFromBase64(string? value)
+    public string UDPPDecodeFromBase64(string? value)
     {
         string data = _serviceFuncString.Empty;
 
         try
         {
-            _serviceLog.UDPRegisterLog(_serviceMessage.UDPGetMessage(TypeCrypto.CallStartToTheDecodeFromBase64), _serviceFuncString.Empty);
+            _serviceLog.UDPPRegisterLog(_serviceMessage.UDPGetMessage(TypeCrypto.CallStartToTheDecodeFromBase64), _serviceFuncString.Empty);
 
             var valueBytes = Convert.FromBase64String(value ?? _serviceFuncString.Empty);
             data = Encoding.UTF8.GetString(valueBytes);
 
-            _serviceLog.UDPRegisterLog(_serviceMessage.UDPGetMessage(TypeCrypto.SuccessToTheDecodeFromBase64), _serviceFuncString.Empty);
+            _serviceLog.UDPPRegisterLog(_serviceMessage.UDPGetMessage(TypeCrypto.SuccessToTheDecodeFromBase64), _serviceFuncString.Empty);
 
             return data;
         }
         catch (Exception ex)
         {
-            _serviceLog.UDPRegisterLog(_serviceMessage.UDPGetMessage(TypeCrypto.ErrorToTheDecodeFromBase64), ex.Message);
+            _serviceLog.UDPPRegisterLog(_serviceMessage.UDPGetMessage(TypeCrypto.ErrorToTheDecodeFromBase64), ex.Message);
             return _serviceFuncString.Empty;
         }
     }

@@ -34,99 +34,99 @@ public class ServiceMetadataField : IServiceMetadataField
         _serviceDevelopmentEnvironments = serviceDevelopmentEnvironments;
     }
 
-    public string UDPGetTheFieldName(string text)
+    public string UDPPGetTheFieldName(string text)
     {
         int positionWithSpace = 0;
         string field = _serviceFuncString.Empty;
 
-        field = _serviceFuncString.UDPLower(text);
-        field = _serviceFuncString.UDPRemoveSpecialCaracter(field);
+        field = _serviceFuncString.UDPPLower(text);
+        field = _serviceFuncString.UDPPRemoveSpecialCaracter(field);
 
-        positionWithSpace = _serviceFuncString.UDPIndexOf(field, MetaCharacterSymbols.HorizontalTab);
-        field = _serviceFuncString.UDPRemoveWhitespaceAtStart(field);
+        positionWithSpace = _serviceFuncString.UDPPIndexOf(field, MetaCharacterSymbols.HorizontalTab);
+        field = _serviceFuncString.UDPPRemoveWhitespaceAtStart(field);
 
         if (positionWithSpace == -1)
         {
             positionWithSpace = 0;
-            positionWithSpace = _serviceFuncString.UDPIndexOf(field, MetaCharacterSymbols.WhiteSpace);
+            positionWithSpace = _serviceFuncString.UDPPIndexOf(field, MetaCharacterSymbols.WhiteSpace);
         }
 
-        field = _serviceFuncString.UDPRemoveWhitespaceAtStart(field);
-        field = _serviceFuncString.UDPSubString(field, 0, positionWithSpace);
-        return _serviceFuncString.UDPUpper(_serviceFuncString.UDPRemoveAnyWhiteSpace(field));
+        field = _serviceFuncString.UDPPRemoveWhitespaceAtStart(field);
+        field = _serviceFuncString.UDPPSubString(field, 0, positionWithSpace);
+        return _serviceFuncString.UDPPUpper(_serviceFuncString.UDPPRemoveAnyWhiteSpace(field));
     }
 
-    public string UDPGetTheTypeOfFieldName(string text)
+    public string UDPPGetTheTypeOfFieldName(string text)
     {
         int positionWithSpace = 0;
         int positionConstraintDefault = 0;
         string typeField = _serviceFuncString.Empty;
 
-        typeField = _serviceFuncString.UDPLower(text);
-        typeField = _serviceFuncString.UDPReplace(typeField, MetaCharacterSymbols.Comma, _serviceFuncString.Empty);
-        typeField = _serviceFuncString.UDPReplace(typeField, SqlConfiguration.KeyNot, _serviceFuncString.Empty);
-        typeField = _serviceFuncString.UDPReplace(typeField, SqlConfiguration.SqlConstraintNull, _serviceFuncString.Empty);
-        typeField = _serviceFuncString.UDPReplace(typeField, SqlConfiguration.SqlConstraintNotNull, _serviceFuncString.Empty);
-        typeField = _serviceFuncString.UDPReplace(typeField, SqlConfiguration.KeyAutoIncrement, _serviceFuncString.Empty);
-        typeField = _serviceFuncString.UDPReplace(typeField, SqlConfiguration.SqlConstraintCollate, _serviceFuncString.Empty);
-        typeField = _serviceFuncString.UDPReplace(typeField, SqlConfiguration.Utf8WithMb4GeneralCi, _serviceFuncString.Empty);
-        typeField = _serviceFuncString.UDPReplace(typeField, MetaCharacterSymbols.LeftSquareBracket, _serviceFuncString.Empty);
-        typeField = _serviceFuncString.UDPReplace(typeField, MetaCharacterSymbols.RightSquareBracket, _serviceFuncString.Empty);
+        typeField = _serviceFuncString.UDPPLower(text);
+        typeField = _serviceFuncString.UDPPReplace(typeField, MetaCharacterSymbols.Comma, _serviceFuncString.Empty);
+        typeField = _serviceFuncString.UDPPReplace(typeField, SqlConfiguration.KeyNot, _serviceFuncString.Empty);
+        typeField = _serviceFuncString.UDPPReplace(typeField, SqlConfiguration.SqlConstraintNull, _serviceFuncString.Empty);
+        typeField = _serviceFuncString.UDPPReplace(typeField, SqlConfiguration.SqlConstraintNotNull, _serviceFuncString.Empty);
+        typeField = _serviceFuncString.UDPPReplace(typeField, SqlConfiguration.KeyAutoIncrement, _serviceFuncString.Empty);
+        typeField = _serviceFuncString.UDPPReplace(typeField, SqlConfiguration.SqlConstraintCollate, _serviceFuncString.Empty);
+        typeField = _serviceFuncString.UDPPReplace(typeField, SqlConfiguration.Utf8WithMb4GeneralCi, _serviceFuncString.Empty);
+        typeField = _serviceFuncString.UDPPReplace(typeField, MetaCharacterSymbols.LeftSquareBracket, _serviceFuncString.Empty);
+        typeField = _serviceFuncString.UDPPReplace(typeField, MetaCharacterSymbols.RightSquareBracket, _serviceFuncString.Empty);
 
-        if (_serviceFuncString.UDPContains(typeField, SqlConfiguration.SqlConstraintDefault))
+        if (_serviceFuncString.UDPPContains(typeField, SqlConfiguration.SqlConstraintDefault))
         {
-            positionConstraintDefault = _serviceFuncString.UDPLastIndexOf(typeField, SqlConfiguration.SqlConstraintDefault);
-            typeField = _serviceFuncString.UDPSubString(typeField, 0, positionConstraintDefault + SqlConfiguration.SqlConstraintDefault.Length);
-            typeField = _serviceFuncString.UDPReplace(typeField, SqlConfiguration.SqlConstraintDefault, _serviceFuncString.Empty);
+            positionConstraintDefault = _serviceFuncString.UDPPLastIndexOf(typeField, SqlConfiguration.SqlConstraintDefault);
+            typeField = _serviceFuncString.UDPPSubString(typeField, 0, positionConstraintDefault + SqlConfiguration.SqlConstraintDefault.Length);
+            typeField = _serviceFuncString.UDPPReplace(typeField, SqlConfiguration.SqlConstraintDefault, _serviceFuncString.Empty);
         }
 
-        positionWithSpace = _serviceFuncString.UDPIndexOf(typeField, MetaCharacterSymbols.HorizontalTab);
-        typeField = _serviceFuncString.UDPRemoveWhitespaceAtStart(typeField);
+        positionWithSpace = _serviceFuncString.UDPPIndexOf(typeField, MetaCharacterSymbols.HorizontalTab);
+        typeField = _serviceFuncString.UDPPRemoveWhitespaceAtStart(typeField);
 
         if (positionWithSpace.Equals(-1))
         {
             positionWithSpace = 0;
-            positionWithSpace = _serviceFuncString.UDPIndexOf(typeField, MetaCharacterSymbols.WhiteSpace);
+            positionWithSpace = _serviceFuncString.UDPPIndexOf(typeField, MetaCharacterSymbols.WhiteSpace);
         }
 
-        typeField = _serviceFuncString.UDPRemoveWhitespaceAtStart(typeField);
-        typeField = _serviceFuncString.UDPSubString(typeField, positionWithSpace, Math.Abs(positionWithSpace - typeField.Length));
-        typeField = _serviceFuncString.UDPRemoveSpecialCaracter(typeField);
+        typeField = _serviceFuncString.UDPPRemoveWhitespaceAtStart(typeField);
+        typeField = _serviceFuncString.UDPPSubString(typeField, positionWithSpace, Math.Abs(positionWithSpace - typeField.Length));
+        typeField = _serviceFuncString.UDPPRemoveSpecialCaracter(typeField);
 
-        return _serviceFuncString.UDPUpper(_serviceFuncString.UDPRemoveAnyWhiteSpace(typeField));
+        return _serviceFuncString.UDPPUpper(_serviceFuncString.UDPPRemoveAnyWhiteSpace(typeField));
     }
 
-    public string UDPGetThePrimaryKeyFieldName(string text)
+    public string UDPPGetThePrimaryKeyFieldName(string text)
     {
         int positionPrimaryKey = 0;
         string field = _serviceFuncString.Empty;
 
-        _serviceLog.UDPRegisterLog(_serviceMessage.UDPGetMessage(TypeMetadataFields.CallStartToTheGetThePrimaryKeyFieldName), _serviceFuncString.Empty);
+        _serviceLog.UDPPRegisterLog(_serviceMessage.UDPGetMessage(TypeMetadataFields.CallStartToTheGetThePrimaryKeyFieldName), _serviceFuncString.Empty);
 
         field = text;
-        positionPrimaryKey = _serviceFuncString.UDPIndexOf(field, SqlConfiguration.PrimaryKey);
-        field = _serviceFuncString.UDPSubString(field, positionPrimaryKey, Math.Abs(positionPrimaryKey - text.Length));
-        field = _serviceFuncString.UDPReplace(field, SqlConfiguration.PrimaryKey, _serviceFuncString.Empty);
-        field = _serviceFuncString.UDPReplace(field, MetaCharacterSymbols.LeftParenthese, _serviceFuncString.Empty);
-        field = _serviceFuncString.UDPReplace(field, MetaCharacterSymbols.RightParenthese, _serviceFuncString.Empty);
-        field = _serviceFuncString.UDPReplace(field, MetaCharacterSymbols.LeftSquareBracket, _serviceFuncString.Empty);
-        field = _serviceFuncString.UDPReplace(field, MetaCharacterSymbols.RightSquareBracket, _serviceFuncString.Empty);
-        field = _serviceFuncString.UDPReplace(field, MetaCharacterSymbols.SingleQuote, _serviceFuncString.Empty);
-        field = _serviceFuncString.UDPReplace(field, MetaCharacterSymbols.DoubleQuote, _serviceFuncString.Empty);
-        field = _serviceFuncString.UDPRemoveAnyWhiteSpace(field);
-        field = _serviceFuncString.UDPUpper(field);
+        positionPrimaryKey = _serviceFuncString.UDPPIndexOf(field, SqlConfiguration.PrimaryKey);
+        field = _serviceFuncString.UDPPSubString(field, positionPrimaryKey, Math.Abs(positionPrimaryKey - text.Length));
+        field = _serviceFuncString.UDPPReplace(field, SqlConfiguration.PrimaryKey, _serviceFuncString.Empty);
+        field = _serviceFuncString.UDPPReplace(field, MetaCharacterSymbols.LeftParenthese, _serviceFuncString.Empty);
+        field = _serviceFuncString.UDPPReplace(field, MetaCharacterSymbols.RightParenthese, _serviceFuncString.Empty);
+        field = _serviceFuncString.UDPPReplace(field, MetaCharacterSymbols.LeftSquareBracket, _serviceFuncString.Empty);
+        field = _serviceFuncString.UDPPReplace(field, MetaCharacterSymbols.RightSquareBracket, _serviceFuncString.Empty);
+        field = _serviceFuncString.UDPPReplace(field, MetaCharacterSymbols.SingleQuote, _serviceFuncString.Empty);
+        field = _serviceFuncString.UDPPReplace(field, MetaCharacterSymbols.DoubleQuote, _serviceFuncString.Empty);
+        field = _serviceFuncString.UDPPRemoveAnyWhiteSpace(field);
+        field = _serviceFuncString.UDPPUpper(field);
 
-        _serviceLog.UDPRegisterLog(_serviceMessage.UDPGetMessage(TypeMetadataFields.SuccessToTheGetThePrimaryKeyFieldName), _serviceFuncString.Empty);
+        _serviceLog.UDPPRegisterLog(_serviceMessage.UDPGetMessage(TypeMetadataFields.SuccessToTheGetThePrimaryKeyFieldName), _serviceFuncString.Empty);
 
         return field;
     }
 
-    public bool UDPTheFieldIsNotNull(string text)
+    public bool UDPPTheFieldIsNotNull(string text)
     {
-        return _serviceFuncString.UDPContains(text, SqlConfiguration.SqlConstraintNotNull);
+        return _serviceFuncString.UDPPContains(text, SqlConfiguration.SqlConstraintNotNull);
     }
 
-    public int? UDPGetFieldLenght(string text)
+    public int? UDPPGetFieldLenght(string text)
     {
         int? returnValue = null;
         string data = _serviceFuncString.Empty;
@@ -134,10 +134,10 @@ public class ServiceMetadataField : IServiceMetadataField
         try
         {
             data = text;
-            data = _serviceFuncString.UDPLower(data);
-            data = _serviceFuncString.UDPOnlyNumber(data);
+            data = _serviceFuncString.UDPPLower(data);
+            data = _serviceFuncString.UDPPOnlyNumber(data);
 
-            if (!_serviceFuncString.UDPNullOrEmpty(data) && _serviceFuncString.UDPIsOnlyDigit(data))
+            if (!_serviceFuncString.UDPPNullOrEmpty(data) && _serviceFuncString.UDPPIsOnlyDigit(data))
             {
                 returnValue = Convert.ToInt32(data);
             }
@@ -150,39 +150,39 @@ public class ServiceMetadataField : IServiceMetadataField
         }
     }
 
-    public void UDPLoadTheFieldsAtTable(ref List<Tables> listTables, int idTable, string text)
+    public void UDPPLoadTheFieldsAtTable(ref List<Tables> listTables, int idTable, string text)
     {
-        _serviceLog.UDPRegisterLog(_serviceMessage.UDPGetMessage(TypeMetadataFields.CallStartToTheLoadTheFieldAtTable), _serviceFuncString.Empty);
+        _serviceLog.UDPPRegisterLog(_serviceMessage.UDPGetMessage(TypeMetadataFields.CallStartToTheLoadTheFieldAtTable), _serviceFuncString.Empty);
 
         Fields fields = new Fields()
         {
             IdTables = idTable,
-            Name = this.UDPGetTheFieldName(text),
+            Name = this.UDPPGetTheFieldName(text),
             AutoCreate = true,
-            IsNull = this.UDPTheFieldIsNotNull(text),
+            IsNull = this.UDPPTheFieldIsNotNull(text),
             IsPrimaryKey = false,
-            FieldLenght = this.UDPGetFieldLenght(this.UDPGetTheTypeOfFieldName(text)),
-            TypeField = _serviceDevelopmentEnvironments.UDPGetDataTypeFromTableInScriptMetadata(this.UDPGetTheTypeOfFieldName(text))
+            FieldLenght = this.UDPPGetFieldLenght(this.UDPPGetTheTypeOfFieldName(text)),
+            TypeField = _serviceDevelopmentEnvironments.UDPPGetDataTypeFromTableInScriptMetadata(this.UDPPGetTheTypeOfFieldName(text))
         };
 
         listTables.Where(element => element.Id.Equals(idTable)).First().Fields.Add(fields);
 
-        _serviceLog.UDPRegisterLog(_serviceMessage.UDPGetMessage(TypeMetadataFields.SuccessToTheLoadTheFieldAtTable), _serviceFuncString.Empty);
+        _serviceLog.UDPPRegisterLog(_serviceMessage.UDPGetMessage(TypeMetadataFields.SuccessToTheLoadTheFieldAtTable), _serviceFuncString.Empty);
     }
 
-    public void UDPLoadTheFieldsPrimarykeyAtTable(ref List<Tables> listTables, int idTable, string fieldsPrimaryKey)
+    public void UDPPLoadTheFieldsPrimarykeyAtTable(ref List<Tables> listTables, int idTable, string fieldsPrimaryKey)
     {
         string primaryKeys = _serviceFuncString.Empty;
         string[]? listOfFieldsPrimaryKey;
 
-        primaryKeys = this.UDPGetThePrimaryKeyFieldName(fieldsPrimaryKey);
-        listOfFieldsPrimaryKey = _serviceFuncString.UDPParseLine(new[] { MetaCharacterSymbols.Comma }, primaryKeys);
+        primaryKeys = this.UDPPGetThePrimaryKeyFieldName(fieldsPrimaryKey);
+        listOfFieldsPrimaryKey = _serviceFuncString.UDPPParseLine(new[] { MetaCharacterSymbols.Comma }, primaryKeys);
 
         if (listOfFieldsPrimaryKey is not null && listOfFieldsPrimaryKey.Any())
         {
             if (listTables is not null && listTables.Any(element => element.Id.Equals(idTable)))
             {
-                _serviceLog.UDPRegisterLog(_serviceMessage.UDPGetMessage(TypeMetadataFields.CallStartToTheLoadTheFieldsPrimarykeyAtTable), _serviceFuncString.Empty);
+                _serviceLog.UDPPRegisterLog(_serviceMessage.UDPGetMessage(TypeMetadataFields.CallStartToTheLoadTheFieldsPrimarykeyAtTable), _serviceFuncString.Empty);
 
                 if (listOfFieldsPrimaryKey is not null && listOfFieldsPrimaryKey.Any())
                 {
@@ -197,17 +197,17 @@ public class ServiceMetadataField : IServiceMetadataField
                         }
                     }
 
-                    _serviceLog.UDPRegisterLog(_serviceMessage.UDPGetMessage(TypeMetadataFields.SuccessToTheLoadTheFieldsPrimarykeyAtTable), _serviceFuncString.Empty);
+                    _serviceLog.UDPPRegisterLog(_serviceMessage.UDPGetMessage(TypeMetadataFields.SuccessToTheLoadTheFieldsPrimarykeyAtTable), _serviceFuncString.Empty);
                 }
             }
         }
     }
 
-    public long UDPGetMetricsOfQuantitiesOfFields(List<Tables> listOfTables, long quantityOfTables)
+    public long UDPPGetMetricsOfQuantitiesOfFields(List<Tables> listOfTables, long quantityOfTables)
     {
         long quantityOfFields = 0;
 
-        _serviceLog.UDPRegisterLog(_serviceMessage.UDPGetMessage(TypeMetadataFields.CallStartToTheGetMetricsOfQuantitiesOfFields), _serviceFuncString.Empty);
+        _serviceLog.UDPPRegisterLog(_serviceMessage.UDPGetMessage(TypeMetadataFields.CallStartToTheGetMetricsOfQuantitiesOfFields), _serviceFuncString.Empty);
 
         try
         {
@@ -218,7 +218,7 @@ public class ServiceMetadataField : IServiceMetadataField
                                                 .LongCount();
             }
 
-            _serviceLog.UDPRegisterLog(_serviceMessage.UDPGetMessage(TypeMetadataFields.SuccessToTheGetMetricsOfQuantitiesOfFields), _serviceFuncString.Empty);
+            _serviceLog.UDPPRegisterLog(_serviceMessage.UDPGetMessage(TypeMetadataFields.SuccessToTheGetMetricsOfQuantitiesOfFields), _serviceFuncString.Empty);
 
         }
         catch (Exception) { }

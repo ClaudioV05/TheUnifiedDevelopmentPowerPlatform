@@ -61,7 +61,7 @@ public class UnifiedDevelopmentPowerPlatformParametersController : ControllerBas
     [ProducesResponseType(StatusCodes.Status504GatewayTimeout)]
     public ActionResult<IEnumerable<Databases>> ParametersTheKindsOfDatabases()
     {
-        return Ok(_serviceMetadata.UDPSelectParametersTheKindsOfDatabases());
+        return Ok(_serviceMetadata.UDPPSelectParametersTheKindsOfDatabases());
     }
 
     /// <summary>
@@ -94,7 +94,7 @@ public class UnifiedDevelopmentPowerPlatformParametersController : ControllerBas
     [ProducesResponseType(StatusCodes.Status504GatewayTimeout)]
     public ActionResult<IEnumerable<FormsView>> ParametersTheKindsOfForms()
     {
-        return Ok(_serviceMetadata.UDPSelectParametersTheKindsOfForms());
+        return Ok(_serviceMetadata.UDPPSelectParametersTheKindsOfForms());
     }
 
     /// <summary>
@@ -127,7 +127,7 @@ public class UnifiedDevelopmentPowerPlatformParametersController : ControllerBas
     [ProducesResponseType(StatusCodes.Status504GatewayTimeout)]
     public ActionResult<IEnumerable<DevelopmentEnvironments>> ParametersTheKindsOfDevelopmentEnvironment()
     {
-        return Ok(_serviceMetadata.UDPSelectParametersTheKindsOfDevelopmentEnviroment());
+        return Ok(_serviceMetadata.UDPPSelectParametersTheKindsOfDevelopmentEnviroment());
     }
 
     /// <summary>
@@ -160,7 +160,7 @@ public class UnifiedDevelopmentPowerPlatformParametersController : ControllerBas
     [ProducesResponseType(StatusCodes.Status504GatewayTimeout)]
     public ActionResult<IEnumerable<DatabasesEngine>> ParametersTheKindsOfDatabasesEngine()
     {
-        return Ok(_serviceMetadata.UDPSelectParametersTheKindsOfDatabasesEngine());
+        return Ok(_serviceMetadata.UDPPSelectParametersTheKindsOfDatabasesEngine());
     }
 
     /// <summary>
@@ -193,7 +193,7 @@ public class UnifiedDevelopmentPowerPlatformParametersController : ControllerBas
     [ProducesResponseType(StatusCodes.Status504GatewayTimeout)]
     public ActionResult<IEnumerable<ArchitecturePatterns>> ParametersTheKindsOfArchitecturePatterns()
     {
-        return Ok(_serviceMetadata.UDPSelectParametersTheKindsOfArchitecturePatterns());
+        return Ok(_serviceMetadata.UDPPSelectParametersTheKindsOfArchitecturePatterns());
     }
 
     /// <summary>
@@ -226,6 +226,6 @@ public class UnifiedDevelopmentPowerPlatformParametersController : ControllerBas
     [ProducesResponseType(StatusCodes.Status504GatewayTimeout)]
     public ActionResult<UnifiedDevelopmentParameters> Informations()
     {
-        return Ok(_serviceMetadata.UDPSelectParametersInformationUnifiedDevelopmentPowerPlatform());
+        return Ok(_serviceMetadata.UDPPSelectParametersInformationUnifiedDevelopmentPowerPlatform());
     }
 }

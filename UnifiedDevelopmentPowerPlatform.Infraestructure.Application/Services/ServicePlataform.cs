@@ -14,15 +14,15 @@ public class ServicePlataform : IServicePlataform
     /// <param name=""></param>
     public ServicePlataform() { }
 
-    public bool UPDPlataformIsWindows() => OperatingSystem.IsWindows();
+    public bool UDPPPlataformIsWindows() => OperatingSystem.IsWindows();
 
-    public string UDPEnvironmentAddNewLine() => Environment.NewLine;
+    public string UDPPEnvironmentAddNewLine() => Environment.NewLine;
 
-    public string UPDGetEnvironmentVariable(string variable) => Environment.GetEnvironmentVariable(variable);
+    public string UDPPGetEnvironmentVariable(string variable) => Environment.GetEnvironmentVariable(variable);
 
-    public string UPDGetOperationalSystemVersion() => Environment.OSVersion.Version.ToString();
+    public string UDPPGetOperationalSystemVersion() => Environment.OSVersion.Version.ToString();
 
-    public List<string> UPDGetListEnvironmentVariables()
+    public List<string> UDPPGetListEnvironmentVariables()
     {
         List<string> listEnvironmentVariables = new List<string>();
 
@@ -32,7 +32,7 @@ public class ServicePlataform : IServicePlataform
             {
                 foreach (string environmentVar in Environment.GetEnvironmentVariables().Keys)
                 {
-                    listEnvironmentVariables.Add(this.UPDGetEnvironmentVariable(environmentVar));
+                    listEnvironmentVariables.Add(this.UDPPGetEnvironmentVariable(environmentVar));
                 }
             }
         }

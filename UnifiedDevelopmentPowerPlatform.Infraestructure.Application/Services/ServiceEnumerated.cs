@@ -13,7 +13,7 @@ public class ServiceEnumerated : IServiceEnumerated
     /// </summary>
     public ServiceEnumerated() { }
 
-    public string UDPGetEnumeratedDescription(Enum EnumeratedValue)
+    public string UDPPGetEnumeratedDescription(Enum EnumeratedValue)
     {
         var fieldInfo = EnumeratedValue.GetType().GetField(EnumeratedValue.ToString());
         var descriptionAttributes = (DescriptionAttribute[])fieldInfo.GetCustomAttributes(typeof(DescriptionAttribute), false);

@@ -56,9 +56,9 @@ public class ServiceDevelopmentEnvironments : IServiceDevelopmentEnvironments
         _serviceDataTypeAnsiSql = serviceDataTypeAnsiSql;
     }
 
-    public List<DevelopmentEnvironments> UDPSelectParametersTheKindsOfDevelopmentEnviroment()
+    public List<DevelopmentEnvironments> UDPPSelectParametersTheKindsOfDevelopmentEnviroment()
     {
-        _serviceLog.UDPRegisterLog(_serviceMessage.UDPGetMessage(TypeDevelopmentEnvironments.CallStartToTheSelectParametersTheKindsOfDevelopmentEnviroment), _serviceFuncString.Empty);
+        _serviceLog.UDPPRegisterLog(_serviceMessage.UDPGetMessage(TypeDevelopmentEnvironments.CallStartToTheSelectParametersTheKindsOfDevelopmentEnviroment), _serviceFuncString.Empty);
 
         List<DevelopmentEnvironments> listItems = new List<DevelopmentEnvironments>();
 
@@ -73,14 +73,14 @@ public class ServiceDevelopmentEnvironments : IServiceDevelopmentEnvironments
                         Id = (long)(EnumeratedDevelopmentEnvironments)i,
                         IdEnumeration = (EnumeratedDevelopmentEnvironments)i,
                         NameEnumeration = Enum.GetName(typeof(EnumeratedDevelopmentEnvironments), i),
-                        Name = _serviceEnumerated.UDPGetEnumeratedDescription((EnumeratedDevelopmentEnvironments)i)
+                        Name = _serviceEnumerated.UDPPGetEnumeratedDescription((EnumeratedDevelopmentEnvironments)i)
                     });
                 }
             }
 
             if (listItems.Any())
             {
-                _serviceLog.UDPRegisterLog(_serviceMessage.UDPGetMessage(TypeDevelopmentEnvironments.SuccessToTheSelectParametersTheKindsOfDevelopmentEnviroment), _serviceFuncString.Empty);
+                _serviceLog.UDPPRegisterLog(_serviceMessage.UDPGetMessage(TypeDevelopmentEnvironments.SuccessToTheSelectParametersTheKindsOfDevelopmentEnviroment), _serviceFuncString.Empty);
             }
         }
         catch (OverflowException) { }
@@ -88,33 +88,33 @@ public class ServiceDevelopmentEnvironments : IServiceDevelopmentEnvironments
         return listItems;
     }
 
-    public void UDPSaveIdentifierToTheDevelopmentEnviromentsFromMetadata(MetadataOwner metadata)
+    public void UDPPSaveIdentifierToTheDevelopmentEnviromentsFromMetadata(MetadataOwner metadata)
     {
         string data = _serviceFuncString.Empty;
         string directoryConfiguration = _serviceFuncString.Empty;
 
         if (metadata.DevelopmentEnvironments.Any())
         {
-            _serviceLog.UDPRegisterLog(_serviceMessage.UDPGetMessage(TypeDevelopmentEnvironments.CallStartToTheSaveIdentifierToTheDevelopmentEnviromentsFromMetadata), _serviceFuncString.Empty);
+            _serviceLog.UDPPRegisterLog(_serviceMessage.UDPGetMessage(TypeDevelopmentEnvironments.CallStartToTheSaveIdentifierToTheDevelopmentEnviromentsFromMetadata), _serviceFuncString.Empty);
 
-            directoryConfiguration = _serviceDirectory.UDPObtainDirectory(DirectoryRootType.Configuration);
-            data = _serviceCrypto.UPDEncryptData(Convert.ToString(metadata.DevelopmentEnvironments.FirstOrDefault().Id));
-            _serviceFile.UDPAppendAllText($"{directoryConfiguration}{DirectoryStandard.Log}{FileStandard.IdDevelopmentEnvironment}{FileExtension.Txt}", data);
+            directoryConfiguration = _serviceDirectory.UDPPObtainDirectory(DirectoryRootType.Configuration);
+            data = _serviceCrypto.UDPPEncryptData(Convert.ToString(metadata.DevelopmentEnvironments.FirstOrDefault().Id));
+            _serviceFile.UDPPAppendAllText($"{directoryConfiguration}{DirectoryStandard.Log}{FileStandard.IdDevelopmentEnvironment}{FileExtension.Txt}", data);
 
-            _serviceLog.UDPRegisterLog(_serviceMessage.UDPGetMessage(TypeDevelopmentEnvironments.SuccessToTheSaveIdentifierToTheDevelopmentEnviromentsFromMetadata), _serviceFuncString.Empty);
+            _serviceLog.UDPPRegisterLog(_serviceMessage.UDPGetMessage(TypeDevelopmentEnvironments.SuccessToTheSaveIdentifierToTheDevelopmentEnviromentsFromMetadata), _serviceFuncString.Empty);
         }
     }
 
-    public string UDPGetDataTypeFromTableInScriptMetadata(string type)
+    public string UDPPGetDataTypeFromTableInScriptMetadata(string type)
     {
         string data = _serviceFuncString.Empty;
         string? returnType = _serviceFuncString.Empty;
 
         try
         {
-            _serviceLog.UDPRegisterLog(_serviceMessage.UDPGetMessage(TypeDevelopmentEnvironments.CallStartToTheGetDataTypeFromTableInScriptMetadata), _serviceFuncString.Empty);
-            data = _serviceFile.UDPGetDataFileFromDirectoryConfiguration(DirectoryStandard.Log, $"{FileStandard.IdDevelopmentEnvironment}{FileExtension.Txt}");
-            data = _serviceCrypto.UPDDecryptData(data);
+            _serviceLog.UDPPRegisterLog(_serviceMessage.UDPGetMessage(TypeDevelopmentEnvironments.CallStartToTheGetDataTypeFromTableInScriptMetadata), _serviceFuncString.Empty);
+            data = _serviceFile.UDPPGetDataFileFromDirectoryConfiguration(DirectoryStandard.Log, $"{FileStandard.IdDevelopmentEnvironment}{FileExtension.Txt}");
+            data = _serviceCrypto.UDPPDecryptData(data);
 
             if (int.TryParse(data, out var idDevelopmentEnvironment))
             {
@@ -127,12 +127,12 @@ public class ServiceDevelopmentEnvironments : IServiceDevelopmentEnvironments
                 };
             }
 
-            _serviceLog.UDPRegisterLog(_serviceMessage.UDPGetMessage(TypeDevelopmentEnvironments.SuccessToTheGetDataTypeFromTableInScriptMetadata), _serviceFuncString.Empty);
+            _serviceLog.UDPPRegisterLog(_serviceMessage.UDPGetMessage(TypeDevelopmentEnvironments.SuccessToTheGetDataTypeFromTableInScriptMetadata), _serviceFuncString.Empty);
             return returnType;
         }
         catch (Exception ex)
         {
-            _serviceLog.UDPRegisterLog(_serviceMessage.UDPGetMessage(TypeDevelopmentEnvironments.ErrorToTheGetDataTypeFromTableInScriptMetadata), ex.Message);
+            _serviceLog.UDPPRegisterLog(_serviceMessage.UDPGetMessage(TypeDevelopmentEnvironments.ErrorToTheGetDataTypeFromTableInScriptMetadata), ex.Message);
             return _serviceFuncString.Empty;
         }
     }
@@ -144,42 +144,42 @@ public class ServiceDevelopmentEnvironments : IServiceDevelopmentEnvironments
 
         try
         {
-            _serviceLog.UDPRegisterLog(_serviceMessage.UDPGetMessage(TypeDevelopmentEnvironments.CallStartToGetDataTypeOfCSharp), _serviceFuncString.Empty);
+            _serviceLog.UDPPRegisterLog(_serviceMessage.UDPGetMessage(TypeDevelopmentEnvironments.CallStartToGetDataTypeOfCSharp), _serviceFuncString.Empty);
 
-            returnType = _serviceDataTypeCSharp.UDPGetAsStringTheEnumType(CSharp.DataType.Undefined);
+            returnType = _serviceDataTypeCSharp.UDPPGetAsStringTheEnumType(CSharp.DataType.Undefined);
 
-            if (!_serviceFuncString.UDPNullOrEmpty(type))
+            if (!_serviceFuncString.UDPPNullOrEmpty(type))
             {
-                returnValueType = _serviceDataTypeAnsiSql.UDPReturnIndexFromTheListOfDataTypes(type);
+                returnValueType = _serviceDataTypeAnsiSql.UDPPReturnIndexFromTheListOfDataTypes(type);
 
                 if (returnValueType != -1)
                 {
-                    if (_serviceDataTypeAnsiSql.UDPByIndexEnumTypeIsDefined(returnValueType))
+                    if (_serviceDataTypeAnsiSql.UDPPByIndexEnumTypeIsDefined(returnValueType))
                     {
-                        returnType = _serviceDataTypeAnsiSql.UDPGetAsEnumeratedTheEnumType(returnValueType) switch
+                        returnType = _serviceDataTypeAnsiSql.UDPPGetAsEnumeratedTheEnumType(returnValueType) switch
                         {
-                            AnsiSql.DataType.Varchar => _serviceDataTypeCSharp.UDPGetAsStringTheEnumType(CSharp.DataType.String),
-                            AnsiSql.DataType.Char => _serviceDataTypeCSharp.UDPGetAsStringTheEnumType(CSharp.DataType.Char),
-                            AnsiSql.DataType.Smallint => _serviceDataTypeCSharp.UDPGetAsStringTheEnumType(CSharp.DataType.Int),
-                            AnsiSql.DataType.Integer => _serviceDataTypeCSharp.UDPGetAsStringTheEnumType(CSharp.DataType.Int),
-                            AnsiSql.DataType.Decimal => _serviceDataTypeCSharp.UDPGetAsStringTheEnumType(CSharp.DataType.Decimal),
-                            AnsiSql.DataType.Float => _serviceDataTypeCSharp.UDPGetAsStringTheEnumType(CSharp.DataType.Float),
-                            AnsiSql.DataType.DoublePrecision => _serviceDataTypeCSharp.UDPGetAsStringTheEnumType(CSharp.DataType.Double),
-                            AnsiSql.DataType.Real => _serviceDataTypeCSharp.UDPGetAsStringTheEnumType(CSharp.DataType.Double),
-                            AnsiSql.DataType.Timestamp => _serviceDataTypeCSharp.UDPGetAsStringTheEnumType(CSharp.DataType.DateTime),
-                            _ => _serviceDataTypeCSharp.UDPGetAsStringTheEnumType(CSharp.DataType.Undefined)
+                            AnsiSql.DataType.Varchar => _serviceDataTypeCSharp.UDPPGetAsStringTheEnumType(CSharp.DataType.String),
+                            AnsiSql.DataType.Char => _serviceDataTypeCSharp.UDPPGetAsStringTheEnumType(CSharp.DataType.Char),
+                            AnsiSql.DataType.Smallint => _serviceDataTypeCSharp.UDPPGetAsStringTheEnumType(CSharp.DataType.Int),
+                            AnsiSql.DataType.Integer => _serviceDataTypeCSharp.UDPPGetAsStringTheEnumType(CSharp.DataType.Int),
+                            AnsiSql.DataType.Decimal => _serviceDataTypeCSharp.UDPPGetAsStringTheEnumType(CSharp.DataType.Decimal),
+                            AnsiSql.DataType.Float => _serviceDataTypeCSharp.UDPPGetAsStringTheEnumType(CSharp.DataType.Float),
+                            AnsiSql.DataType.DoublePrecision => _serviceDataTypeCSharp.UDPPGetAsStringTheEnumType(CSharp.DataType.Double),
+                            AnsiSql.DataType.Real => _serviceDataTypeCSharp.UDPPGetAsStringTheEnumType(CSharp.DataType.Double),
+                            AnsiSql.DataType.Timestamp => _serviceDataTypeCSharp.UDPPGetAsStringTheEnumType(CSharp.DataType.DateTime),
+                            _ => _serviceDataTypeCSharp.UDPPGetAsStringTheEnumType(CSharp.DataType.Undefined)
                         };
                     }
                 }
             }
 
-            _serviceLog.UDPRegisterLog(_serviceMessage.UDPGetMessage(TypeDevelopmentEnvironments.SuccessToGetDataTypeOfCSharp), _serviceFuncString.Empty);
-            return _serviceFuncString.UDPLower(returnType);
+            _serviceLog.UDPPRegisterLog(_serviceMessage.UDPGetMessage(TypeDevelopmentEnvironments.SuccessToGetDataTypeOfCSharp), _serviceFuncString.Empty);
+            return _serviceFuncString.UDPPLower(returnType);
         }
         catch (Exception ex)
         {
-            _serviceLog.UDPRegisterLog(_serviceMessage.UDPGetMessage(TypeDevelopmentEnvironments.ErrorToGetDataTypeOfCSharp), ex.Message);
-            return _serviceDataTypeCSharp.UDPGetAsStringTheEnumType(CSharp.DataType.Undefined);
+            _serviceLog.UDPPRegisterLog(_serviceMessage.UDPGetMessage(TypeDevelopmentEnvironments.ErrorToGetDataTypeOfCSharp), ex.Message);
+            return _serviceDataTypeCSharp.UDPPGetAsStringTheEnumType(CSharp.DataType.Undefined);
         }
     }
 }

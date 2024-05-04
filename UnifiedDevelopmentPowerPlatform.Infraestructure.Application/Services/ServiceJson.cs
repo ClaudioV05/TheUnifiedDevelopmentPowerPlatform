@@ -30,7 +30,7 @@ public class ServiceJson : IServiceJson
     /// </summary>
     public ServiceJson() { }
 
-    public string UDPSerializerJson(object obj)
+    public string UDPPSerializerJson(object obj)
     {
         return System.Text.Json.JsonSerializer.Serialize(obj, _jsonOptions);
     }

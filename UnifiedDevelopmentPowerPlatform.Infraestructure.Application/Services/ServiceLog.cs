@@ -45,44 +45,44 @@ public class ServiceLog : IServiceLog
         _serviceFuncStrings = serviceFuncStrings;
     }
 
-    public void UDPLogDebug(string message) => _logger.Debug(message);
+    public void UDPPLogDebug(string message) => _logger.Debug(message);
 
-    public void UDPLogError(string message) => _logger.Error(message);
+    public void UDPPLogError(string message) => _logger.Error(message);
 
-    public void UDPLogInformation(string message) => _logger.Info(message);
+    public void UDPPLogInformation(string message) => _logger.Info(message);
 
-    public void UDPLogWarning(string message) => _logger.Warn(message);
+    public void UDPPLogWarning(string message) => _logger.Warn(message);
 
-    public void UDPRegisterLog(string message, string additionalMessage)
+    public void UDPPRegisterLog(string message, string additionalMessage)
     {
         string data = _serviceFuncStrings.Empty;
         string newFirstLine = _serviceFuncStrings.Empty;
         string directoryConfiguration = _serviceFuncStrings.Empty;
         StackFrame stack = new StackFrame(1, true);
 
-        directoryConfiguration = _serviceDirectory.UDPObtainDirectory(DirectoryRootType.Configuration);
+        directoryConfiguration = _serviceDirectory.UDPPObtainDirectory(DirectoryRootType.Configuration);
 
-        if (!_serviceFuncStrings.UDPNullOrEmpty(directoryConfiguration) && _serviceDirectory.UDPDirectoryExists(directoryConfiguration))
+        if (!_serviceFuncStrings.UDPPNullOrEmpty(directoryConfiguration) && _serviceDirectory.UDPPDirectoryExists(directoryConfiguration))
         {
-            if (!_serviceFuncStrings.UDPStringStarts(message, TextGlobal.CallStartToTheCreationOfUnifiedDevelopmentPowerPlatform))
+            if (!_serviceFuncStrings.UDPPStringStarts(message, TextGlobal.CallStartToTheCreationOfUnifiedDevelopmentPowerPlatform))
             {
-                newFirstLine = _servicePlataform.UDPEnvironmentAddNewLine();
+                newFirstLine = _servicePlataform.UDPPEnvironmentAddNewLine();
             }
 
             if (stack is not null)
             {
-                data = $"{newFirstLine}{LogConfiguration.Identifier}{_serviceGuid.UDPGenerateTheNewUniversallyUniqueIdentifier()}{_servicePlataform.UDPEnvironmentAddNewLine()}" +
-                       $"{LogConfiguration.Datetime}{_serviceDate.UDPGetDateTimeNowFormat()}{_servicePlataform.UDPEnvironmentAddNewLine()}" +
-                       $"{LogConfiguration.FileName}{_serviceFile.UDPGetFileName(stack.GetFileName() ?? _serviceFuncStrings.Empty)}{_servicePlataform.UDPEnvironmentAddNewLine()}" +
-                       $"{LogConfiguration.MethodName}{stack.GetMethod()?.Name}{_servicePlataform.UDPEnvironmentAddNewLine()}" +
-                       $"{LogConfiguration.LineNumber}{stack.GetFileLineNumber()}{_servicePlataform.UDPEnvironmentAddNewLine()}" +
-                       $"{LogConfiguration.LineColumn}{stack.GetFileColumnNumber()}{_servicePlataform.UDPEnvironmentAddNewLine()}" +
-                       $"{LogConfiguration.Message}{_serviceFuncStrings.UDPUpper(message)}{_servicePlataform.UDPEnvironmentAddNewLine()}" +
-                       $"{LogConfiguration.AdditionalMessage}{_serviceFuncStrings.UDPUpper(additionalMessage)}{_servicePlataform.UDPEnvironmentAddNewLine()}";
+                data = $"{newFirstLine}{LogConfiguration.Identifier}{_serviceGuid.UDPPGenerateTheNewUniversallyUniqueIdentifier()}{_servicePlataform.UDPPEnvironmentAddNewLine()}" +
+                       $"{LogConfiguration.Datetime}{_serviceDate.UDPPGetDateTimeNowFormat()}{_servicePlataform.UDPPEnvironmentAddNewLine()}" +
+                       $"{LogConfiguration.FileName}{_serviceFile.UDPPGetFileName(stack.GetFileName() ?? _serviceFuncStrings.Empty)}{_servicePlataform.UDPPEnvironmentAddNewLine()}" +
+                       $"{LogConfiguration.MethodName}{stack.GetMethod()?.Name}{_servicePlataform.UDPPEnvironmentAddNewLine()}" +
+                       $"{LogConfiguration.LineNumber}{stack.GetFileLineNumber()}{_servicePlataform.UDPPEnvironmentAddNewLine()}" +
+                       $"{LogConfiguration.LineColumn}{stack.GetFileColumnNumber()}{_servicePlataform.UDPPEnvironmentAddNewLine()}" +
+                       $"{LogConfiguration.Message}{_serviceFuncStrings.UDPPUpper(message)}{_servicePlataform.UDPPEnvironmentAddNewLine()}" +
+                       $"{LogConfiguration.AdditionalMessage}{_serviceFuncStrings.UDPPUpper(additionalMessage)}{_servicePlataform.UDPPEnvironmentAddNewLine()}";
 
-                this.UDPLogInformation(data);
+                this.UDPPLogInformation(data);
 
-                _serviceFile.UDPAppendAllText($"{directoryConfiguration}{DirectoryStandard.Log}{FileStandard.Log}{FileExtension.Txt}", data);
+                _serviceFile.UDPPAppendAllText($"{directoryConfiguration}{DirectoryStandard.Log}{FileStandard.Log}{FileExtension.Txt}", data);
             }
         }
     }

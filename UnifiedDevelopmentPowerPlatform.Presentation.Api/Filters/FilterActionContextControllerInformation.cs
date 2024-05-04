@@ -48,7 +48,7 @@ internal sealed class FilterActionContextControllerInformation : IAsyncActionFil
         }
         catch (Exception)
         {
-            throw new Exception(_serviceMessage.UDPGetMessage(TypeGlobal.TheExceptionGlobalErrorMessage));
+            throw new Exception(_serviceMessage.UDPPGetMessage(TypeGlobal.TheExceptionGlobalErrorMessage));
         }
 
         await next();

@@ -19,29 +19,29 @@ public class ServiceDataTypeCSharp : IServiceDataTypeCSharp
         _serviceFuncString = serviceFuncString;
     }
 
-    public bool UDPByIndexEnumTypeIsDefined(int index)
+    public bool UDPPByIndexEnumTypeIsDefined(int index)
     {
         return Enum.IsDefined(typeof(AnsiSql.DataType), index);
     }
 
-    public CSharp.DataType UDPGetAsEnumeratedTheEnumType(int index)
+    public CSharp.DataType UDPPGetAsEnumeratedTheEnumType(int index)
     {
         return (CSharp.DataType)index;
     }
 
-    public int UDPReturnIndexFromTheListOfDataTypes(string dataType)
+    public int UDPPReturnIndexFromTheListOfDataTypes(string dataType)
     {
         string type = _serviceFuncString.Empty;
 
         try
         {
             type = dataType;
-            type = _serviceFuncString.UDPLower(type);
-            type = _serviceFuncString.UDPOnlyLetter(type);
+            type = _serviceFuncString.UDPPLower(type);
+            type = _serviceFuncString.UDPPOnlyLetter(type);
 
             return Enum.GetNames(typeof(CSharp.DataType))
                        .ToList()
-                       .FindIndex(element => _serviceFuncString.UDPContains(_serviceFuncString.UDPLower(element), type));
+                       .FindIndex(element => _serviceFuncString.UDPPContains(_serviceFuncString.UDPPLower(element), type));
         }
         catch (Exception)
         {
@@ -49,7 +49,7 @@ public class ServiceDataTypeCSharp : IServiceDataTypeCSharp
         }
     }
 
-    public string UDPGetAsStringTheEnumType(CSharp.DataType dataType)
+    public string UDPPGetAsStringTheEnumType(CSharp.DataType dataType)
     {
         return Enum.GetName(typeof(CSharp.DataType), dataType) ?? _serviceFuncString.Empty;
     }

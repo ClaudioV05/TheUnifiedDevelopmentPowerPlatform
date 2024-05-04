@@ -47,7 +47,7 @@ internal sealed class FilterActionContextController : IAsyncActionFilter
     {
         string message = _serviceFuncString.Empty;
 
-        if (context is not null && _serviceFuncString.UDPLower(context.RouteData.Values["action"] as string) == ControllerActionArgumentsKey.Metadata)
+        if (context is not null && _serviceFuncString.UDPPLower(context.RouteData.Values["action"] as string) == ControllerActionArgumentsKey.Metadata)
         {
             try
             {
@@ -57,15 +57,15 @@ internal sealed class FilterActionContextController : IAsyncActionFilter
                     return;
                 }
 
-                _serviceDirectory.UPDCreateDirectoriesDefault();
+                _serviceDirectory.UDPPCreateDirectoriesDefault();
 
-                _serviceLog.UDPRegisterLog(_serviceMessage.UDPGetMessage(TypeGlobal.CallStartToTheCreationOfUnifiedDevelopmentPowerPlatform), _serviceFuncString.Empty);
-                _serviceLog.UDPRegisterLog(_serviceMessage.UDPGetMessage(TypeValidation.ThePlatformWindowsIsNotOk), _serviceFuncString.Empty);
+                _serviceLog.UDPPRegisterLog(_serviceMessage.UDPPGetMessage(TypeGlobal.CallStartToTheCreationOfUnifiedDevelopmentPowerPlatform), _serviceFuncString.Empty);
+                _serviceLog.UDPPRegisterLog(_serviceMessage.UDPGetMessage(TypeValidation.ThePlatformWindowsIsNotOk), _serviceFuncString.Empty);
             }
             catch (Exception ex)
             {
-                _serviceLog.UDPRegisterLog(_serviceMessage.UDPGetMessage(TypeGlobal.ErrorFilterActionContextController), ex.Message);
-                throw new Exception(_serviceMessage.UDPGetMessage(TypeGlobal.TheExceptionGlobalErrorMessage));
+                _serviceLog.UDPPRegisterLog(_serviceMessage.UDPPGetMessage(TypeGlobal.ErrorFilterActionContextController), ex.Message);
+                throw new Exception(_serviceMessage.UDPPGetMessage(TypeGlobal.TheExceptionGlobalErrorMessage));
             }
         }
         await next();

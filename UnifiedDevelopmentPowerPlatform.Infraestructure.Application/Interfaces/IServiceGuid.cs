@@ -15,7 +15,7 @@ public interface IServiceGuid
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
     /// <returns>The guid object.</returns>
-    string? UDPGenerateTheNewUniversallyUniqueIdentifier();
+    string? UDPPGenerateTheNewUniversallyUniqueIdentifier();
 
     /// <summary>
     /// To validate the "universally unique identifier" (UUID) with regex.
@@ -27,7 +27,7 @@ public interface IServiceGuid
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
     /// <returns>The method will return true, otherwise will return false.</returns>
-    bool UDValidateWithRegexTheUniversallyUniqueIdentifier(string value);
+    bool UDPPValidateWithRegexTheUniversallyUniqueIdentifier(string value);
 
     /// <summary>
     /// To validate the "universally unique identifier" (UUID) with guid parse.
@@ -39,5 +39,5 @@ public interface IServiceGuid
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
     /// <returns>The method will return true, otherwise will return false.</returns>
-    bool UDValidateWithGuidParseTheUniversallyUniqueIdentifier(string value);
+    bool UDPPValidateWithGuidParseTheUniversallyUniqueIdentifier(string value);
 }

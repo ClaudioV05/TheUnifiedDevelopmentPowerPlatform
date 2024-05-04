@@ -17,7 +17,7 @@ public interface IServiceArchitecturePatterns
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
     /// <returns>Return the complete list of the architecture patterns.</returns>
-    List<ArchitecturePatterns> UDPToSelectParametersTheKindsOfArchitecturePatterns();
+    List<ArchitecturePatterns> UDPPToSelectParametersTheKindsOfArchitecturePatterns();
 
     /// <summary>
     /// To save identifier to the architecture patterns from metadata.
@@ -28,7 +28,7 @@ public interface IServiceArchitecturePatterns
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
     /// <returns></returns>
-    void UDPToSaveIdentifierToTheArchitecturePatternsFromMetadata(MetadataOwner metadata);
+    void UDPPToSaveIdentifierToTheArchitecturePatternsFromMetadata(MetadataOwner metadata);
 
     /// <summary>
     /// To read identifier to the architecture patterns from metadata.
@@ -50,7 +50,7 @@ public interface IServiceArchitecturePatterns
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
     /// <returns></returns>
-    void UDPGenerateBackendProject(List<Tables> tables);
+    void UDPPGenerateBackendProject(List<Tables> tables);
 
     /// <summary>
     /// Generate front end project.
@@ -61,5 +61,5 @@ public interface IServiceArchitecturePatterns
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
     /// <returns></returns>
-    void UDPGenerateFrontEndProject(List<Tables> tables);
+    void UDPPGenerateFrontEndProject(List<Tables> tables);
 }

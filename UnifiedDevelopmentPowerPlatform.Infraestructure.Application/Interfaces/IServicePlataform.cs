@@ -9,7 +9,7 @@ public interface IServicePlataform
     /// Make validation if platform is Windows.
     /// </summary>
     /// <returns>The method will return true, otherwise will return false.</returns>
-    bool UPDPlataformIsWindows();
+    bool UDPPPlataformIsWindows();
 
     /// <summary>
     /// Environment add a new line.
@@ -21,7 +21,7 @@ public interface IServicePlataform
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
     /// <returns>String with caracter \n.</returns>
-    string UDPEnvironmentAddNewLine();
+    string UDPPEnvironmentAddNewLine();
 
     /// <summary>
     /// Get variable of Environment.
@@ -33,7 +33,7 @@ public interface IServicePlataform
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
     /// <returns>Text with name of environment.</returns>
-    string UPDGetEnvironmentVariable(string variable);
+    string UDPPGetEnvironmentVariable(string variable);
 
     /// <summary>
     /// Get variable of OS version.
@@ -45,7 +45,7 @@ public interface IServicePlataform
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
     /// <returns>Text with name of OS version.</returns>
-    string UPDGetOperationalSystemVersion();
+    string UDPPGetOperationalSystemVersion();
 
     /// <summary>
     /// Get list of variable of Environment.
@@ -57,5 +57,5 @@ public interface IServicePlataform
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
     /// <returns>List of text with name of environment.</returns>
-    List<string> UPDGetListEnvironmentVariables();
+    List<string> UDPPGetListEnvironmentVariables();
 }

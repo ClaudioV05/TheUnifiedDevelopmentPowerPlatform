@@ -20,9 +20,9 @@ public class ServiceMessage : IServiceMessage
         _serviceFuncString = serviceFuncString;
     }
 
-    public string UDPGetMessage(TypeGlobal type)
+    public string UDPPGetMessage(TypeGlobal type)
     {
-        return _serviceFuncString.UDPUpper(type switch
+        return _serviceFuncString.UDPPUpper(type switch
         {
             TypeGlobal.DoNotSpecified => TextGlobal.DoNotSpecified,
             TypeGlobal.CallStartToTheCreationOfUnifiedDevelopmentPowerPlatform => TextGlobal.CallStartToTheCreationOfUnifiedDevelopmentPowerPlatform,
@@ -40,7 +40,7 @@ public class ServiceMessage : IServiceMessage
 
     public string UDPGetMessage(TypeDevelopmentEnvironments type)
     {
-        return _serviceFuncString.UDPUpper(type switch
+        return _serviceFuncString.UDPPUpper(type switch
         {
             TypeDevelopmentEnvironments.DoNotSpecified => TextDevelopmentEnvironments.DoNotSpecified,
             TypeDevelopmentEnvironments.CallStartToTheGetDataTypeFromTableInScriptMetadata => TextDevelopmentEnvironments.CallStartToTheGetDataTypeFromTableInScriptMetadata,
@@ -62,7 +62,7 @@ public class ServiceMessage : IServiceMessage
 
     public string UDPGetMessage(TypeArchitecturePatterns type)
     {
-        return _serviceFuncString.UDPUpper(type switch
+        return _serviceFuncString.UDPPUpper(type switch
         {
             TypeArchitecturePatterns.DoNotSpecified => TextArchitecturePatterns.DoNotSpecified,
             TypeArchitecturePatterns.CallStartToTheSelectParametersTheKindsOfArchitecturePatterns => TextArchitecturePatterns.CallStartToTheSelectParametersTheKindsOfArchitecturePatterns,
@@ -75,7 +75,7 @@ public class ServiceMessage : IServiceMessage
 
     public string UDPGetMessage(TypeDatabasesEngine type)
     {
-        return _serviceFuncString.UDPUpper(type switch
+        return _serviceFuncString.UDPPUpper(type switch
         {
             TypeDatabasesEngine.DoNotSpecified => TextDatabasesEngine.DoNotSpecified,
             TypeDatabasesEngine.CallStartToTheSelectParametersTheKindsOfDatabasesEngine => TextDatabasesEngine.CallStartToTheSelectParametersTheKindsOfDatabasesEngine,
@@ -88,7 +88,7 @@ public class ServiceMessage : IServiceMessage
 
     public string UDPGetMessage(TypeDatabases type)
     {
-        return _serviceFuncString.UDPUpper(type switch
+        return _serviceFuncString.UDPPUpper(type switch
         {
             TypeDatabases.DoNotSpecified => TextDatabases.DoNotSpecified,
             TypeDatabases.CallStartToTheSelectParametersTheKindsOfDatabases => TextDatabases.CallStartToTheSelectParametersTheKindsOfDatabases,
@@ -105,7 +105,7 @@ public class ServiceMessage : IServiceMessage
 
     public string UDPGetMessage(TypeFormsView type)
     {
-        return _serviceFuncString.UDPUpper(type switch
+        return _serviceFuncString.UDPPUpper(type switch
         {
             TypeFormsView.DoNotSpecified => TextFormsView.DoNotSpecified,
             TypeFormsView.SuccessToTheSelectParametersTheKindsOfForms => TextFormsView.SuccessToTheSelectParametersTheKindsOfForms,
@@ -118,7 +118,7 @@ public class ServiceMessage : IServiceMessage
 
     public string UDPGetMessage(TypeCrypto type)
     {
-        return _serviceFuncString.UDPUpper(type switch
+        return _serviceFuncString.UDPPUpper(type switch
         {
             TypeCrypto.DoNotSpecified => TextCrypto.DoNotSpecified,
             TypeCrypto.CallStartToTheEncrypt => TextCrypto.CallStartToTheEncrypt,
@@ -139,7 +139,7 @@ public class ServiceMessage : IServiceMessage
 
     public string UDPGetMessage(TypeMetadata type)
     {
-        return _serviceFuncString.UDPUpper(type switch
+        return _serviceFuncString.UDPPUpper(type switch
         {
             TypeMetadata.DoNotSpecified => TextMetadata.DoNotSpecified,
             TypeMetadata.CallStartToTheReceiveAndSaveAllTablesAndFieldsOfSchemaDatabase => TextMetadata.CallStartToTheReceiveAndSaveAllTablesAndFieldsOfSchemaDatabase,
@@ -157,7 +157,7 @@ public class ServiceMessage : IServiceMessage
 
     public string UDPGetMessage(TypeMetadataFields type)
     {
-        return _serviceFuncString.UDPUpper(type switch
+        return _serviceFuncString.UDPPUpper(type switch
         {
             TypeMetadataFields.DoNotSpecified => TextMetadataFields.DoNotSpecified,
             TypeMetadataFields.CallStartToTheLoadTheFieldsPrimarykeyAtTable => TextMetadataFields.CallStartToTheLoadTheFieldsPrimarykeyAtTable,
@@ -174,7 +174,7 @@ public class ServiceMessage : IServiceMessage
 
     public string UDPGetMessage(TypeMetadataTable type)
     {
-        return _serviceFuncString.UDPUpper(type switch
+        return _serviceFuncString.UDPPUpper(type switch
         {
             TypeMetadataTable.DoNotSpecified => TextMetadataTables.DoNotSpecified,
             TypeMetadataTable.CallStartToTheSaveDatabaseSchemaFromMetadata => TextMetadataTables.CallStartToTheSaveDatabaseSchemaFromMetadata,
@@ -191,7 +191,7 @@ public class ServiceMessage : IServiceMessage
 
     public string UDPGetMessage(TypeDirectory type)
     {
-        return _serviceFuncString.UDPUpper(type switch
+        return _serviceFuncString.UDPPUpper(type switch
         {
             TypeDirectory.DoNotSpecified => TextDirectory.DoNotSpecified,
             TypeDirectory.DirectoryRootIsEmpty => TextDirectory.DirectoryRootIsEmpty,
@@ -205,7 +205,7 @@ public class ServiceMessage : IServiceMessage
 
     public string UDPGetMessage(TypeValidation type)
     {
-        return _serviceFuncString.UDPUpper(type switch
+        return _serviceFuncString.UDPPUpper(type switch
         {
             TypeValidation.DoNotSpecified => TextValidation.DoNotSpecified,
             TypeValidation.TheModelStateIsNotOk => TextValidation.TheModelStateIsNotOk,

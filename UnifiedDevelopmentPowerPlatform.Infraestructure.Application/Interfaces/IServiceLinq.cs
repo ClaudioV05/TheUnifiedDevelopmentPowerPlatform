@@ -18,7 +18,7 @@ public interface IServiceLinq
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
     /// <returns>Return root path configuration.</returns>
-    string UDPSelectRootPathConfiguration(List<string> listItem);
+    string UDPPSelectRootPathConfiguration(List<string> listItem);
 
     /// <summary>
     /// Select root path app.
@@ -30,7 +30,7 @@ public interface IServiceLinq
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
     /// <returns>Return root path app.</returns>
-    string UDPSelectRootPathApp(List<string> listItem);
+    string UDPPSelectRootPathApp(List<string> listItem);
 
     /// <summary>
     /// Select section standard.
@@ -42,7 +42,7 @@ public interface IServiceLinq
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
     /// <returns>List contains the name of Standard.</returns>
-    List<string>? UDPSelectSectionStandard(List<string> listItem);
+    List<string>? UDPPSelectSectionStandard(List<string> listItem);
 
     /// <summary>
     /// Select section front end.
@@ -54,7 +54,7 @@ public interface IServiceLinq
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
     /// <returns>List contains the name of front end directories.</returns>
-    List<string>? UDPSelectSectionFrontend(List<string> listItem);
+    List<string>? UDPPSelectSectionFrontend(List<string> listItem);
 
     /// <summary>
     /// Select section back end.
@@ -66,7 +66,7 @@ public interface IServiceLinq
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
     /// <returns>List contains the name of back end directories.</returns>
-    List<string>? UDPSelectSectionBackend(List<string> listItem);
+    List<string>? UDPPSelectSectionBackend(List<string> listItem);
 
     /// <summary>
     /// Select root path with app configuration.
@@ -78,7 +78,7 @@ public interface IServiceLinq
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
     /// <returns>List contains the directories app and config.</returns>
-    List<string>? UDPSelectRootPathWithAppConfiguration(List<string> listItem);
+    List<string>? UDPPSelectRootPathWithAppConfiguration(List<string> listItem);
 
     /// <summary>
     /// Select root path without app and configuration.
@@ -90,7 +90,7 @@ public interface IServiceLinq
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
     /// <returns>All paths without App and configuration.</returns>
-    List<string>? UDPSelectRootPathWithoutAppConfiguration(List<string> listItem);
+    List<string>? UDPPSelectRootPathWithoutAppConfiguration(List<string> listItem);
 
     /// <summary>
     /// Distinct.
@@ -102,5 +102,5 @@ public interface IServiceLinq
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
     /// <returns>Returns distinct elements from a sequence.</returns>
-    List<string> UDPDistinct(List<string> listItem);
+    List<string> UDPPDistinct(List<string> listItem);
 }

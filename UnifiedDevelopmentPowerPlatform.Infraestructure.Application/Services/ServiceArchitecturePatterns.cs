@@ -47,9 +47,9 @@ public class ServiceArchitecturePatterns : IServiceArchitecturePatterns
         _serviceFuncString = serviceFuncString;
     }
 
-    public List<ArchitecturePatterns> UDPToSelectParametersTheKindsOfArchitecturePatterns()
+    public List<ArchitecturePatterns> UDPPToSelectParametersTheKindsOfArchitecturePatterns()
     {
-        _serviceLog.UDPRegisterLog(_serviceMessage.UDPGetMessage(TypeArchitecturePatterns.CallStartToTheSelectParametersTheKindsOfArchitecturePatterns), _serviceFuncString.Empty);
+        _serviceLog.UDPPRegisterLog(_serviceMessage.UDPGetMessage(TypeArchitecturePatterns.CallStartToTheSelectParametersTheKindsOfArchitecturePatterns), _serviceFuncString.Empty);
 
         List<ArchitecturePatterns> listItems = new List<ArchitecturePatterns>();
 
@@ -64,14 +64,14 @@ public class ServiceArchitecturePatterns : IServiceArchitecturePatterns
                         Id = (long)(EnumeratedArchitecturePatterns)i,
                         IdEnumeration = (EnumeratedArchitecturePatterns)i,
                         NameEnumeration = Enum.GetName(typeof(EnumeratedArchitecturePatterns), i),
-                        Name = _serviceEnumerated.UDPGetEnumeratedDescription((EnumeratedArchitecturePatterns)i)
+                        Name = _serviceEnumerated.UDPPGetEnumeratedDescription((EnumeratedArchitecturePatterns)i)
                     });
                 }
             }
 
             if (listItems.Any())
             {
-                _serviceLog.UDPRegisterLog(_serviceMessage.UDPGetMessage(TypeArchitecturePatterns.SuccessToTheSelectParametersTheKindsOfArchitecturePatterns), _serviceFuncString.Empty);
+                _serviceLog.UDPPRegisterLog(_serviceMessage.UDPGetMessage(TypeArchitecturePatterns.SuccessToTheSelectParametersTheKindsOfArchitecturePatterns), _serviceFuncString.Empty);
             }
         }
         catch (OverflowException) { }
@@ -79,36 +79,36 @@ public class ServiceArchitecturePatterns : IServiceArchitecturePatterns
         return listItems;
     }
 
-    public void UDPToSaveIdentifierToTheArchitecturePatternsFromMetadata(MetadataOwner metadata)
+    public void UDPPToSaveIdentifierToTheArchitecturePatternsFromMetadata(MetadataOwner metadata)
     {
         string data = _serviceFuncString.Empty;
         string directoryConfiguration = _serviceFuncString.Empty;
 
         if (metadata.ArchitecturePatterns.Any())
         {
-            _serviceLog.UDPRegisterLog(_serviceMessage.UDPGetMessage(TypeArchitecturePatterns.CallStartToTheSaveIdentifierToTheArchitecturePatternsFromMetadata), _serviceFuncString.Empty);
+            _serviceLog.UDPPRegisterLog(_serviceMessage.UDPGetMessage(TypeArchitecturePatterns.CallStartToTheSaveIdentifierToTheArchitecturePatternsFromMetadata), _serviceFuncString.Empty);
 
-            directoryConfiguration = _serviceDirectory.UDPObtainDirectory(DirectoryRootType.Configuration);
-            data = _serviceCrypto.UPDEncryptData(Convert.ToString(metadata.ArchitecturePatterns.FirstOrDefault().Id));
-            _serviceFile.UDPAppendAllText($"{directoryConfiguration}{DirectoryStandard.Log}{FileStandard.IdArchitecturePatterns}{FileExtension.Txt}", data);
+            directoryConfiguration = _serviceDirectory.UDPPObtainDirectory(DirectoryRootType.Configuration);
+            data = _serviceCrypto.UDPPEncryptData(Convert.ToString(metadata.ArchitecturePatterns.FirstOrDefault().Id));
+            _serviceFile.UDPPAppendAllText($"{directoryConfiguration}{DirectoryStandard.Log}{FileStandard.IdArchitecturePatterns}{FileExtension.Txt}", data);
 
-            _serviceLog.UDPRegisterLog(_serviceMessage.UDPGetMessage(TypeArchitecturePatterns.SuccessToTheSaveIdentifierToTheArchitecturePatternsFromMetadata), _serviceFuncString.Empty);
+            _serviceLog.UDPPRegisterLog(_serviceMessage.UDPGetMessage(TypeArchitecturePatterns.SuccessToTheSaveIdentifierToTheArchitecturePatternsFromMetadata), _serviceFuncString.Empty);
         }
     }
 
     public EnumeratedArchitecturePatterns UDPToReadIdentifierToTheArchitecturePatternsFromMetadata()
     {
-        string data = _serviceFile.UDPGetDataFileFromDirectoryConfiguration(DirectoryStandard.Log, $"{FileStandard.IdArchitecturePatterns}{FileExtension.Txt}");
-        data = _serviceCrypto.UPDDecryptData(data);
+        string data = _serviceFile.UDPPGetDataFileFromDirectoryConfiguration(DirectoryStandard.Log, $"{FileStandard.IdArchitecturePatterns}{FileExtension.Txt}");
+        data = _serviceCrypto.UDPPDecryptData(data);
         return int.TryParse(data, out var idArchitecturePatterns) ? (EnumeratedArchitecturePatterns)idArchitecturePatterns : EnumeratedArchitecturePatterns.NotDefined;
     }
 
-    public void UDPGenerateBackendProject(List<Tables> tables)
+    public void UDPPGenerateBackendProject(List<Tables> tables)
     {
         throw new NotImplementedException();
     }
 
-    public void UDPGenerateFrontEndProject(List<Tables> tables)
+    public void UDPPGenerateFrontEndProject(List<Tables> tables)
     {
         throw new NotImplementedException();
     }

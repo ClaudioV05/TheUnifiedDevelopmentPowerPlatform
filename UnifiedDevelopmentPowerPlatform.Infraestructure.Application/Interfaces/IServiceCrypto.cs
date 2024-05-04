@@ -15,7 +15,7 @@ public interface IServiceCrypto
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
     /// <returns>Data encrypt.</returns>
-    string UPDEncryptData(string value);
+    string UDPPEncryptData(string value);
 
     /// <summary>
     /// Decrypt data.
@@ -27,7 +27,7 @@ public interface IServiceCrypto
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
     /// <returns>Data decrypt.</returns>
-    string UPDDecryptData(string value);
+    string UDPPDecryptData(string value);
 
     /// <summary>
     /// Encode to base64.
@@ -39,7 +39,7 @@ public interface IServiceCrypto
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
     /// <returns>Data encoded from base 64 to format string.</returns>
-    string UPDEncodeToBase64(string? value);
+    string UDPPEncodeToBase64(string? value);
 
     /// <summary>
     /// Decode from base 64.
@@ -51,5 +51,5 @@ public interface IServiceCrypto
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
     /// <returns>Data decode from base 64.</returns>
-    string UPDDecodeFromBase64(string? value);
+    string UDPPDecodeFromBase64(string? value);
 }

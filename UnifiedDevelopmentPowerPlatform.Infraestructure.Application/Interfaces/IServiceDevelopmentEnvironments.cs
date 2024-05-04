@@ -17,7 +17,7 @@ public interface IServiceDevelopmentEnvironments
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
     /// <returns>Return the complete list of development enviroment.</returns>
-    List<DevelopmentEnvironments> UDPSelectParametersTheKindsOfDevelopmentEnviroment();
+    List<DevelopmentEnvironments> UDPPSelectParametersTheKindsOfDevelopmentEnviroment();
 
     /// <summary>
     /// Save identifier to the development enviroments from metadata.
@@ -28,7 +28,7 @@ public interface IServiceDevelopmentEnvironments
     /// <remarks></remarks>
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
-    void UDPSaveIdentifierToTheDevelopmentEnviromentsFromMetadata(MetadataOwner metadata);
+    void UDPPSaveIdentifierToTheDevelopmentEnviromentsFromMetadata(MetadataOwner metadata);
 
     /// <summary>
     /// Get the data type from table in script metadata.
@@ -40,5 +40,5 @@ public interface IServiceDevelopmentEnvironments
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
     /// <return>The string with the data type</return>
-    string UDPGetDataTypeFromTableInScriptMetadata(string type);
+    string UDPPGetDataTypeFromTableInScriptMetadata(string type);
 }

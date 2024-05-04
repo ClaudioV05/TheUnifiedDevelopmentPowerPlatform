@@ -17,7 +17,7 @@ public interface IServiceDirectory
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
     /// <returns></returns>
-    void UPDCreateDirectoriesDefault();
+    void UDPPCreateDirectoriesDefault();
 
     /// <summary>
     /// Create the directories from architecture.
@@ -29,7 +29,7 @@ public interface IServiceDirectory
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
     /// <returns></returns>
-    void UPDCreateDirectoriesFromArchitecture(EnumeratedArchitecturePatterns enumeratedArchitecturePatterns);
+    void UDPPCreateDirectoriesFromArchitecture(EnumeratedArchitecturePatterns enumeratedArchitecturePatterns);
 
     /// <summary>
     /// Verify if directory exists.
@@ -41,7 +41,7 @@ public interface IServiceDirectory
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
     /// <returns>The method will return true, otherwise will return false.</returns>
-    bool UDPDirectoryExists(string absolutePath);
+    bool UDPPDirectoryExists(string absolutePath);
 
     /// <summary>
     /// Obtain directory root.
@@ -53,7 +53,7 @@ public interface IServiceDirectory
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
     /// <returns></returns>
-    string UDPObtainDirectory(DirectoryRootType directoryRootType);
+    string UDPPObtainDirectory(DirectoryRootType directoryRootType);
 
     /// <summary>
     /// Get metrics of the total size of directory by parallel processing.
@@ -65,5 +65,5 @@ public interface IServiceDirectory
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
     /// <returns>Return the total size of directoy at the moment of call.</returns>
-    long UDPGetMetricsOfTheTotalSizeOfDirectory(DirectoryInfo directory);
+    long UDPPGetMetricsOfTheTotalSizeOfDirectory(DirectoryInfo directory);
 }

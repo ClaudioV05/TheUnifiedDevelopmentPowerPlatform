@@ -25,7 +25,7 @@ public interface IServiceFuncString
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
     /// <returns>The strings without special caracter.</returns>
-    string UDPRemoveSpecialCaracter(string text);
+    string UDPPRemoveSpecialCaracter(string text);
 
     /// <summary>
     /// Remove all white space.
@@ -37,7 +37,7 @@ public interface IServiceFuncString
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
     /// <returns>The strings without white space.</returns>
-    string UDPRemoveAllWhiteSpace(string text);
+    string UDPPRemoveAllWhiteSpace(string text);
 
     /// <summary>
     /// Enconde to base64.
@@ -49,7 +49,7 @@ public interface IServiceFuncString
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
     /// <returns></returns>
-    string UDPEncondeToBase64(string data);
+    string UDPPEncondeToBase64(string data);
 
     /// <summary>
     /// Decode to base64.
@@ -61,7 +61,7 @@ public interface IServiceFuncString
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
     /// <returns></returns>
-    string UDPDecodeToBase64(string data);
+    string UDPPDecodeToBase64(string data);
 
     /// <summary>
     /// Remove special caracter from path.
@@ -73,7 +73,7 @@ public interface IServiceFuncString
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
     /// <returns></returns>
-    string UDPRemoveSpecialCaracterFromPath(string path);
+    string UDPPRemoveSpecialCaracterFromPath(string path);
 
     /// <summary>
     /// Select section.
@@ -85,7 +85,7 @@ public interface IServiceFuncString
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
     /// <returns>Section name.</returns>
-    string UDPSelectSection(string text);
+    string UDPPSelectSection(string text);
 
     /// <summary>
     /// Only letter.
@@ -97,7 +97,7 @@ public interface IServiceFuncString
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
     /// <returns>The text only with letter.</returns>
-    string UDPOnlyLetter(string text);
+    string UDPPOnlyLetter(string text);
 
     /// <summary>
     /// Only number.
@@ -109,7 +109,7 @@ public interface IServiceFuncString
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
     /// <returns>The text only with number.</returns>
-    string UDPOnlyNumber(string text);
+    string UDPPOnlyNumber(string text);
 
     /// <summary>
     /// Verify if string contains only ascii letters.
@@ -121,7 +121,7 @@ public interface IServiceFuncString
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
     /// <returns>The method will return true, otherwise will return false.</returns>
-    bool UDPIsOnlyAsciiLetters(string text);
+    bool UDPPIsOnlyAsciiLetters(string text);
 
     /// <summary>
     /// Verify if string contains only value numeric.
@@ -133,7 +133,7 @@ public interface IServiceFuncString
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
     /// <returns>The method will return true, otherwise will return false.</returns>
-    bool UDPIsOnlyDigit(string text);
+    bool UDPPIsOnlyDigit(string text);
 
     /// <summary>
     /// Verify if string contains only ascii letters.
@@ -145,7 +145,7 @@ public interface IServiceFuncString
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
     /// <returns>The method will return true, otherwise will return false.</returns>
-    bool UDPIsOnlyAsciiLettersBySwitchCase(string text);
+    bool UDPPIsOnlyAsciiLettersBySwitchCase(string text);
 
     /// <summary>
     /// To Upper.
@@ -157,7 +157,7 @@ public interface IServiceFuncString
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
     /// <returns>String to upper.</returns>
-    string UDPUpper(string text);
+    string UDPPUpper(string text);
 
     /// <summary>
     /// To Lower.
@@ -169,7 +169,7 @@ public interface IServiceFuncString
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
     /// <returns>String to lower.</returns>
-    string UDPLower(string text);
+    string UDPPLower(string text);
 
     /// <summary>
     /// Lower in list.
@@ -181,7 +181,7 @@ public interface IServiceFuncString
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
     /// <returns></returns>
-    IEnumerable<string> UDPLowerInList(string text);
+    IEnumerable<string> UDPPLowerInList(string text);
 
     /// <summary>
     /// If string contains caracther null or empty.
@@ -193,7 +193,7 @@ public interface IServiceFuncString
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
     /// <returns>The method will return true, otherwise will return false.</returns>
-    bool UDPNullOrEmpty(string text);
+    bool UDPPNullOrEmpty(string text);
 
     /// <summary>
     /// If string contains caracther null or with white space.
@@ -205,7 +205,7 @@ public interface IServiceFuncString
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
     /// <returns>The method will return true, otherwise will return false.</returns>
-    bool UDPNullOrWhiteSpace(string text);
+    bool UDPPNullOrWhiteSpace(string text);
 
     /// <summary>
     /// Removes white space from both sides of a string.
@@ -217,7 +217,7 @@ public interface IServiceFuncString
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
     /// <returns></returns>
-    string UDPRemoveWhitespace(string text);
+    string UDPPRemoveWhitespace(string text);
 
     /// <summary>
     /// Removes white space at the start of a string.
@@ -229,7 +229,7 @@ public interface IServiceFuncString
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
     /// <returns></returns>
-    string UDPRemoveWhitespaceAtStart(string text);
+    string UDPPRemoveWhitespaceAtStart(string text);
 
     /// <summary>
     /// If string starts with the value specified.
@@ -242,7 +242,7 @@ public interface IServiceFuncString
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
     /// <returns>The method will return true, otherwise will return false.</returns>
-    bool UDPStringStarts(string text, string value);
+    bool UDPPStringStarts(string text, string value);
 
     /// <summary>
     /// If string ends with the value specified.
@@ -255,7 +255,7 @@ public interface IServiceFuncString
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
     /// <returns>The method will return true, otherwise will return false.</returns>
-    bool UDPStringEnds(string text, string value);
+    bool UDPPStringEnds(string text, string value);
 
     /// <summary>
     /// To replace.
@@ -269,7 +269,7 @@ public interface IServiceFuncString
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
     /// <returns></returns>
-    string UDPReplace(string text, string oldValue, string newValue);
+    string UDPPReplace(string text, string oldValue, string newValue);
 
     /// <summary>
     /// Contains.
@@ -282,7 +282,7 @@ public interface IServiceFuncString
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
     /// <returns>The method will return true, otherwise will return false.</returns>
-    bool UDPContains(string text, string value);
+    bool UDPPContains(string text, string value);
 
     /// <summary>
     /// Remove any whitespace in string.
@@ -294,7 +294,7 @@ public interface IServiceFuncString
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
     /// <returns></returns>
-    string UDPRemoveAnyWhiteSpace(string text);
+    string UDPPRemoveAnyWhiteSpace(string text);
 
     /// <summary>
     /// To Camel Case.
@@ -306,7 +306,7 @@ public interface IServiceFuncString
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
     /// <returns></returns>
-    string UDPToCamelCase(string text);
+    string UDPPToCamelCase(string text);
 
     /// <summary>
     /// To Pascal Case.
@@ -318,7 +318,7 @@ public interface IServiceFuncString
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
     /// <returns></returns>
-    string UDPToPascalCase(string text);
+    string UDPPToPascalCase(string text);
 
     /// <summary>
     /// To string split with options none.
@@ -331,7 +331,7 @@ public interface IServiceFuncString
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
     /// <returns>The array of string</returns>
-    string[]? UDPParseLine(string[] separators, string text);
+    string[]? UDPPParseLine(string[] separators, string text);
 
     /// <summary>
     /// Do find index of in a string.
@@ -344,7 +344,7 @@ public interface IServiceFuncString
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
     /// <returns>Position of string.</returns>
-    int UDPIndexOf(string text, string itemToFind);
+    int UDPPIndexOf(string text, string itemToFind);
 
     /// <summary>
     /// Do find the last index of in a string.
@@ -357,7 +357,7 @@ public interface IServiceFuncString
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
     /// <returns>Position of string.</returns>
-    int UDPLastIndexOf(string text, string itemToFind);
+    int UDPPLastIndexOf(string text, string itemToFind);
 
     /// <summary>
     /// Sub String.
@@ -371,5 +371,5 @@ public interface IServiceFuncString
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
     /// <returns>Retrieve a substring for a instance.</returns>
-    string UDPSubString(string text, int startIndex, int lenght);
+    string UDPPSubString(string text, int startIndex, int lenght);
 }

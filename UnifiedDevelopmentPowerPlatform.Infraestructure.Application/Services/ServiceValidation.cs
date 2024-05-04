@@ -40,94 +40,94 @@ public class ServiceValidation : IServiceValidation
 
     public bool UDPPlatformWindowsIsOk(ref string message)
     {
-        message = !_servicePlataform.UPDPlataformIsWindows() ? _serviceMessage.UDPGetMessage(TypeValidation.ThePlatformWindowsIsNotOk) : _serviceFuncString.Empty;
-        return _serviceFuncString.UDPNullOrEmpty(message);
+        message = !_servicePlataform.UDPPPlataformIsWindows() ? _serviceMessage.UDPGetMessage(TypeValidation.ThePlatformWindowsIsNotOk) : _serviceFuncString.Empty;
+        return _serviceFuncString.UDPPNullOrEmpty(message);
     }
 
-    public bool UDPModelStateIsOk(dynamic context, ref string message)
+    public bool UDPPModelStateIsOk(dynamic context, ref string message)
     {
         message = !context.ModelState.IsValid ? _serviceMessage.UDPGetMessage(TypeValidation.TheModelStateIsNotOk) : _serviceFuncString.Empty;
-        return _serviceFuncString.UDPNullOrEmpty(message);
+        return _serviceFuncString.UDPPNullOrEmpty(message);
     }
 
-    public bool UDPDatabaseSchemaIsOk(dynamic context, ref string message)
+    public bool UDPPDatabaseSchemaIsOk(dynamic context, ref string message)
     {
         context.ActionArguments.TryGetValue(ControllerActionArgumentsKey.Metadata, out dynamic? values);
-        message = _serviceFuncString.UDPNullOrEmpty(values?.DatabaseSchema) ? _serviceMessage.UDPGetMessage(TypeValidation.TheScriptMetadataIsNotOk) : _serviceFuncString.Empty;
-        return _serviceFuncString.UDPNullOrEmpty(message);
+        message = _serviceFuncString.UDPPNullOrEmpty(values?.DatabaseSchema) ? _serviceMessage.UDPGetMessage(TypeValidation.TheScriptMetadataIsNotOk) : _serviceFuncString.Empty;
+        return _serviceFuncString.UDPPNullOrEmpty(message);
     }
 
-    public bool UDPMetadataIsBase64Ok(dynamic context, ref string message)
+    public bool UDPPMetadataIsBase64Ok(dynamic context, ref string message)
     {
         dynamic? values = null;
         context.ActionArguments.TryGetValue(ControllerActionArgumentsKey.Metadata, out values);
-        message = !this.UDPValidateBase64(values?.DatabaseSchema) ? _serviceMessage.UDPGetMessage(TypeValidation.TheMetadataIsNotInBase64Ok) : _serviceFuncString.Empty;
-        return _serviceFuncString.UDPNullOrEmpty(message);
+        message = !this.UDPPValidateBase64(values?.DatabaseSchema) ? _serviceMessage.UDPGetMessage(TypeValidation.TheMetadataIsNotInBase64Ok) : _serviceFuncString.Empty;
+        return _serviceFuncString.UDPPNullOrEmpty(message);
     }
 
-    public bool UDPDevelopmentEnvironmentIsOk(dynamic context, ref string message)
+    public bool UDPPDevelopmentEnvironmentIsOk(dynamic context, ref string message)
     {
         context.ActionArguments.TryGetValue(ControllerActionArgumentsKey.Metadata, out dynamic? values);
         message = values?.IdDevelopmentEnvironment <= 0 ? _serviceMessage.UDPGetMessage(TypeValidation.TheDevelopmentEnvironmentIsNotOk) : _serviceFuncString.Empty;
-        return _serviceFuncString.UDPNullOrEmpty(message);
+        return _serviceFuncString.UDPPNullOrEmpty(message);
     }
 
-    public bool UDPDatabasesIsOk(dynamic context, ref string message)
+    public bool UDPPDatabasesIsOk(dynamic context, ref string message)
     {
         context.ActionArguments.TryGetValue(ControllerActionArgumentsKey.Metadata, out dynamic? values);
         message = values?.IdDatabases <= 0 ? _serviceMessage.UDPGetMessage(TypeValidation.TheDatabasesIsNotOk) : _serviceFuncString.Empty;
-        return _serviceFuncString.UDPNullOrEmpty(message);
+        return _serviceFuncString.UDPPNullOrEmpty(message);
     }
 
-    public bool UDPDatabasesImplementedIsOk(dynamic context, ref string message)
+    public bool UDPPDatabasesImplementedIsOk(dynamic context, ref string message)
     {
         context.ActionArguments.TryGetValue(ControllerActionArgumentsKey.Metadata, out dynamic? values);
         message = values?.IdDatabases <= 0 || values?.IdDatabases == 1 || values?.IdDatabases == 4 ? _serviceMessage.UDPGetMessage(TypeValidation.TheDatabasesImplementedIsNotOk) : _serviceFuncString.Empty;
-        return _serviceFuncString.UDPNullOrEmpty(message);
+        return _serviceFuncString.UDPPNullOrEmpty(message);
     }
 
-    public bool UDPDatabasesEngineIsOk(dynamic context, ref string message)
+    public bool UDPPDatabasesEngineIsOk(dynamic context, ref string message)
     {
         context.ActionArguments.TryGetValue(ControllerActionArgumentsKey.Metadata, out dynamic? values);
         message = values?.IdDatabasesEngine <= 0 ? _serviceMessage.UDPGetMessage(TypeValidation.TheDatabasesEngineIsNotOk) : _serviceFuncString.Empty;
-        return _serviceFuncString.UDPNullOrEmpty(message);
+        return _serviceFuncString.UDPPNullOrEmpty(message);
     }
 
-    public bool UDPFormsViewIsOk(dynamic context, ref string message)
+    public bool UDPPFormsViewIsOk(dynamic context, ref string message)
     {
         context.ActionArguments.TryGetValue(ControllerActionArgumentsKey.Metadata, out dynamic? values);
         message = values?.IdForms <= 0 ? _serviceMessage.UDPGetMessage(TypeValidation.TheFormsViewIsNotOk) : _serviceFuncString.Empty;
-        return _serviceFuncString.UDPNullOrEmpty(message);
+        return _serviceFuncString.UDPPNullOrEmpty(message);
     }
 
-    public bool UDPArchitectureOk(dynamic context, ref string message)
+    public bool UDPPArchitectureOk(dynamic context, ref string message)
     {
         context.ActionArguments.TryGetValue(ControllerActionArgumentsKey.Metadata, out dynamic? values);
         message = values?.Architecture is not 1 ? _serviceMessage.UDPGetMessage(TypeValidation.TheArchitecturePatternsIsNotOk) : _serviceFuncString.Empty;
-        return _serviceFuncString.UDPNullOrEmpty(message);
+        return _serviceFuncString.UDPPNullOrEmpty(message);
     }
 
-    public bool UDPTablesdataIsOk(dynamic context, ref string message)
+    public bool UDPPTablesdataIsOk(dynamic context, ref string message)
     {
         context.ActionArguments.TryGetValue(ControllerActionArgumentsKey.Tablesdata, out dynamic? values);
         message = values?.Tables[0]?.Id <= 0 ? _serviceMessage.UDPGetMessage(TypeValidation.TheTablesdataIsNotOk) : _serviceFuncString.Empty;
-        return _serviceFuncString.UDPNullOrEmpty(message);
+        return _serviceFuncString.UDPPNullOrEmpty(message);
     }
 
-    public bool UDPTablesdataHasFieldsContent(dynamic context, ref string message)
+    public bool UDPPTablesdataHasFieldsContent(dynamic context, ref string message)
     {
         context.ActionArguments.TryGetValue(ControllerActionArgumentsKey.Tablesdata, out dynamic? values);
         message = values?.Tables[0]?.Fields?.Count <= 0 ? _serviceMessage.UDPGetMessage(TypeValidation.TheTablesdataHasNoFieldsContent) : _serviceFuncString.Empty;
-        return _serviceFuncString.UDPNullOrEmpty(message);
+        return _serviceFuncString.UDPPNullOrEmpty(message);
     }
 
-    public bool UDPDirectoriesOk(dynamic context, ref string message)
+    public bool UDPPDirectoriesOk(dynamic context, ref string message)
     {
         try
         {
-            string directoryApp = _serviceDirectory.UDPObtainDirectory(DirectoryRootType.App);
-            message = !_serviceDirectory.UDPDirectoryExists(directoryApp) ? _serviceMessage.UDPGetMessage(TypeValidation.TheDirectoriesIsNotOk) : _serviceFuncString.Empty;
-            return _serviceFuncString.UDPNullOrEmpty(message);
+            string directoryApp = _serviceDirectory.UDPPObtainDirectory(DirectoryRootType.App);
+            message = !_serviceDirectory.UDPPDirectoryExists(directoryApp) ? _serviceMessage.UDPGetMessage(TypeValidation.TheDirectoriesIsNotOk) : _serviceFuncString.Empty;
+            return _serviceFuncString.UDPPNullOrEmpty(message);
         }
         catch (Exception)
         {
@@ -136,12 +136,12 @@ public class ServiceValidation : IServiceValidation
         }
     }
 
-    public bool UDPFilesOk(dynamic context, ref string message)
+    public bool UDPPFilesOk(dynamic context, ref string message)
     {
         try
         {
-            message = _serviceFuncString.UDPNullOrEmpty(_serviceFile.UDPGetDataFileFromDirectoryConfiguration(DirectoryStandard.Log, $"{FileStandard.IdDatabaseSchema}{FileExtension.Txt}")) ? _serviceMessage.UDPGetMessage(TypeValidation.TheFilesIsNotOk) : _serviceFuncString.Empty;
-            return _serviceFuncString.UDPNullOrEmpty(message);
+            message = _serviceFuncString.UDPPNullOrEmpty(_serviceFile.UDPPGetDataFileFromDirectoryConfiguration(DirectoryStandard.Log, $"{FileStandard.IdDatabaseSchema}{FileExtension.Txt}")) ? _serviceMessage.UDPGetMessage(TypeValidation.TheFilesIsNotOk) : _serviceFuncString.Empty;
+            return _serviceFuncString.UDPPNullOrEmpty(message);
         }
         catch (Exception)
         {
@@ -150,17 +150,17 @@ public class ServiceValidation : IServiceValidation
         }
     }
 
-    public bool UDPFilesHasContent(dynamic context, ref string message)
+    public bool UDPPFilesHasContent(dynamic context, ref string message)
     {
         string directoryConfiguration = _serviceFuncString.Empty;
         string fileDatabaseSchema = _serviceFuncString.Empty;
 
         try
         {
-            directoryConfiguration = _serviceDirectory.UDPObtainDirectory(DirectoryRootType.Configuration);
+            directoryConfiguration = _serviceDirectory.UDPPObtainDirectory(DirectoryRootType.Configuration);
             fileDatabaseSchema = $"{directoryConfiguration}{DirectoryStandard.Log}{FileStandard.IdDatabaseSchema}{FileExtension.Txt}";
-            message = _serviceFile.UDPCountLines(fileDatabaseSchema) <= 0 ? _serviceMessage.UDPGetMessage(TypeValidation.TheFilesIsNotOk) : _serviceFuncString.Empty;
-            return _serviceFuncString.UDPNullOrEmpty(message);
+            message = _serviceFile.UDPPCountLines(fileDatabaseSchema) <= 0 ? _serviceMessage.UDPGetMessage(TypeValidation.TheFilesIsNotOk) : _serviceFuncString.Empty;
+            return _serviceFuncString.UDPPNullOrEmpty(message);
         }
         catch (Exception)
         {
@@ -169,7 +169,7 @@ public class ServiceValidation : IServiceValidation
         }
     }
 
-    public bool UDPValidateBase64(string? text)
+    public bool UDPPValidateBase64(string? text)
     {
         int positionIndexBase64 = 0;
         bool validBase64 = true;
@@ -181,7 +181,7 @@ public class ServiceValidation : IServiceValidation
             // If it is not you can return false. Quite effective
             // Further, if it meets the above criterias, then test for spaces.
             // If it contains spaces, it is not base64.
-            if (_serviceFuncString.UDPNullOrEmpty(text ?? _serviceFuncString.Empty) ||
+            if (_serviceFuncString.UDPPNullOrEmpty(text ?? _serviceFuncString.Empty) ||
             text?.Length == 0 ||
             text?.Length % 4 != 0 ||
             text.Contains(' ') ||

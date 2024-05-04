@@ -19,7 +19,7 @@ public class ServiceFuncString : IServiceFuncString
 
     public char[] Base64Chars { get; } = new[] { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '+', '/' };
 
-    public string UDPRemoveSpecialCaracter(string text)
+    public string UDPPRemoveSpecialCaracter(string text)
     {
         try
         {
@@ -39,7 +39,7 @@ public class ServiceFuncString : IServiceFuncString
         }
     }
 
-    public string UDPRemoveAllWhiteSpace(string text)
+    public string UDPPRemoveAllWhiteSpace(string text)
     {
         try
         {
@@ -51,7 +51,7 @@ public class ServiceFuncString : IServiceFuncString
         }
     }
 
-    public string UDPEncondeToBase64(string data)
+    public string UDPPEncondeToBase64(string data)
     {
         try
         {
@@ -64,7 +64,7 @@ public class ServiceFuncString : IServiceFuncString
         }
     }
 
-    public string UDPDecodeToBase64(string data)
+    public string UDPPDecodeToBase64(string data)
     {
         try
         {
@@ -78,11 +78,11 @@ public class ServiceFuncString : IServiceFuncString
     }
 
     [Obsolete("deprecated method", true)]
-    public string UDPRemoveSpecialCaracterFromPath(string path)
+    public string UDPPRemoveSpecialCaracterFromPath(string path)
     {
         try
         {
-            if (!this.UDPNullOrEmpty(path) && path.IndexOfAny(Path.GetInvalidFileNameChars()) >= 0)
+            if (!this.UDPPNullOrEmpty(path) && path.IndexOfAny(Path.GetInvalidFileNameChars()) >= 0)
             {
                 foreach (char c in Path.GetInvalidFileNameChars())
                 {
@@ -98,7 +98,7 @@ public class ServiceFuncString : IServiceFuncString
         }
     }
 
-    public string UDPSelectSection(string text)
+    public string UDPPSelectSection(string text)
     {
         string section = this.Empty;
         int posSection = text.LastIndexOf("\\") + 1;
@@ -111,7 +111,7 @@ public class ServiceFuncString : IServiceFuncString
         return section;
     }
 
-    public string UDPOnlyLetter(string text)
+    public string UDPPOnlyLetter(string text)
     {
         try
         {
@@ -123,7 +123,7 @@ public class ServiceFuncString : IServiceFuncString
         }
     }
 
-    public string UDPOnlyNumber(string text)
+    public string UDPPOnlyNumber(string text)
     {
         try
         {
@@ -135,17 +135,17 @@ public class ServiceFuncString : IServiceFuncString
         }
     }
 
-    public bool UDPIsOnlyAsciiLetters(string text)
+    public bool UDPPIsOnlyAsciiLetters(string text)
     {
         return text.All(char.IsAscii);
     }
 
-    public bool UDPIsOnlyDigit(string text)
+    public bool UDPPIsOnlyDigit(string text)
     {
         return int.TryParse(text, out _);
     }
 
-    public bool UDPIsOnlyAsciiLettersBySwitchCase(string text)
+    public bool UDPPIsOnlyAsciiLettersBySwitchCase(string text)
     {
         foreach (var item in text)
         {
@@ -161,13 +161,13 @@ public class ServiceFuncString : IServiceFuncString
         return true;
     }
 
-    public string UDPUpper(string text)
+    public string UDPPUpper(string text)
     {
         string value = this.Empty;
 
         try
         {
-            if (!this.UDPNullOrEmpty(text))
+            if (!this.UDPPNullOrEmpty(text))
             {
                 value = text.ToUpperInvariant();
             }
@@ -180,13 +180,13 @@ public class ServiceFuncString : IServiceFuncString
         }
     }
 
-    public string UDPLower(string text)
+    public string UDPPLower(string text)
     {
         string value = this.Empty;
 
         try
         {
-            if (!this.UDPNullOrEmpty(text))
+            if (!this.UDPPNullOrEmpty(text))
             {
                 value = text.ToLowerInvariant();
             }
@@ -199,62 +199,62 @@ public class ServiceFuncString : IServiceFuncString
         }
     }
 
-    public IEnumerable<string> UDPLowerInList(string text)
+    public IEnumerable<string> UDPPLowerInList(string text)
     {
         foreach (var item in text.Split(MetaCharacterSymbols.CharWhiteSpace, StringSplitOptions.None))
         {
-            yield return this.UDPLower(item);
+            yield return this.UDPPLower(item);
         }
     }
 
-    public bool UDPNullOrEmpty(string text)
+    public bool UDPPNullOrEmpty(string text)
     {
         return string.IsNullOrEmpty(text);
     }
 
-    public bool UDPNullOrWhiteSpace(string text)
+    public bool UDPPNullOrWhiteSpace(string text)
     {
         return string.IsNullOrWhiteSpace(text);
     }
 
-    public string UDPRemoveWhitespace(string text)
+    public string UDPPRemoveWhitespace(string text)
     {
         return text.Trim();
     }
 
-    public string UDPRemoveWhitespaceAtStart(string text)
+    public string UDPPRemoveWhitespaceAtStart(string text)
     {
         return text.Trim();
     }
 
-    public bool UDPStringStarts(string text, string value)
+    public bool UDPPStringStarts(string text, string value)
     {
         return text.StartsWith(value);
     }
 
-    public bool UDPStringEnds(string text, string value)
+    public bool UDPPStringEnds(string text, string value)
     {
         return text.EndsWith(value);
     }
 
-    public string UDPReplace(string text, string oldValue, string newValue)
+    public string UDPPReplace(string text, string oldValue, string newValue)
     {
         return text.Replace(oldValue, newValue);
     }
 
-    public bool UDPContains(string text, string value)
+    public bool UDPPContains(string text, string value)
     {
         return text.Contains(value);
     }
 
-    public string UDPRemoveAnyWhiteSpace(string text)
+    public string UDPPRemoveAnyWhiteSpace(string text)
     {
         return String.Concat(text.Where(c => !Char.IsWhiteSpace(c)));
     }
 
-    public string UDPToCamelCase(string text)
+    public string UDPPToCamelCase(string text)
     {
-        if (this.UDPNullOrEmpty(text) || char.IsLower(text[0]))
+        if (this.UDPPNullOrEmpty(text) || char.IsLower(text[0]))
         {
             return text;
         }
@@ -265,31 +265,31 @@ public class ServiceFuncString : IServiceFuncString
         return new(chars);
     }
 
-    public string UDPToPascalCase(string text)
+    public string UDPPToPascalCase(string text)
     {
         return Regex.Replace(text, @"([^\p{Pc}]+)[\p{Pc}]*", new MatchEvaluator(mtch =>
                          {
-                             var word = this.UDPLower(mtch.Groups[1].Value);
+                             var word = this.UDPPLower(mtch.Groups[1].Value);
                              return $"{Char.ToUpper(word[0])}{word.Substring(1)}";
                          }));
     }
 
-    public string[]? UDPParseLine(string[] separators, string text)
+    public string[]? UDPPParseLine(string[] separators, string text)
     {
         return text.Split(separators, StringSplitOptions.None);
     }
 
-    public int UDPIndexOf(string text, string itemToFind)
+    public int UDPPIndexOf(string text, string itemToFind)
     {
         return text.IndexOf(itemToFind);
     }
 
-    public int UDPLastIndexOf(string text, string itemToFind)
+    public int UDPPLastIndexOf(string text, string itemToFind)
     {
         return text.LastIndexOf(itemToFind);
     }
 
-    public string UDPSubString(string text, int startIndex, int lenght)
+    public string UDPPSubString(string text, int startIndex, int lenght)
     {
         string textValue = this.Empty;
 

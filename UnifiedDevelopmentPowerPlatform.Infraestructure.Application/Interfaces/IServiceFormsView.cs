@@ -16,7 +16,7 @@ public interface IServiceFormsView
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
     /// <returns>Return the complete list of forms.</returns>
-    List<FormsView> UDPSelectParametersTheKindsOfFormsView();
+    List<FormsView> UDPPSelectParametersTheKindsOfFormsView();
 
     /// <summary>
     /// Save identifier to the forms view from metadata.
@@ -27,5 +27,5 @@ public interface IServiceFormsView
     /// <remarks></remarks>
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
-    void UDPSaveIdentifierToTheFormsViewFromMetadata(MetadataOwner metadata);
+    void UDPPSaveIdentifierToTheFormsViewFromMetadata(MetadataOwner metadata);
 }

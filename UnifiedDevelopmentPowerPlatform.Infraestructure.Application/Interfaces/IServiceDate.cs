@@ -14,7 +14,7 @@ public interface IServiceDate
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
     /// <returns></returns>
-    string UDPGetDateTimeNowFormat();
+    string UDPPGetDateTimeNowFormat();
 
     /// <summary>
     /// Date time to long time.
@@ -25,5 +25,5 @@ public interface IServiceDate
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
     /// <returns></returns>
-    string UDPGetDateTimeToLongTime();
+    string UDPPGetDateTimeToLongTime();
 }

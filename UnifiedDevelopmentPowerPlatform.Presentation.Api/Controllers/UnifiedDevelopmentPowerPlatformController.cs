@@ -108,7 +108,7 @@ public class UnifiedDevelopmentPowerPlatformController : ControllerBase
                 }},
         };
 
-        return Ok(_serviceMetadata.UDPReceiveAndSaveAllTablesAndFieldsOfSchemaDatabase(metadata: metadataOwner));
+        return Ok(_serviceMetadata.UDPPReceiveAndSaveAllTablesAndFieldsOfSchemaDatabase(metadata: metadataOwner));
     }
 
     /// <summary>
@@ -157,6 +157,6 @@ public class UnifiedDevelopmentPowerPlatformController : ControllerBase
             Tables = tablesdata.Tables
         };
 
-        return Ok(_serviceMetadata.UDPReceiveTheTablesdataAndGenerateTheSolution(metadata: metadataOwner));
+        return Ok(_serviceMetadata.UDPPReceiveTheTablesdataAndGenerateTheSolution(metadata: metadataOwner));
     }
 }

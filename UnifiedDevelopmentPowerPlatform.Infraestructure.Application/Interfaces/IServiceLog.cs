@@ -16,7 +16,7 @@ public interface IServiceLog
     /// <remarks></remarks>
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
-    void UDPLogDebug(string message);
+    void UDPPLogDebug(string message);
 
     /// <summary>
     /// Error of debug.
@@ -27,7 +27,7 @@ public interface IServiceLog
     /// <remarks></remarks>
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
-    void UDPLogError(string message);
+    void UDPPLogError(string message);
 
     /// <summary>
     /// Information of debug.
@@ -38,7 +38,7 @@ public interface IServiceLog
     /// <remarks></remarks>
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
-    void UDPLogInformation(string message);
+    void UDPPLogInformation(string message);
 
     /// <summary>
     /// Warning of debug.
@@ -49,7 +49,7 @@ public interface IServiceLog
     /// <remarks></remarks>
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
-    void UDPLogWarning(string message);
+    void UDPPLogWarning(string message);
 
     /// <summary>
     /// Make the register of log general for all application.
@@ -61,5 +61,5 @@ public interface IServiceLog
     /// <remarks></remarks>
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
-    void UDPRegisterLog(string message, string additionalMessage);
+    void UDPPRegisterLog(string message, string additionalMessage);
 }

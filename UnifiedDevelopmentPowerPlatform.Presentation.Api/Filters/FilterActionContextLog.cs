@@ -29,17 +29,17 @@ internal sealed class FilterActionContextLog : IAsyncActionFilter
     /// <exception cref="Exception"></exception>
     public async Task OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next)
     {
-        _serviceLog.UDPLogInformation("### -> OnActionExecuted");
-        _serviceLog.UDPLogInformation("###################################################");
-        _serviceLog.UDPLogInformation($"{_serviceDate.UDPGetDateTimeToLongTime()}");
-        _serviceLog.UDPLogInformation("###################################################");
+        _serviceLog.UDPPLogInformation("### -> OnActionExecuted");
+        _serviceLog.UDPPLogInformation("###################################################");
+        _serviceLog.UDPPLogInformation($"{_serviceDate.UDPPGetDateTimeToLongTime()}");
+        _serviceLog.UDPPLogInformation("###################################################");
 
         await next();
 
-        _serviceLog.UDPLogInformation("### -> OnActionExecuting");
-        _serviceLog.UDPLogInformation("###################################################");
-        _serviceLog.UDPLogInformation($"{_serviceDate.UDPGetDateTimeToLongTime()}");
-        _serviceLog.UDPLogInformation($"ModelState : {context.ModelState.IsValid}");
-        _serviceLog.UDPLogInformation("###################################################");
+        _serviceLog.UDPPLogInformation("### -> OnActionExecuting");
+        _serviceLog.UDPPLogInformation("###################################################");
+        _serviceLog.UDPPLogInformation($"{_serviceDate.UDPPGetDateTimeToLongTime()}");
+        _serviceLog.UDPPLogInformation($"ModelState : {context.ModelState.IsValid}");
+        _serviceLog.UDPPLogInformation("###################################################");
     }
 }

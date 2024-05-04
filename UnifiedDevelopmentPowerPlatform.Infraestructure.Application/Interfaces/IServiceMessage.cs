@@ -17,7 +17,7 @@ public interface IServiceMessage
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
     /// <returns>The description of message.</returns>
-    string UDPGetMessage(TypeGlobal type);
+    string UDPPGetMessage(TypeGlobal type);
 
     /// <summary>
     /// The get message.
@@ -29,7 +29,7 @@ public interface IServiceMessage
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
     /// <returns>The description of message.</returns>
-    string UDPGetMessage(TypeDevelopmentEnvironments type);
+    string UDPPGetMessage(TypeDevelopmentEnvironments type);
 
     /// <summary>
     /// The get message.
@@ -41,7 +41,7 @@ public interface IServiceMessage
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
     /// <returns>The description of message.</returns>
-    string UDPGetMessage(TypeArchitecturePatterns type);
+    string UDPPGetMessage(TypeArchitecturePatterns type);
 
     /// <summary>
     /// The get message.
@@ -53,7 +53,7 @@ public interface IServiceMessage
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
     /// <returns>The description of message.</returns>
-    string UDPGetMessage(TypeDatabasesEngine type);
+    string UDPPGetMessage(TypeDatabasesEngine type);
 
     /// <summary>
     /// The get message.
@@ -65,7 +65,7 @@ public interface IServiceMessage
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
     /// <returns>The description of message.</returns>
-    string UDPGetMessage(TypeDatabases type);
+    string UDPPGetMessage(TypeDatabases type);
 
     /// <summary>
     /// The get message.
@@ -77,7 +77,7 @@ public interface IServiceMessage
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
     /// <returns>The description of message.</returns>
-    string UDPGetMessage(TypeFormsView type);
+    string UDPPGetMessage(TypeFormsView type);
 
     /// <summary>
     /// The get message.
@@ -89,7 +89,7 @@ public interface IServiceMessage
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
     /// <returns>The description of message.</returns>
-    string UDPGetMessage(TypeCrypto type);
+    string UDPPGetMessage(TypeCrypto type);
 
     /// <summary>
     /// The get message.
@@ -101,7 +101,7 @@ public interface IServiceMessage
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
     /// <returns>The description of message.</returns>
-    string UDPGetMessage(TypeMetadata type);
+    string UDPPGetMessage(TypeMetadata type);
 
     /// <summary>
     /// The get message.
@@ -113,7 +113,7 @@ public interface IServiceMessage
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
     /// <returns>The description of message.</returns>
-    string UDPGetMessage(TypeMetadataFields type);
+    string UDPPGetMessage(TypeMetadataFields type);
 
     /// <summary>
     /// The get message.
@@ -125,7 +125,7 @@ public interface IServiceMessage
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
     /// <returns>The description of message.</returns>
-    string UDPGetMessage(TypeMetadataTable type);
+    string UDPPGetMessage(TypeMetadataTable type);
 
     /// <summary>
     /// The get message.
@@ -137,7 +137,7 @@ public interface IServiceMessage
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
     /// <returns>The description of message.</returns>
-    string UDPGetMessage(TypeDirectory type);
+    string UDPPGetMessage(TypeDirectory type);
 
     /// <summary>
     /// The get message.
@@ -149,5 +149,5 @@ public interface IServiceMessage
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
     /// <returns>The description of message.</returns>
-    string UDPGetMessage(TypeValidation type);
+    string UDPPGetMessage(TypeValidation type);
 }

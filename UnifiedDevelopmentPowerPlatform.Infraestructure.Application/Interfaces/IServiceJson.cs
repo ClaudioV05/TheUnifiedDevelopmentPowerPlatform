@@ -15,5 +15,5 @@ public interface IServiceJson
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
     /// <returns></returns>
-    string UDPSerializerJson(object obj);
+    string UDPPSerializerJson(object obj);
 }

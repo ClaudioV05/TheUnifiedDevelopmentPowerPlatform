@@ -17,7 +17,7 @@ public interface IServiceDataTypeAnsiSql
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
     /// <returns>The method will return true, otherwise will return false.</returns>
-    bool UDPByIndexEnumTypeIsDefined(int index);
+    bool UDPPByIndexEnumTypeIsDefined(int index);
 
     /// <summary>
     /// Get the enum type as enumerated.
@@ -29,7 +29,7 @@ public interface IServiceDataTypeAnsiSql
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
     /// <returns>The method will return the enumerated with the name of enum type.
-    AnsiSql.DataType UDPGetAsEnumeratedTheEnumType(int index);
+    AnsiSql.DataType UDPPGetAsEnumeratedTheEnumType(int index);
 
     /// <summary>
     /// Return the index from list of data types.
@@ -41,7 +41,7 @@ public interface IServiceDataTypeAnsiSql
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
     /// <returns>The index from data type.</returns>
-    int UDPReturnIndexFromTheListOfDataTypes(string dataType);
+    int UDPPReturnIndexFromTheListOfDataTypes(string dataType);
 
     /// <summary>
     /// Get the enum type as string.
@@ -53,5 +53,5 @@ public interface IServiceDataTypeAnsiSql
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
     /// <returns>The method will return the string with the name of enum type.
-    string UDPGetAsStringTheEnumType(AnsiSql.DataType dataType);
+    string UDPPGetAsStringTheEnumType(AnsiSql.DataType dataType);
 }
