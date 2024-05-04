@@ -82,7 +82,7 @@ public class ServiceMetadata : IServiceMetadata
             _serviceDevelopmentEnvironments.UDPSaveIdentifierToTheDevelopmentEnviromentsFromMetadata(metadata);
             _serviceDatabases.UDPSaveIdentifierToTheDatabasesFromMetadata(metadata);
             _serviceDatabasesEngine.UDPSaveIdentifierToTheDatabasesEngineFromMetadata(metadata);
-            _serviceArchitecturePatterns.UDPSaveIdentifierToTheArchitecturePatternsFromMetadata(metadata);
+            _serviceArchitecturePatterns.UDPToSaveIdentifierToTheArchitecturePatternsFromMetadata(metadata);
 
             databaseSchemaDecrypt = _serviceMetadataTable.UDPOpenDatabaseSchemaFromMetadata();
 
@@ -198,7 +198,7 @@ public class ServiceMetadata : IServiceMetadata
 
     public List<ArchitecturePatterns> UDPSelectParametersTheKindsOfArchitecturePatterns()
     {
-        return _serviceArchitecturePatterns.UDPSelectParametersTheKindsOfArchitecturePatterns();
+        return _serviceArchitecturePatterns.UDPToSelectParametersTheKindsOfArchitecturePatterns();
     }
 
     public UnifiedDevelopmentParameters UDPSelectParametersInformationUnifiedDevelopmentPowerPlatform()

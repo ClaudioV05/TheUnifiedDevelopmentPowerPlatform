@@ -107,7 +107,6 @@ public class ServiceDevelopmentEnvironments : IServiceDevelopmentEnvironments
 
     public string UDPGetDataTypeFromTableInScriptMetadata(string type)
     {
-        int idDevelopmentEnvironment = 0;
         string data = _serviceFuncString.Empty;
         string? returnType = _serviceFuncString.Empty;
 
@@ -117,7 +116,7 @@ public class ServiceDevelopmentEnvironments : IServiceDevelopmentEnvironments
             data = _serviceFile.UDPGetDataFileFromDirectoryConfiguration(DirectoryStandard.Log, $"{FileStandard.IdDevelopmentEnvironment}{FileExtension.Txt}");
             data = _serviceCrypto.UPDDecryptData(data);
 
-            if (int.TryParse(data, out idDevelopmentEnvironment))
+            if (int.TryParse(data, out var idDevelopmentEnvironment))
             {
                 returnType = (EnumeratedDevelopmentEnvironments)idDevelopmentEnvironment switch
                 {

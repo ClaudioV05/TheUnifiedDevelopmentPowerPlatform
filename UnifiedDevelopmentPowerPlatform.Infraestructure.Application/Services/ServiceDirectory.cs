@@ -3,6 +3,7 @@ using System.Text.RegularExpressions;
 using UnifiedDevelopmentPowerPlatform.Application.Interfaces;
 using UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.Directory.DomainDrivenDesign;
 using UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.MetaCharacter;
+using static UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.ArchitecturePatterns;
 
 namespace UnifiedDevelopmentPowerPlatform.Application.Services;
 
@@ -24,7 +25,7 @@ public class ServiceDirectory : IServiceDirectory
         _serviceFuncString = serviceFuncString;
     }
 
-    public void UPDBuildDirectoryStandardOfSolution()
+    public void UPDCreateDirectoriesDefault()
     {
         try
         {
@@ -52,26 +53,27 @@ public class ServiceDirectory : IServiceDirectory
         }
     }
 
-    public void UPDCreateDirectoryProjectOfSolution()
+    public void UPDCreateDirectoriesFromArchitecture(EnumeratedArchitecturePatterns enumeratedArchitecturePatterns)
     {
         try
         {
             DirectoryRoot.DirectoryRootPath = this.UDPGetRootDirectory();
 
-            if (Enum.GetValues(typeof(DirectoryRootType)) != null && Enum.GetValues(typeof(DirectoryRootType)).Length > 0)
+            switch (enumeratedArchitecturePatterns)
             {
-                for (int i = 0; i < Enum.GetValues(typeof(DirectoryRootType)).Length; i++)
-                {
-                    if ((DirectoryRootType)i == DirectoryRootType.Backend || (DirectoryRootType)i == DirectoryRootType.Frontend)
-                    {
-                        continue;
-                    }
-
-                    if ((DirectoryRootType)i != DirectoryRootType.App || (DirectoryRootType)i != DirectoryRootType.Configuration || (DirectoryRootType)i != DirectoryRootType.Log)
-                    {
-                        this.UDPAddAllRootDirectory($"{DirectoryRoot.DirectoryRootPath}{this.UDPObtainDirectoryRoot((DirectoryRootType)i)}");
-                    }
-                }
+                case EnumeratedArchitecturePatterns.NotDefined:
+                    break;
+                case EnumeratedArchitecturePatterns.Ddd:
+                    this.UDPCreateDirectoriesToDomainDrivenDesign(DirectoryRoot.DirectoryRootPath);
+                    break;
+                case EnumeratedArchitecturePatterns.MediatRCqrs:
+                    this.UDPCreateDirectoriesToMediatr(DirectoryRoot.DirectoryRootPath);
+                    break;
+                case EnumeratedArchitecturePatterns.Mvc:
+                    this.UDPCreateDirectoriesToModelViewController(DirectoryRoot.DirectoryRootPath);
+                    break;
+                default:
+                    break;
             }
 
             this.UDPCreateAllRootDirectory();
@@ -141,21 +143,19 @@ public class ServiceDirectory : IServiceDirectory
     }
 
     #region Private methods.
-
-    private void UDPAddAllRootDirectory(string absolutePath) => _listDirectory.Add(absolutePath);
-
-    private void UDPCreateAllRootDirectory() => _listDirectory.ForEach(dir => Directory.CreateDirectory(dir));
-
-    private void UDPDeleteAllRootDirectory(string absolutePath)
+    private string UDPGetRootDirectory()
     {
         try
         {
-            if (this.UDPDirectoryExists(absolutePath))
-            {
-                Directory.Delete(absolutePath, true);
-            }
+            Regex? regex = new(@"(?<!fil)[A-Za-z]:\\+[\S\s]*?(?=\\+unifieddevelopmentpowerplatform.presentation.api)");
+            string? exeRootDirectory = _serviceFuncString.UDPLower(Assembly.GetExecutingAssembly().Location);
+
+            return regex.IsMatch(exeRootDirectory) ? regex.Match(exeRootDirectory).Value : _serviceFuncString.Empty;
         }
-        catch (Exception) { }
+        catch (IOException)
+        {
+            return _serviceFuncString.Empty;
+        }
     }
 
     private string UDPObtainDirectoryRoot(DirectoryRootType directoryRootType)
@@ -203,21 +203,49 @@ public class ServiceDirectory : IServiceDirectory
         };
     }
 
-    private string UDPGetRootDirectory()
+    private void UDPDeleteAllRootDirectory(string absolutePath)
     {
         try
         {
-            string? exeRootDirectory = _serviceFuncString.Empty;
-
-            Regex? regex = new Regex(@"(?<!fil)[A-Za-z]:\\+[\S\s]*?(?=\\+unifieddevelopmentpowerplatform.presentation.api)");
-            exeRootDirectory = _serviceFuncString.UDPLower(Assembly.GetExecutingAssembly().Location);
-
-            return regex.IsMatch(exeRootDirectory) ? regex.Match(exeRootDirectory).Value : _serviceFuncString.Empty;
+            if (this.UDPDirectoryExists(absolutePath))
+            {
+                Directory.Delete(absolutePath, true);
+            }
         }
-        catch (IOException)
+        catch (Exception) { }
+    }
+
+    private void UDPAddAllRootDirectory(string absolutePath) => _listDirectory.Add(absolutePath);
+
+    private void UDPCreateAllRootDirectory() => _listDirectory.ForEach(dir => Directory.CreateDirectory(dir));
+
+    private void UDPCreateDirectoriesToDomainDrivenDesign(string absolutePath)
+    {
+        if (Enum.GetValues(typeof(DirectoryRootType)) != null && Enum.GetValues(typeof(DirectoryRootType)).Length > 0)
         {
-            return _serviceFuncString.Empty;
+            for (int i = 0; i < Enum.GetValues(typeof(DirectoryRootType)).Length; i++)
+            {
+                if ((DirectoryRootType)i == DirectoryRootType.Backend || (DirectoryRootType)i == DirectoryRootType.Frontend)
+                {
+                    continue;
+                }
+
+                if ((DirectoryRootType)i != DirectoryRootType.App || (DirectoryRootType)i != DirectoryRootType.Configuration || (DirectoryRootType)i != DirectoryRootType.Log)
+                {
+                    this.UDPAddAllRootDirectory($"{absolutePath}{this.UDPObtainDirectoryRoot((DirectoryRootType)i)}");
+                }
+            }
         }
+    }
+
+    private void UDPCreateDirectoriesToModelViewController(string absolutePath)
+    {
+
+    }
+
+    private void UDPCreateDirectoriesToMediatr(string absolutePath)
+    {
+
     }
 
     #endregion Private methods.

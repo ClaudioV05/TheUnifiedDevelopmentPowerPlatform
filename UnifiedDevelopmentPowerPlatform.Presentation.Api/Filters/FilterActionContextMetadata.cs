@@ -17,6 +17,7 @@ internal sealed class FilterActionContextMetadata<T> : IAsyncActionFilter where 
     private readonly IServiceDirectory _serviceDirectory;
     private readonly IServiceValidation _serviceValidation;
     private readonly IServiceFuncString _serviceFuncString;
+    private readonly IServiceArchitecturePatterns _serviceArchitecturePatterns;
 
     /// <summary>
     /// Filter action context to metadata.
@@ -26,17 +27,20 @@ internal sealed class FilterActionContextMetadata<T> : IAsyncActionFilter where 
     /// <param name="serviceDirectory"></param>
     /// <param name="serviceValidation"></param>
     /// <param name="serviceFuncString"></param>
+    /// <param name="serviceArchitecturePatterns"></param>
     public FilterActionContextMetadata(IServiceLog serviceLog,
                                        IServiceMessage serviceMessage,
                                        IServiceDirectory serviceDirectory,
                                        IServiceValidation serviceValidation,
-                                       IServiceFuncString serviceFuncString)
+                                       IServiceFuncString serviceFuncString,
+                                       IServiceArchitecturePatterns serviceArchitecturePatterns)
     {
         _serviceLog = serviceLog;
         _serviceMessage = serviceMessage;
         _serviceDirectory = serviceDirectory;
         _serviceValidation = serviceValidation;
         _serviceFuncString = serviceFuncString;
+        _serviceArchitecturePatterns = serviceArchitecturePatterns;
     }
 
     /// <summary>
@@ -130,9 +134,7 @@ internal sealed class FilterActionContextMetadata<T> : IAsyncActionFilter where 
         try
         {
             _serviceLog.UDPRegisterLog(_serviceMessage.UDPGetMessage(TypeDirectory.CallStartToTheCreateDirectoryProjectOfSolution), _serviceFuncString.Empty);
-
-            _serviceDirectory.UPDCreateDirectoryProjectOfSolution();
-
+            _serviceDirectory.UPDCreateDirectoriesFromArchitecture(_serviceArchitecturePatterns.UDPToReadIdentifierToTheArchitecturePatternsFromMetadata());
             _serviceLog.UDPRegisterLog(_serviceMessage.UDPGetMessage(TypeDirectory.SuccessToTheCreateDirectoryProjectOfSolution), _serviceFuncString.Empty);
         }
         catch (Exception ex)

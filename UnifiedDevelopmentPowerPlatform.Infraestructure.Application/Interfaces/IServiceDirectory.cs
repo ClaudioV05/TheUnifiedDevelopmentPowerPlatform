@@ -1,4 +1,5 @@
 ﻿using UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.Directory.DomainDrivenDesign;
+using static UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.ArchitecturePatterns;
 
 namespace UnifiedDevelopmentPowerPlatform.Application.Interfaces;
 
@@ -8,27 +9,27 @@ namespace UnifiedDevelopmentPowerPlatform.Application.Interfaces;
 public interface IServiceDirectory
 {
     /// <summary>
-    /// Create directory project of solution.
+    /// Create the directories default of solution UDPP.
     /// </summary>
-    /// <param name=""></param>
     /// <paramref name=""/>
     /// <returns></returns>
     /// <remarks></remarks>
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
     /// <returns></returns>
-    void UPDCreateDirectoryProjectOfSolution();
+    void UPDCreateDirectoriesDefault();
 
     /// <summary>
-    /// Build directory standard of solution.
+    /// Create the directories from architecture.
     /// </summary>
+    /// <param name="enumeratedArchitecturePatterns"></param>
     /// <paramref name=""/>
     /// <returns></returns>
     /// <remarks></remarks>
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
     /// <returns></returns>
-    void UPDBuildDirectoryStandardOfSolution();
+    void UPDCreateDirectoriesFromArchitecture(EnumeratedArchitecturePatterns enumeratedArchitecturePatterns);
 
     /// <summary>
     /// Verify if directory exists.

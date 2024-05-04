@@ -394,11 +394,13 @@ FodyWeavers.xsd
 *.msm
 *.msp
 
+# SQLite files
+*.sqlite
+*Db.*
+*.db
+
 # JetBrains Rider
 *.sln.iml
 
-# Internal test
-Metadados.txt
-
-# Project Principal
-App
+# Migrations folder from EF CORE
+migrations/

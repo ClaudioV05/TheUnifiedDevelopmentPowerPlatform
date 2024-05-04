@@ -57,7 +57,7 @@ internal sealed class FilterActionContextController : IAsyncActionFilter
                     return;
                 }
 
-                _serviceDirectory.UPDBuildDirectoryStandardOfSolution();
+                _serviceDirectory.UPDCreateDirectoriesDefault();
 
                 _serviceLog.UDPRegisterLog(_serviceMessage.UDPGetMessage(TypeGlobal.CallStartToTheCreationOfUnifiedDevelopmentPowerPlatform), _serviceFuncString.Empty);
                 _serviceLog.UDPRegisterLog(_serviceMessage.UDPGetMessage(TypeValidation.ThePlatformWindowsIsNotOk), _serviceFuncString.Empty);

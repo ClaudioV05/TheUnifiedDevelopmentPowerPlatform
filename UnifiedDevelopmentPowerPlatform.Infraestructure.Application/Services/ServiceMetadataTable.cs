@@ -80,14 +80,14 @@ public class ServiceMetadataTable : IServiceMetadataTable
 
     public string UDPGetTableName(string text)
     {
-        string tableName = _serviceFuncString.Empty;
+        string data = _serviceFuncString.Empty;
 
-        tableName = _serviceFuncString.UDPLower(_serviceFuncString.UDPRemoveWhitespace(text));
-        tableName = _serviceFuncString.UDPReplace(tableName, SqlConfiguration.CreateTableWithSpace, _serviceFuncString.Empty);
-        tableName = _serviceFuncString.UDPReplace(tableName, MetaCharacterSymbols.LeftParenthese, _serviceFuncString.Empty);
-        tableName = _serviceFuncString.UDPReplace(tableName, SqlConfiguration.DatabaseObject, _serviceFuncString.Empty);
-        tableName = _serviceFuncString.UDPRemoveSpecialCaracter(tableName);
-        return _serviceFuncString.UDPUpper(_serviceFuncString.UDPRemoveWhitespace(tableName));
+        data = _serviceFuncString.UDPLower(_serviceFuncString.UDPRemoveWhitespace(text));
+        data = _serviceFuncString.UDPReplace(data, SqlConfiguration.CreateTableWithSpace, _serviceFuncString.Empty);
+        data = _serviceFuncString.UDPReplace(data, MetaCharacterSymbols.LeftParenthese, _serviceFuncString.Empty);
+        data = _serviceFuncString.UDPReplace(data, SqlConfiguration.DatabaseObject, _serviceFuncString.Empty);
+        data = _serviceFuncString.UDPRemoveSpecialCaracter(data);
+        return _serviceFuncString.UDPUpper(_serviceFuncString.UDPRemoveWhitespace(data));
     }
 
     public void UDPLoadTheDatabaseSchema(ref List<string> listDatabaseSchema, string[]? databaseSchema)

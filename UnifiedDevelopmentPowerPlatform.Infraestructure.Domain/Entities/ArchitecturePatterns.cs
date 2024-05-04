@@ -21,7 +21,9 @@ public class ArchitecturePatterns : IEntity
         [Description("Domain Driven Design")]
         Ddd = 1,
         [Description("MediatR and CQRS")]
-        MediatRCqrs = 2
+        MediatRCqrs = 2,
+        [Description("Model view controller")]
+        Mvc = 3
     }
 
     public long Id { get; set; }
