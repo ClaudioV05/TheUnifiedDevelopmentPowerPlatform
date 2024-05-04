@@ -2,10 +2,10 @@
 
 namespace UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.Directory.DomainDrivenDesign;
 
-[ComplexType]
 /// <summary>
 /// Application is the directory for UNIFIED DEVELOPMENT PLATFORM.
 /// </summary>
+[ComplexType]
 public static class DirectoryApplication
 {
     /// <summary>

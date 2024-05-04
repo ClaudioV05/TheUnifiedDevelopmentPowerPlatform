@@ -143,6 +143,7 @@ public class ServiceDirectory : IServiceDirectory
     }
 
     #region Private methods.
+
     private string UDPGetRootDirectory()
     {
         try
@@ -221,19 +222,16 @@ public class ServiceDirectory : IServiceDirectory
 
     private void UDPCreateDirectoriesToDomainDrivenDesign(string absolutePath)
     {
-        if (Enum.GetValues(typeof(DirectoryRootType)) != null && Enum.GetValues(typeof(DirectoryRootType)).Length > 0)
+        for (int i = 0; i < Enum.GetValues(typeof(DirectoryRootType)).Length; i++)
         {
-            for (int i = 0; i < Enum.GetValues(typeof(DirectoryRootType)).Length; i++)
+            if ((DirectoryRootType)i is DirectoryRootType.Backend || (DirectoryRootType)i is DirectoryRootType.Frontend)
             {
-                if ((DirectoryRootType)i == DirectoryRootType.Backend || (DirectoryRootType)i == DirectoryRootType.Frontend)
-                {
-                    continue;
-                }
+                continue;
+            }
 
-                if ((DirectoryRootType)i != DirectoryRootType.App || (DirectoryRootType)i != DirectoryRootType.Configuration || (DirectoryRootType)i != DirectoryRootType.Log)
-                {
-                    this.UDPAddAllRootDirectory($"{absolutePath}{this.UDPObtainDirectoryRoot((DirectoryRootType)i)}");
-                }
+            if ((DirectoryRootType)i is not DirectoryRootType.App || (DirectoryRootType)i is not DirectoryRootType.Configuration || (DirectoryRootType)i is not DirectoryRootType.Log)
+            {
+                this.UDPAddAllRootDirectory($"{absolutePath}{this.UDPObtainDirectoryRoot((DirectoryRootType)i)}");
             }
         }
     }

@@ -102,4 +102,14 @@ public class ServiceArchitecturePatterns : IServiceArchitecturePatterns
         data = _serviceCrypto.UPDDecryptData(data);
         return int.TryParse(data, out var idArchitecturePatterns) ? (EnumeratedArchitecturePatterns)idArchitecturePatterns : EnumeratedArchitecturePatterns.NotDefined;
     }
+
+    public void UDPGenerateBackendProject(List<Tables> tables)
+    {
+        throw new NotImplementedException();
+    }
+
+    public void UDPGenerateFrontEndProject(List<Tables> tables)
+    {
+        throw new NotImplementedException();
+    }
 }

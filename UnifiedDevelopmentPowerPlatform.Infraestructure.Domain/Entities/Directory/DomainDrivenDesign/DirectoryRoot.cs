@@ -2,10 +2,10 @@
 
 namespace UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.Directory.DomainDrivenDesign;
 
-[ComplexType]
 /// <summary>
 /// Standard is the directory root for UNIFIED DEVELOPMENT PLATFORM.
 /// </summary>
+[ComplexType]
 public abstract class DirectoryRoot
 {
     /// <summary>

@@ -2,10 +2,10 @@
 
 namespace UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.Directory.DomainDrivenDesign;
 
-[ComplexType]
 /// <summary>
 /// Standard is the directory default for UNIFIED DEVELOPMENT PLATFORM.
 /// </summary>
+[ComplexType]
 public static class DirectoryStandard
 {
     /// <summary>
@@ -26,7 +26,7 @@ public static class DirectoryStandard
     /// <summary>
     /// Configuration.
     /// </summary>
-    public static string Configuration => string.Format("{0}_Configuration", Path.DirectorySeparatorChar);
+    public static string Configuration => string.Format("{0}_Config", Path.DirectorySeparatorChar);
 
     /// <summary>
     /// Json.

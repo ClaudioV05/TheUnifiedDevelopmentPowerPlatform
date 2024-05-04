@@ -153,10 +153,9 @@ public class ServiceMetadata : IServiceMetadata
         try
         {
             _serviceLog.UDPRegisterLog(_serviceMessage.UDPGetMessage(TypeMetadata.CallStartToTheReceiveTheTablesdataAndGenerateTheSolution), _serviceFuncString.Empty);
-            // Code here.
 
-
-
+            _serviceArchitecturePatterns.UDPGenerateBackendProject(metadata.Tables);
+            _serviceArchitecturePatterns.UDPGenerateFrontEndProject(metadata.Tables);
 
             _serviceLog.UDPRegisterLog(_serviceMessage.UDPGetMessage(TypeMetadata.SuccessToTheReceiveTheTablesdataAndGenerateTheSolution), _serviceFuncString.Empty);
 

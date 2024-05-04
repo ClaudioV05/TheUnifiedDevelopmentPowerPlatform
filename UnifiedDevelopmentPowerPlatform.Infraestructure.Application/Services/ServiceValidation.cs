@@ -103,7 +103,7 @@ public class ServiceValidation : IServiceValidation
     public bool UDPArchitectureOk(dynamic context, ref string message)
     {
         context.ActionArguments.TryGetValue(ControllerActionArgumentsKey.Metadata, out dynamic? values);
-        message = values?.Architecture <= 0 ? _serviceMessage.UDPGetMessage(TypeValidation.TheArchitecturePatternsIsNotOk) : _serviceFuncString.Empty;
+        message = values?.Architecture is not 1 ? _serviceMessage.UDPGetMessage(TypeValidation.TheArchitecturePatternsIsNotOk) : _serviceFuncString.Empty;
         return _serviceFuncString.UDPNullOrEmpty(message);
     }
 

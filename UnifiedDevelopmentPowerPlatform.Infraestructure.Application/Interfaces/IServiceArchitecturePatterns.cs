@@ -40,4 +40,26 @@ public interface IServiceArchitecturePatterns
     /// <seealso href=""></seealso>
     /// <returns>The enumerated of architecture patterns.</returns>
     EnumeratedArchitecturePatterns UDPToReadIdentifierToTheArchitecturePatternsFromMetadata();
+
+    /// <summary>
+    /// Generate back end project.
+    /// </summary>
+    /// <param name="tables"></param>
+    /// <paramref name=""/>
+    /// <remarks></remarks>
+    /// <exception cref=""></exception>
+    /// <seealso href=""></seealso>
+    /// <returns></returns>
+    void UDPGenerateBackendProject(List<Tables> tables);
+
+    /// <summary>
+    /// Generate front end project.
+    /// </summary>
+    /// <param name="tables"></param>
+    /// <paramref name=""/>
+    /// <remarks></remarks>
+    /// <exception cref=""></exception>
+    /// <seealso href=""></seealso>
+    /// <returns></returns>
+    void UDPGenerateFrontEndProject(List<Tables> tables);
 }

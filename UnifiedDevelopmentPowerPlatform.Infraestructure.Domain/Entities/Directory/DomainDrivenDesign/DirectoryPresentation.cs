@@ -2,10 +2,10 @@
 
 namespace UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.Directory.DomainDrivenDesign;
 
-[ComplexType]
 /// <summary>
 /// Presentation is the directory for UNIFIED DEVELOPMENT PLATFORM.
 /// </summary>
+[ComplexType]
 public static class DirectoryPresentation
 {
     /// <summary>
