@@ -1,11 +1,6 @@
-using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.Extensions.DependencyInjection.Extensions;
-using System.Reflection;
-using UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities;
-using UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.File;
 using UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.OpenApi;
 using UnifiedDevelopmentPowerPlatform.Presentation.Api.Extensions;
-using UnifiedDevelopmentPowerPlatform.Presentation.Api.Filters;
 using UnifiedDevelopmentPowerPlatform.Presentation.Api.OpenApi;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,64 +8,23 @@ var builder = WebApplication.CreateBuilder(args);
 // Method registers endpoint explorers to the DI container.
 builder.Services.AddEndpointsApiExplorer();
 
-#region OpenApi.
-builder.Services.AddSwaggerGen(options =>
-{
-    options.SchemaFilter<OpenApiIgnoreFilter>();
-    options.DocumentFilter<OpenApiDocumentation>();
-    options.OperationFilter<OpenApiParameters>();
+builder.Services.AddControllers(c => c.Conventions.Add(new OpenApiHideControllerConvention()));
 
-    var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}{FileExtension.Xml}";
-    var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
-    if (File.Exists(xmlPath))
-    {
-        options.IncludeXmlComments(xmlPath);
-    }
-    else
-    {
-        File.Create(xmlPath).Dispose();
-        options.IncludeXmlComments(xmlPath);
-    }
-});
-#endregion OpenApi.
+builder.Services.ConfigureMvc();
 
-builder.Services.AddControllers(options =>
-{
-    //options.RespectBrowserAcceptHeader = true;
-    options.Conventions.Add(new OpenApiHideControllerConvention());
-});
+builder.Services.ConfigureCors();
 
-builder.Services.AddCors(options =>
-{
-    options.AddDefaultPolicy(policy =>
-    {
-        policy.WithOrigins("http://localhost:5173")
-              .AllowAnyMethod()
-              .AllowAnyHeader()
-              .AllowCredentials();
-    });
-});
+builder.Services.ConfigureSwagger();
 
-builder.Services.AddMvc().AddMvcOptions(options => options.OutputFormatters.Add(new XmlDataContractSerializerOutputFormatter()));
+builder.Services.ConfigureDependencies();
 
-#region Action Filters.
-builder.Services.TryAddTransient<FilterActionContextController>();
-builder.Services.TryAddTransient<FilterActionContextControllerInformation>();
-builder.Services.TryAddTransient<FilterActionContextLog>();
-builder.Services.TryAddTransient<FilterActionContextMetadata<MetadataOwner>>();
-builder.Services.TryAddTransient<FilterActionContextTablesdata<MetadataOwner>>();
-#endregion Action Filters.
-
-builder.Services.AddClassesMatchingInterfaces(nameof(UnifiedDevelopmentPowerPlatform));
+builder.Services.ConfigureDependencies(nameof(UnifiedDevelopmentPowerPlatform));
 
 var app = builder.Build();
-
-// Configure the HTTP request pipeline.
 
 if (app.Environment.IsDevelopment())
 {
     // Code for Development here.
-
     app.UseDeveloperExceptionPage();
 
     app.UseSwagger();
