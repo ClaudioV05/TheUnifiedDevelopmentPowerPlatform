@@ -38,7 +38,7 @@ public class ServiceMessage : IServiceMessage
         });
     }
 
-    public string UDPGetMessage(TypeDevelopmentEnvironments type)
+    public string UDPPGetMessage(TypeDevelopmentEnvironments type)
     {
         return _serviceFuncString.UDPPUpper(type switch
         {
@@ -60,7 +60,7 @@ public class ServiceMessage : IServiceMessage
         });
     }
 
-    public string UDPGetMessage(TypeArchitecturePatterns type)
+    public string UDPPGetMessage(TypeArchitecturePatterns type)
     {
         return _serviceFuncString.UDPPUpper(type switch
         {
@@ -73,7 +73,7 @@ public class ServiceMessage : IServiceMessage
         });
     }
 
-    public string UDPGetMessage(TypeDatabasesEngine type)
+    public string UDPPGetMessage(TypeDatabasesEngine type)
     {
         return _serviceFuncString.UDPPUpper(type switch
         {
@@ -86,7 +86,7 @@ public class ServiceMessage : IServiceMessage
         });
     }
 
-    public string UDPGetMessage(TypeDatabases type)
+    public string UDPPGetMessage(TypeDatabases type)
     {
         return _serviceFuncString.UDPPUpper(type switch
         {
@@ -103,7 +103,7 @@ public class ServiceMessage : IServiceMessage
         });
     }
 
-    public string UDPGetMessage(TypeFormsView type)
+    public string UDPPGetMessage(TypeFormsView type)
     {
         return _serviceFuncString.UDPPUpper(type switch
         {
@@ -116,7 +116,7 @@ public class ServiceMessage : IServiceMessage
         });
     }
 
-    public string UDPGetMessage(TypeCrypto type)
+    public string UDPPGetMessage(TypeCrypto type)
     {
         return _serviceFuncString.UDPPUpper(type switch
         {
@@ -137,7 +137,7 @@ public class ServiceMessage : IServiceMessage
         });
     }
 
-    public string UDPGetMessage(TypeMetadata type)
+    public string UDPPGetMessage(TypeMetadata type)
     {
         return _serviceFuncString.UDPPUpper(type switch
         {
@@ -155,7 +155,7 @@ public class ServiceMessage : IServiceMessage
         });
     }
 
-    public string UDPGetMessage(TypeMetadataFields type)
+    public string UDPPGetMessage(TypeMetadataFields type)
     {
         return _serviceFuncString.UDPPUpper(type switch
         {
@@ -172,7 +172,7 @@ public class ServiceMessage : IServiceMessage
         });
     }
 
-    public string UDPGetMessage(TypeMetadataTable type)
+    public string UDPPGetMessage(TypeMetadataTable type)
     {
         return _serviceFuncString.UDPPUpper(type switch
         {
@@ -189,7 +189,7 @@ public class ServiceMessage : IServiceMessage
         });
     }
 
-    public string UDPGetMessage(TypeDirectory type)
+    public string UDPPGetMessage(TypeDirectory type)
     {
         return _serviceFuncString.UDPPUpper(type switch
         {
@@ -203,7 +203,7 @@ public class ServiceMessage : IServiceMessage
         });
     }
 
-    public string UDPGetMessage(TypeValidation type)
+    public string UDPPGetMessage(TypeValidation type)
     {
         return _serviceFuncString.UDPPUpper(type switch
         {

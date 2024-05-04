@@ -75,7 +75,7 @@ public class ServiceMetadata : IServiceMetadata
 
         try
         {
-            _serviceLog.UDPPRegisterLog(_serviceMessage.UDPGetMessage(TypeMetadata.CallStartToTheReceiveAndSaveAllTablesAndFieldsOfSchemaDatabase), _serviceFuncString.Empty);
+            _serviceLog.UDPPRegisterLog(_serviceMessage.UDPPGetMessage(TypeMetadata.CallStartToTheReceiveAndSaveAllTablesAndFieldsOfSchemaDatabase), _serviceFuncString.Empty);
 
             _serviceMetadataTable.UDPPSaveDatabaseSchemaFromMetadata(metadata);
             _serviceFormsView.UDPPSaveIdentifierToTheFormsViewFromMetadata(metadata);
@@ -88,12 +88,12 @@ public class ServiceMetadata : IServiceMetadata
 
             if (!_serviceFuncString.UDPPNullOrEmpty(databaseSchemaDecrypt))
             {
-                _serviceLog.UDPPRegisterLog(_serviceMessage.UDPGetMessage(TypeMetadata.DecryptOkFromTheReceiveAndSaveAllTableAndFieldsOfSchemaDatabase), _serviceFuncString.Empty);
+                _serviceLog.UDPPRegisterLog(_serviceMessage.UDPPGetMessage(TypeMetadata.DecryptOkFromTheReceiveAndSaveAllTableAndFieldsOfSchemaDatabase), _serviceFuncString.Empty);
                 _serviceMetadataTable.UDPPLoadTheDatabaseSchema(ref listDatabaseSchemas, _serviceFuncString.UDPPParseLine(new[] { $"{MetaCharacterSymbols.CarriageReturn}{MetaCharacterSymbols.NewLine}", MetaCharacterSymbols.CarriageReturn, MetaCharacterSymbols.NewLine }, databaseSchemaDecrypt));
 
                 if (listDatabaseSchemas is not null && listDatabaseSchemas.Any())
                 {
-                    _serviceLog.UDPPRegisterLog(_serviceMessage.UDPGetMessage(TypeMetadata.LoadAllOfTheTablesAndFieldsOfSchemaDatabase), _serviceFuncString.Empty);
+                    _serviceLog.UDPPRegisterLog(_serviceMessage.UDPPGetMessage(TypeMetadata.LoadAllOfTheTablesAndFieldsOfSchemaDatabase), _serviceFuncString.Empty);
 
                     for (int i = counter; counter < listDatabaseSchemas.Count; counter++)
                     {
@@ -138,12 +138,12 @@ public class ServiceMetadata : IServiceMetadata
                 _serviceDatabases.UDPPSaveMetricsOfTheGenerationOfTablesAndFields(listOfTables);
             }
 
-            _serviceLog.UDPPRegisterLog(_serviceMessage.UDPGetMessage(TypeMetadata.SuccessToTheReceiveAndSaveAllTableAndFieldsOfSchemaDatabase), _serviceFuncString.Empty);
+            _serviceLog.UDPPRegisterLog(_serviceMessage.UDPPGetMessage(TypeMetadata.SuccessToTheReceiveAndSaveAllTableAndFieldsOfSchemaDatabase), _serviceFuncString.Empty);
             return listOfTables;
         }
         catch (Exception ex)
         {
-            _serviceLog.UDPPRegisterLog(_serviceMessage.UDPGetMessage(TypeDatabases.ErrorReceiveAndSaveAllTablesAndFieldsOfSchemaDatabase), ex.Message);
+            _serviceLog.UDPPRegisterLog(_serviceMessage.UDPPGetMessage(TypeDatabases.ErrorReceiveAndSaveAllTablesAndFieldsOfSchemaDatabase), ex.Message);
             throw new Exception(_serviceMessage.UDPPGetMessage(TypeGlobal.TheExceptionGlobalErrorMessage));
         }
     }
@@ -152,18 +152,18 @@ public class ServiceMetadata : IServiceMetadata
     {
         try
         {
-            _serviceLog.UDPPRegisterLog(_serviceMessage.UDPGetMessage(TypeMetadata.CallStartToTheReceiveTheTablesdataAndGenerateTheSolution), _serviceFuncString.Empty);
+            _serviceLog.UDPPRegisterLog(_serviceMessage.UDPPGetMessage(TypeMetadata.CallStartToTheReceiveTheTablesdataAndGenerateTheSolution), _serviceFuncString.Empty);
 
             _serviceArchitecturePatterns.UDPPGenerateBackendProject(metadata.Tables);
             _serviceArchitecturePatterns.UDPPGenerateFrontEndProject(metadata.Tables);
 
-            _serviceLog.UDPPRegisterLog(_serviceMessage.UDPGetMessage(TypeMetadata.SuccessToTheReceiveTheTablesdataAndGenerateTheSolution), _serviceFuncString.Empty);
+            _serviceLog.UDPPRegisterLog(_serviceMessage.UDPPGetMessage(TypeMetadata.SuccessToTheReceiveTheTablesdataAndGenerateTheSolution), _serviceFuncString.Empty);
 
             return new();
         }
         catch (Exception ex)
         {
-            _serviceLog.UDPPRegisterLog(_serviceMessage.UDPGetMessage(TypeMetadata.ErroToTheReceiveTheTablesdataAndGenerateTheSolution), ex.Message);
+            _serviceLog.UDPPRegisterLog(_serviceMessage.UDPPGetMessage(TypeMetadata.ErroToTheReceiveTheTablesdataAndGenerateTheSolution), ex.Message);
             throw new Exception(_serviceMessage.UDPPGetMessage(TypeGlobal.TheExceptionGlobalErrorMessage));
         }
     }
@@ -202,7 +202,7 @@ public class ServiceMetadata : IServiceMetadata
 
     public UnifiedDevelopmentParameters UDPPSelectParametersInformationUnifiedDevelopmentPowerPlatform()
     {
-        _serviceLog.UDPPRegisterLog(_serviceMessage.UDPGetMessage(TypeMetadata.CallStartToTheSelectParametersTheKindsOfUnifiedDevelopmentPowerPlatform), _serviceFuncString.Empty);
+        _serviceLog.UDPPRegisterLog(_serviceMessage.UDPPGetMessage(TypeMetadata.CallStartToTheSelectParametersTheKindsOfUnifiedDevelopmentPowerPlatform), _serviceFuncString.Empty);
 
         UnifiedDevelopmentParameters unifiedDevelopmentParameters = new UnifiedDevelopmentParameters()
         {
@@ -210,7 +210,7 @@ public class ServiceMetadata : IServiceMetadata
             Authors = new List<string>() { "Jesus Cristo", "Claudio Fernandes Rodrigues Ventura", "Claudiomildo Ventura" }
         };
 
-        _serviceLog.UDPPRegisterLog(_serviceMessage.UDPGetMessage(TypeMetadata.SuccessToTheSelectParametersTheKindsOfUnifiedDevelopmentPowerPlatform), _serviceFuncString.Empty);
+        _serviceLog.UDPPRegisterLog(_serviceMessage.UDPPGetMessage(TypeMetadata.SuccessToTheSelectParametersTheKindsOfUnifiedDevelopmentPowerPlatform), _serviceFuncString.Empty);
 
         return unifiedDevelopmentParameters;
     }

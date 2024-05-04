@@ -60,7 +60,7 @@ internal sealed class FilterActionContextController : IAsyncActionFilter
                 _serviceDirectory.UDPPCreateDirectoriesDefault();
 
                 _serviceLog.UDPPRegisterLog(_serviceMessage.UDPPGetMessage(TypeGlobal.CallStartToTheCreationOfUnifiedDevelopmentPowerPlatform), _serviceFuncString.Empty);
-                _serviceLog.UDPPRegisterLog(_serviceMessage.UDPGetMessage(TypeValidation.ThePlatformWindowsIsNotOk), _serviceFuncString.Empty);
+                _serviceLog.UDPPRegisterLog(_serviceMessage.UDPPGetMessage(TypeValidation.ThePlatformWindowsIsNotOk), _serviceFuncString.Empty);
             }
             catch (Exception ex)
             {

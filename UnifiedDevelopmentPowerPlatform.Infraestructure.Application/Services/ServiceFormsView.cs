@@ -49,7 +49,7 @@ public class ServiceFormsView : IServiceFormsView
 
     public List<FormsView> UDPPSelectParametersTheKindsOfFormsView()
     {
-        _serviceLog.UDPPRegisterLog(_serviceMessage.UDPGetMessage(TypeFormsView.CallStartToTheSelectParametersTheKindsOfForms), _serviceFuncString.Empty);
+        _serviceLog.UDPPRegisterLog(_serviceMessage.UDPPGetMessage(TypeFormsView.CallStartToTheSelectParametersTheKindsOfForms), _serviceFuncString.Empty);
 
         List<FormsView> listItems = new List<FormsView>();
 
@@ -71,7 +71,7 @@ public class ServiceFormsView : IServiceFormsView
 
             if (listItems.Any())
             {
-                _serviceLog.UDPPRegisterLog(_serviceMessage.UDPGetMessage(TypeFormsView.SuccessToTheSelectParametersTheKindsOfForms), _serviceFuncString.Empty);
+                _serviceLog.UDPPRegisterLog(_serviceMessage.UDPPGetMessage(TypeFormsView.SuccessToTheSelectParametersTheKindsOfForms), _serviceFuncString.Empty);
             }
         }
         catch (OverflowException) { }
@@ -86,13 +86,13 @@ public class ServiceFormsView : IServiceFormsView
 
         if (metadata.FormsView.Any())
         {
-            _serviceLog.UDPPRegisterLog(_serviceMessage.UDPGetMessage(TypeFormsView.CallStartToTheSaveIdentifierToTheFormFromMetadata), _serviceFuncString.Empty);
+            _serviceLog.UDPPRegisterLog(_serviceMessage.UDPPGetMessage(TypeFormsView.CallStartToTheSaveIdentifierToTheFormFromMetadata), _serviceFuncString.Empty);
 
             directoryConfiguration = _serviceDirectory.UDPPObtainDirectory(DirectoryRootType.Configuration);
             data = _serviceCrypto.UDPPEncryptData(Convert.ToString(metadata.FormsView.FirstOrDefault().Id));
             _serviceFile.UDPPAppendAllText($"{directoryConfiguration}{DirectoryStandard.Log}{FileStandard.IdForm}{FileExtension.Txt}", data);
 
-            _serviceLog.UDPPRegisterLog(_serviceMessage.UDPGetMessage(TypeFormsView.SuccessToTheSaveIdentifierToTheFormFromMetadata), _serviceFuncString.Empty);
+            _serviceLog.UDPPRegisterLog(_serviceMessage.UDPPGetMessage(TypeFormsView.SuccessToTheSaveIdentifierToTheFormFromMetadata), _serviceFuncString.Empty);
         }
     }
 }
