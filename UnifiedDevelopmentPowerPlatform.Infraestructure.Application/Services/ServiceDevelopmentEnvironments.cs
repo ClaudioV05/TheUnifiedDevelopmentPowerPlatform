@@ -58,30 +58,24 @@ public class ServiceDevelopmentEnvironments : IServiceDevelopmentEnvironments
 
     public List<DevelopmentEnvironments> UDPPSelectParametersTheKindsOfDevelopmentEnviroment()
     {
-        _serviceLog.UDPPRegisterLog(_serviceMessage.UDPPGetMessage(TypeDevelopmentEnvironments.CallStartToTheSelectParametersTheKindsOfDevelopmentEnviroment), _serviceFuncString.Empty);
-
         List<DevelopmentEnvironments> listItems = new List<DevelopmentEnvironments>();
 
         try
         {
-            if (Enum.GetValues(typeof(EnumeratedDevelopmentEnvironments)) != null && Enum.GetValues(typeof(EnumeratedDevelopmentEnvironments)).Length > 0)
+            _serviceLog.UDPPRegisterLog(_serviceMessage.UDPPGetMessage(TypeDevelopmentEnvironments.CallStartToTheSelectParametersTheKindsOfDevelopmentEnviroment), _serviceFuncString.Empty);
+
+            for (int i = 0; i < Enum.GetValues(typeof(EnumeratedDevelopmentEnvironments)).Length; i++)
             {
-                for (int i = 0; i < Enum.GetValues(typeof(EnumeratedDevelopmentEnvironments)).Length; i++)
+                listItems.Add(new DevelopmentEnvironments()
                 {
-                    listItems.Add(new DevelopmentEnvironments()
-                    {
-                        Id = (long)(EnumeratedDevelopmentEnvironments)i,
-                        IdEnumeration = (EnumeratedDevelopmentEnvironments)i,
-                        NameEnumeration = Enum.GetName(typeof(EnumeratedDevelopmentEnvironments), i),
-                        Name = _serviceEnumerated.UDPPGetEnumeratedDescription((EnumeratedDevelopmentEnvironments)i)
-                    });
-                }
+                    Id = (long)(EnumeratedDevelopmentEnvironments)i,
+                    IdEnumeration = (EnumeratedDevelopmentEnvironments)i,
+                    NameEnumeration = Enum.GetName(typeof(EnumeratedDevelopmentEnvironments), i),
+                    Name = _serviceEnumerated.UDPPGetEnumeratedDescription((EnumeratedDevelopmentEnvironments)i)
+                });
             }
 
-            if (listItems.Any())
-            {
-                _serviceLog.UDPPRegisterLog(_serviceMessage.UDPPGetMessage(TypeDevelopmentEnvironments.SuccessToTheSelectParametersTheKindsOfDevelopmentEnviroment), _serviceFuncString.Empty);
-            }
+            _serviceLog.UDPPRegisterLog(_serviceMessage.UDPPGetMessage(TypeDevelopmentEnvironments.SuccessToTheSelectParametersTheKindsOfDevelopmentEnviroment), _serviceFuncString.Empty);
         }
         catch (OverflowException) { }
 
@@ -93,16 +87,13 @@ public class ServiceDevelopmentEnvironments : IServiceDevelopmentEnvironments
         string data = _serviceFuncString.Empty;
         string directoryConfiguration = _serviceFuncString.Empty;
 
-        if (metadata.DevelopmentEnvironments.Any())
-        {
-            _serviceLog.UDPPRegisterLog(_serviceMessage.UDPPGetMessage(TypeDevelopmentEnvironments.CallStartToTheSaveIdentifierToTheDevelopmentEnviromentsFromMetadata), _serviceFuncString.Empty);
+        _serviceLog.UDPPRegisterLog(_serviceMessage.UDPPGetMessage(TypeDevelopmentEnvironments.CallStartToTheSaveIdentifierToTheDevelopmentEnviromentsFromMetadata), _serviceFuncString.Empty);
 
-            directoryConfiguration = _serviceDirectory.UDPPObtainDirectory(DirectoryRootType.Configuration);
-            data = _serviceCrypto.UDPPEncryptData(Convert.ToString(metadata.DevelopmentEnvironments.FirstOrDefault().Id));
-            _serviceFile.UDPPAppendAllText($"{directoryConfiguration}{DirectoryStandard.Log}{FileStandard.IdDevelopmentEnvironment}{FileExtension.Txt}", data);
+        directoryConfiguration = _serviceDirectory.UDPPObtainDirectory(DirectoryRootType.Configuration);
+        data = _serviceCrypto.UDPPEncryptData(Convert.ToString(metadata.DevelopmentEnvironments.FirstOrDefault().Id));
+        _serviceFile.UDPPAppendAllText($"{directoryConfiguration}{DirectoryStandard.Log}{FileStandard.IdDevelopmentEnvironment}{FileExtension.Txt}", data);
 
-            _serviceLog.UDPPRegisterLog(_serviceMessage.UDPPGetMessage(TypeDevelopmentEnvironments.SuccessToTheSaveIdentifierToTheDevelopmentEnviromentsFromMetadata), _serviceFuncString.Empty);
-        }
+        _serviceLog.UDPPRegisterLog(_serviceMessage.UDPPGetMessage(TypeDevelopmentEnvironments.SuccessToTheSaveIdentifierToTheDevelopmentEnviromentsFromMetadata), _serviceFuncString.Empty);
     }
 
     public string UDPPGetDataTypeFromTableInScriptMetadata(string type)

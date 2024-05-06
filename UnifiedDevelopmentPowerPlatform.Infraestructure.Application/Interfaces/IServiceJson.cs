@@ -10,7 +10,6 @@ public interface IServiceJson
     /// </summary>
     /// <param name="obj"></param>
     /// <paramref name=""/>
-    /// <returns></returns>
     /// <remarks></remarks>
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>

@@ -370,6 +370,18 @@ public interface IServiceFuncString
     /// <remarks></remarks>
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
-    /// <returns>Retrieve a substring for a instance.</returns>
+    /// <returns>Get a substring for an instance.</returns>
     string UDPPSubString(string text, int startIndex, int lenght);
+
+    /// <summary>
+    /// Sub String.
+    /// </summary>
+    /// <param name="separator"></param>
+    /// <param name="values"></param>
+    /// <paramref name=""/>
+    /// <remarks></remarks>
+    /// <exception cref=""></exception>
+    /// <seealso href=""></seealso>
+    /// <returns>Get a new string with parameters.</returns>
+    string UDPPJoin(string separator, string[]? values);
 }

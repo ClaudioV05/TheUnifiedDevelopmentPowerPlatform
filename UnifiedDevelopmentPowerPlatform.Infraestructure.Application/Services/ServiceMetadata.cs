@@ -154,8 +154,8 @@ public class ServiceMetadata : IServiceMetadata
         {
             _serviceLog.UDPPRegisterLog(_serviceMessage.UDPPGetMessage(TypeMetadata.CallStartToTheReceiveTheTablesdataAndGenerateTheSolution), _serviceFuncString.Empty);
 
-            _serviceArchitecturePatterns.UDPPGenerateBackendProject(metadata.Tables);
-            _serviceArchitecturePatterns.UDPPGenerateFrontEndProject(metadata.Tables);
+            _serviceArchitecturePatterns.UDPPGeneratesBackendSolution(metadata.Tables);
+            _serviceArchitecturePatterns.UDPPGeneratesFrontendSolution(metadata.Tables);
 
             _serviceLog.UDPPRegisterLog(_serviceMessage.UDPPGetMessage(TypeMetadata.SuccessToTheReceiveTheTablesdataAndGenerateTheSolution), _serviceFuncString.Empty);
 

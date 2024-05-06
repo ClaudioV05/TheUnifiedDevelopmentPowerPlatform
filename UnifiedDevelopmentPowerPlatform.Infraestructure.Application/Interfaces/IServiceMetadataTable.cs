@@ -12,11 +12,9 @@ public interface IServiceMetadataTable
     /// </summary>
     /// <param name="metadata"></param>
     /// <paramref name=""/>
-    /// <returns></returns>
     /// <remarks></remarks>
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
-    /// <returns></returns>
     void UDPPSaveDatabaseSchemaFromMetadata(MetadataOwner metadata);
 
     /// <summary>
@@ -24,7 +22,6 @@ public interface IServiceMetadataTable
     /// </summary>
     /// <param name=""></param>
     /// <paramref name=""/>
-    /// <returns></returns>
     /// <remarks></remarks>
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
@@ -36,7 +33,6 @@ public interface IServiceMetadataTable
     /// </summary>
     /// <param name="text"></param>
     /// <paramref name=""/>
-    /// <returns></returns>
     /// <remarks></remarks>
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
@@ -49,7 +45,6 @@ public interface IServiceMetadataTable
     /// <param name="listDatabaseSchema"></param>
     /// <param name="databaseSchema"></param>
     /// <paramref name=""/>
-    /// <returns></returns>
     /// <remarks></remarks>
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso> 
@@ -62,10 +57,8 @@ public interface IServiceMetadataTable
     /// <param name="idTable"></param>
     /// <param name="text"></param>
     /// <paramref name=""/>
-    /// <returns></returns>
     /// <remarks></remarks>
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
-    /// <returns></returns>
     void UDPPAddAndSaveTheTable(ref List<Tables> listTables, int idTable, string text);
 }

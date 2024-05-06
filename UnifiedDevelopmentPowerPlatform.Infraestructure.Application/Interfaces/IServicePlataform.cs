@@ -5,9 +5,15 @@
 /// </summary>
 public interface IServicePlataform
 {
+
     /// <summary>
     /// Make validation if platform is Windows.
     /// </summary>
+    /// <param name=""></param>
+    /// <paramref name=""/>
+    /// <remarks></remarks>
+    /// <exception cref=""></exception>
+    /// <seealso href=""></seealso>
     /// <returns>The method will return true, otherwise will return false.</returns>
     bool UDPPPlataformIsWindows();
 
@@ -28,7 +34,6 @@ public interface IServicePlataform
     /// </summary>
     /// <param name="variable"></param>
     /// <paramref name=""/>
-    /// <returns></returns>
     /// <remarks></remarks>
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
@@ -40,7 +45,6 @@ public interface IServicePlataform
     /// </summary>
     /// <param name=""></param>
     /// <paramref name=""/>
-    /// <returns></returns>
     /// <remarks></remarks>
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
@@ -52,7 +56,6 @@ public interface IServicePlataform
     /// </summary>
     /// <param name=""></param>
     /// <paramref name=""/>
-    /// <returns></returns>
     /// <remarks></remarks>
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>

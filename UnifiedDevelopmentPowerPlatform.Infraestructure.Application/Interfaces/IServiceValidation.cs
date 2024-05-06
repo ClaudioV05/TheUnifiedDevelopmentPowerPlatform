@@ -10,7 +10,6 @@ public interface IServiceValidation
     /// </summary>
     /// <param name="message"></param>
     /// <paramref name=""/>
-    /// <returns></returns>
     /// <remarks></remarks>
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
@@ -23,7 +22,6 @@ public interface IServiceValidation
     /// <param name="context"></param>
     /// <param name="message"></param>
     /// <paramref name=""/>
-    /// <returns></returns>
     /// <remarks></remarks>
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
@@ -36,7 +34,6 @@ public interface IServiceValidation
     /// <param name="context"></param>
     /// <param name="message"></param>
     /// <paramref name=""/>
-    /// <returns></returns>
     /// <remarks></remarks>
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
@@ -49,7 +46,6 @@ public interface IServiceValidation
     /// <param name="context"></param>
     /// <param name="message"></param>
     /// <paramref name=""/>
-    /// <returns></returns>
     /// <remarks></remarks>
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
@@ -62,7 +58,6 @@ public interface IServiceValidation
     /// <param name="context"></param>
     /// <param name="message"></param>
     /// <paramref name=""/>
-    /// <returns></returns>
     /// <remarks></remarks>
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
@@ -75,7 +70,6 @@ public interface IServiceValidation
     /// <param name="context"></param>
     /// <param name="message"></param>
     /// <paramref name=""/>
-    /// <returns></returns>
     /// <remarks></remarks>
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
@@ -88,7 +82,6 @@ public interface IServiceValidation
     /// <param name="context"></param>
     /// <param name="message"></param>
     /// <paramref name=""/>
-    /// <returns></returns>
     /// <remarks></remarks>
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
@@ -101,7 +94,6 @@ public interface IServiceValidation
     /// <param name="context"></param>
     /// <param name="message"></param>
     /// <paramref name=""/>
-    /// <returns></returns>
     /// <remarks></remarks>
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
@@ -114,7 +106,6 @@ public interface IServiceValidation
     /// <param name="context"></param>
     /// <param name="message"></param>
     /// <paramref name=""/>
-    /// <returns></returns>
     /// <remarks></remarks>
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
@@ -127,7 +118,6 @@ public interface IServiceValidation
     /// <param name="context"></param>
     /// <param name="message"></param>
     /// <paramref name=""/>
-    /// <returns></returns>
     /// <remarks></remarks>
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
@@ -139,7 +129,6 @@ public interface IServiceValidation
     /// </summary>
     /// <param name="text"></param>
     /// <paramref name=""/>
-    /// <returns></returns>
     /// <remarks></remarks>
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
@@ -152,7 +141,6 @@ public interface IServiceValidation
     /// <param name="context"></param>
     /// <param name="message"></param>
     /// <paramref name=""/>
-    /// <returns></returns>
     /// <remarks></remarks>
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
@@ -165,7 +153,6 @@ public interface IServiceValidation
     /// <param name="context"></param>
     /// <param name="message"></param>
     /// <paramref name=""/>
-    /// <returns></returns>
     /// <remarks></remarks>
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
@@ -178,7 +165,6 @@ public interface IServiceValidation
     /// <param name="context"></param>
     /// <param name="message"></param>
     /// <paramref name=""/>
-    /// <returns></returns>
     /// <remarks></remarks>
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
@@ -191,7 +177,6 @@ public interface IServiceValidation
     /// <param name="context"></param>
     /// <param name="message"></param>
     /// <paramref name=""/>
-    /// <returns></returns>
     /// <remarks></remarks>
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
@@ -204,7 +189,6 @@ public interface IServiceValidation
     /// <param name="context"></param>
     /// <param name="message"></param>
     /// <paramref name=""/>
-    /// <returns></returns>
     /// <remarks></remarks>
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>

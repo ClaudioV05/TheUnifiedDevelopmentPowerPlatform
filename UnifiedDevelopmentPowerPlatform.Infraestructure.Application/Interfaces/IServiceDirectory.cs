@@ -12,11 +12,9 @@ public interface IServiceDirectory
     /// Create the directories default of solution UDPP.
     /// </summary>
     /// <paramref name=""/>
-    /// <returns></returns>
     /// <remarks></remarks>
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
-    /// <returns></returns>
     void UDPPCreateDirectoriesDefault();
 
     /// <summary>
@@ -24,11 +22,9 @@ public interface IServiceDirectory
     /// </summary>
     /// <param name="enumeratedArchitecturePatterns"></param>
     /// <paramref name=""/>
-    /// <returns></returns>
     /// <remarks></remarks>
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
-    /// <returns></returns>
     void UDPPCreateDirectoriesFromArchitecture(EnumeratedArchitecturePatterns enumeratedArchitecturePatterns);
 
     /// <summary>
@@ -36,7 +32,6 @@ public interface IServiceDirectory
     /// </summary>
     /// <param name="absolutePath"></param>
     /// <paramref name=""/>
-    /// <returns></returns>
     /// <remarks></remarks>
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
@@ -48,7 +43,6 @@ public interface IServiceDirectory
     /// </summary>
     /// <param name="directoryRootType"></param>
     /// <paramref name=""/>
-    /// <returns></returns>
     /// <remarks></remarks>
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
@@ -60,7 +54,6 @@ public interface IServiceDirectory
     /// </summary>
     /// <param name="directory"></param>
     /// <paramref name=""/>
-    /// <returns></returns>
     /// <remarks></remarks>
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>

@@ -53,30 +53,24 @@ public class ServiceDatabases : IServiceDatabases
 
     public List<Databases> UDPPSelectParametersTheKindsOfDatabases()
     {
-        _serviceLog.UDPPRegisterLog(_serviceMessage.UDPPGetMessage(TypeDatabases.CallStartToTheSelectParametersTheKindsOfDatabases), _serviceFuncString.Empty);
-
         List<Databases> listItems = new List<Databases>();
 
         try
         {
-            if (Enum.GetValues(typeof(EnumeratedDatabases)) != null && Enum.GetValues(typeof(EnumeratedDatabases)).Length > 0)
+            _serviceLog.UDPPRegisterLog(_serviceMessage.UDPPGetMessage(TypeDatabases.CallStartToTheSelectParametersTheKindsOfDatabases), _serviceFuncString.Empty);
+
+            for (int i = 0; i < Enum.GetValues(typeof(EnumeratedDatabases)).Length; i++)
             {
-                for (int i = 0; i < Enum.GetValues(typeof(EnumeratedDatabases)).Length; i++)
+                listItems.Add(new Databases()
                 {
-                    listItems.Add(new Databases()
-                    {
-                        Id = (long)(EnumeratedDatabases)i,
-                        IdEnumeration = (EnumeratedDatabases)i,
-                        NameEnumeration = Enum.GetName(typeof(EnumeratedDatabases), i),
-                        Name = _serviceEnumerated.UDPPGetEnumeratedDescription((EnumeratedDatabases)i)
-                    });
-                }
+                    Id = (long)(EnumeratedDatabases)i,
+                    IdEnumeration = (EnumeratedDatabases)i,
+                    NameEnumeration = Enum.GetName(typeof(EnumeratedDatabases), i),
+                    Name = _serviceEnumerated.UDPPGetEnumeratedDescription((EnumeratedDatabases)i)
+                });
             }
 
-            if (listItems.Any())
-            {
-                _serviceLog.UDPPRegisterLog(_serviceMessage.UDPPGetMessage(TypeDatabases.SuccessToTheSelectParametersTheKindsOfDatabases), _serviceFuncString.Empty);
-            }
+            _serviceLog.UDPPRegisterLog(_serviceMessage.UDPPGetMessage(TypeDatabases.SuccessToTheSelectParametersTheKindsOfDatabases), _serviceFuncString.Empty);
         }
         catch (OverflowException) { }
 
@@ -103,7 +97,7 @@ public class ServiceDatabases : IServiceDatabases
     public void UDPPSaveMetricsOfTheGenerationOfTablesAndFields(List<Tables> listOfTables)
     {
         long quantityOfTables = 0;
-        
+
         _serviceLog.UDPPRegisterLog(_serviceMessage.UDPPGetMessage(TypeMetadataTable.CallStartToTheSaveMetricsOfTheGenerationOfTablesAndFields), _serviceFuncString.Empty);
 
         if (listOfTables is not null && listOfTables.Any())

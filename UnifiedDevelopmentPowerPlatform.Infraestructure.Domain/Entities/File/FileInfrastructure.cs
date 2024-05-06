@@ -2,10 +2,10 @@
 
 namespace UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.File;
 
-[ComplexType]
 /// <summary>
 /// File for the infrastructure.
 /// </summary>
+[ComplexType]
 public static class FileInfrastructure
 {
 

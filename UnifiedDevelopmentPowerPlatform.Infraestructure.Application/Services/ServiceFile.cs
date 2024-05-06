@@ -2,6 +2,8 @@
 using System.Text;
 using UnifiedDevelopmentPowerPlatform.Application.Interfaces;
 using UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.Directory.DomainDrivenDesign;
+using UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.File;
+using UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.MetaCharacter;
 
 namespace UnifiedDevelopmentPowerPlatform.Application.Services;
 
@@ -110,14 +112,27 @@ public class ServiceFile : IServiceFile
         }
     }
 
+    public string UDPPToCreateDataFile(DirectoryRootType section, string fileName)
+    {
+        try
+        {
+            string file = $"{_serviceDirectory.UDPPObtainDirectory(section)}{fileName}";
+            this.UDPPCreateAndSaveFileWithStreamWrite(file);
+            return this.UDPPFileExists(file) ? file : _serviceFuncString.Empty;
+        }
+        catch (Exception)
+        {
+            return _serviceFuncString.Empty;
+        }
+    }
+
     public string UDPPGetDataFileFromDirectoryConfiguration(string section, string file)
     {
         string data = _serviceFuncString.Empty;
-        string directoryConfiguration = _serviceFuncString.Empty;
 
         try
         {
-            directoryConfiguration = _serviceDirectory.UDPPObtainDirectory(DirectoryRootType.Configuration);
+            string directoryConfiguration = _serviceDirectory.UDPPObtainDirectory(DirectoryRootType.Configuration);
 
             if (this.UDPPFileExists($"{directoryConfiguration}{section}{file}"))
             {
@@ -128,7 +143,7 @@ public class ServiceFile : IServiceFile
         }
         catch (Exception)
         {
-            return string.Empty;
+            return _serviceFuncString.Empty;
         }
     }
 

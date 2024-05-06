@@ -39,10 +39,10 @@ public interface IServiceArchitecturePatterns
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
     /// <returns>The enumerated of architecture patterns.</returns>
-    EnumeratedArchitecturePatterns UDPToReadIdentifierToTheArchitecturePatternsFromMetadata();
+    EnumeratedArchitecturePatterns UDPPToReadIdentifierToTheArchitecturePatternsFromMetadata();
 
     /// <summary>
-    /// Generate back end project.
+    /// Generates a back end solution.
     /// </summary>
     /// <param name="tables"></param>
     /// <paramref name=""/>
@@ -50,16 +50,15 @@ public interface IServiceArchitecturePatterns
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
     /// <returns></returns>
-    void UDPPGenerateBackendProject(List<Tables> tables);
+    void UDPPGeneratesBackendSolution(List<Tables> tables);
 
     /// <summary>
-    /// Generate front end project.
+    /// Generates a back end solution.
     /// </summary>
     /// <param name="tables"></param>
     /// <paramref name=""/>
     /// <remarks></remarks>
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
-    /// <returns></returns>
-    void UDPPGenerateFrontEndProject(List<Tables> tables);
+    void UDPPGeneratesFrontendSolution(List<Tables> tables);
 }

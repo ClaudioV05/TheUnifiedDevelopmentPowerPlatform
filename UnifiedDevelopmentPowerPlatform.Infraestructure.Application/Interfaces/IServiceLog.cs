@@ -12,7 +12,6 @@ public interface IServiceLog
     /// </summary>
     /// <param name="message"></param>
     /// <paramref name=""/>
-    /// <returns></returns>
     /// <remarks></remarks>
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
@@ -23,7 +22,6 @@ public interface IServiceLog
     /// </summary>
     /// <param name="message"></param>
     /// <paramref name=""/>
-    /// <returns></returns>
     /// <remarks></remarks>
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
@@ -34,7 +32,6 @@ public interface IServiceLog
     /// </summary>
     /// <param name="message"></param>
     /// <paramref name=""/>
-    /// <returns></returns>
     /// <remarks></remarks>
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
@@ -45,7 +42,6 @@ public interface IServiceLog
     /// </summary>
     /// <param name="message"></param>
     /// <paramref name=""/>
-    /// <returns></returns>
     /// <remarks></remarks>
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
@@ -57,7 +53,6 @@ public interface IServiceLog
     /// <param name="message"></param>
     /// <param name="additionalMessage"></param>
     /// <paramref name=""/>
-    /// <returns></returns>
     /// <remarks></remarks>
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>

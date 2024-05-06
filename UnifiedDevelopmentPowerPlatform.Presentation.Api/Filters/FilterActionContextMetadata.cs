@@ -134,7 +134,7 @@ internal sealed class FilterActionContextMetadata<T> : IAsyncActionFilter where 
         try
         {
             _serviceLog.UDPPRegisterLog(_serviceMessage.UDPPGetMessage(TypeDirectory.CallStartToTheCreateDirectoryProjectOfSolution), _serviceFuncString.Empty);
-            _serviceDirectory.UDPPCreateDirectoriesFromArchitecture(_serviceArchitecturePatterns.UDPToReadIdentifierToTheArchitecturePatternsFromMetadata());
+            _serviceDirectory.UDPPCreateDirectoriesFromArchitecture(_serviceArchitecturePatterns.UDPPToReadIdentifierToTheArchitecturePatternsFromMetadata());
             _serviceLog.UDPPRegisterLog(_serviceMessage.UDPPGetMessage(TypeDirectory.SuccessToTheCreateDirectoryProjectOfSolution), _serviceFuncString.Empty);
         }
         catch (Exception ex)

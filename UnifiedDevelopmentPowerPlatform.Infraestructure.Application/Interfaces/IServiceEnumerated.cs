@@ -10,7 +10,6 @@ public interface IServiceEnumerated
     /// </summary>
     /// <param name="EnumeratedValue"></param>
     /// <paramref name=""/>
-    /// <returns></returns>
     /// <remarks></remarks>
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>

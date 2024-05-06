@@ -12,7 +12,6 @@ public interface IServiceDatabases
     /// </summary>
     /// <param name=""></param>
     /// <paramref name=""/>
-    /// <returns></returns>
     /// <remarks></remarks>
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
@@ -24,7 +23,6 @@ public interface IServiceDatabases
     /// </summary>
     /// <param name="metadata"></param>
     /// <paramref name=""/>
-    /// <returns></returns>
     /// <remarks></remarks>
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
@@ -35,7 +33,6 @@ public interface IServiceDatabases
     /// </summary>
     /// <param name="listOfTables"></param>
     /// <paramref name=""/>
-    /// <returns></returns>
     /// <remarks></remarks>
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
@@ -46,7 +43,6 @@ public interface IServiceDatabases
     /// </summary>
     /// <param name="listOfTables"></param>
     /// <paramref name=""/>
-    /// <returns></returns>
     /// <remarks></remarks>
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>

@@ -2,10 +2,10 @@
 
 namespace UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.File;
 
-[ComplexType]
 /// <summary>
 /// File for the standard.
 /// </summary>
+[ComplexType]
 public static class FileStandard
 {
     /// <summary>

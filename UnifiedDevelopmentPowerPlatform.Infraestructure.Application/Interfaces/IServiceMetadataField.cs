@@ -12,7 +12,6 @@ public interface IServiceMetadataField
     /// </summary>
     /// <param name="text"></param>
     /// <paramref name=""/>
-    /// <returns></returns>
     /// <remarks></remarks>
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
@@ -24,7 +23,6 @@ public interface IServiceMetadataField
     /// </summary>
     /// <param name="text"></param>
     /// <paramref name=""/>
-    /// <returns></returns>
     /// <remarks></remarks>
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
@@ -36,7 +34,6 @@ public interface IServiceMetadataField
     /// </summary>
     /// <param name="text"></param>
     /// <paramref name=""/>
-    /// <returns></returns>
     /// <remarks></remarks>
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
@@ -48,7 +45,6 @@ public interface IServiceMetadataField
     /// </summary>
     /// <param name="text"></param>
     /// <paramref name=""/>
-    /// <returns></returns>
     /// <remarks></remarks>
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
@@ -60,7 +56,6 @@ public interface IServiceMetadataField
     /// </summary>
     /// <param name="text"></param>
     /// <paramref name=""/>
-    /// <returns></returns>
     /// <remarks></remarks>
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
@@ -74,11 +69,9 @@ public interface IServiceMetadataField
     /// <param name="idTable"></param>
     /// <param name="text"></param>
     /// <paramref name=""/>
-    /// <returns></returns>
     /// <remarks></remarks>
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
-    /// <returns></returns>
     void UDPPLoadTheFieldsAtTable(ref List<Tables> listTables, int idTable, string text);
 
     /// <summary>
@@ -88,11 +81,9 @@ public interface IServiceMetadataField
     /// <param name="idTable"></param>
     /// <param name="fieldsPrimaryKey"></param>
     /// <paramref name=""/>
-    /// <returns></returns>
     /// <remarks></remarks>
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
-    /// <returns></returns>
     void UDPPLoadTheFieldsPrimarykeyAtTable(ref List<Tables> listTables, int idTable, string fieldsPrimaryKey);
 
     /// <summary>
@@ -101,7 +92,6 @@ public interface IServiceMetadataField
     /// <param name="listOfFields"></param>
     /// <param name="quantityOfTables"></param>
     /// <paramref name=""/>
-    /// <returns></returns>
     /// <remarks></remarks>
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>

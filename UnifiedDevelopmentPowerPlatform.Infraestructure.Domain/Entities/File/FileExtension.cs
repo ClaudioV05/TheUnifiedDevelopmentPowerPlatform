@@ -2,10 +2,10 @@
 
 namespace UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.File;
 
-[ComplexType]
 /// <summary>
 /// File with extension for the application.
 /// </summary>
+[ComplexType]
 public static class FileExtension
 {
     /// <summary>

@@ -25,7 +25,6 @@ public interface IServiceLinq
     /// </summary>
     /// <param name="listItem"></param>
     /// <paramref name=""/>
-    /// <returns></returns>
     /// <remarks></remarks>
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
@@ -37,7 +36,6 @@ public interface IServiceLinq
     /// </summary>
     /// <param name="listItem"></param>
     /// <paramref name=""/>
-    /// <returns></returns>
     /// <remarks></remarks>
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
@@ -49,7 +47,6 @@ public interface IServiceLinq
     /// </summary>
     /// <param name="listItem"></param>
     /// <paramref name=""/>
-    /// <returns></returns>
     /// <remarks></remarks>
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
@@ -61,7 +58,6 @@ public interface IServiceLinq
     /// </summary>
     /// <param name="listItem"></param>
     /// <paramref name=""/>
-    /// <returns></returns>
     /// <remarks></remarks>
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
@@ -73,7 +69,6 @@ public interface IServiceLinq
     /// </summary>
     /// <param name="listItem"></param>
     /// <paramref name=""/>
-    /// <returns></returns>
     /// <remarks></remarks>
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
@@ -85,7 +80,6 @@ public interface IServiceLinq
     /// </summary>
     /// <param name="listItem"></param>
     /// <paramref name=""/>
-    /// <returns></returns>
     /// <remarks></remarks>
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
@@ -97,7 +91,6 @@ public interface IServiceLinq
     /// </summary>
     /// <param name="listItem"></param>
     /// <paramref name=""/>
-    /// <returns></returns>
     /// <remarks></remarks>
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>

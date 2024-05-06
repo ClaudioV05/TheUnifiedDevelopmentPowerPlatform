@@ -12,7 +12,6 @@ public interface IServiceDevelopmentEnvironments
     /// </summary>
     /// <param name=""></param>
     /// <paramref name=""/>
-    /// <returns></returns>
     /// <remarks></remarks>
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
@@ -24,7 +23,6 @@ public interface IServiceDevelopmentEnvironments
     /// </summary>
     /// <param name="metadata"></param>
     /// /// <paramref name=""/>
-    /// <returns></returns>
     /// <remarks></remarks>
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
@@ -35,7 +33,6 @@ public interface IServiceDevelopmentEnvironments
     /// </summary>
     /// <param name="type"></param>
     /// /// <paramref name=""/>
-    /// <returns></returns>
     /// <remarks></remarks>
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>

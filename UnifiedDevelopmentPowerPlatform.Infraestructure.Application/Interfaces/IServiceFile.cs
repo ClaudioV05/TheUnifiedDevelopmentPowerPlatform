@@ -1,4 +1,6 @@
-﻿namespace UnifiedDevelopmentPowerPlatform.Application.Interfaces;
+﻿using UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.Directory.DomainDrivenDesign;
+
+namespace UnifiedDevelopmentPowerPlatform.Application.Interfaces;
 
 /// <summary>
 /// Interface service file.
@@ -93,7 +95,6 @@ public interface IServiceFile
     /// <param name="path"></param>
     /// <param name="content"></param>
     /// <paramref name=""/>
-    /// <returns></returns>
     /// <remarks></remarks>
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
@@ -116,7 +117,6 @@ public interface IServiceFile
     /// </summary>
     /// <param name="fileName"></param>
     /// <paramref name=""/>
-    /// <returns></returns>
     /// <remarks></remarks>
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
@@ -124,12 +124,23 @@ public interface IServiceFile
     int UDPPCountLines(string fileName);
 
     /// <summary>
+    /// To data file.
+    /// </summary>
+    /// <param name="section"></param>
+    /// <param name="fileName"></param>
+    /// <paramref name=""/>
+    /// <remarks></remarks>
+    /// <exception cref=""></exception>
+    /// <seealso href=""></seealso>
+    /// <returns>A file.</returns>
+    string UDPPToCreateDataFile(DirectoryRootType section, string fileName);
+
+    /// <summary>
     /// Get data file from directory configuration.
     /// </summary>
     /// <param name="section"></param>
     /// <param name="file"></param>
     /// <paramref name=""/>
-    /// <returns></returns>
     /// <remarks></remarks>
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>

@@ -12,7 +12,6 @@ public interface IServiceMessage
     /// </summary>
     /// <param name="type"></param>
     /// <paramref name=""/>
-    /// <returns></returns>
     /// <remarks></remarks>
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
@@ -24,7 +23,6 @@ public interface IServiceMessage
     /// </summary>
     /// <param name="type"></param>
     /// <paramref name=""/>
-    /// <returns></returns>
     /// <remarks></remarks>
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
@@ -36,7 +34,6 @@ public interface IServiceMessage
     /// </summary>
     /// <param name="type"></param>
     /// <paramref name=""/>
-    /// <returns></returns>
     /// <remarks></remarks>
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
@@ -48,7 +45,6 @@ public interface IServiceMessage
     /// </summary>
     /// <param name="type"></param>
     /// <paramref name=""/>
-    /// <returns></returns>
     /// <remarks></remarks>
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
@@ -60,7 +56,6 @@ public interface IServiceMessage
     /// </summary>
     /// <param name="type"></param>
     /// <paramref name=""/>
-    /// <returns></returns>
     /// <remarks></remarks>
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
@@ -72,7 +67,6 @@ public interface IServiceMessage
     /// </summary>
     /// <param name="type"></param>
     /// <paramref name=""/>
-    /// <returns></returns>
     /// <remarks></remarks>
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
@@ -84,7 +78,6 @@ public interface IServiceMessage
     /// </summary>
     /// <param name="type"></param>
     /// <paramref name=""/>
-    /// <returns></returns>
     /// <remarks></remarks>
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
@@ -96,7 +89,6 @@ public interface IServiceMessage
     /// </summary>
     /// <param name="type"></param>
     /// <paramref name=""/>
-    /// <returns></returns>
     /// <remarks></remarks>
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
@@ -108,7 +100,6 @@ public interface IServiceMessage
     /// </summary>
     /// <param name="type"></param>
     /// <paramref name=""/>
-    /// <returns></returns>
     /// <remarks></remarks>
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
@@ -120,7 +111,6 @@ public interface IServiceMessage
     /// </summary>
     /// <param name="type"></param>
     /// <paramref name=""/>
-    /// <returns></returns>
     /// <remarks></remarks>
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
@@ -132,7 +122,6 @@ public interface IServiceMessage
     /// </summary>
     /// <param name="type"></param>
     /// <paramref name=""/>
-    /// <returns></returns>
     /// <remarks></remarks>
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
@@ -144,7 +133,6 @@ public interface IServiceMessage
     /// </summary>
     /// <param name="type"></param>
     /// <paramref name=""/>
-    /// <returns></returns>
     /// <remarks></remarks>
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>

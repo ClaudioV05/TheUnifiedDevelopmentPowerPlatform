@@ -30,17 +30,13 @@ public class ServiceDirectory : IServiceDirectory
         try
         {
             DirectoryRoot.DirectoryRootPath = this.UDPGetRootDirectory();
-
             this.UDPDeleteAllRootDirectory($"{DirectoryRoot.DirectoryRootPath}{DirectoryRoot.App}");
 
-            if (Enum.GetValues(typeof(DirectoryRootType)) != null && Enum.GetValues(typeof(DirectoryRootType)).Length > 0)
+            for (int i = 0; i < Enum.GetValues(typeof(DirectoryRootType)).Length; i++)
             {
-                for (int i = 0; i < Enum.GetValues(typeof(DirectoryRootType)).Length; i++)
+                if ((DirectoryRootType)i == DirectoryRootType.App || (DirectoryRootType)i == DirectoryRootType.Configuration || (DirectoryRootType)i == DirectoryRootType.Log)
                 {
-                    if ((DirectoryRootType)i == DirectoryRootType.App || (DirectoryRootType)i == DirectoryRootType.Configuration || (DirectoryRootType)i == DirectoryRootType.Log)
-                    {
-                        this.UDPAddAllRootDirectory($"{DirectoryRoot.DirectoryRootPath}{this.UDPObtainDirectoryRoot((DirectoryRootType)i)}");
-                    }
+                    this.UDPAddAllRootDirectory($"{DirectoryRoot.DirectoryRootPath}{this.UDPObtainDirectoryRoot((DirectoryRootType)i)}");
                 }
             }
 

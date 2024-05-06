@@ -11,6 +11,7 @@ public enum DirectoryRootType : int
     NoDirectoryRoot = 0,
 
     #region Standard Path.
+
     [Description("Directory root app")]
     App = 1,
 

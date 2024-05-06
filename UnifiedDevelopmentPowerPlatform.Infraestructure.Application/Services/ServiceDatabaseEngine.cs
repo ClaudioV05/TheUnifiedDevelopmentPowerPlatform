@@ -49,30 +49,24 @@ public class ServiceDatabaseEngine : IServiceDatabaseEngine
 
     public List<DatabasesEngine> UDPPSelectParametersTheKindsOfDatabasesEngine()
     {
-        _serviceLog.UDPPRegisterLog(_serviceMessage.UDPPGetMessage(TypeDatabasesEngine.CallStartToTheSelectParametersTheKindsOfDatabasesEngine), _serviceFuncString.Empty);
-
         List<DatabasesEngine> listItems = new List<DatabasesEngine>();
 
         try
         {
-            if (Enum.GetValues(typeof(EnumeratedDatabasesEngine)) != null && Enum.GetValues(typeof(EnumeratedDatabasesEngine)).Length > 0)
+            _serviceLog.UDPPRegisterLog(_serviceMessage.UDPPGetMessage(TypeDatabasesEngine.CallStartToTheSelectParametersTheKindsOfDatabasesEngine), _serviceFuncString.Empty);
+
+            for (int i = 0; i < Enum.GetValues(typeof(EnumeratedDatabasesEngine)).Length; i++)
             {
-                for (int i = 0; i < Enum.GetValues(typeof(EnumeratedDatabasesEngine)).Length; i++)
+                listItems.Add(new DatabasesEngine()
                 {
-                    listItems.Add(new DatabasesEngine()
-                    {
-                        Id = (long)(EnumeratedDatabasesEngine)i,
-                        IdEnumeration = (EnumeratedDatabasesEngine)i,
-                        NameEnumeration = Enum.GetName(typeof(EnumeratedDatabasesEngine), i),
-                        Name = _serviceEnumerated.UDPPGetEnumeratedDescription((EnumeratedDatabasesEngine)i)
-                    });
-                }
+                    Id = (long)(EnumeratedDatabasesEngine)i,
+                    IdEnumeration = (EnumeratedDatabasesEngine)i,
+                    NameEnumeration = Enum.GetName(typeof(EnumeratedDatabasesEngine), i),
+                    Name = _serviceEnumerated.UDPPGetEnumeratedDescription((EnumeratedDatabasesEngine)i)
+                });
             }
 
-            if (listItems.Any())
-            {
-                _serviceLog.UDPPRegisterLog(_serviceMessage.UDPPGetMessage(TypeDatabasesEngine.SuccessToTheSelectParametersTheKindsOfDatabasesEngine), _serviceFuncString.Empty);
-            }
+            _serviceLog.UDPPRegisterLog(_serviceMessage.UDPPGetMessage(TypeDatabasesEngine.SuccessToTheSelectParametersTheKindsOfDatabasesEngine), _serviceFuncString.Empty);
         }
         catch (OverflowException) { }
 

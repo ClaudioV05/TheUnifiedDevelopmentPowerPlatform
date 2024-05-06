@@ -9,7 +9,6 @@ public interface IServiceDate
     /// Get the date time now with string format.
     /// </summary>
     /// <paramref name=""/>
-    /// <returns></returns>
     /// <remarks></remarks>
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
@@ -20,7 +19,6 @@ public interface IServiceDate
     /// Date time to long time.
     /// </summary>
     /// <paramref name=""/>
-    /// <returns></returns>
     /// <remarks></remarks>
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>

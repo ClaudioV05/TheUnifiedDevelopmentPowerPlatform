@@ -304,4 +304,9 @@ public class ServiceFuncString : IServiceFuncString
 
         return textValue;
     }
+
+    public string UDPPJoin(string separator, string[]? values)
+    {
+        return string.Join(separator, [.. values]);
+    }
 }

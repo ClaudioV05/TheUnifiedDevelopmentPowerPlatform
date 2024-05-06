@@ -10,7 +10,6 @@ public interface IServiceCrypto
     /// </summary>
     /// <param name="value"></param>
     /// <paramref name=""/>
-    /// <returns></returns>
     /// <remarks></remarks>
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
@@ -22,7 +21,6 @@ public interface IServiceCrypto
     /// </summary>
     /// <param name="value"></param>
     /// <paramref name=""/>
-    /// <returns></returns>
     /// <remarks></remarks>
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
@@ -34,7 +32,6 @@ public interface IServiceCrypto
     /// </summary>
     /// <param name="value"></param>
     /// <paramref name=""/>
-    /// <returns></returns>
     /// <remarks></remarks>
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
@@ -46,7 +43,6 @@ public interface IServiceCrypto
     /// </summary>
     /// <param name="value"></param>
     /// <paramref name=""/>
-    /// <returns></returns>
     /// <remarks></remarks>
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>

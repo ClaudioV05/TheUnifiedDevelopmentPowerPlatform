@@ -12,7 +12,6 @@ public interface IServiceDataTypeCSharp
     /// </summary>
     /// <param name="index"/>
     /// <paramref name=""/>
-    /// <returns></returns>
     /// <remarks></remarks>
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
@@ -24,7 +23,6 @@ public interface IServiceDataTypeCSharp
     /// </summary>
     /// <param name="index"/>
     /// <paramref name=""/>
-    /// <returns></returns>
     /// <remarks></remarks>
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
@@ -36,7 +34,6 @@ public interface IServiceDataTypeCSharp
     /// </summary>
     /// <param name="dataType"/>
     /// <paramref name=""/>
-    /// <returns></returns>
     /// <remarks></remarks>
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
@@ -48,7 +45,6 @@ public interface IServiceDataTypeCSharp
     /// </summary>
     /// <param name="dataType"/>
     /// <paramref name=""/>
-    /// <returns></returns>
     /// <remarks></remarks>
     /// <exception cref=""></exception>
     /// <seealso href=""></seealso>
