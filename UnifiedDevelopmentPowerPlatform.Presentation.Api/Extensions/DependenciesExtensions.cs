@@ -4,7 +4,7 @@ using UnifiedDevelopmentPowerPlatform.Presentation.Api.Filters;
 
 namespace UnifiedDevelopmentPowerPlatform.Presentation.Api.Extensions;
 
-public static class DependenciesCorsExtensions
+public static class DependenciesExtensions
 {
     /// <summary>
     /// Configure dependencies.

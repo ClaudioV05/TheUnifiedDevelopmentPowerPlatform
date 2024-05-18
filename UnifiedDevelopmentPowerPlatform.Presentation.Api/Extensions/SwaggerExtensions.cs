@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using Microsoft.OpenApi.Models;
+using System.Reflection;
 using UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.File;
 using UnifiedDevelopmentPowerPlatform.Presentation.Api.OpenApi;
 
@@ -12,25 +13,32 @@ public static class SwaggerExtensions
     /// <param name="services"></param>
     public static void ConfigureSwagger(this IServiceCollection services)
     {
-        services.AddSwaggerGen(c =>
+        services.AddSwaggerGen(config =>
         {
-            c.SchemaFilter<OpenApiIgnoreFilter>();
-            c.DocumentFilter<OpenApiDocumentation>();
-            c.OperationFilter<OpenApiParameters>();
-            c.DescribeAllParametersInCamelCase();
+            config.SchemaFilter<OpenApiIgnoreFilter>();
+            config.DocumentFilter<OpenApiDocumentation>();
+            config.OperationFilter<OpenApiParameters>();
+            config.DescribeAllParametersInCamelCase();
 
             var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}{FileExtension.Xml}";
             var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
 
-            if (File.Exists(xmlPath))
-            {
-                c.IncludeXmlComments(xmlPath);
-            }
-            else
+            if (!File.Exists(xmlPath))
             {
                 File.Create(xmlPath).Dispose();
-                c.IncludeXmlComments(xmlPath);
             }
+            
+            config.IncludeXmlComments(xmlPath);
+
+            config.AddSecurityDefinition("Bearer", new()
+            {
+                Scheme = "Bearer",
+                BearerFormat = "JWT",
+                Name = "Authorization",
+                In = ParameterLocation.Header,
+                Type = SecuritySchemeType.ApiKey,
+                Description = "JWT Authorization header using the Bearer scheme."
+            });
         });
     }
 }
