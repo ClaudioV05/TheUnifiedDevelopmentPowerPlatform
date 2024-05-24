@@ -7,6 +7,7 @@ namespace UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities;
 /// <summary>
 /// Entity Metadata owner.
 /// </summary>
+/// <remarks>This class cannot be inherited.</remarks>
 [ComplexType]
 public sealed class MetadataOwner : IEntity
 {

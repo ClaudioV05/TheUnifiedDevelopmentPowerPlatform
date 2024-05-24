@@ -3,6 +3,7 @@
 /// <summary>
 /// Interface service validation.
 /// </summary>
+/// <remarks>This class cannot be inherited.</remarks>
 public interface IServiceValidation
 {
     /// <summary>

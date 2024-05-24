@@ -5,6 +5,7 @@ namespace UnifiedDevelopmentPowerPlatform.Application.Interfaces;
 /// <summary>
 /// Interface service database engine.
 /// </summary>
+/// <remarks>This class cannot be inherited.</remarks>
 public interface IServiceDatabaseEngine
 {
     /// <summary>

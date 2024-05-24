@@ -3,6 +3,7 @@
 /// <summary>
 /// Interface service enumerated
 /// </summary>
+/// <remarks>This class cannot be inherited.</remarks>
 public interface IServiceEnumerated
 {
     /// <summary>

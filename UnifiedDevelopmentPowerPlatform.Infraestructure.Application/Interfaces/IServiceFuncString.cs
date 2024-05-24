@@ -3,6 +3,7 @@
 /// <summary>
 /// Interface service func string.
 /// </summary>
+/// <remarks>This class cannot be inherited.</remarks>
 public interface IServiceFuncString
 {
     /// <summary>

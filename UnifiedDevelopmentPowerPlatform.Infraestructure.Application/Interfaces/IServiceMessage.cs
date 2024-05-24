@@ -5,6 +5,7 @@ namespace UnifiedDevelopmentPowerPlatform.Application.Interfaces;
 /// <summary>
 /// Interface of service message.
 /// </summary>
+/// <remarks>This class cannot be inherited.</remarks>
 public interface IServiceMessage
 {
     /// <summary>

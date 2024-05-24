@@ -6,6 +6,7 @@ namespace UnifiedDevelopmentPowerPlatform.Application.Interfaces;
 /// <summary>
 /// Interface service directory.
 /// </summary>
+/// <remarks>This class cannot be inherited.</remarks>
 public interface IServiceDirectory
 {
     /// <summary>

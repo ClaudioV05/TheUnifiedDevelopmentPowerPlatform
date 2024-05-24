@@ -5,6 +5,7 @@ namespace UnifiedDevelopmentPowerPlatform.Application.Interfaces;
 /// <summary>
 /// Interface service metadata table.
 /// </summary>
+/// <remarks>This class cannot be inherited.</remarks>
 public interface IServiceMetadataTable
 {
     /// <summary>

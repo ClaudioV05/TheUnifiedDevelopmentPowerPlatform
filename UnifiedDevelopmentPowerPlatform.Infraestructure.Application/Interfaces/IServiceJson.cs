@@ -3,6 +3,7 @@
 /// <summary>
 /// Interface service json.
 /// </summary>
+/// <remarks>This class cannot be inherited.</remarks>
 public interface IServiceJson
 {
     /// <summary>

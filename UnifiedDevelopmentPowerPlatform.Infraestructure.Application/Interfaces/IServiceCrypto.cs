@@ -3,6 +3,7 @@
 /// <summary>
 /// Interface service crypto.
 /// </summary>
+/// <remarks>This class cannot be inherited.</remarks>
 public interface IServiceCrypto
 {
     /// <summary>

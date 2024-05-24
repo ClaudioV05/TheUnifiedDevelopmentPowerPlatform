@@ -5,6 +5,7 @@ namespace UnifiedDevelopmentPowerPlatform.Application.Interfaces;
 /// <summary>
 /// Interface service log.
 /// </summary>
+/// <remarks>This class cannot be inherited.</remarks>
 public interface IServiceLog
 {
     /// <summary>

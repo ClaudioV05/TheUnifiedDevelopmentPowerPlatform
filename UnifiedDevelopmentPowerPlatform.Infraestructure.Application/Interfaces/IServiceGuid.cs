@@ -3,6 +3,7 @@
 /// <summary>
 /// Interface service guid.
 /// </summary>
+/// <remarks>This class cannot be inherited.</remarks>
 public interface IServiceGuid
 {
     /// <summary>

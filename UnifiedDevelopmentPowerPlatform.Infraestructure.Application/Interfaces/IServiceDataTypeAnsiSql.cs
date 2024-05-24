@@ -5,6 +5,7 @@ namespace UnifiedDevelopmentPowerPlatform.Application.Interfaces;
 /// <summary>
 /// Interface service data type ansi sql.
 /// </summary>
+/// <remarks>This class cannot be inherited.</remarks>
 public interface IServiceDataTypeAnsiSql
 {
     /// <summary>

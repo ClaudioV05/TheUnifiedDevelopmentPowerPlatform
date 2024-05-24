@@ -6,6 +6,7 @@ namespace UnifiedDevelopmentPowerPlatform.Application.Interfaces;
 /// <summary>
 /// Interface service linq.
 /// </summary>
+/// <remarks>This class cannot be inherited.</remarks>
 public interface IServiceLinq
 {
     /// <summary>

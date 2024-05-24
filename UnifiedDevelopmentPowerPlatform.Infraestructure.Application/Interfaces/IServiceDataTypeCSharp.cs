@@ -5,6 +5,7 @@ namespace UnifiedDevelopmentPowerPlatform.Application.Interfaces;
 /// <summary>
 /// Interface service data type c-sharp.
 /// </summary>
+/// <remarks>This class cannot be inherited.</remarks>
 public interface IServiceDataTypeCSharp
 {
     /// <summary>

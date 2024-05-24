@@ -3,6 +3,7 @@
 /// <summary>
 /// Interface service date.
 /// </summary>
+/// <remarks>This class cannot be inherited.</remarks>
 public interface IServiceDate
 {
     /// <summary>

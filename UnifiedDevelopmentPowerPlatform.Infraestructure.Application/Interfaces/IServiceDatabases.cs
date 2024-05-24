@@ -5,6 +5,7 @@ namespace UnifiedDevelopmentPowerPlatform.Application.Interfaces;
 /// <summary>
 /// Interface service databases.
 /// </summary>
+/// <remarks>This class cannot be inherited.</remarks>
 public interface IServiceDatabases
 {
     /// <summary>
