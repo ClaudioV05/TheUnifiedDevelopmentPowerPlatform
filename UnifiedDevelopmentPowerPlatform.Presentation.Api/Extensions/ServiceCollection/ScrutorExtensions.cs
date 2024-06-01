@@ -2,7 +2,7 @@
 using Scrutor;
 using System.Reflection;
 
-namespace UnifiedDevelopmentPowerPlatform.Presentation.Api.Extensions;
+namespace UnifiedDevelopmentPowerPlatform.Presentation.Api.Extensions.ServiceCollection;
 
 public static class ScrutorExtensions
 {

@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc.Formatters;
 
-namespace UnifiedDevelopmentPowerPlatform.Presentation.Api.Extensions;
+namespace UnifiedDevelopmentPowerPlatform.Presentation.Api.Extensions.ServiceCollection;
 
 public static class MvcExtensions
 {

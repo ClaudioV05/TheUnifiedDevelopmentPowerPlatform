@@ -3,7 +3,7 @@ using System.Net;
 using UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.WebConfiguration;
 using UnifiedDevelopmentPowerPlatform.Presentation.Api.Models;
 
-namespace UnifiedDevelopmentPowerPlatform.Presentation.Api.Extensions;
+namespace UnifiedDevelopmentPowerPlatform.Presentation.Api.Extensions.ServiceCollection;
 
 public static class UnifiedDevelopmentPowerPlatformExceptionMiddlewareExtensions
 {
@@ -22,7 +22,7 @@ public static class UnifiedDevelopmentPowerPlatformExceptionMiddlewareExtensions
                 {
                     await context.Response.WriteAsync(new ErrorDetails()
                     {
-                        
+
                         StatusCode = context.Response.StatusCode,
                         Message = contextFeature.Error.Message
                         /*

@@ -2,7 +2,7 @@
 using UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities;
 using UnifiedDevelopmentPowerPlatform.Presentation.Api.Filters;
 
-namespace UnifiedDevelopmentPowerPlatform.Presentation.Api.Extensions;
+namespace UnifiedDevelopmentPowerPlatform.Presentation.Api.Extensions.ServiceCollection;
 
 public static class DependenciesExtensions
 {

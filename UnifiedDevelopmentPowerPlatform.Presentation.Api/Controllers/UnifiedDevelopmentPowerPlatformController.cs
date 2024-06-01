@@ -56,6 +56,7 @@ public class UnifiedDevelopmentPowerPlatformController : ControllerBase
     /// <response code="503">The server is unavailable to handle this request right now.</response>
     /// <response code="504">The server, acting as a gateway, timed out waiting for another server to respond.</response>
     [HttpPost]
+    [EnableCors("AllowOrigin")]
     [Produces(MediaTypeNames.Application.Json, MediaTypeNames.Application.Xml)]
     [Route(ControllerRouterUnifiedDevelopmentPowerPlatform.RouterMetadata)]
     [ServiceFilter(typeof(FilterActionContextLog), IsReusable = false, Order = ControllerOrderExecutationFilter.Second)]
@@ -70,42 +71,16 @@ public class UnifiedDevelopmentPowerPlatformController : ControllerBase
     [ProducesResponseType(StatusCodes.Status502BadGateway)]
     [ProducesResponseType(StatusCodes.Status503ServiceUnavailable)]
     [ProducesResponseType(StatusCodes.Status504GatewayTimeout)]
-    [DisableCors]
     public ActionResult<List<Tables>> Metadata([BindRequired] DtoMetadata metadata)
     {
-        MetadataOwner metadataOwner = new MetadataOwner()
+        MetadataOwner metadataOwner = new()
         {
             DatabaseSchema = metadata.DatabaseSchema,
-            FormsView = new List<FormsView>()
-            {
-                new FormsView()
-                {
-                    Id = metadata.IdForms
-                }},
-            Databases = new List<Databases>()
-            {
-                new Databases()
-                {
-                    Id = metadata.IdDatabases
-                }},
-            DatabasesEngine = new List<DatabasesEngine>()
-            {
-                new DatabasesEngine()
-                {
-                    Id = metadata.IdDatabasesEngine
-                }},
-            ArchitecturePatterns = new List<ArchitecturePatterns>()
-            {
-                new ArchitecturePatterns()
-                {
-                    Id = metadata.Architecture
-                }},
-            DevelopmentEnvironments = new List<DevelopmentEnvironments>()
-            {
-                new DevelopmentEnvironments()
-                {
-                    Id = metadata.IdDevelopmentEnvironment
-                }},
+            FormsView = [new() { Id = metadata.IdForms }],
+            Databases = [new() { Id = metadata.IdDatabases }],
+            DatabasesEngine = [new() { Id = metadata.IdDatabasesEngine }],
+            ArchitecturePatterns = [new() { Id = metadata.Architecture }],
+            DevelopmentEnvironments = [new() { Id = metadata.IdDevelopmentEnvironment }],
         };
 
         return Ok(_serviceMetadata.UDPPReceiveAndSaveAllTablesAndFieldsOfSchemaDatabase(metadata: metadataOwner));
@@ -149,10 +124,10 @@ public class UnifiedDevelopmentPowerPlatformController : ControllerBase
     [ProducesResponseType(StatusCodes.Status502BadGateway)]
     [ProducesResponseType(StatusCodes.Status503ServiceUnavailable)]
     [ProducesResponseType(StatusCodes.Status504GatewayTimeout)]
-    [DisableCors]
+    [EnableCors("AllowOrigin")]
     public ActionResult Tablesdata([BindRequired] DtoTablesdata tablesdata)
     {
-        MetadataOwner metadataOwner = new MetadataOwner()
+        MetadataOwner metadataOwner = new()
         {
             Tables = tablesdata.Tables
         };

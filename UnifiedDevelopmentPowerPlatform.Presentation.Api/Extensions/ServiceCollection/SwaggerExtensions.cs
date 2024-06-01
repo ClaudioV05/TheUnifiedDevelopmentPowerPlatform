@@ -3,7 +3,7 @@ using System.Reflection;
 using UnifiedDevelopmentPowerPlatform.Infraestructure.Domain.Entities.File;
 using UnifiedDevelopmentPowerPlatform.Presentation.Api.OpenApi;
 
-namespace UnifiedDevelopmentPowerPlatform.Presentation.Api.Extensions;
+namespace UnifiedDevelopmentPowerPlatform.Presentation.Api.Extensions.ServiceCollection;
 
 public static class SwaggerExtensions
 {
@@ -27,7 +27,7 @@ public static class SwaggerExtensions
             {
                 File.Create(xmlPath).Dispose();
             }
-            
+
             config.IncludeXmlComments(xmlPath);
 
             config.AddSecurityDefinition("Bearer", new()

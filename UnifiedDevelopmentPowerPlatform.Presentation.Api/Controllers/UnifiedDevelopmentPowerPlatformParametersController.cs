@@ -59,6 +59,7 @@ public class UnifiedDevelopmentPowerPlatformParametersController : ControllerBas
     [ProducesResponseType(StatusCodes.Status502BadGateway)]
     [ProducesResponseType(StatusCodes.Status503ServiceUnavailable)]
     [ProducesResponseType(StatusCodes.Status504GatewayTimeout)]
+    [EnableCors("AllowOrigin")]
     public ActionResult<IEnumerable<Databases>> ParametersTheKindsOfDatabases()
     {
         return Ok(_serviceMetadata.UDPPSelectParametersTheKindsOfDatabases());
@@ -92,6 +93,7 @@ public class UnifiedDevelopmentPowerPlatformParametersController : ControllerBas
     [ProducesResponseType(StatusCodes.Status502BadGateway)]
     [ProducesResponseType(StatusCodes.Status503ServiceUnavailable)]
     [ProducesResponseType(StatusCodes.Status504GatewayTimeout)]
+    [EnableCors("AllowOrigin")]
     public ActionResult<IEnumerable<FormsView>> ParametersTheKindsOfForms()
     {
         return Ok(_serviceMetadata.UDPPSelectParametersTheKindsOfForms());
@@ -125,6 +127,7 @@ public class UnifiedDevelopmentPowerPlatformParametersController : ControllerBas
     [ProducesResponseType(StatusCodes.Status502BadGateway)]
     [ProducesResponseType(StatusCodes.Status503ServiceUnavailable)]
     [ProducesResponseType(StatusCodes.Status504GatewayTimeout)]
+    [EnableCors("AllowOrigin")]
     public ActionResult<IEnumerable<DevelopmentEnvironments>> ParametersTheKindsOfDevelopmentEnvironment()
     {
         return Ok(_serviceMetadata.UDPPSelectParametersTheKindsOfDevelopmentEnviroment());
@@ -158,6 +161,7 @@ public class UnifiedDevelopmentPowerPlatformParametersController : ControllerBas
     [ProducesResponseType(StatusCodes.Status502BadGateway)]
     [ProducesResponseType(StatusCodes.Status503ServiceUnavailable)]
     [ProducesResponseType(StatusCodes.Status504GatewayTimeout)]
+    [EnableCors("AllowOrigin")]
     public ActionResult<IEnumerable<DatabasesEngine>> ParametersTheKindsOfDatabasesEngine()
     {
         return Ok(_serviceMetadata.UDPPSelectParametersTheKindsOfDatabasesEngine());
@@ -191,6 +195,7 @@ public class UnifiedDevelopmentPowerPlatformParametersController : ControllerBas
     [ProducesResponseType(StatusCodes.Status502BadGateway)]
     [ProducesResponseType(StatusCodes.Status503ServiceUnavailable)]
     [ProducesResponseType(StatusCodes.Status504GatewayTimeout)]
+    [EnableCors("AllowOrigin")]
     public ActionResult<IEnumerable<ArchitecturePatterns>> ParametersTheKindsOfArchitecturePatterns()
     {
         return Ok(_serviceMetadata.UDPPSelectParametersTheKindsOfArchitecturePatterns());
@@ -224,6 +229,7 @@ public class UnifiedDevelopmentPowerPlatformParametersController : ControllerBas
     [ProducesResponseType(StatusCodes.Status502BadGateway)]
     [ProducesResponseType(StatusCodes.Status503ServiceUnavailable)]
     [ProducesResponseType(StatusCodes.Status504GatewayTimeout)]
+    [EnableCors("AllowOrigin")]
     public ActionResult<UnifiedDevelopmentParameters> Informations()
     {
         return Ok(_serviceMetadata.UDPPSelectParametersInformationUnifiedDevelopmentPowerPlatform());
